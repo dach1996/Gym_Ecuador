@@ -1,6 +1,4 @@
 using System.Data;
-using PersistenceDb.Models.Configuration;
-
 namespace PersistenceDb.Repository.Interfaces.UnitOfWork;
 
 public interface IUnitOfWorkBase : IDisposable
