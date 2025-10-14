@@ -1,0 +1,13 @@
+{
+  "DefaultDurationSeconds": 3600,
+  "ConfigurationByKey": {
+    "CATALOGUES-BANCOS-BANCOS": {
+      "DurationSeconds": 3600
+    }
+  },
+  "ConfigurationByRegularExpression": {
+    "^URL_FILES_PERSISTENCE-\\d+$": {
+      "DurationSeconds": 3600
+    }
+  }
+}

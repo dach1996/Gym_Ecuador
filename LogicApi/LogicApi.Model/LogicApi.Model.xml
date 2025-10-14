@@ -1,0 +1,3490 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogicApi.Model</name>
+    </assembly>
+    <members>
+        <member name="T:LogicApi.Model.Common.BiometricModel">
+            <summary>
+            Modelo de datos para la biometría
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.BiometricModel.Guid">
+            <summary>
+            Id de la biometría
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.BiometricModel.DateTimeGenerated">
+            <summary>
+            Fecha y hora de generación de la huella
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.BiometricModel.PersonId">
+            <summary>
+            Id de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.BiometricModel.UserId">
+            <summary>
+            Id del usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.BiometricModel.DateTimeExpired">
+            <summary>
+            Fecha y hora de expiración de la huella
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Common.BusInformation">
+            <summary>
+            Información de Cooperativa
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.BusInformation.CooperativeBusId">
+            <summary>
+            Identificador de Bus
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.BusInformation.CooperativeBusCode">
+            <summary>
+            Identificador de Cooperativa
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.BusInformation.Services">
+            <summary>
+            Servicios
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.BusInformation.CooperativeFloors">
+            <summary>
+            Diagramas
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Common.BusInformation.GetFloorIdByIdentifier(System.String)">
+            <summary>
+            Obtiene el Id me diante el identificador de piso
+            </summary>
+            <param name="floorIdentifier"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Common.BusInformation.GetFloorGuidById(System.Int32)">
+            <summary>
+            Obtiene el Guid me diante el Id de piso
+            </summary>
+            <param name="floorId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Common.BusInformation.GetSeatsKey">
+            <summary>
+            Obtiene las llaves únicas de los pisos con los asientos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Common.BusInformation.GetCooperativeFloors">
+            <summary>
+            Obtiene los pisos de la cooperativa
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:LogicApi.Model.Common.CooperativeFloor">
+            <summary>
+            Diagrama de bus cooperative
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeFloor.Id">
+            <summary>
+            Id
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeFloor.FloorIdentifier">
+            <summary>
+            Identificador de Piso
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeFloor.CooperativeFloorGuid">
+            <summary>
+            Identificador de Bus
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeFloor.FloorNumber">
+            <summary>
+            Orden de Pisos
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeFloor.Diagram">
+            <summary>
+            Diagramas
+            </summary>
+            <value></value>
+        </member>
+        <member name="F:LogicApi.Model.Common.CooperativeFloor._busSpaces">
+            <summary>
+            Espacios de Bus
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Common.CooperativeFloor.GetFloorSpaces">
+            <summary>
+            Espacios de Bus
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Common.BusOriginalSpace">
+            <summary>
+            Espacios de diagrama de Bus
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.BusOriginalSpace.SeatIdentifier">
+            <summary>
+            Identificador de Espacio en el Bus
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.BusOriginalSpace.BusSpaceType">
+            <summary>
+            Tipo de espacio en el Bus
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Common.CompanionItem">
+            <summary>
+            Item de Compañero
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="personGuid"></param>
+            <param name="documentNumber"></param>
+            <param name="fullName"></param>
+        </member>
+        <member name="M:LogicApi.Model.Common.CompanionItem.#ctor(System.Guid,System.String,System.String)">
+            <summary>
+            Item de Compañero
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="personGuid"></param>
+            <param name="documentNumber"></param>
+            <param name="fullName"></param>
+        </member>
+        <member name="P:LogicApi.Model.Common.CompanionItem.PersonGuid">
+            <summary>
+            Id de Persona
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.CompanionItem.DocumentNumber">
+            <summary>
+            Número de Documento
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.CompanionItem.FullName">
+            <summary>
+            Nombre de Acompañante
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Common.CooperativeData">
+            <summary>
+            Clase base para abstraer información de cooperativas
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="cooperativeItems"></param>
+        </member>
+        <member name="M:LogicApi.Model.Common.CooperativeData.#ctor(LogicApi.Model.Common.CooperativeItemData[])">
+            <summary>
+            Clase base para abstraer información de cooperativas
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="cooperativeItems"></param>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeData.CooperativeItems">
+            <summary>
+            Items de información de Cooperativas
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Common.CooperativeData.GetImplementationCodeByCooperativeId(System.Int32)">
+            <summary>
+            Obtiene el código de implementación mediante el Id de Cooperativa 
+            </summary>
+            <param name="cooperativeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Common.CooperativeData.GetImplementationCodeByCooperativeIds(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Obtiene el código de implementación mediante el Id de Cooperativa 
+            </summary>
+            <param name="cooperativeIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Common.CooperativeData.GetDictionaryCooperativeImplementations">
+            <summary>
+            Obtiene la información de las cooperativas con su implementación y su nombre a mostrar
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Common.CooperativeData.GetAllImplementationCodes">
+            <summary>
+            Obtiene todos los códigos de implementacion registrados
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Common.CooperativeData.GetCooperativeDataById(System.Int32)">
+            <summary>
+            Obtiene la informaciòn de cooperativa por Id
+            </summary>
+            <param name="cooperativeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Common.CooperativeData.GetCooperativeDataByAllowedProvinceId(System.Int32,System.Int32)">
+            <summary>
+            Obtiene la información de la provincia de la cooperativa por Id
+            </summary> 
+            <param name="originProvinceId"></param>
+            <param name="destinationProvinceId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LogicApi.Model.Common.CooperativeItemData">
+            <summary>
+            Información de Cooperativa
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeItemData.ImplementationName">
+            <summary>
+            Nombre del Key para implementación
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeItemData.Name">
+            <summary>
+            Nombre Coperativa
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeItemData.BusImageUrl">
+            <summary>
+            Url de Imagen de Bus
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeItemData.LogoImageUrl">
+            <summary>
+            Url de Imagen de Logo
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeItemData.Buses">
+            <summary>
+            Información de Buses de Cooperativa
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Common.CooperativeItemData.GetBusInformation(System.String)">
+            <summary>
+            Obtiene la informaciòn del bus por el código asignado por la cooperativa
+            </summary>
+            <param name="busIdentifierCode"></param>
+            <returns></returns>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeItemData.ProvinceCooperativeInformation">
+            <summary>
+            Información de Provincia de Cooperativa
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Common.CooperativeItemData.GetFloorIdByGuid(System.Guid)">
+            <summary>
+            Obtiene el Id del piso por el Guid
+            </summary>
+            <param name="floorGuid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Common.CooperativeItemData.GetFloorGuidById(System.Int32)">
+            <summary>
+            Obtiene el Guid del piso por el código
+            </summary>
+            <param name="floorId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Common.CooperativeItemData.GetTransportPointNameByCodeCooperativeStation(System.String)">
+            <summary>   
+            Obtiene el nombre del punto de transporte por el código
+            </summary>
+            <param name="cooperativeTransportPointCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Common.CooperativeItemData.GetTransportPointIdByPlaceCode(System.String)">
+            <summary>   
+            Obtiene el Id del punto de transporte por el código
+            </summary>
+            <param name="placeCode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LogicApi.Model.Common.CooperativeDataBase">
+            <summary>
+            Clase base de cooperativa
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeDataBase.Id">
+            <summary>
+            Id de Comperativa
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeDataBase.Code">
+            <summary>
+            Código Coperativa
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Common.ProvinceCooperativeInformation">
+            <summary>
+            Información de Provincia de Cooperativa
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.ProvinceCooperativeInformation.ProvinceId">
+            <summary>
+            Id de Provincia
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.ProvinceCooperativeInformation.ProvinceName">
+            <summary>
+            Nombre de Provincia
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.ProvinceCooperativeInformation.TransportPointInformation">
+            <summary>
+            Información de Punto de Transporte
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Common.TransportPointInformation">
+            <summary>
+            Información de Punto de Transporte
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.TransportPointInformation.CooperativeTransportPointId">
+            <summary>
+            Id de Punto de Transporte
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.TransportPointInformation.CooperativeTransportPointCode">
+            <summary>
+            Código de Punto de Transporte
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.TransportPointInformation.TransportPointName">
+            <summary>
+            Nombre de Punto de Transporte
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.TransportPointInformation.TransportPointCode">
+            <summary>
+            Código de Provincia
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Common.CooperativeImplementation">
+            <summary>
+            Información de Cooperativa
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.CooperativeImplementation.CooperativeImplementationName">
+            <summary>
+            Nombre de implementación de Coperativa
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Common.PlaceInformation">
+            <summary>
+            Información de Lugares
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.PlaceInformation.Id">
+            <summary>
+            Identificador de catálogo
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.PlaceInformation.Code">
+            <summary>
+            Código de Lugar
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.PlaceInformation.Name">
+            <summary>
+            Name
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.PlaceInformation.ShortName">
+            <summary>
+            Name
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.PlaceInformation.ProvinceCode">
+            <summary>
+            Provincia
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.PlaceInformation.ProvinceName">
+            <summary>
+            Provincia
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.PlaceInformation.ProvinceId">
+            <summary>
+            Provincia
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Common.RequestEncodeFile">
+            <summary>
+            Request de archivo codificado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.RequestEncodeFile.EncodeContent">
+            <summary>
+            Contenido Codificado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.RequestEncodeFile.FileExtension">
+            <summary>
+            Extensión
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.RequestEncodeFile.FileName">
+            <summary>
+            Nombre de Archivo
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Common.RouteInformationCacheModel">
+            <summary>
+            Información de Ruta en Cache
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.RouteInformationCacheModel.RouteId">
+            <summary>   
+            Id de Ruta
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.RouteInformationCacheModel.RouteGuid">
+            <summary>
+            Guid de Ruta
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.RouteInformationCacheModel.CooperativeId">
+            <summary>
+            Id de Cooperativa
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.RouteInformationCacheModel.RouteIdentifier">
+            <summary>
+            Identificador de Ruta
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.RouteInformationCacheModel.DateRoute">
+            <summary>
+            Fecha  de Ruta
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.RouteInformationCacheModel.OriginTransportPointId">
+            <summary>
+            Id de Punto de Transporte de Origen
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.RouteInformationCacheModel.DestinationTransportPointId">
+            <summary>
+            Id de Punto de Transporte de Destino
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.RouteInformationCacheModel.DateTimeRouteTime">
+            <summary>
+            Hora de salida de la ruta
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.RouteInformationCacheModel.DateTimeRouteTimeArrival">
+            <summary>
+            Hora de llegada de la ruta
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Common.SeatNewStateModel">
+            <summary>
+            Estado de Asiento
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="routeGuid"></param>
+            <param name="floorCooperativeGuid"></param>
+            <param name="seatGuid"></param>
+            <param name="seatState"></param>
+            <param name="seatIdentifier"></param>
+            <param name="userGuid"></param>
+        </member>
+        <member name="M:LogicApi.Model.Common.SeatNewStateModel.#ctor(System.Guid,System.Guid,System.Guid,LogicCommon.Model.Enum.SeatState,System.String,System.Nullable{System.Guid})">
+            <summary>
+            Estado de Asiento
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="routeGuid"></param>
+            <param name="floorCooperativeGuid"></param>
+            <param name="seatGuid"></param>
+            <param name="seatState"></param>
+            <param name="seatIdentifier"></param>
+            <param name="userGuid"></param>
+        </member>
+        <member name="P:LogicApi.Model.Common.SeatNewStateModel.UserGuid">
+            <summary>
+            Identificador de Usuario
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.SeatNewStateModel.FloorCooperativeGuid">
+            <summary>
+            Identificador de Piso
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.SeatNewStateModel.SeatIdentifier">
+            <summary>
+            Identificador de Asiento
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.SeatNewStateModel.RouteGuid">
+            <summary>
+            Identificador  de Ticket
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.SeatNewStateModel.SeatState">
+            <summary>
+            Estado
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.SeatNewStateModel.SeatGuid">
+            <summary>
+            Identificador de Asiento
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Common.SeatRegistered">
+            <summary>
+            Espacios
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.SeatRegistered.Identifier">
+            <summary>
+            Identificador de Espacio en el Bus
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Common.SeatRegistered.SeatState">
+            <summary>
+            Estado de Asiento
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Common.SecurityValidations">
+            <summary>
+            Condiciones
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.SecurityValidations.Identifier">
+            <summary>
+            Identificador de Validación
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.SecurityValidations.Values">
+            <summary>
+            Otp Generado
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Common.SecurityValidations.#ctor(System.String,System.Object)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="identifier"></param>
+            <param name="values"></param>
+        </member>
+        <member name="T:LogicApi.Model.Enum.BusSpaceType">
+            <summary>
+            Tipos de espacio
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Enum.BusSpaceType.Seat">
+            <summary>
+            Asiento
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Enum.BusSpaceType.Aisle">
+            <summary>
+            Pasillo
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Enum.BusSpaceType.Bathroom">
+            <summary>
+            Baño
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Enum.CatalogsTypeItemsCodes">
+            <summary>
+            Códigos para catálogos de Archivo
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Enum.CatalogsTypeItemsCodes.DocumentType">
+            <summary>
+            Tipos de Documento
+            </summary>
+            <value></value>
+        </member>
+        <member name="F:LogicApi.Model.Enum.CatalogsTypeItemsCodes.Nationality">
+            <summary>
+            Catálogo de Nacionalidades
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Enum.Implementation.PaymentCardImplementation">
+            <summary>
+            Implementaciones para pago con tarjeta
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Enum.Implementation.PaymentCardImplementation.Payphone">
+            <summary>
+            Payphone
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Enum.OrderViewState">
+            <summary>
+            Estados de la orden a presentar en el móvil
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Enum.OrderViewState.PaymentPending">
+            <summary>
+            Pendiente de Pago
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Enum.OrderViewState.Expired">
+            <summary>
+            Expirada
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Enum.OrderViewState.Cancel">
+            <summary>
+            Cancelada
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Enum.OrderViewState.TravelPending">
+            <summary>
+            Pendiente de Viaje
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Enum.OrderViewState.Complete">
+            <summary>
+            Completada
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Implementations.Authorization.LoginImplementations">
+            <summary>
+            Implementaciones de Login
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Implementations.Authorization.LoginImplementations.Biometric">
+            <summary>
+            Biométrico desde app móvil
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Implementations.Authorization.LoginImplementations.UserPassword">
+            <summary>
+            Usuario y Contraseña desde app móvil
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Implementations.Authorization.LoginImplementations.Google">
+            <summary>
+            Login por Google
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Administration.GetCooperativeInformationRequest">
+            <summary>
+            Obtiene los catálogos iniciales
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Administration.GetCooperativeInformationRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Obtiene los catálogos iniciales
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="P:LogicApi.Model.Request.Administration.GetCooperativeInformationRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest">
+            <summary>
+            Obtiene los catálogos iniciales
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest.ListCatalogsTypeItemsCodes">
+            <summary>
+            Códito de Catálogos
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest.#ctor(Common.WebApi.Models.ContextRequest,System.Collections.Generic.List{System.String})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+            <param name="listCatalogsTypeItemsCodes"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Authorization.AssignPersonRequest">
+            <summary>
+            Request para asignar persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.UserName">
+            <summary>
+            Usuario (Encriptado)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.Email">
+            <summary>
+            Correo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.Password">
+            <summary>
+            Contraseña (Encriptada)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.NewPassword">
+            <summary>
+            Nueva Contraseña (Encriptada)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.DocumentNumber">
+            <summary>
+            Número de Documento
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.DocumentTypeCode">
+            <summary>
+            Tipo de Documento
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.Name">
+            <summary>
+            Nombre
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.LastName">
+            <summary>
+            Apellido
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.Phone">
+            <summary>
+            Teléfono
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.NationalityCode">
+            <summary>
+            Código de Nacionalidad
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.LoginType">
+            <summary>
+            Implementación de Login
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Authorization.CreateUserRequest">
+            <summary>
+            Request de Crear Usuarios
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.CreateUserRequest.Email">
+            <summary>
+            Correo
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.CreateUserRequest.ConditionAndTermines">
+            <summary>
+            Términos y condiciones
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.CreateUserRequest.LoginType">
+            <summary>
+            Contraseña (Encriptada)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.CreateUserRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Authorization.LoginRequest">
+            <summary>
+            Objeto para Ingreso al sistema
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.LoginRequest.UserName">
+            <summary>
+            Usuario (Encriptado)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.LoginRequest.Password">
+            <summary>
+            Contraseña (Encriptada)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.LoginRequest.PushToken">
+            <summary>
+            Token para Push
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.LoginRequest.LoginType">
+            <summary>
+            Contraseña (Encriptada)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.LoginRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Authorization.LogoutRequest">
+            <summary>
+            Request Logout
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.LogoutRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Authorization.PasswordChangeRequest">
+            <summary>
+            Request de cambio de contraseña
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.PasswordChangeRequest.CurrentPassword">
+            <summary>
+            Contraseña encriptado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.PasswordChangeRequest.NewPassword">
+            <summary>
+            Nueva contraseña encriptado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.PasswordChangeRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Authorization.PasswordForgottenRequest">
+            <summary>
+            Request de recuperación de contraseña
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.PasswordForgottenRequest.Email">
+            <summary>
+            Correo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.PasswordForgottenRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Authorization.RefreshTokenRequest">
+            <summary>
+            Regenerar Token
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.RefreshTokenRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Authorization.RegisterBiometricRequest">
+            <summary>
+            Request para registrar Biométrico
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.RegisterBiometricRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Authorization.RegisterBiometricRequest.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Authorization.RegisterBiometricRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="T:LogicApi.Model.Request.Authorization.RemoveBiometricRequest">
+            <summary>
+            Request para eliminar Biométrico
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.RemoveBiometricRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.RemoveBiometricRequest.Biometric">
+            <summary>
+            Biométrico
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Authorization.UpdateUserRequest">
+            <summary>
+            Request Logout
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.UpdateUserRequest.Phone">
+            <summary>
+            Teléfono
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.UpdateUserRequest.Image">
+            <summary>
+            Imagen
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.UpdateUserRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Card.DeleteCardRequest">
+            <summary>
+            Request eliminar tarjeta
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Card.DeleteCardRequest.CardId">
+            <summary>
+            Id de Tarjeta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Card.DeleteCardRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Card.GetMyCardsRequest">
+            <summary>
+            Request de obtener mis tarjetas
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Card.GetMyCardsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Card.RegisterCardRequest">
+            <summary>
+            Request para registrar tarjeta
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Card.RegisterCardRequest.CardOwner">
+            <summary>
+            Nombre
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Card.RegisterCardRequest.CardNumber">
+            <summary>
+            Número de Tarjeta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Card.RegisterCardRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Card.ValidateCardRequest">
+            <summary>
+            Request validar tarjeta
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Card.ValidateCardRequest.CardNumber">
+            <summary>
+            Número de Tarjeta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Card.ValidateCardRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogFileRequest">
+            <summary>
+            Request Obtiene una lista de items de catálogo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogFileRequest.CatalogueCode">
+            <summary>
+            Código de Catálogo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogFileRequest.SaveInCache">
+            <summary>
+            guardar en Cache
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogFileRequest.TimeSaveInCache">
+            <summary>
+            Tiempo a guardar en cache
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogFileRequest.Language">
+            <summary>
+            Tiempo a guardar en cache
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogFileRequest.#ctor(System.String,System.String,Common.WebApi.Models.ContextRequest,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="catalogueCode"></param>
+            <param name="saveInCache"></param>
+            <param name="contextRequest"></param>
+            <param name="language"></param>
+        </member>
+        <member name="P:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogFileRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogRequest">
+            <summary>
+            Request Obtiene una lista de items de catálogo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogRequest.CatalogueCode">
+            <summary>
+            Código de Catálogo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogRequest.SaveInCache">
+            <summary>
+            guardar en Cache
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogRequest.TimeSaveInCache">
+            <summary>
+            Tiempo a guardar en cache
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogRequest.#ctor(System.String,Common.WebApi.Models.ContextRequest,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="catalogueCode"></param>
+            <param name="contextRequest"></param>
+            <param name="saveInCache"></param>
+        </member>
+        <member name="P:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.CommonConfiguration.GetParameterByCodeRequest">
+            <summary>
+            Request para obtener un parámetro
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="parameterCode"></param>
+            <param name="contextRequest"></param>
+            <param name="saveInCache"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.CommonConfiguration.GetParameterByCodeRequest.#ctor(System.String,Common.WebApi.Models.ContextRequest,System.Boolean)">
+            <summary>
+            Request para obtener un parámetro
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="parameterCode"></param>
+            <param name="contextRequest"></param>
+            <param name="saveInCache"></param>
+        </member>
+        <member name="P:LogicApi.Model.Request.CommonConfiguration.GetParameterByCodeRequest.ParameterCode">
+            <summary>
+            Código de Catálogo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.CommonConfiguration.GetParameterByCodeRequest.SaveInCache">
+            <summary>
+            guardar en Cache
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.CommonConfiguration.GetParameterByCodeRequest.TimeSaveInCache">
+            <summary>
+            Tiempo a guardar en cache
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.CommonConfiguration.GetParameterByCodeRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Companion.CreateOrUpdateCompanionRequest">
+            <summary>
+            Request para crear compañero de viaje
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Companion.CreateOrUpdateCompanionRequest.PersonIds">
+            <summary>
+            Id de Personas
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Request.Companion.CreateOrUpdateCompanionRequest.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Companion.CreateOrUpdateCompanionRequest.#ctor(System.Int64,Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="personId"></param>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="P:LogicApi.Model.Request.Companion.CreateOrUpdateCompanionRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Companion.GetMyCompanionRequest">
+            <summary>
+            Request de obtener mis compañero de viaje
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Companion.GetMyCompanionRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Companion.SearchCompanionRequest">
+            <summary>
+            Request para buscar compañero de viaje
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Companion.SearchCompanionRequest.DocumentNumber">
+            <summary>
+            Número de Identificación
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Companion.SearchCompanionRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Device.RefreshTokenPushRequest">
+            <summary>
+            Actualización de token para notificaciones Push
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Device.RefreshTokenPushRequest.PushToken">
+            <summary>
+            Token para notificaciones push
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Device.RefreshTokenPushRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Device.RegisterPushTokenRequest">
+            <summary>
+            Actualización de token para notificaciones Push
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="contextRequest"></param>
+            <param name="token"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Device.RegisterPushTokenRequest.#ctor(Common.WebApi.Models.ContextRequest,System.String)">
+            <summary>
+            Actualización de token para notificaciones Push
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="contextRequest"></param>
+            <param name="token"></param>
+        </member>
+        <member name="P:LogicApi.Model.Request.Device.RegisterPushTokenRequest.Token">
+            <summary>
+            Token para notificaciones push
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Device.RegisterPushTokenRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Logger.RegisterLogAuditExecutorModel">
+             <summary>
+            Modelo ejecutor de 
+             </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Logger.RegisterLogAuditExecutorModel.RequestData">
+            <summary>
+            data 
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Logger.RegisterLogAuditExecutorModel.ResponseData">
+            <summary>
+            Información de respuesta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Logger.RegisterLogAuditExecutorModel.OperationResult">
+            <summary>
+            Resultado de Operación
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Logger.RegisterLogAuditExecutorModel.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Logger.RegisterLogAuditExecutorModel.OperationName">
+            <summary>
+            Nombre de operación
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Request.Logger.RegisterLogAuditExecutorModel.#ctor(Common.WebApi.Models.Enum.OperationApiName,System.Boolean,Common.WebApi.Models.IApiBaseRequest,System.Object)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="operationName"></param>
+            <param name="operationResult"></param>
+            <param name="dataRequest"></param>
+            <param name="dataResponse"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Logger.RegisterLogAuditExecutorModel.SuccessRegister(Common.WebApi.Models.Enum.OperationApiName,Common.WebApi.Models.IApiBaseRequest,System.Object)">
+            <summary>
+            Crea un registro exitoso
+            </summary>
+            <param name="operationName"></param>
+            <param name="request"></param>
+            <param name="dataResponse"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Request.Logger.RegisterLogAuditExecutorModel.ErrorRegister(Common.WebApi.Models.Enum.OperationApiName,Common.WebApi.Models.IApiBaseRequest,System.Object)">
+            <summary>
+            Error de registro
+            </summary>
+            <param name="operationName"></param>
+            <param name="request"></param>
+            <param name="dataResponse"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LogicApi.Model.Request.Logger.RegisterLogRequest">
+            <summary>
+            Request de registro de Log
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Logger.RegisterLogRequest.LogType">
+            <summary>
+            Log Type
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Logger.RegisterLogRequest.LogJson">
+            <summary>
+            String Log
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Logger.RegisterLogRequest.RequiredLog">
+            <summary>
+            Verifica si el log enviado fue solicitado por el Logín
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Logger.RegisterLogRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Order.Common.SeatPersonRequest">
+            <summary>
+            Asiento Persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.Common.SeatPersonRequest.SeatGuid">
+            <summary>
+            Id de Asienta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.Common.SeatPersonRequest.PersonGuid">
+            <summary>
+            Id de Persona
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.Common.SeatPersonRequest.Price">
+            <summary>
+            Precio de Asiento
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Request.Order.GenerateOrderRequest">
+            <summary>
+            Request para generar Orden
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.GenerateOrderRequest.RouteGuid">
+            <summary>
+            Id de Cooperativa
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.GenerateOrderRequest.SeatPeople">
+            <summary>
+            Asientas Personas
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.GenerateOrderRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Order.GetInitialMyOrdersRequest">
+            <summary>
+            Request para generar Orden
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.GetInitialMyOrdersRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Order.GetMyOrdersPaginatedRequest">
+            <summary>
+            Request para generar Orden
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.GetMyOrdersPaginatedRequest.PageSize">
+            <summary>
+            Tamaño de la página
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.GetMyOrdersPaginatedRequest.PageNumber">
+            <summary>
+            Número de Página
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.GetMyOrdersPaginatedRequest.SortableType">
+            <summary>
+            Tipo de ordenamiento
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.GetMyOrdersPaginatedRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Order.GetMyOrdersPaginatedRequest.#ctor(Common.WebApi.Models.ContextRequest,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+            <param name="pageSize"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Order.GetMyOrdersPaginatedRequest.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Order.GetOrderDetailsRequest">
+            <summary>
+            Request obtener detalle de la órden 
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.GetOrderDetailsRequest.OrderId">
+            <summary>
+            Id de Origen
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.GetOrderDetailsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Order.ManualCancelOrderRequest">
+            <summary>
+            Cancelación manual de Ordene
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.ManualCancelOrderRequest.OrderGuid">
+            <summary>
+            Id de Orden
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.ManualCancelOrderRequest.Reason">
+            <summary>
+            Motivo 
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.ManualCancelOrderRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Order.Payment.PaymentOrderBaseRequest">
+            <summary>
+            Request para pagar orden
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.Payment.PaymentOrderBaseRequest.OrderGuid">
+            <summary>
+            Id de Orden
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.Payment.PaymentOrderBaseRequest.Implementation">
+            <summary>
+            Implementación
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.Payment.PaymentOrderBaseRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Order.Payment.PaymentOrderByCardRequest">
+            <summary>
+            Request para pagar orden por Tarjeta
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Order.Payment.PaymentOrderByCryptoRequest">
+            <summary>
+            Request para pagar orden por Criptomonedas
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Order.Payment.PaymentOrderByLinkRequest">
+            <summary>
+            Request para pagar orden por Link de Pagos
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Order.VerifyOrderValuesRequest">
+            <summary>
+            Request para confirmar la Orden
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.VerifyOrderValuesRequest.RouteGuid">
+            <summary>
+            Id de Cooperativa
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.VerifyOrderValuesRequest.SeatPeople">
+            <summary>
+            Asientas Personas
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Order.VerifyOrderValuesRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Place.GetMyFavoritePlaceRequest">
+            <summary>
+            Request para obtener los lugares favoritos de un usuario
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Place.GetMyFavoritePlaceRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Place.GetMyFavoritePlaceRequest.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Place.GetMyFavoritePlaceRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Place.GetPlacesPaginatedRequest">
+            <summary>
+            Request para obtener los lugares favoritos de un usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Place.GetPlacesPaginatedRequest.PageSize">
+            <summary>
+            Tamaño de la página
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Place.GetPlacesPaginatedRequest.PageNumber">
+            <summary>
+            Número de Página
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Place.GetPlacesPaginatedRequest.SortableType">
+            <summary>
+            Tipo de ordenamiento
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Place.GetPlacesPaginatedRequest.PropertySearch">
+            <summary>
+            Propiedades para buscar
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Place.GetPlacesPaginatedRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Place.UpdateFavoritePlaceRequest">
+            <summary>
+            Request para actualizar un lugar favorito de Usuari
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Place.UpdateFavoritePlaceRequest.PlaceCode">
+            <summary>
+            Código de Lugar
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Place.UpdateFavoritePlaceRequest.PlaceFavoriteType">
+            <summary>
+            Tipo de Lugar
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Place.UpdateFavoritePlaceRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Place.PlaceFavoriteType">
+            <summary>
+            Tipo de lugar favorito
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Request.Place.PlaceFavoriteType.Origin">
+            <summary>
+            Origen
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Request.Place.PlaceFavoriteType.Destination">
+            <summary>
+            Destino
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Seat.GetSeatAvailableRequest">
+            <summary>
+            Request de reservar un asiento
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Seat.GetSeatAvailableRequest.RouteGuid">
+            <summary>
+            Id de Ruta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Seat.GetSeatAvailableRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Seat.ReserveSeatRequest">
+            <summary>
+            Request de reservar un asiento
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Seat.ReserveSeatRequest.FloorBusCooperativeGuid">
+            <summary>
+            Identificador de Piso
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Seat.ReserveSeatRequest.SeatIdentifier">
+            <summary>
+            Identificador de Asiento
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Seat.ReserveSeatRequest.CooperativeRouteGuid">
+            <summary>
+            Identificador de Viaje
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Seat.ReserveSeatRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Security.DecryptRequest">
+            <summary>
+            Modelo Request para desencryptar 
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Security.DecryptRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Security.DecryptRequest.ListTextsEncrypt">
+            <summary>
+             Diccionario de Textos encriptados
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Security.DecryptRequest.HasEncode">
+            <summary>
+            Tiene Codificación
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Request.Security.DecryptRequest.#ctor(System.Collections.Generic.IEnumerable{System.String},Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor con diccionario
+            </summary>
+            <param name="listTextsEncrypt"></param>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Security.DecryptRequest.#ctor(System.String,Common.WebApi.Models.ContextRequest,System.Boolean)">
+            <summary>
+            Constructor con diccionario
+            </summary>
+            <param name="text"></param>
+            <param name="contextRequest"></param>
+            <param name="hasEncode"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Security.DecryptRequest.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Security.DocumentValidationRequest">
+            <summary>
+            Modelo Request validar documento
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Security.DocumentValidationRequest.DocumentTypeCode">
+            <summary>
+            Código de Tipo de Documento
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Security.DocumentValidationRequest.DocumentNumber">
+            <summary>
+            Número de Documento
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Security.DocumentValidationRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Security.EncryptRequest">
+            <summary>
+            Modelo Request para encriptar
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Security.EncryptRequest.ListTexts">
+            <summary>
+             Diccionario de Textos
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Security.EncryptRequest.ApplyEncode">
+            <summary>
+            Aplicar Codificación
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Request.Security.EncryptRequest.#ctor(System.Collections.Generic.IEnumerable{System.String},Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor con diccionario
+            </summary>
+            <param name="listTexts"></param>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Security.EncryptRequest.#ctor(System.String,Common.WebApi.Models.ContextRequest,System.Boolean)">
+            <summary>
+            Constructor con un dato
+            </summary>
+            <param name="value"></param>
+            <param name="contextRequest"></param>
+            <param name="applyEncode"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Security.EncryptRequest.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Security.EncryptRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Security.GetPublicKeyRequest">
+            <summary>
+            Modelo Request para obtener llave pública
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Security.GetPublicKeyRequest.RsaImplementation">
+            <summary>
+            Identificador, puede ser tipo : General, Bank
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Security.GetPublicKeyRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Ticket.GetTicketsAvailableRequest">
+            <summary>
+            Obtiene los Tickets
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Ticket.GetTicketsAvailableRequest.DateTimeFrom">
+            <summary>
+            Fecha Desde la cuál buscar
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Ticket.GetTicketsAvailableRequest.DateTimeTo">
+            <summary>
+            Fecha hasta la cuál buscar
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Ticket.GetTicketsAvailableRequest.PlaceCodeOrigin">
+            <summary>
+            Código Lugar Origen
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Ticket.GetTicketsAvailableRequest.PlaceCodeDestination">
+            <summary>
+            Código Lugar Destino
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Ticket.GetTicketsAvailableRequest.BusTypes">
+            <summary>
+            Tipos de buses
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Ticket.GetTicketsAvailableRequest.CompanyCodes">
+            <summary>
+            Códigos de companias a buscar
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LogicApi.Model.Request.Ticket.GetTicketsAvailableRequest.StationCodes">
+            <summary>
+            Códigos de Estaciones
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LogicApi.Model.Request.Ticket.GetTicketsAvailableRequest.MinPrice">
+            <summary>
+            Precio mínimo
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Ticket.GetTicketsAvailableRequest.MaxPrice">
+            <summary>
+            Precio máximo
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Ticket.GetTicketsAvailableRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Administration.GetCooperativeInformationResponse">
+            <summary>
+            Respuesta de Servicio Obtener Bancos
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="cooperativeData"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Administration.GetCooperativeInformationResponse.#ctor(LogicApi.Model.Common.CooperativeData)">
+            <summary>
+            Respuesta de Servicio Obtener Bancos
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="cooperativeData"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Administration.GetCooperativeInformationResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Administration.GetCooperativeInformationResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Administration.GetCooperativeInformationResponse.CooperativeData">
+            <summary>
+            Obtiene la información de cooperative
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse">
+            <summary>
+            Respuesta de Servicio Obtener Bancos
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="listCatalogCodes"></param>
+            <param name="controlValidations"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse.#ctor(System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Common.CatalogCodes},System.Collections.Generic.Dictionary{System.String,LogicApi.Model.Response.Administration.ControlValidationItem})">
+            <summary>
+            Respuesta de Servicio Obtener Bancos
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="listCatalogCodes"></param>
+            <param name="controlValidations"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse.ListCatalogCodes">
+            <summary>
+            Lista de códigos de catálgo
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse.InputControlValidations">
+            <summary>
+            Validaciones de control para Input
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Administration.ItemsCatalogue">
+            <summary>
+            Items de Catálogo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Administration.ItemsCatalogue.Code">
+            <summary>
+            Código
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Administration.ItemsCatalogue.Name">
+            <summary>
+            Nombre
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Administration.ItemsCatalogue.Description">
+            <summary>
+            Descripción
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Administration.ItemsCatalogue.AdditionalInformation">
+            <summary>
+            Información Adicional
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Administration.ControlValidationItem">
+            <summary>
+            Item de Expresión Regutlar
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Administration.ControlValidationItem.Validations">
+            <summary>
+            Validaciones conformado por una expresión regular y un mensaje a mostrar
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Administration.ControlValidationItem.Restrictions">
+            <summary>
+            Restricciones que no muestran mensaje
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Authorization.CreateUserResponse">
+            <summary>
+            Objeto de respuesta para ingreso de sistema
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.CreateUserResponse.TemporalPassword">
+            <summary>
+            Contraseña temporal
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.CreateUserResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.CreateUserResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Authorization.LoginResponse">
+            <summary>
+            Objeto de respuesta para ingreso de sistema
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.LoginResponse.InfoUser">
+            <summary>
+            Información del Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.LoginResponse.AccessToken">
+            <summary>
+            Token de acceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.LoginResponse.Configuration">
+            <summary>
+            Configuración
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.LoginResponse.GetInitialCataloguesResponse">
+            <summary>
+            Lista de códigos de Catálogo
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.LoginResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.LoginResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Authorization.UserConfiguration">
+            <summary>
+            Configuraciones
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserConfiguration.Language">
+            <summary>
+            Lenguage
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserConfiguration.UrlTermsAndConditions">
+            <summary>
+            Url Terminos y Condiciones
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserConfiguration.ForceChangePassword">
+            <summary>
+            Forzar a cambiar password
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Authorization.UserInfo">
+            <summary>
+            Modelo de Información de Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.GuidIdentifier">
+            <summary>
+            Identificador de Usuario
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.FirstName">
+            <summary>
+            Primer Nombre
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.SecondName">
+            <summary>
+            Segundo Nombre
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.Surname">
+            <summary>
+            Apellido
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.SecondSurname">
+            <summary>
+            Segundo apellido
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.Username">
+            <summary>
+            Sobrenombre del usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.CodeDocumentType">
+            <summary>
+            Código Tipo de documento
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.DocumentNumber">
+            <summary>
+            Número de documento (CI / RUC / Pasaporte)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.PhoneNumber">
+            <summary>
+            Número de teléfono
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.Email">
+            <summary>
+            Correo electrónico
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.UrlImage">
+            <summary>
+            Imagen
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Authorization.PasswordForgottenResponse">
+            <summary>
+            Objeto de respuesta resetear contraseña
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.PasswordForgottenResponse.TemporalPassword">
+            <summary>
+            Contraseña temporal
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.PasswordForgottenResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.PasswordForgottenResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Authorization.RefreshTokenResponse">
+            <summary>
+            Respuesta de Refresh Token
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.RefreshTokenResponse.AccessToken">
+            <summary>
+            Token de acceso
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Authorization.RefreshTokenResponse.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="accessToken"></param>
+        </member>
+        <member name="T:LogicApi.Model.Response.Authorization.RegisterBiometricResponse">
+            <summary>
+            Objeto de respuesta para biométrico generado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.RegisterBiometricResponse.Biometric">
+            <summary>
+            Biométrico Generado
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.RegisterBiometricResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.RegisterBiometricResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Card.CardItem">
+            <summary>
+            Item de Tarjeta
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Card.CardItem.CardId">
+            <summary>
+            Id de tarjeta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Card.CardItem.CardMask">
+            <summary>
+            Número de tarjeta enmascarado
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Card.CardItem.CardOwner">
+            <summary>
+            Nombre de Propietario de Tarjeta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Card.CardItem.UrlBrandImage">
+            <summary>
+            Imagen de marca de tarjeta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Card.CardItem.CardType">
+            <summary>
+             Tipo de Tarjeta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Card.CardItem.CardBrand">
+            <summary>
+            Marca de Tarjeta
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Response.Card.CardItem.#ctor(System.Int32,System.String,System.String,Common.WebCommon.Models.Enum.CardType,Common.WebCommon.Models.Enum.CardBrand,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="cardId"></param>
+            <param name="cardMask"></param>
+            <param name="cardOwner"></param>
+            <param name="cardType"></param>
+            <param name="cardBrand"></param>
+            <param name="urlBrandImage"></param>
+        </member>
+        <member name="T:LogicApi.Model.Response.Card.GetMyCardsResponse">
+            <summary>
+            Respuesta de obtener mis tarjetas registradas
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Card.GetMyCardsResponse.CardItems">
+            <summary>
+            Items de Tarjeta
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Response.Card.GetMyCardsResponse.#ctor(System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Card.CardItem})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="cardItems"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Card.GetMyCardsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Card.GetMyCardsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Card.ValidateCardResponse">
+            <summary>
+            Respuesta de validar tarjetas
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Card.ValidateCardResponse.CardType">
+            <summary>
+            Tipo de Tarjeta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Card.ValidateCardResponse.CardBrand">
+            <summary>
+            Marca de Tarjeta
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Response.Card.ValidateCardResponse.#ctor(Common.WebCommon.Models.Enum.CardType,Common.WebCommon.Models.Enum.CardBrand)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="cardType"></param>
+            <param name="cardBrand"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Card.ValidateCardResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Card.ValidateCardResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.CommonConfiguration.Common.ItemCatalogResponse">
+            <summary>
+            Items de Catálogo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.CommonConfiguration.Common.ItemCatalogResponse.Code">
+            <summary>
+            Nombre de item de catálogo
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.CommonConfiguration.Common.ItemCatalogResponse.Value">
+            <summary>
+            Valor de item de catálogo
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.CommonConfiguration.Common.ItemCatalogResponse.Status">
+            <summary>
+            Indica si esta Activo o Inactivo
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.CommonConfiguration.Common.ItemCatalogFileResponse">
+            <summary>
+            Archivo Item de Catálogo 
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.CommonConfiguration.Common.ItemCatalogFileResponse.Enum">
+            <summary>
+            Enum 
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.CommonConfiguration.GetItemsCatalogByCodeCatalogFileResponse">
+            <summary>
+            Response Obtiene una lista de items de catálogo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.CommonConfiguration.GetItemsCatalogByCodeCatalogFileResponse.ItemCatalogs">
+            <summary>
+            items de catálogo
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.CommonConfiguration.GetItemsCatalogByCodeCatalogFileResponse.#ctor(System.Collections.Generic.List{LogicApi.Model.Response.CommonConfiguration.Common.ItemCatalogFileResponse})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="itemCatalogs"></param>
+        </member>
+        <member name="T:LogicApi.Model.Response.CommonConfiguration.GetItemsCatalogByCodeCatalogResponse">
+            <summary>
+            Response Obtiene una lista de items de catálogo
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Response.CommonConfiguration.GetItemsCatalogByCodeCatalogResponse._itemCatalog">
+            <summary>
+            Items de catálogo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.CommonConfiguration.GetItemsCatalogByCodeCatalogResponse.ItemCatalogsEnabled">
+            <summary>
+            Items de catálogo Habilitados
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.CommonConfiguration.GetItemsCatalogByCodeCatalogResponse.DictionaryItemCatalogsEnabled">
+            <summary>
+            Items de catálogo en diccionario
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.CommonConfiguration.GetItemsCatalogByCodeCatalogResponse.GetItemCatalogValudeByCode(System.String)">
+            <summary>
+            Obtiene el item de catálogo por el código
+            </summary>
+            <param name="itemCatalogCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Response.CommonConfiguration.GetItemsCatalogByCodeCatalogResponse.GetItemCatalogByCode(System.String)">
+            <summary>
+            Obtiene el item de catálogo por el código
+            </summary>
+            <param name="itemCatalogCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Response.CommonConfiguration.GetItemsCatalogByCodeCatalogResponse.#ctor(System.Collections.Generic.IEnumerable{LogicApi.Model.Response.CommonConfiguration.Common.ItemCatalogResponse})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="itemCatalogs"></param>
+        </member>
+        <member name="T:LogicApi.Model.Response.CommonConfiguration.GetParameterByCodeResponse">
+            <summary>
+            Response Obtiene una lista de items de catálogo
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Response.CommonConfiguration.GetParameterByCodeResponse._originalValue">
+            <summary>
+            Valor del parámetro del sistema
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Response.CommonConfiguration.GetParameterByCodeResponse.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.CommonConfiguration.GetParameterByCodeResponse.StringValue">
+            <summary>
+            Obtiene el valor en string
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.CommonConfiguration.GetParameterByCodeResponse.IntValue">
+            <summary>
+            Obtiene el valor en int
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:LogicApi.Model.Response.Common.CatalogCodes">
+            <summary>
+            Códigos de Catálogos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Common.CatalogCodes.Catalog">
+            <summary>
+            Catálogo
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Common.CatalogCodes.ItemsCatalog">
+            <summary>
+            Items de catálogo
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Response.Common.CatalogCodes.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="catalog"></param>
+            <param name="itemsCatalog"></param>
+        </member>
+        <member name="T:LogicApi.Model.Response.Companion.CreateOrUpdateCompanionResponse">
+            <summary>
+            Respuesta de crear compañero de viaje
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Companion.CreateOrUpdateCompanionResponse.CompanionId">
+            <summary>
+            Id de Nuevo acompañante
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Response.Companion.CreateOrUpdateCompanionResponse.#ctor(System.Int64)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="companionId"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Companion.CreateOrUpdateCompanionResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Companion.CreateOrUpdateCompanionResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Companion.GetMyCompanionResponse">
+            <summary>
+            Respuesta de obtener mis compañero de viaje
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="companions"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Companion.GetMyCompanionResponse.#ctor(System.Collections.Generic.IEnumerable{LogicApi.Model.Common.CompanionItem})">
+            <summary>
+            Respuesta de obtener mis compañero de viaje
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="companions"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Companion.GetMyCompanionResponse.Companions">
+            <summary>
+            Compañeros
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Companion.GetMyCompanionResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Companion.GetMyCompanionResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Companion.SearchCompanionResponse">
+            <summary>
+            Respuesta de buscar compañero de viaje
+            </summary>
+            <remarks>
+            Item de compañero
+            </remarks>
+            <param name="person"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Companion.SearchCompanionResponse.#ctor(LogicApi.Model.Response.Companion.PersonInformation)">
+            <summary>
+            Respuesta de buscar compañero de viaje
+            </summary>
+            <remarks>
+            Item de compañero
+            </remarks>
+            <param name="person"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Companion.SearchCompanionResponse.Person">
+            <summary>
+            Compañero encontrado
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Companion.SearchCompanionResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Companion.SearchCompanionResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Companion.PersonInformation">
+            <summary>
+            Información de Persona
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="personGuid"></param>
+            <param name="documentNumber"></param>
+            <param name="fullName"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Companion.PersonInformation.#ctor(System.Guid,System.String,System.String)">
+            <summary>
+            Información de Persona
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="personGuid"></param>
+            <param name="documentNumber"></param>
+            <param name="fullName"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Companion.PersonInformation.PersonGuid">
+            <summary>
+            Id de Persona
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Companion.PersonInformation.DocumentNumber">
+            <summary>
+            Número de Documento
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Companion.PersonInformation.FullName">
+            <summary>
+            Nombre Completo
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Device.RefreshTokenPushResponse">
+            <summary>
+            Request para actualizar push token
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Device.RefreshTokenPushResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.HandlerResponse">
+            <summary>
+            Respuesta generica de Handler
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.HandlerResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.HandlerResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Response.HandlerResponse.#ctor(System.String,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessage"></param>
+            <param name="showMessage"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.HandlerResponse.Complete(System.String,System.Boolean)">
+            <summary>
+            Crea una instancia
+            </summary>
+            <param name="message"></param>
+            <param name="showMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LogicApi.Model.Response.Logger.RegisterLogResponse">
+            <summary>
+            Registro de Log
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Logger.RegisterLogResponse.IsRegistered">
+            <summary>
+            If log was registered
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Logger.RegisterLogResponse.#ctor(System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="isRegistered"></param>
+        </member>
+        <member name="T:LogicApi.Model.Response.Order.Common.GenerateOrderItem">
+            <summary>
+            Item de Órden
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.GenerateOrderItem.OriginProvinceName">
+            <summary>
+            Lugar de Origen
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.GenerateOrderItem.OriginTransportPointName">
+            <summary>
+            Estación de Origen
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.GenerateOrderItem.DestinationProvinceName">
+            <summary>
+            Lugar de Destino
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.GenerateOrderItem.DestinationTransportPointName">
+            <summary>
+            Estación de Destino
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.GenerateOrderItem.DateTimeOrigin">
+            <summary>
+            Fecha de Salida
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.GenerateOrderItem.DateTimeDestination">
+            <summary>
+            Fecha de Llegada
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.GenerateOrderItem.CompanyName">
+            <summary>
+            Nombre de compania
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.GenerateOrderItem.SeatPersonInformation">
+            <summary>
+            Información de asientos con personas
+            </summary> 
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Order.Common.GenerateOrderItemAdditionalInformation">
+            <summary>
+            Item de orden generada con información adicional 
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.GenerateOrderItemAdditionalInformation.OrderGuid">
+            <summary>
+            Id de orden
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.GenerateOrderItemAdditionalInformation.State">
+            <summary>
+            Estado
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Order.Common.SeatPersonInformation">
+            <summary>
+            Información de persona y asiento
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.SeatPersonInformation.SeatIdentifier">
+            <summary>
+            Identificador de ASiento
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.SeatPersonInformation.SeatType">
+            <summary>
+            Tipo de Asiento
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.SeatPersonInformation.PersonName">
+            <summary>
+            Nombre de Persona
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.SeatPersonInformation.PersonIdentifier">
+            <summary>
+            Identificacióin de Persona
+            </summary> <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Order.Common.OrderItem">
+            <summary>
+            Información de orden
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.OrderItem.OrderGuid">
+            <summary>
+            Id de Origen
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.OrderItem.OriginDateTime">
+            <summary>
+            Fecha de Salida
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.OrderItem.DestinationDateTime">
+            <summary>
+            Fecha de Llegada
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.OrderItem.OriginProvinceName">
+            <summary>
+            Origen Provincia
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.OrderItem.DestinationProvinceName">
+            <summary>
+            Destino Provincia
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.OrderItem.OriginTransportPointName">
+            <summary>
+            Origen Estación
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.OrderItem.DestinationTransportPointName">
+            <summary>
+            Destino Estación
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.Common.OrderItem.State">
+            <summary>
+            Estado
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Order.GenerateOrderResponse">
+            <summary>
+            Respuesta del servicio Generar Orden
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="orderGuid"></param>
+            <param name="userMessage"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Order.GenerateOrderResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Respuesta del servicio Generar Orden
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="orderGuid"></param>
+            <param name="userMessage"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.GenerateOrderResponse.OrderGuid">
+            <summary>
+            Número de Orden
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.GenerateOrderResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.GenerateOrderResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Order.GetInitialMyOrdersResponse">
+            <summary>
+            Respuesta del servicio Generar Orden
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Order.GetInitialMyOrdersResponse.#ctor(System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Order.OrderItemActive})">
+            <summary>
+            Respuesta del servicio Generar Orden
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.GetInitialMyOrdersResponse.OrdersItemActive">
+            <summary>
+            Items de Ordenes Activos
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Order.OrderItemActive">
+            <summary>
+            Información de orden
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.OrderItemActive.DateTimeExpired">
+            <summary>
+            Fecha de expiración de la Orden
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Order.GetMyOrdersPaginatedResponse">
+            <summary>
+            Respuesta del servicio Generar Orden
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Order.GetMyOrdersPaginatedResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Order.Common.OrderItem})">
+            <summary>
+            Respuesta del servicio Generar Orden
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.GetMyOrdersPaginatedResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.GetMyOrdersPaginatedResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.GetMyOrdersPaginatedResponse.TotalRegister">
+            <summary>
+            Total de Registros
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.GetMyOrdersPaginatedResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Order.GetOrderDetailsResponse">
+            <summary>
+            Respuesta  de obtener detalle de la orden
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Order.GetOrderDetailsResponse.#ctor(LogicApi.Model.Response.Order.Common.GenerateOrderItemAdditionalInformation,System.Collections.Generic.IDictionary{System.String,System.Decimal})">
+            <summary>
+            Respuesta  de obtener detalle de la orden
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.GetOrderDetailsResponse.OrderItem">
+            <summary>
+            Item Respuesta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.GetOrderDetailsResponse.Values">
+            <summary>
+            Valores a desglosar
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.GetOrderDetailsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.GetOrderDetailsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Order.VerifyOrderValuesResponse">
+            <summary>
+            Respuesta del servicio Generar Orden
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.VerifyOrderValuesResponse.Orders">
+            <summary>
+            Lista de órdenes a calcular montos
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.VerifyOrderValuesResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.VerifyOrderValuesResponse.Values">
+            <summary>
+            Valores a desglosar
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Order.VerifyOrderValuesResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Place.GetMyFavoritePlaceResponse">
+            <summary>
+            Respuesta del servicio Obtener Lugares Favoritos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Place.GetMyFavoritePlaceResponse.FavoriteOriginPlaces">
+            <summary>
+            Lugares de Origen
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Place.GetMyFavoritePlaceResponse.FavoriteDestinationPlaces">
+            <summary>
+            Lugares de Destino
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Place.GetMyFavoritePlaceResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Place.GetMyFavoritePlaceResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Place.GetPlacesPaginatedResponse">
+            <summary>
+            Respuesta del servicio Obtener Lugares Paginada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Place.GetPlacesPaginatedResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Place.GetPlacesPaginatedResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Response.Place.GetPlacesPaginatedResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Place.PlaceItem})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Place.GetPlacesPaginatedResponse.TotalRegister">
+            <summary>
+            Total de Registros
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Place.GetPlacesPaginatedResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Place.PlaceItem">
+            <summary>
+            Lugares
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Place.PlaceItem.Code">
+            <summary>
+            Código
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Place.PlaceItem.Name">
+            <summary>
+            Nombre
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Place.PlaceItem.ShortName">
+            <summary>
+            Nombre Corto
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Place.UpdateFavoritePlaceResponse">
+            <summary>
+            Respuesta del servicio Obtener Lugares Favoritos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Place.UpdateFavoritePlaceResponse.FavoritePlaces">
+            <summary>
+            Lugares de Origen
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Place.UpdateFavoritePlaceResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Place.UpdateFavoritePlaceResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Seat.GetSeatAvailableResponse">
+            <summary>
+            Asientos Disponibles
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="routeGuid"></param>
+            <param name="services"></param>
+            <param name="floors"></param>
+            <param name="seats"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Seat.GetSeatAvailableResponse.#ctor(System.Guid,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Seat.FloorInformation},System.Collections.Generic.IEnumerable{LogicApi.Model.Common.SeatNewStateModel})">
+            <summary>
+            Asientos Disponibles
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="routeGuid"></param>
+            <param name="services"></param>
+            <param name="floors"></param>
+            <param name="seats"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Seat.GetSeatAvailableResponse.RouteGuid">
+            <summary>
+            Guid de la Ruta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Seat.GetSeatAvailableResponse.Services">
+            <summary>
+            Servicios
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Seat.GetSeatAvailableResponse.Floors">
+            <summary>
+            Espacios
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Seat.GetSeatAvailableResponse.Seats">
+            <summary>
+            Asientos comprados
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Seat.FloorInformation">
+            <summary>
+            Información de la planta
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Seat.FloorInformation.FloorGuid">
+            <summary>
+            Id
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Seat.FloorInformation.FloorLabel">
+            <summary>
+            Identificador de Piso
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Seat.FloorInformation.Rows">
+            <summary>
+            Diagrama
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Seat.RowInformation">
+            <summary>
+            Información de la fila
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Seat.RowInformation.Spaces">
+            <summary>
+            Espacios
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Seat.BusSpaceInformation">
+            <summary>
+            Espacios de Bus
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="identifier"></param>
+            <param name="busSpaceType"></param>
+            <param name="price"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicApi.Model.Response.Seat.BusSpaceInformation.#ctor(System.String,LogicApi.Model.Enum.BusSpaceType,System.Decimal)">
+            <summary>
+            Espacios de Bus
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="identifier"></param>
+            <param name="busSpaceType"></param>
+            <param name="price"></param>
+            <returns></returns>
+        </member>
+        <member name="P:LogicApi.Model.Response.Seat.BusSpaceInformation.SeatIdentifier">
+            <summary>
+            Identificador de Espacio en el Bus
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Seat.BusSpaceInformation.BusSpaceType">
+            <summary>
+            Tipo de espacio en el Bus
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Seat.BusSpaceInformation.Price">
+            <summary>
+            Precio del asiento
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Seat.ReserveSeatResponse">
+            <summary>
+            Asientos Disponibles
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Seat.ReserveSeatResponse.SeatNewState">
+            <summary>
+            Estado de Asiento
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Security.DecryptResponse">
+            <summary>
+            Modelo de respuesta para obtener Llave pública
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Security.DecryptResponse.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="dictionaryTextsDecrypt"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Security.DecryptResponse.DictionaryTextsDecrypt">
+            <summary>
+            Diccionario de Textos desencriptados
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Security.EncryptResponse">
+            <summary>
+            Modelo de respuesta para encriptar datos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Security.EncryptResponse.DictionaryEncrypted">
+            <summary>
+            Textos encriptados
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Response.Security.EncryptResponse.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="dictionaryEncrypted"></param>
+        </member>
+        <member name="T:LogicApi.Model.Response.Security.GetPublicKeyResponse">
+            <summary>
+            Modelo de respuesta para obtener Llave pública
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Security.GetPublicKeyResponse.PublicKey">
+            <summary>
+            Llave publica
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Security.GetPublicKeyResponse.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="publicKey"></param>
+        </member>
+        <member name="T:LogicApi.Model.Response.Ticket.GetTicketsAvailableResponse">
+            <summary>
+            Obtiene la lista de Tickets disponibles
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="ticketsAvailable"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Ticket.GetTicketsAvailableResponse.#ctor(System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Ticket.TicketAvailable})">
+            <summary>
+            Obtiene la lista de Tickets disponibles
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="ticketsAvailable"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.GetTicketsAvailableResponse.TicketsAvailable">
+            <summary>
+            Pasajes Diponibles
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.GetTicketsAvailableResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.GetTicketsAvailableResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Ticket.TicketAvailable">
+            <summary>
+            Ticket Disponible
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.TicketAvailable.Identifier">
+            <summary>
+            Identificador
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.TicketAvailable.RouteGuid">
+            <summary>
+            Guid de la Ruta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.TicketAvailable.Cooperative">
+            <summary>
+            Compañia
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.TicketAvailable.SeatAvailable">
+            <summary>
+            Asientos Disponibles
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.TicketAvailable.Schedule">
+            <summary>
+            Horario
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.TicketAvailable.BusType">
+            <summary>
+            Tipo de Bus
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.TicketAvailable.BusCooperativeId">
+            <summary>
+            Id de Cooperativa de Bus
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.TicketAvailable.ApproximatePrice">
+            <summary>
+            Precio Aproximado
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.TicketAvailable.IsBest">
+            <summary>
+            Mejor Opción
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.TicketAvailable.OriginTransportPointId">
+            <summary>
+            Código de Punto de Origen
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.TicketAvailable.DestinationTransportPointId">
+            <summary>
+            Punto de Destino
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Ticket.CooperativeInformation">
+            <summary>
+            Información de Cooperativa
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.CooperativeInformation.Name">
+            <summary>
+            Nombre de compañia de bus
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.CooperativeInformation.UrlImage">
+            <summary>
+            Imagen de Compañia de Bus
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.CooperativeInformation.CooperativeId">
+            <summary>
+            Id de Cooperativa
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Ticket.Schedule">
+            <summary>
+            Horario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.Schedule.OriginTransportPointName">
+            <summary>
+            Nombre de Punto de Origen
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.Schedule.DestinationTransportPointName">
+            <summary>
+            Nombre de Punto de Destino
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.Schedule.ProvinceOriginName">
+            <summary>
+            Nombre de Provincia de Origen
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.Schedule.ProvinceDestinationName">
+            <summary>
+            Nombre de Provincia de Destino
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.Schedule.OriginDateTime">
+            <summary>
+            Fecha de Salida
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.Schedule.DestinationDateTime">
+            <summary>
+            Fecha de llegada
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Ticket.TicketPartialInformation">
+            <summary>
+            Información Parcial de Ticket
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.TicketPartialInformation.OriginProvinceName">
+            <summary>   
+            Nombre de Provincia de Origen
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Ticket.TicketPartialInformation.DestinationProvinceName">
+            <summary>
+            Nombre de Provincia de Destino
+            </summary>
+            <value></value>
+        </member>
+    </members>
+</doc>

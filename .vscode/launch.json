@@ -1,0 +1,104 @@
+{
+  // Use IntelliSense para saber los atributos posibles.
+  // Mantenga el puntero para ver las descripciones de los existentes atributos.
+  // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Api Core Debug",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/GatewayCoreAPI/bin/Debug/net9.0/GatewayCoreAPI.dll",
+      "args": [],
+      "console": "externalTerminal",
+      "cwd": "${workspaceFolder}/GatewayCoreAPI",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Debug",
+        "ASPNETCORE_URLS": "https://0.0.0.0:44325",
+        "Serilog:WriteTo:0:Args:connectionString": "",
+        "CustomConnectionStrings:0:ConnectionString": "Server=127.0.0.1;Initial Catalog=PasajesDigitales;Integrated Security=false; User Id=sa;Password=Dach@1996;TrustServerCertificate=True;",
+        "BlobConfiguration:Implementations:Information:ConnectionString": "UseDevelopmentStorage=true",
+        "MailNotificationConfiguration:Implementations:0:Information:ApiKey": "",
+        "CardServicesConfiguration:Implementations:0:Information:Headers:X-RapidAPI-Key": "2474d801ffmsh5923ae133182ca4p1ac630jsn83e189d0b37f",
+        "DocumentationServicesConfiguration:Implementations:0:Information:TokenAuthorization": "Zm6SOpsXms49DLtDtcwW0y1MqtiqXAfPHayd8SRG",
+        "AuthenticationServiceConfiguration:Implementations:0:Information:Audiences:0": "806157524792-h0tnbk4b42f0lgar1sjn9e96953pf8ik.apps.googleusercontent.com",
+        "AuthenticationServiceConfiguration:Implementations:0:Information:Audiences:1": "806157524792-3a9dobiren24i4t3iae32o30forv26da.apps.googleusercontent.com",
+        "QueueConfiguration:Implementations:0:Information:ConnectionString": "UseDevelopmentStorage=true",
+        "EventHubConfiguration:Implementations:0:Information:BaseUrl": "https://localhost:44383",
+        "EventHubConfiguration:Implementations:0:Information:ApiKey": "2474d801ffmsh5923ae133182ca4p1ac630jsn83e189d0b37f",
+        "JwtSettings:0:Secret": "DEV_736GK9BBXFP4A6QKZY67UBESPQBV0D2VCFZTEUFH",
+        "CustomConnectionStrings:0:AesSecret": "6H6hHVIyVnNscUPX",
+        "AesConfiguration:Keys:ServerGeneral": "6H6hHVIyVnNscUPX"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      }
+    },
+    {
+      "name": "WebScokets Debug",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "buildWebSocketsApp",
+      "program": "${workspaceFolder}/WebSocketsApp/bin/Debug/net9.0/WebSocketsApp.dll",
+      "args": [],
+      "console": "externalTerminal",
+      "cwd": "${workspaceFolder}/WebSocketsApp",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+        "uriFormat": "%s/swagger"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Debug",
+        "ASPNETCORE_URLS": "https://0.0.0.0:44383",
+        "JwtSettings:0:Secret": "DEV_736GK9BBXFP4A6QKZY67UBESPQBV0D2VCFZTEUFH",
+        "CustomConnectionStrings:0:ConnectionString": "Server=127.0.0.1;Initial Catalog=PasajesDigitales;Integrated Security=false; User Id=sa;Password=Dach@1996;TrustServerCertificate=True;",
+        "CustomConnectionStrings:0:AesSecret": "6H6hHVIyVnNscUPX",
+        "BlobConfiguration:Implementations:Information:ConnectionString": "UseDevelopmentStorage=true",
+        "QueueConfiguration:Implementations:0:Information:ConnectionString": "UseDevelopmentStorage=true",
+        "SignalRConfiguration:AzureConnectionString": "",
+        "AesConfiguration:Keys:ServerGeneral": "6H6hHVIyVnNscUPX",
+        "ApiKey": "2474d801ffmsh5923ae133182ca4p1ac630jsn83e189d0b37f"
+
+      },
+    },
+    {
+      "name": "WebJobs",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "buildWebJob",
+      "program": "${workspaceFolder}/WebJobs/bin/Debug/net9.0/WebJobs.dll",
+      "args": [],
+      "console": "externalTerminal",
+      "cwd": "${workspaceFolder}/WebJobs",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Debug",
+        "DOTNET_ENVIRONMENT": "Debug",
+        "Serilog:WriteTo:0:Args:connectionString": "",
+        "CustomConnectionStrings:0:ConnectionString": "Server=127.0.0.1;Initial Catalog=PasajesDigitales;Integrated Security=false; User Id=sa;Password=Dach@1996;TrustServerCertificate=True;",
+        "BlobConfiguration:Implementations:Information:ConnectionString": "UseDevelopmentStorage=true",
+        "MailNotificationConfiguration:Implementations:0:Information:ApiKey": "",
+        "CardServicesConfiguration:Implementations:0:Information:Headers:X-RapidAPI-Key": "2474d801ffmsh5923ae133182ca4p1ac630jsn83e189d0b37f",
+        "DocumentationServicesConfiguration:Implementations:0:Information:TokenAuthorization": "Zm6SOpsXms49DLtDtcwW0y1MqtiqXAfPHayd8SRG",
+        "AuthenticationServiceConfiguration:Implementations:0:Information:Audiences:0": "806157524792-h0tnbk4b42f0lgar1sjn9e96953pf8ik.apps.googleusercontent.com",
+        "AuthenticationServiceConfiguration:Implementations:0:Information:Audiences:1": "806157524792-3a9dobiren24i4t3iae32o30forv26da.apps.googleusercontent.com",
+        "QueueConfiguration:Implementations:0:Information:ConnectionString": "UseDevelopmentStorage=true",
+        "EventHubConfiguration:Implementations:0:Information:BaseUrl": "https://localhost:44383",
+        "EventHubConfiguration:Implementations:0:Information:ApiKey": "2474d801ffmsh5923ae133182ca4p1ac630jsn83e189d0b37f",
+        "JwtSettings:0:Secret": "DEV_736GK9BBXFP4A6QKZY67UBESPQBV0D2VCFZTEUFH",
+        "CustomConnectionStrings:0:AesSecret": "6H6hHVIyVnNscUPX",
+        "AesConfiguration:Keys:ServerGeneral": "6H6hHVIyVnNscUPX",
+        "PushNotificationConfiguration:Implementations:0:Information:Implementations:0:CredentialBase64": "ewogICJ0eXBlIjogInNlcnZpY2VfYWNjb3VudCIsCiAgInByb2plY3RfaWQiOiAicGFzYWplcy1kaWdpdGFsZXMtMzUzOGEiLAogICJwcml2YXRlX2tleV9pZCI6ICI1OWUxNTJiM2NmZDk1ODc3ODc3NmM1ZjgwNzYwY2U5MmEyMGZjMzE5IiwKICAicHJpdmF0ZV9rZXkiOiAiLS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tXG5NSUlFdlFJQkFEQU5CZ2txaGtpRzl3MEJBUUVGQUFTQ0JLY3dnZ1NqQWdFQUFvSUJBUUNvZjZyNXdiQjgxUkVkXG5VZjlxVEJqcit1WlpOQzI3RTRQbmM4WSs5YS9FU1pRbjlEcTdMSE5hQTVueU50aW1YQkdQV0QzaFJLSEEwQUh3XG5aNENZK0dvK0JUdVMreDNIMVR3U1RkMmh5U1J5QytJUlVhU1dUZTljakFHSE1ramtZRGcvVkdQeTNTYUFIV2MzXG5xb2JiL25WemdPaVcvcVE0cCtuNFhGeklUMWF6YWRsZTdUakV3RkxSdlBIQVhEc3R3UXpabllaQlVZa21kNUEvXG5hTzBYQzdLbkZDT3VPMm5aNHQ1cjVNbndENzVPN0x1b3JoQ2JzdFlBdGJjTi9vbitZNG1lS0YySCt3cmJrUTYxXG5vRWJrUFZSd3c3RUt1RUhYaDZyYWJUNnFSNVFmdUhQb2Z6bnRPUzVnMGlGTFdLcnJuQnhkVTZpQXBwYUdLcFU5XG5CU3FXL04rYkFnTUJBQUVDZ2dFQUpLRGdJM3ZwNkRFUEQ5OGYxVlVtZzhIZWFoelFKaDgzYU14L2wzY2tGdGpoXG4xbytlWnNyaVpucHE4RDdnK01VQjRqWE4rZGJJRE5pSzIxNDhrOFJJb0NQV0Qvejd1OUdNUmZSY1RndWlHeEtmXG5PYUdVVkVJcjJ1UHFmeCs4dmJ4MjdibGtJc3JWVUR0VUVVTkdIck9oaDVMSnZPMHMrTTN6ckJRejdTMW1EUWtHXG5NVjdBRzh2U0YzRGJPVmxNTGkvNzYrUlBHYUV1ZnptaEI1aWlxVm5uMklKRm9wQ3h2N1hXTHZuYlVZazlhdFpTXG4xREFDbHZYYmdQUTdaQ3lLMlVwUHRzZHZFQnZMUVBMRkpHY1E5QXhWZDk3UzM2UEsxUytNZUVINDVBQU5jdlRpXG4vTnJwSjV4amxEZHFuZXRkb2VYM3BLNlBQSDYxU2RvWlhPL3F1ZGYwYVFLQmdRRG5Lc3lxNjkyRFNJRTdyN05OXG5lNG1XOWVGRGMrdnI4RS9wdlBlaWlBVmo5cjJYOS85WDFza0lFTjNlQWtMcjZXS09wNjlTOVJ0ZlNPWVpKSWswXG5ZM3docjdXQ1hIcTNlVENKRVo3SU1TRkFMMlN6YWhmU1k4MmR1NVFHNTdKaWJHUndIdHFWcVJUUVE1OEFBTkFSXG5qQ0NHckpISlYwZmV5bEtRcjl1aDZyRVhnd0tCZ1FDNm1YVUwxcHJxM05xOG5IaEdxWjJJaHFpOHgzcmVtb1V4XG50SEs5L0NJWDZTNlNCYUtiVHZkRUtSYnRUalJZRDJHcE5TbTFvTUwxaWpmMVlSdTRrSzk4UU15bTFXQjZRYTV4XG53M0xMU3JZenBPT1FaSCtVTlczaXJqRGNTL1dWSCtiY2NzN2xkNjFqcWlrQjMrNU4rQXl0WTZwT2NkVVJUUUNHXG5tRU1qSWZjRUNRS0JnUUNYMUFDQThsR1cvSFFFNDYxOFludEg3MDU0b3haODdHVlFPNURaNjBTL0Z6d0hLQmRKXG5kZ1NyaTRodFhFYmY4M1dNQkk2ZWllWGtlMWpGZ3IycTd2eUVrNGMvaThYOTQxY0JiOVU5M3liYnBVVWFvYi9yXG5xeWxOUS9wQlhzUkc2TEkvQWNUSEx6cEFYMmw2OHcyMXVMZFVQTnV6eGVPcWJIQTJINHE5bWd1ZVNRS0JnSExXXG5jSGRKcXV1eDRoaER2NjNWUXpNN2xHc2g1UmRNUjM2UWpERXFFNTFkajZDa1FTK055SlUxS0h3QkxpdW53N1hNXG5GeEJGa05abUt3d2pxRmpOQ29MUXFtSmVYVkxBUzJpT0hYN0pTeHE3ZHFWdGhDcWxPeXhQZ1ppQ1V2Qmt3c0tYXG5FWWVkUUtOZW5JQWYzVncwdFRDY2JycDZTZU9zM1E3NGRCRVNIU0JwQW9HQVljajBPL044cWFsWjA2Q05yVDZGXG4yN3VxcWVaS3V5YWIxTGZhS2pNd0NOd2pUeURJMmlrVGVlQ3BuU3dIR0FDcVlpUmJsdXZLRitQUTRLL01zME5KXG4yamRyNzJYUlQwRG4xTEJRNVlQaGxhSVB5RGNLdWJGY2ZObTBuZU5ndUNTb1lrcWo0VGtDNXBoaGtRTFBKYU9RXG55di9obXgwSHh4elA5YUdWdExZL3luND1cbi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS1cbiIsCiAgImNsaWVudF9lbWFpbCI6ICJmaXJlYmFzZS1hZG1pbnNkay01eHV6YkBwYXNhamVzLWRpZ2l0YWxlcy0zNTM4YS5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsCiAgImNsaWVudF9pZCI6ICIxMTE0Njg3NDYxNTU2NTEyNTQxMDgiLAogICJhdXRoX3VyaSI6ICJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvYXV0aCIsCiAgInRva2VuX3VyaSI6ICJodHRwczovL29hdXRoMi5nb29nbGVhcGlzLmNvbS90b2tlbiIsCiAgImF1dGhfcHJvdmlkZXJfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9vYXV0aDIvdjEvY2VydHMiLAogICJjbGllbnRfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9yb2JvdC92MS9tZXRhZGF0YS94NTA5L2ZpcmViYXNlLWFkbWluc2RrLTV4dXpiJTQwcGFzYWplcy1kaWdpdGFsZXMtMzUzOGEuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICJ1bml2ZXJzZV9kb21haW4iOiAiZ29vZ2xlYXBpcy5jb20iCn0=",
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+      }
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+﻿<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <style>
+        /* cyrillic-ext */
+        @font-face {
+            font-family: 'IBM Plex Mono';
+            font-style: normal;
+            font-weight: 400;
+            src: local('IBM Plex Mono'), local('IBMPlexMono'), url(https://fonts.gstatic.com/s/ibmplexmono/v5/-F63fjptAgt5VM-kVkqdyU8n1iIq129k.woff2) format('woff2');
+            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+        }
+        /* cyrillic */
+        @font-face {
+            font-family: 'IBM Plex Mono';
+            font-style: normal;
+            font-weight: 400;
+            src: local('IBM Plex Mono'), local('IBMPlexMono'), url(https://fonts.gstatic.com/s/ibmplexmono/v5/-F63fjptAgt5VM-kVkqdyU8n1isq129k.woff2) format('woff2');
+            unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+        }
+        /* vietnamese */
+        @font-face {
+            font-family: 'IBM Plex Mono';
+            font-style: normal;
+            font-weight: 400;
+            src: local('IBM Plex Mono'), local('IBMPlexMono'), url(https://fonts.gstatic.com/s/ibmplexmono/v5/-F63fjptAgt5VM-kVkqdyU8n1iAq129k.woff2) format('woff2');
+            unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+        }
+        /* latin-ext */
+        @font-face {
+            font-family: 'IBM Plex Mono';
+            font-style: normal;
+            font-weight: 400;
+            src: local('IBM Plex Mono'), local('IBMPlexMono'), url(https://fonts.gstatic.com/s/ibmplexmono/v5/-F63fjptAgt5VM-kVkqdyU8n1iEq129k.woff2) format('woff2');
+            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        /* latin */
+        @font-face {
+            font-family: 'IBM Plex Mono';
+            font-style: normal;
+            font-weight: 400;
+            src: local('IBM Plex Mono'), local('IBMPlexMono'), url(https://fonts.gstatic.com/s/ibmplexmono/v5/-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        /* cyrillic-ext */
+        @font-face {
+            font-family: 'Oswald';
+            font-style: normal;
+            font-weight: 600;
+            src: url(https://fonts.gstatic.com/s/oswald/v29/TK3_WkUHHAIjg75cFRf3bXL8LICs1y9osUtiZTaR.woff2) format('woff2');
+            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+        }
+        /* cyrillic */
+        @font-face {
+            font-family: 'Oswald';
+            font-style: normal;
+            font-weight: 600;
+            src: url(https://fonts.gstatic.com/s/oswald/v29/TK3_WkUHHAIjg75cFRf3bXL8LICs1y9osUJiZTaR.woff2) format('woff2');
+            unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+        }
+        /* vietnamese */
+        @font-face {
+            font-family: 'Oswald';
+            font-style: normal;
+            font-weight: 600;
+            src: url(https://fonts.gstatic.com/s/oswald/v29/TK3_WkUHHAIjg75cFRf3bXL8LICs1y9osUliZTaR.woff2) format('woff2');
+            unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+        }
+        /* latin-ext */
+        @font-face {
+            font-family: 'Oswald';
+            font-style: normal;
+            font-weight: 600;
+            src: url(https://fonts.gstatic.com/s/oswald/v29/TK3_WkUHHAIjg75cFRf3bXL8LICs1y9osUhiZTaR.woff2) format('woff2');
+            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        /* latin */
+        @font-face {
+            font-family: 'Oswald';
+            font-style: normal;
+            font-weight: 600;
+            src: url(https://fonts.gstatic.com/s/oswald/v29/TK3_WkUHHAIjg75cFRf3bXL8LICs1y9osUZiZQ.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+    </style>
+    <style>
+        a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+    </style>
+    <style>
+        :root{font-size:20px;font-family:'IBM Plex Mono';line-height:1.5;color:rgba(255,255,255,.25)}body{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:#333}a{color:#fff;display:inline}#error{margin-bottom:1rem;font-size:2rem;font-weight:500;text-transform:uppercase;letter-spacing:.075em;color:#c94d4d;-webkit-animation:pulse 4s infinite alternate;animation:pulse 4s infinite alternate;position:relative}@-webkit-keyframes pulse{from{opacity:.5}50%{opacity:.5}}@keyframes pulse{from{opacity:.5}50%{opacity:.5}}#error::before{content:'';width:.75rem;height:50vh;margin-bottom:.75em;position:absolute;left:50%;bottom:100%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:linear-gradient(to bottom,rgba(255,255,255,.1) 60%,transparent 100%)}#desc{margin:2em 0 1em}.error-num,.error-num__clip,.error-num__clip-left,.error-num__clip::before{position:relative;font-size:10rem;font-family:Oswald;letter-spacing:-.01em;color:#fff;-webkit-animation:colorSplit 1.25s steps(2,end) infinite;animation:colorSplit 1.25s steps(2,end) infinite}@-webkit-keyframes colorSplit{25%{text-shadow:-.02em 0 0 #ed008c,.025em 0 0 #0087ef}75%{text-shadow:-.035em 0 0 #ed008c,.04em 0 0 #0087ef}}@keyframes colorSplit{25%{text-shadow:-.02em 0 0 #ed008c,.025em 0 0 #0087ef}75%{text-shadow:-.035em 0 0 #ed008c,.04em 0 0 #0087ef}}.error-num__clip,.error-num__clip-left,.error-num__clip::before{position:absolute;top:0;left:-2px;z-index:10;color:#333;overflow:visible;-webkit-clip-path:polygon(0 0,100% 0,100% 25%,0 25%,0 30%,100% 30%,100% 50%,0 50%,0 60%,100% 60%,100% 65%,0 65%,0 80%,100% 80%,100% 85%,0 85%,0 0);clip-path:polygon(0 0,100% 0,100% 25%,0 25%,0 30%,100% 30%,100% 50%,0 50%,0 60%,100% 60%,100% 65%,0 65%,0 80%,100% 80%,100% 85%,0 85%,0 0);-webkit-animation:glitch 1s steps(2,start) infinite;animation:glitch 1s steps(2,start) infinite}@-webkit-keyframes glitch{30%{left:0}to{left:0}}@keyframes glitch{30%{left:0}to{left:0}}.error-num__clip-left::before,.error-num__clip::before{content:'403';left:.05em;color:#fff;z-index:9;-webkit-clip-path:polygon(0 0,100% 0,100% 26%,0 26%,0 29%,100% 29%,100% 51%,0 51%,0 59%,100% 59%,100% 66%,0 66%,0 79%,100% 79%,100% 86%,0 86%,0 0);clip-path:polygon(0 0,100% 0,100% 26%,0 26%,0 29%,100% 29%,100% 51%,0 51%,0 59%,100% 59%,100% 66%,0 66%,0 79%,100% 79%,100% 86%,0 86%,0 0)}
+    </style>
+    <script>
+        window.console = window.console || function (t) { };
+    </script>
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+</head>
+<body translate="no">
+    <div id="error">Documentación no disponible</div>
+    <div class="error-num">
+        403
+        <div class="error-num__clip">403</div>
+    </div>
+    <p id="desc">La documentación no puede ser accedida</p>
+    <br />
+    <script>
+        "use strict"; "object" != typeof window.CP && (window.CP = {}), window.CP.PenTimer = { programNoLongerBeingMonitored: !1, timeOfFirstCallToShouldStopLoop: 0, _loopExits: {}, _loopTimers: {}, START_MONITORING_AFTER: 2e3, STOP_ALL_MONITORING_TIMEOUT: 5e3, MAX_TIME_IN_LOOP_WO_EXIT: 2200, exitedLoop: function (o) { this._loopExits[o] = !0 }, shouldStopLoop: function (o) { if (this.programKilledSoStopMonitoring) return !0; if (this.programNoLongerBeingMonitored) return !1; if (this._loopExits[o]) return !1; var t = this._getTime(); if (0 === this.timeOfFirstCallToShouldStopLoop) return this.timeOfFirstCallToShouldStopLoop = t, !1; var i = t - this.timeOfFirstCallToShouldStopLoop; if (i < this.START_MONITORING_AFTER) return !1; if (i > this.STOP_ALL_MONITORING_TIMEOUT) return this.programNoLongerBeingMonitored = !0, !1; try { this._checkOnInfiniteLoop(o, t) } catch (e) { return this._sendErrorMessageToEditor(), this.programKilledSoStopMonitoring = !0, !0 } return !1 }, _sendErrorMessageToEditor: function () { try { if (this._shouldPostMessage()) { var o = { action: "infinite-loop", line: this._findAroundLineNumber() }; parent.postMessage(o, "*") } else this._throwAnErrorToStopPen() } catch (t) { this._throwAnErrorToStopPen() } }, _shouldPostMessage: function () { return document.location.href.match(/boomerang/) }, _throwAnErrorToStopPen: function () { throw "We found an infinite loop in your Pen. We've stopped the Pen from running. Please correct it or contact support@codepen.io." }, _findAroundLineNumber: function () { var o = new Error, t = 0; if (o.stack) { var i = o.stack.match(/boomerang\S+:(\d+):\d+/); i && (t = i[1]) } return t }, _checkOnInfiniteLoop: function (o, t) { if (!this._loopTimers[o]) return this._loopTimers[o] = t, !1; if (t - this._loopTimers[o] > this.MAX_TIME_IN_LOOP_WO_EXIT) throw "Infinite Loop found on loop: " + o }, _getTime: function () { return +new Date } }, window.CP.shouldStopExecution = function (o) { var t = window.CP.PenTimer.shouldStopLoop(o); return !0 === t && console.warn("[CodePen]: An infinite loop (or a loop taking too long) was detected, so we stopped its execution. Sorry!"), t }, window.CP.exitedLoop = function (o) { window.CP.PenTimer.exitedLoop(o) };
+    </script>
+</body>
+</html>

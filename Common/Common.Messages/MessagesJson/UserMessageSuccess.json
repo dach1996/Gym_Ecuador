@@ -1,0 +1,81 @@
+﻿{
+  "Messages": [
+    {
+      "Code": 0,
+      "Message": {
+        "Spanish": "Operación Existosa",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 1,
+      "Message": {
+        "Spanish": null,
+        "English": null
+      }
+    },
+    {
+      "Code": 2,
+      "Message": {
+        "Spanish": "Usuario Creado Exitosamente",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 3,
+      "Message": {
+        "Spanish": "Actualización de Datos realizados Correctamente",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 4,
+      "Message": {
+        "Spanish": "Debe utilizar lo siguiente en su contraseña",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 5,
+      "Message": {
+        "Spanish": "La contraseña temporal ha sido enviado a su correo.",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 6,
+      "Message": {
+        "Spanish": "Contraseña actualizada Existosamente.",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 7,
+      "Message": {
+        "Spanish": "Tarjeta Eliminada Exitosamente.",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 8,
+      "Message": {
+        "Spanish": "Tarjeta Registrada Exitosamente.",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 9,
+      "Message": {
+        "Spanish": "Pago Realizado Exitosamente.",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 10,
+      "Message": {
+        "Spanish": "Orden Generada Exitosamente.",
+        "English": "Sucess Operation"
+      }
+    }
+  ]
+}

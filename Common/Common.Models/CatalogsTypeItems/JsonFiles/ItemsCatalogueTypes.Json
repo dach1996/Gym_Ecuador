@@ -1,0 +1,42 @@
+[
+  {
+    "Code": "DOCUMENT_TYPE",
+    "Description": "Tipos de Documento",
+    "ListItemCatalog": [
+      {
+        "Code": "DOC_TYPE_IDENTIFICATION",
+        "Description": "Cédula",
+        "Enum": "IdentificationCard",
+        "Status": true,
+        "LanguageValue": {
+          "Spanish": "Cédula",
+          "English": "Identification"
+        }
+      },
+      {
+        "Code": "DOC_TYPE_RUC",
+        "Description": "Ruc",
+        "Enum": "Ruc",
+        "Status": true,
+        "LanguageValue": {
+          "Spanish": "Ruc",
+          "English": "Ruc"
+        }
+      }
+    ]
+  },
+  {
+    "Code": "NATIONALITY",
+    "Description": "Nacionalidades",
+    "ListItemCatalog": [
+      {
+        "Code": "NAT_EC",
+        "Description": "Nacionalidad Ecuador",
+        "LanguageValue": {
+          "Spanish": "Ecuador",
+          "English": "Ecuador"
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+    <NoWarn>S3903;NU1701</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Cache\Common.Cache.csproj" />
+    <ProjectReference Include="..\LogicApi.Abstractions\LogicApi.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Models\Common.Models.csproj" />
+    <ProjectReference Include="..\..\LogicCommon\LogicCommon.BusinessLogic\LogicCommon.BusinessLogic.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Card\Common.Card.csproj" />
+    <ProjectReference Include="..\..\Common\Common.UserDocumentation\Common.UserDocumentation.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Authentication\Common.Authentication.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Cooperative\Common.Cooperative.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="PasswordGenerator" Version="2.1.0" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.6.0.109712">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

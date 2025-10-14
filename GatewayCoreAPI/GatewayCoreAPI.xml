@@ -1,0 +1,352 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GatewayCoreAPI</name>
+    </assembly>
+    <members>
+        <member name="M:GatewayCoreAPI.Controllers.V1.AdministrationController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.AdministrationController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.AdministrationController.GetInitialCatalogues(LogicApi.Model.Request.Administration.GetInitialCataloguesRequest)">
+            <summary>
+            Obtiene los catálogos inciales
+            </summary>
+            <param name="request">Modelo para Obtiene los catálogos inciales</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.AuthController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.Login(LogicApi.Model.Request.Authorization.LoginRequest)">
+            <summary>
+            Autenticación
+            </summary>
+            <param name="request">Modelo para autenticación</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.CreateUser(LogicApi.Model.Request.Authorization.CreateUserRequest)">
+            <summary>
+            Registrar Usuario
+            </summary>
+            <param name="request">Modelo para autenticación</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.AssignPerson(LogicApi.Model.Request.Authorization.AssignPersonRequest)">
+            <summary>
+            Asignar una persona
+            </summary>
+            <param name="request">Modelo para autenticación</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.UpdateUser(LogicApi.Model.Request.Authorization.UpdateUserRequest)">
+            <summary>
+            Actualiza información de usuario
+            </summary>
+            <param name="request">Modelo para autenticación</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.Logout(LogicApi.Model.Request.Authorization.LogoutRequest)">
+            <summary>
+            Cierra sesión
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.RefreshToken(LogicApi.Model.Request.Authorization.RefreshTokenRequest)">
+            <summary>
+            Refrescar el token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.PasswordChange(LogicApi.Model.Request.Authorization.PasswordChangeRequest)">
+            <summary>
+            Cambiar contraseña 
+            </summary>
+            <param name="request">Request de cambio de contraseña</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.PasswordForgotten(LogicApi.Model.Request.Authorization.PasswordForgottenRequest)">
+            <summary>
+            Olvidó contraseña
+            </summary>
+            <param name="request">Olvidó contraseña</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.BiometricRegister(LogicApi.Model.Request.Authorization.RegisterBiometricRequest)">
+            <summary>
+            Registrar Biométrico
+            </summary>
+            <param name="request">Registrar Biométrico</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.RemoveBiomegric(LogicApi.Model.Request.Authorization.RemoveBiometricRequest)">
+            <summary>
+            Borrar Biométrico
+            </summary>
+            <param name="request">Borrar Biométrico</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.CardController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.CardController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.CardController.RegisterCard(LogicApi.Model.Request.Card.RegisterCardRequest)">
+            <summary>
+            Registra una tarjeta
+            </summary>
+            <param name="request">Request de Registra una tarjeta</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.CardController.GetMyCards(LogicApi.Model.Request.Card.GetMyCardsRequest)">
+            <summary>
+            Obtienes las tarjetas relacionadas al usuario
+            </summary>
+            <param name="request">Request de Obtienes las tarjetas relacionadas al usuario</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.CardController.DeleteCard(LogicApi.Model.Request.Card.DeleteCardRequest)">
+            <summary>
+            Elimina la tarjeta asociada al usuario
+            </summary>
+            <param name="request">Request de Elimina la tarjeta asociada al usuario</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.CardController.ValidateCard(LogicApi.Model.Request.Card.ValidateCardRequest)">
+            <summary>
+            Validación de Tarjeta
+            </summary>
+            <param name="request">Request de validación de Tarjeta</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.CompanionController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.CompanionController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.CompanionController.CreateOrUpdateCompanion(LogicApi.Model.Request.Companion.CreateOrUpdateCompanionRequest)">
+            <summary>
+            Crear Compañero
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.CompanionController.GetMyCompanion(LogicApi.Model.Request.Companion.GetMyCompanionRequest)">
+            <summary>
+            Obteniene compañeros registrados
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.CompanionController.SearchCompanion(LogicApi.Model.Request.Companion.SearchCompanionRequest)">
+            <summary>
+            Busca compañero de viaje
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.DeviceController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.DeviceController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.DeviceController.PushToken(LogicApi.Model.Request.Device.RegisterPushTokenRequest)">
+            <summary>
+            Actualiza el push token
+            </summary>
+            <param name="request">Request de actualización</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.LoggerController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.LoggerController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.LoggerController.RegisterLog(LogicApi.Model.Request.Logger.RegisterLogRequest)">
+            <summary>
+            Permite registrar logs desde dispositivos
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GatewayCoreAPI.Controllers.V1.OrderController">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.OrderController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.OrderController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.OrderController.GenerateOrder(LogicApi.Model.Request.Order.GenerateOrderRequest)">
+            <summary>
+            Genera Orden
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.OrderController.ManualCancelOrder(LogicApi.Model.Request.Order.ManualCancelOrderRequest)">
+            <summary>
+            Cancelar Orden
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.OrderController.VerifyOrderValues(LogicApi.Model.Request.Order.VerifyOrderValuesRequest)">
+            <summary>
+            Verifica los datos del request para cáculos e información
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.OrderController.GetMyOrderPaginated(LogicApi.Model.Request.Order.GetMyOrdersPaginatedRequest)">
+            <summary>
+            Obtiene las ordenes paginados
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.OrderController.GetOrderDetails(LogicApi.Model.Request.Order.GetOrderDetailsRequest)">
+            <summary>
+            Obtiene el detalle de la órden
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.OrderController.GetInitialMyOrders(LogicApi.Model.Request.Order.GetInitialMyOrdersRequest)">
+            <summary>
+            Solicitud Inicial para Grupo de ordenes
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.OrderController.PaymentOrderByCard(LogicApi.Model.Request.Order.Payment.PaymentOrderByCardRequest)">
+            <summary>
+            Pago de orden por Pasarela de Pagos (Tarjeta)
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.OrderController.PaymentOrderByCrypto(LogicApi.Model.Request.Order.Payment.PaymentOrderByCryptoRequest)">
+            <summary>
+            Pago de orden Pasarela de Pagos (Criptomoneda)
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.OrderController.PaymentOrderByLink(LogicApi.Model.Request.Order.Payment.PaymentOrderByLinkRequest)">
+            <summary>
+            Pago de orden por Link de Pago
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.PlaceController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.PlaceController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.PlaceController.UpdateFavoritePlace(LogicApi.Model.Request.Place.UpdateFavoritePlaceRequest)">
+            <summary>
+            Actualizar Lugares Favoritos
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.PlaceController.GetPlacesPaginated(LogicApi.Model.Request.Place.GetPlacesPaginatedRequest)">
+            <summary>
+            Obtiene los lugares paginados
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.PlaceController.GetMyFavoritePlace(LogicApi.Model.Request.Place.GetMyFavoritePlaceRequest)">
+            <summary>
+            Obtiene los lugares favoritos
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GatewayCoreAPI.Controllers.V1.SeatController">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.SeatController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.SeatController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.SeatController.ReserveSeat(LogicApi.Model.Request.Seat.ReserveSeatRequest)">
+            <summary>
+            Registra un nuevo asiento al cliente en contexto
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.SeatController.GetSeatAvailable(LogicApi.Model.Request.Seat.GetSeatAvailableRequest)">
+            <summary>
+            Obtiene la iformación de asientos disponibles
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.SecurityController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.SecurityController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.SecurityController.GetPublicKey(LogicApi.Model.Request.Security.GetPublicKeyRequest)">
+            <summary>
+            Llave publica
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.SecurityController.DocumentValidation(LogicApi.Model.Request.Security.DocumentValidationRequest)">
+            <summary>
+            Llave publica
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.SecurityController.Encrypt(LogicApi.Model.Request.Security.EncryptRequest)">
+            <summary>
+            Encrypt (Solo para uso de desarrollo)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.SecurityController.Decrypt(LogicApi.Model.Request.Security.DecryptRequest)">
+            <summary>
+            Decrypt (Solo para uso de desarrollo)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.TicketController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.TicketController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.TicketController.GetTickets(LogicApi.Model.Request.Ticket.GetTicketsAvailableRequest)">
+            <summary>
+            Obtiene boletos disponibles
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

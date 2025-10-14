@@ -1,0 +1,144 @@
+﻿{
+  "Messages": [
+    {
+      "Code": 0,
+      "Message": {
+        "Spanish": "Ocurrió un error en nuestra plataforma, por favor intente mas tarde",
+        "English": "Ocurrió un error en nuestra plataforma, por favor intente mas tarde"
+      }
+    },
+    {
+      "Code": 62,
+      "Message": {
+        "Spanish": "Ocurrió un error en nuestra plataforma, por favor intente mas tarde",
+        "English": "Ocurrió un error en nuestra plataforma, por favor intente mas tarde"
+      }
+    },
+    {
+      "Code": 63,
+      "Message": {
+        "Spanish": "Datos Inválidos",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 66,
+      "Message": {
+        "Spanish": "Usuario Bloqueado",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 67,
+      "Message": {
+        "Spanish": "Error al enviar correo de notificación",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 98,
+      "Message": {
+        "Spanish": "El Usuario no tiene asignada una persona",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 99,
+      "Message": {
+        "Spanish": "El Usuario tiene ya asignado una persona",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 100,
+      "Message": {
+        "Spanish": "Usuario ya registrado",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 101,
+      "Message": {
+        "Spanish": "Correo ya registrado",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 102,
+      "Message": {
+        "Spanish": "Telefono ya registrados",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 104,
+      "Message": {
+        "Spanish": "La contraseña actual y la anterior no pueden ser las mismas.",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 105,
+      "Message": {
+        "Spanish": "La contraseña es Incorrecta.",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 106,
+      "Message": {
+        "Spanish": "Documento de Identidad no existe registrado.",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 107,
+      "Message": {
+        "Spanish": "Documento de Identidad ya registrado.",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 112,
+      "Message": {
+        "Spanish": "Error al Reservar Asiento",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 115,
+      "Message": {
+        "Spanish": "Tarjeta Inválida",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 116,
+      "Message": {
+        "Spanish": "Número de Cédula Incorrecto",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 129,
+      "Message": {
+        "Spanish": "Número máximo de asientos reservados excedido.",
+        "English": "Sucess Operation"
+      }
+    },
+    {
+      "Code": 132,
+      "Message": {
+        "Spanish": "No se encontraron rutas disponibles para los puntos seleccionados",
+        "English": "No se encontraron rutas disponibles para los puntos seleccionados"
+      }
+    },
+    {
+      "Code": 133,
+      "Message": {
+        "Spanish": "Biométrico Incorrecto",
+        "English": "Sucess Operation"
+      }
+    }
+  ]
+}

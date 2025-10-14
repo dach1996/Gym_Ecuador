@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.6.0.109712">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LogicCommon.Abstraction\LogicCommon.Abstraction.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Clock\Common.Clock.csproj" />
+    <ProjectReference Include="..\..\Common\Common.PushNotification\Common.PushNotification.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Messages\Common.Messages.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Blob\Common.Blob.csproj" />
+    <ProjectReference Include="..\LogicCommon.Model\LogicCommon.Model.csproj" />
+    <ProjectReference Include="..\..\Persistence\PersistenceDb.Repository\PersistenceDb.Repository.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Mail\Common.Mail.csproj" />
+    <ProjectReference Include="..\..\Common\Common.EventHub\Common.EventHub.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Templates\Common.Templates.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Cache\Common.Cache.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <NoWarn>S3903;NU1701</NoWarn>
+  </PropertyGroup>
+</Project>
