@@ -2,7 +2,5 @@
 
 public interface IUnitOfWorkManager
 {
-    IAdministrationUnitOfWork GetNewAdministrationUnitOfWork();
-    IAuthenticationUnitOfWork GetNewAuthenticationUnitOfWork();
-    ICoreUnitOfWork GetNewCoreUnitOfWork();
+    IUnitOfWork GetNewUnitOfWork();
 }

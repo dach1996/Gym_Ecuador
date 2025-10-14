@@ -28,7 +28,7 @@ public class GetParameterByCodeHandler(
                  async () =>
                  {
                      //buscamos el parámetro
-                     var parameter = (await AdministrationUnitOfWork.ParameterRepository
+                     var parameter = (await UnitOfWork.ParameterRepository
                           .GetFirstOrDefaultGenericAsync(
                               select => new
                               {
@@ -45,5 +45,5 @@ public class GetParameterByCodeHandler(
                  }).ConfigureAwait(false);
             // retorna el valor
             return new GetParameterByCodeResponse(parameterValue);
-        }, UnitOfWorkType.Administration);
+        });
 }

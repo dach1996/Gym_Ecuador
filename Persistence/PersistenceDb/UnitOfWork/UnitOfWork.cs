@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using PersistenceDb.Models.Configuration;
 using PersistenceDb.Repository.Interfaces.UnitOfWork;
 
 namespace PersistenceDb.UnitOfWork;
@@ -11,7 +10,7 @@ namespace PersistenceDb.UnitOfWork;
 /// <summary>
 /// Constructor
 /// </summary>
-public abstract class UnitOfWork : IUnitOfWork
+public abstract class UnitOfWork : IUnitOfWorkBase
 {
     private IDbContextTransaction _transaction;
     protected PersistenceContext Context;
@@ -26,11 +25,13 @@ public abstract class UnitOfWork : IUnitOfWork
     /// <param name="configuration"></param>
     protected UnitOfWork(
         ILoggerFactory loggerFactory,
-        IConfiguration configuration)
+        IConfiguration configuration,
+        IDbContextFactory<PersistenceContext> dbContextFactory)
     {
         LoggerFactory = loggerFactory;
         Logger = LoggerFactory.CreateLogger<UnitOfWork>();
         Configuration = configuration;
+        Context = dbContextFactory.CreateDbContext();
     }
 
     public async Task BeginTransactionAsync()
@@ -135,26 +136,5 @@ public abstract class UnitOfWork : IUnitOfWork
             await _transaction.RollbackAsync().ConfigureAwait(false);
             _transaction = null;
         }
-    }
-
-    /// <summary>
-    /// Configuración de Conexión
-    /// </summary>
-    /// <param name="databaseConfiguration"></param>
-    /// <returns></returns>
-    public Task SetDataBaseConfigurationAsync(DatabaseConfiguration databaseConfiguration)
-    {
-        if (string.IsNullOrEmpty(Context?.Database?.GetConnectionString()))
-            Context = new(new DbContextOptionsBuilder<PersistenceContext>()
-        .UseSqlServer(databaseConfiguration.ConnectionString, optionBuilder =>
-        {
-            optionBuilder.UseNetTopologySuite();
-            optionBuilder.CommandTimeout(databaseConfiguration.CommandTimeOut);
-        })
-        .UseLoggerFactory(LoggerFactory)
-        .EnableSensitiveDataLogging(databaseConfiguration.EnableSensitiveDataLogging)
-        .EnableDetailedErrors(databaseConfiguration.EnableDetailedErrors)
-        .Options, databaseConfiguration);
-        return Task.CompletedTask;
     }
 }

@@ -43,18 +43,11 @@ public abstract class BusinessLogicWebJobBase : BusinessLogicCommonBase
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     protected async Task<T> ExecuteHandlerAsync<T>(
-           Func<Task<T>> process,
-           IEnumerable<UnitOfWorkType> unitOfWorkTypes = null)
+           Func<Task<T>> process)
     {
 
-        unitOfWorkTypes ??= [];
-        var unitOfWorks = new List<IUnitOfWork>();
-        foreach (var unitOfWorkTypeItem in unitOfWorkTypes)
-            unitOfWorks.Add(MapUnitOfWork(unitOfWorkTypeItem));
         try
         {
-            foreach (var unitOfWork in unitOfWorks)
-                await SetConnectionUnitOfWorkAsync(unitOfWork).ConfigureAwait(false);
             //Ejecuta el proceso
             var result = await process().ConfigureAwait(false);
             return result;
@@ -66,16 +59,4 @@ public abstract class BusinessLogicWebJobBase : BusinessLogicCommonBase
         }
     }
 
-    /// <summary>
-    /// Ejecuta el proceso
-    /// </summary>
-    /// <param name="process"></param>
-    /// <param name="iUnitOfWorks"></param>
-    /// <param name="applyTransaction"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    protected async Task<T> ExecuteHandlerAsync<T>(
-           Func<Task<T>> process,
-           UnitOfWorkType unitOfWorkType)
-           => await ExecuteHandlerAsync(process, [unitOfWorkType]).ConfigureAwait(false);
 }

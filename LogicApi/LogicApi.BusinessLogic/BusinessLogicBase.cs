@@ -1,9 +1,7 @@
-﻿using Common.Cooperative;
-using Common.Tasks;
+﻿using Common.Tasks;
 using Common.UserDocumentation;
 using Common.UserDocumentation.Models.Response;
 using LogicApi.BusinessLogic.LoggerHandler;
-using LogicApi.Model.Common;
 using LogicApi.Model.Request.Administration;
 using LogicApi.Model.Request.CommonConfiguration;
 using LogicApi.Model.Request.Logger;
@@ -31,6 +29,7 @@ public abstract class BusinessLogicBase(
     private TaskExecutorBuilder _taskExecutorBuilder;
     protected TaskExecutorBuilder TaskExecutorBuilder => _taskExecutorBuilder ??= PluginFactory.GetType<TaskExecutorBuilder>();
     private IDocumentationServices _documentationServices;
+  
     protected IDocumentationServices DocumentationServices => _documentationServices ??=
         PluginFactory.GetPlugin<IDocumentationServices>(AppSettingsApi.DocumentationServicesConfiguration?.CurrentImplementation, true);
     protected ContextRequest ContextRequest;
@@ -47,24 +46,6 @@ public abstract class BusinessLogicBase(
     /// <param name="request">Request que implementa Clase Base</param>
     /// <param name="process">Proceso o Ejecución</param>
     /// <param name="unitOfWorks">Lista de Unit Of Work</param>
-    /// <param name="registerLogAudit">Verifica si registra en Log de Auditoría</param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    protected async Task<T> ExecuteHandlerAsync<T>(
-       OperationApiName operationName,
-       IApiBaseRequest request,
-       Func<Task<T>> process,
-       UnitOfWorkType unitOfWorksType,
-       bool registerLogAudit = false)
-        => await ExecuteHandlerAsync(operationName, request, process, [unitOfWorksType], registerLogAudit).ConfigureAwait(false);
-
-    /// <summary>
-    /// Ejecuta el proceso dentro de la configuración inicial
-    /// </summary>
-    /// <param name="operationName">Nombre de Operación</param>
-    /// <param name="request">Request que implementa Clase Base</param>
-    /// <param name="process">Proceso o Ejecución</param>
-    /// <param name="unitOfWorks">Lista de Unit Of Work</param>
     /// <param name="applyTransaction">Verifica si aplicar Transacción</param>
     /// <param name="registerLogAudit">Verifica si registra en Log de Auditoría</param>
     /// <typeparam name="T"></typeparam>
@@ -73,18 +54,11 @@ public abstract class BusinessLogicBase(
         OperationApiName operationName,
         IApiBaseRequest request,
         Func<Task<T>> process,
-        IEnumerable<UnitOfWorkType> unitOfWorksTypes = null,
         bool registerLogAudit = false)
     {
-        unitOfWorksTypes ??= [];
-        var unitOfWorks = new List<IUnitOfWork>();
-        foreach (var unitOfWorkTypeItem in unitOfWorksTypes)
-            unitOfWorks.Add(MapUnitOfWork(unitOfWorkTypeItem));
         try
         {
             SetContextRequest(request.ContextRequest);
-            foreach (var unitOfWork in unitOfWorks)
-                await SetConnectionUnitOfWorkAsync(unitOfWork, request.ContextRequest).ConfigureAwait(false);
             //Ejecuta el proceso
             var result = await process().ConfigureAwait(false);
             if (registerLogAudit)
@@ -120,10 +94,9 @@ public abstract class BusinessLogicBase(
             OperationApiName operationApiName,
             string cacheKey,
             IApiBaseRequest request,
-            Func<Task<T>> process,
-            IEnumerable<UnitOfWorkType> unitOfWorksTypes = null)
+            Func<Task<T>> process)
         => await AdministratorCache.TryGetOrSetAsync(
-            cacheKey, () => ExecuteHandlerAsync(operationApiName, request, process, unitOfWorksTypes, false)).ConfigureAwait(false);
+            cacheKey, () => ExecuteHandlerAsync(operationApiName, request, process, false)).ConfigureAwait(false);
 
 
 
@@ -133,22 +106,10 @@ public abstract class BusinessLogicBase(
     /// <param name="model"></param>
     private void ExecuteTaskCreateAuditLog(RegisterLogAuditExecutorModel model)
         => TaskExecutorBuilder
-            .AddConstructorParam(PluginFactory.GetType<ILoggerFactory>(), PluginFactory.GetType<IUnitOfWorkManager>().GetNewAdministrationUnitOfWork(), Clock)
+            .AddConstructorParam(PluginFactory.GetType<ILoggerFactory>(), PluginFactory.GetType<IUnitOfWorkManager>().GetNewUnitOfWork(), Clock)
             .Execute<RegisterLogAuditTaskExecutor>(model);
 
-    /// <summary>
-    /// Configura la conexión incial
-    /// </summary>
-    /// <param name="unitOfWork"></param>
-    /// <param name="contextRequest"></param>
-    /// <returns></returns>
-    protected async Task SetConnectionUnitOfWorkAsync(IUnitOfWork unitOfWork, ContextRequest contextRequest = null)
-    {
-        contextRequest ??= ContextRequest;
-        if (contextRequest?.DataBaseConfiguration is null)
-            throw new CustomException((int)MessagesCodesError.SystemError, $"La cadena de conexión en el Contexto está vacía");
-        await unitOfWork.SetDataBaseConfigurationAsync(CommonContextRequest.DataBaseConfiguration.ToJson().ToObject<PersistenceDb.Models.Configuration.DatabaseConfiguration>()).ConfigureAwait(false);
-    }
+ 
 
 
     /// <summary>
@@ -156,7 +117,7 @@ public abstract class BusinessLogicBase(
     /// </summary>
     /// <returns></returns>
     protected async Task<User> GetUserFromContextAsync()
-        => (await AuthenticationUnitOfWork.UserRepository
+        => (await UnitOfWork.UserRepository
             .GetByFirstOrDefaultAsync(
                 where => where.Id == UserId,
                 inlcude => inlcude.Image,
@@ -294,85 +255,6 @@ public abstract class BusinessLogicBase(
             return null;
         }
     }
-
-    /// <summary>
-    /// Cooperativa configurada en Contexto
-    /// </summary>
-    /// <value></value>
-    protected CooperativeItemData Cooperative { get; private set; }
-    protected async Task SetCooperativeAsync(int cooperativeId)
-        => Cooperative = (await GetCooperativeDataAsync().ConfigureAwait(false))
-            ?.GetCooperativeDataById(cooperativeId);
-
-    /// <summary>
-    /// Obtiene la información de cooperativas
-    /// </summary>
-    /// <returns></returns>
-    protected async Task<CooperativeData> GetCooperativeDataAsync()
-        => await AdministratorCache.TryGetOrSetAsync(CacheCodes.COOPERATIVES_DATA, async () =>
-        (await Mediator.Send(new GetCooperativeInformationRequest(ContextRequest)).ConfigureAwait(false))?.CooperativeData);
-
-    /// <summary>
-    /// Obtiene implementación de servicios de cooperativa por el Id
-    /// </summary>
-    /// <param name="cooperativeId"></param>
-    /// <returns></returns>
-    protected async Task<ICooperativeServices> GetCooperativeServicesImplementationByCooperativeId(int cooperativeId)
-    {
-        var cooperativeData = await GetCooperativeDataAsync().ConfigureAwait(false);
-        var cooperativeCode = cooperativeData.GetImplementationCodeByCooperativeId(cooperativeId);
-        return PluginFactory.GetPlugin<ICooperativeServices>(cooperativeCode);
-    }
-
-    /// <summary>
-    /// Obtiene la información de los lugares
-    /// </summary>
-    /// <returns></returns>
-    protected async Task<Dictionary<string, PlaceInformation>> GetPlaceInformationAsync() =>
-        await AdministratorCache.TryGetOrSetAsync(CacheCodes.PLACE_INFORMATION, async () =>
-        {
-            await TryToConnectAdministrationnitOfWorkAsync().ConfigureAwait(false);
-            return (await AdministrationUnitOfWork.PlaceRepository.GetGenericAsync(
-                                select => new PlaceInformation
-                                {
-                                    Code = select.Code,
-                                    ProvinceId = select.Province.Id,
-                                    ProvinceCode = select.Province.Code,
-                                    ProvinceName = select.Province.Name,
-                                    Name = select.Name,
-                                    ShortName = select.ShortName
-                                }
-                            ).ConfigureAwait(false))
-                            .ToDictionary(key => key.Code, value => value);
-        });
-
-
-    /// <summary>
-    /// Obtiene la información de la ruta
-    /// </summary>
-    /// <param name="routeGuid"></param>
-    /// <returns></returns>
-    protected async Task<RouteInformationCacheModel> GetRouteInformationCacheAsync(Guid routeGuid)
-    => await AdministratorCache.TryGetOrSetAsync(
-            CacheCodes.RouteDataByRouteGuid(routeGuid),
-            async () => (await CoreUnitOfWork.CooperativeRouteRepository.GetFirstOrDefaultGenericAsync(
-                select => new RouteInformationCacheModel
-                {
-                    RouteId = select.Id,
-                    RouteGuid = select.Guid,
-                    CooperativeId = select.CooperativeId,
-                    RouteIdentifier = select.TicketIdentifier,
-                    DateRoute = select.DateTimeRoute,
-                    OriginTransportPointId = select.OriginTransportPointId,
-                    DestinationTransportPointId = select.DestinationTransportPointId,
-                    DateTimeRouteTime = select.DateTimeRouteTime,
-                    DateTimeRouteTimeArrival = select.DateTimeRouteTimeArrival
-                },
-                where => where.Guid == routeGuid
-            ).ConfigureAwait(false))
-            ?? throw new CustomException((int)MessagesCodesError.RouteDontFound, $"No se encontró la ruta con Guid: {routeGuid}"),
-            slidingExpiration: true).ConfigureAwait(false);
-
 
 
     /// <summary>

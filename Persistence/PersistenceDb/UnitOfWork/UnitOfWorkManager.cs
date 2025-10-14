@@ -1,29 +1,20 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using PersistenceDb.Repository.Interfaces.UnitOfWork;
 
 namespace PersistenceDb.UnitOfWork;
 
-public class UnitOfWorkManager : IUnitOfWorkManager
+/// <summary>
+/// Constructor
+/// </summary>
+/// <param name="loggerFactory"></param>
+public class UnitOfWorkManager(ILoggerFactory loggerFactory, IConfiguration configuration, IDbContextFactory<PersistenceContext> dbContextFactory) : IUnitOfWorkManager
 {
-    private readonly ILoggerFactory _loggerFactory;
-    private readonly IConfiguration _configuration;
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="loggerFactory"></param>
-    public UnitOfWorkManager(ILoggerFactory loggerFactory, IConfiguration configuration)
-    {
-        _loggerFactory = loggerFactory;
-        _configuration = configuration;
-    }
+    private readonly ILoggerFactory _loggerFactory = loggerFactory;
+    private readonly IConfiguration _configuration = configuration;
+    private readonly IDbContextFactory<PersistenceContext> _dbContextFactory = dbContextFactory;
 
-    public IAdministrationUnitOfWork GetNewAdministrationUnitOfWork()
-        => new AdministrationUnitOfWork(_loggerFactory, _configuration);
-
-    public IAuthenticationUnitOfWork GetNewAuthenticationUnitOfWork()
-        => new AuthenticationUnitOfWork(_loggerFactory, _configuration);
-
-    public ICoreUnitOfWork GetNewCoreUnitOfWork()
-        => new CoreUnitOfWork(_loggerFactory, _configuration);
+    public IUnitOfWork GetNewUnitOfWork()
+        => new MainUnitOfWork(_loggerFactory, _configuration, _dbContextFactory);
 }

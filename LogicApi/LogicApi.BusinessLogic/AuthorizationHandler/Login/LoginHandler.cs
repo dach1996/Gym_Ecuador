@@ -37,7 +37,7 @@ public class LoginHandler(
     protected async Task<LoginResponse> GetResponseAsync(int userId)
     {
         //Verifica si la persona no ha sido asignada
-        var user = await AuthenticationUnitOfWork.UserRepository.GetFirstOrDefaultGenericAsync(
+        var user = await UnitOfWork.UserRepository.GetFirstOrDefaultGenericAsync(
             select => new
             {
                 select.Email,
@@ -97,7 +97,7 @@ public class LoginHandler(
         };
         //Obtiene la imagen si existe
         if (user.ImagenId.HasValue)
-            loginResponse.InfoUser.UrlImage = await AdministrationUnitOfWork.FileRepository.GetFirstOrDefaultGenericAsync(
+            loginResponse.InfoUser.UrlImage = await UnitOfWork.FileRepository.GetFirstOrDefaultGenericAsync(
                 select => select.Url,
                 where => where.Id == user.ImagenId
             ).ConfigureAwait(false);
@@ -123,11 +123,11 @@ public class LoginHandler(
         var deviceId = await AdministratorCache.TryGetAsync<int?>(CacheCodes.DeviceIdByMobileId(ContextRequest.Headers.DeviceId)).ConfigureAwait(false);
         if (!deviceId.HasValue)
         {
-            deviceId = await AuthenticationUnitOfWork.DeviceRepository.GetFirstOrDefaultGenericAsync<int?>(
+            deviceId = await UnitOfWork.DeviceRepository.GetFirstOrDefaultGenericAsync<int?>(
                     select => select.Id,
                     where => where.MobileId == ContextRequest.Headers.DeviceId
                  ).ConfigureAwait(false)
-            ?? (await AuthenticationUnitOfWork.DeviceRepository.AddAsync(new Device
+            ?? (await UnitOfWork.DeviceRepository.AddAsync(new Device
             {
                 Brand = ContextRequest.Headers.Brand,
                 MobileId = ContextRequest.Headers.DeviceId,
@@ -139,13 +139,13 @@ public class LoginHandler(
             await AdministratorCache.SetAsync(CacheCodes.DeviceIdByMobileId(ContextRequest.Headers.DeviceId), deviceId.Value, slidingExpiration: true).ConfigureAwait(false);
         }
         //Intenta actualizar el registro de usuario dispositivo
-        var updateUserDevice = await AuthenticationUnitOfWork.UserDeviceRepository.UpdateByAsync(userDevice => new UserDevice
+        var updateUserDevice = await UnitOfWork.UserDeviceRepository.UpdateByAsync(userDevice => new UserDevice
         {
             DateTimeLastLogin = now
         }, where => where.DeviceId == deviceId && where.UserId == userId).ConfigureAwait(false);
         //Si no se actualizó, se crea el registro
         if (updateUserDevice == 0)
-            await AuthenticationUnitOfWork.UserDeviceRepository.AddAsync(new UserDevice
+            await UnitOfWork.UserDeviceRepository.AddAsync(new UserDevice
             {
                 RegisterDate = now,
                 DateTimeLastLogin = now,
@@ -153,7 +153,7 @@ public class LoginHandler(
                 UserId = userId,
             }).ConfigureAwait(false);
         //Actualiza la información del usuario
-        await AuthenticationUnitOfWork.UserRepository.UpdateByAsync(user => new User
+        await UnitOfWork.UserRepository.UpdateByAsync(user => new User
         {
             FirstLoginDate = user.FirstLoginDate ?? now,
             DateTimeTriedLoginFailed = null,
@@ -196,23 +196,16 @@ public class LoginHandler(
         //Obtiene el máximo de tokens a regenerar
         var maxAttemptsLoginFailed = await GetIntParameterAsync(ParametersCodes.MaxAttemptsLoginFailed).ConfigureAwait(false);
         //Obtiene el usuario
-        var userTriedLoginFailed = await AuthenticationUnitOfWork.UserRepository.GetFirstOrDefaultGenericAsync(
+        var userTriedLoginFailed = await UnitOfWork.UserRepository.GetFirstOrDefaultGenericAsync(
             select => select.TriedLoginFailed,
             where => where.Id == userId).ConfigureAwait(false);
         var isBlocked = (userTriedLoginFailed ?? 0) >= maxAttemptsLoginFailed;
         //Verifica si el usuario está bloqueado
-        await AuthenticationUnitOfWork.UserRepository.UpdateByAsync(user => new User
+        await UnitOfWork.UserRepository.UpdateByAsync(user => new User
         {
             DateTimeTriedLoginFailed = Clock.Now(),
             TriedLoginFailed = (userTriedLoginFailed ?? 0) + 1,
             IsBlocked = isBlocked
         }, where => where.Id == userId).ConfigureAwait(false);
     }
-
-    /// <summary>
-    /// Obtiene el diccionario con información de cooperativas
-    /// </summary>
-    /// <returns></returns>
-    protected async Task<IDictionary<string, string>> GetCooperativasDictionaryAsync()
-     => (await GetCooperativeDataAsync().ConfigureAwait(false))?.GetDictionaryCooperativeImplementations();
 }

@@ -26,7 +26,7 @@ public class SendNotificationPushTopicHandler(
     public override async Task<NotificationPushResponse> Handle(SendNotificationPushTopicRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(request, async () =>
         {
-            var notificationPushRespository = await AdministrationUnitOfWork.NotificationPushRepository.AddAsync(new()
+            var notificationPushRespository = await UnitOfWork.NotificationPushRepository.AddAsync(new()
             {
                 Title = request.Title,
                 Description = request.Body,
@@ -61,7 +61,7 @@ public class SendNotificationPushTopicHandler(
                 })]
             });
             //Almacena las notificaciones Push del usuario
-            await AdministrationUnitOfWork.NotificationPushUserRepository.AddRangeAsync(notificationsPushDeviceRepository).ConfigureAwait(false);
+            await UnitOfWork.NotificationPushUserRepository.AddRangeAsync(notificationsPushDeviceRepository).ConfigureAwait(false);
             return new NotificationPushResponse(
                 notificationsPushDeviceRepository.ToDictionary(
                     key => key.UserId,
@@ -71,5 +71,5 @@ public class SendNotificationPushTopicHandler(
                     )
                 )
             );
-        }, [UnitOfWorkType.Administration, UnitOfWorkType.Authentication]).ConfigureAwait(false);
+        }).ConfigureAwait(false);
 }

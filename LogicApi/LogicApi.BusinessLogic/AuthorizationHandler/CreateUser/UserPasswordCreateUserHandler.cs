@@ -19,7 +19,7 @@ public class UserPasswordCreateUserHandler(
             var passwordEncrypted = GetPasswordEncrypted(newPassword, newUser.Salt);
             newUser.ManualUserRegistrationForm.Password = passwordEncrypted;
             newUser.ManualUserRegistrationForm.PasswordTemporary = passwordEncrypted;
-            _ = await AuthenticationUnitOfWork.UserRepository.UpdateAsync(newUser).ConfigureAwait(false);
+            _ = await UnitOfWork.UserRepository.UpdateAsync(newUser).ConfigureAwait(false);
             await SendQueueMessageAsync(new NewUserMailQueueTemplate
             {
                 User = request.Email,
@@ -35,7 +35,7 @@ public class UserPasswordCreateUserHandler(
                 UserMessage = GetSuccessMessage(MessagesCodesSucess.UserCreateSuccess),
                 TemporalPassword = newPassword
             };
-        }, UnitOfWorkType.Authentication, true);
+        }, true);
 
 
     /// <summary>

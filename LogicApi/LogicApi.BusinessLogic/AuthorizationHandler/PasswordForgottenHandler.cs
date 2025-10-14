@@ -22,9 +22,9 @@ public class PasswordForgottenHandler(
     /// <returns></returns>
     public override async Task<PasswordForgottenResponse> Handle(PasswordForgottenRequest request, CancellationToken cancellationToken)
     => await ExecuteHandlerAsync(OperationApiName.PasswordForgotten, request, async () =>
-            await AuthenticationUnitOfWork.BeginTransactionStrategyAsync(async () =>
+            await UnitOfWork.BeginTransactionStrategyAsync(async () =>
             {
-                var userCurrent = (await AuthenticationUnitOfWork.UserRepository.GetFirstOrDefaultGenericAsync(
+                var userCurrent = (await UnitOfWork.UserRepository.GetFirstOrDefaultGenericAsync(
                                select => new
                                {
                                    select.Id,
@@ -47,7 +47,7 @@ public class PasswordForgottenHandler(
                 //Actualiza información de Contraseña
                 var passwordEncrypted = GetPasswordEncrypted(newPassword, userCurrent.Salt);
                 //Actualiza el usuario
-                await AuthenticationUnitOfWork.UserRegistrationFormRepository.UpdateByAsync(
+                await UnitOfWork.UserRegistrationFormRepository.UpdateByAsync(
                      user => new()
                      {
                          PasswordTemporary = passwordEncrypted
@@ -69,5 +69,5 @@ public class PasswordForgottenHandler(
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.CreateTemporalityPasswordSuccess)
                 };
             }).ConfigureAwait(false)
-        , UnitOfWorkType.Authentication, true);
+        , true);
 }

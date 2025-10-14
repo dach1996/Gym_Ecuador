@@ -24,7 +24,7 @@ public class RegisterBiometricHandler(
     => await ExecuteHandlerAsync(OperationApiName.RegisterBiometric, request, async () =>
         {
             //Buscamos el registro relacionado al usuario y dispositivo
-            var userDevice = await AuthenticationUnitOfWork.UserDeviceRepository
+            var userDevice = await UnitOfWork.UserDeviceRepository
                 .GetByFirstOrDefaultAsync(where => where.UserId == UserId && where.Device.MobileId == MobileId).ConfigureAwait(false)
                 ?? throw new CustomException((int)MessagesCodesError.InformationNotFoundInDataBase, $"No se pudo encontrar el registro con Id de usuario: '{UserId}' y Id de Dipositivo: '{DeviceId}'");
             var biometric = new BiometricModel
@@ -39,12 +39,12 @@ public class RegisterBiometricHandler(
             //Asigna el biométrico generado al usuario
             userDevice.Biometric = biometricEncrypted.ToSha256();
             //Actualiza el registro de biométrico
-            _ = await AuthenticationUnitOfWork.UserDeviceRepository.UpdateAsync(userDevice).ConfigureAwait(false);
+            _ = await UnitOfWork.UserDeviceRepository.UpdateAsync(userDevice).ConfigureAwait(false);
             //Retorna la respuesta 
             return new RegisterBiometricResponse
             {
                 Biometric = biometricEncrypted,
                 UserMessage = GetSuccessMessage(),
             };
-        }, UnitOfWorkType.Authentication);
+        });
 }

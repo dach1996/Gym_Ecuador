@@ -37,10 +37,10 @@ public class UpdateUserHandler(
                 currentUser.Image = await SaveAndGetFile(request, currentUser, cancellationToken).ConfigureAwait(false);
             }
             currentUser.Phone = request.Phone;
-            await AuthenticationUnitOfWork.UserRepository.UpdateAsync(currentUser).ConfigureAwait(false);
+            await UnitOfWork.UserRepository.UpdateAsync(currentUser).ConfigureAwait(false);
             //Consigue el Header del Switch
             return HandlerResponse.Complete(GetSuccessMessage(MessagesCodesSucess.UpdateUserInformationSuccess), true);
-        }, UnitOfWorkType.Authentication);
+        });
 
 
     /// <summary>
@@ -83,6 +83,6 @@ public class UpdateUserHandler(
             ContainerNames.USER_IMAGE,
             ContextRequest), cancellationToken).ConfigureAwait(false);
         currentUser.Image.State = false;
-        await AdministrationUnitOfWork.FileRepository.UpdateAsync(currentUser.Image).ConfigureAwait(false);
+        await UnitOfWork.FileRepository.UpdateAsync(currentUser.Image).ConfigureAwait(false);
     }
 }

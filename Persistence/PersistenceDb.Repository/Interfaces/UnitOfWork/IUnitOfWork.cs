@@ -1,54 +1,31 @@
-﻿using System.Data;
-using PersistenceDb.Models.Configuration;
+﻿using PersistenceDb.Repository.Interfaces.Administration;
+using PersistenceDb.Repository.Interfaces.Authentication;
+using PersistenceDb.Repository.Interfaces.Core;
 
 namespace PersistenceDb.Repository.Interfaces.UnitOfWork;
 
-public interface IUnitOfWork : IDisposable
-{  /// <summary>
-   /// Configuración de Base de Datos
-   /// </summary>
-   /// <param name="databaseConfiguration"></param>
-   /// <returns></returns>
-    Task SetDataBaseConfigurationAsync(DatabaseConfiguration databaseConfiguration);
+public interface IUnitOfWork : IUnitOfWorkBase
+{
 
-    /// <summary>
-    /// Inicia una transacción
-    /// </summary>
-    /// <returns></returns>
-    Task BeginTransactionAsync();
+    // Administration Repositories
+    IAuditLogRepository AuditLogRepository { get; }
+    ICatalogRepository CatalogRepository { get; }
+    IParameterRepository ParameterRepository { get; }
+    IFileRepository FileRepository { get; }
+    INotificationPushRepository NotificationPushRepository { get; }
+    INotificationPushUserRepository NotificationPushUserRepository { get; }
+    ICountryRepository CountryRepository { get; }
+    IProvinceRepository ProvinceRepository { get; }
+    IRegionRepository RegionRepository { get; }
 
-    /// <summary>
-    /// Commit de una transacción
-    /// </summary>
-    /// <returns></returns>
-    Task CommitAsync();
+    // Authentication Repositories
+    IDeviceRepository DeviceRepository { get; }
+    IUserRepository UserRepository { get; }
+    IUserDeviceRepository UserDeviceRepository { get; }
+    IPersonRepository PersonRepository { get; }
+    IUserRegistrationFormRepository UserRegistrationFormRepository { get; }
+    IUserDevicePushTokenRepository UserDevicePushTokenRepository { get; }
 
-    /// <summary>
-    /// Roll Back
-    /// </summary>
-    /// <returns></returns>
-    Task RollBackAsync();
-
-    /// <summary>
-    /// Métodos para generar transacciones
-    /// </summary>
-    /// <param name="process"></param>
-    /// <param name="Commit"></param>
-    /// <returns></returns>
-    Task BeginTransactionStrategyAsync(
-        Func<Task> process,
-        bool autoCommit = true);
-
-    /// <summary>
-    /// Genera una función para ejecutar como transacción
-    /// </summary>
-    /// <param name="process"></param>
-    /// <param name="Commit"></param>
-    /// <param name="isolationLevel"></param>
-    /// <typeparam name="TResult"></typeparam>
-    /// <returns></returns>
-    Task<TResult> BeginTransactionStrategyAsync<TResult>(
-        Func<Task<TResult>> process,
-        bool autoCommit = true,
-        IsolationLevel isolationLevel = IsolationLevel.ReadCommitted);
+    // Core Repositories
+    IQueueMessageRepository QueueMessageRepository { get; }
 }

@@ -29,7 +29,7 @@ public class BiometricLoginHandler(
             Expression<Func<User, bool>> where = userId.HasValue
                 ? where => where.Id == userId
                 : where => where.UserName == request.UserName || where.Email == request.UserName;
-            var user = (await AuthenticationUnitOfWork.UserRepository
+            var user = (await UnitOfWork.UserRepository
                .GetFirstOrDefaultGenericAsync(
                    select => new
                    {
@@ -50,7 +50,7 @@ public class BiometricLoginHandler(
             var deviceId = await AdministratorCache.TryGetAsync<int?>(CacheCodes.DeviceIdByMobileId(ContextRequest.Headers.DeviceId)).ConfigureAwait(false);
             if (!deviceId.HasValue)
             {
-                deviceId = await AuthenticationUnitOfWork.DeviceRepository
+                deviceId = await UnitOfWork.DeviceRepository
                 .GetFirstOrDefaultGenericAsync<int?>(
                     select => select.Id,
                     where => where.MobileId == ContextRequest.Headers.DeviceId
@@ -59,7 +59,7 @@ public class BiometricLoginHandler(
                 await AdministratorCache.SetAsync(CacheCodes.DeviceIdByMobileId(ContextRequest.Headers.DeviceId), deviceId, slidingExpiration: true).ConfigureAwait(false);
             }
             //Obtiene el registro de biométrico
-            var biometric = await AuthenticationUnitOfWork.UserDeviceRepository
+            var biometric = await UnitOfWork.UserDeviceRepository
                 .GetFirstOrDefaultGenericAsync(
                     select => select.Biometric,
                     where => where.UserId == userId && where.DeviceId == deviceId
@@ -76,6 +76,6 @@ public class BiometricLoginHandler(
                 throw new CustomException((int)MessagesCodesError.BiometricIncorrect, $"Biométrico Incorrecto");
             }
             return await GetResponseAsync(user.Id).ConfigureAwait(false);
-        }, [UnitOfWorkType.Authentication, UnitOfWorkType.Administration], true);
+        }, true);
 
 }

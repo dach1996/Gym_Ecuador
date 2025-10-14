@@ -36,9 +36,7 @@ public abstract class FunctionBase(
         var templateBase = message.ToObject<QueueTemplateBase>();
         try
         {
-            using (pluginFactory.GetType<ICoreUnitOfWork>())
-            using (pluginFactory.GetType<IAuthenticationUnitOfWork>())
-            using (pluginFactory.GetType<IAdministrationUnitOfWork>())
+            using (pluginFactory.GetType<IUnitOfWork>())
             {
                 using (logger.BeginScope(new Dictionary<string, object>   {
                     { "RequestId", templateBase.RequestId } ,

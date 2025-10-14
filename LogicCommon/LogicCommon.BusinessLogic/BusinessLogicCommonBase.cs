@@ -17,7 +17,6 @@ using LogicCommon.Model.Request.NotificationPush;
 using LogicCommon.Model.Request.Queue;
 using LogicCommon.Model.Response.Queue;
 using PersistenceDb.Models.Core;
-using PersistenceDb.Models.Enums;
 using PersistenceDb.Repository.Interfaces.UnitOfWork;
 
 namespace LogicCommon.BusinessLogic;
@@ -34,9 +33,9 @@ public abstract class BusinessLogicCommonBase
     protected IClock Clock => _clock ??= SetClockInstance();
     protected readonly AppSettingsCommon AppSettings;
     protected CommonContextRequest CommonContextRequest { get; set; }
-    protected IAuthenticationUnitOfWork AuthenticationUnitOfWork;
-    protected IAdministrationUnitOfWork AdministrationUnitOfWork;
-    protected ICoreUnitOfWork CoreUnitOfWork;
+    protected IUnitOfWork UnitOfWork => _unitOfWork ??= PluginFactory.GetType<IUnitOfWork>();
+    private IUnitOfWork _unitOfWork;
+    
     private IMediator _mediator;
     protected IMediator Mediator => _mediator ??= PluginFactory.GetType<IMediator>();
     private IAdministratorCache _administratorCache;
@@ -71,18 +70,7 @@ public abstract class BusinessLogicCommonBase
     }
 
 
-    /// <summary>
-    /// Configura la conexión incial
-    /// </summary>
-    /// <param name="unitOfWork"></param>
-    /// <param name="contextRequest"></param>
-    /// <returns></returns>
-    protected async Task SetConnectionUnitOfWorkAsync(IUnitOfWork unitOfWork)
-    {
-        if (CommonContextRequest?.DataBaseConfiguration is null)
-            throw new CustomException((int)MessagesCodesError.SystemError, $"La cadena de conexión en el Contexto está vacía");
-        await unitOfWork.SetDataBaseConfigurationAsync(CommonContextRequest.DataBaseConfiguration.ToJson().ToObject<PersistenceDb.Models.Configuration.DatabaseConfiguration>()).ConfigureAwait(false);
-    }
+    
 
     /// <summary>
     /// Ejecuta el proceso
@@ -94,20 +82,13 @@ public abstract class BusinessLogicCommonBase
     /// <returns></returns>
     protected async Task<T> ExecuteHandlerAsync<T>(
            ICommonBaseRequest request,
-           Func<Task<T>> process,
-           IEnumerable<UnitOfWorkType> unitOfWorkTypes = null
+           Func<Task<T>> process
            )
     {
-        unitOfWorkTypes ??= [];
-        var unitOfWorks = new List<IUnitOfWork>();
-        foreach (var unitOfWorkTypeItem in unitOfWorkTypes)
-            unitOfWorks.Add(MapUnitOfWork(unitOfWorkTypeItem));
         try
         {
             CommonContextRequest ??= request.CommonContextRequest
                 ?? throw new CustomException((int)MessagesCodesError.SystemError, "El contexto está vacío");
-            foreach (var unitOfWork in unitOfWorks)
-                await SetConnectionUnitOfWorkAsync(unitOfWork).ConfigureAwait(false);
             //Ejecuta el proceso
             var result = await process().ConfigureAwait(false);
             return result;
@@ -116,29 +97,6 @@ public abstract class BusinessLogicCommonBase
         {
             Logger.LogError(ex, "Error: {@Message}", ex.Message);
             return default;
-        }
-    }
-
-    /// <summary>
-    /// Mapea el Unit Of Work
-    /// </summary>
-    /// <param name="unitOfWorkType"></param>
-    /// <returns></returns>
-    protected IUnitOfWork MapUnitOfWork(UnitOfWorkType unitOfWorkType)
-    {
-        switch (unitOfWorkType)
-        {
-            case UnitOfWorkType.Authentication:
-                AuthenticationUnitOfWork ??= PluginFactory.GetType<IAuthenticationUnitOfWork>();
-                return AuthenticationUnitOfWork;
-            case UnitOfWorkType.Administration:
-                AdministrationUnitOfWork ??= PluginFactory.GetType<IAdministrationUnitOfWork>();
-                return AdministrationUnitOfWork;
-            case UnitOfWorkType.Core:
-                CoreUnitOfWork ??= PluginFactory.GetType<ICoreUnitOfWork>();
-                return CoreUnitOfWork;
-            default:
-                throw new InvalidOperationException("No existe un Unit Of Work para implementar");
         }
     }
 
@@ -168,7 +126,7 @@ public abstract class BusinessLogicCommonBase
         )
     {
         var sendMessageResponse = await SendQueueMessageAsync(queueTemplate, delaySeconds).ConfigureAwait(false);
-        return await CoreUnitOfWork.QueueMessageRepository.AddAsync(new()
+        return await UnitOfWork.QueueMessageRepository.AddAsync(new()
         {
             DateTimeRegister = dateTime ?? Clock.Now(),
             InternlaIdentifier = sendMessageResponse.InternalIdentifier,
@@ -185,7 +143,7 @@ public abstract class BusinessLogicCommonBase
     /// <returns></returns>
     protected async Task<DeleteMessageQueueResponse> DeleteQueueMessageAsync(Expression<Func<QueueMessage, bool>> where)
     {
-        var deleteMessageQueueItems = (await CoreUnitOfWork.QueueMessageRepository.GetGenericAsync(
+        var deleteMessageQueueItems = (await UnitOfWork.QueueMessageRepository.GetGenericAsync(
             select => new
             {
                 select.AdditionalInformation,
@@ -223,7 +181,7 @@ public abstract class BusinessLogicCommonBase
     /// <returns></returns>
     protected async Task DeleteQueueMessageWithoutResponseAsync(Expression<Func<QueueMessage, bool>> where)
     {
-        var deleteMessageQueueItems = (await CoreUnitOfWork.QueueMessageRepository.GetGenericAsync(
+        var deleteMessageQueueItems = (await UnitOfWork.QueueMessageRepository.GetGenericAsync(
             select => new
             {
                 select.AdditionalInformation,
@@ -258,34 +216,6 @@ public abstract class BusinessLogicCommonBase
         await Mediator.Send(new SendNotificationPushUsersRequest(template.Title, template.Body, userId, action, CommonContextRequest));
     }
 
-    /// <summary>
-    /// Intenta conectar el Core Unit Of Work
-    /// </summary>
-    /// <returns></returns>
-    protected async Task TryToConnectAdministrationnitOfWorkAsync()
-    {
-        if (AdministrationUnitOfWork is null)
-        {
-            MapUnitOfWork(UnitOfWorkType.Administration);
-            await SetConnectionUnitOfWorkAsync(AdministrationUnitOfWork).ConfigureAwait(false);
-        }
-    }
-
-
-    /// <summary>
-    /// Intenta conectar el Authentication Unit Of Work
-    /// </summary>
-    /// <returns></returns>
-    protected async Task TryToConnectAuthenticationnitOfWorkAsync()
-    {
-        if (AuthenticationUnitOfWork is null)
-        {
-            MapUnitOfWork(UnitOfWorkType.Authentication);
-            await SetConnectionUnitOfWorkAsync(AuthenticationUnitOfWork).ConfigureAwait(false);
-        }
-    }
-
-
 
     /// <summary>
     /// Obtiene el Guid de los usuarios
@@ -307,9 +237,8 @@ public abstract class BusinessLogicCommonBase
         var userCacheNotFind = userCacheInformation.Where(user => user.Value is null);
         if (!userCacheNotFind.IsNullOrEmpty())
         {
-            await TryToConnectAuthenticationnitOfWorkAsync().ConfigureAwait(false);
             var userIdsNotFind = userCacheNotFind.Select(user => user.Key);
-            var newUsers = await AuthenticationUnitOfWork.UserRepository.GetGenericAsync(
+            var newUsers = await UnitOfWork.UserRepository.GetGenericAsync(
                 select => new UserCacheInformation
                 {
                     Guid = select.Guid,

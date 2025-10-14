@@ -31,7 +31,7 @@ public class UserPasswordLoginHandler(
             //Busca el perfil del usuario en la Base de Datos, este dato puede ser null ya que puede ser el primer login del usuario
             var userId = await AdministratorCache.TryGetAsync<int?>(CacheCodes.UserIdByUserName(request.UserName)).ConfigureAwait(false);
             Expression<Func<User, bool>> where = userId.HasValue ? where => where.Id == userId : where => where.UserName == request.UserName || where.Email == request.UserName;
-            var user = (await AuthenticationUnitOfWork.UserRepository
+            var user = (await UnitOfWork.UserRepository
                 .GetFirstOrDefaultGenericAsync(
                     select => new
                     {
@@ -50,7 +50,7 @@ public class UserPasswordLoginHandler(
             if (user.IsBlocked)
                 throw new CustomException((int)MessagesCodesError.UserBlocked);
             //Forma manual de registro
-            var manualFormRegister = (await AuthenticationUnitOfWork.UserRegistrationFormRepository
+            var manualFormRegister = (await UnitOfWork.UserRegistrationFormRepository
               .GetFirstOrDefaultGenericAsync(
                   select => new
                   {
@@ -68,5 +68,5 @@ public class UserPasswordLoginHandler(
                 throw new CustomException((int)MessagesCodesError.InfoUserNotFound, $"Contraseña Incorrecta.");
             }
             return await GetResponseAsync(user.Id).ConfigureAwait(false);
-        }, [UnitOfWorkType.Authentication, UnitOfWorkType.Administration], true);
+        }, true);
 }

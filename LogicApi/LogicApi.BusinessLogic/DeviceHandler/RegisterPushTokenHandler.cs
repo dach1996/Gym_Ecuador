@@ -26,14 +26,14 @@ public class RegisterPushTokenHandler(
             var deviceId = await AdministratorCache.TryGetAsync<int?>(CacheCodes.DeviceIdByMobileId(MobileId)).ConfigureAwait(false);
             if (!deviceId.HasValue)
             {
-                deviceId = await AuthenticationUnitOfWork.DeviceRepository.GetFirstOrDefaultGenericAsync(
+                deviceId = await UnitOfWork.DeviceRepository.GetFirstOrDefaultGenericAsync(
                                     select => select.Id,
                                     where => where.MobileId == MobileId
                                 ).ConfigureAwait(false);
                 await AdministratorCache.SetAsync(CacheCodes.DeviceIdByMobileId(MobileId), deviceId.Value, slidingExpiration: true).ConfigureAwait(false);
             }
             //Obtiene la información del token
-            var userDevicePushTokenInformation = await AuthenticationUnitOfWork.UserDevicePushTokenRepository.GetFirstOrDefaultGenericAsync(
+            var userDevicePushTokenInformation = await UnitOfWork.UserDevicePushTokenRepository.GetFirstOrDefaultGenericAsync(
                 select => new
                 {
                     select.UserId,
@@ -44,7 +44,7 @@ public class RegisterPushTokenHandler(
             //Si no existe el registro, se crea
             if (userDevicePushTokenInformation is null)
             {
-                var newUserDevicePushToken = await AuthenticationUnitOfWork.UserDevicePushTokenRepository.AddAsync(
+                var newUserDevicePushToken = await UnitOfWork.UserDevicePushTokenRepository.AddAsync(
                     new UserDevicePushToken
                     {
                         UserId = UserId,
@@ -66,7 +66,7 @@ public class RegisterPushTokenHandler(
             //Si el token es diferente, se actualiza
             if (userDevicePushTokenInformation.PushToken != request.Token || userDevicePushTokenInformation.UserId != UserId)
                 //Actualiza el token al usuario
-                await AuthenticationUnitOfWork.UserDevicePushTokenRepository.UpdateByAsync(
+                await UnitOfWork.UserDevicePushTokenRepository.UpdateByAsync(
                     update => new UserDevicePushToken
                     {
                         PushToken = request.Token,
@@ -77,5 +77,5 @@ public class RegisterPushTokenHandler(
                     autoDetectChangesEnabled: false
                 ).ConfigureAwait(false);
             return HandlerResponse.Complete();
-        }, UnitOfWorkType.Authentication);
+        });
 }

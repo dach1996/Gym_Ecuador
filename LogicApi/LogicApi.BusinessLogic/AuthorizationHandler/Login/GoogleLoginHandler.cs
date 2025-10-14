@@ -31,7 +31,7 @@ public class GoogleLoginHandler(
           var authenticationResponse = await AuthenticationService.AuthenticateAsync(new(request.Password)).ConfigureAwait(false);
           var userId = await AdministratorCache.TryGetAsync<int?>(CacheCodes.UserIdByUserName(request.UserName)).ConfigureAwait(false);
           Expression<Func<User, bool>> where = userId.HasValue ? where => where.Id == userId : where => where.Email == request.UserName;
-          var user = await AuthenticationUnitOfWork.UserRepository
+          var user = await UnitOfWork.UserRepository
               .GetFirstOrDefaultGenericAsync(
                   select => new
                   {
@@ -53,7 +53,7 @@ public class GoogleLoginHandler(
                   ContextRequest = ContextRequest
               }).ConfigureAwait(false);
               //Obtiene el primer usuario
-              user = await AuthenticationUnitOfWork.UserRepository
+              user = await UnitOfWork.UserRepository
               .GetFirstOrDefaultGenericAsync(
                   select => new
                   {
@@ -71,5 +71,5 @@ public class GoogleLoginHandler(
           if (user.IsBlocked)
               throw new CustomException((int)MessagesCodesError.UserBlocked);
           return await GetResponseAsync(user.Id).ConfigureAwait(false);
-      }, [UnitOfWorkType.Authentication, UnitOfWorkType.Administration], true);
+      }, true);
 }

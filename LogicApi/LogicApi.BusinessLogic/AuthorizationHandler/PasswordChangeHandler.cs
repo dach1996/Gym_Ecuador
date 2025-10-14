@@ -23,7 +23,7 @@ public class PasswordChangeHandler(
             if (request.NewPassword.Equals(request.CurrentPassword))
                 throw new CustomException((int)MessagesCodesError.EqualsPassword);
             //Obtiene el usuario actual
-            var currentUser = (await AuthenticationUnitOfWork.UserRepository.GetFirstOrDefaultGenericAsync(
+            var currentUser = (await UnitOfWork.UserRepository.GetFirstOrDefaultGenericAsync(
                 select => new
                 {
                     select.Salt,
@@ -41,7 +41,7 @@ public class PasswordChangeHandler(
             //Verifica si existe una contraseña válida
             if (!Argon2.VerifyHashes(request.CurrentPassword, [currentUser.UserRegistrationForms.Password, currentUser.UserRegistrationForms.PasswordTemporary], currentUser.Salt))
                 throw new CustomException((int)MessagesCodesError.IncorrectPassword);
-            await AuthenticationUnitOfWork.UserRegistrationFormRepository.UpdateByAsync(
+            await UnitOfWork.UserRegistrationFormRepository.UpdateByAsync(
                 user => new()
                 {
                     Password = GetPasswordEncrypted(request.NewPassword, currentUser.Salt),
@@ -51,5 +51,5 @@ public class PasswordChangeHandler(
                 throwExceptionIfNoRecordsAffected: true
             ).ConfigureAwait(false);
             return HandlerResponse.Complete(GetSuccessMessage(MessagesCodesSucess.ChangePasswordSuccess), true);
-        }, UnitOfWorkType.Authentication);
+        });
 }

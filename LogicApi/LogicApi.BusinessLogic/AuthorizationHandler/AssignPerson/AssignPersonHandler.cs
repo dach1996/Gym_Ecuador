@@ -32,7 +32,7 @@ public abstract class AssignPersonHandler(
     /// <returns></returns>
     protected async Task<LoginResponse> ExecuteLoginValidationsAsync(AssignPersonRequest request)
     {
-        var user = await AuthenticationUnitOfWork.UserRepository.GetFirstOrDefaultGenericAsync(
+        var user = await UnitOfWork.UserRepository.GetFirstOrDefaultGenericAsync(
             select => new
             {
                 select.HasCompleteRegistration,
@@ -65,7 +65,7 @@ public abstract class AssignPersonHandler(
     protected async Task<Person> GetPersonAsync(AssignPersonRequest request)
     {
         //Busca la persona en la base de datos
-        var person = await AuthenticationUnitOfWork.PersonRepository
+        var person = await UnitOfWork.PersonRepository
             .GetByFirstOrDefaultAsync(where => where.DocumentNumber == request.DocumentNumber).ConfigureAwait(false);
         //Si la persona no existe en la base buscamos en el servicio.
         if (person is null)
@@ -73,7 +73,7 @@ public abstract class AssignPersonHandler(
             //Verificar el documento
             var documentInformation = await GetPersonInformationAsync(request.DocumentNumber).ConfigureAwait(false);
             //Agrega la persona
-            person = await AuthenticationUnitOfWork.PersonRepository.AddAsync(new Person
+            person = await UnitOfWork.PersonRepository.AddAsync(new Person
             {
                 DocumentNumber = request.DocumentNumber,
                 RealNames = documentInformation.Names,
@@ -111,25 +111,19 @@ public abstract class AssignPersonHandler(
             person.LastName = request.LastName;
             person.UserIdRegister = user.Id;
             //Actualiza la persona
-            await AuthenticationUnitOfWork.PersonRepository.UpdateAsync(person).ConfigureAwait(false);
+            await UnitOfWork.PersonRepository.UpdateAsync(person).ConfigureAwait(false);
         }
         //Actualiza los datos de usuario
         user.Phone = request.Phone;
         user.PersonId = person.Id;
-        user.Companions ??= [];
         user.UserName = request.UserName;
         user.HasCompleteRegistration = true;
-        user.Companions.Add(new()
-        {
-            PersonId = person.Id,
-            UserId = user.Id,
-            DateTimeRegister = Clock.Now(),
-        });
+       
         var manualUserRegistrationForm = user.ManualUserRegistrationForm;
         manualUserRegistrationForm.Password = GetPasswordEncrypted(request.NewPassword, user.Salt);
         manualUserRegistrationForm.PasswordTemporary = null;
         //Actualiza el usuario
-        await AuthenticationUnitOfWork.UserRepository.UpdateAsync(user).ConfigureAwait(false);
+        await UnitOfWork.UserRepository.UpdateAsync(user).ConfigureAwait(false);
         //Retorna la respuesta 
         return await GetLoginAsync(request, user).ConfigureAwait(false);
     }

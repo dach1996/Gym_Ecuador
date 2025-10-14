@@ -21,7 +21,7 @@ public class GoogleCreateUserHandler(
          newUser.ManualUserRegistrationForm.PasswordTemporary = passwordEncrypted;
          newUser.GoogleUserRegistrationForm.Password = passwordEncrypted;
          newUser.GoogleUserRegistrationForm.PasswordTemporary = passwordEncrypted;
-         _ = await AuthenticationUnitOfWork.UserRepository.UpdateAsync(newUser).ConfigureAwait(false);
+         _ = await UnitOfWork.UserRepository.UpdateAsync(newUser).ConfigureAwait(false);
          //Configura el contexto
          ContextRequest.CustomClaims.ConfigureUser(newUser.Id, newUser.UserName);
          //Responde la respuesta
@@ -31,7 +31,7 @@ public class GoogleCreateUserHandler(
              UserMessage = GetSuccessMessage(MessagesCodesSucess.UserCreateSuccess),
              TemporalPassword = newPasswordClear
          };
-     }, UnitOfWorkType.Authentication, true);
+     }, true);
 
     /// <summary>
     /// Obtiene las formas de registro del usuario

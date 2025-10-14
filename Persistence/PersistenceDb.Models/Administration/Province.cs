@@ -57,16 +57,5 @@ public class Province
     /// </summary>
     /// <value></value>
     public Region Region { get; set; }
-
-    /// <summary>
-    /// Puntos de transporte
-    /// </summary>
-    /// <value></value>
-    public ICollection<TransportPoint> TransportPoints { get; set; }
-
-    /// <summary>
-    /// Lugares
-    /// </summary>
-    /// <value></value>
-    public ICollection<Place> Places { get; set; }  
+ 
 }

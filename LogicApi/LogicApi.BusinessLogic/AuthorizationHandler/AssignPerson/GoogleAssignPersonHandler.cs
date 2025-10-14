@@ -18,7 +18,7 @@ public class GoogleAssignPersonHandler(
     public override  async Task<LoginResponse> Handle(AssignPersonRequest request)
        => await ExecuteHandlerAsync(OperationApiName.AssignPerson, request, async () =>
             await ExecuteLoginValidationsAsync(request).ConfigureAwait(false)
-       , UnitOfWorkType.Authentication, registerLogAudit: true);
+       , registerLogAudit: true);
 
 
     /// <summary>
@@ -31,11 +31,10 @@ public class GoogleAssignPersonHandler(
         //Valida la authenticación
         var authenticationResponse = await AuthenticationService.AuthenticateAsync(new(request.Password)).ConfigureAwait(false);
         //Busca el usuario en base de datos
-        var user = await AuthenticationUnitOfWork.UserRepository
+        var user = await UnitOfWork.UserRepository
                     .GetByFirstOrDefaultAsync(where =>
                         where.Email == authenticationResponse.Email,
                         include => include.Person,
-                        include => include.Companions,
                         include => include.UserRegistrationForms).ConfigureAwait(false)
                     ?? throw new CustomException((int)MessagesCodesError.InfoUserNotFound, $"No se pudo encontrar información de Usuario");
         //Si el usuario ya está asignado a una persona no puede continuar el procesa 

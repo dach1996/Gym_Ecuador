@@ -20,14 +20,10 @@ public class DisponseUnitOfWorkMiddleware(
     /// <returns></returns>
     public async Task InvokeAsync(
         HttpContext httpContext,
-        IAdministrationUnitOfWork administrationUnitOfWork,
-        IAuthenticationUnitOfWork authenticationUnitOfWork,
-        ICoreUnitOfWork coreUnitOfWork
+        IUnitOfWork unitOfWork
         )
     {
-        using (administrationUnitOfWork)
-        using (authenticationUnitOfWork)
-        using (coreUnitOfWork)
+        using (unitOfWork)
         {
             await next(httpContext).ConfigureAwait(false);
         }

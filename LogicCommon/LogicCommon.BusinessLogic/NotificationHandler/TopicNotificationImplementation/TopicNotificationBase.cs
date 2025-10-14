@@ -32,7 +32,7 @@ public abstract class TopicNotificationBase(
     protected async Task<IEnumerable<UserNotification>> GetUserNotificationAsync(Expression<Func<UserDevicePushToken, bool>> where = null)
     {
         //Obtiene la información del los usuarios y dispositivos
-        return await AuthenticationUnitOfWork.UserDevicePushTokenRepository
+        return await UnitOfWork.UserDevicePushTokenRepository
             .GetGenericAsync(
                 select => new UserNotification
                 {

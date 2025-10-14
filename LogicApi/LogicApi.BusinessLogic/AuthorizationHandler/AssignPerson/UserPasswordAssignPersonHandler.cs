@@ -18,7 +18,7 @@ public class UserPasswordAssignPersonHandler(
     public override async Task<LoginResponse> Handle(AssignPersonRequest request)
          => await ExecuteHandlerAsync(OperationApiName.AssignPerson, request, async () =>
             await ExecuteLoginValidationsAsync(request).ConfigureAwait(false)
-       , UnitOfWorkType.Authentication, registerLogAudit: true);
+       , registerLogAudit: true);
 
     /// <summary>
     /// Obtiene el usuario
@@ -28,11 +28,10 @@ public class UserPasswordAssignPersonHandler(
     protected override async Task<User> GetUserAsync(AssignPersonRequest request)
     {
         //Busca el usuario en base de datos
-        var user = await AuthenticationUnitOfWork.UserRepository
+        var user = await UnitOfWork.UserRepository
                     .GetByFirstOrDefaultAsync(where =>
                         where.Email == request.Email,
                         include => include.Person,
-                        include => include.Companions,
                         include => include.UserRegistrationForms).ConfigureAwait(false)
                     ?? throw new CustomException((int)MessagesCodesError.InfoUserNotFound, $"No se pudo encontrar información de Usuario con corre {request.Email}");
         //Si el usuario ya está asignado a una persona no puede continuar el procesa 

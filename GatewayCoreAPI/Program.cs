@@ -55,6 +55,7 @@ try
     builder.Services.AddCooperativeServices();
     builder.Services.AddEventHub();
     builder.Services.AddMediatrTypes(typeof(BusinessLogicBase), typeof(BusinessLogicCommonBase));
+    builder.Services.AddCustomDatabaseConfiguration(builder.Configuration);
     builder.Host.ConfigureContainer<ContainerBuilder>(builderAutofac =>
     {
         builderAutofac.UsePluginFactory();
@@ -84,9 +85,9 @@ try
     app.UseAuthorization();
     app.UseMiddleware<TimeDurationRequestMiddleware>();
     app.UseMiddleware<ExceptionHandlingMiddleware>();
-    app.UseMiddleware<DisponseUnitOfWorkMiddleware>();
     app.UseMiddleware<ConfigureContextMiddleware>();
     app.UseMiddleware<ValidateIntegrityMiddleware>();
+    app.UseMiddleware<DisponseUnitOfWorkMiddleware>();
     app.MapControllers();
     logger.Information("Recursos Cargados Correctamente...");
     logger.Information("Iniciando Aplicación...");

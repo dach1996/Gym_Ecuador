@@ -151,17 +151,6 @@ public class User
     /// <value></value>
     public ICollection<UserDevice> UserDevices { get; set; }
 
-    /// <summary>
-    /// Lista de compañeros
-    /// </summary>
-    /// <value></value>
-    public ICollection<Companion> Companions { get; set; }
-
-    /// <summary>
-    /// Lista de tarjetas
-    /// </summary>
-    /// <value></value>
-    public ICollection<Card> Cards { get; set; }
 
     /// <summary>
     /// Lista de Registros de Forma de Usuario

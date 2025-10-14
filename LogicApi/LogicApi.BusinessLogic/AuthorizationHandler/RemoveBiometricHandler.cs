@@ -23,7 +23,7 @@ public class RemoveBiometricHandler(
     => await ExecuteHandlerAsync(OperationApiName.RemoveBiometric, request, async () =>
         {
             //Actualiza el registro de biométrico
-            var updateResult = await AuthenticationUnitOfWork.UserDeviceRepository.UpdateByAsync(
+            var updateResult = await UnitOfWork.UserDeviceRepository.UpdateByAsync(
                 update => new UserDevice
                 {
                     Biometric = null,
@@ -35,5 +35,5 @@ public class RemoveBiometricHandler(
                 throw new CustomException((int)MessagesCodesError.InformationNotFoundInDataBase, $"No se pudo actualizar el registro de biométrico para el usuario: '{UserId}' y el dispositivo: '{DeviceId}'");
             //Retorna la respuesta 
             return HandlerResponse.Complete();
-        }, UnitOfWorkType.Authentication);
+        });
 }

@@ -29,7 +29,7 @@ public class GetItemsCatalogByCodeCatalogHandler(
                 async () =>
                 {
                     //Obtiene los items de catálogos
-                    var itemCatalogs = await AdministrationUnitOfWork.CatalogRepository.
+                    var itemCatalogs = await UnitOfWork.CatalogRepository.
                         GetGenericAsync(
                             select => new
                             {
@@ -51,5 +51,5 @@ public class GetItemsCatalogByCodeCatalogHandler(
                 Status = select.Status,
                 Value = select.Value
             }));
-        }, UnitOfWorkType.Administration);
+        });
 }

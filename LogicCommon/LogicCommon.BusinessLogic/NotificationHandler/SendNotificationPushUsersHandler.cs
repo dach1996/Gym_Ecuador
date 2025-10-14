@@ -30,7 +30,7 @@ public class SendNotificationPushUsersHandler(
         => await ExecuteHandlerAsync(request, async () =>
         {
             //Creamos la notificación
-            var notificationPushRespository = await AdministrationUnitOfWork.NotificationPushRepository.AddAsync(new()
+            var notificationPushRespository = await UnitOfWork.NotificationPushRepository.AddAsync(new()
             {
                 Title = request.Title,
                 Description = request.Body,
@@ -77,7 +77,7 @@ public class SendNotificationPushUsersHandler(
                     })]
                 });
             //Almacena las notificaciones Push del usuario
-            await AdministrationUnitOfWork.NotificationPushUserRepository.AddRangeAsync(notificationsPushDeviceRepository, includeChildren: true).ConfigureAwait(false);
+            await UnitOfWork.NotificationPushUserRepository.AddRangeAsync(notificationsPushDeviceRepository, includeChildren: true).ConfigureAwait(false);
             return new NotificationPushResponse(
                 notificationsPushDeviceRepository.ToDictionary(
                     key => key.UserId,
@@ -87,7 +87,7 @@ public class SendNotificationPushUsersHandler(
                     )
                 )
             );
-        }, [UnitOfWorkType.Administration, UnitOfWorkType.Authentication]).ConfigureAwait(false);
+        }).ConfigureAwait(false);
 
     /// <summary>
     /// Obtiene una lista de Notificaciones Push de Usuario
@@ -97,7 +97,7 @@ public class SendNotificationPushUsersHandler(
     private async Task<List<UserTokenNotification>> GetUserTokenNotificationAsync(SendNotificationPushUsersRequest request)
     {
         //Obtiene la información del los usuarios y dispositivos
-        var usersTokenNotification = await AuthenticationUnitOfWork.UserDevicePushTokenRepository
+        var usersTokenNotification = await UnitOfWork.UserDevicePushTokenRepository
             .GetGenericAsync(
                 select => new UserTokenNotification
                 {

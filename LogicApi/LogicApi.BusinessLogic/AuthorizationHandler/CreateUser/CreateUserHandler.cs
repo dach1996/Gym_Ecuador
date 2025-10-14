@@ -35,7 +35,7 @@ public abstract class CreateUserHandler(
         if (!request.ConditionAndTermines)
             throw new CustomException((int)MessagesCodesError.TermsAndConditionNotAccept);
         //Buscamos el usuario
-        var newUser = await AuthenticationUnitOfWork.UserRepository
+        var newUser = await UnitOfWork.UserRepository
         .GetByFirstOrDefaultAsync(
             where => where.Email == request.Email,
             include => include.UserRegistrationForms).ConfigureAwait(false);
@@ -58,7 +58,7 @@ public abstract class CreateUserHandler(
                 Salt = salt
             };
             //Guarda el neuvo usuario
-            _ = await AuthenticationUnitOfWork.UserRepository.AddAsync(newUser).ConfigureAwait(false);
+            _ = await UnitOfWork.UserRepository.AddAsync(newUser).ConfigureAwait(false);
         }
         return newUser;
     }
