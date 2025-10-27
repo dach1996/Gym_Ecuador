@@ -312,6 +312,266 @@ public enum OperationApiName
     /// </summary>
     [EnumMember(Value = "Obtiene los lugares paginados")]
     GetPlacesPaginated,
-    
+
+
+    /// <summary>
+    /// Crear Gimnasio
+    /// </summary>
+    [EnumMember(Value = "Crear Gimnasio")]
+    CreateGym,
+
+    /// <summary>
+    /// Actualizar Gimnasio
+    /// </summary>
+    [EnumMember(Value = "Actualizar Gimnasio")]
+    UpdateGym,
+
+    /// <summary>
+    /// Obtener Gimnasios
+    /// </summary>
+    [EnumMember(Value = "Obtener Gimnasios")]
+    GetGyms,
+
+    /// <summary>
+    /// Obtener Gimnasio por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Gimnasio por GUID")]
+    GetGymByGuid,
+
+    // ========== OPERACIONES DE ENTRENADOR ==========
+
+    /// <summary>
+    /// Crear Entrenador
+    /// </summary>
+    [EnumMember(Value = "Crear Entrenador")]
+    CreateTrainer,
+
+    /// <summary>
+    /// Actualizar Entrenador
+    /// </summary>
+    [EnumMember(Value = "Actualizar Entrenador")]
+    UpdateTrainer,
+
+    /// <summary>
+    /// Obtener Entrenadores
+    /// </summary>
+    [EnumMember(Value = "Obtener Entrenadores")]
+    GetTrainers,
+
+    /// <summary>
+    /// Obtener Entrenador por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Entrenador por GUID")]
+    GetTrainerByGuid,
+
+    // ========== OPERACIONES DE MEMBRESÍA ==========
+
+    /// <summary>
+    /// Crear Membresía
+    /// </summary>
+    [EnumMember(Value = "Crear Membresía")]
+    CreateMembership,
+
+    /// <summary>
+    /// Actualizar Membresía
+    /// </summary>
+    [EnumMember(Value = "Actualizar Membresía")]
+    UpdateMembership,
+
+    /// <summary>
+    /// Obtener Membresías
+    /// </summary>
+    [EnumMember(Value = "Obtener Membresías")]
+    GetMemberships,
+
+    /// <summary>
+    /// Obtener Membresía por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Membresía por GUID")]
+    GetMembershipByGuid,
+
+    // ========== OPERACIONES DE TIPO DE MEMBRESÍA ==========
+
+    /// <summary>
+    /// Crear Tipo de Membresía
+    /// </summary>
+    [EnumMember(Value = "Crear Tipo de Membresía")]
+    CreateMembershipType,
+
+    /// <summary>
+    /// Actualizar Tipo de Membresía
+    /// </summary>
+    [EnumMember(Value = "Actualizar Tipo de Membresía")]
+    UpdateMembershipType,
+
+    /// <summary>
+    /// Obtener Tipos de Membresía
+    /// </summary>
+    [EnumMember(Value = "Obtener Tipos de Membresía")]
+    GetMembershipTypes,
+
+    /// <summary>
+    /// Obtener Tipo de Membresía por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Tipo de Membresía por GUID")]
+    GetMembershipTypeByGuid,
+
+    // ========== OPERACIONES DE CLASE GRUPAL ==========
+
+    /// <summary>
+    /// Crear Clase Grupal
+    /// </summary>
+    [EnumMember(Value = "Crear Clase Grupal")]
+    CreateGroupClass,
+
+    /// <summary>
+    /// Actualizar Clase Grupal
+    /// </summary>
+    [EnumMember(Value = "Actualizar Clase Grupal")]
+    UpdateGroupClass,
+
+    /// <summary>
+    /// Obtener Clases Grupales
+    /// </summary>
+    [EnumMember(Value = "Obtener Clases Grupales")]
+    GetGroupClasses,
+
+    /// <summary>
+    /// Obtener Clase Grupal por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Clase Grupal por GUID")]
+    GetGroupClassByGuid,
+
+    // ========== OPERACIONES DE HORARIO DE CLASE ==========
+
+    /// <summary>
+    /// Crear Horario de Clase
+    /// </summary>
+    [EnumMember(Value = "Crear Horario de Clase")]
+    CreateClassSchedule,
+
+    /// <summary>
+    /// Actualizar Horario de Clase
+    /// </summary>
+    [EnumMember(Value = "Actualizar Horario de Clase")]
+    UpdateClassSchedule,
+
+    /// <summary>
+    /// Obtener Horarios de Clase
+    /// </summary>
+    [EnumMember(Value = "Obtener Horarios de Clase")]
+    GetClassSchedules,
+
+    /// <summary>
+    /// Obtener Horario de Clase por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Horario de Clase por GUID")]
+    GetClassScheduleByGuid,
+
+    // ========== OPERACIONES DE RESERVA DE CLASE ==========
+
+    /// <summary>
+    /// Crear Reserva de Clase
+    /// </summary>
+    [EnumMember(Value = "Crear Reserva de Clase")]
+    CreateClassReservation,
+
+    /// <summary>
+    /// Cancelar Reserva de Clase
+    /// </summary>
+    [EnumMember(Value = "Cancelar Reserva de Clase")]
+    CancelClassReservation,
+
+    /// <summary>
+    /// Obtener Reservas de Clase
+    /// </summary>
+    [EnumMember(Value = "Obtener Reservas de Clase")]
+    GetClassReservations,
+
+    /// <summary>
+    /// Obtener Reserva de Clase por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Reserva de Clase por GUID")]
+    GetClassReservationByGuid,
+
+    // ========== OPERACIONES DE MÁQUINA DE GIMNASIO ==========
+
+    /// <summary>
+    /// Crear Máquina de Gimnasio
+    /// </summary>
+    [EnumMember(Value = "Crear Máquina de Gimnasio")]
+    CreateGymMachine,
+
+    /// <summary>
+    /// Actualizar Máquina de Gimnasio
+    /// </summary>
+    [EnumMember(Value = "Actualizar Máquina de Gimnasio")]
+    UpdateGymMachine,
+
+    /// <summary>
+    /// Obtener Máquinas de Gimnasio
+    /// </summary>
+    [EnumMember(Value = "Obtener Máquinas de Gimnasio")]
+    GetGymMachines,
+
+    /// <summary>
+    /// Obtener Máquina de Gimnasio por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Máquina de Gimnasio por GUID")]
+    GetGymMachineByGuid,
+
+    // ========== OPERACIONES DE META PERSONAL ==========
+
+    /// <summary>
+    /// Crear Meta Personal
+    /// </summary>
+    [EnumMember(Value = "Crear Meta Personal")]
+    CreatePersonalGoal,
+
+    /// <summary>
+    /// Actualizar Meta Personal
+    /// </summary>
+    [EnumMember(Value = "Actualizar Meta Personal")]
+    UpdatePersonalGoal,
+
+    /// <summary>
+    /// Obtener Metas Personales
+    /// </summary>
+    [EnumMember(Value = "Obtener Metas Personales")]
+    GetPersonalGoals,
+
+    /// <summary>
+    /// Obtener Meta Personal por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Meta Personal por GUID")]
+    GetPersonalGoalByGuid,
+
+    // ========== OPERACIONES DE RESEÑA DE GIMNASIO ==========
+
+    /// <summary>
+    /// Crear Reseña de Gimnasio
+    /// </summary>
+    [EnumMember(Value = "Crear Reseña de Gimnasio")]
+    CreateGymReview,
+
+    /// <summary>
+    /// Obtener Reseñas de Gimnasio
+    /// </summary>
+    [EnumMember(Value = "Obtener Reseñas de Gimnasio")]
+    GetGymReviews,
+
+    // ========== OPERACIONES DE CALIFICACIÓN DE ENTRENADOR ==========
+
+    /// <summary>
+    /// Crear Calificación de Entrenador
+    /// </summary>
+    [EnumMember(Value = "Crear Calificación de Entrenador")]
+    CreateTrainerRating,
+
+    /// <summary>
+    /// Obtener Calificaciones de Entrenador
+    /// </summary>
+    [EnumMember(Value = "Obtener Calificaciones de Entrenador")]
+    GetTrainerRatings
     
 }

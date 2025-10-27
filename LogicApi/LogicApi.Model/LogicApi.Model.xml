@@ -1091,6 +1091,114 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Request.ClassReservation.CancelClassReservationRequest">
+            <summary>
+            Solicitud para cancelar una reserva de clase
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ClassReservation.CancelClassReservationRequest.ClassReservationGuid">
+            <summary>
+            Guid de la reserva de clase
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ClassReservation.CancelClassReservationRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.ClassReservation.CancelClassReservationRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.ClassReservation.CancelClassReservationRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.ClassReservation.CreateClassReservationRequest">
+            <summary>
+            Solicitud para crear una reserva de clase
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ClassReservation.CreateClassReservationRequest.ClassScheduleId">
+            <summary>
+            Id del horario de clase
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ClassReservation.CreateClassReservationRequest.PersonId">
+            <summary>
+            Id de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ClassReservation.CreateClassReservationRequest.ReservationDate">
+            <summary>
+            Fecha de reserva
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ClassReservation.CreateClassReservationRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.ClassReservation.CreateClassReservationRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.ClassReservation.CreateClassReservationRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.ClassSchedule.CreateClassScheduleRequest">
+            <summary>
+            Solicitud para crear un horario de clase
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ClassSchedule.CreateClassScheduleRequest.GroupClassId">
+            <summary>
+            Id de la clase grupal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ClassSchedule.CreateClassScheduleRequest.DayOfWeek">
+            <summary>
+            Día de la semana
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ClassSchedule.CreateClassScheduleRequest.StartTime">
+            <summary>
+            Hora de inicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ClassSchedule.CreateClassScheduleRequest.EndTime">
+            <summary>
+            Hora de fin
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ClassSchedule.CreateClassScheduleRequest.RoomLocation">
+            <summary>
+            Ubicación de la sala
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ClassSchedule.CreateClassScheduleRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.ClassSchedule.CreateClassScheduleRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.ClassSchedule.CreateClassScheduleRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogFileRequest">
             <summary>
             Request Obtiene una lista de items de catálogo
@@ -1304,6 +1412,471 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Request.GroupClass.CreateGroupClassRequest">
+            <summary>
+            Solicitud para crear una clase grupal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GroupClass.CreateGroupClassRequest.GymGuid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GroupClass.CreateGroupClassRequest.TrainerGuid">
+            <summary>
+            Guid del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GroupClass.CreateGroupClassRequest.ClassName">
+            <summary>
+            Nombre de la clase
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GroupClass.CreateGroupClassRequest.ClassDescription">
+            <summary>
+            Descripción de la clase
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GroupClass.CreateGroupClassRequest.DurationMinutes">
+            <summary>
+            Duración en minutos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GroupClass.CreateGroupClassRequest.MaxCapacity">
+            <summary>
+            Capacidad máxima
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GroupClass.CreateGroupClassRequest.ClassImageUrl">
+            <summary>
+            URL de imagen de la clase
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GroupClass.CreateGroupClassRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.GroupClass.CreateGroupClassRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.GroupClass.CreateGroupClassRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.GymMachine.CreateGymMachineRequest">
+            <summary>
+            Solicitud para crear una máquina de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymMachine.CreateGymMachineRequest.GymGuid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymMachine.CreateGymMachineRequest.MachineName">
+            <summary>
+            Nombre de la máquina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymMachine.CreateGymMachineRequest.MachineType">
+            <summary>
+            Tipo de máquina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymMachine.CreateGymMachineRequest.MachineImageUrl">
+            <summary>
+            URL de imagen de la máquina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymMachine.CreateGymMachineRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.GymMachine.CreateGymMachineRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.GymMachine.CreateGymMachineRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.GymMachine.UpdateGymMachineRequest">
+            <summary>
+            Solicitud para actualizar una máquina de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymMachine.UpdateGymMachineRequest.GymMachineGuid">
+            <summary>
+            Guid de la máquina de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymMachine.UpdateGymMachineRequest.MachineName">
+            <summary>
+            Nombre de la máquina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymMachine.UpdateGymMachineRequest.MachineType">
+            <summary>
+            Tipo de máquina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymMachine.UpdateGymMachineRequest.MachineImageUrl">
+            <summary>
+            URL de imagen de la máquina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymMachine.UpdateGymMachineRequest.MachineStatus">
+            <summary>
+            Estado de la máquina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymMachine.UpdateGymMachineRequest.LastRevision">
+            <summary>
+            Última revisión
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymMachine.UpdateGymMachineRequest.IsActive">
+            <summary>
+            Estado del registro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymMachine.UpdateGymMachineRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.GymMachine.UpdateGymMachineRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.GymMachine.UpdateGymMachineRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.GymReview.CreateGymReviewRequest">
+            <summary>
+            Solicitud para crear una reseña de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymReview.CreateGymReviewRequest.GymGuid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymReview.CreateGymReviewRequest.PersonId">
+            <summary>
+            Id de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymReview.CreateGymReviewRequest.Rating">
+            <summary>
+            Calificación (1-5 estrellas)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymReview.CreateGymReviewRequest.Comment">
+            <summary>
+            Comentario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymReview.CreateGymReviewRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.GymReview.CreateGymReviewRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.GymReview.CreateGymReviewRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.GymReview.GetGymReviewsRequest">
+            <summary>
+            Solicitud para obtener reseñas de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymReview.GetGymReviewsRequest.GymGuid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymReview.GetGymReviewsRequest.MinRating">
+            <summary>
+            Filtro por calificación mínima
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymReview.GetGymReviewsRequest.Page">
+            <summary>
+            Página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymReview.GetGymReviewsRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.GymReview.GetGymReviewsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.GymReview.GetGymReviewsRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.GymReview.GetGymReviewsRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Gym.CreateGymRequest">
+            <summary>
+            Solicitud para crear un gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.CreateGymRequest.Name">
+            <summary>
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.CreateGymRequest.Description">
+            <summary>
+            Descripción del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.CreateGymRequest.ShortDescription">
+            <summary>
+            Descripción corta del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.CreateGymRequest.Address">
+            <summary>
+            Dirección del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.CreateGymRequest.Phone">
+            <summary>
+            Teléfono del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.CreateGymRequest.Email">
+            <summary>
+            Email del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.CreateGymRequest.Website">
+            <summary>
+            Sitio web del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.CreateGymRequest.OpeningTime">
+            <summary>
+            Horario de apertura
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.CreateGymRequest.ClosingTime">
+            <summary>
+            Horario de cierre
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.CreateGymRequest.Latitude">
+            <summary>
+            Latitud para localización
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.CreateGymRequest.Longitude">
+            <summary>
+            Longitud para localización
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.CreateGymRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Gym.CreateGymRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Gym.CreateGymRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Gym.GetGymByGuidRequest">
+            <summary>
+            Solicitud para obtener un gimnasio por GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.GetGymByGuidRequest.GymGuid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.GetGymByGuidRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Gym.GetGymByGuidRequest.#ctor(Common.WebApi.Models.ContextRequest,System.Guid)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+            <param name="gymGuid"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Gym.GetGymByGuidRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Gym.GetGymsRequest">
+            <summary>
+            Solicitud para obtener gimnasios
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.GetGymsRequest.NameFilter">
+            <summary>
+            Filtro por nombre
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.GetGymsRequest.IsActiveFilter">
+            <summary>
+            Filtro por estado activo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.GetGymsRequest.Page">
+            <summary>
+            Página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.GetGymsRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.GetGymsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Gym.GetGymsRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Gym.GetGymsRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Gym.UpdateGymRequest">
+            <summary>
+            Solicitud para actualizar un gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.UpdateGymRequest.GymGuid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.UpdateGymRequest.Name">
+            <summary>
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.UpdateGymRequest.Description">
+            <summary>
+            Descripción del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.UpdateGymRequest.ShortDescription">
+            <summary>
+            Descripción corta del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.UpdateGymRequest.Address">
+            <summary>
+            Dirección del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.UpdateGymRequest.Phone">
+            <summary>
+            Teléfono del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.UpdateGymRequest.Email">
+            <summary>
+            Email del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.UpdateGymRequest.Website">
+            <summary>
+            Sitio web del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.UpdateGymRequest.OpeningTime">
+            <summary>
+            Horario de apertura
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.UpdateGymRequest.ClosingTime">
+            <summary>
+            Horario de cierre
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.UpdateGymRequest.Latitude">
+            <summary>
+            Latitud para localización
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.UpdateGymRequest.Longitude">
+            <summary>
+            Longitud para localización
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.UpdateGymRequest.IsActive">
+            <summary>
+            Estado del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Gym.UpdateGymRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Gym.UpdateGymRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Gym.UpdateGymRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Request.Logger.RegisterLogAuditExecutorModel">
              <summary>
             Modelo ejecutor de 
@@ -1389,6 +1962,273 @@
         <member name="P:LogicApi.Model.Request.Logger.RegisterLogRequest.ContextRequest">
             <summary>
             Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.MembershipType.CreateMembershipTypeRequest">
+            <summary>
+            Solicitud para crear un tipo de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.MembershipType.CreateMembershipTypeRequest.GymGuid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.MembershipType.CreateMembershipTypeRequest.PlanName">
+            <summary>
+            Nombre del plan
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.MembershipType.CreateMembershipTypeRequest.Price">
+            <summary>
+            Precio del plan
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.MembershipType.CreateMembershipTypeRequest.DurationDays">
+            <summary>
+            Duración en días
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.MembershipType.CreateMembershipTypeRequest.BenefitsDescription">
+            <summary>
+            Descripción de beneficios
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.MembershipType.CreateMembershipTypeRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.MembershipType.CreateMembershipTypeRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.MembershipType.CreateMembershipTypeRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.MembershipType.GetMembershipTypesRequest">
+            <summary>
+            Solicitud para obtener tipos de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.MembershipType.GetMembershipTypesRequest.GymGuid">
+            <summary>
+            Guid del gimnasio (filtro opcional)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.MembershipType.GetMembershipTypesRequest.IsActiveFilter">
+            <summary>
+            Filtro por estado activo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.MembershipType.GetMembershipTypesRequest.Page">
+            <summary>
+            Página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.MembershipType.GetMembershipTypesRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.MembershipType.GetMembershipTypesRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.MembershipType.GetMembershipTypesRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.MembershipType.GetMembershipTypesRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Membership.CreateMembershipRequest">
+            <summary>
+            Solicitud para crear una membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.CreateMembershipRequest.PersonId">
+            <summary>
+            Id de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.CreateMembershipRequest.GymGuid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.CreateMembershipRequest.MembershipTypeId">
+            <summary>
+            Id del tipo de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.CreateMembershipRequest.StartDate">
+            <summary>
+            Fecha de inicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.CreateMembershipRequest.EndDate">
+            <summary>
+            Fecha de fin
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.CreateMembershipRequest.GymRole">
+            <summary>
+            Rol en el gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.CreateMembershipRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Membership.CreateMembershipRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Membership.CreateMembershipRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Membership.GetMembershipByGuidRequest">
+            <summary>
+            Solicitud para obtener una membresía por GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.GetMembershipByGuidRequest.MembershipGuid">
+            <summary>
+            Guid de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.GetMembershipByGuidRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Membership.GetMembershipByGuidRequest.#ctor(Common.WebApi.Models.ContextRequest,System.Guid)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+            <param name="membershipGuid"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Membership.GetMembershipByGuidRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Membership.GetMembershipsRequest">
+            <summary>
+            Solicitud para obtener membresías
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.GetMembershipsRequest.GymGuid">
+            <summary>
+            Guid del gimnasio (filtro opcional)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.GetMembershipsRequest.PersonId">
+            <summary>
+            Id de la persona (filtro opcional)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.GetMembershipsRequest.StatusFilter">
+            <summary>
+            Filtro por estado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.GetMembershipsRequest.GymRoleFilter">
+            <summary>
+            Filtro por rol en el gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.GetMembershipsRequest.OnlyActiveMemberships">
+            <summary>
+            Filtro por membresías activas (no vencidas)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.GetMembershipsRequest.Page">
+            <summary>
+            Página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.GetMembershipsRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.GetMembershipsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Membership.GetMembershipsRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Membership.GetMembershipsRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Membership.UpdateMembershipRequest">
+            <summary>
+            Solicitud para actualizar una membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.UpdateMembershipRequest.MembershipGuid">
+            <summary>
+            Guid de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.UpdateMembershipRequest.StartDate">
+            <summary>
+            Fecha de inicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.UpdateMembershipRequest.EndDate">
+            <summary>
+            Fecha de fin
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.UpdateMembershipRequest.Status">
+            <summary>
+            Estado de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.UpdateMembershipRequest.GymRole">
+            <summary>
+            Rol en el gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Membership.UpdateMembershipRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Membership.UpdateMembershipRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Membership.UpdateMembershipRequest.#ctor">
+            <summary>
+            Default Constructor
             </summary>
         </member>
         <member name="T:LogicApi.Model.Request.Order.Common.SeatPersonRequest">
@@ -1581,6 +2421,154 @@
         <member name="P:LogicApi.Model.Request.Order.VerifyOrderValuesRequest.ContextRequest">
             <summary>
             Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.PersonalGoal.CreatePersonalGoalRequest">
+            <summary>
+            Solicitud para crear un objetivo personal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.CreatePersonalGoalRequest.PersonId">
+            <summary>
+            Id de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.CreatePersonalGoalRequest.GoalType">
+            <summary>
+            Tipo de objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.CreatePersonalGoalRequest.InitialValue">
+            <summary>
+            Valor inicial
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.CreatePersonalGoalRequest.TargetValue">
+            <summary>
+            Valor objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.CreatePersonalGoalRequest.StartDate">
+            <summary>
+            Fecha de inicio del objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.CreatePersonalGoalRequest.EstimatedEndDate">
+            <summary>
+            Fecha de fin estimada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.CreatePersonalGoalRequest.Description">
+            <summary>
+            Descripción del objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.CreatePersonalGoalRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.PersonalGoal.CreatePersonalGoalRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.PersonalGoal.CreatePersonalGoalRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.PersonalGoal.GetPersonalGoalsRequest">
+            <summary>
+            Solicitud para obtener objetivos personales
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.GetPersonalGoalsRequest.PersonId">
+            <summary>
+            Id de la persona (filtro opcional)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.GetPersonalGoalsRequest.GoalTypeFilter">
+            <summary>
+            Filtro por tipo de objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.GetPersonalGoalsRequest.GoalStatusFilter">
+            <summary>
+            Filtro por estado del objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.GetPersonalGoalsRequest.Page">
+            <summary>
+            Página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.GetPersonalGoalsRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.GetPersonalGoalsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.PersonalGoal.GetPersonalGoalsRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.PersonalGoal.GetPersonalGoalsRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.PersonalGoal.UpdatePersonalGoalRequest">
+            <summary>
+            Solicitud para actualizar un objetivo personal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.UpdatePersonalGoalRequest.PersonalGoalGuid">
+            <summary>
+            Guid del objetivo personal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.UpdatePersonalGoalRequest.TargetValue">
+            <summary>
+            Valor objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.UpdatePersonalGoalRequest.EstimatedEndDate">
+            <summary>
+            Fecha de fin estimada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.UpdatePersonalGoalRequest.GoalStatus">
+            <summary>
+            Estado del objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.UpdatePersonalGoalRequest.Description">
+            <summary>
+            Descripción del objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.PersonalGoal.UpdatePersonalGoalRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.PersonalGoal.UpdatePersonalGoalRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.PersonalGoal.UpdatePersonalGoalRequest.#ctor">
+            <summary>
+            Default Constructor
             </summary>
         </member>
         <member name="T:LogicApi.Model.Request.Place.GetMyFavoritePlaceRequest">
@@ -1903,6 +2891,171 @@
         <member name="P:LogicApi.Model.Request.Ticket.GetTicketsAvailableRequest.ContextRequest">
             <summary>
             Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Trainer.CreateTrainerRequest">
+            <summary>
+            Solicitud para crear un entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.CreateTrainerRequest.PersonId">
+            <summary>
+            Id de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.CreateTrainerRequest.GymGuid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.CreateTrainerRequest.Specialty">
+            <summary>
+            Especialidad del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.CreateTrainerRequest.Biography">
+            <summary>
+            Biografía del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.CreateTrainerRequest.ProfilePhotoUrl">
+            <summary>
+            URL de foto de perfil
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.CreateTrainerRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Trainer.CreateTrainerRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Trainer.CreateTrainerRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Trainer.GetTrainerByGuidRequest">
+            <summary>
+            Solicitud para obtener un entrenador por GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.GetTrainerByGuidRequest.TrainerGuid">
+            <summary>
+            Guid del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.GetTrainerByGuidRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Trainer.GetTrainerByGuidRequest.#ctor(Common.WebApi.Models.ContextRequest,System.Guid)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+            <param name="trainerGuid"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Trainer.GetTrainerByGuidRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Trainer.GetTrainersRequest">
+            <summary>
+            Solicitud para obtener entrenadores
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.GetTrainersRequest.GymGuid">
+            <summary>
+            Guid del gimnasio (filtro opcional)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.GetTrainersRequest.SpecialtyFilter">
+            <summary>
+            Filtro por especialidad
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.GetTrainersRequest.IsActiveFilter">
+            <summary>
+            Filtro por estado activo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.GetTrainersRequest.Page">
+            <summary>
+            Página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.GetTrainersRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.GetTrainersRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Trainer.GetTrainersRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Trainer.GetTrainersRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Trainer.UpdateTrainerRequest">
+            <summary>
+            Solicitud para actualizar un entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.UpdateTrainerRequest.TrainerGuid">
+            <summary>
+            Guid del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.UpdateTrainerRequest.Specialty">
+            <summary>
+            Especialidad del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.UpdateTrainerRequest.Biography">
+            <summary>
+            Biografía del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.UpdateTrainerRequest.ProfilePhotoUrl">
+            <summary>
+            URL de foto de perfil
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.UpdateTrainerRequest.IsActive">
+            <summary>
+            Estado del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Trainer.UpdateTrainerRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Trainer.UpdateTrainerRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Trainer.UpdateTrainerRequest.#ctor">
+            <summary>
+            Default Constructor
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Administration.GetCooperativeInformationResponse">
@@ -2346,6 +3499,135 @@
             </summary>
             <value></value>
         </member>
+        <member name="T:LogicApi.Model.Response.ClassReservation.CancelClassReservationResponse">
+            <summary>
+            Respuesta de cancelar reserva de clase
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassReservation.CancelClassReservationResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassReservation.CancelClassReservationResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassReservation.CancelClassReservationResponse.ClassReservationGuid">
+            <summary>
+            Guid de la reserva de clase cancelada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassReservation.CancelClassReservationResponse.ReservationStatus">
+            <summary>
+            Estado de la reserva
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.ClassReservation.CancelClassReservationResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="classReservationGuid"></param>
+            <param name="reservationStatus"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.ClassReservation.CancelClassReservationResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ClassReservation.CreateClassReservationResponse">
+            <summary>
+            Respuesta de crear reserva de clase
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassReservation.CreateClassReservationResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassReservation.CreateClassReservationResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassReservation.CreateClassReservationResponse.ClassReservationGuid">
+            <summary>
+            Guid de la reserva de clase creada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassReservation.CreateClassReservationResponse.ReservationDate">
+            <summary>
+            Fecha de reserva
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassReservation.CreateClassReservationResponse.ReservationStatus">
+            <summary>
+            Estado de la reserva
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.ClassReservation.CreateClassReservationResponse.#ctor(System.Guid,System.DateTime,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="classReservationGuid"></param>
+            <param name="reservationDate"></param>
+            <param name="reservationStatus"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.ClassReservation.CreateClassReservationResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ClassSchedule.CreateClassScheduleResponse">
+            <summary>
+            Respuesta de crear horario de clase
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassSchedule.CreateClassScheduleResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassSchedule.CreateClassScheduleResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassSchedule.CreateClassScheduleResponse.ClassScheduleGuid">
+            <summary>
+            Guid del horario de clase creado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassSchedule.CreateClassScheduleResponse.DayOfWeek">
+            <summary>
+            Día de la semana
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassSchedule.CreateClassScheduleResponse.StartTime">
+            <summary>
+            Hora de inicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClassSchedule.CreateClassScheduleResponse.EndTime">
+            <summary>
+            Hora de fin
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.ClassSchedule.CreateClassScheduleResponse.#ctor(System.Guid,System.String,System.TimeSpan,System.TimeSpan)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="classScheduleGuid"></param>
+            <param name="dayOfWeek"></param>
+            <param name="startTime"></param>
+            <param name="endTime"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.ClassSchedule.CreateClassScheduleResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Response.CommonConfiguration.Common.ItemCatalogResponse">
             <summary>
             Items de Catálogo
@@ -2637,6 +3919,546 @@
             Mensaje al Usuario
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Response.GroupClass.CreateGroupClassResponse">
+            <summary>
+            Respuesta de crear clase grupal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GroupClass.CreateGroupClassResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GroupClass.CreateGroupClassResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GroupClass.CreateGroupClassResponse.GroupClassGuid">
+            <summary>
+            Guid de la clase grupal creada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GroupClass.CreateGroupClassResponse.ClassName">
+            <summary>
+            Nombre de la clase
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.GroupClass.CreateGroupClassResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="groupClassGuid"></param>
+            <param name="className"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.GroupClass.CreateGroupClassResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.GymMachine.CreateGymMachineResponse">
+            <summary>
+            Respuesta de crear máquina de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymMachine.CreateGymMachineResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymMachine.CreateGymMachineResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymMachine.CreateGymMachineResponse.GymMachineGuid">
+            <summary>
+            Guid de la máquina creada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymMachine.CreateGymMachineResponse.MachineName">
+            <summary>
+            Nombre de la máquina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymMachine.CreateGymMachineResponse.MachineType">
+            <summary>
+            Tipo de máquina
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.GymMachine.CreateGymMachineResponse.#ctor(System.Guid,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="gymMachineGuid"></param>
+            <param name="machineName"></param>
+            <param name="machineType"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.GymMachine.CreateGymMachineResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.GymMachine.UpdateGymMachineResponse">
+            <summary>
+            Respuesta de actualizar máquina de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymMachine.UpdateGymMachineResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymMachine.UpdateGymMachineResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymMachine.UpdateGymMachineResponse.GymMachineGuid">
+            <summary>
+            Guid de la máquina actualizada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymMachine.UpdateGymMachineResponse.MachineStatus">
+            <summary>
+            Estado de la máquina
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.GymMachine.UpdateGymMachineResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="gymMachineGuid"></param>
+            <param name="machineStatus"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.GymMachine.UpdateGymMachineResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.GymReview.CreateGymReviewResponse">
+            <summary>
+            Respuesta de crear reseña de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.CreateGymReviewResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.CreateGymReviewResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.CreateGymReviewResponse.GymReviewGuid">
+            <summary>
+            Guid de la reseña creada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.CreateGymReviewResponse.Rating">
+            <summary>
+            Calificación
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.CreateGymReviewResponse.ReviewDate">
+            <summary>
+            Fecha de reseña
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.GymReview.CreateGymReviewResponse.#ctor(System.Guid,System.Int32,System.DateTime)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="gymReviewGuid"></param>
+            <param name="rating"></param>
+            <param name="reviewDate"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.GymReview.CreateGymReviewResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.GymReview.GetGymReviewsResponse">
+            <summary>
+            Respuesta de obtener reseñas de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.GetGymReviewsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.GetGymReviewsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.GetGymReviewsResponse.GymReviews">
+            <summary>
+            Lista de reseñas
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.GetGymReviewsResponse.AverageRating">
+            <summary>
+            Calificación promedio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.GetGymReviewsResponse.TotalReviews">
+            <summary>
+            Total de reseñas
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.GetGymReviewsResponse.TotalRecords">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.GetGymReviewsResponse.CurrentPage">
+            <summary>
+            Página actual
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.GetGymReviewsResponse.TotalPages">
+            <summary>
+            Total de páginas
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.GymReview.GetGymReviewsResponse.#ctor(System.Collections.Generic.IEnumerable{LogicApi.Model.Response.GymReview.GymReviewItem},System.Decimal,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="gymReviews"></param>
+            <param name="averageRating"></param>
+            <param name="totalReviews"></param>
+            <param name="totalRecords"></param>
+            <param name="currentPage"></param>
+            <param name="pageSize"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.GymReview.GetGymReviewsResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.GymReview.GymReviewItem">
+            <summary>
+            Item de reseña de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.GymReviewItem.Guid">
+            <summary>
+            Guid de la reseña
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.GymReviewItem.PersonFullName">
+            <summary>
+            Nombre completo de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.GymReviewItem.Rating">
+            <summary>
+            Calificación (1-5 estrellas)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.GymReviewItem.Comment">
+            <summary>
+            Comentario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.GymReviewItem.ReviewDate">
+            <summary>
+            Fecha de reseña
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymReview.GymReviewItem.IsActive">
+            <summary>
+            Estado de la reseña
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Gym.CreateGymResponse">
+            <summary>
+            Respuesta de crear gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.CreateGymResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.CreateGymResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.CreateGymResponse.GymGuid">
+            <summary>
+            Guid del gimnasio creado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.CreateGymResponse.Name">
+            <summary>
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Gym.CreateGymResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="gymGuid"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Gym.CreateGymResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Gym.GetGymByGuidResponse">
+            <summary>
+            Respuesta de obtener gimnasio por GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GetGymByGuidResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GetGymByGuidResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GetGymByGuidResponse.Gym">
+            <summary>
+            Datos del gimnasio
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Gym.GetGymByGuidResponse.#ctor(LogicApi.Model.Response.Gym.GymDetail)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="gym"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Gym.GetGymByGuidResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Gym.GymDetail">
+            <summary>
+            Detalle completo de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymDetail.Guid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymDetail.Name">
+            <summary>
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymDetail.Description">
+            <summary>
+            Descripción del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymDetail.ShortDescription">
+            <summary>
+            Descripción corta del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymDetail.Address">
+            <summary>
+            Dirección del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymDetail.Phone">
+            <summary>
+            Teléfono del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymDetail.Email">
+            <summary>
+            Email del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymDetail.Website">
+            <summary>
+            Sitio web del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymDetail.OpeningTime">
+            <summary>
+            Horario de apertura
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymDetail.ClosingTime">
+            <summary>
+            Horario de cierre
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymDetail.Latitude">
+            <summary>
+            Latitud para localización
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymDetail.Longitude">
+            <summary>
+            Longitud para localización
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymDetail.IsActive">
+            <summary>
+            Estado del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymDetail.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Gym.GetGymsResponse">
+            <summary>
+            Respuesta de obtener gimnasios
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GetGymsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GetGymsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GetGymsResponse.Gyms">
+            <summary>
+            Lista de gimnasios
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GetGymsResponse.TotalRecords">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GetGymsResponse.CurrentPage">
+            <summary>
+            Página actual
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GetGymsResponse.TotalPages">
+            <summary>
+            Total de páginas
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Gym.GetGymsResponse.#ctor(System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Gym.GymItem},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="gyms"></param>
+            <param name="totalRecords"></param>
+            <param name="currentPage"></param>
+            <param name="pageSize"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Gym.GetGymsResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Gym.GymItem">
+            <summary>
+            Item de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymItem.Guid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymItem.Name">
+            <summary>
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymItem.ShortDescription">
+            <summary>
+            Descripción corta del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymItem.Address">
+            <summary>
+            Dirección del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymItem.Phone">
+            <summary>
+            Teléfono del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymItem.Email">
+            <summary>
+            Email del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymItem.OpeningTime">
+            <summary>
+            Horario de apertura
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymItem.ClosingTime">
+            <summary>
+            Horario de cierre
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymItem.IsActive">
+            <summary>
+            Estado del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.GymItem.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Gym.UpdateGymResponse">
+            <summary>
+            Respuesta de actualizar gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.UpdateGymResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.UpdateGymResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.UpdateGymResponse.GymGuid">
+            <summary>
+            Guid del gimnasio actualizado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Gym.UpdateGymResponse.Name">
+            <summary>
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Gym.UpdateGymResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="gymGuid"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Gym.UpdateGymResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Response.HandlerResponse">
             <summary>
             Respuesta generica de Handler
@@ -2683,6 +4505,494 @@
             Constructor
             </summary>
             <param name="isRegistered"></param>
+        </member>
+        <member name="T:LogicApi.Model.Response.MembershipType.CreateMembershipTypeResponse">
+            <summary>
+            Respuesta de crear tipo de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.CreateMembershipTypeResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.CreateMembershipTypeResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.CreateMembershipTypeResponse.MembershipTypeGuid">
+            <summary>
+            Guid del tipo de membresía creado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.CreateMembershipTypeResponse.PlanName">
+            <summary>
+            Nombre del plan
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.CreateMembershipTypeResponse.Price">
+            <summary>
+            Precio del plan
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.MembershipType.CreateMembershipTypeResponse.#ctor(System.Guid,System.String,System.Decimal)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="membershipTypeGuid"></param>
+            <param name="planName"></param>
+            <param name="price"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.MembershipType.CreateMembershipTypeResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.MembershipType.GetMembershipTypesResponse">
+            <summary>
+            Respuesta de obtener tipos de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.GetMembershipTypesResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.GetMembershipTypesResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.GetMembershipTypesResponse.MembershipTypes">
+            <summary>
+            Lista de tipos de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.GetMembershipTypesResponse.TotalRecords">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.GetMembershipTypesResponse.CurrentPage">
+            <summary>
+            Página actual
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.GetMembershipTypesResponse.TotalPages">
+            <summary>
+            Total de páginas
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.MembershipType.GetMembershipTypesResponse.#ctor(System.Collections.Generic.IEnumerable{LogicApi.Model.Response.MembershipType.MembershipTypeItem},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="membershipTypes"></param>
+            <param name="totalRecords"></param>
+            <param name="currentPage"></param>
+            <param name="pageSize"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.MembershipType.GetMembershipTypesResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.MembershipType.MembershipTypeItem">
+            <summary>
+            Item de tipo de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.MembershipTypeItem.Guid">
+            <summary>
+            Guid del tipo de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.MembershipTypeItem.GymName">
+            <summary>
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.MembershipTypeItem.PlanName">
+            <summary>
+            Nombre del plan
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.MembershipTypeItem.Price">
+            <summary>
+            Precio del plan
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.MembershipTypeItem.DurationDays">
+            <summary>
+            Duración en días
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.MembershipTypeItem.BenefitsDescription">
+            <summary>
+            Descripción de beneficios
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.MembershipTypeItem.IsActive">
+            <summary>
+            Estado del tipo de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.MembershipType.MembershipTypeItem.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Membership.CreateMembershipResponse">
+            <summary>
+            Respuesta de crear membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.CreateMembershipResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.CreateMembershipResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.CreateMembershipResponse.MembershipGuid">
+            <summary>
+            Guid de la membresía creada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.CreateMembershipResponse.Status">
+            <summary>
+            Estado de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.CreateMembershipResponse.EndDate">
+            <summary>
+            Fecha de fin
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Membership.CreateMembershipResponse.#ctor(System.Guid,System.String,System.DateTime)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="membershipGuid"></param>
+            <param name="status"></param>
+            <param name="endDate"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Membership.CreateMembershipResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Membership.GetMembershipByGuidResponse">
+            <summary>
+            Respuesta de obtener membresía por GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.GetMembershipByGuidResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.GetMembershipByGuidResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.GetMembershipByGuidResponse.Membership">
+            <summary>
+            Datos de la membresía
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Membership.GetMembershipByGuidResponse.#ctor(LogicApi.Model.Response.Membership.MembershipDetail)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="membership"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Membership.GetMembershipByGuidResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Membership.MembershipDetail">
+            <summary>
+            Detalle completo de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipDetail.Guid">
+            <summary>
+            Guid de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipDetail.Person">
+            <summary>
+            Información de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipDetail.Gym">
+            <summary>
+            Información del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipDetail.MembershipType">
+            <summary>
+            Información del tipo de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipDetail.StartDate">
+            <summary>
+            Fecha de inicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipDetail.EndDate">
+            <summary>
+            Fecha de fin
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipDetail.Status">
+            <summary>
+            Estado de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipDetail.GymRole">
+            <summary>
+            Rol en el gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipDetail.DaysRemaining">
+            <summary>
+            Días restantes
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipDetail.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Membership.MembershipPersonInfo">
+            <summary>
+            Información de persona para membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipPersonInfo.FullName">
+            <summary>
+            Nombre completo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipPersonInfo.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipPersonInfo.Phone">
+            <summary>
+            Teléfono
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipPersonInfo.DocumentNumber">
+            <summary>
+            Documento de identidad
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Membership.MembershipGymInfo">
+            <summary>
+            Información de gimnasio para membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipGymInfo.Guid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipGymInfo.Name">
+            <summary>
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipGymInfo.Address">
+            <summary>
+            Dirección del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipGymInfo.Phone">
+            <summary>
+            Teléfono del gimnasio
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Membership.MembershipTypeInfo">
+            <summary>
+            Información de tipo de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipTypeInfo.PlanName">
+            <summary>
+            Nombre del plan
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipTypeInfo.Price">
+            <summary>
+            Precio del plan
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipTypeInfo.DurationDays">
+            <summary>
+            Duración en días
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipTypeInfo.BenefitsDescription">
+            <summary>
+            Descripción de beneficios
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Membership.GetMembershipsResponse">
+            <summary>
+            Respuesta de obtener membresías
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.GetMembershipsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.GetMembershipsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.GetMembershipsResponse.Memberships">
+            <summary>
+            Lista de membresías
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.GetMembershipsResponse.TotalRecords">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.GetMembershipsResponse.CurrentPage">
+            <summary>
+            Página actual
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.GetMembershipsResponse.TotalPages">
+            <summary>
+            Total de páginas
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Membership.GetMembershipsResponse.#ctor(System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Membership.MembershipItem},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="memberships"></param>
+            <param name="totalRecords"></param>
+            <param name="currentPage"></param>
+            <param name="pageSize"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Membership.GetMembershipsResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Membership.MembershipItem">
+            <summary>
+            Item de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipItem.Guid">
+            <summary>
+            Guid de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipItem.PersonFullName">
+            <summary>
+            Nombre completo de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipItem.GymName">
+            <summary>
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipItem.MembershipTypeName">
+            <summary>
+            Nombre del tipo de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipItem.StartDate">
+            <summary>
+            Fecha de inicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipItem.EndDate">
+            <summary>
+            Fecha de fin
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipItem.Status">
+            <summary>
+            Estado de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipItem.GymRole">
+            <summary>
+            Rol en el gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipItem.DaysRemaining">
+            <summary>
+            Días restantes
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.MembershipItem.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Membership.UpdateMembershipResponse">
+            <summary>
+            Respuesta de actualizar membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.UpdateMembershipResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.UpdateMembershipResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.UpdateMembershipResponse.MembershipGuid">
+            <summary>
+            Guid de la membresía actualizada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.UpdateMembershipResponse.Status">
+            <summary>
+            Estado de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Membership.UpdateMembershipResponse.EndDate">
+            <summary>
+            Fecha de fin
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Membership.UpdateMembershipResponse.#ctor(System.Guid,System.String,System.DateTime)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="membershipGuid"></param>
+            <param name="status"></param>
+            <param name="endDate"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Membership.UpdateMembershipResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Order.Common.GenerateOrderItem">
             <summary>
@@ -3005,6 +5315,195 @@
             Mostrar Mensaje?
             </summary>
             <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.PersonalGoal.CreatePersonalGoalResponse">
+            <summary>
+            Respuesta de crear objetivo personal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.CreatePersonalGoalResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.CreatePersonalGoalResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.CreatePersonalGoalResponse.PersonalGoalGuid">
+            <summary>
+            Guid del objetivo personal creado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.CreatePersonalGoalResponse.GoalType">
+            <summary>
+            Tipo de objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.CreatePersonalGoalResponse.TargetValue">
+            <summary>
+            Valor objetivo
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.PersonalGoal.CreatePersonalGoalResponse.#ctor(System.Guid,System.String,System.Decimal)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="personalGoalGuid"></param>
+            <param name="goalType"></param>
+            <param name="targetValue"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.PersonalGoal.CreatePersonalGoalResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.PersonalGoal.GetPersonalGoalsResponse">
+            <summary>
+            Respuesta de obtener objetivos personales
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.GetPersonalGoalsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.GetPersonalGoalsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.GetPersonalGoalsResponse.PersonalGoals">
+            <summary>
+            Lista de objetivos personales
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.GetPersonalGoalsResponse.TotalRecords">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.GetPersonalGoalsResponse.CurrentPage">
+            <summary>
+            Página actual
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.GetPersonalGoalsResponse.TotalPages">
+            <summary>
+            Total de páginas
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.PersonalGoal.GetPersonalGoalsResponse.#ctor(System.Collections.Generic.IEnumerable{LogicApi.Model.Response.PersonalGoal.PersonalGoalItem},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="personalGoals"></param>
+            <param name="totalRecords"></param>
+            <param name="currentPage"></param>
+            <param name="pageSize"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.PersonalGoal.GetPersonalGoalsResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.PersonalGoal.PersonalGoalItem">
+            <summary>
+            Item de objetivo personal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.PersonalGoalItem.Guid">
+            <summary>
+            Guid del objetivo personal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.PersonalGoalItem.PersonFullName">
+            <summary>
+            Nombre completo de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.PersonalGoalItem.GoalType">
+            <summary>
+            Tipo de objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.PersonalGoalItem.InitialValue">
+            <summary>
+            Valor inicial
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.PersonalGoalItem.TargetValue">
+            <summary>
+            Valor objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.PersonalGoalItem.StartDate">
+            <summary>
+            Fecha de inicio del objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.PersonalGoalItem.EstimatedEndDate">
+            <summary>
+            Fecha de fin estimada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.PersonalGoalItem.GoalStatus">
+            <summary>
+            Estado del objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.PersonalGoalItem.ProgressPercentage">
+            <summary>
+            Progreso (porcentaje)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.PersonalGoalItem.Description">
+            <summary>
+            Descripción del objetivo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.PersonalGoalItem.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.PersonalGoal.UpdatePersonalGoalResponse">
+            <summary>
+            Respuesta de actualizar objetivo personal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.UpdatePersonalGoalResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.UpdatePersonalGoalResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.UpdatePersonalGoalResponse.PersonalGoalGuid">
+            <summary>
+            Guid del objetivo personal actualizado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.PersonalGoal.UpdatePersonalGoalResponse.GoalStatus">
+            <summary>
+            Estado del objetivo
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.PersonalGoal.UpdatePersonalGoalResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="personalGoalGuid"></param>
+            <param name="goalStatus"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.PersonalGoal.UpdatePersonalGoalResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Place.GetMyFavoritePlaceResponse">
             <summary>
@@ -3485,6 +5984,285 @@
             Nombre de Provincia de Destino
             </summary>
             <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.Trainer.CreateTrainerResponse">
+            <summary>
+            Respuesta de crear entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.CreateTrainerResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.CreateTrainerResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.CreateTrainerResponse.TrainerGuid">
+            <summary>
+            Guid del entrenador creado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.CreateTrainerResponse.Specialty">
+            <summary>
+            Especialidad del entrenador
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Trainer.CreateTrainerResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="trainerGuid"></param>
+            <param name="specialty"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Trainer.CreateTrainerResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Trainer.GetTrainerByGuidResponse">
+            <summary>
+            Respuesta de obtener entrenador por GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.GetTrainerByGuidResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.GetTrainerByGuidResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.GetTrainerByGuidResponse.Trainer">
+            <summary>
+            Datos del entrenador
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Trainer.GetTrainerByGuidResponse.#ctor(LogicApi.Model.Response.Trainer.TrainerDetail)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="trainer"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Trainer.GetTrainerByGuidResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Trainer.TrainerDetail">
+            <summary>
+            Detalle completo de entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerDetail.Guid">
+            <summary>
+            Guid del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerDetail.Person">
+            <summary>
+            Información de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerDetail.Gym">
+            <summary>
+            Información del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerDetail.Specialty">
+            <summary>
+            Especialidad del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerDetail.Biography">
+            <summary>
+            Biografía del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerDetail.ProfilePhotoUrl">
+            <summary>
+            URL de foto de perfil
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerDetail.IsActive">
+            <summary>
+            Estado del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerDetail.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Trainer.PersonInfo">
+            <summary>
+            Información básica de persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.PersonInfo.FullName">
+            <summary>
+            Nombre completo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.PersonInfo.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.PersonInfo.Phone">
+            <summary>
+            Teléfono
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Trainer.GymInfo">
+            <summary>
+            Información básica de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.GymInfo.Guid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.GymInfo.Name">
+            <summary>
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.GymInfo.Address">
+            <summary>
+            Dirección del gimnasio
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Trainer.GetTrainersResponse">
+            <summary>
+            Respuesta de obtener entrenadores
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.GetTrainersResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.GetTrainersResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.GetTrainersResponse.Trainers">
+            <summary>
+            Lista de entrenadores
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.GetTrainersResponse.TotalRecords">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.GetTrainersResponse.CurrentPage">
+            <summary>
+            Página actual
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.GetTrainersResponse.TotalPages">
+            <summary>
+            Total de páginas
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Trainer.GetTrainersResponse.#ctor(System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Trainer.TrainerItem},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="trainers"></param>
+            <param name="totalRecords"></param>
+            <param name="currentPage"></param>
+            <param name="pageSize"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Trainer.GetTrainersResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Trainer.TrainerItem">
+            <summary>
+            Item de entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerItem.Guid">
+            <summary>
+            Guid del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerItem.FullName">
+            <summary>
+            Nombre completo de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerItem.Specialty">
+            <summary>
+            Especialidad del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerItem.ProfilePhotoUrl">
+            <summary>
+            URL de foto de perfil
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerItem.GymName">
+            <summary>
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerItem.IsActive">
+            <summary>
+            Estado del entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.TrainerItem.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Trainer.UpdateTrainerResponse">
+            <summary>
+            Respuesta de actualizar entrenador
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.UpdateTrainerResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.UpdateTrainerResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.UpdateTrainerResponse.TrainerGuid">
+            <summary>
+            Guid del entrenador actualizado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Trainer.UpdateTrainerResponse.Specialty">
+            <summary>
+            Especialidad del entrenador
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Trainer.UpdateTrainerResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="trainerGuid"></param>
+            <param name="specialty"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Trainer.UpdateTrainerResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
         </member>
     </members>
 </doc>

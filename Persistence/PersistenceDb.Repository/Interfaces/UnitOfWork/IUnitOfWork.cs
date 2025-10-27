@@ -28,4 +28,19 @@ public interface IUnitOfWork : IUnitOfWorkBase
 
     // Core Repositories
     IQueueMessageRepository QueueMessageRepository { get; }
+
+    // Gym Repositories
+    IGymRepository GymRepository { get; }
+    IMembershipTypeRepository MembershipTypeRepository { get; }
+    IMembershipRepository MembershipRepository { get; }
+    IGymPhotoRepository GymPhotoRepository { get; }
+    IGymVideoRepository GymVideoRepository { get; }
+    IGymMachineRepository GymMachineRepository { get; }
+    ITrainerRepository TrainerRepository { get; }
+    IGroupClassRepository GroupClassRepository { get; }
+    IClassScheduleRepository ClassScheduleRepository { get; }
+    IClassReservationRepository ClassReservationRepository { get; }
+    IGymReviewRepository GymReviewRepository { get; }
+    ITrainerRatingRepository TrainerRatingRepository { get; }
+    IPersonalGoalRepository PersonalGoalRepository { get; }
 }

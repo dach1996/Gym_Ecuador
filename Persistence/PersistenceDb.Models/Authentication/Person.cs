@@ -109,4 +109,11 @@ public class Person
     [Column("USR_ID_ULTIMO_LOGIN")]
     public int? UserIdLasLogin { get; set; }
 
+    /// <summary>
+    /// URL de foto de perfil del usuario
+    /// </summary>
+    [StringLength(500)]
+    [Column("PNA_URL_FOTO_PERFIL")]
+    public string ProfilePhotoUrl { get; set; }
+
 }

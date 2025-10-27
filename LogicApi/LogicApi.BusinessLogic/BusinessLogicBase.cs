@@ -29,15 +29,15 @@ public abstract class BusinessLogicBase(
     private TaskExecutorBuilder _taskExecutorBuilder;
     protected TaskExecutorBuilder TaskExecutorBuilder => _taskExecutorBuilder ??= PluginFactory.GetType<TaskExecutorBuilder>();
     private IDocumentationServices _documentationServices;
-  
+
     protected IDocumentationServices DocumentationServices => _documentationServices ??=
         PluginFactory.GetPlugin<IDocumentationServices>(AppSettingsApi.DocumentationServicesConfiguration?.CurrentImplementation, true);
     protected ContextRequest ContextRequest;
-    protected int UserId { get => ContextRequest.CustomClaims.UserId ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el Id del usuario en el contexto"); }
-    protected int PersonId { get => ContextRequest.CustomClaims.PersonId ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el Id de la persona en el contexto"); }
-    protected string MobileId { get => ContextRequest?.Headers?.DeviceId; }
-    protected int DeviceId { get => ContextRequest.CustomClaims.DeviceId ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el Id del dispositivo en el contexto"); }
-    protected Guid UserGuid { get => ContextRequest.CustomClaims.UserGuid ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el Guid del usuario en el contexto"); }
+    protected int UserId => ContextRequest.CustomClaims.UserId ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el Id del usuario en el contexto");
+    protected int PersonId => ContextRequest.CustomClaims.PersonId ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el Id de la persona en el contexto");
+    protected string MobileId => ContextRequest?.Headers?.DeviceId;
+    protected int DeviceId => ContextRequest.CustomClaims.DeviceId ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el Id del dispositivo en el contexto");
+    protected Guid UserGuid => ContextRequest.CustomClaims.UserGuid ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el Guid del usuario en el contexto");
 
     /// <summary>
     /// Ejecuta el proceso dentro de la configuración inicial
@@ -109,7 +109,7 @@ public abstract class BusinessLogicBase(
             .AddConstructorParam(PluginFactory.GetType<ILoggerFactory>(), PluginFactory.GetType<IUnitOfWorkManager>().GetNewUnitOfWork(), Clock)
             .Execute<RegisterLogAuditTaskExecutor>(model);
 
- 
+
 
 
     /// <summary>

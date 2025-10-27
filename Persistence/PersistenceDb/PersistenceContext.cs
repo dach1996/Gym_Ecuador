@@ -53,4 +53,22 @@ public class PersistenceContext(
     public DbSet<QueueMessage> QueueMessages { get; set; }
 
     #endregion
+
+    #region Gym DbSet
+
+    public DbSet<Gym> Gyms { get; set; }
+    public DbSet<MembershipType> MembershipTypes { get; set; }
+    public DbSet<Membership> Memberships { get; set; }
+    public DbSet<GymPhoto> GymPhotos { get; set; }
+    public DbSet<GymVideo> GymVideos { get; set; }
+    public DbSet<GymMachine> GymMachines { get; set; }
+    public DbSet<Trainer> Trainers { get; set; }
+    public DbSet<GroupClass> GroupClasses { get; set; }
+    public DbSet<ClassSchedule> ClassSchedules { get; set; }
+    public DbSet<ClassReservation> ClassReservations { get; set; }
+    public DbSet<GymReview> GymReviews { get; set; }
+    public DbSet<TrainerRating> TrainerRatings { get; set; }
+    public DbSet<PersonalGoal> PersonalGoals { get; set; }
+
+    #endregion
 }

@@ -128,6 +128,43 @@
             <param name="request">Request de validación de Tarjeta</param>
             <returns></returns>
         </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ClassReservationController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.ClassReservationController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ClassReservationController.CreateClassReservation(LogicApi.Model.Request.ClassReservation.CreateClassReservationRequest)">
+            <summary>
+            Crea una nueva reserva de clase
+            </summary>
+            <param name="request">Modelo para crear reserva de clase</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ClassReservationController.CancelClassReservation(LogicApi.Model.Request.ClassReservation.CancelClassReservationRequest)">
+            <summary>
+            Cancela una reserva de clase existente
+            </summary>
+            <param name="request">Modelo para cancelar reserva de clase</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ClassScheduleController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.ClassScheduleController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ClassScheduleController.CreateClassSchedule(LogicApi.Model.Request.ClassSchedule.CreateClassScheduleRequest)">
+            <summary>
+            Crea un nuevo horario de clase
+            </summary>
+            <param name="request">Modelo para crear horario de clase</param>
+            <returns></returns>
+        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.CompanionController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.CompanionController},MediatR.IMediator)">
             <summary>
             Constructor
@@ -166,6 +203,102 @@
             <param name="request">Request de actualización</param>
             <returns></returns>
         </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GroupClassController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GroupClassController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GroupClassController.CreateGroupClass(LogicApi.Model.Request.GroupClass.CreateGroupClassRequest)">
+            <summary>
+            Crea una nueva clase grupal
+            </summary>
+            <param name="request">Modelo para crear clase grupal</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GymController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymController.GetGyms(LogicApi.Model.Request.Gym.GetGymsRequest)">
+            <summary>
+            Obtiene la lista de gimnasios con paginación
+            </summary>
+            <param name="request">Modelo para obtener gimnasios</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymController.GetGymByGuid(System.Guid)">
+            <summary>
+            Obtiene un gimnasio por su GUID
+            </summary>
+            <param name="gymGuid">GUID del gimnasio</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymController.CreateGym(LogicApi.Model.Request.Gym.CreateGymRequest)">
+            <summary>
+            Crea un nuevo gimnasio
+            </summary>
+            <param name="request">Modelo para crear gimnasio</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymController.UpdateGym(LogicApi.Model.Request.Gym.UpdateGymRequest)">
+            <summary>
+            Actualiza un gimnasio existente
+            </summary>
+            <param name="request">Modelo para actualizar gimnasio</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymMachineController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GymMachineController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymMachineController.CreateGymMachine(LogicApi.Model.Request.GymMachine.CreateGymMachineRequest)">
+            <summary>
+            Crea una nueva máquina de gimnasio
+            </summary>
+            <param name="request">Modelo para crear máquina</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymMachineController.UpdateGymMachine(LogicApi.Model.Request.GymMachine.UpdateGymMachineRequest)">
+            <summary>
+            Actualiza una máquina de gimnasio existente
+            </summary>
+            <param name="request">Modelo para actualizar máquina</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymReviewController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GymReviewController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymReviewController.GetGymReviews(System.Guid,LogicApi.Model.Request.GymReview.GetGymReviewsRequest)">
+            <summary>
+            Obtiene las reseñas de un gimnasio
+            </summary>
+            <param name="gymGuid">GUID del gimnasio</param>
+            <param name="request">Parámetros de consulta</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymReviewController.CreateGymReview(LogicApi.Model.Request.GymReview.CreateGymReviewRequest)">
+            <summary>
+            Crea una nueva reseña de gimnasio
+            </summary>
+            <param name="request">Modelo para crear reseña</param>
+            <returns></returns>
+        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.LoggerController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.LoggerController},MediatR.IMediator)">
             <summary>
             Constructor
@@ -179,6 +312,64 @@
             Permite registrar logs desde dispositivos
             </summary>
             <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.MembershipController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipController.GetMemberships(LogicApi.Model.Request.Membership.GetMembershipsRequest)">
+            <summary>
+            Obtiene la lista de membresías con paginación
+            </summary>
+            <param name="request">Modelo para obtener membresías</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipController.GetMembershipByGuid(System.Guid)">
+            <summary>
+            Obtiene una membresía por su GUID
+            </summary>
+            <param name="membershipGuid">GUID de la membresía</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipController.CreateMembership(LogicApi.Model.Request.Membership.CreateMembershipRequest)">
+            <summary>
+            Crea una nueva membresía
+            </summary>
+            <param name="request">Modelo para crear membresía</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipController.UpdateMembership(LogicApi.Model.Request.Membership.UpdateMembershipRequest)">
+            <summary>
+            Actualiza una membresía existente
+            </summary>
+            <param name="request">Modelo para actualizar membresía</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipTypeController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.MembershipTypeController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipTypeController.GetMembershipTypes(LogicApi.Model.Request.MembershipType.GetMembershipTypesRequest)">
+            <summary>
+            Obtiene la lista de tipos de membresía con paginación
+            </summary>
+            <param name="request">Modelo para obtener tipos de membresía</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipTypeController.CreateMembershipType(LogicApi.Model.Request.MembershipType.CreateMembershipTypeRequest)">
+            <summary>
+            Crea un nuevo tipo de membresía
+            </summary>
+            <param name="request">Modelo para crear tipo de membresía</param>
             <returns></returns>
         </member>
         <member name="T:GatewayCoreAPI.Controllers.V1.OrderController">
@@ -252,6 +443,35 @@
             Pago de orden por Link de Pago
             </summary>
             <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.PersonalGoalController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.PersonalGoalController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.PersonalGoalController.GetPersonalGoals(LogicApi.Model.Request.PersonalGoal.GetPersonalGoalsRequest)">
+            <summary>
+            Obtiene la lista de objetivos personales con paginación
+            </summary>
+            <param name="request">Modelo para obtener objetivos personales</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.PersonalGoalController.CreatePersonalGoal(LogicApi.Model.Request.PersonalGoal.CreatePersonalGoalRequest)">
+            <summary>
+            Crea un nuevo objetivo personal
+            </summary>
+            <param name="request">Modelo para crear objetivo personal</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.PersonalGoalController.UpdatePersonalGoal(LogicApi.Model.Request.PersonalGoal.UpdatePersonalGoalRequest)">
+            <summary>
+            Actualiza un objetivo personal existente
+            </summary>
+            <param name="request">Modelo para actualizar objetivo personal</param>
             <returns></returns>
         </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.PlaceController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.PlaceController},MediatR.IMediator)">
@@ -346,6 +566,42 @@
             Obtiene boletos disponibles
             </summary>
             <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.TrainerController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.TrainerController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.TrainerController.GetTrainers(LogicApi.Model.Request.Trainer.GetTrainersRequest)">
+            <summary>
+            Obtiene la lista de entrenadores con paginación
+            </summary>
+            <param name="request">Modelo para obtener entrenadores</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.TrainerController.GetTrainerByGuid(System.Guid)">
+            <summary>
+            Obtiene un entrenador por su GUID
+            </summary>
+            <param name="trainerGuid">GUID del entrenador</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.TrainerController.CreateTrainer(LogicApi.Model.Request.Trainer.CreateTrainerRequest)">
+            <summary>
+            Crea un nuevo entrenador
+            </summary>
+            <param name="request">Modelo para crear entrenador</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.TrainerController.UpdateTrainer(LogicApi.Model.Request.Trainer.UpdateTrainerRequest)">
+            <summary>
+            Actualiza un entrenador existente
+            </summary>
+            <param name="request">Modelo para actualizar entrenador</param>
             <returns></returns>
         </member>
     </members>
