@@ -6,7 +6,7 @@ namespace PersistenceDb.Models.Core;
 /// <summary>
 /// Tabla Tipos de Membresía
 /// </summary>
-[Table(name: "TIPOS_MEMBRESIA", Schema = "GIMNASIO")]
+[Table(name: "TIPOS_MEMBRESIA", Schema = "CORE")]
 public class MembershipType
 {
     /// <summary>

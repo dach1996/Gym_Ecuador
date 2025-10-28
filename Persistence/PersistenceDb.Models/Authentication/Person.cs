@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using PersistenceDb.Models.Administration;
 
 namespace PersistenceDb.Models.Authentication;
 /// <summary>
@@ -110,10 +111,24 @@ public class Person
     public int? UserIdLasLogin { get; set; }
 
     /// <summary>
-    /// URL de foto de perfil del usuario
+    /// Fecha de nacimiento
     /// </summary>
-    [StringLength(500)]
-    [Column("PNA_URL_FOTO_PERFIL")]
-    public string ProfilePhotoUrl { get; set; }
+    /// <value></value>
+    [Column("PNA_FECHA_NACIMIENTO")]
+    public DateTime? BirthDate { get; set; }
+
+    /// <summary>
+    /// Id de género
+    /// </summary>
+    /// <value></value>
+    [Column("CAT_ID_GENERO")]
+    [ForeignKey(nameof(GenderCatalog))]
+    public int? GenderCatalogId { get; set; }
+
+    /// <summary>
+    /// Género de la persona
+    /// </summary>
+    /// <value></value>
+    public Catalog GenderCatalog { get; set; }
 
 }

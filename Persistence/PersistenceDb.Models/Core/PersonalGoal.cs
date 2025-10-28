@@ -7,7 +7,7 @@ namespace PersistenceDb.Models.Core;
 /// <summary>
 /// Tabla Objetivos Personales
 /// </summary>
-[Table(name: "OBJETIVOS_PERSONALES", Schema = "GIMNASIO")]
+[Table(name: "OBJETIVOS_PERSONALES", Schema = "CORE")]
 public class PersonalGoal
 {
     /// <summary>

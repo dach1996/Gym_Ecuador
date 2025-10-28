@@ -10,6 +10,11 @@
   <ItemGroup>
     <None Include=".vscode\tasks.json" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.Catalogs.sql" />
+    <PostDeploy Include="Script.ProcessTracking.sql" />
+    <PostDeploy Include="Script.ProcessTrackingImages.sql" />
+  </ItemGroup>
   <Target Name="BeforeBuild">
     <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
   </Target>

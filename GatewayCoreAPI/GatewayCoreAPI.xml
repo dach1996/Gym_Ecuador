@@ -500,6 +500,42 @@
             <param name="request"></param>
             <returns></returns>
         </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.ProcessTrackingController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackings(LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest)">
+            <summary>
+            Obtiene la lista de seguimientos de procesos con paginación
+            </summary>
+            <param name="request">Modelo para obtener seguimientos de procesos</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackingByGuid(System.Guid)">
+            <summary>
+            Obtiene un seguimiento de proceso por su GUID
+            </summary>
+            <param name="processTrackingGuid">GUID del seguimiento de proceso</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.CreateProcessTracking(LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest)">
+            <summary>
+            Crea un nuevo seguimiento de proceso
+            </summary>
+            <param name="request">Modelo para crear seguimiento de proceso</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.UpdateProcessTracking(LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest)">
+            <summary>
+            Actualiza un seguimiento de proceso existente
+            </summary>
+            <param name="request">Modelo para actualizar seguimiento de proceso</param>
+            <returns></returns>
+        </member>
         <member name="T:GatewayCoreAPI.Controllers.V1.SeatController">
             <summary>
             Constructor

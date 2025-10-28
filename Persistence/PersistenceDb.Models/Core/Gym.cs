@@ -6,7 +6,7 @@ namespace PersistenceDb.Models.Core;
 /// <summary>
 /// Tabla Gimnasio
 /// </summary>
-[Table(name: "GIMNASIO", Schema = "GIMNASIO")]
+[Table(name: "GIMNASIO", Schema = "CORE")]
 public class Gym
 {
     /// <summary>
@@ -24,6 +24,12 @@ public class Gym
     [Required]
     [Column("GYM_GUID")]
     public Guid Guid { get; set; }
+
+    /// <summary>
+    /// Fecha de registro
+    /// </summary>
+    [Column("GYM_FECHA_REGISTRO")]
+    public DateTime DateTimeRegister { get; set; }
 
     /// <summary>
     /// Nombre del gimnasio
@@ -107,14 +113,7 @@ public class Gym
     public bool IsActive { get; set; }
 
     /// <summary>
-    /// Fecha de registro
+    /// Navegación a los entrenadores del gimnasio
     /// </summary>
-    [Column("GYM_FECHA_REGISTRO")]
-    public DateTime? DateTimeRegister { get; set; }
-
-    /// <summary>
-    /// Id de usuario registrador
-    /// </summary>
-    [Column("USR_ID_REGISTRADOR")]
-    public int? UserIdRegister { get; set; }
+    public ICollection<TrainerGym> TrainerGyms { get; set; }
 }

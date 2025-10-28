@@ -2663,6 +2663,210 @@
             Destino
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest">
+            <summary>
+            Solicitud para crear un seguimiento de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.PersonId">
+            <summary>
+            Id de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.GymGuid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.ProcessType">
+            <summary>
+            Tipo de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.ProcessName">
+            <summary>
+            Nombre del proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.Description">
+            <summary>
+            Descripción del proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.StartDate">
+            <summary>
+            Fecha de inicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.EndDate">
+            <summary>
+            Fecha de fin estimada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.Notes">
+            <summary>
+            Notas adicionales
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingByGuidRequest">
+            <summary>
+            Solicitud para obtener un seguimiento de proceso por GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingByGuidRequest.ProcessTrackingGuid">
+            <summary>
+            Guid del seguimiento de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingByGuidRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingByGuidRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingByGuidRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest">
+            <summary>
+            Solicitud para obtener seguimientos de procesos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.GymGuid">
+            <summary>
+            Guid del gimnasio (filtro opcional)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.ProcessTypeFilter">
+            <summary>
+            Filtro por tipo de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.StatusFilter">
+            <summary>
+            Filtro por estado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.IsActiveFilter">
+            <summary>
+            Filtro por estado activo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.Page">
+            <summary>
+            Página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest">
+            <summary>
+            Solicitud para actualizar un seguimiento de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest.ProcessTrackingGuid">
+            <summary>
+            Guid del seguimiento de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest.ProcessType">
+            <summary>
+            Tipo de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest.ProcessName">
+            <summary>
+            Nombre del proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest.Description">
+            <summary>
+            Descripción del proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest.Status">
+            <summary>
+            Estado del proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest.EndDate">
+            <summary>
+            Fecha de fin
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest.Progress">
+            <summary>
+            Progreso (porcentaje)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest.Notes">
+            <summary>
+            Notas adicionales
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest.IsActive">
+            <summary>
+            Estado activo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Request.Seat.GetSeatAvailableRequest">
             <summary>
             Request de reservar un asiento
@@ -5612,6 +5816,330 @@
             Mostrar Mensaje?
             </summary>
             <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.CreateProcessTrackingResponse">
+            <summary>
+            Respuesta de crear seguimiento de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CreateProcessTrackingResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CreateProcessTrackingResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CreateProcessTrackingResponse.ProcessTrackingGuid">
+            <summary>
+            Guid del seguimiento de proceso creado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CreateProcessTrackingResponse.ProcessName">
+            <summary>
+            Nombre del proceso
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.ProcessTracking.CreateProcessTrackingResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="processTrackingGuid"></param>
+            <param name="processName"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.ProcessTracking.CreateProcessTrackingResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingByGuidResponse">
+            <summary>
+            Respuesta de obtener seguimiento de proceso por GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingByGuidResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingByGuidResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingByGuidResponse.ProcessTracking">
+            <summary>
+            Detalle del seguimiento de proceso
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingByGuidResponse.#ctor(LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="processTracking"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingByGuidResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail">
+            <summary>
+            Detalle del seguimiento de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.Guid">
+            <summary>
+            Guid del seguimiento de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.Gym">
+            <summary>
+            Información del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.Person">
+            <summary>
+            Información de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.ProcessType">
+            <summary>
+            Tipo de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.ProcessName">
+            <summary>
+            Nombre del proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.Description">
+            <summary>
+            Descripción del proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.Status">
+            <summary>
+            Estado del proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.StartDate">
+            <summary>
+            Fecha de inicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.EndDate">
+            <summary>
+            Fecha de fin
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.Progress">
+            <summary>
+            Progreso (porcentaje)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.Notes">
+            <summary>
+            Notas adicionales
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.IsActive">
+            <summary>
+            Estado activo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.GymInfo">
+            <summary>
+            Información del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GymInfo.Guid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GymInfo.Name">
+            <summary>
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GymInfo.Address">
+            <summary>
+            Dirección del gimnasio
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.PersonInfo">
+            <summary>
+            Información de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.PersonInfo.Id">
+            <summary>
+            Id de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.PersonInfo.FullName">
+            <summary>
+            Nombre completo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.PersonInfo.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsResponse">
+            <summary>
+            Respuesta de obtener seguimientos de procesos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsResponse.ProcessTrackings">
+            <summary>
+            Lista de seguimientos de procesos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsResponse.TotalRecords">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsResponse.CurrentPage">
+            <summary>
+            Página actual
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsResponse.TotalPages">
+            <summary>
+            Total de páginas
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsResponse.#ctor(System.Collections.Generic.IEnumerable{LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="processTrackings"></param>
+            <param name="totalRecords"></param>
+            <param name="currentPage"></param>
+            <param name="pageSize"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem">
+            <summary>
+            Item de seguimiento de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Guid">
+            <summary>
+            Guid del seguimiento de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.PersonFullName">
+            <summary>
+            Nombre completo de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.ProcessType">
+            <summary>
+            Tipo de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.ProcessName">
+            <summary>
+            Nombre del proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Status">
+            <summary>
+            Estado del proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Progress">
+            <summary>
+            Progreso (porcentaje)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.GymName">
+            <summary>
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.StartDate">
+            <summary>
+            Fecha de inicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.EndDate">
+            <summary>
+            Fecha de fin
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.IsActive">
+            <summary>
+            Estado activo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.UpdateProcessTrackingResponse">
+            <summary>
+            Respuesta de actualizar seguimiento de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.UpdateProcessTrackingResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.UpdateProcessTrackingResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.UpdateProcessTrackingResponse.ProcessTrackingGuid">
+            <summary>
+            Guid del seguimiento de proceso actualizado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.UpdateProcessTrackingResponse.ProcessName">
+            <summary>
+            Nombre del proceso
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.ProcessTracking.UpdateProcessTrackingResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="processTrackingGuid"></param>
+            <param name="processName"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.ProcessTracking.UpdateProcessTrackingResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Seat.GetSeatAvailableResponse">
             <summary>

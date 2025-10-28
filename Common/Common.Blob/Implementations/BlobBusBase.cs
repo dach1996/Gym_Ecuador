@@ -1,6 +1,5 @@
 
 using Common.Blob.Models;
-using Common.Blob.Models.Configuration.Azure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 namespace Common.Blob.Implementations;

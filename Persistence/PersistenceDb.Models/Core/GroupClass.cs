@@ -6,7 +6,7 @@ namespace PersistenceDb.Models.Core;
 /// <summary>
 /// Tabla Clases Grupales
 /// </summary>
-[Table(name: "CLASES_GRUPALES", Schema = "GIMNASIO")]
+[Table(name: "CLASES_GRUPALES", Schema = "CORE")]
 public class GroupClass
 {
     /// <summary>

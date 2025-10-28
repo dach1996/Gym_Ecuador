@@ -6,7 +6,7 @@ namespace PersistenceDb.Models.Core;
 /// <summary>
 /// Tabla Horarios de Clase
 /// </summary>
-[Table(name: "HORARIOS_CLASE", Schema = "GIMNASIO")]
+[Table(name: "HORARIOS_CLASE", Schema = "CORE")]
 public class ClassSchedule
 {
     /// <summary>

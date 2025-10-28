@@ -51,6 +51,8 @@ public class PersistenceContext(
     #region Core DbSet
 
     public DbSet<QueueMessage> QueueMessages { get; set; }
+    public DbSet<ProcessTracking> ProcessTrackings { get; set; }
+    public DbSet<ProcessTrackingImage> ProcessTrackingImages { get; set; }
 
     #endregion
 
@@ -63,6 +65,7 @@ public class PersistenceContext(
     public DbSet<GymVideo> GymVideos { get; set; }
     public DbSet<GymMachine> GymMachines { get; set; }
     public DbSet<Trainer> Trainers { get; set; }
+    public DbSet<TrainerGym> TrainerGyms { get; set; }
     public DbSet<GroupClass> GroupClasses { get; set; }
     public DbSet<ClassSchedule> ClassSchedules { get; set; }
     public DbSet<ClassReservation> ClassReservations { get; set; }

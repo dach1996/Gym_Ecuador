@@ -13,9 +13,11 @@ using Common.WebCommon.Models;
 using Common.WebCommon.Models.Queues;
 using Common.WebCommon.Templates.Notification;
 using LogicCommon.Model.CacheModel;
+using LogicCommon.Model.Request.File;
 using LogicCommon.Model.Request.NotificationPush;
 using LogicCommon.Model.Request.Queue;
 using LogicCommon.Model.Response.Queue;
+using PersistenceDb.Models.Administration;
 using PersistenceDb.Models.Core;
 using PersistenceDb.Repository.Interfaces.UnitOfWork;
 
@@ -35,7 +37,7 @@ public abstract class BusinessLogicCommonBase
     protected CommonContextRequest CommonContextRequest { get; set; }
     protected IUnitOfWork UnitOfWork => _unitOfWork ??= PluginFactory.GetType<IUnitOfWork>();
     private IUnitOfWork _unitOfWork;
-    
+
     private IMediator _mediator;
     protected IMediator Mediator => _mediator ??= PluginFactory.GetType<IMediator>();
     private IAdministratorCache _administratorCache;
@@ -70,7 +72,7 @@ public abstract class BusinessLogicCommonBase
     }
 
 
-    
+
 
     /// <summary>
     /// Ejecuta el proceso
@@ -260,4 +262,28 @@ public abstract class BusinessLogicCommonBase
         return userCacheInformation;
     }
 
+    /// <summary>
+    /// Actualiza un archivo y lo guarda en la base de datos
+    /// </summary>
+    /// <param name="fileEncode"></param>
+    /// <param name="fileName"></param>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    protected async Task<FilePersistence> UpdateFileAsync(
+        string fileEncode,
+        string fileName,
+        string path
+    )
+    {
+        var file = await Mediator.Send(new UpdateBlobFileRequest(fileEncode, fileName, path, CommonContextRequest)).ConfigureAwait(false);
+        var newFile = await UnitOfWork.FileRepository.AddAsync(new()
+        {
+            Name = file.FileName,
+            Path = path,
+            DateRegister = Now,
+            State = true,
+            Url = file.Url
+        }).ConfigureAwait(false);
+        return newFile;
+    }
 }

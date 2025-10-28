@@ -1,0 +1,18 @@
+-- This file contains SQL statements that will be executed after the build script.
+
+EXECUTE [ADMINISTRACION].[PROC_INSERT_OR_UPDATE_CATALOG] 
+   'GENERO'
+  ,'Genéneros'
+GO
+
+EXECUTE [ADMINISTRACION].[PROC_INSERT_OR_UPDATE_CATALOG] 
+   'GENERO_MASCULINO'
+  ,'Hombre'
+  ,'GENERO'
+GO
+
+EXECUTE [ADMINISTRACION].[PROC_INSERT_OR_UPDATE_CATALOG] 
+   'GENERO_FEMENINO'
+  ,'Mujer'
+  ,'GENERO'
+GO

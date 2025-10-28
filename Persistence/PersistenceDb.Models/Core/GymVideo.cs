@@ -6,7 +6,7 @@ namespace PersistenceDb.Models.Core;
 /// <summary>
 /// Tabla Videos de Gimnasio
 /// </summary>
-[Table(name: "VIDEOS_GIMNASIO", Schema = "GIMNASIO")]
+[Table(name: "VIDEOS_GIMNASIO", Schema = "CORE")]
 public class GymVideo
 {
     /// <summary>

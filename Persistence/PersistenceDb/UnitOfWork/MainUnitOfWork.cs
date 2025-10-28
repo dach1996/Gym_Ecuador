@@ -37,6 +37,8 @@ public class MainUnitOfWork(
 
     // Core Repositories
     private IQueueMessageRepository _queueMessageRepository;
+    private IProcessTrackingRepository _processTrackingRepository;
+    private IProcessTrackingImageRepository _processTrackingImageRepository;
 
     // Gym Repositories
     private IGymRepository _gymRepository;
@@ -46,6 +48,7 @@ public class MainUnitOfWork(
     private IGymVideoRepository _gymVideoRepository;
     private IGymMachineRepository _gymMachineRepository;
     private ITrainerRepository _trainerRepository;
+    private ITrainerGymRepository _trainerGymRepository;
     private IGroupClassRepository _groupClassRepository;
     private IClassScheduleRepository _classScheduleRepository;
     private IClassReservationRepository _classReservationRepository;
@@ -104,6 +107,12 @@ public class MainUnitOfWork(
     public IQueueMessageRepository QueueMessageRepository => _queueMessageRepository ??= 
         new QueueMessageRepository(Context, LoggerFactory.CreateLogger<QueueMessageRepository>());
 
+    public IProcessTrackingRepository ProcessTrackingRepository => _processTrackingRepository ??= 
+        new ProcessTrackingRepository(Context, LoggerFactory.CreateLogger<ProcessTrackingRepository>());
+
+    public IProcessTrackingImageRepository ProcessTrackingImageRepository => _processTrackingImageRepository ??= 
+        new ProcessTrackingImageRepository(Context, LoggerFactory.CreateLogger<ProcessTrackingImageRepository>());
+
     // Gym Repository Properties
     public IGymRepository GymRepository => _gymRepository ??=
         new GymRepository(Context, LoggerFactory.CreateLogger<GymRepository>());
@@ -125,6 +134,9 @@ public class MainUnitOfWork(
 
     public ITrainerRepository TrainerRepository => _trainerRepository ??=
         new TrainerRepository(Context, LoggerFactory.CreateLogger<TrainerRepository>());
+
+    public ITrainerGymRepository TrainerGymRepository => _trainerGymRepository ??=
+        new TrainerGymRepository(Context, LoggerFactory.CreateLogger<TrainerGymRepository>());
 
     public IGroupClassRepository GroupClassRepository => _groupClassRepository ??=
         new GroupClassRepository(Context, LoggerFactory.CreateLogger<GroupClassRepository>());

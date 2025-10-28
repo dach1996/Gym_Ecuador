@@ -35,10 +35,17 @@ public class Catalog
     public string Name { get; set; }
 
     /// <summary>
+    /// Descripción de catálogo
+    /// </summary>
+    /// <value></value>
+    [Column("CAT_DESCRIPCION")]
+    public string Description { get; set; }
+
+    /// <summary>
     /// Código de catálogo padre
     /// </summary>
     /// <value></value>
-    [Column("CAT_PADRE")]
+    [Column("CAT_ID_PADRE")]
     [ForeignKey(nameof(CatalogueFather))]
     public int? ParentId { get; set; }
 

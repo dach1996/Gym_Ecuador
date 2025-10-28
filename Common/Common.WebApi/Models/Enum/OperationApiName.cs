@@ -572,6 +572,29 @@ public enum OperationApiName
     /// Obtener Calificaciones de Entrenador
     /// </summary>
     [EnumMember(Value = "Obtener Calificaciones de Entrenador")]
-    GetTrainerRatings
-    
+    GetTrainerRatings,
+
+    /// <summary>
+    /// Crear Seguimiento de Proceso
+    /// </summary>
+    [EnumMember(Value = "Crear Seguimiento de Proceso")]
+    CreateProcessTracking,
+
+    /// <summary>
+    /// Obtener Seguimiento de Proceso por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Seguimiento de Proceso por GUID")]
+    GetProcessTrackingByGuid,
+
+    /// <summary>
+    /// Obtener Seguimientos de Procesos
+    /// </summary>
+    [EnumMember(Value = "Obtener Seguimientos de Procesos")]
+    GetProcessTrackings,
+
+    /// <summary>
+    /// Actualizar Seguimiento de Proceso
+    /// </summary>
+    [EnumMember(Value = "Actualizar Seguimiento de Proceso")]
+    UpdateProcessTracking,
 }

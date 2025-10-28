@@ -294,5 +294,15 @@ public enum MessagesCodesError
     /// Orden no permite ser pagada
     /// </summary>
     OrderNotAllowPay = 134,
+
+    /// <summary>
+    /// Persona no encontrada
+    /// </summary>
+    PersonNotFound = 135,
+
+    /// <summary>
+    /// Gimnasio no encontrado
+    /// </summary>
+    GymNotFound = 136,
 }
 

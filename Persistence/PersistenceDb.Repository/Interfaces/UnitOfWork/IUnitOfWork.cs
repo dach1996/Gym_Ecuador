@@ -28,6 +28,8 @@ public interface IUnitOfWork : IUnitOfWorkBase
 
     // Core Repositories
     IQueueMessageRepository QueueMessageRepository { get; }
+    IProcessTrackingRepository ProcessTrackingRepository { get; }
+    IProcessTrackingImageRepository ProcessTrackingImageRepository { get; }
 
     // Gym Repositories
     IGymRepository GymRepository { get; }
@@ -37,6 +39,7 @@ public interface IUnitOfWork : IUnitOfWorkBase
     IGymVideoRepository GymVideoRepository { get; }
     IGymMachineRepository GymMachineRepository { get; }
     ITrainerRepository TrainerRepository { get; }
+    ITrainerGymRepository TrainerGymRepository { get; }
     IGroupClassRepository GroupClassRepository { get; }
     IClassScheduleRepository ClassScheduleRepository { get; }
     IClassReservationRepository ClassReservationRepository { get; }

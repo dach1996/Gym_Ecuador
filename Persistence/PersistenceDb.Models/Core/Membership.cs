@@ -7,7 +7,7 @@ namespace PersistenceDb.Models.Core;
 /// <summary>
 /// Tabla Membresías
 /// </summary>
-[Table(name: "MEMBRESIAS", Schema = "GIMNASIO")]
+[Table(name: "MEMBRESIAS", Schema = "CORE")]
 public class Membership
 {
     /// <summary>

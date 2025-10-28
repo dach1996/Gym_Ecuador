@@ -7,7 +7,7 @@ namespace PersistenceDb.Models.Core;
 /// <summary>
 /// Tabla Calificaciones de Entrenador
 /// </summary>
-[Table(name: "CALIFICACIONES_ENTRENADOR", Schema = "GIMNASIO")]
+[Table(name: "CALIFICACIONES_ENTRENADOR", Schema = "CORE")]
 public class TrainerRating
 {
     /// <summary>
