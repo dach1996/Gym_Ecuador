@@ -53,11 +53,6 @@ public class TrainerDetail
     public PersonInfo Person { get; set; }
 
     /// <summary>
-    /// Información del gimnasio
-    /// </summary>
-    public GymInfo Gym { get; set; }
-
-    /// <summary>
     /// Especialidad del entrenador
     /// </summary>
     public string Specialty { get; set; }
@@ -102,25 +97,4 @@ public class PersonInfo
     /// Teléfono
     /// </summary>
     public string Phone { get; set; }
-}
-
-/// <summary>
-/// Información básica de gimnasio
-/// </summary>
-public class GymInfo
-{
-    /// <summary>
-    /// Guid del gimnasio
-    /// </summary>
-    public Guid Guid { get; set; }
-
-    /// <summary>
-    /// Nombre del gimnasio
-    /// </summary>
-    public string Name { get; set; }
-
-    /// <summary>
-    /// Dirección del gimnasio
-    /// </summary>
-    public string Address { get; set; }
 }

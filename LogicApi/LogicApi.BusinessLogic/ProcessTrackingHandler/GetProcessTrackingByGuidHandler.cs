@@ -42,11 +42,6 @@ public class GetProcessTrackingByGuidHandler(
                         Name = processTracking.Gym.Name,
                         Address = processTracking.Gym.Address
                     },
-                    Person = new PersonInfo
-                    {
-                        Id = processTracking.Person.Id,
-                        FullName = processTracking.Person.FullName,
-                    },
                     
                     DateTimeRegister = processTracking.DateTimeRegister
                 };

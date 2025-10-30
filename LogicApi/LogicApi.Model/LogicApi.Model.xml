@@ -5909,11 +5909,6 @@
             Información del gimnasio
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.Person">
-            <summary>
-            Información de la persona
-            </summary>
-        </member>
         <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail.ProcessType">
             <summary>
             Tipo de proceso
@@ -5982,26 +5977,6 @@
         <member name="P:LogicApi.Model.Response.ProcessTracking.GymInfo.Address">
             <summary>
             Dirección del gimnasio
-            </summary>
-        </member>
-        <member name="T:LogicApi.Model.Response.ProcessTracking.PersonInfo">
-            <summary>
-            Información de la persona
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.PersonInfo.Id">
-            <summary>
-            Id de la persona
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.PersonInfo.FullName">
-            <summary>
-            Nombre completo
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.PersonInfo.Email">
-            <summary>
-            Email
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsResponse">
@@ -6605,11 +6580,6 @@
             Información de la persona
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.Trainer.TrainerDetail.Gym">
-            <summary>
-            Información del gimnasio
-            </summary>
-        </member>
         <member name="P:LogicApi.Model.Response.Trainer.TrainerDetail.Specialty">
             <summary>
             Especialidad del entrenador
@@ -6653,26 +6623,6 @@
         <member name="P:LogicApi.Model.Response.Trainer.PersonInfo.Phone">
             <summary>
             Teléfono
-            </summary>
-        </member>
-        <member name="T:LogicApi.Model.Response.Trainer.GymInfo">
-            <summary>
-            Información básica de gimnasio
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.Trainer.GymInfo.Guid">
-            <summary>
-            Guid del gimnasio
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.Trainer.GymInfo.Name">
-            <summary>
-            Nombre del gimnasio
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.Trainer.GymInfo.Address">
-            <summary>
-            Dirección del gimnasio
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Trainer.GetTrainersResponse">

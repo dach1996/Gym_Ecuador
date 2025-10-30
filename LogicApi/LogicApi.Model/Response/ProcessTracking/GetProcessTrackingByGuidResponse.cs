@@ -53,11 +53,6 @@ public class ProcessTrackingDetail
     public GymInfo Gym { get; set; }
 
     /// <summary>
-    /// Información de la persona
-    /// </summary>
-    public PersonInfo Person { get; set; }
-
-    /// <summary>
     /// Tipo de proceso
     /// </summary>
     public string ProcessType { get; set; }
@@ -129,23 +124,3 @@ public class GymInfo
     public string Address { get; set; }
 }
 
-/// <summary>
-/// Información de la persona
-/// </summary>
-public class PersonInfo
-{
-    /// <summary>
-    /// Id de la persona
-    /// </summary>
-    public int Id { get; set; }
-
-    /// <summary>
-    /// Nombre completo
-    /// </summary>
-    public string FullName { get; set; }
-
-    /// <summary>
-    /// Email
-    /// </summary>
-    public string Email { get; set; }
-}
