@@ -55,7 +55,6 @@ public class CreateGymHandler(
                     Longitude = request.Longitude,
                     IsActive = true,
                     DateTimeRegister = Now,
-                    UserIdRegister = UserId
                 };
 
                 // Guardar en la base de datos

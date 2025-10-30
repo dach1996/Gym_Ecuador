@@ -26,6 +26,13 @@ public class ProcessTracking
     public DateTime DateTimeRegister { get; set; }
 
     /// <summary>
+    /// Guid
+    /// </summary>
+    [Required]
+    [Column("SPR_GUID")]
+    public Guid Guid { get; set; }
+
+    /// <summary>
     /// Id de la persona
     /// </summary>
     [Required]

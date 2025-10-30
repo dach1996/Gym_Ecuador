@@ -27,16 +27,11 @@ public class GetTrainersHandler(
                      
                     ).ConfigureAwait(false);
 
-             
-
                 // Mapear a DTOs
                 var trainerItems = trainers.Select(t => new TrainerItem
                 {
                     Guid = t.Guid,
                     FullName = $"{t.Person.FullName}",
-                    Specialty = t.Specialty,
-                    ProfilePhotoUrl = t.ProfilePhotoUrl,
-                    GymName = t.Gym.Name,
                     IsActive = t.IsActive,
                     DateTimeRegister = t.DateTimeRegister
                 });

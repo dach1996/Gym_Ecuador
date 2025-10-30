@@ -2668,60 +2668,69 @@
             Solicitud para crear un seguimiento de proceso
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.PersonId">
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.PersonGuid">
             <summary>
             Id de la persona
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.GymGuid">
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.Weight">
             <summary>
-            Guid del gimnasio
+            Peso corporal actual (en kg o la unidad estándar)
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.ProcessType">
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.Height">
             <summary>
-            Tipo de proceso
+            Altura de la persona (en cm) - No cambia con frecuencia, pero es clave para el IMC.
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.ProcessName">
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.BodyFatPercentage">
             <summary>
-            Nombre del proceso
+            Porcentaje de grasa corporal estimado.
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.Description">
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.MuscleMassPercentage">
             <summary>
-            Descripción del proceso
+            Porcentaje de masa muscular.
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.StartDate">
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.ChestMeasurement">
             <summary>
-            Fecha de inicio
+            Circunferencia del pecho o tórax (cm).
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.EndDate">
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.WaistMeasurement">
             <summary>
-            Fecha de fin estimada
+            Circunferencia de la cintura (cm). Clave para salud cardiovascular.
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.Notes">
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.HipMeasurement">
             <summary>
-            Notas adicionales
+            Circunferencia de la cadera (cm).
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.ArmRightMeasurement">
+            <summary>
+            Circunferencia del brazo derecho (cm).
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.ThighRightMeasurement">
+            <summary>
+            Circunferencia del muslo derecho (cm).
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.Observations">
+            <summary>
+            Comentarios u observaciones del entrenador o la persona.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.Base64Images">
+            <summary>
+            Imágenes del seguimiento de proceso.
             </summary>
         </member>
         <member name="P:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.ContextRequest">
             <summary>
             Context
-            </summary>
-        </member>
-        <member name="M:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.#ctor(Common.WebApi.Models.ContextRequest)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="contextRequest"></param>
-        </member>
-        <member name="M:LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest.#ctor">
-            <summary>
-            Default Constructor
             </summary>
         </member>
         <member name="T:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingByGuidRequest">

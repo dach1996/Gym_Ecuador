@@ -25,8 +25,7 @@ public class GetTrainerByGuidHandler(
                 var trainer = await UnitOfWork.TrainerRepository
                     .GetByFirstOrDefaultAsync(
                         where => where.Guid == request.TrainerGuid,
-                        include => include.Person,
-                        include => include.Gym
+                        include => include.Person
                     ).ConfigureAwait(false);
 
                 if (trainer == null)
@@ -36,15 +35,7 @@ public class GetTrainerByGuidHandler(
                 var trainerDetail = new TrainerDetail
                 {
                     Guid = trainer.Guid,
-                    Gym = new GymInfo
-                    {
-                        Guid = trainer.Gym.Guid,
-                        Name = trainer.Gym.Name,
-                        Address = trainer.Gym.Address
-                    },
-                    Specialty = trainer.Specialty,
-                    Biography = trainer.Biography,
-                    ProfilePhotoUrl = trainer.ProfilePhotoUrl,
+                    
                     IsActive = trainer.IsActive,
                     DateTimeRegister = trainer.DateTimeRegister
                 };

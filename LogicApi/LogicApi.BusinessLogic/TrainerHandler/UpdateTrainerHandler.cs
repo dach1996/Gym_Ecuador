@@ -34,14 +34,12 @@ public class UpdateTrainerHandler(
                     throw new CustomException((int)MessagesCodesError.SystemError, "Entrenador no encontrado");
 
                 // Actualizar los campos
-                trainer.Specialty = request.Specialty;
                 trainer.Biography = request.Biography;
-                trainer.ProfilePhotoUrl = request.ProfilePhotoUrl;
                 trainer.IsActive = request.IsActive;
 
                 // Guardar cambios
 
-                return new UpdateTrainerResponse(trainer.Guid, trainer.Specialty)
+                return new UpdateTrainerResponse(trainer.Guid, null)
                 {
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
                     ShowMessage = true

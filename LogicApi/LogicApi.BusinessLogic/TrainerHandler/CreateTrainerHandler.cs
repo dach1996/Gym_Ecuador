@@ -38,32 +38,9 @@ public class CreateTrainerHandler(
                 if (gym == null)
                     throw new CustomException((int)MessagesCodesError.SystemError, "El gimnasio especificado no existe");
 
-                // Validar que la persona no sea ya entrenador en este gimnasio
-                var existingTrainer = await UnitOfWork.TrainerRepository
-                    .GetByFirstOrDefaultAsync(where => where.PersonId == request.PersonId && where.GymId == gym.Id)
-                    .ConfigureAwait(false);
+         
 
-                if (existingTrainer != null)
-                    throw new CustomException((int)MessagesCodesError.SystemError, "Esta persona ya es entrenador en este gimnasio");
-
-                // Crear el nuevo entrenador
-                var newTrainer = new PersistenceDb.Models.Core.Trainer
-                {
-                    Guid = Guid.NewGuid(),
-                    PersonId = request.PersonId,
-                    GymId = gym.Id,
-                    Specialty = request.Specialty,
-                    Biography = request.Biography,
-                    ProfilePhotoUrl = request.ProfilePhotoUrl,
-                    IsActive = true,
-                    DateTimeRegister = Now,
-                    UserIdRegister = UserId
-                };
-
-                // Guardar en la base de datos
-                await UnitOfWork.TrainerRepository.AddAsync(newTrainer).ConfigureAwait(false);
-
-                return new CreateTrainerResponse(newTrainer.Guid, newTrainer.Specialty)
+                return new CreateTrainerResponse(Guid.Empty, null)
                 {
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
                     ShowMessage = true

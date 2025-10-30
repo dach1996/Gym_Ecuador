@@ -1,0 +1,26 @@
+CREATE TABLE [ADMINISTRACION].[CATALOGO] (
+    [CAT_ID]          INT           IDENTITY (1, 1) NOT NULL,
+    [CAT_CODIGO]      VARCHAR (64)  NOT NULL,
+    [CAT_NOMBRE]      VARCHAR (128) NOT NULL,
+    [CAT_DESCRIPCION] VARCHAR (248) NOT NULL,
+    [CAT_ID_PADRE]    INT           NULL,
+    [CAT_ESTADO]      BIT           NOT NULL,
+    [CAT_VALOR]       VARCHAR (128) NULL,
+    CONSTRAINT [PK_CATALOGO] PRIMARY KEY CLUSTERED ([CAT_ID] ASC),
+    CONSTRAINT [FK_CATALOGO_CATALOGO] FOREIGN KEY ([CAT_ID_PADRE]) REFERENCES [ADMINISTRACION].[CATALOGO] ([CAT_ID])
+);
+
+
+GO
+
+CREATE UNIQUE NONCLUSTERED INDEX [UQ_CODIGO]
+    ON [ADMINISTRACION].[CATALOGO]([CAT_CODIGO] ASC);
+
+
+GO
+
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Descripción del catálogo', @level0type = N'SCHEMA', @level0name = N'ADMINISTRACION', @level1type = N'TABLE', @level1name = N'CATALOGO', @level2type = N'COLUMN', @level2name = N'CAT_DESCRIPCION';
+
+
+GO
+
