@@ -82,30 +82,6 @@ public class Gym
     public string Website { get; set; }
 
     /// <summary>
-    /// Horario de apertura
-    /// </summary>
-    [Column("GYM_HORARIO_APERTURA")]
-    public TimeSpan? OpeningTime { get; set; }
-
-    /// <summary>
-    /// Horario de cierre
-    /// </summary>
-    [Column("GYM_HORARIO_CIERRE")]
-    public TimeSpan? ClosingTime { get; set; }
-
-    /// <summary>
-    /// Latitud para localización
-    /// </summary>
-    [Column("GYM_LATITUD")]
-    public decimal? Latitude { get; set; }
-
-    /// <summary>
-    /// Longitud para localización
-    /// </summary>
-    [Column("GYM_LONGITUD")]
-    public decimal? Longitude { get; set; }
-
-    /// <summary>
     /// Estado del gimnasio
     /// </summary>
     [Required]
@@ -116,4 +92,9 @@ public class Gym
     /// Navegación a los entrenadores del gimnasio
     /// </summary>
     public ICollection<TrainerGym> TrainerGyms { get; set; }
+
+    /// <summary>
+    /// Navegación a las sucursales del gimnasio
+    /// </summary>
+    public ICollection<GymBranch> GymBranches { get; set; }
 }

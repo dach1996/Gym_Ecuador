@@ -10,28 +10,23 @@ using Asp.Versioning;
 
 namespace GatewayCoreAPI.Controllers.V1;
 
+/// <summary>
+/// Constructor
+/// </summary>
+/// <param name="userMessages"></param>
+/// <param name="logger"></param>
+/// <param name="mediator"></param>
 [Route("api/v{version:apiVersion}/[controller]")]
 [ApiVersion("1.0")]
-public class GymController : SecurityControllerBase
+public class GymController(
+    IUserMessages userMessages,
+    ILogger<GymController> logger,
+    IMediator mediator) : SecurityControllerBase(
+        userMessages,
+        logger,
+        mediator)
 {
-    #region Constructor
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="userMessages"></param>
-    /// <param name="logger"></param>
-    /// <param name="mediator"></param>
-    public GymController(
-        IUserMessages userMessages,
-        ILogger<GymController> logger,
-        IMediator mediator) : base(
-            userMessages,
-            logger,
-            mediator)
-    {
-    }
 
-    #endregion
 
     #region Methods Controller
 

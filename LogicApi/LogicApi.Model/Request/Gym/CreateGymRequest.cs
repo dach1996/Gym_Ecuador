@@ -10,11 +10,13 @@ public class CreateGymRequest : IRequest<CreateGymResponse>, IApiBaseRequest
     /// <summary>
     /// Nombre del gimnasio
     /// </summary>
+    [Required]	
     public string Name { get; set; }
 
     /// <summary>
     /// Descripción del gimnasio
-    /// </summary>
+    /// </summary>  
+    [Required]
     public string Description { get; set; }
 
     /// <summary>
@@ -25,16 +27,19 @@ public class CreateGymRequest : IRequest<CreateGymResponse>, IApiBaseRequest
     /// <summary>
     /// Dirección del gimnasio
     /// </summary>
+    [Required]
     public string Address { get; set; }
 
     /// <summary>
     /// Teléfono del gimnasio
     /// </summary>
+    [Required]
     public string Phone { get; set; }
 
     /// <summary>
     /// Email del gimnasio
-    /// </summary>
+    /// </summary>  
+    [Required]
     public string Email { get; set; }
 
     /// <summary>
@@ -55,12 +60,12 @@ public class CreateGymRequest : IRequest<CreateGymResponse>, IApiBaseRequest
     /// <summary>
     /// Latitud para localización
     /// </summary>
-    public decimal? Latitude { get; set; }
+    public decimal Latitude { get; set; }
 
     /// <summary>
     /// Longitud para localización
     /// </summary>
-    public decimal? Longitude { get; set; }
+    public decimal Longitude { get; set; }
 
     /// <summary>
     /// Context

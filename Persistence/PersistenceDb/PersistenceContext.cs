@@ -27,6 +27,7 @@ public class PersistenceContext(
 
     public DbSet<AuditLog> AuditLogs { get; set; }
     public DbSet<Catalog> Catalogs { get; set; }
+    public DbSet<CatalogLanguage> CatalogLanguages { get; set; }
     public DbSet<Parameter> Parameters { get; set; }
     public DbSet<FilePersistence> FilePersistences { get; set; }
     public DbSet<NotificationPush> NotificationPushes { get; set; }
@@ -59,6 +60,8 @@ public class PersistenceContext(
     #region Gym DbSet
 
     public DbSet<Gym> Gyms { get; set; }
+    public DbSet<GymBranch> GymBranches { get; set; }
+    public DbSet<GymBranchSchedule> GymBranchSchedules { get; set; }
     public DbSet<MembershipType> MembershipTypes { get; set; }
     public DbSet<Membership> Memberships { get; set; }
     public DbSet<GymPhoto> GymPhotos { get; set; }

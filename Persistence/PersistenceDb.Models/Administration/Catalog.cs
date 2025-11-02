@@ -26,21 +26,6 @@ public class Catalog
     /// <value></value>
     public string Code { get; set; }
 
-    [Required]
-    [Column("CAT_NOMBRE")]
-    /// <summary>
-    /// Nombre de catálogo
-    /// </summary>
-    /// <value></value>
-    public string Name { get; set; }
-
-    /// <summary>
-    /// Descripción de catálogo
-    /// </summary>
-    /// <value></value>
-    [Column("CAT_DESCRIPCION")]
-    public string Description { get; set; }
-
     /// <summary>
     /// Código de catálogo padre
     /// </summary>
@@ -62,6 +47,12 @@ public class Catalog
     /// <value></value>
     [Column("CAT_VALOR")]
     public string Value { get; set; }
+
+    /// <summary>
+    /// Catálogo Lenguaje
+    /// </summary>
+    /// <value></value>
+    public ICollection<CatalogLanguage> CatalogLanguages { get; set; }
 
     /// <summary>
     /// Items de Catálogo

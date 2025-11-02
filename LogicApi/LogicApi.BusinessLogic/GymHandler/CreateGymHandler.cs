@@ -20,16 +20,8 @@ public class CreateGymHandler(
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public override async Task<CreateGymResponse> Handle(CreateGymRequest request, CancellationToken cancellationToken)
-    {
-        return await ExecuteHandlerAsync(
-            OperationApiName.CreateGym,
-            request,
-            async () =>
+        => await ExecuteHandlerAsync(OperationApiName.CreateGym, request, async () =>
             {
-                // Validar que el nombre no esté vacío
-                if (string.IsNullOrWhiteSpace(request.Name))
-                    throw new CustomException((int)MessagesCodesError.SystemError, "El nombre del gimnasio es requerido");
-
                 // Validar que no exista otro gimnasio con el mismo nombre
                 var existingGym = await UnitOfWork.GymRepository
                     .GetByFirstOrDefaultAsync(where => where.Name.ToLower() == request.Name.ToLower())
@@ -49,10 +41,6 @@ public class CreateGymHandler(
                     Phone = request.Phone,
                     Email = request.Email,
                     Website = request.Website,
-                    OpeningTime = request.OpeningTime,
-                    ClosingTime = request.ClosingTime,
-                    Latitude = request.Latitude,
-                    Longitude = request.Longitude,
                     IsActive = true,
                     DateTimeRegister = Now,
                 };
@@ -65,8 +53,6 @@ public class CreateGymHandler(
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
                     ShowMessage = true
                 };
-            },
-            registerLogAudit: true
+            }
         ).ConfigureAwait(false);
-    }
 }

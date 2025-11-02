@@ -13,6 +13,7 @@ public class AdministrationModule : Module
     {
         builder.RegisterType<AuditLogRepository>().As<IAuditLogRepository>().InstancePerLifetimeScope();
         builder.RegisterType<CatalogRepository>().As<ICatalogRepository>().InstancePerLifetimeScope();
+        builder.RegisterType<CatalogLanguageRepository>().As<ICatalogLanguageRepository>().InstancePerLifetimeScope();
         builder.RegisterType<ParameterRepository>().As<IParameterRepository>().InstancePerLifetimeScope();
         builder.RegisterType<FileRepository>().As<IFileRepository>().InstancePerLifetimeScope();
         builder.RegisterType<NotificationPushRepository>().As<INotificationPushRepository>().InstancePerLifetimeScope();
