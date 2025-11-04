@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using PersistenceDb.Models.Enums;
 
 namespace PersistenceDb.Models.Core;
 
@@ -54,13 +55,6 @@ public class Gym
     public string ShortDescription { get; set; }
 
     /// <summary>
-    /// Dirección del gimnasio
-    /// </summary>
-    [StringLength(500)]
-    [Column("GYM_DIRECCION")]
-    public string Address { get; set; }
-
-    /// <summary>
     /// Teléfono del gimnasio
     /// </summary>
     [StringLength(50)]
@@ -86,7 +80,7 @@ public class Gym
     /// </summary>
     [Required]
     [Column("GYM_ESTADO")]
-    public bool IsActive { get; set; }
+    public GymStatus IsActive { get; set; }
 
     /// <summary>
     /// Navegación a los entrenadores del gimnasio

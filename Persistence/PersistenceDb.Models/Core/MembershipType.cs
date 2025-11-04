@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace PersistenceDb.Models.Core;
 
@@ -45,6 +46,7 @@ public class MembershipType
     /// </summary>
     [Required]
     [Column("TMP_PRECIO")]
+    [Precision(18, 2)]
     public decimal Price { get; set; }
 
     /// <summary>

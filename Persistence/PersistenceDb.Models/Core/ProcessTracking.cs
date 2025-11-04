@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 using PersistenceDb.Models.Authentication;
 
 namespace PersistenceDb.Models.Core;
@@ -42,62 +43,71 @@ public class ProcessTracking
     /// <summary>
     /// Id del gimnasio
     /// </summary>
-    [Required]
-    [Column("GYM_ID")]
-    public int? GymId { get; set; }
+    [Column("SGY_ID")]
+    [ForeignKey(nameof(GymBranch))]
+    public int? GymBranchId { get; set; }
 
     /// <summary>
     /// Peso corporal actual (en kg o la unidad estándar)
     /// </summary>
     [Column("SPR_PESO")]
+    [Precision(5, 2)]	
     public decimal Weight { get; set; }
 
     /// <summary>
     /// Altura de la persona (en cm) - No cambia con frecuencia, pero es clave para el IMC.
     /// </summary>
     [Column("SPR_ALTURA")]
+    [Precision(5, 2)]	
     public decimal Height { get; set; }
 
     /// <summary>
     /// Porcentaje de grasa corporal estimado.
     /// </summary>
     [Column("SPR_GRASA_PORCENTAJE")]
+    [Precision(5, 2)]	
     public decimal? BodyFatPercentage { get; set; }
 
     /// <summary>
     /// Porcentaje de masa muscular.
     /// </summary>
     [Column("SPR_MUSCULO_PORCENTAJE")]
+    [Precision(5, 2)]	
     public decimal? MuscleMassPercentage { get; set; }
 
     /// <summary>
     /// Circunferencia del pecho o tórax (cm).
     /// </summary>
-    [Column("SPR_MEDIDA_PECHO")]
+    [Column("SPR_MEDIDA_PECHO")]    
+    [Precision(5, 2)]	
     public decimal? ChestMeasurement { get; set; }
 
     /// <summary>
     /// Circunferencia de la cintura (cm). Clave para salud cardiovascular.
     /// </summary>
-    [Column("SPR_MEDIDA_CINTURA")]
+    [Column("SPR_MEDIDA_CINTURA")]  
+    [Precision(5, 2)]	
     public decimal? WaistMeasurement { get; set; }
 
     /// <summary>
     /// Circunferencia de la cadera (cm).
     /// </summary>
     [Column("SPR_MEDIDA_CADERA")]
+    [Precision(5, 2)]	
     public decimal? HipMeasurement { get; set; }
 
     /// <summary>
     /// Circunferencia del brazo derecho (cm).
     /// </summary>
     [Column("SPR_MEDIDA_BRAZO_DER")]
+    [Precision(5, 2)]	
     public decimal? ArmRightMeasurement { get; set; }
 
     /// <summary>
     /// Circunferencia del muslo derecho (cm).
     /// </summary>
     [Column("SPR_MEDIDA_MUSLO_DER")]
+    [Precision(5, 2)]	
     public decimal? ThighRightMeasurement { get; set; }
 
     /// <summary>
@@ -121,8 +131,7 @@ public class ProcessTracking
     /// <summary>
     /// Navegación al gimnasio
     /// </summary>
-    [ForeignKey(nameof(GymId))]
-    public Gym Gym { get; set; }
+    public GymBranch GymBranch { get; set; }
 
     /// <summary>
     /// Colección de imágenes del seguimiento

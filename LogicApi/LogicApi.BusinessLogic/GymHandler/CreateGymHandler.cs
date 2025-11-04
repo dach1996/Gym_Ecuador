@@ -22,12 +22,9 @@ public class CreateGymHandler(
     public override async Task<CreateGymResponse> Handle(CreateGymRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.CreateGym, request, async () =>
             {
-                // Validar que no exista otro gimnasio con el mismo nombre
-                var existingGym = await UnitOfWork.GymRepository
-                    .GetByFirstOrDefaultAsync(where => where.Name.ToLower() == request.Name.ToLower())
-                    .ConfigureAwait(false);
-
-                if (existingGym != null)
+                if (await UnitOfWork.GymRepository
+                    .ExistAnyAsync(where => where.Name.ToLower() == request.Name.ToLower())
+                    .ConfigureAwait(false))
                     throw new CustomException((int)MessagesCodesError.SystemError, "Ya existe un gimnasio con este nombre");
 
                 // Crear el nuevo gimnasio
@@ -37,11 +34,10 @@ public class CreateGymHandler(
                     Name = request.Name,
                     Description = request.Description,
                     ShortDescription = request.ShortDescription,
-                    Address = request.Address,
                     Phone = request.Phone,
                     Email = request.Email,
                     Website = request.Website,
-                    IsActive = true,
+                    IsActive = GymStatus.Active,
                     DateTimeRegister = Now,
                 };
 

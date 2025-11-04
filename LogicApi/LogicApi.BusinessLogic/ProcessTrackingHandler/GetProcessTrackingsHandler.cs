@@ -23,19 +23,23 @@ public class GetProcessTrackingsHandler(
             {
                 // Construir la consulta base con includes
                 var processTrackings = await UnitOfWork.ProcessTrackingRepository
-                    .GetByAsync( 
+                    .GetPaginatorGenericAsync(
+                        itemsByPage: request.PageSize,
+                        page: request.Page,
+                        selector: pt => new ProcessTrackingItem
+                        {
+                            Guid = pt.Guid,
+                            PersonFullName = pt.Person.FullName,
+                            GymName = pt.GymBranch.Gym.Name,
+                            DateTimeRegister = pt.DateTimeRegister
+                        }
                     ).ConfigureAwait(false);
 
-                // Mapear a DTOs
-                var processTrackingItems = processTrackings.Select(pt => new ProcessTrackingItem
-                {
-                    Guid = pt.Guid,
-                    PersonFullName = pt.Person.FullName,
-                    GymName = pt.Gym.Name,
-                    DateTimeRegister = pt.DateTimeRegister
-                });
 
-                return new GetProcessTrackingsResponse(processTrackingItems, processTrackings.Count, request.Page, request.PageSize)
+                return new GetProcessTrackingsResponse(
+                    processTrackings.Items,
+                    processTrackings.TotalItems,
+                    request.Page, request.PageSize)
                 {
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
                     ShowMessage = false

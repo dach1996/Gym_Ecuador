@@ -40,15 +40,9 @@ public class GetGymByGuidHandler(
                     Name = gym.Name,
                     Description = gym.Description,
                     ShortDescription = gym.ShortDescription,
-                    Address = gym.Address,
                     Phone = gym.Phone,
                     Email = gym.Email,
                     Website = gym.Website,
-                    OpeningTime = gym.OpeningTime,
-                    ClosingTime = gym.ClosingTime,
-                    Latitude = gym.Latitude,
-                    Longitude = gym.Longitude,
-                    IsActive = gym.IsActive,
                     DateTimeRegister = gym.DateTimeRegister
                 };
 

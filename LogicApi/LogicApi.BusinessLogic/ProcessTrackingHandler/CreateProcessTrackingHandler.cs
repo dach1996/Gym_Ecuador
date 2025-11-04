@@ -25,12 +25,13 @@ public class CreateProcessTrackingHandler(
         => await ExecuteHandlerAsync(OperationApiName.CreateProcessTracking, request, async () =>
             {
                 // Validar que la persona exista
-                var personId = await UnitOfWork.PersonRepository.GetIdByGuidAsync(request.PersonGuid).ConfigureAwait(false);
+                var personId = request.PersonGuid.HasValue ? await UnitOfWork.PersonRepository.GetIdByGuidAsync(request.PersonGuid.Value).ConfigureAwait(false) : PersonId;
                 // Crear el nuevo seguimiento de proceso
                 var newProcessTracking = new ProcessTracking
                 {
                     PersonId = personId,
-                    GymId = null,
+                    GymBranchId = null,
+                    Guid = Guid.NewGuid(),
                     DateTimeRegister = Now,
                     Weight = request.Weight,
                     Height = request.Height,
@@ -46,7 +47,8 @@ public class CreateProcessTrackingHandler(
                 };
                 // Guardar en la base de datos
                 var processTrackingImages = new List<ProcessTrackingImage>();
-                foreach (var image in request.Base64Images)
+                await UnitOfWork.ProcessTrackingRepository.AddAsync(newProcessTracking).ConfigureAwait(false);
+                foreach (var image in request?.Base64Images ?? [])
                 {
                     var file = await UpdateFileAsync(image, "process_tracking", "process_tracking").ConfigureAwait(false);
                     processTrackingImages.Add(new ProcessTrackingImage
@@ -58,7 +60,6 @@ public class CreateProcessTrackingHandler(
                     });
                 }
                 await UnitOfWork.ProcessTrackingImageRepository.AddRangeAsync(processTrackingImages).ConfigureAwait(false);
-                await UnitOfWork.ProcessTrackingRepository.AddAsync(newProcessTracking).ConfigureAwait(false);
                 return GenericCommonOperationResponse.SuccessOperation();
             }
         ).ConfigureAwait(false);

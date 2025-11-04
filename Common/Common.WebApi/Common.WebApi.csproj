@@ -27,7 +27,6 @@
     <ProjectReference Include="..\Common.PluginFactory\Common.PluginFactory.csproj" />
     <ProjectReference Include="..\Common.Security\Common.Security.csproj" />
     <ProjectReference Include="..\Common.WebCommon\Common.WebCommon.csproj" />
-    <ProjectReference Include="..\..\Persistence\PersistenceDb.Repository\PersistenceDb.Repository.csproj" />
     <ProjectReference Include="..\Common.Cache\Common.Cache.csproj" />
   </ItemGroup>
 

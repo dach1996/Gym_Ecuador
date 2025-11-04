@@ -45,7 +45,9 @@ public class GenericRepository<TEntity>(
                             entitySet.AsQueryable(),
                             (current, include) => current.Include(include)
                         );
-            query = query.Where(where ?? ((TEntity t) => true));
+            query = query
+            .AsNoTracking()
+            .Where(where ?? (t => true));
             if (top is not null)
                 query = query.Take(top.Value);
             if (orderBy is not null)
@@ -161,7 +163,7 @@ public class GenericRepository<TEntity>(
             .Aggregate(
                 query.AsQueryable(),
                 (current, include) => current.Include(include)
-            ).FirstOrDefaultAsync(where).ConfigureAwait(false);
+            ).AsNoTracking().FirstOrDefaultAsync(where).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
@@ -184,6 +186,7 @@ public class GenericRepository<TEntity>(
         {
             where ??= t => true;
             return await Context.Set<TEntity>()
+                .AsNoTracking()
                 .Where(where)
                 .Select(selector)
                 .FirstOrDefaultAsync().ConfigureAwait(false);
@@ -424,6 +427,8 @@ public class GenericRepository<TEntity>(
                 .ConfigureAwait(false);
             if (orderBy is not null)
                 originalWhereQuery = orderByType == OrderByType.Asc ? originalWhereQuery.OrderBy(orderBy) : originalWhereQuery.OrderByDescending(orderBy);
+            else
+                originalWhereQuery = originalWhereQuery.OrderBy(t => 1);
             var items = await originalWhereQuery
                 .Skip(itemsByPage * page)
                 .Take(itemsByPage)

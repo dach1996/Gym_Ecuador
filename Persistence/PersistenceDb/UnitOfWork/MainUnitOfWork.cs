@@ -42,6 +42,8 @@ public class MainUnitOfWork(
 
     // Gym Repositories
     private IGymRepository _gymRepository;
+    private IGymBranchRepository _gymBranchRepository;
+    private IGymBranchServiceRepository _gymBranchServiceRepository;
     private IMembershipTypeRepository _membershipTypeRepository;
     private IMembershipRepository _membershipRepository;
     private IGymPhotoRepository _gymPhotoRepository;
@@ -116,6 +118,12 @@ public class MainUnitOfWork(
     // Gym Repository Properties
     public IGymRepository GymRepository => _gymRepository ??=
         new GymRepository(Context, LoggerFactory.CreateLogger<GymRepository>());
+
+    public IGymBranchRepository GymBranchRepository => _gymBranchRepository ??=
+        new GymBranchRepository(Context, LoggerFactory.CreateLogger<GymBranchRepository>());
+
+    public IGymBranchServiceRepository GymBranchServiceRepository => _gymBranchServiceRepository ??=
+        new GymBranchServiceRepository(Context, LoggerFactory.CreateLogger<GymBranchServiceRepository>());
 
     public IMembershipTypeRepository MembershipTypeRepository => _membershipTypeRepository ??=
         new MembershipTypeRepository(Context, LoggerFactory.CreateLogger<MembershipTypeRepository>());

@@ -338,6 +338,18 @@ public enum OperationApiName
     [EnumMember(Value = "Obtener Gimnasio por GUID")]
     GetGymByGuid,
 
+    /// <summary>
+    /// Crear Sucursal de Gimnasio
+    /// </summary>
+    [EnumMember(Value = "Crear Sucursal de Gimnasio")]
+    CreateGymBranch,
+
+    /// <summary>
+    /// Obtener Sucursales de Gimnasio
+    /// </summary>
+    [EnumMember(Value = "Obtener Sucursales de Gimnasio")]
+    GetGymBranches,
+
     // ========== OPERACIONES DE ENTRENADOR ==========
 
     /// <summary>

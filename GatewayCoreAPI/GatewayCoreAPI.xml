@@ -218,6 +218,44 @@
             <param name="request">Modelo para crear clase grupal</param>
             <returns></returns>
         </member>
+        <member name="T:GatewayCoreAPI.Controllers.V1.GymBranchController">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GymBranchController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchController.GetGymBranches(LogicApi.Model.Request.GymBranch.GetGymBranchesRequest)">
+            <summary>
+            Obtiene la lista de sucursales de gimnasio con paginación
+            </summary>
+            <param name="request">Modelo para obtener sucursales</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchController.CreateGymBranch(LogicApi.Model.Request.GymBranch.CreateGymBranchRequest)">
+            <summary>
+            Crea una nueva sucursal de gimnasio
+            </summary>
+            <param name="request">Modelo para crear sucursal</param>
+            <returns></returns>
+        </member>
+        <member name="T:GatewayCoreAPI.Controllers.V1.GymController">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.GymController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GymController},MediatR.IMediator)">
             <summary>
             Constructor

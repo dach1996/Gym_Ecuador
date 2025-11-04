@@ -1,4 +1,3 @@
-using Common.WebCommon.Attributes.CustomDataAnnotations;
 using LogicCommon.Model.Response;
 
 namespace LogicApi.Model.Request.ProcessTracking;
@@ -11,8 +10,7 @@ public class CreateProcessTrackingRequest : IApiBaseRequest<GenericCommonOperati
     /// <summary>
     /// Id de la persona
     /// </summary>
-    [ValidateGuid]
-    public Guid PersonGuid { get; set; }
+    public Guid? PersonGuid { get; set; }
 
     /// <summary>
     /// Peso corporal actual (en kg o la unidad estándar)

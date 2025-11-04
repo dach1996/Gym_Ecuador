@@ -24,9 +24,7 @@ public class GetProcessTrackingByGuidHandler(
                 // Buscar el seguimiento de proceso por GUID con includes
                 var processTracking = await UnitOfWork.ProcessTrackingRepository
                     .GetByFirstOrDefaultAsync(
-                        where => where.Guid == request.ProcessTrackingGuid,
-                        include => include.Person,
-                        include => include.Gym
+                        where => where.Guid == request.ProcessTrackingGuid
                     ).ConfigureAwait(false);
 
                 if (processTracking == null)
@@ -38,9 +36,6 @@ public class GetProcessTrackingByGuidHandler(
                     Guid = processTracking.Guid,
                     Gym = new GymInfo
                     {
-                        Guid = processTracking.Gym.Guid,
-                        Name = processTracking.Gym.Name,
-                        Address = processTracking.Gym.Address
                     },
                     
                     DateTimeRegister = processTracking.DateTimeRegister

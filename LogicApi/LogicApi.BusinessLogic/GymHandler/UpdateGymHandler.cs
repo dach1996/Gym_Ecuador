@@ -49,15 +49,9 @@ public class UpdateGymHandler(
                 gym.Name = request.Name;
                 gym.Description = request.Description;
                 gym.ShortDescription = request.ShortDescription;
-                gym.Address = request.Address;
                 gym.Phone = request.Phone;
                 gym.Email = request.Email;
                 gym.Website = request.Website;
-                gym.OpeningTime = request.OpeningTime;
-                gym.ClosingTime = request.ClosingTime;
-                gym.Latitude = request.Latitude;
-                gym.Longitude = request.Longitude;
-                gym.IsActive = request.IsActive;
 
                 return new UpdateGymResponse(gym.Guid, gym.Name)
                 {

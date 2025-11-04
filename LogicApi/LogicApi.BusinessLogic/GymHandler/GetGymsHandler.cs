@@ -35,12 +35,8 @@ public class GetGymsHandler(
                     Guid = g.Guid,
                     Name = g.Name,
                     ShortDescription = g.ShortDescription,
-                    Address = g.Address,
                     Phone = g.Phone,
                     Email = g.Email,
-                    OpeningTime = g.OpeningTime,
-                    ClosingTime = g.ClosingTime,
-                    IsActive = g.IsActive,
                     DateTimeRegister = g.DateTimeRegister
                 });
 

@@ -33,6 +33,8 @@ public interface IUnitOfWork : IUnitOfWorkBase
 
     // Gym Repositories
     IGymRepository GymRepository { get; }
+    IGymBranchRepository GymBranchRepository { get; }
+    IGymBranchServiceRepository GymBranchServiceRepository { get; }
     IMembershipTypeRepository MembershipTypeRepository { get; }
     IMembershipRepository MembershipRepository { get; }
     IGymPhotoRepository GymPhotoRepository { get; }

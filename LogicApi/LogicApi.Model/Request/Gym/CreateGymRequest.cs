@@ -48,16 +48,6 @@ public class CreateGymRequest : IRequest<CreateGymResponse>, IApiBaseRequest
     public string Website { get; set; }
 
     /// <summary>
-    /// Horario de apertura
-    /// </summary>
-    public TimeSpan? OpeningTime { get; set; }
-
-    /// <summary>
-    /// Horario de cierre
-    /// </summary>
-    public TimeSpan? ClosingTime { get; set; }
-
-    /// <summary>
     /// Latitud para localización
     /// </summary>
     public decimal Latitude { get; set; }

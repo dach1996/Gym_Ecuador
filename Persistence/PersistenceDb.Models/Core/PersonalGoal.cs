@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 using PersistenceDb.Models.Authentication;
 
 namespace PersistenceDb.Models.Core;
@@ -45,6 +46,7 @@ public class PersonalGoal
     /// Valor inicial
     /// </summary>
     [Column("OBP_VALOR_INICIAL")]
+    [Precision(5, 2)]	
     public decimal? InitialValue { get; set; }
 
     /// <summary>
@@ -52,6 +54,7 @@ public class PersonalGoal
     /// </summary>
     [Required]
     [Column("OBP_VALOR_OBJETIVO")]
+    [Precision(5, 2)]	
     public decimal TargetValue { get; set; }
 
     /// <summary>
