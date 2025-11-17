@@ -140,9 +140,6 @@ public class GymBranch
     /// </summary>
     public ICollection<GymBranchSchedule> GymBranchSchedules { get; set; }
 
-    /// <summary>
-    /// Navegación a los servicios de la sucursal
-    /// </summary>
-    public ICollection<GymBranchService> GymBranchServices { get; set; }
+
 }
 

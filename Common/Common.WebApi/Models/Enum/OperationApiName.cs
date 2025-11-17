@@ -609,4 +609,102 @@ public enum OperationApiName
     /// </summary>
     [EnumMember(Value = "Actualizar Seguimiento de Proceso")]
     UpdateProcessTracking,
+
+    // ========== OPERACIONES DE PLAN DE SUSCRIPCIÓN ==========
+
+    /// <summary>
+    /// Crear Plan de Suscripción
+    /// </summary>
+    [EnumMember(Value = "Crear Plan de Suscripción")]
+    CreateGymSubscriptionPlan,
+
+    /// <summary>
+    /// Actualizar Plan de Suscripción
+    /// </summary>
+    [EnumMember(Value = "Actualizar Plan de Suscripción")]
+    UpdateGymSubscriptionPlan,
+
+    /// <summary>
+    /// Obtener Planes de Suscripción
+    /// </summary>
+    [EnumMember(Value = "Obtener Planes de Suscripción")]
+    GetGymSubscriptionPlans,
+
+    /// <summary>
+    /// Obtener Plan de Suscripción por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Plan de Suscripción por GUID")]
+    GetGymSubscriptionPlanByGuid,
+
+    // ========== OPERACIONES DE SERVICIO ==========
+
+    /// <summary>
+    /// Crear Servicio
+    /// </summary>
+    [EnumMember(Value = "Crear Servicio")]
+    CreateService,
+
+    /// <summary>
+    /// Actualizar Servicio
+    /// </summary>
+    [EnumMember(Value = "Actualizar Servicio")]
+    UpdateService,
+
+    /// <summary>
+    /// Obtener Servicios
+    /// </summary>
+    [EnumMember(Value = "Obtener Servicios")]
+    GetServices,
+
+    /// <summary>
+    /// Obtener Servicio por ID
+    /// </summary>
+    [EnumMember(Value = "Obtener Servicio por ID")]
+    GetServiceById,
+
+    // ========== OPERACIONES DE SERVICIO-PLAN ==========
+
+    /// <summary>
+    /// Asignar Servicio a Plan
+    /// </summary>
+    [EnumMember(Value = "Asignar Servicio a Plan")]
+    AssignServiceToPlan,
+
+    /// <summary>
+    /// Remover Servicio de Plan
+    /// </summary>
+    [EnumMember(Value = "Remover Servicio de Plan")]
+    RemoveServiceFromPlan,
+
+    /// <summary>
+    /// Obtener Servicios por Plan
+    /// </summary>
+    [EnumMember(Value = "Obtener Servicios por Plan")]
+    GetServicesByPlan,
+
+    // ========== OPERACIONES DE HORARIO DE SUCURSAL ==========
+
+    /// <summary>
+    /// Crear Horario de Sucursal
+    /// </summary>
+    [EnumMember(Value = "Crear Horario de Sucursal")]
+    CreateGymBranchSchedule,
+
+    /// <summary>
+    /// Actualizar Horario de Sucursal
+    /// </summary>
+    [EnumMember(Value = "Actualizar Horario de Sucursal")]
+    UpdateGymBranchSchedule,
+
+    /// <summary>
+    /// Obtener Horarios de Sucursal
+    /// </summary>
+    [EnumMember(Value = "Obtener Horarios de Sucursal")]
+    GetGymBranchSchedules,
+
+    /// <summary>
+    /// Eliminar Horario de Sucursal
+    /// </summary>
+    [EnumMember(Value = "Eliminar Horario de Sucursal")]
+    DeleteGymBranchSchedule,
 }

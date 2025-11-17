@@ -34,7 +34,6 @@ public interface IUnitOfWork : IUnitOfWorkBase
     // Gym Repositories
     IGymRepository GymRepository { get; }
     IGymBranchRepository GymBranchRepository { get; }
-    IGymBranchServiceRepository GymBranchServiceRepository { get; }
     IMembershipTypeRepository MembershipTypeRepository { get; }
     IMembershipRepository MembershipRepository { get; }
     IGymPhotoRepository GymPhotoRepository { get; }
@@ -48,4 +47,8 @@ public interface IUnitOfWork : IUnitOfWorkBase
     IGymReviewRepository GymReviewRepository { get; }
     ITrainerRatingRepository TrainerRatingRepository { get; }
     IPersonalGoalRepository PersonalGoalRepository { get; }
+    IGymSubscriptionPlanRepository GymSubscriptionPlanRepository { get; }
+    IServiceRepository ServiceRepository { get; }
+    IGymSubscriptionPlanServiceRepository GymSubscriptionPlanServiceRepository { get; }
+    IGymBranchScheduleRepository GymBranchScheduleRepository { get; }
 }

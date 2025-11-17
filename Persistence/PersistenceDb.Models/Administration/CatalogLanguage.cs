@@ -25,7 +25,7 @@ public class CatalogLanguage
     public LanguageType Language { get; set; }
     
     [Required]
-    [Column("CAL_CAT_ID")]
+    [Column("CAT_ID")]
     [ForeignKey(nameof(Catalog))]
     public int CatalogId { get; set; }
 

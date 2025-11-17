@@ -248,6 +248,42 @@
             <param name="request">Modelo para crear sucursal</param>
             <returns></returns>
         </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchScheduleController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GymBranchScheduleController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchScheduleController.CreateGymBranchSchedule(LogicApi.Model.Request.GymBranchSchedule.CreateGymBranchScheduleRequest)">
+            <summary>
+            Crea un nuevo horario de sucursal
+            </summary>
+            <param name="request">Modelo para crear horario</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchScheduleController.UpdateGymBranchSchedule(LogicApi.Model.Request.GymBranchSchedule.UpdateGymBranchScheduleRequest)">
+            <summary>
+            Actualiza un horario de sucursal
+            </summary>
+            <param name="request">Modelo para actualizar horario</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchScheduleController.GetGymBranchSchedules(LogicApi.Model.Request.GymBranchSchedule.GetGymBranchSchedulesRequest)">
+            <summary>
+            Obtiene los horarios de una sucursal
+            </summary>
+            <param name="request">Modelo para obtener horarios</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchScheduleController.DeleteGymBranchSchedule(LogicApi.Model.Request.GymBranchSchedule.DeleteGymBranchScheduleRequest)">
+            <summary>
+            Elimina un horario de sucursal
+            </summary>
+            <param name="request">Modelo para eliminar horario</param>
+            <returns></returns>
+        </member>
         <member name="T:GatewayCoreAPI.Controllers.V1.GymController">
             <summary>
             Constructor
@@ -335,6 +371,71 @@
             Crea una nueva reseña de gimnasio
             </summary>
             <param name="request">Modelo para crear reseña</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanController.CreateGymSubscriptionPlan(LogicApi.Model.Request.GymSubscriptionPlan.CreateGymSubscriptionPlanRequest)">
+            <summary>
+            Crea un nuevo plan de suscripción
+            </summary>
+            <param name="request">Modelo para crear plan de suscripción</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanController.UpdateGymSubscriptionPlan(LogicApi.Model.Request.GymSubscriptionPlan.UpdateGymSubscriptionPlanRequest)">
+            <summary>
+            Actualiza un plan de suscripción
+            </summary>
+            <param name="request">Modelo para actualizar plan de suscripción</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanController.GetGymSubscriptionPlans(LogicApi.Model.Request.GymSubscriptionPlan.GetGymSubscriptionPlansRequest)">
+            <summary>
+            Obtiene la lista de planes de suscripción con paginación
+            </summary>
+            <param name="request">Modelo para obtener planes de suscripción</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanController.GetGymSubscriptionPlanByGuid(LogicApi.Model.Request.GymSubscriptionPlan.GetGymSubscriptionPlanByGuidRequest)">
+            <summary>
+            Obtiene un plan de suscripción por su GUID
+            </summary>
+            <param name="request">Modelo para obtener plan por GUID</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanServiceController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanServiceController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanServiceController.AssignServiceToPlan(LogicApi.Model.Request.GymSubscriptionPlanService.AssignServiceToPlanRequest)">
+            <summary>
+            Asigna un servicio a un plan de suscripción
+            </summary>
+            <param name="request">Modelo para asignar servicio</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanServiceController.RemoveServiceFromPlan(LogicApi.Model.Request.GymSubscriptionPlanService.RemoveServiceFromPlanRequest)">
+            <summary>
+            Remueve un servicio de un plan de suscripción
+            </summary>
+            <param name="request">Modelo para remover servicio</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanServiceController.GetServicesByPlan(LogicApi.Model.Request.GymSubscriptionPlanService.GetServicesByPlanRequest)">
+            <summary>
+            Obtiene los servicios de un plan de suscripción
+            </summary>
+            <param name="request">Modelo para obtener servicios por plan</param>
             <returns></returns>
         </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.LoggerController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.LoggerController},MediatR.IMediator)">
@@ -628,6 +729,42 @@
             <summary>
             Decrypt (Solo para uso de desarrollo)
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ServiceController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.ServiceController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ServiceController.CreateService(LogicApi.Model.Request.Service.CreateServiceRequest)">
+            <summary>
+            Crea un nuevo servicio
+            </summary>
+            <param name="request">Modelo para crear servicio</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ServiceController.UpdateService(LogicApi.Model.Request.Service.UpdateServiceRequest)">
+            <summary>
+            Actualiza un servicio
+            </summary>
+            <param name="request">Modelo para actualizar servicio</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ServiceController.GetServices(LogicApi.Model.Request.Service.GetServicesRequest)">
+            <summary>
+            Obtiene la lista de servicios con paginación
+            </summary>
+            <param name="request">Modelo para obtener servicios</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ServiceController.GetServiceById(LogicApi.Model.Request.Service.GetServiceByIdRequest)">
+            <summary>
+            Obtiene un servicio por su ID
+            </summary>
+            <param name="request">Modelo para obtener servicio por ID</param>
             <returns></returns>
         </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.TicketController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.TicketController},MediatR.IMediator)">
