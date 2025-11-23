@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.GymMachine;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.GymMachine;
 
 /// <summary>
@@ -42,11 +44,11 @@ public class UpdateGymMachineRequest : IRequest<UpdateGymMachineResponse>, IApiB
     /// </summary>
     public bool IsActive { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

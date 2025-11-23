@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicCommon.Model.Response;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.ProcessTracking;
 
 /// <summary>
@@ -67,10 +69,10 @@ public class CreateProcessTrackingRequest : IApiBaseRequest<GenericCommonOperati
     /// </summary>
     public List<string> Base64Images { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
 }

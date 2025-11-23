@@ -3,7 +3,7 @@ using Common.Messages;
 using Common.PluginFactory.Interface;
 using Common.Utils.ConstansCodes;
 using Common.Utils.CustomExceptions;
-using Common.WebApi.Models;
+using Common.WebApi.Models.ContextRequestModel;
 using Microsoft.AspNetCore.Mvc.Filters;
 namespace Common.WebApi.Attributes.ValidateToken;
 /// <summary>

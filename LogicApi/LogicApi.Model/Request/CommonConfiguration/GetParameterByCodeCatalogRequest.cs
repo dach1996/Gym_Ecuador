@@ -1,4 +1,6 @@
-﻿using LogicApi.Model.Response.CommonConfiguration;
+﻿using Common.WebApi.Models.ContextRequestModel;
+using LogicApi.Model.Response.CommonConfiguration;
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.CommonConfiguration;
 
 /// <summary>
@@ -27,9 +29,9 @@ public class GetParameterByCodeRequest(string parameterCode, ContextRequest cont
     /// </summary>
     public int? TimeSaveInCache { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; } = contextRequest;
+    public CommonContextRequest ContextRequest { get; set; } = contextRequest;
 }

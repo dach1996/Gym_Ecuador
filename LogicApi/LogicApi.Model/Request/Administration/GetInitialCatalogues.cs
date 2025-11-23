@@ -1,3 +1,5 @@
+using Common.WebApi.Models.ContextRequestModel;
+using Common.WebCommon.Models;
 using LogicApi.Model.Response.Administration;
 namespace LogicApi.Model.Request.Administration;
 /// <summary>
@@ -15,7 +17,7 @@ public class GetInitialCataloguesRequest : IRequest<GetInitialCataloguesResponse
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

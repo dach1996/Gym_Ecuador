@@ -47,7 +47,7 @@ public class ApiUserMessages : IUserMessages
     /// <returns></returns>
     public MessageUser GetErrorMessageByCode(int code, UserLanguage? languageCode = null)
     {
-        languageCode ??= (int)UserLanguage.Spanish;
+        languageCode ??= UserLanguage.Spanish;
         var messagesType = _data.FirstOrDefault(t => t.Key == MessageType.Error);
         var message = messagesType.Value?.Messages?.Find(t => t.Code == code)
             ?? messagesType.Value?.Messages?.Find(t => t.Code == DefaultCode);
@@ -65,7 +65,7 @@ public class ApiUserMessages : IUserMessages
     /// <returns></returns>
     public MessageUser GetDefaultErrorMessage(UserLanguage? languageCode = null)
     {
-        languageCode ??= (int)UserLanguage.Spanish;
+        languageCode ??= UserLanguage.Spanish;
         var messagesType = _data.FirstOrDefault(t => t.Key == MessageType.Error);
         var message = messagesType.Value?.Messages?.Find(t => t.Code == DefaultCode);
         return new MessageUser
@@ -83,7 +83,7 @@ public class ApiUserMessages : IUserMessages
     /// <returns></returns>
     public MessageUser GetSucessMessageByCode(int code, UserLanguage? languageCode = null)
     {
-        languageCode ??= (int)UserLanguage.Spanish;
+        languageCode ??= UserLanguage.Spanish;
         var messagesType = _data.FirstOrDefault(t => t.Key == MessageType.Success);
         var message = messagesType.Value?.Messages?.Find(t => t.Code == code)
             ?? messagesType.Value?.Messages?.Find(t => t.Code == DefaultCode);
@@ -101,7 +101,7 @@ public class ApiUserMessages : IUserMessages
     /// <returns></returns>
     public MessageUser GetDefaultSucessMessage(UserLanguage? languageCode = null)
     {
-        languageCode ??= (int)UserLanguage.Spanish;
+        languageCode ??= UserLanguage.Spanish;
         var messagesType = _data.FirstOrDefault(t => t.Key == MessageType.Success);
         var message = messagesType.Value?.Messages?.Find(t => t.Code == DefaultCode);
         return new MessageUser

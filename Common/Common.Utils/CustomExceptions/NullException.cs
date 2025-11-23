@@ -16,17 +16,15 @@ public class NullException : BaseException
     /// <param name="additionalInfo">Razón del error</param>
     public NullException(string additionalInfo) : base(additionalInfo) => CodeHttp = (int)HttpStatusCode.NotFound;
 
+
+
     /// <summary>
-    /// Validación de Nombre null
+    /// Lanza una exepción
     /// </summary>
-    /// <param name="value"></param>
-    /// <param name="argumentName"></param>
-    /// <param name="methodName"></param>
-    public static void ThrowIfNullOrEmpty(object value, string argumentName, string methodName)
-    {
-        if ((value is string stringValue && stringValue.IsNullOrEmpty()) || value is null)
-            throw new NullException($"El argumento: '{argumentName}' es null o está vacío en el método: '{methodName}'");
-    }
+    /// <param name="valueName"></param>
+    /// <returns></returns>
+    public static NullException ThrowNullException(string valueName)
+     => throw new NullException($"El valor del parámetro '{valueName}' no puede ser Null");
 
     /// <summary>
     /// Validación de Nombre null
@@ -38,7 +36,17 @@ public class NullException : BaseException
         if ((value is string stringValue && stringValue.IsNullOrEmpty()) || value is null)
             throw new NullException(message);
     }
-
+    /// <summary>
+    /// Validación de Nombre null
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="argumentName"></param>
+    /// <param name="methodName"></param>
+    public static void ThrowIfNullOrEmpty(object value, string argumentName, string methodName)
+    {
+        if ((value is string stringValue && stringValue.IsNullOrEmpty()) || value is null)
+            throw new NullException($"El argumento: '{argumentName}' es null o está vacío en el método: '{methodName}'");
+    }
 
 
 }

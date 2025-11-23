@@ -33,7 +33,7 @@ try
     builder.Services.AddCustomControllers();
     builder.Services.AddUserMessagesApi();
     builder.Services.AddApplicationInsightsTelemetry();
-    builder.Services.ScanAutoMapperProfiles();
+    builder.Services.ScanAutoMapperProfiles(builder.Configuration);
     builder.Services.AddClock();
     builder.Services.AddMediatrTypes(typeof(BusinessLogicWebSocketBase));
     builder.Services.AddEndpointsApiExplorer();

@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.Service;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Service;
 
 /// <summary>
@@ -35,11 +37,11 @@ public class UpdateServiceRequest : IRequest<UpdateServiceResponse>, IApiBaseReq
     /// </summary>
     public bool? IsActive { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

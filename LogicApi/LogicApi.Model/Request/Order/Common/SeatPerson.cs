@@ -1,5 +1,6 @@
 using Common.WebCommon.Attributes.CustomDataAnnotations;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Order.Common;
 
 /// <summary>

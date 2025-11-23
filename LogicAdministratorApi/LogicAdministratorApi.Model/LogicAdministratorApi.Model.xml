@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogicAdministratorApi.Model</name>
+    </assembly>
+    <members>
+        <member name="T:LogicAdministratorApi.Model.CommonModels.ProductItem">
+            <summary>
+            Item de Producto
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.CommonModels.ProductItem.Guid">
+            <summary>
+            Id 
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.CommonModels.ProductItem.Code">
+            <summary>
+            Código de producto
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.CommonModels.ProductItem.Description">
+            <summary>
+            Descripción
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.CommonModels.ProductItem.Name">
+            <summary>
+            Nombre 
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.CommonModels.ProductItem.HasDelete">
+            <summary>
+            Tiene eliminado
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.CommonModels.ProductItem.Images">
+            <summary>
+            Imágenes
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.CommonModels.RolUserSession">
+            <summary>
+            Roles y Funcionalidades por Sesión de Usuario
+            </summary>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.CommonModels.RolUserSession.#ctor(System.Collections.Generic.IDictionary{System.Guid,System.String[]})">
+            <summary>
+            Roles y Funcionalidades por Sesión de Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.CommonModels.RolUserSession.FunctionalitiesEstablishmentBranch">
+            <summary>
+            Diccionario de Sucursales con funcionalidades
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.CommonModels.ScheduleEstablishmentBranchItem">
+            <summary>
+            Horario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.CommonModels.ScheduleEstablishmentBranchItem.DayOfWeekCode">
+            <summary>
+            Día de la Semana
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.CommonModels.ScheduleEstablishmentBranchItem.OpenSchedule">
+            <summary>
+             Horario Apertura
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.CommonModels.ScheduleEstablishmentBranchItem.CloseSchedule">
+            <summary>
+             Horario Cierre
+            </summary> 
+            <value></value>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.CommonModels.UserAdministratorEstablishmentBranchCacheInformation">
+            <summary>
+            Información de Usuario Administrador por Sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.CommonModels.UserAdministratorEstablishmentBranchCacheInformation.DateTimeCreation">
+            <summary>
+            Fecha de creación
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.CommonModels.UserAdministratorEstablishmentBranchCacheInformation.Functionalities">
+            <summary>
+            Funcionalidades
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.CommonRecords.SecretLoginModel">
+            <summary>
+            Modelo para Secreto de Login
+            </summary>
+            <param name="UserGuid"></param>
+            <param name="DateTimeRegister"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.CommonRecords.SecretLoginModel.#ctor(System.Guid,System.DateTime)">
+            <summary>
+            Modelo para Secreto de Login
+            </summary>
+            <param name="UserGuid"></param>
+            <param name="DateTimeRegister"></param>
+            <returns></returns>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.CommonRecords.SecretLoginModel.UserGuid">
+            <summary></summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.CommonRecords.SecretLoginModel.DateTimeRegister">
+            <summary></summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Authorization.LoginRequest">
+            <summary>
+            Objeto para Ingreso al sistema
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Authorization.LoginRequest.Username">
+            <summary>
+            Nombre de Usuario
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Authorization.LoginRequest.Password">
+            <summary>
+            Contraseña
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Authorization.LoginRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Authorization.LoginResponse">
+            <summary>
+            Objeto de respuesta para ingreso de sistema
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.AccessSecret">
+            <summary>
+            Secreto para acceso
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.EstablishmentAllowedItems">
+            <summary>
+            Establecimientos permitidos para el Usuario
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.ShowMessage">
+            <summary>
+            Mensaje
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Authorization.EstablishmentAllowedItem">
+            <summary>
+            Item de para Estableciminetos permitidos
+            </summary>
+            <param name="Guid"></param>
+            <param name="Name"></param>
+            <param name="EstablishmentBranchAllowedItems"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.Authorization.EstablishmentAllowedItem.#ctor(System.Guid,System.String,System.Collections.Generic.IEnumerable{LogicAdministratorApi.Model.Response.Authorization.EstablishmentBranchAllowedItem})">
+            <summary>
+            Item de para Estableciminetos permitidos
+            </summary>
+            <param name="Guid"></param>
+            <param name="Name"></param>
+            <param name="EstablishmentBranchAllowedItems"></param>
+            <returns></returns>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.EstablishmentAllowedItem.Guid">
+            <summary></summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.EstablishmentAllowedItem.Name">
+            <summary></summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.EstablishmentAllowedItem.EstablishmentBranchAllowedItems">
+            <summary></summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Authorization.EstablishmentBranchAllowedItem">
+            <summary>
+            Item de para Sucursales de Estableciminetos permitidos
+            </summary>
+            <param name="Guid"></param>
+            <param name="Name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.Authorization.EstablishmentBranchAllowedItem.#ctor(System.Guid,System.String)">
+            <summary>
+            Item de para Sucursales de Estableciminetos permitidos
+            </summary>
+            <param name="Guid"></param>
+            <param name="Name"></param>
+            <returns></returns>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.EstablishmentBranchAllowedItem.Guid">
+            <summary></summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.EstablishmentBranchAllowedItem.Name">
+            <summary></summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.HandlerResponse">
+            <summary>
+            Respuesta generica de Handler
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.HandlerResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.HandlerResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.HandlerResponse.#ctor(System.String,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessage"></param>
+            <param name="showMessage"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.HandlerResponse.Complete(System.String,System.Boolean)">
+            <summary>
+            Crea una instancia
+            </summary>
+            <param name="message"></param>
+            <param name="showMessage"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

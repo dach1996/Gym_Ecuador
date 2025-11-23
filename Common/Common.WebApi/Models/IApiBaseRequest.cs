@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Models;
 using MediatR;
 
@@ -7,7 +8,7 @@ public interface IApiBaseRequest
 {
     /// <inheritdoc />
     [JsonIgnore]
-    ContextRequest ContextRequest { get; set; }
+    CommonContextRequest ContextRequest { get; set; }
 }
 
 /// <summary>

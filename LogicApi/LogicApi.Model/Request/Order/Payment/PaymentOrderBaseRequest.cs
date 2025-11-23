@@ -1,6 +1,9 @@
+using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Attributes.CustomDataAnnotations;
+using Common.WebCommon.Models;
 using LogicApi.Model.Enum.Implementation;
 using LogicApi.Model.Response;
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Order.Payment;
 /// <summary>
 /// Request para pagar orden
@@ -27,5 +30,5 @@ public abstract class PaymentOrderBaseRequest : IApiBaseRequest<HandlerResponse>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 }

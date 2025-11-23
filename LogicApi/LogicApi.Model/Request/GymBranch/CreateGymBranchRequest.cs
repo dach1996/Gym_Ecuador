@@ -1,6 +1,8 @@
+using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Attributes.CustomDataAnnotations;
 using LogicApi.Model.Response.GymBranch;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.GymBranch;
 
 /// <summary>
@@ -109,11 +111,11 @@ public class CreateGymBranchRequest : IRequest<CreateGymBranchResponse>, IApiBas
     /// </summary>
     public DateTime? OpeningDate { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

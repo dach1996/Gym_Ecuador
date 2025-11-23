@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.GroupClass;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.GroupClass;
 
 /// <summary>
@@ -42,11 +44,11 @@ public class CreateGroupClassRequest : IRequest<CreateGroupClassResponse>, IApiB
     /// </summary>
     public string ClassImageUrl { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

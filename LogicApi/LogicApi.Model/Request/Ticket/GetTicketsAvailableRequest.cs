@@ -1,4 +1,6 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.Ticket;
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Ticket;
 /// <summary>
 /// Obtiene los Tickets
@@ -63,9 +65,9 @@ public class GetTicketsAvailableRequest : IApiBaseRequest<GetTicketsAvailableRes
     /// <value></value>
     public decimal? MaxPrice { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 }

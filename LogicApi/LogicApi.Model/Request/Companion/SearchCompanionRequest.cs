@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.Companion;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Companion;
 /// <summary>
 /// Request para buscar compañero de viaje
@@ -14,9 +16,9 @@ public class SearchCompanionRequest : IApiBaseRequest<SearchCompanionResponse>
     [StringLength(50)]
     public string DocumentNumber { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 }

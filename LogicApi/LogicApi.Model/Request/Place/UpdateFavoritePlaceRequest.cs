@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Attributes.CustomDataAnnotations;
 using LogicApi.Model.Response.Place;
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Place;
 /// <summary>
 /// Request para actualizar un lugar favorito de Usuari
@@ -21,11 +23,11 @@ public class UpdateFavoritePlaceRequest : IApiBaseRequest<UpdateFavoritePlaceRes
     [ValidateEnum] 
     public PlaceFavoriteType PlaceFavoriteType { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 }
 
 /// <summary>

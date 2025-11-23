@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.GymBranchSchedule;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.GymBranchSchedule;
 
 /// <summary>
@@ -28,11 +30,11 @@ public class UpdateGymBranchScheduleRequest : IRequest<UpdateGymBranchScheduleRe
     /// </summary>
     public bool? IsVisible { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

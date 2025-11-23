@@ -1,4 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
+using Common.WebCommon.Models;
 using LogicApi.Model.Response.Administration;
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Administration;
 /// <summary>
 /// Obtiene los catálogos iniciales
@@ -10,9 +13,9 @@ namespace LogicApi.Model.Request.Administration;
 public class GetCooperativeInformationRequest(ContextRequest contextRequest) : IApiBaseRequest<GetCooperativeInformationResponse>
 {
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; } = contextRequest;
+    public CommonContextRequest ContextRequest { get; set; } = contextRequest;
 }

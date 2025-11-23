@@ -1,6 +1,8 @@
 ﻿using Common.Tasks;
 using Common.UserDocumentation;
 using Common.UserDocumentation.Models.Response;
+using Common.WebApi.Models.ContextRequestModel;
+using Common.WebCommon.Models;
 using LogicApi.BusinessLogic.LoggerHandler;
 using LogicApi.Model.Request.Administration;
 using LogicApi.Model.Request.CommonConfiguration;
@@ -128,9 +130,9 @@ public abstract class BusinessLogicBase(
     /// Configura el Contexto
     /// </summary>
     /// <returns></returns>
-    protected void SetContextRequest(ContextRequest request)
+    protected void SetContextRequest(CommonContextRequest request)
     {
-        ContextRequest = request;
+        ContextRequest = request as ContextRequest;
         CommonContextRequest = request;
     }
 
@@ -191,7 +193,7 @@ public abstract class BusinessLogicBase(
     /// <param name="messagesCodesSucess"></param>
     /// <returns></returns>
     protected string GetSuccessMessage(MessagesCodesSucess messagesCodesSucess = MessagesCodesSucess.Ok)
-    => UserMessages.GetSucessMessageByCode((int)messagesCodesSucess, ContextRequest.Headers.UserLanguage)
+    => UserMessages.GetSucessMessageByCode((int)messagesCodesSucess, (Common.Messages.Models.UserLanguage)ContextRequest.Headers.UserLanguage)
         ?.Message;
 
     /// <summary>

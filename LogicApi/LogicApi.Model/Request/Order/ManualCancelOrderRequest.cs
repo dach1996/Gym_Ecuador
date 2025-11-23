@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Attributes.CustomDataAnnotations;
 using LogicApi.Model.Response;
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Order;
 /// <summary>
 /// Cancelación manual de Ordene
@@ -20,10 +22,10 @@ public class ManualCancelOrderRequest : IApiBaseRequest<HandlerResponse>
     /// <value></value>
     public string Reason { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
 }

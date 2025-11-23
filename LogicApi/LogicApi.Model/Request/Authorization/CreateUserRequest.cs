@@ -1,6 +1,8 @@
+using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Attributes.CustomDataAnnotations;
 using LogicApi.Model.Implementations.Authorization;
 using LogicApi.Model.Response.Authorization;
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Authorization;
 /// <summary>
 /// Request de Crear Usuarios
@@ -28,9 +30,9 @@ public class CreateUserRequest : IApiBaseRequest<CreateUserResponse>
     [ValidateEnum]
     public LoginImplementations LoginType { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 }

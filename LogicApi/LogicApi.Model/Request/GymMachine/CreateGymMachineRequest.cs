@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.GymMachine;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.GymMachine;
 
 /// <summary>
@@ -27,11 +29,11 @@ public class CreateGymMachineRequest : IRequest<CreateGymMachineResponse>, IApiB
     /// </summary>
     public string MachineImageUrl { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

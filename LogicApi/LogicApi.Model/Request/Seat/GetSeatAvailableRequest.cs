@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Attributes.CustomDataAnnotations;
 using LogicApi.Model.Response.Seat;
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Seat;
 /// <summary>
 /// Request de reservar un asiento
@@ -13,9 +15,9 @@ public class GetSeatAvailableRequest : IApiBaseRequest, IRequest<GetSeatAvailabl
     [ValidateGuid]
     public Guid RouteGuid { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 }

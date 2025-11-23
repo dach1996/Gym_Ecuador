@@ -1,6 +1,8 @@
-﻿using LogicApi.Model.Response.CommonConfiguration;
+﻿using Common.WebApi.Models.ContextRequestModel;
+using LogicApi.Model.Response.CommonConfiguration;
 using MediatR;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.CommonConfiguration;
 
 /// <summary>
@@ -36,9 +38,9 @@ public class GetItemsCatalogByCodeCatalogRequest : IRequest<GetItemsCatalogByCod
         ContextRequest = contextRequest;
     }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 }

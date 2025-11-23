@@ -1,5 +1,7 @@
-﻿using LogicApi.Model.Response.Device;
+﻿using Common.WebApi.Models.ContextRequestModel;
+using LogicApi.Model.Response.Device;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Device;
 
 /// <summary>
@@ -13,9 +15,9 @@ public class RefreshTokenPushRequest : IRequest<RefreshTokenPushResponse>, IApiB
     [Required]
     public string PushToken { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 }

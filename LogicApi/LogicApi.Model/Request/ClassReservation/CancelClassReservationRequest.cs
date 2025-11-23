@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.ClassReservation;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.ClassReservation;
 
 /// <summary>
@@ -12,11 +14,11 @@ public class CancelClassReservationRequest : IRequest<CancelClassReservationResp
     /// </summary>
     public Guid ClassReservationGuid { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.GymSubscriptionPlanService;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.GymSubscriptionPlanService;
 
 /// <summary>
@@ -13,11 +15,11 @@ public class GetServicesByPlanRequest : IRequest<GetServicesByPlanResponse>, IAp
     [Required]
     public Guid PlanGuid { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

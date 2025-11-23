@@ -1,3 +1,4 @@
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Order.Payment;
 /// <summary>
 /// Request para pagar orden por Criptomonedas

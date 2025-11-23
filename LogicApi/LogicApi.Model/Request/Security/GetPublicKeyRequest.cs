@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using Common.WebApi.Models;
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.Security;
 using MediatR;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Security;
 
 /// <summary>
@@ -18,9 +19,9 @@ public class GetPublicKeyRequest : IRequest<GetPublicKeyResponse>, IApiBaseReque
     [Required]
     public string RsaImplementation { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 }

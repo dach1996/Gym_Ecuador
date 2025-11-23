@@ -1,5 +1,5 @@
 ﻿using Common.Utils.CustomExceptions;
-using Common.WebApi.Models;
+using Common.WebApi.Models.ContextRequestModel;
 using Common.WebApi.Models.Enum;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Filters;

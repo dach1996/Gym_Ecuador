@@ -1,7 +1,7 @@
 ﻿using Common.PluginFactory.Interface;
 using Common.Security.Interface;
 using Common.Security.Model.Enum;
-using Common.WebApi.Models.Enum;
+using Common.WebCommon.Models.Enum;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;

@@ -744,7 +744,7 @@
             </remarks>
             <param name="contextRequest"></param>
         </member>
-        <member name="M:LogicApi.Model.Request.Administration.GetCooperativeInformationRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Administration.GetCooperativeInformationRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Obtiene los catálogos iniciales
             </summary>
@@ -774,7 +774,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest.#ctor(Common.WebApi.Models.ContextRequest,System.Collections.Generic.List{System.String})">
+        <member name="M:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest,System.Collections.Generic.List{System.String})">
             <summary>
             Constructor
             </summary>
@@ -984,7 +984,7 @@
             Constructor
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Authorization.RegisterBiometricRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Authorization.RegisterBiometricRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1106,7 +1106,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.ClassReservation.CancelClassReservationRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.ClassReservation.CancelClassReservationRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1142,7 +1142,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.ClassReservation.CreateClassReservationRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.ClassReservation.CreateClassReservationRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1188,7 +1188,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.ClassSchedule.CreateClassScheduleRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.ClassSchedule.CreateClassScheduleRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1224,7 +1224,7 @@
             Tiempo a guardar en cache
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogFileRequest.#ctor(System.String,System.String,Common.WebApi.Models.ContextRequest,System.Boolean)">
+        <member name="M:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogFileRequest.#ctor(System.String,System.String,Common.WebApi.Models.ContextRequestModel.ContextRequest,System.Boolean)">
             <summary>
             Constructor
             </summary>
@@ -1258,7 +1258,7 @@
             Tiempo a guardar en cache
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogRequest.#ctor(System.String,Common.WebApi.Models.ContextRequest,System.Boolean)">
+        <member name="M:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogRequest.#ctor(System.String,Common.WebApi.Models.ContextRequestModel.ContextRequest,System.Boolean)">
             <summary>
             Constructor
             </summary>
@@ -1282,7 +1282,7 @@
             <param name="contextRequest"></param>
             <param name="saveInCache"></param>
         </member>
-        <member name="M:LogicApi.Model.Request.CommonConfiguration.GetParameterByCodeRequest.#ctor(System.String,Common.WebApi.Models.ContextRequest,System.Boolean)">
+        <member name="M:LogicApi.Model.Request.CommonConfiguration.GetParameterByCodeRequest.#ctor(System.String,Common.WebApi.Models.ContextRequestModel.ContextRequest,System.Boolean)">
             <summary>
             Request para obtener un parámetro
             </summary>
@@ -1329,7 +1329,7 @@
             Constructor
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Companion.CreateOrUpdateCompanionRequest.#ctor(System.Int64,Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Companion.CreateOrUpdateCompanionRequest.#ctor(System.Int64,Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor 
             </summary>
@@ -1392,7 +1392,7 @@
             <param name="contextRequest"></param>
             <param name="token"></param>
         </member>
-        <member name="M:LogicApi.Model.Request.Device.RegisterPushTokenRequest.#ctor(Common.WebApi.Models.ContextRequest,System.String)">
+        <member name="M:LogicApi.Model.Request.Device.RegisterPushTokenRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest,System.String)">
             <summary>
             Actualización de token para notificaciones Push
             </summary>
@@ -1457,7 +1457,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GroupClass.CreateGroupClassRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GroupClass.CreateGroupClassRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1504,7 +1504,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymBranchSchedule.CreateGymBranchScheduleRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymBranchSchedule.CreateGymBranchScheduleRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1530,7 +1530,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymBranchSchedule.DeleteGymBranchScheduleRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymBranchSchedule.DeleteGymBranchScheduleRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1556,7 +1556,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymBranchSchedule.GetGymBranchSchedulesRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymBranchSchedule.GetGymBranchSchedulesRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1597,7 +1597,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymBranchSchedule.UpdateGymBranchScheduleRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymBranchSchedule.UpdateGymBranchScheduleRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1708,7 +1708,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymBranch.CreateGymBranchRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymBranch.CreateGymBranchRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1759,7 +1759,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymBranch.GetGymBranchesRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymBranch.GetGymBranchesRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1800,7 +1800,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymMachine.CreateGymMachineRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymMachine.CreateGymMachineRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1856,7 +1856,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymMachine.UpdateGymMachineRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymMachine.UpdateGymMachineRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1897,7 +1897,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymReview.CreateGymReviewRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymReview.CreateGymReviewRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1938,7 +1938,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymReview.GetGymReviewsRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymReview.GetGymReviewsRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1969,7 +1969,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymSubscriptionPlanService.AssignServiceToPlanRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymSubscriptionPlanService.AssignServiceToPlanRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -1995,7 +1995,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymSubscriptionPlanService.GetServicesByPlanRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymSubscriptionPlanService.GetServicesByPlanRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -2021,7 +2021,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymSubscriptionPlanService.RemoveServiceFromPlanRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymSubscriptionPlanService.RemoveServiceFromPlanRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -2077,7 +2077,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymSubscriptionPlan.CreateGymSubscriptionPlanRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymSubscriptionPlan.CreateGymSubscriptionPlanRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -2103,7 +2103,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymSubscriptionPlan.GetGymSubscriptionPlanByGuidRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymSubscriptionPlan.GetGymSubscriptionPlanByGuidRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -2149,7 +2149,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymSubscriptionPlan.GetGymSubscriptionPlansRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymSubscriptionPlan.GetGymSubscriptionPlansRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -2210,7 +2210,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.GymSubscriptionPlan.UpdateGymSubscriptionPlanRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.GymSubscriptionPlan.UpdateGymSubscriptionPlanRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -2276,7 +2276,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Gym.CreateGymRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Gym.CreateGymRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -2302,7 +2302,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Gym.GetGymByGuidRequest.#ctor(Common.WebApi.Models.ContextRequest,System.Guid)">
+        <member name="M:LogicApi.Model.Request.Gym.GetGymByGuidRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest,System.Guid)">
             <summary>
             Constructor
             </summary>
@@ -2344,7 +2344,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Gym.GetGymsRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Gym.GetGymsRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -2430,7 +2430,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Gym.UpdateGymRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Gym.UpdateGymRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -2563,7 +2563,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.MembershipType.CreateMembershipTypeRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.MembershipType.CreateMembershipTypeRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -2604,7 +2604,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.MembershipType.GetMembershipTypesRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.MembershipType.GetMembershipTypesRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -2655,7 +2655,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Membership.CreateMembershipRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Membership.CreateMembershipRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -2681,7 +2681,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Membership.GetMembershipByGuidRequest.#ctor(Common.WebApi.Models.ContextRequest,System.Guid)">
+        <member name="M:LogicApi.Model.Request.Membership.GetMembershipByGuidRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest,System.Guid)">
             <summary>
             Constructor
             </summary>
@@ -2738,7 +2738,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Membership.GetMembershipsRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Membership.GetMembershipsRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -2784,7 +2784,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Membership.UpdateMembershipRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Membership.UpdateMembershipRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -2878,7 +2878,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Order.GetMyOrdersPaginatedRequest.#ctor(Common.WebApi.Models.ContextRequest,System.Int32)">
+        <member name="M:LogicApi.Model.Request.Order.GetMyOrdersPaginatedRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest,System.Int32)">
             <summary>
             Constructor
             </summary>
@@ -3032,7 +3032,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.PersonalGoal.CreatePersonalGoalRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.PersonalGoal.CreatePersonalGoalRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -3078,7 +3078,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.PersonalGoal.GetPersonalGoalsRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.PersonalGoal.GetPersonalGoalsRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -3124,7 +3124,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.PersonalGoal.UpdatePersonalGoalRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.PersonalGoal.UpdatePersonalGoalRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -3140,7 +3140,7 @@
             Request para obtener los lugares favoritos de un usuario
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Place.GetMyFavoritePlaceRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Place.GetMyFavoritePlaceRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -3312,7 +3312,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingByGuidRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingByGuidRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -3363,7 +3363,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -3429,7 +3429,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -3506,14 +3506,14 @@
             </summary>
             <value></value>
         </member>
-        <member name="M:LogicApi.Model.Request.Security.DecryptRequest.#ctor(System.Collections.Generic.IEnumerable{System.String},Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Security.DecryptRequest.#ctor(System.Collections.Generic.IEnumerable{System.String},Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor con diccionario
             </summary>
             <param name="listTextsEncrypt"></param>
             <param name="contextRequest"></param>
         </member>
-        <member name="M:LogicApi.Model.Request.Security.DecryptRequest.#ctor(System.String,Common.WebApi.Models.ContextRequest,System.Boolean)">
+        <member name="M:LogicApi.Model.Request.Security.DecryptRequest.#ctor(System.String,Common.WebApi.Models.ContextRequestModel.ContextRequest,System.Boolean)">
             <summary>
             Constructor con diccionario
             </summary>
@@ -3565,14 +3565,14 @@
             </summary>
             <value></value>
         </member>
-        <member name="M:LogicApi.Model.Request.Security.EncryptRequest.#ctor(System.Collections.Generic.IEnumerable{System.String},Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Security.EncryptRequest.#ctor(System.Collections.Generic.IEnumerable{System.String},Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor con diccionario
             </summary>
             <param name="listTexts"></param>
             <param name="contextRequest"></param>
         </member>
-        <member name="M:LogicApi.Model.Request.Security.EncryptRequest.#ctor(System.String,Common.WebApi.Models.ContextRequest,System.Boolean)">
+        <member name="M:LogicApi.Model.Request.Security.EncryptRequest.#ctor(System.String,Common.WebApi.Models.ContextRequestModel.ContextRequest,System.Boolean)">
             <summary>
             Constructor con un dato
             </summary>
@@ -3631,7 +3631,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Service.CreateServiceRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Service.CreateServiceRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -3657,7 +3657,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Service.GetServiceByIdRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Service.GetServiceByIdRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -3703,7 +3703,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Service.GetServicesRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Service.GetServicesRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -3749,7 +3749,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Service.UpdateServiceRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Service.UpdateServiceRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -3859,7 +3859,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Trainer.CreateTrainerRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Trainer.CreateTrainerRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -3885,7 +3885,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Trainer.GetTrainerByGuidRequest.#ctor(Common.WebApi.Models.ContextRequest,System.Guid)">
+        <member name="M:LogicApi.Model.Request.Trainer.GetTrainerByGuidRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest,System.Guid)">
             <summary>
             Constructor
             </summary>
@@ -3932,7 +3932,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Trainer.GetTrainersRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Trainer.GetTrainersRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>
@@ -3978,7 +3978,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Trainer.UpdateTrainerRequest.#ctor(Common.WebApi.Models.ContextRequest)">
+        <member name="M:LogicApi.Model.Request.Trainer.UpdateTrainerRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
             <summary>
             Constructor
             </summary>

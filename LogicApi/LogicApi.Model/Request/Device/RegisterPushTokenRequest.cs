@@ -1,5 +1,7 @@
-﻿using LogicApi.Model.Response;
+﻿using Common.WebApi.Models.ContextRequestModel;
+using LogicApi.Model.Response;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Device;
 
 /// <summary>
@@ -17,9 +19,9 @@ public class RegisterPushTokenRequest(ContextRequest contextRequest, string toke
     /// </summary>
     [Required]
     public string Token { get; set; } = token;
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; } = contextRequest;
+    public CommonContextRequest ContextRequest { get; set; } = contextRequest;
 }

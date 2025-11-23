@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.Membership;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Membership;
 
 /// <summary>
@@ -37,11 +39,11 @@ public class CreateMembershipRequest : IRequest<CreateMembershipResponse>, IApiB
     /// </summary>
     public string GymRole { get; set; } // Miembro, Entrenador, Administrador
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

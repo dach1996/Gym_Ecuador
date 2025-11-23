@@ -1,15 +1,13 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
 using System.Reflection;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using Common.WebApi.Models;
 using Common.WebApi.Attributes.DecryptAttribute;
-using Microsoft.OpenApi.Any;
 using Common.Utils.Extensions;
 using Common.WebCommon.Models.Configuration;
 using Microsoft.Extensions.Configuration;
-
+using Common.WebApi.Models.ContextRequestModel;
+using Microsoft.OpenApi;
 namespace Common.WebApi.Extension;
 
 /// <summary>
@@ -108,7 +106,7 @@ public static class SwaggerExtension
                 Name = "X-RequestId",
                 Required = true,
                 In = ParameterLocation.Header,
-                Schema = new OpenApiSchema { Type = "string" }
+                Schema = new OpenApiSchema { Type = JsonSchemaType.String }
             });
             operation.Parameters.Add(new OpenApiParameter
             {
@@ -116,7 +114,7 @@ public static class SwaggerExtension
                 Name = "X-Platform",
                 Required = true,
                 In = ParameterLocation.Header,
-                Schema = new OpenApiSchema { Type = "string" }
+                Schema = new OpenApiSchema { Type = JsonSchemaType.String }
             });
             operation.Parameters.Add(new OpenApiParameter
             {
@@ -124,7 +122,7 @@ public static class SwaggerExtension
                 Name = "X-SystemOperation",
                 Required = true,
                 In = ParameterLocation.Header,
-                Schema = new OpenApiSchema { Type = "string" }
+                Schema = new OpenApiSchema { Type = JsonSchemaType.String }
             });
             operation.Parameters.Add(new OpenApiParameter
             {
@@ -132,7 +130,7 @@ public static class SwaggerExtension
                 Name = "X-Version",
                 Required = true,
                 In = ParameterLocation.Header,
-                Schema = new OpenApiSchema { Type = "string" }
+                Schema = new OpenApiSchema { Type = JsonSchemaType.String }
             });
             operation.Parameters.Add(new OpenApiParameter
             {
@@ -140,7 +138,7 @@ public static class SwaggerExtension
                 Name = "X-Time",
                 Required = true,
                 In = ParameterLocation.Header,
-                Schema = new OpenApiSchema { Type = "string" }
+                Schema = new OpenApiSchema { Type = JsonSchemaType.String }
             });
             operation.Parameters.Add(new OpenApiParameter
             {
@@ -148,7 +146,7 @@ public static class SwaggerExtension
                 Name = "X-Device",
                 Required = true,
                 In = ParameterLocation.Header,
-                Schema = new OpenApiSchema { Type = "string" }
+                Schema = new OpenApiSchema { Type = JsonSchemaType.String }
             });
             operation.Parameters.Add(new OpenApiParameter
             {
@@ -156,7 +154,7 @@ public static class SwaggerExtension
                 Name = "X-Model",
                 Required = true,
                 In = ParameterLocation.Header,
-                Schema = new OpenApiSchema { Type = "string" }
+                Schema = new OpenApiSchema { Type = JsonSchemaType.String }
             });
             operation.Parameters.Add(new OpenApiParameter
             {
@@ -164,7 +162,7 @@ public static class SwaggerExtension
                 Name = "X-Brand",
                 Required = true,
                 In = ParameterLocation.Header,
-                Schema = new OpenApiSchema { Type = "string" }
+                Schema = new OpenApiSchema { Type = JsonSchemaType.String }
             });
             operation.Parameters.Add(new OpenApiParameter
             {
@@ -172,7 +170,7 @@ public static class SwaggerExtension
                 Name = "X-Channel",
                 Required = true,
                 In = ParameterLocation.Header,
-                Schema = new OpenApiSchema { Type = "string" }
+                Schema = new OpenApiSchema { Type = JsonSchemaType.String }
             });
             operation.Parameters.Add(new OpenApiParameter
             {
@@ -180,14 +178,14 @@ public static class SwaggerExtension
                 Name = "X-Language",
                 Required = true,
                 In = ParameterLocation.Header,
-                Schema = new OpenApiSchema { Type = "string" }
+                Schema = new OpenApiSchema { Type = JsonSchemaType.String }
             });
             operation.Parameters.Add(new OpenApiParameter
             {
                 Description = "Zona Horaria.\r\n\r\nEjem: America/Guayaquil",
                 Name = "X-Timezone",
                 In = ParameterLocation.Header,
-                Schema = new OpenApiSchema { Type = "string" }
+                Schema = new OpenApiSchema { Type = JsonSchemaType.String }
             });
             operation.Parameters.Add(new OpenApiParameter
             {
@@ -195,7 +193,7 @@ public static class SwaggerExtension
                 Name = "X-Content",
                 Required = true,
                 In = ParameterLocation.Header,
-                Schema = new OpenApiSchema { Type = "string" }
+                Schema = new OpenApiSchema { Type = JsonSchemaType.String }
             });
             operation.Parameters.Add(new OpenApiParameter
             {
@@ -203,7 +201,7 @@ public static class SwaggerExtension
                 Name = "X-Secret",
                 Required = true,
                 In = ParameterLocation.Header,
-                Schema = new OpenApiSchema { Type = "string" }
+                Schema = new OpenApiSchema { Type = JsonSchemaType.String }
             });
         }
     }
@@ -227,12 +225,18 @@ public static class SwaggerExtension
     /// </summary>
     public class AddEncrypFieldDescriptionFilter : ISchemaFilter
     {
-        public void Apply(OpenApiSchema schema, SchemaFilterContext context)
+        public void Apply(IOpenApiSchema schema, SchemaFilterContext context)
         {
+            // El resto del código de búsqueda del atributo es correcto.
             var attr = context.MemberInfo?.CustomAttributes.FirstOrDefault(x =>
                 x.AttributeType.Name == nameof(EncryptedFieldAttribute));
+
             if (attr is not null)
-                schema.Extensions.Add("Encrypt Field", new OpenApiBoolean(true));
+            {
+                // CORRECCIÓN: Usar OpenApiBoolean de Microsoft.OpenApi.Any
+                // OpenApiBoolean es el tipo correcto para un valor booleano en la extensión.
+                //schema.Extensions.Add("Encrypt Field", new OpenApiBoolean(true));
+            }
         }
     }
 }

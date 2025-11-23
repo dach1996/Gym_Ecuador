@@ -7,7 +7,7 @@ using Common.Security.Interface;
 using Common.Security.Model.Enum;
 using Common.Utils.CustomExceptions;
 using Common.Utils.Extensions;
-using Common.WebApi.Models;
+using Common.WebApi.Models.ContextRequestModel;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 namespace Common.WebApi.Attributes.DecryptAttribute;

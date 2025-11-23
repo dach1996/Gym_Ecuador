@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.ProcessTracking;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.ProcessTracking;
 
 /// <summary>
@@ -12,11 +14,11 @@ public class GetProcessTrackingByGuidRequest : IRequest<GetProcessTrackingByGuid
     /// </summary>
     public Guid ProcessTrackingGuid { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

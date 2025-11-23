@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.Service;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Service;
 
 /// <summary>
@@ -13,11 +15,11 @@ public class GetServiceByIdRequest : IRequest<GetServiceByIdResponse>, IApiBaseR
     [Required]
     public int ServiceId { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

@@ -27,9 +27,9 @@ public class RefreshTokenHandler(
             var maxCountRefreshToken = (await Mediator.Send(new GetParameterByCodeRequest(ParametersCodes.MaxCountRefreshToken, ContextRequest), cancellationToken).ConfigureAwait(false))
                           ?.IntValue;
             //Validar la cantidad máxima de refresh
-            if (request.ContextRequest.CountRefresh > maxCountRefreshToken)
+            if (ContextRequest.CountRefresh > maxCountRefreshToken)
                 throw new CustomException((int)MessagesCodesError.MaxRefreshToken, $"Se alcanzó un máximo de Refresh Token");
-            var newCount = request.ContextRequest.CountRefresh + 1;
+            var newCount = ContextRequest.CountRefresh + 1;
             //Genera el Jwt
             var userIdEncrypted = (await Mediator.Send(new EncryptRequest($"{ContextRequest.CustomClaims.UserId}", ContextRequest, false)).ConfigureAwait(false))
                 ?.DictionaryEncrypted?.FirstOrDefault().Value;

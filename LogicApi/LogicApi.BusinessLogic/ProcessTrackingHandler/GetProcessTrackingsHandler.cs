@@ -26,12 +26,12 @@ public class GetProcessTrackingsHandler(
                     .GetPaginatorGenericAsync(
                         itemsByPage: request.PageSize,
                         page: request.Page,
-                        selector: pt => new ProcessTrackingItem
+                        select => new ProcessTrackingItem
                         {
-                            Guid = pt.Guid,
-                            PersonFullName = pt.Person.FullName,
-                            GymName = pt.GymBranch.Gym.Name,
-                            DateTimeRegister = pt.DateTimeRegister
+                            Guid = select.Guid,
+                            PersonFullName = select.Person.FullName,
+                            GymName = select.GymBranch.Gym.Name,
+                            DateTimeRegister = select.DateTimeRegister
                         }
                     ).ConfigureAwait(false);
 

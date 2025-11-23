@@ -1,4 +1,6 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.Order;
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Order;
 /// <summary>
 /// Request obtener detalle de la órden 
@@ -13,9 +15,9 @@ public class GetOrderDetailsRequest : IApiBaseRequest<GetOrderDetailsResponse>
     [Range(1, long.MaxValue)]
     public long OrderId { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 }

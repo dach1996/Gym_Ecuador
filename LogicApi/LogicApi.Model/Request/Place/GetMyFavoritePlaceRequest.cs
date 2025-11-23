@@ -1,4 +1,6 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.Place;
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Place;
 /// <summary>
 /// Request para obtener los lugares favoritos de un usuario
@@ -22,9 +24,9 @@ public class GetMyFavoritePlaceRequest : IApiBaseRequest<GetMyFavoritePlaceRespo
         
     }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 }

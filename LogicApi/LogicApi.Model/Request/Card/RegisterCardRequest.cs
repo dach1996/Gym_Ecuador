@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Attributes;
 using LogicApi.Model.Response;
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Card;
 /// <summary>
 /// Request para registrar tarjeta
@@ -23,9 +25,9 @@ public class RegisterCardRequest : IApiBaseRequest<HandlerResponse>
     [Required]
     public string CardNumber { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 }

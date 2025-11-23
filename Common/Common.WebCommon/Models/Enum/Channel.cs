@@ -1,4 +1,4 @@
-﻿namespace Common.WebApi.Models.Enum;
+﻿namespace Common.WebCommon.Models.Enum;
 
 /// <summary>
 /// Canales soportados por el Gateway API
@@ -9,4 +9,9 @@ public enum Channel
     /// Canale Móvil
     /// </summary>
     Mobile = 1,
+
+    /// <summary>
+    /// Canal Web
+    /// </summary>
+    Web = 2,
 }

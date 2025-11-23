@@ -1,3 +1,4 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Abstractions.Interfaces.Security;
 using LogicApi.Model.Request.Security;
 
@@ -23,7 +24,7 @@ public abstract class DocumentValidationHandler(
     /// <returns></returns>
     public override async Task<HandlerResponse> Handle(DocumentValidationRequest request, CancellationToken cancellationToken)
     {
-        ContextRequest = request.ContextRequest;
+        ContextRequest = request.ContextRequest as ContextRequest;
         var implementationName = (await GetItemsCatalogCodesResponseByFile(EnumLogicApi.CatalogsTypeItemsCodes.DocumentType.GetEnumMember()).ConfigureAwait(false))
             ?.FirstOrDefault(t => t.Code == request.DocumentTypeCode)?.Enum?.ToUpper()
             ?? throw new InvalidOperationException($"No se encuentra el Item de Catálogo de archivo: '{request.DocumentTypeCode}'");

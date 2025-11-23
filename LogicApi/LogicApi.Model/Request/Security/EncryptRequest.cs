@@ -1,5 +1,7 @@
-﻿using LogicApi.Model.Response.Security;
+﻿using Common.WebApi.Models.ContextRequestModel;
+using LogicApi.Model.Response.Security;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Security;
 
 /// <summary>
@@ -53,9 +55,9 @@ public class EncryptRequest : IRequest<EncryptResponse>, IApiBaseRequest
     }
 
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 }

@@ -4,7 +4,7 @@ using Common.Utils;
 using Common.Utils.CustomExceptions;
 using Common.Utils.Extensions;
 using Common.WebApi.Models;
-using Common.WebApi.Models.Enum;
+using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Models;
 using Common.WebCommon.Models.Enum;
 using Microsoft.AspNetCore.Http;
@@ -72,7 +72,7 @@ public class ConfigureContextMiddleware(
         if (!Enum.TryParse<Channel>(xchannel, ignoreCase: true, out var channel))
             throw new AuthException($"El Canal es Inválido (X-Platform: {xchannel}).");
 
-        if (!Enum.TryParse<UserLanguage>(xLanguage, ignoreCase: true, out var userLanguage))
+        if (!Enum.TryParse<Common.Messages.Models.UserLanguage>(xLanguage, ignoreCase: true, out var userLanguage))
             throw new AuthException($"El Idioma es Inválido (X-Language: {xLanguage}).");
 
         var encryptedFieldClaimDecrypt = GetEncryptedFieldClaimDecrypt(httpContext);
@@ -94,18 +94,18 @@ public class ConfigureContextMiddleware(
             DataBaseConfiguration = connectionDataBaseConfiguration,
             TimeZone = xTimezone.IsNullOrEmpty() ? _appSettings.TimeZone : xTimezone,
             CurrentSubClaim = GetClaimByName(ClaimTypes.NameIdentifier, httpContext)?.Value,
-            CountRefresh = int.TryParse(GetClaimByName(nameof(CustomClaims.Refresh), httpContext)?.Value, out var refress) ? refress : 0,
-            Scope = GetClaimByName(nameof(CustomClaims.Scope), httpContext)?.Value,
+            CountRefresh = int.TryParse(GetClaimByName(nameof(CustomClaimsApi.Refresh), httpContext)?.Value, out var refress) ? refress : 0,
+            Scope = GetClaimByName(nameof(CustomClaimsApi.Scope), httpContext)?.Value,
             Headers = new()
             {
                 Model = xmodel,
                 Brand = xbrand,
                 Version = xversion,
-                Platform = platform,
+                Platform = (Common.WebCommon.Models.Enum.Platform)platform,
                 ClientDate = Util.ConvertUnixToDate(timestamp, Util.UnixConvertion.Seconds),
                 DeviceId = deviceId,
                 Channel = channel,
-                UserLanguage = userLanguage,
+                UserLanguage = (Common.WebCommon.Models.Enum.UserLanguage)userLanguage,
                 TimeZone = xTimezone,
                 Content = xContent,
                 Secret = xSecret,
@@ -114,12 +114,12 @@ public class ConfigureContextMiddleware(
                 SystemOperation = xSystemOperation,
                 HasGoogleServices = bool.TryParse(xHasGoogleServices, out var result) && result,
             },
-            CustomClaims = new CustomClaims
+            CustomClaims = new CustomClaimsApi
             {
-                Jti = GetClaimByName(nameof(CustomClaims.Jti), httpContext)?.Value,
-                Refresh = GetClaimByName(nameof(CustomClaims.Refresh), httpContext)?.Value,
-                Scope = GetClaimByName(nameof(CustomClaims.Scope), httpContext)?.Value,
-                Sub = GetClaimByName(nameof(CustomClaims.Sub), httpContext)?.Value,
+                Jti = GetClaimByName(nameof(CustomClaimsApi.Jti), httpContext)?.Value,
+                Refresh = GetClaimByName(nameof(CustomClaimsApi.Refresh), httpContext)?.Value,
+                Scope = GetClaimByName(nameof(CustomClaimsApi.Scope), httpContext)?.Value,
+                Sub = GetClaimByName(nameof(CustomClaimsApi.Sub), httpContext)?.Value,
                 UserId = encryptedFieldClaimDecrypt?.UserId,
                 UserName = encryptedFieldClaimDecrypt?.UserName,
                 Email = encryptedFieldClaimDecrypt?.Email,

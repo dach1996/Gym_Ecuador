@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.GymReview;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.GymReview;
 
 /// <summary>
@@ -27,11 +29,11 @@ public class GetGymReviewsRequest : IRequest<GetGymReviewsResponse>, IApiBaseReq
     /// </summary>
     public int PageSize { get; set; } = 10;
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

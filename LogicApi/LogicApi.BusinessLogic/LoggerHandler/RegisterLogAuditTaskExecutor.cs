@@ -1,4 +1,5 @@
 using Common.Tasks;
+using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Json;
 using LogicApi.Model.Request.Logger;
 using PersistenceDb.Models.Administration;
@@ -27,7 +28,7 @@ public class RegisterLogAuditTaskExecutor(
         {
             try
             {
-                var context = request.ContextRequest;
+                var context = request.ContextRequest as ContextRequest;
                 if (context?.DataBaseConfiguration is null)
                     throw new CustomException((int)MessagesCodesError.SystemError, $"La cadena de conexión en el Contexto está vacía");
                 if (context.TimeZone.IsNullOrEmpty())
@@ -37,8 +38,8 @@ public class RegisterLogAuditTaskExecutor(
                 await _unitOfWork.AuditLogRepository.AddAsync(new AuditLog
                 {
                     DateTime = _clock.Now(),
-                    UserId = request.ContextRequest.CustomClaims.UserId,
-                    UserName = request.ContextRequest.CustomClaims.UserName ?? string.Empty,
+                    UserId = context.CustomClaims.UserId,
+                    UserName = request.ContextRequest.CustomClaims?.FullName ?? string.Empty,
                     OriginIp = context.IpOrigin ?? string.Empty,
                     Operation = request.OperationName.GetEnumMember(),
                     Result = request.OperationResult,

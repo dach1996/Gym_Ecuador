@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.GymSubscriptionPlan;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.GymSubscriptionPlan;
 
 /// <summary>
@@ -32,11 +34,11 @@ public class GetGymSubscriptionPlansRequest : IRequest<GetGymSubscriptionPlansRe
     /// </summary>
     public int PageSize { get; set; } = 10;
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

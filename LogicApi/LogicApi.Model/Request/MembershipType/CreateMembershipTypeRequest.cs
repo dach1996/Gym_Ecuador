@@ -1,5 +1,7 @@
+using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.MembershipType;
 
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.MembershipType;
 
 /// <summary>
@@ -32,11 +34,11 @@ public class CreateMembershipTypeRequest : IRequest<CreateMembershipTypeResponse
     /// </summary>
     public string BenefitsDescription { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
     /// <summary>
     /// Constructor

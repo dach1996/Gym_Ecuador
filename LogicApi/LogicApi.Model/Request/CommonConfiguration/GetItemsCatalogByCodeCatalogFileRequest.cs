@@ -1,4 +1,6 @@
-﻿using LogicApi.Model.Response.CommonConfiguration;
+﻿using Common.WebApi.Models.ContextRequestModel;
+using LogicApi.Model.Response.CommonConfiguration;
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.CommonConfiguration;
 /// <summary>
 /// Request Obtiene una lista de items de catálogo
@@ -39,9 +41,9 @@ public class GetItemsCatalogByCodeCatalogFileRequest : IRequest<GetItemsCatalogB
         Language = language;
         ContextRequest = contextRequest;
     }
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 }

@@ -1,6 +1,8 @@
+using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Attributes.CustomDataAnnotations;
 using LogicApi.Model.Request.Order.Common;
 using LogicApi.Model.Response.Order;
+using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Order;
 /// <summary>
 /// Request para generar Orden
@@ -22,10 +24,10 @@ public class GenerateOrderRequest : IApiBaseRequest<GenerateOrderResponse>
     [MinLength(1)]
     public SeatPersonRequest[] SeatPeople { get; set; }
 
-    /// <summary>
+ /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public ContextRequest ContextRequest { get; set; }
+    public CommonContextRequest ContextRequest { get; set; }
 
 }

@@ -2,6 +2,6 @@
 namespace Common.Messages.Models;
 public enum UserLanguage
 {
-    Spanish,
-    English
+    Spanish = 1,
+    English = 2
 }

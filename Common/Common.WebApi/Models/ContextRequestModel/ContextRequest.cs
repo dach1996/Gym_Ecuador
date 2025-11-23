@@ -1,8 +1,6 @@
-﻿using Common.Messages.Models;
-using Common.WebApi.Models.Enum;
-using Common.WebCommon.Models;
+﻿using Common.WebCommon.Models;
 
-namespace Common.WebApi.Models;
+namespace Common.WebApi.Models.ContextRequestModel;
 
 /// <summary>
 /// Contexto de auditoría del request
@@ -13,7 +11,7 @@ public class ContextRequest : CommonContextRequest
     /// <summary>
     /// Headers de auditoría
     /// </summary>
-    public Header Headers { get; set; }
+    public new HeaderApi Headers { get; set; }
 
     /// <summary>
     /// Host del request 
@@ -63,13 +61,13 @@ public class ContextRequest : CommonContextRequest
     /// <summary>
     /// Custom Claims
     /// </summary>
-    public CustomClaims CustomClaims { get; set; }
+    public new CustomClaimsApi CustomClaims { get; set; }
 }
 
 /// <summary>
 /// Custom Claims
 /// </summary>
-public class CustomClaims
+public class CustomClaimsApi : CommonCustomClaims
 {
 
     /// <summary>
@@ -82,45 +80,6 @@ public class CustomClaims
     /// </summary>
     public int? PersonId { get; set; }
 
-    /// <summary>
-    /// Correo Electrónico
-    /// </summary>
-    public string Email { get; set; }
-
-    /// <summary>
-    /// Primer Nombre
-    /// </summary>
-    public string FirstName { get; set; }
-
-    /// <summary>
-    /// Apellido
-    /// </summary>
-    public string Surname { get; set; }
-
-    /// <summary>
-    /// Nombre de Usuario
-    /// </summary>
-    public string UserName { get; set; }
-
-    /// <summary>
-    /// Jti
-    /// </summary>
-    public string Jti { get; set; }
-
-    /// <summary>
-    /// Sub
-    /// </summary>
-    public string Sub { get; set; }
-
-    /// <summary>
-    /// Scope
-    /// </summary>
-    public string Scope { get; set; }
-
-    /// <summary>
-    /// Refresh
-    /// </summary>
-    public string Refresh { get; set; }
 
     /// <summary>
     /// Identificador del dispositivo generado por el dispositivo móvil
@@ -161,27 +120,12 @@ public class CustomClaims
 /// <summary>
 /// Headers
 /// </summary>
-public class Header
+public class HeaderApi : HeaderCommon
 {
-    /// <summary>
-    /// Canal declarado en el request
-    /// </summary>
-    public Channel Channel { get; set; }
-
-    /// <summary>
-    /// Plataforma declarada en el request
-    /// </summary>
-    public Platform Platform { get; set; }
-
     /// <summary>
     /// Identificador del dispositivo
     /// </summary>
     public string DeviceId { get; set; }
-
-    /// <summary>
-    /// Versión de la aplicación
-    /// </summary>
-    public string Version { get; set; }
 
     /// <summary>
     /// Modelo de dispositivo
@@ -192,42 +136,6 @@ public class Header
     /// Marca del dispositivo
     /// </summary>
     public string Brand { get; set; }
-
-    /// <summary>
-    /// Lenguaje
-    /// </summary>
-    public UserLanguage UserLanguage { get; set; }
-
-    /// <summary>
-    /// Fecha del cliente
-    /// </summary>
-    public DateTime? ClientDate { get; set; }
-
-    /// <summary>
-    /// Zona Horaria
-    /// </summary>
-    public string TimeZone { get; set; }
-
-    /// <summary>
-    /// Contenido para validación
-    /// </summary>
-    public string Content { get; set; }
-
-    /// <summary>
-    /// Secreto
-    /// </summary>
-    public string Secret { get; set; }
-
-    /// <summary>
-    /// TimeSpan
-    /// </summary>
-    public string Time { get; set; }
-
-    /// <summary>
-    /// Token de Autorización
-    /// </summary>
-    /// <value></value>
-    public string Authorization { get; set; }
 
     /// <summary>
     /// Sistema Operativo del Dispositivo
