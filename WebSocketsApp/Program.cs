@@ -36,7 +36,6 @@ try
     builder.Services.ScanAutoMapperProfiles(builder.Configuration);
     builder.Services.AddClock();
     builder.Services.AddMediatrTypes(typeof(BusinessLogicWebSocketBase));
-    builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddApiVersioning();
     builder.Services.AddSwaggerGen();
     builder.Services.AddCustomAzureSignalR(builder.Configuration);

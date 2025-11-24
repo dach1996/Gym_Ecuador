@@ -83,7 +83,6 @@ public static class SwaggerExtension
                 Type = SecuritySchemeType.ApiKey
             });
 
-
             //Headers Requirements
             c.DocumentFilter<SwaggerIgnoreFilter>();
             c.OperationFilter<AddRequiredHeaderParameter>();
