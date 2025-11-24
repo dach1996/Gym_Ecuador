@@ -232,9 +232,14 @@ public static class SwaggerExtension
 
             if (attr is not null)
             {
-                // CORRECCIÓN: Usar OpenApiBoolean de Microsoft.OpenApi.Any
-                // OpenApiBoolean es el tipo correcto para un valor booleano en la extensión.
-                //schema.Extensions.Add("Encrypt Field", new OpenApiBoolean(true));
+                //// 2. Definir la nueva propiedad
+                //var nuevaPropiedad = new OpenApiDate
+                //{
+                //    Type = JsonSchemaType.Boolean, // O el tipo de  dato que se necesita (integer, boolean, array, etc.)
+                //    Description = "Verdadero si el campo está encriptado, falso si no está encriptado."
+                //};
+                //schema.Extensions.Add("x-encryptField", nuevaPropiedad);
+                //schema.Properties?.Add("Encrypt Field", nuevaPropiedad);
             }
         }
     }
