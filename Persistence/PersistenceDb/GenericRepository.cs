@@ -2,7 +2,7 @@
 using EFCore.BulkExtensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using PersistenceDb.CustomException;
+using N.EntityFrameworkCore.Extensions;
 using PersistenceDb.Model;
 using PersistenceDb.Models.Enums;
 using PersistenceDb.Models.Models;
@@ -115,7 +115,7 @@ public class GenericRepository<TEntity>(
     {
         try
         {
-            await Context.BulkUpdateAsync(entities).ConfigureAwait(false);
+            /// await Context.BulkUpdateAsync(entities).ConfigureAwait(false);
             return await Context.SaveChangesAsync();
         }
         catch (Exception ex)
@@ -473,42 +473,81 @@ public class GenericRepository<TEntity>(
     /// <summary>
     /// Actualiza varios registros
     /// </summary>
-    /// <param name="updateExpression"></param>
+    /// <param name="property"></param>
+    /// <param name="property2"></param>
+    /// <param name="property3"></param>
     /// <param name="where"></param>
-    /// <param name="autoDetectChangesEnabled"></param>
     /// <returns></returns>
-    public async Task<int> UpdateByAsync(
-        Expression<Func<TEntity, TEntity>> updateExpression,
-        Expression<Func<TEntity, bool>> where = null,
-        bool throwExceptionIfNoRecordsAffected = false,
-        bool autoDetectChangesEnabled = true)
+    public async Task<int> UpdateByAsync<TProperty, TProperty2, TProperty3>(
+        (Expression<Func<TEntity, TProperty>> propertyExpression, TProperty value) property,
+        (Expression<Func<TEntity, TProperty2>> propertyExpression2, TProperty2 value2) property2,
+        (Expression<Func<TEntity, TProperty3>> propertyExpression3, TProperty3 value3) property3,
+        Expression<Func<TEntity, bool>> where = null)
     {
         try
         {
-            Context.ChangeTracker.AutoDetectChangesEnabled = autoDetectChangesEnabled;
-            if (!autoDetectChangesEnabled)
-                Context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            // Opcionalmente, puedes restablecer SET NOCOUNT OFF si es necesario
             where ??= t => true;
-            var updateRecords = await Context.Set<TEntity>()
+            return await Context.Set<TEntity>()
             .Where(where)
-            .BatchUpdateAsync(updateExpression).ConfigureAwait(false);
-            await Context.BulkSaveChangesAsync().ConfigureAwait(false);
-            if (throwExceptionIfNoRecordsAffected && updateRecords == 0)
-                throw new CustomPersistenceException("No se actualizó ningún registro");
-            return updateRecords;
+            .ExecuteUpdateAsync(set =>
+             set.SetProperty(property.propertyExpression, property.value)
+                .SetProperty(property2.propertyExpression2, property2.value2)
+                .SetProperty(property3.propertyExpression3, property3.value3)).ConfigureAwait(false);
+
         }
         catch (Exception ex)
         {
-            Logger.LogError(ex, "Exepción Actualizando varios registros: {@Entity}: {@ErrorMessage} - {@InnerException}", typeof(TEntity), ex.Message, ex.InnerException?.Message);
+            Logger.LogError(ex, "Exepción buscando los items en base al filtro para {@Entity}: {@ErrorMessage} - {@InnerException}", typeof(TEntity), ex.Message, ex.InnerException?.Message);
             throw;
         }
-        finally
+    }
+
+    /// <summary>
+    /// Actualiza varios registros
+    /// </summary>
+    /// <param name="property"></param>
+    /// <param name="property2"></param>
+    /// <param name="where"></param>
+    /// <returns></returns>
+    public async Task<int> UpdateByAsync<TProperty, TProperty2>(
+        (Expression<Func<TEntity, TProperty>> propertyExpression, TProperty value) property,
+        (Expression<Func<TEntity, TProperty2>> propertyExpression2, TProperty2 value2) property2,
+        Expression<Func<TEntity, bool>> where = null)
+    {
+        try
         {
-            if (!autoDetectChangesEnabled)
-                Context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.TrackAll;
-            Context.ChangeTracker.AutoDetectChangesEnabled = true;
+            where ??= t => true;
+            return await Context.Set<TEntity>()
+            .Where(where)
+            .ExecuteUpdateAsync(set =>
+             set.SetProperty(property.propertyExpression, property.value)
+                .SetProperty(property2.propertyExpression2, property2.value2)
+                ).ConfigureAwait(false);
         }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Exepción buscando los items en base al filtro para {@Entity}: {@ErrorMessage} - {@InnerException}", typeof(TEntity), ex.Message, ex.InnerException?.Message);
+            throw;
+        }
+    }
+
+    /// <summary>
+    /// Actualiza un registro
+    /// </summary>
+    /// <param name="propertyExpression"></param>
+    /// <param name="value"></param>
+    /// <param name="where"></param>
+    /// <typeparam name="TProperty"></typeparam>
+    /// <returns></returns>
+    public async Task<int> UpdateByAsync<TProperty>(
+       (Expression<Func<TEntity, TProperty>> propertyExpression, TProperty value) properties,
+       Expression<Func<TEntity, bool>> where = null
+   )
+    {
+        where ??= t => true;
+        return await Context.Set<TEntity>()
+        .Where(where)
+        .ExecuteUpdateAsync(set => set.SetProperty(properties.propertyExpression, properties.value)).ConfigureAwait(false);
     }
 
     /// <summary>

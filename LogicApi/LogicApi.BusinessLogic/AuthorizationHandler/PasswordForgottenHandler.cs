@@ -48,12 +48,8 @@ public class PasswordForgottenHandler(
                 var passwordEncrypted = GetPasswordEncrypted(newPassword, userCurrent.Salt);
                 //Actualiza el usuario
                 await UnitOfWork.UserRegistrationFormRepository.UpdateByAsync(
-                     user => new()
-                     {
-                         PasswordTemporary = passwordEncrypted
-                     },
-                     where => where.UserId == userCurrent.Id && where.UserTypeRegister == UserTypeRegister.Manual,
-                     throwExceptionIfNoRecordsAffected: true
+                     (user => user.PasswordTemporary, passwordEncrypted),
+                     where => where.UserId == userCurrent.Id && where.UserTypeRegister == UserTypeRegister.Manual
                  ).ConfigureAwait(false);
                 await SendQueueMessageAsync(new ForgottenPasswordMailQueueTemplate
                 {

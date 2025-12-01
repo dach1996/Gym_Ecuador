@@ -24,11 +24,8 @@ public class RemoveBiometricHandler(
         {
             //Actualiza el registro de biométrico
             var updateResult = await UnitOfWork.UserDeviceRepository.UpdateByAsync(
-                update => new UserDevice
-                {
-                    Biometric = null,
-                    RegisterDate = Now,
-                },
+                (userDevice => userDevice.Biometric, null),
+                (userDevice => userDevice.RegisterDate, Now),
                 where => where.UserId == UserId && where.DeviceId == DeviceId
             ).ConfigureAwait(false);
             if (updateResult == 0)

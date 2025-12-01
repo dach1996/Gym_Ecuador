@@ -6,6 +6,7 @@ using LogicApi.Model.Request.Device;
 using LogicApi.Model.Response.Authorization;
 using PersistenceDb.Models.Authentication;
 namespace LogicApi.BusinessLogic.AuthorizationHandler.Login;
+
 public class LoginHandler(
     ILogger<LoginHandler> logger,
     IPluginFactory pluginFactory) : AuthorizationBase<LoginRequest, LoginResponse>(
@@ -46,6 +47,7 @@ public class LoginHandler(
                 select.HasCompleteRegistration,
                 select.Guid,
                 select.LanguageCode,
+                select.FirstLoginDate,
                 select.ImagenId,
                 Person = select.PersonId != null ? new
                 {
@@ -64,7 +66,7 @@ public class LoginHandler(
             throw new CustomException((int)MessagesCodesError.UserHasNotAssignedPerson, $"El usuario con Id: '{userId}' no posee asignado una persona.");
         LoginResponse loginResponse = new();
         //Actualia la información de Dipositivos y Usuario
-        var deviceId = await UpdateDataUserDeviceAsync(userId).ConfigureAwait(false);
+        var deviceId = await UpdateDataUserDeviceAsync(userId, user.FirstLoginDate).ConfigureAwait(false);
         //Registra el push token
         if (!LoginRequest.PushToken.IsNullOrEmpty())
             await Mediator.Send(new RegisterPushTokenRequest(ContextRequest, LoginRequest.PushToken)).ConfigureAwait(false);
@@ -116,7 +118,7 @@ public class LoginHandler(
     /// </summary>
     /// <param name="user"></param>
     /// <returns></returns>
-    private async Task<int> UpdateDataUserDeviceAsync(int userId)
+    private async Task<int> UpdateDataUserDeviceAsync(int userId, DateTime? firstLoginDate)
     {
         var now = Clock.Now();
         //Registra o actualiza datos del dispositivo
@@ -139,10 +141,9 @@ public class LoginHandler(
             await AdministratorCache.SetAsync(CacheCodes.DeviceIdByMobileId(ContextRequest.Headers.DeviceId), deviceId.Value, slidingExpiration: true).ConfigureAwait(false);
         }
         //Intenta actualizar el registro de usuario dispositivo
-        var updateUserDevice = await UnitOfWork.UserDeviceRepository.UpdateByAsync(userDevice => new UserDevice
-        {
-            DateTimeLastLogin = now
-        }, where => where.DeviceId == deviceId && where.UserId == userId).ConfigureAwait(false);
+        var updateUserDevice = await UnitOfWork.UserDeviceRepository.UpdateByAsync(
+            (userDevice => userDevice.DateTimeLastLogin, now),
+            where => where.DeviceId == deviceId && where.UserId == userId).ConfigureAwait(false);
         //Si no se actualizó, se crea el registro
         if (updateUserDevice == 0)
             await UnitOfWork.UserDeviceRepository.AddAsync(new UserDevice
@@ -152,13 +153,13 @@ public class LoginHandler(
                 DeviceId = deviceId.Value,
                 UserId = userId,
             }).ConfigureAwait(false);
+        
         //Actualiza la información del usuario
-        await UnitOfWork.UserRepository.UpdateByAsync(user => new User
-        {
-            FirstLoginDate = user.FirstLoginDate ?? now,
-            DateTimeTriedLoginFailed = null,
-            TriedLoginFailed = 0
-        }, where => where.Id == userId).ConfigureAwait(false);
+        await UnitOfWork.UserRepository.UpdateByAsync(
+            (user => user.FirstLoginDate, firstLoginDate ?? now),
+            (user => user.DateTimeTriedLoginFailed, null),
+            (user => user.TriedLoginFailed, 0),
+            where => where.Id == userId).ConfigureAwait(false);
         return deviceId.Value;
     }
 
@@ -201,11 +202,10 @@ public class LoginHandler(
             where => where.Id == userId).ConfigureAwait(false);
         var isBlocked = (userTriedLoginFailed ?? 0) >= maxAttemptsLoginFailed;
         //Verifica si el usuario está bloqueado
-        await UnitOfWork.UserRepository.UpdateByAsync(user => new User
-        {
-            DateTimeTriedLoginFailed = Clock.Now(),
-            TriedLoginFailed = (userTriedLoginFailed ?? 0) + 1,
-            IsBlocked = isBlocked
-        }, where => where.Id == userId).ConfigureAwait(false);
+        await UnitOfWork.UserRepository.UpdateByAsync(
+            (user => user.DateTimeTriedLoginFailed, Clock.Now()),
+            (user => user.TriedLoginFailed, (userTriedLoginFailed ?? 0) + 1),
+            (user => user.IsBlocked, isBlocked),
+            where => where.Id == userId).ConfigureAwait(false);
     }
 }

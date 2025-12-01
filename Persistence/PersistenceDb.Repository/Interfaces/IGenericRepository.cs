@@ -180,19 +180,44 @@ public interface IGenericRepository<TEntity> where TEntity : class
         Expression<Func<TEntity, TResult>> selector,
         Expression<Func<TEntity, bool>> where = null);
 
+    /// <summary>
+    /// Actualiza un registro
+    /// </summary>
+    /// <param name="propertyExpression"></param>
+    /// <param name="value"></param>
+    /// <param name="where"></param>
+    /// <typeparam name="TProperty"></typeparam>
+    /// <returns></returns>
+    public Task<int> UpdateByAsync<TProperty>(
+        (Expression<Func<TEntity, TProperty>> propertyExpression, TProperty value) properties,
+        Expression<Func<TEntity, bool>> where = null);
 
     /// <summary>
-    /// Actualiza varios registros
+    /// Actualiza un registro
     /// </summary>
-    /// <param name="updateExpression"></param>
+    /// <param name="propertyExpression"></param>
+    /// <param name="value"></param>
     /// <param name="where"></param>
-    /// <param name="autoDetectChangesEnabled"></param>
+    /// <typeparam name="TProperty"></typeparam>
     /// <returns></returns>
-    public Task<int> UpdateByAsync(
-        Expression<Func<TEntity, TEntity>> updateExpression,
-        Expression<Func<TEntity, bool>> where = null,
-        bool throwExceptionIfNoRecordsAffected = false,
-        bool autoDetectChangesEnabled = true);
+    public Task<int> UpdateByAsync<TProperty, TProperty2>(
+        (Expression<Func<TEntity, TProperty>> propertyExpression, TProperty value) property,
+        (Expression<Func<TEntity, TProperty2>> propertyExpression2, TProperty2 value2) property2,
+        Expression<Func<TEntity, bool>> where = null);
+
+    /// <summary>
+    /// Actualiza un registro
+    /// </summary>
+    /// <param name="propertyExpression"></param>
+    /// <param name="value"></param>
+    /// <param name="where"></param>
+    /// <typeparam name="TProperty"></typeparam>
+    /// <returns></returns>
+    public Task<int> UpdateByAsync<TProperty, TProperty2, TProperty3>(
+        (Expression<Func<TEntity, TProperty>> propertyExpression, TProperty value) property,
+        (Expression<Func<TEntity, TProperty2>> propertyExpression2, TProperty2 value2) property2,
+        (Expression<Func<TEntity, TProperty3>> propertyExpression3, TProperty3 value3) property3,
+        Expression<Func<TEntity, bool>> where = null);
 
     /// <summary>
     /// Intenta agregar una entidad

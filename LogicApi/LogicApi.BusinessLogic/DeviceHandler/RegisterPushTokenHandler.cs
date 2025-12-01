@@ -67,14 +67,10 @@ public class RegisterPushTokenHandler(
             if (userDevicePushTokenInformation.PushToken != request.Token || userDevicePushTokenInformation.UserId != UserId)
                 //Actualiza el token al usuario
                 await UnitOfWork.UserDevicePushTokenRepository.UpdateByAsync(
-                    update => new UserDevicePushToken
-                    {
-                        PushToken = request.Token,
-                        LastDateUpdated = Now,
-                        UserId = UserId
-                    },
-                    where => where.DeviceId == deviceId.Value,
-                    autoDetectChangesEnabled: false
+                    (userDevicePushToken => userDevicePushToken.PushToken, request.Token),
+                    (userDevicePushToken => userDevicePushToken.LastDateUpdated, Now),
+                    (userDevicePushToken => userDevicePushToken.UserId, UserId),
+                    where => where.DeviceId == deviceId.Value
                 ).ConfigureAwait(false);
             return HandlerResponse.Complete();
         });

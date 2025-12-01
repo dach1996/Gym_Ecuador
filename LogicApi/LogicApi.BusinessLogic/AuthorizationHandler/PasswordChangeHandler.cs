@@ -42,13 +42,9 @@ public class PasswordChangeHandler(
             if (!Argon2.VerifyHashes(request.CurrentPassword, [currentUser.UserRegistrationForms.Password, currentUser.UserRegistrationForms.PasswordTemporary], currentUser.Salt))
                 throw new CustomException((int)MessagesCodesError.IncorrectPassword);
             await UnitOfWork.UserRegistrationFormRepository.UpdateByAsync(
-                user => new()
-                {
-                    Password = GetPasswordEncrypted(request.NewPassword, currentUser.Salt),
-                    PasswordTemporary = null
-                },
-                where => where.UserId == UserId && where.UserTypeRegister == UserTypeRegister.Manual,
-                throwExceptionIfNoRecordsAffected: true
+                (user => user.Password, GetPasswordEncrypted(request.NewPassword, currentUser.Salt)),
+                (user => user.PasswordTemporary, null),
+                where => where.UserId == UserId && where.UserTypeRegister == UserTypeRegister.Manual
             ).ConfigureAwait(false);
             return HandlerResponse.Complete(GetSuccessMessage(MessagesCodesSucess.ChangePasswordSuccess), true);
         });
