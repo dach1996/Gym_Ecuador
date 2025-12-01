@@ -41,6 +41,42 @@
       }
     },
     {
+      "name": "Administrator Api Debug",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "buildAdministratorApi",
+      "program": "${workspaceFolder}/AdministratorApi/bin/Debug/net10.0/AdministratorApi.dll",
+      "args": [],
+      "console": "externalTerminal",
+      "cwd": "${workspaceFolder}/AdministratorApi",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Debug",
+        "ASPNETCORE_URLS": "https://0.0.0.0:44326",
+        "Serilog:WriteTo:0:Args:connectionString": "",
+        "CustomConnectionStrings:0:ConnectionString": "Server=127.0.0.1;Initial Catalog=Gym;Integrated Security=false; User Id=sa;Password=Dach@1996;TrustServerCertificate=True;",
+        "BlobConfiguration:Implementations:Information:ConnectionString": "UseDevelopmentStorage=true",
+        "MailNotificationConfiguration:Implementations:0:Information:ApiKey": "",
+        "CardServicesConfiguration:Implementations:0:Information:Headers:X-RapidAPI-Key": "2474d801ffmsh5923ae133182ca4p1ac630jsn83e189d0b37f",
+        "DocumentationServicesConfiguration:Implementations:0:Information:TokenAuthorization": "Zm6SOpsXms49DLtDtcwW0y1MqtiqXAfPHayd8SRG",
+        "AuthenticationServiceConfiguration:Implementations:0:Information:Audiences:0": "806157524792-h0tnbk4b42f0lgar1sjn9e96953pf8ik.apps.googleusercontent.com",
+        "AuthenticationServiceConfiguration:Implementations:0:Information:Audiences:1": "806157524792-3a9dobiren24i4t3iae32o30forv26da.apps.googleusercontent.com",
+        "QueueConfiguration:Implementations:0:Information:ConnectionString": "UseDevelopmentStorage=true",
+        "EventHubConfiguration:Implementations:0:Information:BaseUrl": "https://localhost:44383",
+        "EventHubConfiguration:Implementations:0:Information:ApiKey": "2474d801ffmsh5923ae133182ca4p1ac630jsn83e189d0b37f",
+        "JwtSettings:0:Secret": "DEV_736GK9BBXFP4A6QKZY67UBESPQBV0D2VCFZTEUFH",
+        "CustomConnectionStrings:0:AesSecret": "6H6hHVIyVnNscUPX",
+        "AesConfiguration:Keys:ServerGeneral": "6H6hHVIyVnNscUPX"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      }
+    },
+    {
       "name": "WebScokets Debug",
       "type": "coreclr",
       "request": "launch",

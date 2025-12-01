@@ -4,6 +4,29 @@ namespace Common.WebCommon.Models;
 /// </summary>
 public class AppSettingsCommon
 {
+    /// <summary>
+    /// Eliminar header para log
+    /// </summary>
+    /// <value></value>
+    public IEnumerable<string> LogHeadersRemove { get; set; }
+
+    /// <summary>
+    /// Logea la información sensible
+    /// </summary>
+    /// <value></value>
+    public bool LogSensitiveInformation { get; set; }
+
+    /// <summary>
+    /// Configuración de AES
+    /// </summary>
+    /// <value></value>
+    public AesConfiguration AesConfiguration { get; set; }
+
+    /// <summary>
+    /// Configuraciones Generales
+    /// </summary>
+    /// <value></value>
+    public GeneralConfiguration GeneralConfiguration { get; set; }
 
     /// <summary>
     /// Cadenas de conexión
@@ -70,6 +93,52 @@ public class AppSettingsCommon
     /// <value></value>
     public string CustomSeparator { get; set; }
 
+}
+
+
+/// <summary>
+/// Configuración de AES
+/// </summary>
+public class AesConfiguration
+{
+    /// <summary>
+    /// Aes para Server
+    /// </summary>
+    /// <value></value>
+    public Dictionary<AesImplementationName, string> Keys { get; set; }
+
+    /// <summary>
+    /// Nombres de implementaciones para Aes
+    /// </summary>
+    public enum AesImplementationName
+    {
+        ServerGeneral
+    }
+}
+
+
+/// <summary>
+/// Configuraciones Generales
+/// </summary>
+public class GeneralConfiguration
+{
+    /// <summary>
+    /// Implementaciòn de contexto a utilizar
+    /// </summary>
+    /// <value></value>
+    public string AddContextImplementation { get; set; }
+
+    /// <summary>
+    /// Implementación para configuración contexto
+    /// </summary>
+    /// <value></value>
+    public string ConfigureContextImplementation { get; set; }
+
+    /// <summary>
+    /// Implementación para validad Integridad
+    /// </summary>
+    /// <value></value>
+    public string ValidateIntegrityImplementation { get; set; }
 }
 
 /// <summary>

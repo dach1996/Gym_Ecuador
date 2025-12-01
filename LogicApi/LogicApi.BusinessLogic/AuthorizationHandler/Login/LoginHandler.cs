@@ -1,4 +1,5 @@
-﻿using Common.WebCommon.Models;
+﻿using Common.WebApi.Models.EncryptedClaims;
+using Common.WebCommon.Models;
 using LogicApi.Abstractions.Interfaces.Authorization;
 using LogicApi.Model.Request.Administration;
 using LogicApi.Model.Request.Authorization;
@@ -72,7 +73,7 @@ public class LoginHandler(
             await Mediator.Send(new RegisterPushTokenRequest(ContextRequest, LoginRequest.PushToken)).ConfigureAwait(false);
         //Obtiene el Token del Usuario
         loginResponse.AccessToken = (await GenerateJwtAsync(
-            new EncryptedFieldClaim
+            new EncryptedFieldsApi
             {
                 UserId = userId,
                 Email = user.Email,
@@ -169,7 +170,7 @@ public class LoginHandler(
     /// <param name="user"></param>
     /// <param name="deviceLoginData"></param>
     /// <returns></returns>
-    private async Task<JsonWebTokenModel> GenerateJwtAsync(EncryptedFieldClaim encryptedFieldClaim)
+    private async Task<JsonWebTokenModel> GenerateJwtAsync(EncryptedFieldClaimCommon encryptedFieldClaim)
     {
         //Arma los claims
         var encryptedFieldClaimJson = encryptedFieldClaim.ToJson().EncryptAes(AesSecret);
@@ -178,7 +179,7 @@ public class LoginHandler(
                  //Identificador del JWT
                  { "jti", Guid.NewGuid().ToString() },
                   //Nombre de Usuario
-                 {$"{nameof(EncryptedFieldClaim)}", encryptedFieldClaimJson},
+                 {$"{nameof(EncryptedFieldClaimCommon)}", encryptedFieldClaimJson},
                   //RefreshToken
                  {$"{nameof(ContextRequest.CustomClaims.Refresh)}", $"{1}"},
              };

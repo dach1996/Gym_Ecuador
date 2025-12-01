@@ -26,6 +26,9 @@ using Common.Cooperative.Infrastructure;
 using LogicCommon.BusinessLogic;
 using Common.PushNotification.Infrastructure;
 using Common.EventHub.Infrastructure;
+using Common.WebApi.Middleware.ConfigureContext;
+using Common.WebApi.Middleware.Infrastructure;
+using Common.WebApi.Models;
 try
 {
     var builder = WebApplication.CreateBuilder(args);
@@ -39,8 +42,8 @@ try
     builder.Services.AddSwaggerServices(builder.Configuration);
     builder.Services.AddCorsSetting(builder.Configuration);
     builder.Services.AddDependencyInjectionSetting();
-    builder.Services.AddSecurityApiJwt();
-    builder.Services.AddAppSettingsModel(builder.Configuration);
+    builder.Services.AddSecurityJwt();
+    builder.Services.AddAppSettingsModel<AppSettingsApi>(builder.Configuration);
     builder.Services.AddCustomControllers();
     builder.Services.AddUserMessagesApi();
     builder.Services.AddApiVersioning();
@@ -67,6 +70,9 @@ try
         builderAutofac.UseCache(builder.Environment.EnvironmentName);
         builderAutofac.UseBlob();
         builderAutofac.UseMail();
+        builderAutofac.UseAttributeAbstractionsAssemblies();
+        builderAutofac.UseMiddlewareAbstractionsAssemblies();
+        builderAutofac.UseAuthenticationServices();
         builderAutofac.UseCardServices();
         builderAutofac.UseDocumentationServices();
         builderAutofac.UseAbstractionsAssemblies();

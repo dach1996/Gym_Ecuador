@@ -11,12 +11,11 @@ public static class AppSettingsExtension
     /// </summary>
     /// <param name="services"></param>
     /// <param name="configuration"></param>
-    public static void AddAppSettingsModel(this IServiceCollection services, IConfiguration configuration)
+    public static void AddAppSettingsModel<TAppSettings>(this IServiceCollection services, IConfiguration configuration) where TAppSettings : class
     {
-        _ = services.AddSingleton(configuration.Get<AppSettingsApi>());
+        _ = services.AddSingleton(configuration.Get<TAppSettings>());
         _ = services.AddSingleton(configuration.Get<AppSettingsCommon>());
     }
 
 
-  
 }

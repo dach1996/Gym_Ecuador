@@ -7,17 +7,7 @@ namespace Common.WebApi.Models;
 /// </summary>
 public class AppSettingsApi : AppSettingsCommon
 {
-    /// <summary>
-    /// Eliminar header para log
-    /// </summary>
-    /// <value></value>
-    public IEnumerable<string> LogHeadersRemove { get; set; }
-
-    /// <summary>
-    /// Logea la información sensible
-    /// </summary>
-    /// <value></value>
-    public bool LogSensitiveInformation { get; set; }
+ 
 
     /// <summary>
     /// Configuracíones de Jwt
@@ -122,25 +112,4 @@ public class ControlValidationItem
     /// </summary>
     /// <value></value>
     public IEnumerable<string> Restrictions { get; set; }
-}
-
-
-/// <summary>
-/// Configuración de AES
-/// </summary>
-public class AesConfiguration
-{
-    /// <summary>
-    /// Aes para Server
-    /// </summary>
-    /// <value></value>
-    public Dictionary<AesImplementationName, string> Keys { get; set; }
-
-    /// <summary>
-    /// Nombres de implementaciones para Aes
-    /// </summary>
-    public enum AesImplementationName
-    {
-        ServerGeneral
-    }
 }

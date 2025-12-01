@@ -97,6 +97,11 @@ public class CustomClaimsApi : CommonCustomClaims
     public int? DeviceId { get; set; }
 
     /// <summary>
+    /// Fecha de registro del usuario
+    /// </summary>
+    public DateTime? UserDateTimeRegister { get; set; }
+
+    /// <summary>
     /// Método para configurar usuario
     /// </summary>
     /// <param name="userId"></param>
