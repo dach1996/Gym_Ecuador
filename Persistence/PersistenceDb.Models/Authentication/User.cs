@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using PersistenceDb.Models.Administration;
@@ -175,5 +175,11 @@ public class User
     /// </summary>
     /// <value></value>
     public UserDevicePushToken UserDevicePushToken { get; set; }
+
+    /// <summary>
+    /// User Role Scopes List
+    /// </summary>
+    /// <value></value>
+    public ICollection<UserRoleScope> UserRoleScopes { get; set; }
 
 }

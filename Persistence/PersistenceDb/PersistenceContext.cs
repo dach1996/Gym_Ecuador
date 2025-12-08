@@ -1,4 +1,4 @@
-﻿using PersistenceDb.Models.Administration;
+using PersistenceDb.Models.Administration;
 using PersistenceDb.Models.Authentication;
 using Microsoft.EntityFrameworkCore;
 using PersistenceDb.Models.Core;
@@ -45,7 +45,14 @@ public class PersistenceContext(
     public DbSet<UserDevice> UserDevices { get; set; }
     public DbSet<Person> People { get; set; }
     public DbSet<UserDevicePushToken> UserDevicePushTokens { get; set; }
-
+    public DbSet<Scope> Scopes { get; set; }
+    public DbSet<Module> Modules { get; set; }
+    public DbSet<Function> Functions { get; set; }
+    public DbSet<Functionality> Functionalities { get; set; }
+    public DbSet<Platform> Platforms { get; set; }
+    public DbSet<Role> Roles { get; set; }
+    public DbSet<RoleFunctionality> RoleFunctionalities { get; set; }
+    public DbSet<UserRoleScope> UserRoleScopes { get; set; }
 
     #endregion
 
