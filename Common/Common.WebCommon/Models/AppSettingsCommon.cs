@@ -4,6 +4,12 @@ namespace Common.WebCommon.Models;
 /// </summary>
 public class AppSettingsCommon
 {
+
+    /// <summary>
+    /// Configuracíones de Jwt
+    /// </summary>
+    public List<JwtSetting> JwtSettings { get; set; }
+
     /// <summary>
     /// Eliminar header para log
     /// </summary>
@@ -190,3 +196,40 @@ public class CurrentImplementationBase
     public string CurrentImplementation { get; set; }
 }
 
+
+
+/// <summary>
+/// Configuraciones Jwt
+/// </summary>
+public class JwtSetting
+{
+    /// <summary>
+    /// Odentificador
+    /// </summary>
+    /// <value></value>
+    public string Identifier { get; set; }
+
+    /// <summary>
+    /// Secreto
+    /// </summary>
+    /// <value></value>
+    public string Secret { get; set; }
+
+    /// <summary>
+    /// Propietario
+    /// </summary>
+    /// <value></value>
+    public string Issuer { get; set; }
+
+    /// <summary>
+    /// Audiencia
+    /// </summary>
+    /// <value></value>
+    public string Audience { get; set; }
+
+    /// <summary>
+    /// Minutos para expiración
+    /// </summary>
+    /// <value></value>
+    public int AccessExpiration { get; set; }
+}

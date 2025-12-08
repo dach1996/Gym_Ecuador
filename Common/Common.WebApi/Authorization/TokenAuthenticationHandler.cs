@@ -1,6 +1,7 @@
 ﻿using Common.PluginFactory.Interface;
 using Common.Security.Interface;
 using Common.Security.Model.Enum;
+using Common.WebCommon.Models;
 using Common.WebCommon.Models.Enum;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
@@ -13,14 +14,15 @@ public class TokenAuthenticationHandler(
     IOptionsMonitor<CustomAuthOptions> options,
     ILoggerFactory logger,
     UrlEncoder encoder,
-    IPluginFactory pluginFactory
+    IPluginFactory pluginFactory,
+    AppSettingsCommon appSettingsCommon
         ) : AuthenticationHandler<CustomAuthOptions>(
         options,
         logger,
         encoder
             )
 {
-    private readonly IJwtManager _jwtManager = pluginFactory.GetPlugin<IJwtManager>($"{JwtIdentifier.Mobile}");
+    private readonly IJwtManager _jwtManager = pluginFactory.GetPlugin<IJwtManager>(appSettingsCommon.JwtSettings.FirstOrDefault()?.Identifier);
 
     protected override Task<AuthenticateResult> HandleAuthenticateAsync()
     {

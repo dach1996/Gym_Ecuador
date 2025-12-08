@@ -51,13 +51,13 @@ public abstract class BusinessLogicAdministratorBase(
         {
             //Ejecuta el proceso
             var result = await process().ConfigureAwait(false);
-           
+
             return result;
         }
         catch (CustomException ex)
         {
             var message = $"{UserMessages.GetErrorMessageByCode(ex.Code).Message}" + (ex.Message.IsNullOrEmpty() ? $"Razón: {ex.Message}" : string.Empty);
-          //  await ExecuteTaskCreateAuditLogAsync(RegisterLogAuditExecutorModel.ErrorRegister(operationName, request, message)).ConfigureAwait(false);
+            //  await ExecuteTaskCreateAuditLogAsync(RegisterLogAuditExecutorModel.ErrorRegister(operationName, request, message)).ConfigureAwait(false);
             throw;
         }
         catch (Exception ex)

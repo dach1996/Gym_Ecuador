@@ -24,6 +24,7 @@ using Common.WebApi.Models;
 using Common.WebApi.Middleware.ConfigureContext;
 using Common.WebApi.Middleware.Infrastructure;
 using Common.WebApi.Models.AppSettingsModel;
+using PersistenceDb.Infrastructure.Extension;
 try
 {
     var builder = WebApplication.CreateBuilder(args);
@@ -46,6 +47,7 @@ try
     builder.Services.AddApplicationInsightsTelemetry();
     builder.Services.ScanAutoMapperProfiles(builder.Configuration);
     builder.Services.AddClock();
+    builder.Services.AddCustomDatabaseConfiguration(builder.Configuration);
     builder.Services.AddMediatrTypes(typeof(BusinessLogicAdministratorBase), typeof(BusinessLogicCommonBase));
     builder.Host.ConfigureContainer<ContainerBuilder>(builderAutofac =>
     {

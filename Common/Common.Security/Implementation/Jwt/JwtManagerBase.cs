@@ -8,7 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Common.Security.Implementation;
+namespace Common.Security.Implementation.Jwt;
 public abstract class JwtManagerBase : IJwtManager
 {
     protected abstract JwtIdentifier JwtIdentifier { get; }

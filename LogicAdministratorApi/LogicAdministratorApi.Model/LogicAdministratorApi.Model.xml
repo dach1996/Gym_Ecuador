@@ -152,12 +152,6 @@
             Secreto para acceso
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.EstablishmentAllowedItems">
-            <summary>
-            Establecimientos permitidos para el Usuario
-            </summary>
-            <value></value>
-        </member>
         <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.UserMessage">
             <summary>
             Mensaje al Usuario
@@ -168,55 +162,6 @@
             Mensaje
             </summary>
             <value></value>
-        </member>
-        <member name="T:LogicAdministratorApi.Model.Response.Authorization.EstablishmentAllowedItem">
-            <summary>
-            Item de para Estableciminetos permitidos
-            </summary>
-            <param name="Guid"></param>
-            <param name="Name"></param>
-            <param name="EstablishmentBranchAllowedItems"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LogicAdministratorApi.Model.Response.Authorization.EstablishmentAllowedItem.#ctor(System.Guid,System.String,System.Collections.Generic.IEnumerable{LogicAdministratorApi.Model.Response.Authorization.EstablishmentBranchAllowedItem})">
-            <summary>
-            Item de para Estableciminetos permitidos
-            </summary>
-            <param name="Guid"></param>
-            <param name="Name"></param>
-            <param name="EstablishmentBranchAllowedItems"></param>
-            <returns></returns>
-        </member>
-        <member name="P:LogicAdministratorApi.Model.Response.Authorization.EstablishmentAllowedItem.Guid">
-            <summary></summary>
-        </member>
-        <member name="P:LogicAdministratorApi.Model.Response.Authorization.EstablishmentAllowedItem.Name">
-            <summary></summary>
-        </member>
-        <member name="P:LogicAdministratorApi.Model.Response.Authorization.EstablishmentAllowedItem.EstablishmentBranchAllowedItems">
-            <summary></summary>
-        </member>
-        <member name="T:LogicAdministratorApi.Model.Response.Authorization.EstablishmentBranchAllowedItem">
-            <summary>
-            Item de para Sucursales de Estableciminetos permitidos
-            </summary>
-            <param name="Guid"></param>
-            <param name="Name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LogicAdministratorApi.Model.Response.Authorization.EstablishmentBranchAllowedItem.#ctor(System.Guid,System.String)">
-            <summary>
-            Item de para Sucursales de Estableciminetos permitidos
-            </summary>
-            <param name="Guid"></param>
-            <param name="Name"></param>
-            <returns></returns>
-        </member>
-        <member name="P:LogicAdministratorApi.Model.Response.Authorization.EstablishmentBranchAllowedItem.Guid">
-            <summary></summary>
-        </member>
-        <member name="P:LogicAdministratorApi.Model.Response.Authorization.EstablishmentBranchAllowedItem.Name">
-            <summary></summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Response.HandlerResponse">
             <summary>

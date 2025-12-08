@@ -9,10 +9,6 @@ public class AppSettingsApi : AppSettingsCommon
 {
  
 
-    /// <summary>
-    /// Configuracíones de Jwt
-    /// </summary>
-    public List<JwtSetting> JwtSettings { get; set; }
 
     /// <summary>
     /// Permitir Host
@@ -31,12 +27,6 @@ public class AppSettingsApi : AppSettingsCommon
     /// </summary>
     /// <value></value>
     public Dictionary<string, ControlValidationItem> InputControlValidations { get; set; }
-
-    /// <summary>
-    /// Configuración de AES
-    /// </summary>
-    /// <value></value>
-    public AesConfiguration AesConfiguration { get; set; }
 }
 
 /// <summary>
@@ -60,41 +50,6 @@ public class IntegrityValidation
     public IEnumerable<string> PathsExclude { get; set; }
 }
 
-/// <summary>
-/// Configuraciones Jwt
-/// </summary>
-public class JwtSetting
-{
-    /// <summary>
-    /// Odentificador
-    /// </summary>
-    /// <value></value>
-    public string Identifier { get; set; }
-
-    /// <summary>
-    /// Secreto
-    /// </summary>
-    /// <value></value>
-    public string Secret { get; set; }
-
-    /// <summary>
-    /// Propietario
-    /// </summary>
-    /// <value></value>
-    public string Issuer { get; set; }
-
-    /// <summary>
-    /// Audiencia
-    /// </summary>
-    /// <value></value>
-    public string Audience { get; set; }
-
-    /// <summary>
-    /// Minutos para expiración
-    /// </summary>
-    /// <value></value>
-    public int AccessExpiration { get; set; }
-}
 
 /// <summary>
 /// Item de Expresión Regutlar

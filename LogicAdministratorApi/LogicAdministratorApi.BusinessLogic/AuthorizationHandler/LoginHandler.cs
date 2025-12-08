@@ -1,5 +1,4 @@
 ﻿using Common.WebCommon.Models;
-using LogicAdministratorApi.Model.CommonRecords;
 using LogicAdministratorApi.Model.Request.Authorization;
 using LogicAdministratorApi.Model.Response.Authorization;
 namespace LogicAdministratorApi.BusinessLogic.AuthorizationHandler;
@@ -16,7 +15,7 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
         ILogger<LoginHandler> logger,
         IPluginFactory pluginFactory) : base(
             logger,
-            pluginFactory) => AesSecret = "";
+            pluginFactory) => AesSecret = AppSettingsAdministrator.AesConfiguration.Keys.GetFirstOrDefaultValue(AesConfiguration.AesImplementationName.ServerGeneral);
 
 
 
@@ -29,12 +28,41 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
     public override async Task<LoginResponse> Handle(LoginRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationAdministratorName.Login, request, async () =>
         {
-            //Respondemos
+
+            var jwt = await GenerateJwtAsync(new EncryptedFieldClaimCommon
+            {
+                UserName = "test",
+                Email = "test@test.com",
+            }).ConfigureAwait(false);
+            //Respondemos con el token
             return new LoginResponse
             {
-                EstablishmentAllowedItems = [],
-                AccessSecret = "",
+                AccessSecret = jwt.Token,
             };
         }, false);
+
+    /// <summary>
+    /// Genera el Jwt
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="deviceLoginData"></param>
+    /// <returns></returns>
+    private async Task<JsonWebTokenModel> GenerateJwtAsync(EncryptedFieldClaimCommon encryptedFieldClaim)
+    {
+        //Arma los claims
+        var encryptedFieldClaimJson = encryptedFieldClaim.ToJson().EncryptAes(AesSecret);
+        var claims = new Dictionary<string, string>
+             {
+                 //Identificador del JWT
+                 { "jti", Guid.NewGuid().ToString() },
+                  //Nombre de Usuario
+                 {$"{nameof(EncryptedFieldClaimCommon)}", encryptedFieldClaimJson},
+                  //RefreshToken
+                 {$"{nameof(ContextRequest.CustomClaims.Refresh)}", $"{1}"},
+             };
+        //Arma el Token
+        var jwt = JwtManager.BuildJwt(claims);
+        return await Task.FromResult(jwt).ConfigureAwait(false);
+    }
 
 }

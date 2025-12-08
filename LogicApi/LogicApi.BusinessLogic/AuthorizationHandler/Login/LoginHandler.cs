@@ -154,7 +154,7 @@ public class LoginHandler(
                 DeviceId = deviceId.Value,
                 UserId = userId,
             }).ConfigureAwait(false);
-        
+
         //Actualiza la información del usuario
         await UnitOfWork.UserRepository.UpdateByAsync(
             (user => user.FirstLoginDate, firstLoginDate ?? now),

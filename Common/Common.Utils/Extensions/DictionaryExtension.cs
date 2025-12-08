@@ -71,4 +71,15 @@ public static class DictionaryExtension
     /// <exception cref="Exception"> Excepción </exception>
     public static TU GetValueOrException<T, TU>(this IDictionary<T, TU> inputDictionary, T key, Exception exception)
      => inputDictionary.TryGetValue(key, out var value) ? value : throw exception;
+
+    /// <summary>
+    /// Obtiene el valor de la clave o lanza una excepción
+    /// </summary>
+    /// <param name="inputDictionary"></param>
+    /// <param name="predicate"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TU"></typeparam>
+    /// <returns></returns>
+    public static TU GetFirstOrDefaultValue<T, TU>(this IDictionary<T, TU> inputDictionary, T key)
+     => inputDictionary.TryGetValue(key, out var value) ? value : default;
 }
