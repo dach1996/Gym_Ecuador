@@ -1,8 +1,8 @@
 using Common.WebApi.Models.ContextRequestModel;
-using LogicApi.Model.Response.GymBranchSchedule;
-
+using LogicAdministratorApi.Model.Response.GymBranchSchedule;
 using Common.WebCommon.Models;
-namespace LogicApi.Model.Request.GymBranchSchedule;
+
+namespace LogicAdministratorApi.Model.Request.GymBranchSchedule;
 
 /// <summary>
 /// Solicitud para eliminar horario de sucursal
@@ -25,7 +25,7 @@ public class DeleteGymBranchScheduleRequest : IRequest<DeleteGymBranchScheduleRe
     /// Constructor
     /// </summary>
     /// <param name="contextRequest"></param>
-    public DeleteGymBranchScheduleRequest(ContextRequest contextRequest)
+    public DeleteGymBranchScheduleRequest(AdminContextRequest contextRequest)
     {
         ContextRequest = contextRequest;
     }

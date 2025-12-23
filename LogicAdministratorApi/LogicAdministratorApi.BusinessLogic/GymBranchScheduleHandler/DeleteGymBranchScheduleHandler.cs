@@ -1,7 +1,7 @@
-using LogicApi.Model.Request.GymBranchSchedule;
-using LogicApi.Model.Response.GymBranchSchedule;
+using LogicAdministratorApi.Model.Request.GymBranchSchedule;
+using LogicAdministratorApi.Model.Response.GymBranchSchedule;
 
-namespace LogicApi.BusinessLogic.GymBranchScheduleHandler;
+namespace LogicAdministratorApi.BusinessLogic.GymBranchScheduleHandler;
 
 /// <summary>
 /// Handler para eliminar horario de sucursal
@@ -19,7 +19,7 @@ public class DeleteGymBranchScheduleHandler(
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public override async Task<DeleteGymBranchScheduleResponse> Handle(DeleteGymBranchScheduleRequest request, CancellationToken cancellationToken)
-        => await ExecuteHandlerAsync(OperationApiName.DeleteGymBranchSchedule, request, async () =>
+        => await ExecuteHandlerAsync(OperationAdministratorName.DeleteGymBranchSchedule, request, async () =>
             {
                 // Buscar el horario
                 var schedule = await UnitOfWork.GymBranchScheduleRepository
@@ -37,8 +37,7 @@ public class DeleteGymBranchScheduleHandler(
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
                     ShowMessage = true
                 };
-            },
-            registerLogAudit: true
+            }
         ).ConfigureAwait(false);
 }
 

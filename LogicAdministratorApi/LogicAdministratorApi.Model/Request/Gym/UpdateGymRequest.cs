@@ -1,24 +1,27 @@
 using Common.WebApi.Models.ContextRequestModel;
-using LogicApi.Model.Response.Gym;
-
+using LogicAdministratorApi.Model.Response.Gym;
 using Common.WebCommon.Models;
-namespace LogicApi.Model.Request.Gym;
+
+namespace LogicAdministratorApi.Model.Request.Gym;
 
 /// <summary>
-/// Solicitud para crear un gimnasio
+/// Solicitud para actualizar un gimnasio
 /// </summary>
-public class CreateGymRequest : IRequest<CreateGymResponse>, IApiBaseRequest
+public class UpdateGymRequest : IRequest<UpdateGymResponse>, IApiBaseRequest
 {
+    /// <summary>
+    /// Guid del gimnasio
+    /// </summary>
+    public Guid GymGuid { get; set; }
+
     /// <summary>
     /// Nombre del gimnasio
     /// </summary>
-    [Required]	
     public string Name { get; set; }
 
     /// <summary>
     /// Descripción del gimnasio
-    /// </summary>  
-    [Required]
+    /// </summary>
     public string Description { get; set; }
 
     /// <summary>
@@ -27,37 +30,19 @@ public class CreateGymRequest : IRequest<CreateGymResponse>, IApiBaseRequest
     public string ShortDescription { get; set; }
 
     /// <summary>
-    /// Dirección del gimnasio
-    /// </summary>
-    [Required]
-    public string Address { get; set; }
-
-    /// <summary>
     /// Teléfono del gimnasio
     /// </summary>
-    [Required]
     public string Phone { get; set; }
 
     /// <summary>
     /// Email del gimnasio
-    /// </summary>  
-    [Required]
+    /// </summary>
     public string Email { get; set; }
 
     /// <summary>
     /// Sitio web del gimnasio
     /// </summary>
     public string Website { get; set; }
-
-    /// <summary>
-    /// Latitud para localización
-    /// </summary>
-    public decimal Latitude { get; set; }
-
-    /// <summary>
-    /// Longitud para localización
-    /// </summary>
-    public decimal Longitude { get; set; }
 
  /// <summary>
     /// Context
@@ -69,7 +54,7 @@ public class CreateGymRequest : IRequest<CreateGymResponse>, IApiBaseRequest
     /// Constructor
     /// </summary>
     /// <param name="contextRequest"></param>
-    public CreateGymRequest(ContextRequest contextRequest)
+    public UpdateGymRequest(AdminContextRequest contextRequest)
     {
         ContextRequest = contextRequest;
     }
@@ -77,7 +62,8 @@ public class CreateGymRequest : IRequest<CreateGymResponse>, IApiBaseRequest
     /// <summary>
     /// Default Constructor
     /// </summary>
-    public CreateGymRequest()
+    public UpdateGymRequest()
     {
     }
 }
+

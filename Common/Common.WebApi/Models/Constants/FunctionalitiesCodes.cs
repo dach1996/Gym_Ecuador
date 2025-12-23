@@ -348,4 +348,36 @@ public static class FunctionalitiesCodes
     /// Get log details
     /// </summary>
     public const string GET_LOG_DETAILS = "LOG_AUDIT_DETAILS";
+
+    // ========== OPERACIONES DE GIMNASIO ==========
+
+    /// <summary>
+    /// Crear Gimnasio
+    /// </summary>
+    public const string CREATE_GYM = "ADM_GYM_CREATE";
+
+    /// <summary>
+    /// Actualizar Gimnasio
+    /// </summary>
+    public const string UPDATE_GYM = "ADM_GYM_UPDATE";
+
+    /// <summary>
+    /// Crear Sucursal de Gimnasio
+    /// </summary>
+    public const string CREATE_GYM_BRANCH = "ADM_GYM_BRANCH_CREATE";
+
+    /// <summary>
+    /// Crear Horario de Sucursal
+    /// </summary>
+    public const string CREATE_GYM_BRANCH_SCHEDULE = "ADM_GYM_BRANCH_SCH_CREATE";
+
+    /// <summary>
+    /// Actualizar Horario de Sucursal
+    /// </summary>
+    public const string UPDATE_GYM_BRANCH_SCHEDULE = "ADM_GYM_BRANCH_SCH_UPDATE";
+
+    /// <summary>
+    /// Eliminar Horario de Sucursal
+    /// </summary>
+    public const string DELETE_GYM_BRANCH_SCHEDULE = "ADM_GYM_BRANCH_SCH_DELETE";
 }

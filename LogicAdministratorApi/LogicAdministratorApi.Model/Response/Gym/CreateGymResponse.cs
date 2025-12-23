@@ -1,4 +1,4 @@
-namespace LogicApi.Model.Response.Gym;
+namespace LogicAdministratorApi.Model.Response.Gym;
 
 /// <summary>
 /// Respuesta de crear gimnasio
@@ -43,3 +43,4 @@ public class CreateGymResponse : IApiBaseResponse
     {
     }
 }
+

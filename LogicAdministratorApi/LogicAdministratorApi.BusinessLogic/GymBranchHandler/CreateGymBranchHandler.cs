@@ -1,8 +1,8 @@
-using LogicApi.Model.Request.GymBranch;
-using LogicApi.Model.Response.GymBranch;
+using LogicAdministratorApi.Model.Request.GymBranch;
+using LogicAdministratorApi.Model.Response.GymBranch;
 using PersistenceDb.Models.Core;
 
-namespace LogicApi.BusinessLogic.GymBranchHandler;
+namespace LogicAdministratorApi.BusinessLogic.GymBranchHandler;
 
 /// <summary>
 /// Handler para crear sucursal de gimnasio
@@ -20,7 +20,7 @@ public class CreateGymBranchHandler(
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public override async Task<CreateGymBranchResponse> Handle(CreateGymBranchRequest request, CancellationToken cancellationToken)
-        => await ExecuteHandlerAsync(OperationApiName.CreateGymBranch, request, async () =>
+        => await ExecuteHandlerAsync(OperationAdministratorName.CreateGymBranch, request, async () =>
             {
                 // Validar que el gimnasio existe
                 var gym = await UnitOfWork.GymRepository

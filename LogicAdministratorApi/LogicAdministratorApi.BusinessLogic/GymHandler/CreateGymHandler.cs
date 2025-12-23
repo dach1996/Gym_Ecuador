@@ -1,8 +1,8 @@
-using LogicApi.Model.Request.Gym;
-using LogicApi.Model.Response.Gym;
+using LogicAdministratorApi.Model.Request.Gym;
+using LogicAdministratorApi.Model.Response.Gym;
 using PersistenceDb.Models.Core;
 
-namespace LogicApi.BusinessLogic.GymHandler;
+namespace LogicAdministratorApi.BusinessLogic.GymHandler;
 
 /// <summary>
 /// Handler para crear gimnasio
@@ -20,7 +20,7 @@ public class CreateGymHandler(
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public override async Task<CreateGymResponse> Handle(CreateGymRequest request, CancellationToken cancellationToken)
-        => await ExecuteHandlerAsync(OperationApiName.CreateGym, request, async () =>
+        => await ExecuteHandlerAsync(OperationAdministratorName.CreateGym, request, async () =>
             {
                 if (await UnitOfWork.GymRepository
                     .ExistAnyAsync(where => where.Name.ToLower() == request.Name.ToLower())
@@ -52,3 +52,4 @@ public class CreateGymHandler(
             }
         ).ConfigureAwait(false);
 }
+

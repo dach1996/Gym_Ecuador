@@ -55,27 +55,5 @@ public class GymController(
         return Success(await Mediator.Send(request).ConfigureAwait(false));
     }
 
-    /// <summary>
-    /// Crea un nuevo gimnasio
-    /// </summary>
-    /// <param name="request">Modelo para crear gimnasio</param>
-    /// <returns></returns>
-    [HttpPost("CreateGym")]
-    [ProducesResponseType(200, Type = typeof(GenericResponse<CreateGymResponse>))]
-    [ProducesResponseType(400, Type = typeof(GenericResponse))]
-    public async Task<IActionResult> CreateGym([FromBody] CreateGymRequest request)
-        => Success(await Mediator.Send(request).ConfigureAwait(false));
-
-    /// <summary>
-    /// Actualiza un gimnasio existente
-    /// </summary>
-    /// <param name="request">Modelo para actualizar gimnasio</param>
-    /// <returns></returns>
-    [HttpPut("UpdateGym")]
-    [ProducesResponseType(200, Type = typeof(GenericResponse<UpdateGymResponse>))]
-    [ProducesResponseType(400, Type = typeof(GenericResponse))]
-    public async Task<IActionResult> UpdateGym([FromBody] UpdateGymRequest request)
-        => Success(await Mediator.Send(request).ConfigureAwait(false));
-
     #endregion
 }

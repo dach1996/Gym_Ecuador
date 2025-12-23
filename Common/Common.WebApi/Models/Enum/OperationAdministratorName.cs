@@ -497,5 +497,49 @@ public enum OperationAdministratorName : short
     /// </summary>
     [EnumMember(Value = "Obtiene las visitas médicas paginadas")]
     [FunctionalityMember(FunctionalitiesCodes.GET_PET_MEDICAL_HISTORY)]
-    GetMedicalVisitsPaginated = 70
+    GetMedicalVisitsPaginated = 70,
+
+    // ========== OPERACIONES DE GIMNASIO ==========
+
+    /// <summary>
+    /// Crear Gimnasio
+    /// </summary>
+    [EnumMember(Value = "Crear Gimnasio")]
+    [FunctionalityMember(FunctionalitiesCodes.CREATE_GYM, registerAuditLog: true)]
+    CreateGym = 71,
+
+    /// <summary>
+    /// Actualizar Gimnasio
+    /// </summary>
+    [EnumMember(Value = "Actualizar Gimnasio")]
+    [FunctionalityMember(FunctionalitiesCodes.UPDATE_GYM, registerAuditLog: true)]
+    UpdateGym = 72,
+
+    /// <summary>
+    /// Crear Sucursal de Gimnasio
+    /// </summary>
+    [EnumMember(Value = "Crear Sucursal de Gimnasio")]
+    [FunctionalityMember(FunctionalitiesCodes.CREATE_GYM_BRANCH, registerAuditLog: true)]
+    CreateGymBranch = 73,
+
+    /// <summary>
+    /// Crear Horario de Sucursal
+    /// </summary>
+    [EnumMember(Value = "Crear Horario de Sucursal")]
+    [FunctionalityMember(FunctionalitiesCodes.CREATE_GYM_BRANCH_SCHEDULE, registerAuditLog: true)]
+    CreateGymBranchSchedule = 74,
+
+    /// <summary>
+    /// Actualizar Horario de Sucursal
+    /// </summary>
+    [EnumMember(Value = "Actualizar Horario de Sucursal")]
+    [FunctionalityMember(FunctionalitiesCodes.UPDATE_GYM_BRANCH_SCHEDULE, registerAuditLog: true)]
+    UpdateGymBranchSchedule = 75,
+
+    /// <summary>
+    /// Eliminar Horario de Sucursal
+    /// </summary>
+    [EnumMember(Value = "Eliminar Horario de Sucursal")]
+    [FunctionalityMember(FunctionalitiesCodes.DELETE_GYM_BRANCH_SCHEDULE, registerAuditLog: true)]
+    DeleteGymBranchSchedule = 76
 }

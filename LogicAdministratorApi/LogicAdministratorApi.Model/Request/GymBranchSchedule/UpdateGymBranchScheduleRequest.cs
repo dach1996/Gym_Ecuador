@@ -1,8 +1,8 @@
 using Common.WebApi.Models.ContextRequestModel;
-using LogicApi.Model.Response.GymBranchSchedule;
-
+using LogicAdministratorApi.Model.Response.GymBranchSchedule;
 using Common.WebCommon.Models;
-namespace LogicApi.Model.Request.GymBranchSchedule;
+
+namespace LogicAdministratorApi.Model.Request.GymBranchSchedule;
 
 /// <summary>
 /// Solicitud para actualizar horario de sucursal
@@ -40,7 +40,7 @@ public class UpdateGymBranchScheduleRequest : IRequest<UpdateGymBranchScheduleRe
     /// Constructor
     /// </summary>
     /// <param name="contextRequest"></param>
-    public UpdateGymBranchScheduleRequest(ContextRequest contextRequest)
+    public UpdateGymBranchScheduleRequest(AdminContextRequest contextRequest)
     {
         ContextRequest = contextRequest;
     }

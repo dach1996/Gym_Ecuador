@@ -1,17 +1,17 @@
+using Asp.Versioning;
 using Common.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Common.WebApi.Models;
 using Common.WebApi.Controller;
 using MediatR;
-using LogicApi.Model.Response.GymBranch;
-using LogicApi.Model.Request.GymBranch;
-using Asp.Versioning;
+using LogicAdministratorApi.Model.Request.GymBranch;
+using LogicAdministratorApi.Model.Response.GymBranch;
 
-namespace GatewayCoreAPI.Controllers.V1;
+namespace AdministratorApi.Controllers;
 
 /// <summary>
-/// Constructor
+/// Controlador de Sucursales de Gimnasio
 /// </summary>
 /// <param name="userMessages"></param>
 /// <param name="logger"></param>
@@ -26,19 +26,19 @@ public class GymBranchController(
         logger,
         mediator)
 {
-
     #region Methods Controller
 
     /// <summary>
-    /// Obtiene la lista de sucursales de gimnasio con paginación
+    /// Crear Sucursal de Gimnasio
     /// </summary>
-    /// <param name="request">Modelo para obtener sucursales</param>
+    /// <param name="request">Modelo para crear sucursal de gimnasio</param>
     /// <returns></returns>
-    [HttpGet("GetGymBranches")]
-    [ProducesResponseType(200, Type = typeof(GenericResponse<GetGymBranchesResponse>))]
-    [ProducesResponseType(400, Type = typeof(GenericResponse))]
-    public async Task<IActionResult> GetGymBranches([FromQuery] GetGymBranchesRequest request)
+    [Authorize]
+    [HttpPost("Create")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<CreateGymBranchResponse>))]
+    public async Task<IActionResult> CreateGymBranch([FromBody] CreateGymBranchRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
+
     #endregion
 }
 

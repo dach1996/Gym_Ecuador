@@ -1,4 +1,4 @@
-namespace LogicApi.Model.Response.GymBranchSchedule;
+namespace LogicAdministratorApi.Model.Response.GymBranchSchedule;
 
 /// <summary>
 /// Respuesta de crear horario de sucursal

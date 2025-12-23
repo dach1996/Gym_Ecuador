@@ -1,7 +1,7 @@
-using LogicApi.Model.Request.Gym;
-using LogicApi.Model.Response.Gym;
+using LogicAdministratorApi.Model.Request.Gym;
+using LogicAdministratorApi.Model.Response.Gym;
 
-namespace LogicApi.BusinessLogic.GymHandler;
+namespace LogicAdministratorApi.BusinessLogic.GymHandler;
 
 /// <summary>
 /// Handler para actualizar gimnasio
@@ -21,7 +21,7 @@ public class UpdateGymHandler(
     public override async Task<UpdateGymResponse> Handle(UpdateGymRequest request, CancellationToken cancellationToken)
     {
         return await ExecuteHandlerAsync(
-            OperationApiName.UpdateGym,
+            OperationAdministratorName.UpdateGym,
             request,
             async () =>
             {
@@ -58,8 +58,8 @@ public class UpdateGymHandler(
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
                     ShowMessage = true
                 };
-            },
-            registerLogAudit: true
+            }
         ).ConfigureAwait(false);
     }
 }
+

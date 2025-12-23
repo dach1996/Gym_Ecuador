@@ -1,9 +1,9 @@
-namespace LogicApi.Model.Response.GymBranchSchedule;
+namespace LogicAdministratorApi.Model.Response.GymBranchSchedule;
 
 /// <summary>
-/// Respuesta de actualizar horario de sucursal
+/// Respuesta de eliminar horario de sucursal
 /// </summary>
-public class UpdateGymBranchScheduleResponse : IApiBaseResponse
+public class DeleteGymBranchScheduleResponse : IApiBaseResponse
 {
     /// <summary>
     /// Mensaje al Usuario
@@ -16,30 +16,23 @@ public class UpdateGymBranchScheduleResponse : IApiBaseResponse
     public bool ShowMessage { get; set; }
 
     /// <summary>
-    /// Id del horario
-    /// </summary>
-    public int ScheduleId { get; set; }
-
-    /// <summary>
-    /// Indica si se actualizó exitosamente
+    /// Indica si se eliminó exitosamente
     /// </summary>
     public bool Success { get; set; }
 
     /// <summary>
     /// Constructor
     /// </summary>
-    /// <param name="scheduleId"></param>
     /// <param name="success"></param>
-    public UpdateGymBranchScheduleResponse(int scheduleId, bool success)
+    public DeleteGymBranchScheduleResponse(bool success)
     {
-        ScheduleId = scheduleId;
         Success = success;
     }
 
     /// <summary>
     /// Default Constructor
     /// </summary>
-    public UpdateGymBranchScheduleResponse()
+    public DeleteGymBranchScheduleResponse()
     {
     }
 }

@@ -1,9 +1,9 @@
 using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Attributes.CustomDataAnnotations;
-using LogicApi.Model.Response.GymBranch;
-
+using LogicAdministratorApi.Model.Response.GymBranch;
 using Common.WebCommon.Models;
-namespace LogicApi.Model.Request.GymBranch;
+
+namespace LogicAdministratorApi.Model.Request.GymBranch;
 
 /// <summary>
 /// Solicitud para crear una sucursal de gimnasio
@@ -82,31 +82,6 @@ public class CreateGymBranchRequest : IRequest<CreateGymBranchResponse>, IApiBas
     public byte? FloorCount { get; set; }
 
     /// <summary>
-    /// Tiene estacionamiento
-    /// </summary>
-    public bool HasParking { get; set; }
-
-    /// <summary>
-    /// Tiene vestuarios
-    /// </summary>
-    public bool HasLockerRooms { get; set; }
-
-    /// <summary>
-    /// Tiene regaderas
-    /// </summary>
-    public bool HasShowers { get; set; }
-
-    /// <summary>
-    /// Tiene wifi
-    /// </summary>
-    public bool HasWifi { get; set; }
-
-    /// <summary>
-    /// Es sucursal principal/matriz
-    /// </summary>
-    public bool IsMainBranch { get; set; }
-
-    /// <summary>
     /// Fecha de apertura de la sucursal
     /// </summary>
     public DateTime? OpeningDate { get; set; }
@@ -121,7 +96,7 @@ public class CreateGymBranchRequest : IRequest<CreateGymBranchResponse>, IApiBas
     /// Constructor
     /// </summary>
     /// <param name="contextRequest"></param>
-    public CreateGymBranchRequest(ContextRequest contextRequest)
+    public CreateGymBranchRequest(AdminContextRequest contextRequest)
     {
         ContextRequest = contextRequest;
     }

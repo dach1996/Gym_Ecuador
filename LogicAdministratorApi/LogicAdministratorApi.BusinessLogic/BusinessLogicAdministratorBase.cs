@@ -117,4 +117,13 @@ public abstract class BusinessLogicAdministratorBase(
         ContextRequest = request as AdminContextRequest;
         CommonContextRequest = request;
     }
+
+    /// <summary>
+    /// Obtiene un mensaje de éxito
+    /// </summary>
+    /// <param name="messagesCodesSucess"></param>
+    /// <returns></returns>
+    protected string GetSuccessMessage(MessagesCodesSucess messagesCodesSucess = MessagesCodesSucess.Ok)
+        => UserMessages.GetSucessMessageByCode((int)messagesCodesSucess, (Common.Messages.Models.UserLanguage)CurrentUserLanguage)
+            ?.Message;
 }

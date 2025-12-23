@@ -1,27 +1,24 @@
 using Common.WebApi.Models.ContextRequestModel;
-using LogicApi.Model.Response.Gym;
-
+using LogicAdministratorApi.Model.Response.Gym;
 using Common.WebCommon.Models;
-namespace LogicApi.Model.Request.Gym;
+
+namespace LogicAdministratorApi.Model.Request.Gym;
 
 /// <summary>
-/// Solicitud para actualizar un gimnasio
+/// Solicitud para crear un gimnasio
 /// </summary>
-public class UpdateGymRequest : IRequest<UpdateGymResponse>, IApiBaseRequest
+public class CreateGymRequest : IRequest<CreateGymResponse>, IApiBaseRequest
 {
-    /// <summary>
-    /// Guid del gimnasio
-    /// </summary>
-    public Guid GymGuid { get; set; }
-
     /// <summary>
     /// Nombre del gimnasio
     /// </summary>
+    [Required]	
     public string Name { get; set; }
 
     /// <summary>
     /// Descripción del gimnasio
-    /// </summary>
+    /// </summary>  
+    [Required]
     public string Description { get; set; }
 
     /// <summary>
@@ -30,49 +27,21 @@ public class UpdateGymRequest : IRequest<UpdateGymResponse>, IApiBaseRequest
     public string ShortDescription { get; set; }
 
     /// <summary>
-    /// Dirección del gimnasio
-    /// </summary>
-    public string Address { get; set; }
-
-    /// <summary>
     /// Teléfono del gimnasio
     /// </summary>
+    [Required]
     public string Phone { get; set; }
 
     /// <summary>
     /// Email del gimnasio
-    /// </summary>
+    /// </summary>  
+    [Required]
     public string Email { get; set; }
 
     /// <summary>
     /// Sitio web del gimnasio
     /// </summary>
     public string Website { get; set; }
-
-    /// <summary>
-    /// Horario de apertura
-    /// </summary>
-    public TimeSpan? OpeningTime { get; set; }
-
-    /// <summary>
-    /// Horario de cierre
-    /// </summary>
-    public TimeSpan? ClosingTime { get; set; }
-
-    /// <summary>
-    /// Latitud para localización
-    /// </summary>
-    public decimal? Latitude { get; set; }
-
-    /// <summary>
-    /// Longitud para localización
-    /// </summary>
-    public decimal? Longitude { get; set; }
-
-    /// <summary>
-    /// Estado del gimnasio
-    /// </summary>
-    public bool IsActive { get; set; }
 
  /// <summary>
     /// Context
@@ -84,7 +53,7 @@ public class UpdateGymRequest : IRequest<UpdateGymResponse>, IApiBaseRequest
     /// Constructor
     /// </summary>
     /// <param name="contextRequest"></param>
-    public UpdateGymRequest(ContextRequest contextRequest)
+    public CreateGymRequest(AdminContextRequest contextRequest)
     {
         ContextRequest = contextRequest;
     }
@@ -92,7 +61,8 @@ public class UpdateGymRequest : IRequest<UpdateGymResponse>, IApiBaseRequest
     /// <summary>
     /// Default Constructor
     /// </summary>
-    public UpdateGymRequest()
+    public CreateGymRequest()
     {
     }
 }
+

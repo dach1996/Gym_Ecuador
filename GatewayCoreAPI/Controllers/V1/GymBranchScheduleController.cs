@@ -35,28 +35,6 @@ public class GymBranchScheduleController : SecurityControllerBase
     #region Methods Controller
 
     /// <summary>
-    /// Crea un nuevo horario de sucursal
-    /// </summary>
-    /// <param name="request">Modelo para crear horario</param>
-    /// <returns></returns>
-    [HttpPost("Create")]
-    [ProducesResponseType(200, Type = typeof(GenericResponse<CreateGymBranchScheduleResponse>))]
-    [ProducesResponseType(400, Type = typeof(GenericResponse))]
-    public async Task<IActionResult> CreateGymBranchSchedule([FromBody] CreateGymBranchScheduleRequest request)
-        => Success(await Mediator.Send(request).ConfigureAwait(false));
-
-    /// <summary>
-    /// Actualiza un horario de sucursal
-    /// </summary>
-    /// <param name="request">Modelo para actualizar horario</param>
-    /// <returns></returns>
-    [HttpPut("Update")]
-    [ProducesResponseType(200, Type = typeof(GenericResponse<UpdateGymBranchScheduleResponse>))]
-    [ProducesResponseType(400, Type = typeof(GenericResponse))]
-    public async Task<IActionResult> UpdateGymBranchSchedule([FromBody] UpdateGymBranchScheduleRequest request)
-        => Success(await Mediator.Send(request).ConfigureAwait(false));
-
-    /// <summary>
     /// Obtiene los horarios de una sucursal
     /// </summary>
     /// <param name="request">Modelo para obtener horarios</param>
@@ -67,16 +45,6 @@ public class GymBranchScheduleController : SecurityControllerBase
     public async Task<IActionResult> GetGymBranchSchedules([FromQuery] GetGymBranchSchedulesRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
-    /// <summary>
-    /// Elimina un horario de sucursal
-    /// </summary>
-    /// <param name="request">Modelo para eliminar horario</param>
-    /// <returns></returns>
-    [HttpDelete("Delete")]
-    [ProducesResponseType(200, Type = typeof(GenericResponse<DeleteGymBranchScheduleResponse>))]
-    [ProducesResponseType(400, Type = typeof(GenericResponse))]
-    public async Task<IActionResult> DeleteGymBranchSchedule([FromBody] DeleteGymBranchScheduleRequest request)
-        => Success(await Mediator.Send(request).ConfigureAwait(false));
 
     #endregion
 }

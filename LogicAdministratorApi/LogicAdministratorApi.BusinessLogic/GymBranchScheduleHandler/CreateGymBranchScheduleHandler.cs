@@ -1,8 +1,8 @@
-using LogicApi.Model.Request.GymBranchSchedule;
-using LogicApi.Model.Response.GymBranchSchedule;
+using LogicAdministratorApi.Model.Request.GymBranchSchedule;
+using LogicAdministratorApi.Model.Response.GymBranchSchedule;
 using PersistenceDb.Models.Core;
 
-namespace LogicApi.BusinessLogic.GymBranchScheduleHandler;
+namespace LogicAdministratorApi.BusinessLogic.GymBranchScheduleHandler;
 
 /// <summary>
 /// Handler para crear horario de sucursal
@@ -20,7 +20,7 @@ public class CreateGymBranchScheduleHandler(
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public override async Task<CreateGymBranchScheduleResponse> Handle(CreateGymBranchScheduleRequest request, CancellationToken cancellationToken)
-        => await ExecuteHandlerAsync(OperationApiName.CreateGymBranchSchedule, request, async () =>
+        => await ExecuteHandlerAsync(OperationAdministratorName.CreateGymBranchSchedule, request, async () =>
             {
                 // Validar que la sucursal existe
                 var branch = await UnitOfWork.GymBranchRepository

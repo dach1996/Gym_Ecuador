@@ -1,4 +1,4 @@
-namespace LogicApi.Model.Response.GymBranch;
+namespace LogicAdministratorApi.Model.Response.GymBranch;
 
 /// <summary>
 /// Respuesta de crear sucursal de gimnasio

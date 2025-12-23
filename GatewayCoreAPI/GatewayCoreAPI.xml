@@ -208,13 +208,6 @@
             <param name="request">Modelo para obtener sucursales</param>
             <returns></returns>
         </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchController.CreateGymBranch(LogicApi.Model.Request.GymBranch.CreateGymBranchRequest)">
-            <summary>
-            Crea una nueva sucursal de gimnasio
-            </summary>
-            <param name="request">Modelo para crear sucursal</param>
-            <returns></returns>
-        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchScheduleController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GymBranchScheduleController},MediatR.IMediator)">
             <summary>
             Constructor
@@ -223,32 +216,11 @@
             <param name="logger"></param>
             <param name="mediator"></param>
         </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchScheduleController.CreateGymBranchSchedule(LogicApi.Model.Request.GymBranchSchedule.CreateGymBranchScheduleRequest)">
-            <summary>
-            Crea un nuevo horario de sucursal
-            </summary>
-            <param name="request">Modelo para crear horario</param>
-            <returns></returns>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchScheduleController.UpdateGymBranchSchedule(LogicApi.Model.Request.GymBranchSchedule.UpdateGymBranchScheduleRequest)">
-            <summary>
-            Actualiza un horario de sucursal
-            </summary>
-            <param name="request">Modelo para actualizar horario</param>
-            <returns></returns>
-        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchScheduleController.GetGymBranchSchedules(LogicApi.Model.Request.GymBranchSchedule.GetGymBranchSchedulesRequest)">
             <summary>
             Obtiene los horarios de una sucursal
             </summary>
             <param name="request">Modelo para obtener horarios</param>
-            <returns></returns>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchScheduleController.DeleteGymBranchSchedule(LogicApi.Model.Request.GymBranchSchedule.DeleteGymBranchScheduleRequest)">
-            <summary>
-            Elimina un horario de sucursal
-            </summary>
-            <param name="request">Modelo para eliminar horario</param>
             <returns></returns>
         </member>
         <member name="T:GatewayCoreAPI.Controllers.V1.GymController">
@@ -279,20 +251,6 @@
             Obtiene un gimnasio por su GUID
             </summary>
             <param name="gymGuid">GUID del gimnasio</param>
-            <returns></returns>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.GymController.CreateGym(LogicApi.Model.Request.Gym.CreateGymRequest)">
-            <summary>
-            Crea un nuevo gimnasio
-            </summary>
-            <param name="request">Modelo para crear gimnasio</param>
-            <returns></returns>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.GymController.UpdateGym(LogicApi.Model.Request.Gym.UpdateGymRequest)">
-            <summary>
-            Actualiza un gimnasio existente
-            </summary>
-            <param name="request">Modelo para actualizar gimnasio</param>
             <returns></returns>
         </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.GymMachineController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GymMachineController},MediatR.IMediator)">
