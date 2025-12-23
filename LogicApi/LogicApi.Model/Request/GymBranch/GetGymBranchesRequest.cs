@@ -1,13 +1,12 @@
-using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.GymBranch;
-
 using Common.WebCommon.Models;
+using LogicApi.Model.Common;
 namespace LogicApi.Model.Request.GymBranch;
 
 /// <summary>
 /// Solicitud para obtener sucursales de gimnasio paginadas
 /// </summary>
-public class GetGymBranchesRequest : IRequest<GetGymBranchesResponse>, IApiBaseRequest
+public class GetGymBranchesRequest : IPaginatorApiRequest<GetGymBranchesResponse>
 {
     /// <summary>
     /// GUID del gimnasio principal (opcional)
@@ -15,50 +14,72 @@ public class GetGymBranchesRequest : IRequest<GetGymBranchesResponse>, IApiBaseR
     public Guid? GymGuid { get; set; }
 
     /// <summary>
-    /// Filtro por nombre de sucursal
+    /// Latitud y longitud
     /// </summary>
-    public string NameFilter { get; set; }
+    public LatitudeLongitudeModel LatitudeLongitude { get; set; }
 
     /// <summary>
-    /// Filtro por estado activo
+    /// Servicios
     /// </summary>
-    public bool? IsActiveFilter { get; set; }
+    /// <value></value>
+    public List<string> Services { get; set; } = [];
 
     /// <summary>
-    /// Filtro por código de sucursal
+    /// Tipos de gimnasio
     /// </summary>
-    public string CodeFilter { get; set; }
+    /// <value></value>
+    public List<string> GymTypes { get; set; } = [];
 
     /// <summary>
-    /// Página
+    /// Indica si la sucursal está abierta en este momento
     /// </summary>
-    public int Page { get; set; } = 1;
+    /// <value></value>
+    public bool IsOpenNow { get; set; }
+
+    /// <summary>
+    /// Filtro de rango de precios
+    /// </summary>
+    /// <value></value>
+    public PriceRangeFilter PriceRangeFilter { get; set; }
+
+    /// <summary>
+    /// Número de página
+    /// </summary>
+    /// <value></value>
+    [Required]
+    [Range(1, int.MaxValue)]
+    public int PageNumber { get; set; }
+
 
     /// <summary>
     /// Tamaño de página
     /// </summary>
-    public int PageSize { get; set; } = 10;
+    /// <value></value>
+    [Required]
+    [Range(1, int.MaxValue)]
+    public int PageSize { get; set; }
 
- /// <summary>
+    /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
     public CommonContextRequest ContextRequest { get; set; }
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="contextRequest"></param>
-    public GetGymBranchesRequest(ContextRequest contextRequest)
-    {
-        ContextRequest = contextRequest;
-    }
-
-    /// <summary>
-    /// Default Constructor
-    /// </summary>
-    public GetGymBranchesRequest()
-    {
-    }
 }
 
+/// <summary>
+/// Filtro de rango de precios  
+/// /// </summary>
+public class PriceRangeFilter
+{
+    /// <summary>
+    /// Precio mínimo
+    /// </summary>
+    /// <value></value>
+    public decimal MinPrice { get; set; }
+
+    /// <summary>
+    /// Precio máximo
+    /// </summary>
+    /// <value></value>
+    public decimal MaxPrice { get; set; }
+}

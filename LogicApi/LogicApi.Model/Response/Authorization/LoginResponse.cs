@@ -29,6 +29,16 @@ public class LoginResponse : IApiBaseResponse
     public GetInitialCataloguesResponse GetInitialCataloguesResponse { get; set; }
 
     /// <summary>
+    /// Configuración de Filtro
+    /// </summary>
+    public FilterConfiguration FilterConfiguration { get; set; }
+
+    /// <summary>
+    /// Calificación máxima de los gimnasios
+    /// </summary>
+    public byte MaxCalification { get; set; }
+
+    /// <summary>
     /// Mensaje al Usuario
     /// </summary>
     public string UserMessage { get; set; }
@@ -38,6 +48,41 @@ public class LoginResponse : IApiBaseResponse
     /// </summary>
     /// <value></value>
     public bool ShowMessage { get; set; }
+}
+
+/// <summary>
+/// Configuración de Filtro
+/// </summary>
+public class FilterConfiguration
+{
+    /// <summary>
+    /// Tipos de Gimnasio
+    /// </summary>
+    /// <value></value>
+    public List<FilterItem> GymTypes { get; set; }
+
+    /// <summary>
+    /// Servicios
+    /// </summary>
+    /// <value></value>
+    public List<FilterItem> Services { get; set; }
+}
+
+
+/// <summary>
+/// Item de Filtro
+/// </summary>
+public class FilterItem(string code, string name)
+{
+    /// <summary>
+    /// Código de Catálogo
+    /// </summary>
+    public string Code { get; set; } = code;
+
+    /// <summary>
+    ///  Name
+    /// </summary>
+    public string Name { get; set; } = name;
 }
 
 /// <summary>

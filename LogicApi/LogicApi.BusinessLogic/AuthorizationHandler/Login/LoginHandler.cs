@@ -111,6 +111,32 @@ public class LoginHandler(
             Language = user.LanguageCode,
             ForceChangePassword = ForceChangePassword
         };
+        loginResponse.MaxCalification = 5;
+        loginResponse.FilterConfiguration = new()
+        {
+            GymTypes =
+            [
+                new ("Pesas", "Pesas"),
+                new ("Crossfit", "Crossfit"),
+                new ("Boxeo", "Boxeo"),
+                new ("Yoga", "Yoga"),
+                new ("Pilates", "Pilates"),
+                new ("Piscina", "Piscina"),
+                new ("Sauna", "Sauna"),
+                new ("Nutricionista", "Nutricionista"),
+                new ("Parking", "Parking"),
+                new ("Clases", "Clases")
+
+            ],
+            Services =
+            [
+                new("Piscina", "Piscina"),
+                new("Sauna", "Sauna"),
+                new("Nutricionista", "Nutricionista"),
+                new("Parking", "Parking"),
+                new("Clases", "Clases")
+            ]
+        };
         return loginResponse;
     }
 

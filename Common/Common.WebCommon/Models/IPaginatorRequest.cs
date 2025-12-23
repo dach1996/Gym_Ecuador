@@ -1,5 +1,5 @@
 ﻿namespace Common.WebCommon.Models;
-public interface IPaginatorRequest 
+public interface IPaginatorRequest
 {
     /// Límite
     /// </summary>

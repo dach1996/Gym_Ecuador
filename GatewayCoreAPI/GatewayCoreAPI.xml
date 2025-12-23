@@ -208,6 +208,13 @@
             <param name="request">Modelo para obtener sucursales</param>
             <returns></returns>
         </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchController.GetGymBranchByGuid(LogicApi.Model.Request.GymBranch.GetGymBranchByGuidRequest)">
+            <summary>
+            Obtiene el detalle de una sucursal de gimnasio por GUID
+            </summary>
+            <param name="request">Modelo para obtener el detalle de una sucursal de gimnasio por GUID</param>
+            <returns></returns>
+        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.GymBranchScheduleController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GymBranchScheduleController},MediatR.IMediator)">
             <summary>
             Constructor

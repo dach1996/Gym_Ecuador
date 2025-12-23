@@ -25,43 +25,24 @@ public class GetGymBranchesHandler(
                 var paginatedResult = await UnitOfWork.GymBranchRepository
                     .GetPaginatorGenericAsync(
                         itemsByPage: request.PageSize,
-                        page: request.Page,
-                        selector: gb => new GymBranchItem
+                        page: request.PageNumber,
+                        select => new GymBranchItem
                         {
-                            Guid = gb.Guid,
-                            GymGuid = gb.Gym.Guid,
-                            GymName = gb.Gym.Name,
-                            Name = gb.Name,
-                            Code = gb.Code,
-                            Description = gb.Description,
-                            Address = gb.Address,
-                            Phone = gb.Phone,
-                            Email = gb.Email,
-                            Latitude = gb.Latitude,
-                            Longitude = gb.Longitude,
-                            MaxCapacity = gb.MaxCapacity,
-                            AreaSquareMeters = gb.AreaSquareMeters,
-                            FloorCount = gb.FloorCount,
-                            IsActive = gb.IsActive,
-                            OpeningDate = gb.OpeningDate,
-                            DateTimeRegister = gb.DateTimeRegister
+                            Guid = select.Guid,
+                            Name = select.Name,
+                            CalificationPercentage = 90,
+                            Address = select.Address,
+                            ImageUrls = new List<string> { "https://img.freepik.com/premium-photo/modern-gym-interior-with-sport-fitness-equipment-fitness-center-inteior-inteior-crossfit-workout-gym_875746-17605.jpg" }
                         },
-                        where: gb =>
-                            (!request.GymGuid.HasValue || gb.Gym.Guid == request.GymGuid.Value) &&
-                            (string.IsNullOrWhiteSpace(request.NameFilter) || gb.Name.Contains(request.NameFilter)) &&
-                            (string.IsNullOrWhiteSpace(request.CodeFilter) || gb.Code.Contains(request.CodeFilter)) &&
-                            (!request.IsActiveFilter.HasValue || gb.IsActive == request.IsActiveFilter.Value),
-                        orderBy: gb => gb.DateTimeRegister,
-                        orderByType: OrderByType.Desc
+                        where => true
                     ).ConfigureAwait(false);
 
-                return new GetGymBranchesResponse(paginatedResult.Items, paginatedResult.TotalItems, request.Page, request.PageSize)
-                {
-                    UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
-                    ShowMessage = false
-                };
-            },
-            registerLogAudit: false
+                return new GetGymBranchesResponse
+                (
+                    totalRegister: paginatedResult.TotalItems,
+                    registers: paginatedResult.Items
+                );
+            }
         ).ConfigureAwait(false);
 }
 

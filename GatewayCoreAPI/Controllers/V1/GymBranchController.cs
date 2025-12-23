@@ -39,6 +39,17 @@ public class GymBranchController(
     [ProducesResponseType(400, Type = typeof(GenericResponse))]
     public async Task<IActionResult> GetGymBranches([FromQuery] GetGymBranchesRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
+
+    /// <summary>
+    /// Obtiene el detalle de una sucursal de gimnasio por GUID
+    /// </summary>
+    /// <param name="request">Modelo para obtener el detalle de una sucursal de gimnasio por GUID</param>
+    /// <returns></returns>
+    [HttpGet("GetGymBranchByGuid")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GetGymBranchByGuidResponse>))]
+    [ProducesResponseType(400, Type = typeof(GenericResponse))]
+    public async Task<IActionResult> GetGymBranchByGuid([FromQuery] GetGymBranchByGuidRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
     #endregion
 }
 

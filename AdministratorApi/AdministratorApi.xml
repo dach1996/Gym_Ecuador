@@ -27,6 +27,96 @@
             <param name="request">Modelo para autenticación</param>
             <returns></returns>
         </member>
+        <member name="T:AdministratorApi.Controllers.GymBranchController">
+            <summary>
+            Controlador de Sucursales de Gimnasio
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.GymBranchController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.GymBranchController},MediatR.IMediator)">
+            <summary>
+            Controlador de Sucursales de Gimnasio
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.GymBranchController.CreateGymBranch(LogicAdministratorApi.Model.Request.GymBranch.CreateGymBranchRequest)">
+            <summary>
+            Crear Sucursal de Gimnasio
+            </summary>
+            <param name="request">Modelo para crear sucursal de gimnasio</param>
+            <returns></returns>
+        </member>
+        <member name="T:AdministratorApi.Controllers.GymBranchScheduleController">
+            <summary>
+            Controlador de Horarios de Sucursal de Gimnasio
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.GymBranchScheduleController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.GymBranchScheduleController},MediatR.IMediator)">
+            <summary>
+            Controlador de Horarios de Sucursal de Gimnasio
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.GymBranchScheduleController.CreateGymBranchSchedule(LogicAdministratorApi.Model.Request.GymBranchSchedule.CreateGymBranchScheduleRequest)">
+            <summary>
+            Crear Horario de Sucursal
+            </summary>
+            <param name="request">Modelo para crear horario de sucursal</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.GymBranchScheduleController.UpdateGymBranchSchedule(LogicAdministratorApi.Model.Request.GymBranchSchedule.UpdateGymBranchScheduleRequest)">
+            <summary>
+            Actualizar Horario de Sucursal
+            </summary>
+            <param name="request">Modelo para actualizar horario de sucursal</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.GymBranchScheduleController.DeleteGymBranchSchedule(LogicAdministratorApi.Model.Request.GymBranchSchedule.DeleteGymBranchScheduleRequest)">
+            <summary>
+            Eliminar Horario de Sucursal
+            </summary>
+            <param name="request">Modelo para eliminar horario de sucursal</param>
+            <returns></returns>
+        </member>
+        <member name="T:AdministratorApi.Controllers.GymController">
+            <summary>
+            Controlador de Gimnasios
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.GymController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.GymController},MediatR.IMediator)">
+            <summary>
+            Controlador de Gimnasios
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.GymController.CreateGym(LogicAdministratorApi.Model.Request.Gym.CreateGymRequest)">
+            <summary>
+            Crear Gimnasio
+            </summary>
+            <param name="request">Modelo para crear gimnasio</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.GymController.UpdateGym(LogicAdministratorApi.Model.Request.Gym.UpdateGymRequest)">
+            <summary>
+            Actualizar Gimnasio
+            </summary>
+            <param name="request">Modelo para actualizar gimnasio</param>
+            <returns></returns>
+        </member>
         <member name="T:Program">
             <summary>
             Auto-generated public partial Program class for top-level statement apps.
