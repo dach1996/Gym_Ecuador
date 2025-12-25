@@ -21,6 +21,9 @@ public class AdministrationModule : Module
         builder.RegisterType<CountryRepository>().As<ICountryRepository>().InstancePerLifetimeScope();
         builder.RegisterType<ProvinceRepository>().As<IProvinceRepository>().InstancePerLifetimeScope();
         builder.RegisterType<RegionRepository>().As<IRegionRepository>().InstancePerLifetimeScope();
+        builder.RegisterType<CityRepository>().As<ICityRepository>().InstancePerLifetimeScope();
+        builder.RegisterType<ParishRepository>().As<IParishRepository>().InstancePerLifetimeScope();
+        builder.RegisterType<TypeIdentificationRepository>().As<ITypeIdentificationRepository>().InstancePerLifetimeScope();
         //UoW
         builder.RegisterType<MainUnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
     }

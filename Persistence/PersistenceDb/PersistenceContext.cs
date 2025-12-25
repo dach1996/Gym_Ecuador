@@ -36,6 +36,13 @@ public class PersistenceContext(
     public DbSet<Country> Countries { get; set; }
     public DbSet<Province> Provinces { get; set; }
     public DbSet<Region> Regions { get; set; }
+    public DbSet<City> Cities { get; set; }
+    public DbSet<Parish> Parishes { get; set; }
+    public DbSet<TypeIdentification> TypeIdentifications { get; set; }
+    public DbSet<Article> Articles { get; set; }
+    public DbSet<Forum> Forums { get; set; }
+    public DbSet<ForumComment> ForumComments { get; set; }
+    public DbSet<FileBasePath> FileBasePaths { get; set; }
     #endregion
 
     #region Authentication DbSet

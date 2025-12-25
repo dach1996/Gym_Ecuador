@@ -1,4 +1,3 @@
-using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Attributes.CustomDataAnnotations;
 using LogicApi.Model.Implementations.Authorization;
 using LogicApi.Model.Response.Authorization;

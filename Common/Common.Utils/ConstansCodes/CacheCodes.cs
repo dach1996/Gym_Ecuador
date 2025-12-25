@@ -80,13 +80,11 @@ public static class CacheCodes
     public const string PLACES_INFORMATION = nameof(PLACES_INFORMATION);
 
     /// <summary>
-    /// Asientos de Ruta
+    /// Rutas de almacenamiento
     /// </summary>
-    /// <param name="userId"></param>
-    /// <param name="routeGuid"></param>
     /// <returns></returns>
-    public static string LastRouteViewByUser(int userId) => $"{nameof(LastRouteViewByUser)}_{userId}";
-
+    public const string FILE_BASE_PATHS = nameof(FILE_BASE_PATHS);
+    
     /// <summary>
     /// Información de Usuario por Id de Usuario
     /// </summary>

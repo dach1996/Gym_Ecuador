@@ -4,12 +4,9 @@ using Common.UserDocumentation.Models.Response;
 using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Models;
 using LogicApi.BusinessLogic.LoggerHandler;
-using LogicApi.Model.Request.Administration;
 using LogicApi.Model.Request.CommonConfiguration;
 using LogicApi.Model.Request.Logger;
 using LogicApi.Model.Request.Security;
-using LogicApi.Model.Response.Common;
-using LogicApi.Model.Response.CommonConfiguration.Common;
 using LogicCommon.BusinessLogic;
 using PersistenceDb.Models.Authentication;
 namespace LogicApi.BusinessLogic;
@@ -153,41 +150,6 @@ public abstract class BusinessLogicBase(
        => AppSettingsApi.JwtSettings.Find(t => t.Identifier == ContextRequest.Headers.Channel.ToString());
 
     /// <summary>
-    /// Obtiene los catálogos desde un archivo
-    /// </summary>
-    /// <param name="catalogCode"></param>
-    /// <returns></returns>
-    protected async Task<CatalogCodes> GetCatalogCodesResponseByFile(string catalogCode)
-    {
-        var itemsCatalogDictionary = (await Mediator.Send(new GetItemsCatalogByCodeCatalogFileRequest(catalogCode, $"{ContextRequest.Headers.UserLanguage}", ContextRequest), CancellationToken.None).ConfigureAwait(false))
-            ?.ItemCatalogs.Select(t => new KeyValuePair<string, string>(t.Code, t.Value))
-            .ToDictionary(x => x.Key, x => x.Value);
-        return new CatalogCodes($"{catalogCode}", itemsCatalogDictionary);
-    }
-
-    /// <summary>
-    /// Obtiene los catálogos desde un archivo
-    /// </summary>
-    /// <param name="catalogCode"></param>
-    /// <returns></returns>
-    protected async Task<IEnumerable<ItemCatalogFileResponse>> GetItemsCatalogCodesResponseByFile(string catalogCode)
-        => (await Mediator.Send(new GetItemsCatalogByCodeCatalogFileRequest(catalogCode, $"{ContextRequest.Headers.UserLanguage}", ContextRequest), CancellationToken.None).ConfigureAwait(false))
-            ?.ItemCatalogs;
-
-    /// <summary>
-    /// Valida un Item de Catálogo que exista en un Catálogo
-    /// </summary>
-    /// <param name="itemCode"></param>
-    /// <param name="catalogCode"></param>
-    /// <returns></returns>
-    protected async Task ValidateItemCodeInCatalog(string itemCode, string catalogCode)
-    {
-        var catalogCodes = await GetCatalogCodesResponseByFile(catalogCode).ConfigureAwait(false);
-        if (!catalogCodes.ItemsCatalog.Any(t => t.Key == itemCode))
-            throw new CustomException((int)MessagesCodesError.SystemError, $"No existe ningún item de catálogo con el código '{itemCode}', en el Catálogo '{catalogCode}'");
-    }
-
-    /// <summary>
     /// Obtiene un mensáje de éxito
     /// </summary>
     /// <param name="messagesCodesSucess"></param>
@@ -224,20 +186,6 @@ public abstract class BusinessLogicBase(
     protected async Task<int> GetIntParameterAsync(string parameterCode)
         => (await Mediator.Send(new GetParameterByCodeRequest(parameterCode, ContextRequest)).ConfigureAwait(false)).IntValue;
 
-    /// <summary>
-    /// Valida si existe un valor en un catálogo
-    /// </summary>
-    /// <param name="catalogsTypeItemsCodes"></param>
-    /// <param name="valueToValidate"></param>
-    /// <returns></returns>
-    protected async Task ValidateExistValueInFileCatalogAsync(EnumLogicApi.CatalogsTypeItemsCodes catalogsTypeItemsCodes, string valueToValidate)
-    {
-        var itemsCatalogs = (await Mediator.Send(new GetInitialCataloguesRequest(ContextRequest)).ConfigureAwait(false))
-            ?.ListCatalogCodes?.FirstOrDefault(first => first.Catalog == catalogsTypeItemsCodes.GetEnumMember())
-            ?.ItemsCatalog;
-        if (!itemsCatalogs.Any(any => any.Key == valueToValidate))
-            throw new CustomException((int)MessagesCodesError.ItemCatalogNotFound, $"El Item de Catálogo: '{valueToValidate}' del Catálogo: '{catalogsTypeItemsCodes.GetEnumMember()}' no fué encontrado.");
-    }
 
     /// <summary>
     /// Obtiene la información de Persona

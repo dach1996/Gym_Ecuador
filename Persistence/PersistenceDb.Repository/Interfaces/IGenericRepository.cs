@@ -62,7 +62,7 @@ public interface IGenericRepository<TEntity> where TEntity : class
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    Task<TEntity> AddAsync(TEntity entity, bool autoDetectChangesEnabled = true);
+    Task<TEntity> AddAsync(TEntity entity, bool autoDetectChangesEnabled = false);
 
     /// <summary>
     /// Agrega Varias Entidades

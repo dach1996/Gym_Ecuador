@@ -1,6 +1,4 @@
-﻿global using Common.Blob;
-
-namespace LogicCommon.BusinessLogic.FileHandler;
+﻿namespace LogicCommon.BusinessLogic.FileHandler;
 public abstract class FileBase<TRequest, TResponse>(
     ILogger<FileBase<TRequest, TResponse>> logger,
     IPluginFactory pluginFactory) : BusinessLogicCommonBase(
@@ -8,8 +6,6 @@ public abstract class FileBase<TRequest, TResponse>(
         pluginFactory),
     IRequestHandler<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
-    protected IBlobBus BlobBus => PluginFactory.GetPlugin<IBlobBus>(AppSettings.BlobConfiguration?.CurrentImplementation, true);
-
     /// <summary>
     /// Abstracciòn de Handler
     /// </summary>

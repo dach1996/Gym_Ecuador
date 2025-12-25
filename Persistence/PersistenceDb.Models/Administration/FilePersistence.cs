@@ -40,16 +40,19 @@ public class FilePersistence
     public string Path { get; set; }
 
     /// <summary>
-    /// Url
-    /// </summary>
-    [StringLength(350)]
-    [Column("ARG_URL")]
-    public string Url { get; set; }
-
-    /// <summary>
     /// State
     /// </summary>
     [Required]
     [Column("ARG_ESTADO")]
     public bool State { get; set; }
+
+    /// <summary>
+    /// Id de la Ruta Base del Archivo
+    /// </summary>
+    /// <value></value>
+    [Column("FBP_ID")]
+    [ForeignKey(nameof(FileBasePath))]
+    public byte FileBasePathId { get; set; }
+
+    public FileBasePath FileBasePath { get; set; }
 }

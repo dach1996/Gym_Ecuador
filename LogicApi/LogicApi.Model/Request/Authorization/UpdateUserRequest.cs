@@ -21,7 +21,7 @@ public class UpdateUserRequest : IRequest<HandlerResponse>, IApiBaseRequest
     /// <value></value>
     public RequestEncodeFile Image { get; set; }
 
- /// <summary>
+    /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]

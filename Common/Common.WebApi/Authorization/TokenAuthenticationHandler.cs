@@ -1,6 +1,5 @@
 ﻿using Common.PluginFactory.Interface;
 using Common.Security.Interface;
-using Common.Security.Model.Enum;
 using Common.WebCommon.Models;
 using Common.WebCommon.Models.Enum;
 using Microsoft.AspNetCore.Authentication;

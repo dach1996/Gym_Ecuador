@@ -52,7 +52,8 @@ public class AssignPersonRequest : IRequest<LoginResponse>, IApiBaseRequest
     /// </summary>
     /// <value></value>
     [Required]
-    public string DocumentTypeCode { get; set; }
+    [Range(1, byte.MaxValue)]
+    public byte TypeIdentificationId { get; set; }
 
     /// <summary>
     /// Nombre
@@ -74,13 +75,6 @@ public class AssignPersonRequest : IRequest<LoginResponse>, IApiBaseRequest
     /// <value></value>
     [Required]
     public string Phone { get; set; }
-
-    /// <summary>
-    /// Código de Nacionalidad
-    /// </summary>
-    /// <value></value>
-    [Required]
-    public string NationalityCode { get; set; }
 
     /// <summary>
     /// Implementación de Login

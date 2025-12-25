@@ -6,11 +6,6 @@ namespace Common.WebApi.Models.EncryptedClaims;
 public class EncryptedFieldsClaimsAdministrator : EncryptedFieldClaimCommon
 {
     /// <summary>
-    /// Id de usuario 
-    /// </summary>
-    public Guid UserGuid { get; set; }
-
-    /// <summary>
     /// Fecha de creación de la sesión de Cache
     /// </summary>
     /// <value></value>

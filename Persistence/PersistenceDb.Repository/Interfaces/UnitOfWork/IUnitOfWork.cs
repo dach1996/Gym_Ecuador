@@ -17,6 +17,13 @@ public interface IUnitOfWork : IUnitOfWorkBase
     ICountryRepository CountryRepository { get; }
     IProvinceRepository ProvinceRepository { get; }
     IRegionRepository RegionRepository { get; }
+    ICityRepository CityRepository { get; }
+    IParishRepository ParishRepository { get; }
+    ITypeIdentificationRepository TypeIdentificationRepository { get; }
+    IArticleRepository ArticleRepository { get; }
+    IForumRepository ForumRepository { get; }
+    IForumCommentRepository ForumCommentRepository { get; }
+    IFileBasePathRepository FileBasePathRepository { get; }
 
     // Authentication Repositories
     IDeviceRepository DeviceRepository { get; }

@@ -801,7 +801,7 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest,System.Collections.Generic.List{System.String})">
+        <member name="M:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest,System.Collections.Generic.List{LogicApi.Model.Request.Administration.CatalogsTypeItemsCodes})">
             <summary>
             Constructor
             </summary>
@@ -811,6 +811,59 @@
         <member name="M:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest.#ctor">
             <summary>
             Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Administration.CatalogsTypeItemsCodes">
+            <summary>
+            Códigos de Catálogos
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Request.Administration.CatalogsTypeItemsCodes.DocumentType">
+            <summary>
+            Tipos de Documento
+            </summary>
+            <value></value>
+        </member>
+        <member name="F:LogicApi.Model.Request.Administration.CatalogsTypeItemsCodes.Nationality">
+            <summary>
+            Catálogo de Nacionalidades
+            </summary>
+            <value></value>
+        </member>
+        <member name="F:LogicApi.Model.Request.Administration.CatalogsTypeItemsCodes.Gender">
+            <summary>
+            Catálogo de Géneros
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Request.Article.GetArticlesRequest">
+            <summary>
+            Solicitud para obtener artículos paginados
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Article.GetArticlesRequest.PageNumber">
+            <summary>
+            Número de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Article.GetArticlesRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Article.GetArticlesRequest.Category">
+            <summary>
+            Filtro por categoría (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Article.GetArticlesRequest.TitleFilter">
+            <summary>
+            Filtro por título (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Article.GetArticlesRequest.ContextRequest">
+            <summary>
+            Context
             </summary>
         </member>
         <member name="T:LogicApi.Model.Request.Authorization.AssignPersonRequest">
@@ -844,7 +897,7 @@
             </summary>
             <value></value>
         </member>
-        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.DocumentTypeCode">
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.TypeIdentificationId">
             <summary>
             Tipo de Documento
             </summary>
@@ -865,12 +918,6 @@
         <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.Phone">
             <summary>
             Teléfono
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.NationalityCode">
-            <summary>
-            Código de Nacionalidad
             </summary>
             <value></value>
         </member>
@@ -1437,6 +1484,129 @@
         <member name="P:LogicApi.Model.Request.Device.RegisterPushTokenRequest.ContextRequest">
             <summary>
             Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Forum.CommentForumRequest">
+            <summary>
+            Solicitud para comentar en un foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.CommentForumRequest.ForumGuid">
+            <summary>
+            Guid del foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.CommentForumRequest.Comment">
+            <summary>
+            Comentario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.CommentForumRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Forum.CommentForumRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Forum.CommentForumRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Forum.CreateForumRequest">
+            <summary>
+            Solicitud para crear un foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.CreateForumRequest.Title">
+            <summary>
+            Título del foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.CreateForumRequest.Description">
+            <summary>
+            Descripción del foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.CreateForumRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Forum.CreateForumRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Forum.CreateForumRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Forum.GetForumsRequest">
+            <summary>
+            Solicitud para obtener foros paginados
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.GetForumsRequest.PageNumber">
+            <summary>
+            Número de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.GetForumsRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.GetForumsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Forum.UpdateForumRequest">
+            <summary>
+            Solicitud para actualizar un foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.UpdateForumRequest.ForumGuid">
+            <summary>
+            Guid del foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.UpdateForumRequest.Title">
+            <summary>
+            Título del foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.UpdateForumRequest.Description">
+            <summary>
+            Descripción del foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.UpdateForumRequest.IsActive">
+            <summary>
+            Estado activo del foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.UpdateForumRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Forum.UpdateForumRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Forum.UpdateForumRequest.#ctor">
+            <summary>
+            Default Constructor
             </summary>
         </member>
         <member name="T:LogicApi.Model.Request.GroupClass.CreateGroupClassRequest">
@@ -2126,6 +2296,16 @@
         <member name="M:LogicApi.Model.Request.Gym.GetGymsRequest.#ctor">
             <summary>
             Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Home.GetHomeDataRequest">
+            <summary>
+            Solicitud para obtener datos del home/dashboard
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Home.GetHomeDataRequest.ContextRequest">
+            <summary>
+            Context
             </summary>
         </member>
         <member name="T:LogicApi.Model.Request.Logger.RegisterLogAuditExecutorModel">
@@ -3720,9 +3900,8 @@
             Constructor
             </remarks>
             <param name="listCatalogCodes"></param>
-            <param name="controlValidations"></param>
         </member>
-        <member name="M:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse.#ctor(System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Common.CatalogCodes},System.Collections.Generic.Dictionary{System.String,LogicApi.Model.Response.Administration.ControlValidationItem})">
+        <member name="M:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse.#ctor(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}})">
             <summary>
             Respuesta de Servicio Obtener Bancos
             </summary>
@@ -3730,7 +3909,6 @@
             Constructor
             </remarks>
             <param name="listCatalogCodes"></param>
-            <param name="controlValidations"></param>
         </member>
         <member name="P:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse.UserMessage">
             <summary>
@@ -3750,57 +3928,102 @@
             </summary>
             <value></value>
         </member>
-        <member name="P:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse.InputControlValidations">
+        <member name="T:LogicApi.Model.Response.Article.GetArticlesResponse">
             <summary>
-            Validaciones de control para Input
-            </summary>
-            <value></value>
-        </member>
-        <member name="T:LogicApi.Model.Response.Administration.ItemsCatalogue">
-            <summary>
-            Items de Catálogo
+            Respuesta de obtener artículos
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.Administration.ItemsCatalogue.Code">
+        <member name="P:LogicApi.Model.Response.Article.GetArticlesResponse.UserMessage">
             <summary>
-            Código
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.Administration.ItemsCatalogue.Name">
-            <summary>
-            Nombre
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.Administration.ItemsCatalogue.Description">
-            <summary>
-            Descripción
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.Administration.ItemsCatalogue.AdditionalInformation">
-            <summary>
-            Información Adicional
-            </summary>
-            <value></value>
-        </member>
-        <member name="T:LogicApi.Model.Response.Administration.ControlValidationItem">
-            <summary>
-            Item de Expresión Regutlar
+            Mensaje al Usuario
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.Administration.ControlValidationItem.Validations">
+        <member name="P:LogicApi.Model.Response.Article.GetArticlesResponse.ShowMessage">
             <summary>
-            Validaciones conformado por una expresión regular y un mensaje a mostrar
+            Mostrar Mensaje?
             </summary>
-            <value></value>
         </member>
-        <member name="P:LogicApi.Model.Response.Administration.ControlValidationItem.Restrictions">
+        <member name="P:LogicApi.Model.Response.Article.GetArticlesResponse.TotalRegister">
             <summary>
-            Restricciones que no muestran mensaje
+            Total de registros
             </summary>
-            <value></value>
+        </member>
+        <member name="M:LogicApi.Model.Response.Article.GetArticlesResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Article.ArticleItem})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.GetArticlesResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Article.ArticleItem">
+            <summary>
+            Item de artículo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleItem.Guid">
+            <summary>
+            Guid del artículo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleItem.Title">
+            <summary>
+            Título del artículo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleItem.Description">
+            <summary>
+            Descripción o resumen del artículo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleItem.Content">
+            <summary>
+            Contenido del artículo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleItem.AuthorName">
+            <summary>
+            Nombre del autor
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleItem.Category">
+            <summary>
+            Categoría del artículo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleItem.ImageUrl">
+            <summary>
+            URL de la imagen principal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleItem.PublishedDate">
+            <summary>
+            Fecha de publicación
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleItem.CreatedDate">
+            <summary>
+            Fecha de creación
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleItem.ViewCount">
+            <summary>
+            Cantidad de vistas
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleItem.LikeCount">
+            <summary>
+            Cantidad de likes
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleItem.IsActive">
+            <summary>
+            Indica si está activo
+            </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Authorization.CreateUserResponse">
             <summary>
@@ -3855,6 +4078,11 @@
             Configuración de Filtro
             </summary>
         </member>
+        <member name="P:LogicApi.Model.Response.Authorization.LoginResponse.MaxCalification">
+            <summary>
+            Calificación máxima de los gimnasios
+            </summary>
+        </member>
         <member name="P:LogicApi.Model.Response.Authorization.LoginResponse.UserMessage">
             <summary>
             Mensaje al Usuario
@@ -3884,6 +4112,11 @@
             <value></value>
         </member>
         <member name="T:LogicApi.Model.Response.Authorization.FilterItem">
+            <summary>
+            Item de Filtro
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Authorization.FilterItem.#ctor(System.String,System.String)">
             <summary>
             Item de Filtro
             </summary>
@@ -3954,9 +4187,9 @@
             Sobrenombre del usuario
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.CodeDocumentType">
+        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.IdentificationType">
             <summary>
-            Código Tipo de documento
+            Tipo de identificación
             </summary>
         </member>
         <member name="P:LogicApi.Model.Response.Authorization.UserInfo.DocumentNumber">
@@ -4402,30 +4635,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:LogicApi.Model.Response.Common.CatalogCodes">
-            <summary>
-            Códigos de Catálogos
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.Common.CatalogCodes.Catalog">
-            <summary>
-            Catálogo
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.Common.CatalogCodes.ItemsCatalog">
-            <summary>
-            Items de catálogo
-            </summary>
-            <value></value>
-        </member>
-        <member name="M:LogicApi.Model.Response.Common.CatalogCodes.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
-            <summary>
-            Constructor
-            </summary>
-            <param name="catalog"></param>
-            <param name="itemsCatalog"></param>
-        </member>
         <member name="T:LogicApi.Model.Response.Companion.CreateOrUpdateCompanionResponse">
             <summary>
             Respuesta de crear compañero de viaje
@@ -4572,6 +4781,189 @@
         <member name="P:LogicApi.Model.Response.Device.RefreshTokenPushResponse.UserMessage">
             <summary>
             Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Forum.CommentForumResponse">
+            <summary>
+            Respuesta de comentar en foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.CommentForumResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.CommentForumResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.CommentForumResponse.CommentGuid">
+            <summary>
+            Guid del comentario creado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.CommentForumResponse.Comment">
+            <summary>
+            Comentario
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Forum.CommentForumResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="commentGuid"></param>
+            <param name="comment"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Forum.CommentForumResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Forum.CreateForumResponse">
+            <summary>
+            Respuesta de crear foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.CreateForumResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.CreateForumResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.CreateForumResponse.ForumGuid">
+            <summary>
+            Guid del foro creado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.CreateForumResponse.Title">
+            <summary>
+            Título del foro
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Forum.CreateForumResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="forumGuid"></param>
+            <param name="title"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Forum.CreateForumResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Forum.GetForumsResponse">
+            <summary>
+            Respuesta de obtener foros
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.GetForumsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.GetForumsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.GetForumsResponse.TotalRegister">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Forum.GetForumsResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Forum.ForumItem})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.GetForumsResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Forum.ForumItem">
+            <summary>
+            Item de foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumItem.Guid">
+            <summary>
+            Guid del foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumItem.Title">
+            <summary>
+            Título del foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumItem.Description">
+            <summary>
+            Descripción del foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumItem.AuthorName">
+            <summary>
+            Nombre del autor
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumItem.CreatedDate">
+            <summary>
+            Fecha de creación
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumItem.CommentCount">
+            <summary>
+            Cantidad de comentarios
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumItem.IsActive">
+            <summary>
+            Indica si está activo
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Forum.UpdateForumResponse">
+            <summary>
+            Respuesta de actualizar foro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.UpdateForumResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.UpdateForumResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.UpdateForumResponse.ForumGuid">
+            <summary>
+            Guid del foro actualizado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.UpdateForumResponse.Title">
+            <summary>
+            Título del foro
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Forum.UpdateForumResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="forumGuid"></param>
+            <param name="title"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Forum.UpdateForumResponse.#ctor">
+            <summary>
+            Default Constructor
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.GroupClass.CreateGroupClassResponse">
@@ -4843,7 +5235,7 @@
             </summary>
             <value></value> 
         </member>
-        <member name="P:LogicApi.Model.Response.GymBranch.GymBranchItem.Calification">
+        <member name="P:LogicApi.Model.Response.GymBranch.GymBranchItem.CalificationPercentage">
             <summary>
             Calificación de la sucursal
             </summary>
@@ -5725,6 +6117,125 @@
             <param name="message"></param>
             <param name="showMessage"></param>
             <returns></returns>
+        </member>
+        <member name="T:LogicApi.Model.Response.Home.GetHomeDataResponse">
+            <summary>
+            Respuesta de obtener datos del home/dashboard
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.GetHomeDataResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.GetHomeDataResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.GetHomeDataResponse.DashboardMeasurementData">
+            <summary>
+            Datos de medición del dashboard
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.GetHomeDataResponse.MealPlan">
+            <summary>
+            Plan de alimentación
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Home.DashboardMeasurementData">
+            <summary>
+            Datos de medición del dashboard
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.DashboardMeasurementData.CurrentWeight">
+            <summary>
+            Peso actual
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.DashboardMeasurementData.GoalWeight">
+            <summary>
+            Peso objetivo
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.DashboardMeasurementData.PreviousWeight">
+            <summary>
+            Peso anterior
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.DashboardMeasurementData.CurrentHeight">
+            <summary>
+            Cambio de peso
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.DashboardMeasurementData.StreakDays">
+            <summary>
+            Días de racha (consecutivos)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.DashboardMeasurementData.CaloriesUsed">
+            <summary>
+            Calorías usadas
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.DashboardMeasurementData.TotalCalories">
+            <summary>
+            Calorías totales
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Home.MealPlan">
+            <summary>
+            Plan de alimentación
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.MealPlan.Name">
+            <summary>
+            Nombre del plan
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.MealPlan.TotalCalories">
+            <summary>
+            Total de calorías
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.MealPlan.CaloriesUsed">
+            <summary>
+            Total de carbohidratos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.MealPlan.MaxProtein">
+            <summary>
+            Total de proteínas
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.MealPlan.MaxFats">
+            <summary>
+            Total de grasas
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.MealPlan.MaxCarbohydrates">
+            <summary>
+            Total de carbohidratos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.MealPlan.UsedCarbohydrates">
+            <summary>
+            Carbohidratos usados
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.MealPlan.UsedProtein">
+            <summary>
+            Proteínas usadas
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.MealPlan.UsedFats">
+            <summary>
+            Grasas usadas
+            </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Logger.RegisterLogResponse">
             <summary>

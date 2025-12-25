@@ -1,4 +1,5 @@
-﻿using LogicApi.Model.Request.File;
+﻿using Common.Blob;
+using LogicApi.Model.Request.File;
 using LogicCommon.Model.Response.File;
 
 namespace LogicCommon.BusinessLogic.FileHandler;
@@ -9,7 +10,7 @@ namespace LogicCommon.BusinessLogic.FileHandler;
 /// <param name="pluginFactory"></param>
 public class DownloadBlobFileHandler(
     ILogger<DownloadBlobFileHandler> logger,
-    IPluginFactory pluginFactory) : FileBase<DownloadBlobFileRequest, FileResponse>(
+    IPluginFactory pluginFactory) : FileBase<DownloadBlobFileRequest, DownloadFileResponse>(
         logger,
         pluginFactory)
 {
@@ -20,17 +21,15 @@ public class DownloadBlobFileHandler(
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public  override async Task<FileResponse> Handle(DownloadBlobFileRequest request, CancellationToken cancellationToken)
+    public override async Task<DownloadFileResponse> Handle(DownloadBlobFileRequest request, CancellationToken cancellationToken)
+    => await ExecuteHandlerAsync(request, async () =>
     {
-        var file = await BlobBus.DownloadFileAsync(request.FileName, request.Path).ConfigureAwait(false);
-        return new FileResponse
+        var file = await PluginFactory.GetPlugin<IBlobBus>(request.Implementation, true).DownloadFileAsync(request.FileName, request.Path).ConfigureAwait(false);
+        return new DownloadFileResponse
         {
-            Content = file.Content,
-            ContentType = file.ContentType,
             FileName = file.FileName,
-            LastModified = file.LastModified,
-            Length = file.Length,
-            Url = file.Url
+            Path = request.Path,
+            Content = file.Content
         };
-    }
+    }).ConfigureAwait(false);
 }

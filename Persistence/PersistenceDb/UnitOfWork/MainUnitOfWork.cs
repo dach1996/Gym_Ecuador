@@ -26,6 +26,13 @@ public class MainUnitOfWork(
     private ICountryRepository _countryRepository;
     private IProvinceRepository _provinceRepository;
     private IRegionRepository _regionRepository;
+    private ICityRepository _cityRepository;
+    private IParishRepository _parishRepository;
+    private ITypeIdentificationRepository _typeIdentificationRepository;
+    private IArticleRepository _articleRepository;
+    private IForumRepository _forumRepository;
+    private IForumCommentRepository _forumCommentRepository;
+    private IFileBasePathRepository _fileBasePathRepository;
 
     // Authentication Repositories
     private IDeviceRepository _deviceRepository;
@@ -88,6 +95,27 @@ public class MainUnitOfWork(
 
     public IRegionRepository RegionRepository => _regionRepository ??=
         new RegionRepository(Context, LoggerFactory.CreateLogger<RegionRepository>());
+
+    public ICityRepository CityRepository => _cityRepository ??=
+        new CityRepository(Context, LoggerFactory.CreateLogger<CityRepository>());
+
+    public IParishRepository ParishRepository => _parishRepository ??=
+        new ParishRepository(Context, LoggerFactory.CreateLogger<ParishRepository>());
+
+    public ITypeIdentificationRepository TypeIdentificationRepository => _typeIdentificationRepository ??=
+        new TypeIdentificationRepository(Context, LoggerFactory.CreateLogger<TypeIdentificationRepository>());
+
+    public IArticleRepository ArticleRepository => _articleRepository ??=
+        new ArticleRepository(Context, LoggerFactory.CreateLogger<ArticleRepository>());
+
+    public IForumRepository ForumRepository => _forumRepository ??=
+        new ForumRepository(Context, LoggerFactory.CreateLogger<ForumRepository>());
+
+    public IForumCommentRepository ForumCommentRepository => _forumCommentRepository ??=
+        new ForumCommentRepository(Context, LoggerFactory.CreateLogger<ForumCommentRepository>());
+
+    public IFileBasePathRepository FileBasePathRepository => _fileBasePathRepository ??=
+        new FileBasePathRepository(Context, LoggerFactory.CreateLogger<FileBasePathRepository>());
 
     // Authentication Repository Properties
     public IDeviceRepository DeviceRepository => _deviceRepository ??= 

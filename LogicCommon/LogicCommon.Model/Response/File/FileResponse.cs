@@ -2,37 +2,21 @@
 /// <summary>
 /// Respuesta de archivo
 /// </summary>
-public class FileResponse
+public class DownloadFileResponse
 {
-
     /// <summary>
     /// Nombre del archivo
     /// </summary>
     public string FileName { get; set; }
 
     /// <summary>
-    /// Última fecha de Modificación
+    /// Ruta del archivo
     /// </summary>
-    public DateTimeOffset? LastModified { get; set; }
+    public string Path { get; set; }
 
     /// <summary>
-    /// Tamaño
-    /// </summary>
-    public long? Length { get; set; }
-
-    /// <summary>
-    /// Tipo de Contenido
-    /// </summary>
-    public string ContentType { get; set; }
-
-    /// <summary>
-    /// Archivo
+    /// Contenido del archivo
     /// </summary>
     public byte[] Content { get; set; }
-
-    /// <summary>
-    /// Url
-    /// </summary>
-    public string Url { get; set; }
 }
 

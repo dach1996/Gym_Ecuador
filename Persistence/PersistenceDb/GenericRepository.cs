@@ -52,7 +52,7 @@ public class GenericRepository<TEntity>(
                 query = query.Take(top.Value);
             if (orderBy is not null)
                 query = orderByType == OrderByType.Asc ? query.OrderBy(orderBy) : query.OrderByDescending(orderBy);
-            return await query.ToListAsync().ConfigureAwait(false);
+            return await query.AsNoTracking().ToListAsync().ConfigureAwait(false);
         }
         catch (Exception ex)
         {
@@ -66,7 +66,7 @@ public class GenericRepository<TEntity>(
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public async Task<TEntity> AddAsync(TEntity entity, bool autoDetectChangesEnabled = true)
+    public async Task<TEntity> AddAsync(TEntity entity, bool autoDetectChangesEnabled = false)
     {
         try
         {
@@ -351,7 +351,7 @@ public class GenericRepository<TEntity>(
                 query = orderByType == OrderByType.Asc ? query.OrderBy(orderBy) : query.OrderByDescending(orderBy);
             query = query.Skip(itemsByPage * page)
             .Take(itemsByPage);
-            var items = await query.ToListAsync().ConfigureAwait(false);
+            var items = await query.AsNoTracking().ToListAsync().ConfigureAwait(false);
             var totalItems = await CountAsync(where).ConfigureAwait(false);
             return new PaginatorModel<TEntity>(items, totalItems);
         }

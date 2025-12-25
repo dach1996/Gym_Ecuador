@@ -145,9 +145,9 @@ public class UserInfo
     public string Username { get; set; }
 
     /// <summary>
-    /// Código Tipo de documento
+    /// Tipo de identificación
     /// </summary>
-    public string CodeDocumentType { get; set; }
+    public string IdentificationType { get; set; }
 
     /// <summary>
     /// Número de documento (CI / RUC / Pasaporte)

@@ -9,6 +9,5 @@ public class AdministrationProfile : Profile
     /// </summary>
     private void ConfigurationMapper()
     {
-        _ = CreateMap<ControlValidationItem, ModelResponse.ControlValidationItem>();
     }
 }

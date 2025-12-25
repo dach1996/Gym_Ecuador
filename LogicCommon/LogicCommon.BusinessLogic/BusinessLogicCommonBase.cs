@@ -10,6 +10,7 @@ using Common.Utils.ConstansCodes;
 using Common.Utils.CustomExceptions;
 using Common.Utils.Extensions;
 using Common.WebCommon.Models;
+using Common.WebCommon.Models.Enum;
 using Common.WebCommon.Models.Queues;
 using Common.WebCommon.Templates.Notification;
 using LogicCommon.Model.CacheModel;
@@ -263,28 +264,23 @@ public abstract class BusinessLogicCommonBase
     }
 
     /// <summary>
-    /// Actualiza un archivo y lo guarda en la base de datos
+    /// Obtiene la ruta de almacenamiento          
     /// </summary>
-    /// <param name="fileEncode"></param>
-    /// <param name="fileName"></param>
-    /// <param name="path"></param>
+    /// <param name="pathCode"></param>
     /// <returns></returns>
-    protected async Task<FilePersistence> UpdateFileAsync(
-        string fileEncode,
-        string fileName,
-        string path
-    )
+    protected async Task<FileBasePathCacheInformation> GetFileBasePathCacheInformationByPathCodeAsync(PathCode pathCode)
     {
-        var file = await Mediator.Send(new UpdateBlobFileRequest(fileEncode, fileName, path, CommonContextRequest)).ConfigureAwait(false);
-        var newFile = await UnitOfWork.FileRepository.AddAsync(new()
-        {
-            Name = file.FileName,
-            Path = path,
-            DateRegister = Now,
-            State = true,
-            Url = file.Url
-        }).ConfigureAwait(false);
-        return newFile;
+        return (await AdministratorCache.TryGetOrSetAsync(CacheCodes.FILE_BASE_PATHS, async () =>
+            (await UnitOfWork.FileBasePathRepository.GetByAsync().ConfigureAwait(false))
+            .Select(select => new FileBasePathCacheInformation
+            {
+                Id = select.Id,
+                PathCode = select.Code.ToEnumFromMember<PathCode>(),
+                BaseUrl = select.BaseUrl,
+                FileDirectoryPath = select.FileDirectoryPath,
+                Implementation = select.Implementation
+            }).ToList()).ConfigureAwait(false))
+            .Find(where => where.PathCode == pathCode)
+            ?? throw new CustomException((int)MessagesCodesError.SystemError, $"No se encontró la ruta de almacenamiento '{pathCode}'");
     }
-    
 }

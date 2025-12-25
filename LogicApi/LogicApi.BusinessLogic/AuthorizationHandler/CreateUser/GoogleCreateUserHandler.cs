@@ -1,5 +1,4 @@
-﻿using Common.Utils.Cryptography.Argon2;
-using LogicApi.Abstractions.Interfaces.Authorization;
+﻿using LogicApi.Abstractions.Interfaces.Authorization;
 using LogicApi.Model.Request.Authorization;
 using LogicApi.Model.Response.Authorization;
 using PersistenceDb.Models.Authentication;

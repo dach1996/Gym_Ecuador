@@ -11,7 +11,7 @@ public class GetInitialCataloguesRequest : IRequest<GetInitialCataloguesResponse
     /// Códito de Catálogos
     /// </summary>
     /// <value></value>
-    public List<string> ListCatalogsTypeItemsCodes { get; set; }
+    public List<CatalogsTypeItemsCodes> ListCatalogsTypeItemsCodes { get; set; }
 
     /// <summary>
     /// Context
@@ -24,10 +24,10 @@ public class GetInitialCataloguesRequest : IRequest<GetInitialCataloguesResponse
     /// </summary>
     /// <param name="contextRequest"></param>
     /// <param name="listCatalogsTypeItemsCodes"></param>
-    public GetInitialCataloguesRequest(ContextRequest contextRequest, List<string> listCatalogsTypeItemsCodes = null)
+    public GetInitialCataloguesRequest(ContextRequest contextRequest, List<CatalogsTypeItemsCodes> listCatalogsTypeItemsCodes = null)
     {
         ContextRequest = contextRequest;
-        ListCatalogsTypeItemsCodes = listCatalogsTypeItemsCodes;
+        ListCatalogsTypeItemsCodes = listCatalogsTypeItemsCodes ?? [];
     }
 
     /// <summary>
@@ -37,4 +37,28 @@ public class GetInitialCataloguesRequest : IRequest<GetInitialCataloguesResponse
     {
 
     }
+}
+
+/// <summary>
+/// Códigos de Catálogos
+/// </summary>
+public enum CatalogsTypeItemsCodes
+{
+    /// <summary>
+    /// Tipos de Documento
+    /// </summary>
+    /// <value></value>
+    DocumentType = 1,
+
+    /// <summary>
+    /// Catálogo de Nacionalidades
+    /// </summary>
+    /// <value></value>
+    Nationality = 2,
+
+    /// <summary>
+    /// Catálogo de Géneros
+    /// </summary>
+    /// <value></value>
+    Gender = 3,
 }

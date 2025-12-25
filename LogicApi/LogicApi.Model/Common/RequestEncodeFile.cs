@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Common.WebCommon.Json;
 namespace LogicApi.Model.Common;
 
 /// <summary>
@@ -10,6 +10,7 @@ public class RequestEncodeFile
     /// Contenido Codificado
     /// </summary>
     [Required]
+    [JsonCompresse]
     public string EncodeContent { get; set; }
 
     /// <summary>

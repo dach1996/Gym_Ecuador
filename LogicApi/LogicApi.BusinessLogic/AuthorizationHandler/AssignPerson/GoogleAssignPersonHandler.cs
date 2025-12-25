@@ -15,7 +15,7 @@ public class GoogleAssignPersonHandler(
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    public override  async Task<LoginResponse> Handle(AssignPersonRequest request)
+    public override async Task<LoginResponse> Handle(AssignPersonRequest request)
        => await ExecuteHandlerAsync(OperationApiName.AssignPerson, request, async () =>
             await ExecuteLoginValidationsAsync(request).ConfigureAwait(false)
        , registerLogAudit: true);

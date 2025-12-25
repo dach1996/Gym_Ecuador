@@ -50,7 +50,7 @@ public class LoginHandler(
                 select.LanguageCode,
                 select.FirstLoginDate,
                 select.ImagenId,
-                Person = select.PersonId != null ? new
+                Person = select.PersonId.HasValue ? new
                 {
                     select.Person.Id,
                     select.Person.Name,
@@ -58,7 +58,7 @@ public class LoginHandler(
                     select.Person.RealNames,
                     select.Person.RealLastNames,
                     select.Person.DocumentNumber,
-                    select.Person.DocumentTypeCode
+                    IdentificationType = select.Person.TypeIdentification.Name
                 } : null
             },
             where => where.Id == userId
@@ -94,14 +94,14 @@ public class LoginHandler(
             Surname = user.Person.RealNames,
             SecondSurname = user.Person.RealLastNames,
             PhoneNumber = user.Phone,
-            CodeDocumentType = user.Person.DocumentTypeCode,
+            IdentificationType = user.Person.IdentificationType,
             Username = user.HasCompleteRegistration ? user.UserName : user.Email,
             GuidIdentifier = user.Guid
         };
         //Obtiene la imagen si existe
         if (user.ImagenId.HasValue)
             loginResponse.InfoUser.UrlImage = await UnitOfWork.FileRepository.GetFirstOrDefaultGenericAsync(
-                select => select.Url,
+                select => select.FileBasePath.BaseUrl + select.Name,
                 where => where.Id == user.ImagenId
             ).ConfigureAwait(false);
         //Tarea para Obtener los Catálogos Iniciales

@@ -15,7 +15,7 @@ public class Province
     /// Id de Provincia
     /// </summary>
     /// <value></value>
-    public int Id { get; set; }
+    public short Id { get; set; }
 
     [Required]
     [StringLength(20)]
@@ -42,7 +42,7 @@ public class Province
     /// Id de Registro
     /// </summary>
     /// <value></value>
-    public int RegionId { get; set; }
+    public short RegionId { get; set; }
 
     [Required]
     [Column("PRO_ESTADO")]
@@ -57,5 +57,10 @@ public class Province
     /// </summary>
     /// <value></value>
     public Region Region { get; set; }
- 
+
+    /// <summary>
+    /// Ciudades
+    /// </summary>
+    /// <value></value>
+    public ICollection<City> Cities { get; set; }
 }

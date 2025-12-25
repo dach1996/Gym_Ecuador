@@ -1,10 +1,7 @@
-﻿
-using Common.Blob;
-using Common.Utils.NamesHelper;
+﻿using Common.WebCommon.Helper;
+using Common.WebCommon.Models.Enum;
 using LogicApi.Model.Request.Authorization;
 using LogicCommon.Model.Request.File;
-using PersistenceDb.Models.Administration;
-using PersistenceDb.Models.Authentication;
 namespace LogicApi.BusinessLogic.AuthorizationHandler;
 /// <summary>
 /// Constructor
@@ -18,7 +15,6 @@ public class UpdateUserHandler(
         pluginFactory)
 {
 
-
     /// <summary>
     /// Handler
     /// </summary>
@@ -29,46 +25,40 @@ public class UpdateUserHandler(
     => await ExecuteHandlerAsync(OperationApiName.UpdateUser, request, async () =>
         {
             //Obtiene las configuraciones Iniciales
-            var currentUser = await GetUserFromContextAsync().ConfigureAwait(false);
+            var currentUser = await UnitOfWork.UserRepository.GetFirstOrDefaultGenericAsync(
+                select => new
+                {
+                    select.Id,
+                    ImageData = select.ImagenId.HasValue ? new
+                    {
+                        select.ImagenId,
+                        select.Image.Name,
+                        select.Image.Path,
+                    } : null,
+                    select.Phone
+                },
+                where => where.Id == UserId
+            ).ConfigureAwait(false)
+            ?? throw new CustomException((int)MessagesCodesError.InfoUserNotFound, $"El perfil del usuario: {UserId} no se encuentra en la base de datos");
             if (request.Image is not null)
             {
-                if (currentUser.Image is not null)
-                    await DeleteFileIfExist(currentUser, cancellationToken).ConfigureAwait(false);
-                currentUser.Image = await SaveAndGetFile(request, currentUser, cancellationToken).ConfigureAwait(false);
+                if (currentUser.ImageData?.ImagenId.HasValue ?? false)
+                    await DeleteFileIfExist(currentUser.ImageData.ImagenId.Value, currentUser.ImageData.Name, cancellationToken).ConfigureAwait(false);
+                var updateFileResponse = await Mediator.Send(new UpdateBlobFileRequest(
+                    request.Image.EncodeContent,
+                     HelperFileName.GetUserImageName(request.Image.FileExtension),
+                      PathCode.UserImage,
+                      ContextRequest
+                      ), cancellationToken).ConfigureAwait(false);
+                await UnitOfWork.UserRepository.UpdateByAsync(
+                    (user => user.ImagenId, updateFileResponse.Id),
+                    where => where.Id == UserId).ConfigureAwait(false);
             }
-            currentUser.Phone = request.Phone;
-            await UnitOfWork.UserRepository.UpdateAsync(currentUser).ConfigureAwait(false);
+            if (currentUser.Phone != request.Phone)
+                await UnitOfWork.UserRepository.UpdateByAsync((user => user.Phone, request.Phone), where => where.Id == UserId).ConfigureAwait(false);
             //Consigue el Header del Switch
             return HandlerResponse.Complete(GetSuccessMessage(MessagesCodesSucess.UpdateUserInformationSuccess), true);
         });
-
-
-    /// <summary>
-    /// Almacena la imagen y la obtiene
-    /// </summary>
-    /// <param name="request"></param>
-    /// <param name="currentUser"></param>
-    /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    private async Task<FilePersistence> SaveAndGetFile(UpdateUserRequest request, User currentUser, CancellationToken cancellationToken)
-    {
-        var fileName = BlobNameHelper.GetUserImageName($"{currentUser?.Id}", request?.Image?.FileExtension);
-        var path = ContainerNames.USER_IMAGE;
-        var response = await Mediator.Send(new UpdateBlobFileRequest(
-            request!.Image.EncodeContent,
-             fileName,
-              path,
-              ContextRequest), cancellationToken).ConfigureAwait(false);
-        var file = new FilePersistence
-        {
-            DateRegister = Clock.Now(),
-            Name = response.FileName,
-            Path = path,
-            State = true,
-            Url = response.Url
-        };
-        return file;
-    }
 
     /// <summary>
     /// Elimina la imagen si existe
@@ -76,13 +66,14 @@ public class UpdateUserHandler(
     /// <param name="currentUser"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    private async Task DeleteFileIfExist(User currentUser, CancellationToken cancellationToken)
+    private async Task DeleteFileIfExist(int imageId, string imageName, CancellationToken cancellationToken)
     {
+        var fileBasePaths = await GetFileBasePathCacheInformationByPathCodeAsync(PathCode.UserImage).ConfigureAwait(false);
         _ = await Mediator.Send(new DeleteBlobFileRequest(
-            currentUser.Image?.Name,
-            ContainerNames.USER_IMAGE,
+            imageName,
+            fileBasePaths.FileDirectoryPath,
+            fileBasePaths.Implementation,
             ContextRequest), cancellationToken).ConfigureAwait(false);
-        currentUser.Image.State = false;
-        await UnitOfWork.FileRepository.UpdateAsync(currentUser.Image).ConfigureAwait(false);
+        await UnitOfWork.FileRepository.UpdateByAsync((file => file.State, false), where => where.Id == imageId).ConfigureAwait(false);
     }
 }

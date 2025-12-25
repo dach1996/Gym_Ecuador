@@ -123,7 +123,7 @@ public class GatewayCoreApiConfigureContext(ILogger<GatewayCoreApiConfigureConte
     /// <returns></returns>
     private EncryptedFieldsApi GetEncryptedFieldClaimDecrypt(HttpContext httpContext)
     {
-        var encryptedFieldClaimContext = GetClaimValueOrNullFromName(nameof(EncryptedFieldsApi), httpContext);
+        var encryptedFieldClaimContext = GetClaimValueOrNullFromName(nameof(EncryptedFieldClaimCommon), httpContext);
         EncryptedFieldsApi encryptedFieldClaim = null;
         if (!encryptedFieldClaimContext.IsNullOrEmpty())
         {

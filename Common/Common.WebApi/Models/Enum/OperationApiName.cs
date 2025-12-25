@@ -713,4 +713,46 @@ public enum OperationApiName
     /// </summary>
     [EnumMember(Value = "Eliminar Horario de Sucursal")]
     DeleteGymBranchSchedule,
+
+    // ========== OPERACIONES DE HOME/DASHBOARD ==========
+
+    /// <summary>
+    /// Obtener Datos del Home/Dashboard
+    /// </summary>
+    [EnumMember(Value = "Obtener Datos del Home/Dashboard")]
+    GetHomeData,
+
+    // ========== OPERACIONES DE FORO ==========
+
+    /// <summary>
+    /// Obtener Foros
+    /// </summary>
+    [EnumMember(Value = "Obtener Foros")]
+    GetForums,
+
+    /// <summary>
+    /// Crear Foro
+    /// </summary>
+    [EnumMember(Value = "Crear Foro")]
+    CreateForum,
+
+    /// <summary>
+    /// Actualizar Foro
+    /// </summary>
+    [EnumMember(Value = "Actualizar Foro")]
+    UpdateForum,
+
+    /// <summary>
+    /// Comentar en Foro
+    /// </summary>
+    [EnumMember(Value = "Comentar en Foro")]
+    CommentForum,
+
+    // ========== OPERACIONES DE ARTÍCULOS ==========
+
+    /// <summary>
+    /// Obtener Artículos
+    /// </summary>
+    [EnumMember(Value = "Obtener Artículos")]
+    GetArticles,
 }

@@ -15,7 +15,7 @@ public class Region
     /// Id de Región
     /// </summary>
     /// <value></value>
-    public int Id { get; set; }
+    public short Id { get; set; }
 
     [Required]
     [StringLength(20)]
@@ -42,7 +42,7 @@ public class Region
     /// Id de País
     /// </summary>
     /// <value></value>
-    public int CountryId { get; set; }
+    public byte CountryId { get; set; }
 
     [Required]
     [Column("REG_ESTADO")]

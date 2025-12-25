@@ -35,22 +35,6 @@ public class Person
     public DateTime? DateTimeRegister { get; set; }
 
     /// <summary>
-    /// Código de Nacionalidad
-    /// </summary>
-    /// <value></value>
-    [StringLength(50)]
-    [Column("PNA_CODIGO_NACIONALIDAD")]
-    public string NationalityCode { get; set; }
-
-    /// <summary>
-    /// Tipo de Documento
-    /// </summary>
-    /// <value></value>
-    [StringLength(50)]
-    [Column("PNA_CODIGO_TIPO_DOCUMENTO")]
-    public string DocumentTypeCode { get; set; }
-
-    /// <summary>
     /// Documento
     /// </summary>
     /// <value></value>
@@ -126,9 +110,23 @@ public class Person
     public int? GenderCatalogId { get; set; }
 
     /// <summary>
+    /// Id de tipo de identificación
+    /// </summary>
+    /// <value></value>
+    [Column("TID_ID")]
+    [ForeignKey(nameof(TypeIdentification))]
+    public byte? TypeIdentificationId { get; set; }
+
+    /// <summary>
     /// Género de la persona
     /// </summary>
     /// <value></value>
     public Catalog GenderCatalog { get; set; }
+
+    /// <summary>
+    /// Tipo de identificación
+    /// </summary>
+    /// <value></value>
+    public TypeIdentification TypeIdentification { get; set; }
 
 }

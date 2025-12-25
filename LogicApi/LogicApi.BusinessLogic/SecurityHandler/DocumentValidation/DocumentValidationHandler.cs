@@ -25,9 +25,10 @@ public abstract class DocumentValidationHandler(
     public override async Task<HandlerResponse> Handle(DocumentValidationRequest request, CancellationToken cancellationToken)
     {
         ContextRequest = request.ContextRequest as ContextRequest;
-        var implementationName = (await GetItemsCatalogCodesResponseByFile(EnumLogicApi.CatalogsTypeItemsCodes.DocumentType.GetEnumMember()).ConfigureAwait(false))
-            ?.FirstOrDefault(t => t.Code == request.DocumentTypeCode)?.Enum?.ToUpper()
-            ?? throw new InvalidOperationException($"No se encuentra el Item de Catálogo de archivo: '{request.DocumentTypeCode}'");
-        return await PluginFactory.GetPlugin<IDocumentValidationHandler>(implementationName).Handle(request).ConfigureAwait(false);
+        /*  var implementationName = (await GetItemsCatalogCodesResponseByFile(EnumLogicApi.CatalogsTypeItemsCodes.DocumentType.GetEnumMember()).ConfigureAwait(false))
+             ?.FirstOrDefault(t => t.Code == request.DocumentTypeCode)?.Enum?.ToUpper()
+             ?? throw new InvalidOperationException($"No se encuentra el Item de Catálogo de archivo: '{request.DocumentTypeCode}'");
+         return await PluginFactory.GetPlugin<IDocumentValidationHandler>(implementationName).Handle(request).ConfigureAwait(false); */
+        return null;
     }
 }

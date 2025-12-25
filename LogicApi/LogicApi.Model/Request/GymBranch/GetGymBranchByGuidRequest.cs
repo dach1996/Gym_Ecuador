@@ -1,4 +1,3 @@
-using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response.GymBranch;
 
 using Common.WebCommon.Models;

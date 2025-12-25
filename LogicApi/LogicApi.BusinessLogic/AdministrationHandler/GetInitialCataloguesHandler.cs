@@ -1,7 +1,6 @@
-﻿using LogicApi.Model.Request.Administration;
+﻿using Common.WebCommon.Models.Enum;
+using LogicApi.Model.Request.Administration;
 using LogicApi.Model.Response.Administration;
-using LogicApi.Model.Response.Common;
-using Common.Utils;
 
 namespace LogicApi.BusinessLogic.AdministrationHandler;
 /// <summary>
@@ -26,27 +25,24 @@ public class GetInitialCataloguesHandler(
         => await ExecuteHandlerAsync(OperationApiName.GetInitialCatalogues, request, async ()
                 => await AdministratorCache.TryGetOrSetAsync(CacheCodes.GET_INITIAL_CATALOGUES, async () =>
                  {
-                     var codeCatalogsExist = Util.GetListEnumMember<EnumLogicApi.CatalogsTypeItemsCodes>();
-                     //Si la lista está vacía obtiene todos los catálogos
-                     if (request.ListCatalogsTypeItemsCodes.IsNullOrEmpty())
-                         request.ListCatalogsTypeItemsCodes = codeCatalogsExist;
-                     var listNotMatch = request.ListCatalogsTypeItemsCodes.ContainsIn(codeCatalogsExist);
-                     if (!listNotMatch.IsNullOrEmpty())
-                         throw new CustomException((int)MessagesCodesError.CatalogNotFound, $"Los cógidos de catálogos: '{listNotMatch.Join()}' no existen.");
-                     //Crea los Objetos de Respuesta
-                     var listCatalogResponse = Enumerable.Empty<CatalogCodes>().ToList();
-                     var tasks = Enumerable.Empty<Task>().ToList();
-                     foreach (var catalog in request.ListCatalogsTypeItemsCodes)
-                         tasks.Add(GetCatalogCodesResponseByFile(catalog));
-                     if (tasks.Count != 0)
-                     {
-                         await Task.WhenAll(tasks).ConfigureAwait(false);
-                         foreach (var task in tasks)
-                             listCatalogResponse.Add(((Task<CatalogCodes>)task).Result);
-                     }
-                     return new GetInitialCataloguesResponse(
-                        listCatalogResponse,
-                        Mapper.Map<Dictionary<string, Model.Response.Administration.ControlValidationItem>>(AppSettingsApi.InputControlValidations));
+                     var listCatalogCodes = new Dictionary<string, Dictionary<string, string>>();
+
+                     var countries = (await UnitOfWork.CountryRepository.GetGenericAsync(
+                        select => new { select.Code, select.Name }
+                     ).ConfigureAwait(false)).ToDictionary(select => select.Code, select => select.Name);
+                     listCatalogCodes.Add($"{CatalogsTypeItemsCodes.Nationality}", countries);
+                     var typeIdentifications = (await UnitOfWork.TypeIdentificationRepository.GetGenericAsync(
+                        select => new { select.Code, select.Name }
+                     ).ConfigureAwait(false)).ToDictionary(select => select.Code, select => select.Name);
+                     listCatalogCodes.Add($"{CatalogsTypeItemsCodes.DocumentType}", typeIdentifications);
+                     var parentCodes = new[] { CatalogCodes.Gender }
+                        .Select(select => select.GetEnumMember());
+                     var genders = (await UnitOfWork.CatalogRepository.GetGenericAsync(
+                        select => new { select.Code, select.CatalogLanguages.FirstOrDefault().Name },
+                        where => parentCodes.Contains(where.CatalogueFather.Code)
+                     ).ConfigureAwait(false)).ToDictionary(select => select.Code, select => select.Name);
+                     listCatalogCodes.Add($"{CatalogsTypeItemsCodes.Gender}", genders);
+                     return new GetInitialCataloguesResponse(listCatalogCodes);
                  }).ConfigureAwait(false)
             ).ConfigureAwait(false);
 }

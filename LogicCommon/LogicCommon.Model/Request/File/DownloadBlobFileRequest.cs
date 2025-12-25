@@ -5,41 +5,33 @@ namespace LogicApi.Model.Request.File;
 /// <summary>
 /// Request para descargar archivo blob
 /// </summary>
-public class DownloadBlobFileRequest : IRequest<FileResponse>, ICommonBaseRequest
+/// <remarks>
+/// Constructor
+/// </remarks>
+/// <param name="fileName"></param>
+/// <param name="path"></param>
+/// <param name="contextRequest"></param>
+public class DownloadBlobFileRequest(string fileName, string path, string implementation, CommonContextRequest contextRequest) : IRequest<DownloadFileResponse>, ICommonBaseRequest
 {
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="fileName"></param>
-    /// <param name="path"></param>
-    /// <param name="connectionString"></param>
-    /// <param name="contextRequest"></param>
-    public DownloadBlobFileRequest(string fileName, string path, string connectionString, CommonContextRequest contextRequest)
-    {
-        FileName = fileName;
-        Path = path;
-        ConnectionString = connectionString;
-        CommonContextRequest = contextRequest;
-    }
 
     /// <summary>
     /// Nombre de Archivo
     /// </summary>
-    public string FileName { get; set; }
+    public string FileName { get; set; } = fileName;
 
     /// <summary>
     /// Ruta o Contenedor
     /// </summary>
-    public string Path { get; set; }
+    public string Path { get; set; } = path;
 
     /// <summary>
-    /// Conexión
+    /// Implementación
     /// </summary>
-    public string ConnectionString { get; set; }
+    public string Implementation { get; set; } = implementation;
 
     /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
-    public CommonContextRequest CommonContextRequest { get; set; }
+    public CommonContextRequest CommonContextRequest { get; set; } = contextRequest;
 }

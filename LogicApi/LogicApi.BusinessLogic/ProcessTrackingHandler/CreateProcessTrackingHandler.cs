@@ -50,14 +50,14 @@ public class CreateProcessTrackingHandler(
                 await UnitOfWork.ProcessTrackingRepository.AddAsync(newProcessTracking).ConfigureAwait(false);
                 foreach (var image in request?.Base64Images ?? [])
                 {
-                    var file = await UpdateFileAsync(image, "process_tracking", "process_tracking").ConfigureAwait(false);
+                   /*  var file = await UpdateFileAsync(image, "process_tracking", "process_tracking").ConfigureAwait(false);
                     processTrackingImages.Add(new ProcessTrackingImage
                     {
                         ProcessTrackingId = newProcessTracking.Id,
                         FilePersistenceId = file.Id,
                         DateTimeRegister = Now,
                         UserIdRegister = UserId
-                    });
+                    }); */
                 }
                 await UnitOfWork.ProcessTrackingImageRepository.AddRangeAsync(processTrackingImages).ConfigureAwait(false);
                 return GenericCommonOperationResponse.SuccessOperation();

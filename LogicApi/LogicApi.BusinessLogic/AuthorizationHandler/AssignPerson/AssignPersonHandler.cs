@@ -1,5 +1,4 @@
-﻿using Common.Utils.Cryptography.Argon2;
-using LogicApi.Abstractions.Interfaces.Authorization;
+﻿using LogicApi.Abstractions.Interfaces.Authorization;
 using LogicApi.Model.Request.Authorization;
 using LogicApi.Model.Response.Authorization;
 using PersistenceDb.Models.Authentication;
@@ -41,10 +40,6 @@ public abstract class AssignPersonHandler(
         ).ConfigureAwait(false);
         if (user is not null && user.HasCompleteRegistration)
             throw new CustomException((int)MessagesCodesError.UserUsernameExist, $"El usuario '{request.UserName}' ya se encuentra registrado.");
-        //Verifica los catálogos de la petición
-        await ValidateExistValueInFileCatalogAsync(EnumLogicApi.CatalogsTypeItemsCodes.DocumentType, request.DocumentTypeCode).ConfigureAwait(false);
-        await ValidateExistValueInFileCatalogAsync(EnumLogicApi.CatalogsTypeItemsCodes.Nationality, request.NationalityCode).ConfigureAwait(false);
-        //Busca el perfil del usuario en la Base de Datos, este dato puede ser null ya que puede ser el primer login del usuario
         //Ejecuta el proceso de asignar persona
         return await LoginResponseAsync(request, await GetUserAsync(request).ConfigureAwait(false)).ConfigureAwait(false);
     }
@@ -105,8 +100,7 @@ public abstract class AssignPersonHandler(
         if (person.UserIdRegister is null)
         {
             person.DateTimeRegister = Clock.Now();
-            person.NationalityCode = request.NationalityCode;
-            person.DocumentTypeCode = request.DocumentTypeCode;
+            person.TypeIdentificationId = request.TypeIdentificationId;
             person.Name = request.Name;
             person.LastName = request.LastName;
             person.UserIdRegister = user.Id;
@@ -118,7 +112,7 @@ public abstract class AssignPersonHandler(
         user.PersonId = person.Id;
         user.UserName = request.UserName;
         user.HasCompleteRegistration = true;
-       
+
         var manualUserRegistrationForm = user.ManualUserRegistrationForm;
         manualUserRegistrationForm.Password = GetPasswordEncrypted(request.NewPassword, user.Salt);
         manualUserRegistrationForm.PasswordTemporary = null;

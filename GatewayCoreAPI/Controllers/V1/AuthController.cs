@@ -48,19 +48,7 @@ public class AuthController : SecurityControllerBase
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
     /// <summary>
-    /// Registrar Usuario
-    /// </summary>
-    /// <param name="request">Modelo para autenticación</param>
-    /// <returns></returns>
-    [AllowAnonymous]
-    [HttpPost("CreateUser")]
-    [ProducesResponseType(200, Type = typeof(GenericResponse<HandlerResponse>))]
-    [ProducesResponseType(400, Type = typeof(GenericResponse))]
-    public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request)
-        => Success(await Mediator.Send(request).ConfigureAwait(false));
-
-    /// <summary>
-    /// Asignar una persona
+    /// Asignar una persona (Dependiente de error en el login)
     /// </summary>
     /// <param name="request">Modelo para autenticación</param>
     /// <returns></returns>

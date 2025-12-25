@@ -21,10 +21,6 @@ public class BlobFileInformation
     /// </summary>
     public string ContentType { get; internal set; }
 
-    /// <summary>
-    /// Url
-    /// </summary>
-    public string Url { get; internal set; }
 }
 
 public class BlobFile : BlobFileInformation

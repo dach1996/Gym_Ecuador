@@ -15,7 +15,7 @@ public class Country
     /// Id de País
     /// </summary>
     /// <value></value>
-    public int Id { get; set; }
+    public byte Id { get; set; }
 
     [Required]
     [StringLength(20)]
@@ -48,4 +48,10 @@ public class Country
     /// </summary>
     /// <value></value>
     public ICollection<Region> Regions { get; set; }
+
+    /// <summary>
+    /// Tipos de Identificación
+    /// </summary>
+    /// <value></value>
+    public ICollection<TypeIdentification> TypeIdentifications { get; set; }
 }

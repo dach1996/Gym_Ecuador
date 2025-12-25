@@ -19,6 +19,29 @@
             <param name="request">Modelo para Obtiene los catálogos inciales</param>
             <returns></returns>
         </member>
+        <member name="T:GatewayCoreAPI.Controllers.V1.ArticleController">
+            <summary>
+            Controlador de Artículos
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ArticleController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.ArticleController},MediatR.IMediator)">
+            <summary>
+            Controlador de Artículos
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ArticleController.GetArticles(LogicApi.Model.Request.Article.GetArticlesRequest)">
+            <summary>
+            Obtiene la lista de artículos con paginación
+            </summary>
+            <param name="request">Modelo para obtener artículos</param>
+            <returns></returns>
+        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.AuthController},MediatR.IMediator)">
             <summary>
             Constructor
@@ -34,16 +57,9 @@
             <param name="request">Modelo para autenticación</param>
             <returns></returns>
         </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.CreateUser(LogicApi.Model.Request.Authorization.CreateUserRequest)">
-            <summary>
-            Registrar Usuario
-            </summary>
-            <param name="request">Modelo para autenticación</param>
-            <returns></returns>
-        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.AssignPerson(LogicApi.Model.Request.Authorization.AssignPersonRequest)">
             <summary>
-            Asignar una persona
+            Asignar una persona (Dependiente de error en el login)
             </summary>
             <param name="request">Modelo para autenticación</param>
             <returns></returns>
@@ -168,6 +184,50 @@
             Actualiza el push token
             </summary>
             <param name="request">Request de actualización</param>
+            <returns></returns>
+        </member>
+        <member name="T:GatewayCoreAPI.Controllers.V1.ForumController">
+            <summary>
+            Controlador de Foro
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ForumController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.ForumController},MediatR.IMediator)">
+            <summary>
+            Controlador de Foro
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ForumController.GetForums(LogicApi.Model.Request.Forum.GetForumsRequest)">
+            <summary>
+            Obtiene la lista de foros con paginación
+            </summary>
+            <param name="request">Modelo para obtener foros</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ForumController.CreateForum(LogicApi.Model.Request.Forum.CreateForumRequest)">
+            <summary>
+            Crea un nuevo foro
+            </summary>
+            <param name="request">Modelo para crear foro</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ForumController.UpdateForum(LogicApi.Model.Request.Forum.UpdateForumRequest)">
+            <summary>
+            Actualiza un foro
+            </summary>
+            <param name="request">Modelo para actualizar foro</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ForumController.CommentForum(LogicApi.Model.Request.Forum.CommentForumRequest)">
+            <summary>
+            Comenta en un foro
+            </summary>
+            <param name="request">Modelo para comentar en foro</param>
             <returns></returns>
         </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.GroupClassController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GroupClassController},MediatR.IMediator)">
@@ -368,6 +428,29 @@
             Obtiene los servicios de un plan de suscripción
             </summary>
             <param name="request">Modelo para obtener servicios por plan</param>
+            <returns></returns>
+        </member>
+        <member name="T:GatewayCoreAPI.Controllers.V1.HomeController">
+            <summary>
+            Controlador de Home/Dashboard
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.HomeController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.HomeController},MediatR.IMediator)">
+            <summary>
+            Controlador de Home/Dashboard
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.HomeController.GetHomeData(LogicApi.Model.Request.Home.GetHomeDataRequest)">
+            <summary>
+            Obtiene los datos del home/dashboard
+            </summary>
+            <param name="request">Modelo para obtener datos del home/dashboard</param>
             <returns></returns>
         </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.LoggerController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.LoggerController},MediatR.IMediator)">
