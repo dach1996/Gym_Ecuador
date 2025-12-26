@@ -20,3 +20,5 @@ public class DownloadFileResponse
     public byte[] Content { get; set; }
 }
 
+
+

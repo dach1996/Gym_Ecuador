@@ -15,6 +15,13 @@ public class FilePersistence
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("ARG_ID")]
     public int Id { get; set; }
+   
+    /// <summary>
+    /// Guid del archivo
+    /// </summary>
+    /// <value></value>
+    [Column("ARG_GUID")]
+    public Guid Guid { get; set; }
 
     /// <summary>
     /// Fecha de Registro

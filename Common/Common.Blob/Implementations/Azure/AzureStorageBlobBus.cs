@@ -94,32 +94,52 @@ public class AzureStorageBlobBus : BlobBusBase
     /// <param name="path"></param>
     /// <returns></returns>
     /// <exception cref="CustomBlobException"></exception>
-    public override async Task DeleteFileAsync(string fileName, string path)
+    public override async Task<DeleteFileResponse> DeleteFileAsync(DeleteFileRequest request)
     {
-        try
-        {
-            //create object of BlocContainerClient to verify if exist
-            BlobContainerClient blobContainer = new(AzureBlobConfiguration.ConnectionString, path);
-            await blobContainer.CreateIfNotExistsAsync().ConfigureAwait(false);
-            // Create the Blob container name and specifict file name
-            BlobClient blobClient = new(AzureBlobConfiguration.ConnectionString, path, fileName);
-            var result = await blobClient.DeleteIfExistsAsync().ConfigureAwait(false);
-            Logger.LogInformation("Archivo {@FileName} Eliminado del Contenedor: '{@Container}': {@State}", fileName, path, result);
+        var results = new List<DeleteFileItemResponse>();
 
-        }
-        catch (Exception ex)
+
+        foreach (var item in request.Items)
         {
-            Logger.LogError(ex, "Error al Eliminar la Archivo: " +
-              "Path: '{@Path}' - " +
-              "FileName: '{@FileName}' - " +
-              "Message: '{@Message}'", path, fileName, ex.Message);
-            if (ex.InnerException is not null)
-                Logger.LogError(ex.InnerException, "Inner Exception: " +
-               "Path: '{@Path}' - " +
-               "FileName: '{@FileName}' - " +
-               "Message: '{@Message}'", path, fileName, ex.InnerException.Message);
-            throw new CustomBlobException(ex.Message);
+            try
+            {
+                //create object of BlocContainerClient to verify if exist
+                BlobContainerClient blobContainer = new(AzureBlobConfiguration.ConnectionString, item.Path);
+                await blobContainer.CreateIfNotExistsAsync().ConfigureAwait(false);
+                // Create the Blob container name and specifict file name
+                BlobClient blobClient = new(AzureBlobConfiguration.ConnectionString, item.Path, item.FileName);
+                var result = await blobClient.DeleteIfExistsAsync().ConfigureAwait(false);
+                Logger.LogInformation("Archivo {@FileName} Eliminado del Contenedor: '{@Container}': {@State}", item.FileName, item.Path, result);
+                results.Add(new DeleteFileItemResponse
+                {
+                    FileName = item.FileName,
+                    Path = item.Path,
+                    Success = true
+                });
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "Error al Eliminar la Archivo: " +
+                  "Path: '{@Path}' - " +
+                  "FileName: '{@FileName}' - " +
+                  "Message: '{@Message}'", item.Path, item.FileName, ex.Message);
+                if (ex.InnerException is not null)
+                    Logger.LogError(ex.InnerException, "Inner Exception: " +
+                   "Path: '{@Path}' - " +
+                   "FileName: '{@FileName}' - " +
+                   "Message: '{@Message}'", item.Path, item.FileName, ex.InnerException.Message);
+                results.Add(new DeleteFileItemResponse
+                {
+                    FileName = item.FileName,
+                    Path = item.Path,
+                    Success = false
+                });
+            }
         }
+        return new DeleteFileResponse
+        {
+            Items = results
+        };
     }
 
     /// <summary>

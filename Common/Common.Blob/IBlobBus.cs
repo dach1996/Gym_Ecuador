@@ -31,10 +31,9 @@ public interface IBlobBus
     Task<BlobFile> DownloadFileAsync(string fileName, string path);
 
     /// <summary>
-    /// Permite Eliminar un archivo
+    /// Permite eliminar archivos
     /// </summary>
-    /// <param name="fileName"></param>
-    /// <param name="path"></param>
+    /// <param name="request"></param>
     /// <returns></returns>
-    Task DeleteFileAsync(string fileName, string path);
+    Task<DeleteFileResponse> DeleteFileAsync(DeleteFileRequest request);
 }

@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using Common.Blob.Models.Response;
 using Common.Cache.Interface;
 using Common.Clock;
 using Common.Messages;
@@ -17,6 +18,7 @@ using LogicCommon.Model.CacheModel;
 using LogicCommon.Model.Request.File;
 using LogicCommon.Model.Request.NotificationPush;
 using LogicCommon.Model.Request.Queue;
+using LogicCommon.Model.Response.File;
 using LogicCommon.Model.Response.Queue;
 using PersistenceDb.Models.Administration;
 using PersistenceDb.Models.Core;
@@ -282,5 +284,47 @@ public abstract class BusinessLogicCommonBase
             }).ToList()).ConfigureAwait(false))
             .Find(where => where.PathCode == pathCode)
             ?? throw new CustomException((int)MessagesCodesError.SystemError, $"No se encontró la ruta de almacenamiento '{pathCode}'");
+    }
+
+    /// <summary>
+    /// Procesa las imágenes
+    /// </summary>
+    /// <param name="images"></param>
+    /// <param name="pathCode"></param>
+    /// <param name="Func<List<RequestEncodeFile>"></param>
+    /// <param name="processCreateImages"></param>
+    /// <param name="Func<List<RequestEncodeFile>"></param>
+    /// <param name="processDeleteImages"></param>
+    /// <returns></returns>
+    protected async Task ProcessImagesAsync(
+        List<RequestEncodeFile> images,
+        PathCode pathCode,
+        Func<List<RequestEncodeFile>, Model.Response.File.UpdateFileResponse, Task> processCreateImages = null,
+        Func<List<RequestEncodeFile>, Model.Response.File.DeleteFileResponse, Task> processDeleteImages = null
+        )
+    {
+        foreach (var group in images?.GroupBy(group => group.Action))
+        {
+            switch (group.Key)
+            {
+                case ActionFile.Create:
+                    var items = group.Select(select => new UpdateBlobFileItemRequest
+                    {
+                        File = Convert.FromBase64String(select.EncodeContent),
+                        FileName = select.FileName,
+                        ReplaceIfExist = true
+                    }).ToList();
+                    var imageItemResponse = await Mediator.Send(new UpdateBlobFileRequest(pathCode, items, CommonContextRequest)).ConfigureAwait(false);
+                    processCreateImages?.Invoke([.. group], imageItemResponse);
+                    break;
+                case ActionFile.Delete:
+                    var guids = group.Select(select => select.Guid.Value).ToList();
+                    var deleteFileResponse = await Mediator.Send(new DeleteBlobFileByGuidRequest(guids, CommonContextRequest)).ConfigureAwait(false);
+                    processDeleteImages?.Invoke([.. group], deleteFileResponse);
+                    break;
+                case ActionFile.None:
+                    break;
+            }
+        }
     }
 }

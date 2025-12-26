@@ -1,4 +1,5 @@
 ﻿using Common.Blob;
+using Common.Blob.Models.Request;
 using LogicCommon.Model.Request.File;
 using LogicCommon.Model.Response;
 
@@ -24,7 +25,7 @@ public class DeleteBlobFileHandler(
     public override async Task<GenericCommonOperationResponse> Handle(DeleteBlobFileRequest request, CancellationToken cancellationToken)
     => await ExecuteHandlerAsync(request, async () =>
     {
-        await PluginFactory.GetPlugin<IBlobBus>(request.Implementation, true).DeleteFileAsync(request.FileName, request.Path).ConfigureAwait(false);
+        await PluginFactory.GetPlugin<IBlobBus>(request.Implementation, true).DeleteFileAsync(new DeleteFileRequest(request.FileName, request.Path)).ConfigureAwait(false);
         return GenericCommonOperationResponse.SuccessOperation();
     }).ConfigureAwait(false);
 }

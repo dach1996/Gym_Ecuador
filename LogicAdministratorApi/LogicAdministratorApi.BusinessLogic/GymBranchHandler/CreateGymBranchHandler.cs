@@ -1,7 +1,6 @@
 using Common.WebCommon.Models.Enum;
 using LogicAdministratorApi.Model.Request.GymBranch;
 using LogicAdministratorApi.Model.Response.GymBranch;
-using LogicCommon.Model.Request.File;
 using PersistenceDb.Models.Core;
 
 namespace LogicAdministratorApi.BusinessLogic.GymBranchHandler;
@@ -65,21 +64,21 @@ public class CreateGymBranchHandler(
                 // Guardar en la base de datos
                 var gymBranch = await UnitOfWork.GymBranchRepository.AddAsync(newGymBranch).ConfigureAwait(false);
 
-                var images = request.Images.Select(select => new UpdateBlobFileItemRequest
-                {
-                    File = Convert.FromBase64String(select.EncodeContent),
-                    FileName = select.FileName,
-                }).ToList();
-                // Guardar las imágenes
-                var imageItemResponse = await Mediator.Send(new UpdateBlobFileRequest(PathCode.GymBranchImage, images, request.ContextRequest)).ConfigureAwait(false);
-                var imagePaths = imageItemResponse.Items.Select(
-                    select => new GymBranchImage
+                await ProcessImagesAsync(
+                    request.Images,
+                    PathCode.GymBranchImage,
+                    processCreateImages: async (images, response) =>
                     {
-                        GymBranchId = gymBranch.Id,
-                        FilePersistenceId = select.Id,
+                        var imagePaths = response.Items.Select(
+                            select => new GymBranchImage
+                            {
+                                GymBranchId = gymBranch.Id,
+                                FilePersistenceId = select.Id,
+                            }
+                        ).ToList();
+                        await UnitOfWork.GymBranchImageRepository.AddRangeIdentityAsync(imagePaths).ConfigureAwait(false);
                     }
-                ).ToList();
-                await UnitOfWork.GymBranchImageRepository.AddRangeIdentityAsync(imagePaths).ConfigureAwait(false);
+                ).ConfigureAwait(false);
                 return new CreateGymBranchResponse(newGymBranch.Guid, newGymBranch.Name, newGymBranch.Code, request.GymGuid)
                 {
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
@@ -87,5 +86,7 @@ public class CreateGymBranchHandler(
                 };
             }
         ).ConfigureAwait(false);
+
+
 }
 

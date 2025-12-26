@@ -20,7 +20,7 @@ public abstract class BlobBusBase(ILogger<BlobBusBase> logger, IConfiguration co
     /// <param name="fileName"></param>
     /// <param name="path"></param>
     /// <returns></returns>
-    public abstract Task DeleteFileAsync(string fileName, string path);
+    public abstract Task<DeleteFileResponse> DeleteFileAsync(DeleteFileRequest request);
 
     /// <summary>
     /// Permite descargar un archivo

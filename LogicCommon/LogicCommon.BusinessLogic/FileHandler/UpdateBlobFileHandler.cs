@@ -48,7 +48,8 @@ public class UpdateBlobFileHandler(
             Path = where.Path,
             DateRegister = Now,
             State = true,
-            FileBasePathId = fileBasePaths.Id
+            FileBasePathId = fileBasePaths.Id,
+            Guid = Guid.NewGuid()
         }).ToList();
 
         var filePersistence = await UnitOfWork.FileRepository.AddRangeIdentityAsync(responseFiles).ConfigureAwait(false);

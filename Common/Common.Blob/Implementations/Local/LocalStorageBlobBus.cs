@@ -67,34 +67,52 @@ public class LocalStorageBlobBus(
     /// <param name="blobContainerName"></param>
     /// <returns></returns>
     /// <exception cref="CustomBlobException"></exception>
-    public override async Task DeleteFileAsync(string fileName, string path)
+    public override async Task<DeleteFileResponse> DeleteFileAsync(DeleteFileRequest request)
     {
-        var finalPath = GetFinalPathDirectory(path);
-        try
+        var results = new List<DeleteFileItemResponse>();
+        foreach (var item in request.Items)
         {
-            if (Directory.Exists(finalPath))
+            var finalPath = GetFinalPathDirectory(item.Path);
+            try
             {
-                var filePath = $"{finalPath}/{fileName}";
+                if (!Directory.Exists(finalPath))
+                    throw new CustomBlobException($"No existe la ruta: '{finalPath}'");
+                var filePath = $"{finalPath}/{item.FileName}";
                 var file = new FileInfo(filePath);
                 //Validamos si existe la imagen para eliminarlo
                 if (file.Exists)
                     await Task.Run(file.Delete).ConfigureAwait(false);
-                logger.LogInformation("Archivo {@FileName} eliminado correctamente en la ruta: '{@Path}'", fileName, finalPath);
+                logger.LogInformation("Archivo {@FileName} eliminado correctamente en la ruta: '{@Path}'", item.FileName, finalPath);
+                results.Add(new DeleteFileItemResponse
+                {
+                    FileName = item.FileName,
+                    Path = finalPath,
+                    Success = true
+                });
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error al Eliminar la Archivo: " +
+                  "Folder: '{@Path}' - " +
+                  "FileName: '{@FileName}' - " +
+                  "Message: '{@Message}'", finalPath, item.FileName, ex.Message);
+                if (ex.InnerException is not null)
+                    logger.LogError(ex.InnerException, "Inner Exception: " +
+                   "Folder: '{@Path}' - " +
+                   "FileName: '{@FileName}' - " +
+                   "Message: '{@Message}'", finalPath, item.FileName, ex.InnerException.Message);
+                results.Add(new DeleteFileItemResponse
+                {
+                    FileName = item.FileName,
+                    Path = finalPath,
+                    Success = false
+                });
             }
         }
-        catch (Exception ex)
+        return new DeleteFileResponse
         {
-            logger.LogError(ex, "Error al Eliminar la Archivo: " +
-              "Folder: '{@Path}' - " +
-              "FileName: '{@FileName}' - " +
-              "Message: '{@Message}'", finalPath, fileName, ex.Message);
-            if (ex.InnerException is not null)
-                logger.LogError(ex.InnerException, "Inner Exception: " +
-               "Folder: '{@Path}' - " +
-               "FileName: '{@FileName}' - " +
-               "Message: '{@Message}'", finalPath, fileName, ex.InnerException.Message);
-            throw new CustomBlobException(ex.Message);
-        }
+            Items = results
+        };
     }
 
     /// <summary>
