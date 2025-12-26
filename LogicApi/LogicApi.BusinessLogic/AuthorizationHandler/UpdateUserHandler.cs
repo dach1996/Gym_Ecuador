@@ -1,4 +1,5 @@
-﻿using Common.WebCommon.Helper;
+﻿using Common.Utils.ImageTools;
+using Common.WebCommon.Helper;
 using Common.WebCommon.Models.Enum;
 using LogicApi.Model.Request.Authorization;
 using LogicCommon.Model.Request.File;

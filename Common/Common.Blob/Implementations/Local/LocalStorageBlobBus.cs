@@ -59,8 +59,6 @@ public class LocalStorageBlobBus(
         }
     }
 
-
-
     /// <summary>
     /// Descargar Imagen
     /// </summary>
@@ -97,9 +95,6 @@ public class LocalStorageBlobBus(
             throw new CustomBlobException(ex.Message);
         }
     }
-
-
-
 
     /// <summary>
     /// Cargar Imagen

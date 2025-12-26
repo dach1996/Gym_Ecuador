@@ -1,4 +1,5 @@
 ﻿using Common.Blob;
+using Common.Utils.ImageTools;
 using LogicCommon.Model.Request.File;
 using LogicCommon.Model.Response.File;
 using PersistenceDb.Models.Administration;
@@ -25,9 +26,11 @@ public class UpdateBlobFileHandler(
       => await ExecuteHandlerAsync(request, async () =>
     {
         var fileBasePaths = await GetFileBasePathCacheInformationByPathCodeAsync(request.PathCode).ConfigureAwait(false);
-        using var stream = new MemoryStream(request.File);
         var path = request.Path ?? fileBasePaths.FileDirectoryPath;
-        var updateFileResponse = await PluginFactory.GetPlugin<IBlobBus>(fileBasePaths.Implementation, true).UpdateFileAsync(request.FileName, path, stream, request.ReplaceIfExist ?? true).ConfigureAwait(false);
+        var optimizedImage = await ImageManagement.OptimizeImageAsync(request.File).ConfigureAwait(false);
+        using var stream = new MemoryStream(optimizedImage);
+        var updateFileResponse = await PluginFactory.GetPlugin<IBlobBus>(fileBasePaths.Implementation, true)
+            .UpdateFileAsync(request.FileName, path, stream, request.ReplaceIfExist ?? true).ConfigureAwait(false);
         var filePersistence = await UnitOfWork.FileRepository.AddAsync(new FilePersistence
         {
             Name = updateFileResponse.FileName,
