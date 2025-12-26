@@ -77,7 +77,7 @@ public interface IGenericRepository<TEntity> where TEntity : class
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    Task<IEnumerable<TEntity>> AddRangeIdentityAsync(IEnumerable<TEntity> entity);
+    Task<List<TEntity>> AddRangeIdentityAsync(List<TEntity> entity);
 
     /// <summary>
     /// Actualiza Entidades

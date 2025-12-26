@@ -1,4 +1,5 @@
 ﻿using Common.Blob;
+using Common.Blob.Models.Request;
 using Common.Utils.ImageTools;
 using LogicCommon.Model.Request.File;
 using LogicCommon.Model.Response.File;
@@ -26,24 +27,39 @@ public class UpdateBlobFileHandler(
       => await ExecuteHandlerAsync(request, async () =>
     {
         var fileBasePaths = await GetFileBasePathCacheInformationByPathCodeAsync(request.PathCode).ConfigureAwait(false);
-        var path = request.Path ?? fileBasePaths.FileDirectoryPath;
-        var optimizedImage = await ImageManagement.OptimizeImageAsync(request.File).ConfigureAwait(false);
-        using var stream = new MemoryStream(optimizedImage);
-        var updateFileResponse = await PluginFactory.GetPlugin<IBlobBus>(fileBasePaths.Implementation, true)
-            .UpdateFileAsync(request.FileName, path, stream, request.ReplaceIfExist ?? true).ConfigureAwait(false);
-        var filePersistence = await UnitOfWork.FileRepository.AddAsync(new FilePersistence
+        var updateFileRequests = request.Items.Select(async select =>
         {
-            Name = updateFileResponse.FileName,
-            Path = updateFileResponse.Path,
+            var optimizedImage = await ImageManagement.OptimizeImageAsync(select.File).ConfigureAwait(false);
+            return new UpdateFileItemRequest
+            {
+                FileName = select.FileName,
+                File = optimizedImage,
+                ReplaceIfExist = select.ReplaceIfExist ?? true
+            };
+        });
+        var updateFileRequestsList = await Task.WhenAll(updateFileRequests).ConfigureAwait(false);
+        var updateFileResponse = await PluginFactory.GetPlugin<IBlobBus>(fileBasePaths.Implementation, true)
+            .UpdateFileAsync(new(fileBasePaths.FileDirectoryPath, [.. updateFileRequestsList])).ConfigureAwait(false);
+        var responseFiles = updateFileResponse.Items
+        .Where(where => where.Success)
+        .Select(where => new FilePersistence
+        {
+            Name = where.FileName,
+            Path = where.Path,
             DateRegister = Now,
             State = true,
             FileBasePathId = fileBasePaths.Id
-        });
+        }).ToList();
+
+        var filePersistence = await UnitOfWork.FileRepository.AddRangeIdentityAsync(responseFiles).ConfigureAwait(false);
         return new UpdateFileResponse
         {
-            FileName = updateFileResponse.FileName,
-            Path = updateFileResponse.Path,
-            Id = filePersistence.Id
+            Items = [.. filePersistence.Select(select => new UpdateFileItemResponse
+            {
+                FileName = select.Name,
+                Path = select.Path,
+                Id = select.Id
+            })]
         };
     }).ConfigureAwait(false);
 }

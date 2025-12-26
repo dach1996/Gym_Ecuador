@@ -140,6 +140,11 @@ public class GymBranch
     /// </summary>
     public ICollection<GymBranchSchedule> GymBranchSchedules { get; set; }
 
+    /// <summary>
+    /// Navegación a las imágenes de la sucursal
+    /// </summary>
+    public ICollection<GymBranchImage> GymBranchImages { get; set; }
+
 
 }
 

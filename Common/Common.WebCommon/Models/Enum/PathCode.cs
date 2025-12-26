@@ -11,4 +11,10 @@ public enum PathCode
     /// </summary>
     [EnumMember(Value = "USER_IMAGE")]
     UserImage = 1,
+
+    /// <summary>
+    /// Ruta de imágenes de sucursales de gimnasio
+    /// </summary>
+    [EnumMember(Value = "GYM_BRANCH_IMAGE")]
+    GymBranchImage = 2,
 }

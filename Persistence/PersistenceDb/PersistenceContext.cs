@@ -76,6 +76,7 @@ public class PersistenceContext(
     public DbSet<Gym> Gyms { get; set; }
     public DbSet<GymBranch> GymBranches { get; set; }
     public DbSet<GymBranchSchedule> GymBranchSchedules { get; set; }
+    public DbSet<GymBranchImage> GymBranchImages { get; set; }
     public DbSet<MembershipType> MembershipTypes { get; set; }
     public DbSet<Membership> Memberships { get; set; }
     public DbSet<GymPhoto> GymPhotos { get; set; }

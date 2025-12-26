@@ -1,5 +1,6 @@
 
 using Common.Blob.Models;
+using Common.Blob.Models.Request;
 using Common.Blob.Models.Response;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -37,20 +38,17 @@ public abstract class BlobBusBase(ILogger<BlobBusBase> logger, IConfiguration co
     /// <param name="fileStream"></param>
     /// <param name="replaceIfExist"></param>
     /// <returns></returns>
-    public async Task<BlobFile> UpdateAndGetFileAsync(string fileName, string path, Stream fileStream, bool replaceIfExist)
+    public async Task<BlobFile> UpdateAndGetFileAsync(string fileName, string path, byte[] file, bool replaceIfExist)
     {
-        await UpdateFileAsync(fileName, path, fileStream, replaceIfExist).ConfigureAwait(false);
+        await UpdateFileAsync(new UpdateFileRequest(path, fileName, file, replaceIfExist)).ConfigureAwait(false);
         return await DownloadFileAsync(fileName, path).ConfigureAwait(false);
     }
 
 
     /// <summary>
-    /// Permite subir un archivo
+    /// Actualizar archivos
     /// </summary>
-    /// <param name="fileName"></param>
-    /// <param name="path"></param>
-    /// <param name="fileStream"></param>
-    /// <param name="replaceIfExist"></param>
+    /// <param name="request"></param>
     /// <returns></returns>
-    public abstract Task<UpdateFileResponse> UpdateFileAsync(string fileName, string path, Stream fileStream, bool replaceIfExist);
+    public abstract Task<UpdateFileResponse> UpdateFileAsync(UpdateFileRequest request);
 }

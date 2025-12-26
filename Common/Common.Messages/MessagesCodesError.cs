@@ -304,5 +304,10 @@ public enum MessagesCodesError
     /// Gimnasio no encontrado
     /// </summary>
     GymNotFound = 136,
+
+    /// <summary>
+    /// Sucursal de Gimnasio no encontrada
+    /// </summary>
+    GymBranchNotFound = 137,
 }
 

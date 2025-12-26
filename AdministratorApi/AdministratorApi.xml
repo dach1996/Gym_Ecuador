@@ -50,6 +50,13 @@
             <param name="request">Modelo para crear sucursal de gimnasio</param>
             <returns></returns>
         </member>
+        <member name="M:AdministratorApi.Controllers.GymBranchController.UpdateGymBranch(LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest)">
+            <summary>
+            Actualizar Sucursal de Gimnasio
+            </summary>
+            <param name="request">Modelo para actualizar sucursal de gimnasio</param>
+            <returns></returns>
+        </member>
         <member name="T:AdministratorApi.Controllers.GymBranchScheduleController">
             <summary>
             Controlador de Horarios de Sucursal de Gimnasio

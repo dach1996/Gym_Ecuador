@@ -492,26 +492,6 @@
             </summary>
             <value></value>
         </member>
-        <member name="T:LogicApi.Model.Common.RequestEncodeFile">
-            <summary>
-            Request de archivo codificado
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Common.RequestEncodeFile.EncodeContent">
-            <summary>
-            Contenido Codificado
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Common.RequestEncodeFile.FileExtension">
-            <summary>
-            Extensión
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Common.RequestEncodeFile.FileName">
-            <summary>
-            Nombre de Archivo
-            </summary>
-        </member>
         <member name="T:LogicApi.Model.Common.RouteInformationCacheModel">
             <summary>
             Información de Ruta en Cache

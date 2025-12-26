@@ -523,23 +523,30 @@ public enum OperationAdministratorName : short
     CreateGymBranch = 73,
 
     /// <summary>
+    /// Actualizar Sucursal de Gimnasio
+    /// </summary>
+    [EnumMember(Value = "Actualizar Sucursal de Gimnasio")]
+    [FunctionalityMember(FunctionalitiesCodes.UPDATE_GYM_BRANCH, registerAuditLog: true)]
+    UpdateGymBranch = 74,
+
+    /// <summary>
     /// Crear Horario de Sucursal
     /// </summary>
     [EnumMember(Value = "Crear Horario de Sucursal")]
     [FunctionalityMember(FunctionalitiesCodes.CREATE_GYM_BRANCH_SCHEDULE, registerAuditLog: true)]
-    CreateGymBranchSchedule = 74,
+    CreateGymBranchSchedule = 75,
 
     /// <summary>
     /// Actualizar Horario de Sucursal
     /// </summary>
     [EnumMember(Value = "Actualizar Horario de Sucursal")]
     [FunctionalityMember(FunctionalitiesCodes.UPDATE_GYM_BRANCH_SCHEDULE, registerAuditLog: true)]
-    UpdateGymBranchSchedule = 75,
+    UpdateGymBranchSchedule = 76,
 
     /// <summary>
     /// Eliminar Horario de Sucursal
     /// </summary>
     [EnumMember(Value = "Eliminar Horario de Sucursal")]
     [FunctionalityMember(FunctionalitiesCodes.DELETE_GYM_BRANCH_SCHEDULE, registerAuditLog: true)]
-    DeleteGymBranchSchedule = 76
+    DeleteGymBranchSchedule = 77
 }

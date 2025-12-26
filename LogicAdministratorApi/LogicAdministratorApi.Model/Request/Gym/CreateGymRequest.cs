@@ -1,4 +1,3 @@
-using Common.WebApi.Models.ContextRequestModel;
 using LogicAdministratorApi.Model.Response.Gym;
 using Common.WebCommon.Models;
 
@@ -7,12 +6,12 @@ namespace LogicAdministratorApi.Model.Request.Gym;
 /// <summary>
 /// Solicitud para crear un gimnasio
 /// </summary>
-public class CreateGymRequest : IRequest<CreateGymResponse>, IApiBaseRequest
+public class CreateGymRequest : IApiBaseRequest<CreateGymResponse>
 {
     /// <summary>
     /// Nombre del gimnasio
     /// </summary>
-    [Required]	
+    [Required]
     public string Name { get; set; }
 
     /// <summary>
@@ -43,26 +42,16 @@ public class CreateGymRequest : IRequest<CreateGymResponse>, IApiBaseRequest
     /// </summary>
     public string Website { get; set; }
 
- /// <summary>
+    /// <summary>
+    /// Código del gimnasio
+    /// </summary>
+    [Required]
+    public string Code { get; set; }
+
+    /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
     public CommonContextRequest ContextRequest { get; set; }
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="contextRequest"></param>
-    public CreateGymRequest(AdminContextRequest contextRequest)
-    {
-        ContextRequest = contextRequest;
-    }
-
-    /// <summary>
-    /// Default Constructor
-    /// </summary>
-    public CreateGymRequest()
-    {
-    }
 }
 

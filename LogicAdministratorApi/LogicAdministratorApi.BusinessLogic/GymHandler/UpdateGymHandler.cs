@@ -19,19 +19,13 @@ public class UpdateGymHandler(
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public override async Task<UpdateGymResponse> Handle(UpdateGymRequest request, CancellationToken cancellationToken)
-    {
-        return await ExecuteHandlerAsync(
-            OperationAdministratorName.UpdateGym,
-            request,
-            async () =>
+         => await ExecuteHandlerAsync(OperationAdministratorName.UpdateGym, request, async () =>
             {
                 // Buscar el gimnasio por GUID
                 var gym = await UnitOfWork.GymRepository
                     .GetByFirstOrDefaultAsync(where => where.Guid == request.GymGuid)
-                    .ConfigureAwait(false);
-
-                if (gym == null)
-                    throw new CustomException((int)MessagesCodesError.SystemError, "Gimnasio no encontrado");
+                    .ConfigureAwait(false) 
+                ?? throw new CustomException((int)MessagesCodesError.SystemError, "Gimnasio no encontrado");
 
                 // Validar que el nombre no esté vacío
                 if (string.IsNullOrWhiteSpace(request.Name))
@@ -52,6 +46,7 @@ public class UpdateGymHandler(
                 gym.Phone = request.Phone;
                 gym.Email = request.Email;
                 gym.Website = request.Website;
+                await UnitOfWork.GymRepository.UpdateAsync(gym).ConfigureAwait(false);
 
                 return new UpdateGymResponse(gym.Guid, gym.Name)
                 {
@@ -60,6 +55,5 @@ public class UpdateGymHandler(
                 };
             }
         ).ConfigureAwait(false);
-    }
 }
 

@@ -3,51 +3,24 @@ using LogicCommon.Model.Response.File;
 
 namespace LogicCommon.Model.Request.File;
 /// <summary>
-/// Request para cargar archivo blob
+/// Request para actualizar archivos blob
 /// </summary>
-/// <remarks>
-/// Constructor para archivo en bytes
-/// </remarks>
-/// <param name="file"></param>
-/// <param name="fileName"></param>
-/// <param name="pathCode"></param>
-/// <param name="commonContextRequest"></param>
-/// <param name="path"></param>
-/// <param name="replaceIfExist"></param>
-/// <returns></returns>
 public class UpdateBlobFileRequest(
-    byte[] file,
-    string fileName,
     PathCode pathCode,
-    CommonContextRequest commonContextRequest,
-    string path = null,
-    bool? replaceIfExist = true
+    List<UpdateBlobFileItemRequest> items,
+    CommonContextRequest commonContextRequest
     ) : IRequest<UpdateFileResponse>, ICommonBaseRequest
 {
-    /// <summary>
-    /// Archivo
-    /// </summary>
-    public byte[] File { get; set; } = file;
-
-    /// <summary>
-    /// Nombre de archivo
-    /// </summary>
-    public string FileName { get; set; } = fileName;
-
-    /// <summary>
-    /// Dirección
-    /// </summary>
-    public string Path { get; set; } = path;
-
-    /// <summary>
-    /// Remplazar si Existe
-    /// </summary>
-    public bool? ReplaceIfExist { get; set; } = replaceIfExist;
 
     /// <summary>
     /// Código de la ruta
     /// </summary>
     public PathCode PathCode { get; set; } = pathCode;
+
+    /// <summary>
+    /// Items de actualización de archivo
+    /// </summary>
+    public List<UpdateBlobFileItemRequest> Items { get; set; } = items;
 
     /// <summary>
     /// Context
@@ -69,9 +42,25 @@ public class UpdateBlobFileRequest(
         string fileName,
         PathCode pathCode,
         CommonContextRequest commonContextRequest,
-        string path = null,
         bool? replaceIfExist = true)
-        : this(Convert.FromBase64String(fileEncode), fileName, pathCode, commonContextRequest, path, replaceIfExist)
+        : this(pathCode, [new UpdateBlobFileItemRequest { File = Convert.FromBase64String(fileEncode), FileName = fileName, ReplaceIfExist = replaceIfExist }], commonContextRequest)
     {
     }
+}
+public class UpdateBlobFileItemRequest
+{
+    /// <summary>
+    /// Archivo
+    /// </summary>
+    public byte[] File { get; set; }
+
+    /// <summary>
+    /// Nombre de archivo
+    /// </summary>
+    public string FileName { get; set; }
+
+    /// <summary>
+    /// Remplazar si Existe
+    /// </summary>
+    public bool? ReplaceIfExist { get; set; }
 }

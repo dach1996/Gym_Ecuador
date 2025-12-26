@@ -45,15 +45,16 @@ public class UpdateUserHandler(
             {
                 if (currentUser.ImageData?.ImagenId.HasValue ?? false)
                     await DeleteFileIfExist(currentUser.ImageData.ImagenId.Value, currentUser.ImageData.Name, cancellationToken).ConfigureAwait(false);
-                var updateFileResponse = await Mediator.Send(new UpdateBlobFileRequest(
+                var updateFileItemResponse = (await Mediator.Send(new UpdateBlobFileRequest(
                     request.Image.EncodeContent,
                      HelperFileName.GetUserImageName(request.Image.FileExtension),
                       PathCode.UserImage,
                       ContextRequest
-                      ), cancellationToken).ConfigureAwait(false);
-                await UnitOfWork.UserRepository.UpdateByAsync(
-                    (user => user.ImagenId, updateFileResponse.Id),
-                    where => where.Id == UserId).ConfigureAwait(false);
+                      ), cancellationToken).ConfigureAwait(false)).Items.FirstOrDefault();
+                if (updateFileItemResponse is not null)
+                    await UnitOfWork.UserRepository.UpdateByAsync(
+                        (user => user.ImagenId, updateFileItemResponse.Id),
+                        where => where.Id == UserId).ConfigureAwait(false);
             }
             if (currentUser.Phone != request.Phone)
                 await UnitOfWork.UserRepository.UpdateByAsync((user => user.Phone, request.Phone), where => where.Id == UserId).ConfigureAwait(false);

@@ -23,7 +23,7 @@ public class CreateGymHandler(
         => await ExecuteHandlerAsync(OperationAdministratorName.CreateGym, request, async () =>
             {
                 if (await UnitOfWork.GymRepository
-                    .ExistAnyAsync(where => where.Name.ToLower() == request.Name.ToLower())
+                    .ExistAnyAsync(where => where.Code.ToLower() == request.Code.ToLower())
                     .ConfigureAwait(false))
                     throw new CustomException((int)MessagesCodesError.SystemError, "Ya existe un gimnasio con este nombre");
 
@@ -39,6 +39,7 @@ public class CreateGymHandler(
                     Website = request.Website,
                     IsActive = GymStatus.Active,
                     DateTimeRegister = Now,
+                    Code = request.Code,
                 };
 
                 // Guardar en la base de datos

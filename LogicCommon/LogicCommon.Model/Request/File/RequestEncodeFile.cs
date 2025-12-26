@@ -1,5 +1,6 @@
-﻿using Common.WebCommon.Json;
-namespace LogicApi.Model.Common;
+﻿using System.ComponentModel.DataAnnotations;
+using Common.WebCommon.Json;
+namespace LogicCommon.Model.Request.File;
 
 /// <summary>
 /// Request de archivo codificado

@@ -1,18 +1,16 @@
 ﻿using Common.Blob.Models;
+using Common.Blob.Models.Request;
 using Common.Blob.Models.Response;
 
 namespace Common.Blob;
 public interface IBlobBus
 {
     /// <summary>
-    /// Permite subir un archivo
+    /// Actualizar archivos
     /// </summary>
-    /// <param name="fileName"></param>
-    /// <param name="path"></param>
-    /// <param name="fileStream"></param>
-    /// <param name="replaceIfExist"></param>
+    /// <param name="request"></param>
     /// <returns></returns>
-    Task<UpdateFileResponse> UpdateFileAsync(string fileName, string path, Stream fileStream, bool replaceIfExist);
+    Task<UpdateFileResponse> UpdateFileAsync(UpdateFileRequest request);
 
     /// <summary>
     /// Permite subir un archivo
@@ -22,7 +20,7 @@ public interface IBlobBus
     /// <param name="fileStream"></param>
     /// <param name="replaceIfExist"></param>
     /// <returns></returns>
-    Task<BlobFile> UpdateAndGetFileAsync(string fileName, string path, Stream fileStream, bool replaceIfExist);
+    Task<BlobFile> UpdateAndGetFileAsync(string fileName, string path, byte[] file, bool replaceIfExist);
 
     /// <summary>
     /// Permite descargar un archivo

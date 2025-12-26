@@ -1,5 +1,6 @@
 ﻿using Common.Blob.BlobException;
 using Common.Blob.Models;
+using Common.Blob.Models.Request;
 using Common.Blob.Models.Response;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -97,53 +98,54 @@ public class LocalStorageBlobBus(
     }
 
     /// <summary>
-    /// Cargar Imagen
+    /// Actualizar archivos
     /// </summary>
-    /// <param name="fileName"></param>
-    /// <param name="path"></param>
-    /// <param name="fileStream"></param>
-    /// <param name="replaceIfExist"></param>
+    /// <param name="request"></param>
     /// <returns></returns>
-    /// <exception cref="CustomBlobException"></exception>
-    public override async Task<UpdateFileResponse> UpdateFileAsync(string fileName, string path, Stream fileStream, bool replaceIfExist)
+    public override async Task<UpdateFileResponse> UpdateFileAsync(UpdateFileRequest request)
     {
-        var finalPath = GetFinalPathDirectory(path);
-        try
+        var finalPath = GetFinalPathDirectory(request.Path);
+        var items = new List<UpdateFileItemResponse>();
+        foreach (var image in request.Items)
         {
-            var pathExists = Directory.Exists(finalPath);
-            //Validamos que exista la ruta
-            if (!pathExists)
-                Directory.CreateDirectory(finalPath);
-            //Creamos la ruta final del archivo
-            var finalPathFile = $"{finalPath}/{fileName}";
-            using Stream file = new FileStream(finalPathFile, FileMode.Create);
-            await fileStream.CopyToAsync(file, CancellationToken.None);
-            logger.LogInformation("Archivo {@FileName} cargado correctamente en la ruta: '{@Path}'", fileName, finalPath);
-            return new UpdateFileResponse
+            var item = new UpdateFileItemResponse
             {
-                FileName = fileName,
-                Path = $"{path}/{fileName}"
+                FileName = image.FileName,
+                Path = $"{request.Path}/{image.FileName}",
+                Success = true
             };
+            try
+            {
+                var pathExists = Directory.Exists(finalPath);
+                //Validamos que exista la ruta
+                if (!pathExists)
+                    Directory.CreateDirectory(finalPath);
+                //Creamos la ruta final del archivo
+                var finalPathFile = $"{finalPath}/{image.FileName}";
+                await File.WriteAllBytesAsync(finalPathFile, image.File).ConfigureAwait(false);
+                logger.LogInformation("Archivo {@FileName} cargado correctamente en la ruta: '{@Path}'", image.FileName, finalPath);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex,
+                    "Error al cargar la Archivo: " +
+                    "Folder: '{@Path}' - " +
+                    "FileName: '{@FileName}' - " +
+                    "Message: '{@Message}'",
+                    request.Path, image.FileName, ex.Message);
+                if (ex.InnerException is not null)
+                    logger.LogError(ex.InnerException, "Inner Exception: " +
+                   "Path: '{@Path}' - " +
+                   "FileName: '{@FileName}' - " +
+                   "Message: '{@Message}'", request.Path, image.FileName, ex.InnerException.Message);
+                item.Success = false;
+            }
+            items.Add(item);
         }
-        catch (Exception ex)
+        return new UpdateFileResponse
         {
-            logger.LogError(ex,
-                "Error al cargar la Archivo: " +
-                "Folder: '{@Path}' - " +
-                "FileName: '{@FileName}' - " +
-                "Message: '{@Message}'",
-                path, fileName, ex.Message);
-            if (ex.InnerException is not null)
-                logger.LogError(ex.InnerException, "Inner Exception: " +
-               "Path: '{@Path}' - " +
-               "FileName: '{@FileName}' - " +
-               "Message: '{@Message}'", path, fileName, ex.InnerException.Message);
-            throw new CustomBlobException(ex.Message);
-        }
-        finally
-        {
-            await fileStream.DisposeAsync();
-        }
+            Items = items
+        };
     }
 
     /// <summary>

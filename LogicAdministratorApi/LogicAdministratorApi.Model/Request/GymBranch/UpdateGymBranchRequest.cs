@@ -1,15 +1,22 @@
+using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Attributes.CustomDataAnnotations;
 using LogicAdministratorApi.Model.Response.GymBranch;
 using Common.WebCommon.Models;
-using LogicCommon.Model.Request.File;
 
 namespace LogicAdministratorApi.Model.Request.GymBranch;
 
 /// <summary>
-/// Solicitud para crear una sucursal de gimnasio
+/// Solicitud para actualizar una sucursal de gimnasio
 /// </summary>
-public class CreateGymBranchRequest : IApiBaseRequest<CreateGymBranchResponse>
+public class UpdateGymBranchRequest : IApiBaseRequest<UpdateGymBranchResponse>
 {
+    /// <summary>
+    /// GUID de la sucursal a actualizar
+    /// </summary>
+    [Required]
+    [ValidateGuid]
+    public Guid GymBranchGuid { get; set; }
+
     /// <summary>
     /// GUID del gimnasio principal
     /// </summary>
@@ -87,15 +94,30 @@ public class CreateGymBranchRequest : IApiBaseRequest<CreateGymBranchResponse>
     public DateTime? OpeningDate { get; set; }
 
     /// <summary>
-    /// Imagen
+    /// Estado activo de la sucursal
     /// </summary>
-    /// <value></value>
-    public List<RequestEncodeFile> Images { get; set; }
+    public bool IsActive { get; set; }
 
     /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
     public CommonContextRequest ContextRequest { get; set; }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="contextRequest"></param>
+    public UpdateGymBranchRequest(AdminContextRequest contextRequest)
+    {
+        ContextRequest = contextRequest;
+    }
+
+    /// <summary>
+    /// Default Constructor
+    /// </summary>
+    public UpdateGymBranchRequest()
+    {
+    }
 }
 

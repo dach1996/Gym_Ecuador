@@ -1,5 +1,7 @@
+using Common.WebCommon.Models.Enum;
 using LogicAdministratorApi.Model.Request.GymBranch;
 using LogicAdministratorApi.Model.Response.GymBranch;
+using LogicCommon.Model.Request.File;
 using PersistenceDb.Models.Core;
 
 namespace LogicAdministratorApi.BusinessLogic.GymBranchHandler;
@@ -23,13 +25,15 @@ public class CreateGymBranchHandler(
         => await ExecuteHandlerAsync(OperationAdministratorName.CreateGymBranch, request, async () =>
             {
                 // Validar que el gimnasio existe
-                var gym = await UnitOfWork.GymRepository
-                    .GetByFirstOrDefaultAsync(where => where.Guid == request.GymGuid)
-                    .ConfigureAwait(false) ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el gimnasio especificado");
+                var gymId = await UnitOfWork.GymRepository
+                    .GetFirstOrDefaultGenericAsync(
+                        select => (int?)select.Id,
+                        where => where.Guid == request.GymGuid)
+                    .ConfigureAwait(false) ?? throw new CustomException((int)MessagesCodesError.GymBranchNotFound, "No se encontró el gimnasio especificado");
 
                 // Validar que no exista una sucursal con el mismo nombre para este gimnasio
                 if (await UnitOfWork.GymBranchRepository
-                    .ExistAnyAsync(where => where.GymId == gym.Id && where.Name.ToLower() == request.Name.ToLower())
+                    .ExistAnyAsync(where => where.GymId == gymId && where.Name.ToLower() == request.Name.ToLower())
                     .ConfigureAwait(false))
                     throw new CustomException((int)MessagesCodesError.SystemError, "Ya existe una sucursal con este nombre para el gimnasio");
 
@@ -38,12 +42,11 @@ public class CreateGymBranchHandler(
                         .ExistAnyAsync(where => where.Code.ToLower() == request.Code.ToLower())
                         .ConfigureAwait(false))
                     throw new CustomException((int)MessagesCodesError.SystemError, "Ya existe una sucursal con este código");
-
                 // Crear la nueva sucursal
                 var newGymBranch = new GymBranch
                 {
                     Guid = Guid.NewGuid(),
-                    GymId = gym.Id,
+                    GymId = gymId,
                     Name = request.Name,
                     Code = request.Code,
                     Description = request.Description,
@@ -59,11 +62,25 @@ public class CreateGymBranchHandler(
                     IsActive = true,
                     DateTimeRegister = Now,
                 };
-
                 // Guardar en la base de datos
-                await UnitOfWork.GymBranchRepository.AddAsync(newGymBranch).ConfigureAwait(false);
+                var gymBranch = await UnitOfWork.GymBranchRepository.AddAsync(newGymBranch).ConfigureAwait(false);
 
-                return new CreateGymBranchResponse(newGymBranch.Guid, newGymBranch.Name, newGymBranch.Code, gym.Guid)
+                var images = request.Images.Select(select => new UpdateBlobFileItemRequest
+                {
+                    File = Convert.FromBase64String(select.EncodeContent),
+                    FileName = select.FileName,
+                }).ToList();
+                // Guardar las imágenes
+                var imageItemResponse = await Mediator.Send(new UpdateBlobFileRequest(PathCode.GymBranchImage, images, request.ContextRequest)).ConfigureAwait(false);
+                var imagePaths = imageItemResponse.Items.Select(
+                    select => new GymBranchImage
+                    {
+                        GymBranchId = gymBranch.Id,
+                        FilePersistenceId = select.Id,
+                    }
+                ).ToList();
+                await UnitOfWork.GymBranchImageRepository.AddRangeIdentityAsync(imagePaths).ConfigureAwait(false);
+                return new CreateGymBranchResponse(newGymBranch.Guid, newGymBranch.Name, newGymBranch.Code, request.GymGuid)
                 {
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
                     ShowMessage = true

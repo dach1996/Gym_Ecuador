@@ -6,6 +6,15 @@ namespace Common.Blob.Models.Response;
 public class UpdateFileResponse
 {
     /// <summary>
+    /// Items de actualización de archivo
+    /// </summary>
+    /// <value></value>
+    public List<UpdateFileItemResponse> Items { get; set; }
+}
+
+public class UpdateFileItemResponse
+{
+    /// <summary>
     /// Nombre del archivo
     /// </summary>
     public string FileName { get; set; }
@@ -14,4 +23,9 @@ public class UpdateFileResponse
     /// Ruta del archivo
     /// </summary>
     public string Path { get; set; }
+
+    /// <summary>
+    /// Id del archivo
+    /// </summary>
+    public bool Success { get; set; }
 }

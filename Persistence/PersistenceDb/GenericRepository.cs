@@ -245,12 +245,10 @@ public class GenericRepository<TEntity>(
     {
         try
         {
-            await Context.BulkInsertAsync(entity, bulkConfig: new BulkConfig
-            {
-                IncludeGraph = includeChildren,
-            }).ConfigureAwait(false);
-            await Context.SaveChangesAsync();
-            return entity.Count();
+            Context.ChangeTracker.AutoDetectChangesEnabled = false;
+            var count = await DbContextExtensionsAsync.BulkInsertAsync(Context, entity).ConfigureAwait(false);
+            await Context.BulkSaveChangesAsync();
+            return count;
         }
         catch (Exception ex)
         {
@@ -264,15 +262,13 @@ public class GenericRepository<TEntity>(
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public async Task<IEnumerable<TEntity>> AddRangeIdentityAsync(IEnumerable<TEntity> entity)
+    public async Task<List<TEntity>> AddRangeIdentityAsync(List<TEntity> entity)
     {
         try
         {
-            await Context.BulkInsertAsync(entity, bulkConfig: new BulkConfig
-            {
-                SetOutputIdentity = true,
-            }).ConfigureAwait(false);
-            await Context.SaveChangesAsync();
+            Context.ChangeTracker.AutoDetectChangesEnabled = false;
+            await DbContextExtensionsAsync.BulkInsertAsync(Context, entity).ConfigureAwait(false);
+            await Context.BulkSaveChangesAsync();
             return entity;
         }
         catch (Exception ex)

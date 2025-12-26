@@ -367,6 +367,11 @@ public static class FunctionalitiesCodes
     public const string CREATE_GYM_BRANCH = "ADM_GYM_BRANCH_CREATE";
 
     /// <summary>
+    /// Actualizar Sucursal de Gimnasio
+    /// </summary>
+    public const string UPDATE_GYM_BRANCH = "ADM_GYM_BRANCH_UPDATE";
+
+    /// <summary>
     /// Crear Horario de Sucursal
     /// </summary>
     public const string CREATE_GYM_BRANCH_SCHEDULE = "ADM_GYM_BRANCH_SCH_CREATE";

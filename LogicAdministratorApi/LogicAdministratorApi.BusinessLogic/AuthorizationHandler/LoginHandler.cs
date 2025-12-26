@@ -37,7 +37,7 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
             //Respondemos con el token
             return new LoginResponse
             {
-                AccessSecret = jwt.Token,
+                AccessToken = jwt.Token,
             };
         }, false);
 

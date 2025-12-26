@@ -83,6 +83,13 @@ public class Gym
     public GymStatus IsActive { get; set; }
 
     /// <summary>
+    /// Foto del gimnasio
+    /// </summary>
+    [StringLength(500)]
+    [Column("GYM_CODIGO")]
+    public string Code { get; set; }
+
+    /// <summary>
     /// Navegación a los entrenadores del gimnasio
     /// </summary>
     public ICollection<TrainerGym> TrainerGyms { get; set; }

@@ -67,6 +67,7 @@ public class MainUnitOfWork(
     private IServiceRepository _serviceRepository;
     private IGymSubscriptionPlanServiceRepository _gymSubscriptionPlanServiceRepository;
     private IGymBranchScheduleRepository _gymBranchScheduleRepository;
+    private IGymBranchImageRepository _gymBranchImageRepository;
 
     // Administration Repository Properties
     public IAuditLogRepository AuditLogRepository => _auditLogRepository ??=
@@ -203,4 +204,7 @@ public class MainUnitOfWork(
 
     public IGymBranchScheduleRepository GymBranchScheduleRepository => _gymBranchScheduleRepository ??=
         new GymBranchScheduleRepository(Context, LoggerFactory.CreateLogger<GymBranchScheduleRepository>());
+
+    public IGymBranchImageRepository GymBranchImageRepository => _gymBranchImageRepository ??=
+        new GymBranchImageRepository(Context, LoggerFactory.CreateLogger<GymBranchImageRepository>());
 }

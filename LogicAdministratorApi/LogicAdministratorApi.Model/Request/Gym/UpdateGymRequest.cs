@@ -7,7 +7,7 @@ namespace LogicAdministratorApi.Model.Request.Gym;
 /// <summary>
 /// Solicitud para actualizar un gimnasio
 /// </summary>
-public class UpdateGymRequest : IRequest<UpdateGymResponse>, IApiBaseRequest
+public class UpdateGymRequest : IApiBaseRequest<UpdateGymResponse>
 {
     /// <summary>
     /// Guid del gimnasio
@@ -50,20 +50,5 @@ public class UpdateGymRequest : IRequest<UpdateGymResponse>, IApiBaseRequest
     [JsonIgnore]
     public CommonContextRequest ContextRequest { get; set; }
 
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="contextRequest"></param>
-    public UpdateGymRequest(AdminContextRequest contextRequest)
-    {
-        ContextRequest = contextRequest;
-    }
-
-    /// <summary>
-    /// Default Constructor
-    /// </summary>
-    public UpdateGymRequest()
-    {
-    }
 }
 

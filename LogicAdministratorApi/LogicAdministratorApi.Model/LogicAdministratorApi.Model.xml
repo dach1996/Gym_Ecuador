@@ -326,18 +326,109 @@
             Fecha de apertura de la sucursal
             </summary>
         </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.CreateGymBranchRequest.Images">
+            <summary>
+            Imagen
+            </summary>
+            <value></value>
+        </member>
         <member name="P:LogicAdministratorApi.Model.Request.GymBranch.CreateGymBranchRequest.ContextRequest">
             <summary>
             Context
             </summary>
         </member>
-        <member name="M:LogicAdministratorApi.Model.Request.GymBranch.CreateGymBranchRequest.#ctor(Common.WebApi.Models.ContextRequestModel.AdminContextRequest)">
+        <member name="T:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest">
+            <summary>
+            Solicitud para actualizar una sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.GymBranchGuid">
+            <summary>
+            GUID de la sucursal a actualizar
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.GymGuid">
+            <summary>
+            GUID del gimnasio principal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.Name">
+            <summary>
+            Nombre de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.Code">
+            <summary>
+            Código de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.Description">
+            <summary>
+            Descripción de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.Address">
+            <summary>
+            Dirección de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.Phone">
+            <summary>
+            Teléfono de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.Email">
+            <summary>
+            Email de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.Latitude">
+            <summary>
+            Latitud para localización
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.Longitude">
+            <summary>
+            Longitud para localización
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.MaxCapacity">
+            <summary>
+            Capacidad máxima de personas
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.AreaSquareMeters">
+            <summary>
+            Área en metros cuadrados
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.FloorCount">
+            <summary>
+            Número de pisos/plantas
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.OpeningDate">
+            <summary>
+            Fecha de apertura de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.IsActive">
+            <summary>
+            Estado activo de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.#ctor(Common.WebApi.Models.ContextRequestModel.AdminContextRequest)">
             <summary>
             Constructor
             </summary>
             <param name="contextRequest"></param>
         </member>
-        <member name="M:LogicAdministratorApi.Model.Request.GymBranch.CreateGymBranchRequest.#ctor">
+        <member name="M:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.#ctor">
             <summary>
             Default Constructor
             </summary>
@@ -377,20 +468,14 @@
             Sitio web del gimnasio
             </summary>
         </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Gym.CreateGymRequest.Code">
+            <summary>
+            Código del gimnasio
+            </summary>
+        </member>
         <member name="P:LogicAdministratorApi.Model.Request.Gym.CreateGymRequest.ContextRequest">
             <summary>
             Context
-            </summary>
-        </member>
-        <member name="M:LogicAdministratorApi.Model.Request.Gym.CreateGymRequest.#ctor(Common.WebApi.Models.ContextRequestModel.AdminContextRequest)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="contextRequest"></param>
-        </member>
-        <member name="M:LogicAdministratorApi.Model.Request.Gym.CreateGymRequest.#ctor">
-            <summary>
-            Default Constructor
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Request.Gym.UpdateGymRequest">
@@ -438,23 +523,12 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicAdministratorApi.Model.Request.Gym.UpdateGymRequest.#ctor(Common.WebApi.Models.ContextRequestModel.AdminContextRequest)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="contextRequest"></param>
-        </member>
-        <member name="M:LogicAdministratorApi.Model.Request.Gym.UpdateGymRequest.#ctor">
-            <summary>
-            Default Constructor
-            </summary>
-        </member>
         <member name="T:LogicAdministratorApi.Model.Response.Authorization.LoginResponse">
             <summary>
             Objeto de respuesta para ingreso de sistema
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.AccessSecret">
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.AccessToken">
             <summary>
             Secreto para acceso
             </summary>
@@ -579,6 +653,25 @@
             <summary>
             Respuesta de crear sucursal de gimnasio
             </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="gymBranchGuid"></param>
+            <param name="name"></param>
+            <param name="code"></param>
+            <param name="gymGuid"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.GymBranch.CreateGymBranchResponse.#ctor(System.Guid,System.String,System.String,System.Guid)">
+            <summary>
+            Respuesta de crear sucursal de gimnasio
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="gymBranchGuid"></param>
+            <param name="name"></param>
+            <param name="code"></param>
+            <param name="gymGuid"></param>
         </member>
         <member name="P:LogicAdministratorApi.Model.Response.GymBranch.CreateGymBranchResponse.UserMessage">
             <summary>
@@ -610,7 +703,42 @@
             Guid del gimnasio principal
             </summary>
         </member>
-        <member name="M:LogicAdministratorApi.Model.Response.GymBranch.CreateGymBranchResponse.#ctor(System.Guid,System.String,System.String,System.Guid)">
+        <member name="T:LogicAdministratorApi.Model.Response.GymBranch.UpdateGymBranchResponse">
+            <summary>
+            Respuesta de actualizar sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.UpdateGymBranchResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.UpdateGymBranchResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.UpdateGymBranchResponse.GymBranchGuid">
+            <summary>
+            Guid de la sucursal actualizada
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.UpdateGymBranchResponse.Name">
+            <summary>
+            Nombre de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.UpdateGymBranchResponse.Code">
+            <summary>
+            Código de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.UpdateGymBranchResponse.GymGuid">
+            <summary>
+            Guid del gimnasio principal
+            </summary>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.GymBranch.UpdateGymBranchResponse.#ctor(System.Guid,System.String,System.String,System.Guid)">
             <summary>
             Constructor
             </summary>
@@ -619,7 +747,7 @@
             <param name="code"></param>
             <param name="gymGuid"></param>
         </member>
-        <member name="M:LogicAdministratorApi.Model.Response.GymBranch.CreateGymBranchResponse.#ctor">
+        <member name="M:LogicAdministratorApi.Model.Response.GymBranch.UpdateGymBranchResponse.#ctor">
             <summary>
             Default Constructor
             </summary>

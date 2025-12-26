@@ -39,6 +39,17 @@ public class GymBranchController(
     public async Task<IActionResult> CreateGymBranch([FromBody] CreateGymBranchRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
+    /// <summary>
+    /// Actualizar Sucursal de Gimnasio
+    /// </summary>
+    /// <param name="request">Modelo para actualizar sucursal de gimnasio</param>
+    /// <returns></returns>
+    [Authorize]
+    [HttpPut("Update")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<UpdateGymBranchResponse>))]
+    public async Task<IActionResult> UpdateGymBranch([FromBody] UpdateGymBranchRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
     #endregion
 }
 

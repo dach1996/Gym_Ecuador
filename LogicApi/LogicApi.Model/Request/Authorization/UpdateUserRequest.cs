@@ -1,7 +1,7 @@
 using Common.WebApi.Models.ContextRequestModel;
-using LogicApi.Model.Common;
 using LogicApi.Model.Response;
 using Common.WebCommon.Models;
+using LogicCommon.Model.Request.File;
 namespace LogicApi.Model.Request.Authorization;
 /// <summary>
 /// Request Logout

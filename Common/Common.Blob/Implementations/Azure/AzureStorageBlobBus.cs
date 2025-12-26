@@ -4,6 +4,7 @@ using Common.Blob.BlobException;
 using Common.Blob.Models;
 using Common.Blob.Models.Configuration;
 using Common.Blob.Models.Configuration.Azure;
+using Common.Blob.Models.Request;
 using Common.Blob.Models.Response;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -122,48 +123,55 @@ public class AzureStorageBlobBus : BlobBusBase
     }
 
     /// <summary>
-    /// Cargar Imagen
+    /// Actualizar archivos
     /// </summary>
-    /// <param name="fileName"></param>
-    /// <param name="path"></param>
-    /// <param name="fileStream"></param>
-    /// <param name="replaceIfExist"></param>
+    /// <param name="request"></param>
     /// <returns></returns>
-    /// <exception cref="CustomBlobException"></exception>
-    public override async Task<UpdateFileResponse> UpdateFileAsync(string fileName, string path, Stream fileStream, bool replaceIfExist)
+    public override async Task<UpdateFileResponse> UpdateFileAsync(UpdateFileRequest request)
     {
-        try
+        var items = new List<UpdateFileItemResponse>();
+        foreach (var item in request.Items)
         {
-            //create object of BlocContainerClient to verify if exist
-            BlobContainerClient blobContainer = new(AzureBlobConfiguration.ConnectionString, path);
-            await blobContainer.CreateIfNotExistsAsync().ConfigureAwait(false);
-            // Create the Blob container name and specifict file name
-            BlobClient blobClient = new(AzureBlobConfiguration.ConnectionString, path, fileName);
-            // Upload the file
-            await blobClient.UploadAsync(fileStream, replaceIfExist).ConfigureAwait(false);
-            Logger.LogInformation("Archivo {@FileName} cargado correctamente en el contenedor: '{@Container}' - Remplazar si Existe: {@Replace}", fileName, path, replaceIfExist);
-            return new UpdateFileResponse
+            try
             {
-                FileName = fileName,
-                Path = blobClient.Uri.AbsolutePath
-            };
+                //create object of BlocContainerClient to verify if exist
+                BlobContainerClient blobContainer = new(AzureBlobConfiguration.ConnectionString, request.Path);
+                await blobContainer.CreateIfNotExistsAsync().ConfigureAwait(false);
+                // Create the Blob container name and specifict file name
+                BlobClient blobClient = new(AzureBlobConfiguration.ConnectionString, request.Path, item.FileName);
+                // Upload the file
+                using var stream = new MemoryStream(item.File);
+                await blobClient.UploadAsync(stream, item.ReplaceIfExist).ConfigureAwait(false);
+                Logger.LogInformation("Archivo {@FileName} cargado correctamente en el contenedor: '{@Container}' - Remplazar si Existe: {@Replace}", item.FileName, request.Path, item.ReplaceIfExist);
+                items.Add(new UpdateFileItemResponse
+                {
+                    FileName = item.FileName,
+                    Path = blobClient.Uri.AbsolutePath,
+                    Success = true
+                });
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "Error al cargar la Archivo: " +
+                    "Path: '{@Path}' - " +
+                    "FileName: '{@FileName}' - " +
+                    "Message: '{@Message}'", request.Path, item.FileName, ex.Message);
+                if (ex.InnerException is not null)
+                    Logger.LogError(ex.InnerException, "Inner Exception: " +
+                   "Path: '{@Path}' - " +
+                   "FileName: '{@FileName}' - " +
+                   "Message: '{@Message}'", request.Path, item.FileName, ex.InnerException.Message);
+                items.Add(new UpdateFileItemResponse
+                {
+                    FileName = item.FileName,
+                    Path = $"{request.Path}/{item.FileName}",
+                    Success = false
+                });
+            }
         }
-        catch (Exception ex)
+        return new UpdateFileResponse
         {
-            Logger.LogError(ex, "Error al cargar la Archivo: " +
-                "Path: '{@Path}' - " +
-                "FileName: '{@FileName}' - " +
-                "Message: '{@Message}'", path, fileName, ex.Message);
-            if (ex.InnerException is not null)
-                Logger.LogError(ex.InnerException, "Inner Exception: " +
-               "Path: '{@Path}' - " +
-               "FileName: '{@FileName}' - " +
-               "Message: '{@Message}'", path, fileName, ex.InnerException.Message);
-            throw new CustomBlobException(ex.Message);
-        }
-        finally
-        {
-            await fileStream.DisposeAsync();
-        }
+            Items = items
+        };
     }
 }

@@ -20,11 +20,9 @@ using Common.Authentication.Infrastructure;
 using LogicCommon.BusinessLogic;
 using Common.PushNotification.Infrastructure;
 using LogicAdministratorApi.BusinessLogic;
-using Common.WebApi.Models;
 using Common.WebApi.Middleware.ConfigureContext;
 using Common.WebApi.Middleware.Infrastructure;
 using Common.WebApi.Models.AppSettingsModel;
-using PersistenceDb.Infrastructure.Extension;
 try
 {
     var builder = WebApplication.CreateBuilder(args);

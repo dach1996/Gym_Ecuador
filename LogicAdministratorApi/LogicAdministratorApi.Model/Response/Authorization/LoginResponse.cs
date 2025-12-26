@@ -7,7 +7,7 @@ public class LoginResponse : IApiBaseResponse
     /// <summary>
     /// Secreto para acceso
     /// </summary>
-    public string AccessSecret { get; set; }
+    public string AccessToken { get; set; }
 
     /// <summary>
     /// Mensaje al Usuario
