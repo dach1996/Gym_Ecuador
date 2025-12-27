@@ -10,6 +10,7 @@ using Common.Templates.Interface;
 using Common.Utils.ConstansCodes;
 using Common.Utils.CustomExceptions;
 using Common.Utils.Extensions;
+using Common.WebCommon.Helper;
 using Common.WebCommon.Models;
 using Common.WebCommon.Models.Enum;
 using Common.WebCommon.Models.Queues;
@@ -300,7 +301,9 @@ public abstract class BusinessLogicCommonBase
         List<RequestEncodeFile> images,
         PathCode pathCode,
         Func<List<RequestEncodeFile>, Model.Response.File.UpdateFileResponse, Task> processCreateImages = null,
-        Func<List<RequestEncodeFile>, Model.Response.File.DeleteFileResponse, Task> processDeleteImages = null
+        Func<List<RequestEncodeFile>, Model.Response.File.DeleteFileResponse, Task> processDeleteImages = null,
+        Func<string, string> getFileExtension = null,
+        string folderPath = null
         )
     {
         foreach (var group in images?.GroupBy(group => group.Action))
@@ -308,13 +311,14 @@ public abstract class BusinessLogicCommonBase
             switch (group.Key)
             {
                 case ActionFile.Create:
+
                     var items = group.Select(select => new UpdateBlobFileItemRequest
                     {
                         File = Convert.FromBase64String(select.EncodeContent),
-                        FileName = select.FileName,
+                        FileName = getFileExtension?.Invoke(select.FileExtension) ?? select.FileName,
                         ReplaceIfExist = true
                     }).ToList();
-                    var imageItemResponse = await Mediator.Send(new UpdateBlobFileRequest(pathCode, items, CommonContextRequest)).ConfigureAwait(false);
+                    var imageItemResponse = await Mediator.Send(new UpdateBlobFileRequest(pathCode, items, CommonContextRequest, folderPath)).ConfigureAwait(false);
                     processCreateImages?.Invoke([.. group], imageItemResponse);
                     break;
                 case ActionFile.Delete:

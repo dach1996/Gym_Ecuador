@@ -97,8 +97,6 @@ public class AzureStorageBlobBus : BlobBusBase
     public override async Task<DeleteFileResponse> DeleteFileAsync(DeleteFileRequest request)
     {
         var results = new List<DeleteFileItemResponse>();
-
-
         foreach (var item in request.Items)
         {
             try
@@ -150,15 +148,20 @@ public class AzureStorageBlobBus : BlobBusBase
     public override async Task<UpdateFileResponse> UpdateFileAsync(UpdateFileRequest request)
     {
         var items = new List<UpdateFileItemResponse>();
+        var pathSplits = request.Path.Split('/');
+        var containerName = pathSplits[0];
+        var fileDirectoryPath = string.Empty;
+        if (pathSplits.Length > 1)
+            fileDirectoryPath = pathSplits.Skip(1).Aggregate((current, next) => $"{current}/{next}");
         foreach (var item in request.Items)
         {
             try
             {
                 //create object of BlocContainerClient to verify if exist
-                BlobContainerClient blobContainer = new(AzureBlobConfiguration.ConnectionString, request.Path);
+                BlobContainerClient blobContainer = new(AzureBlobConfiguration.ConnectionString, containerName);
                 await blobContainer.CreateIfNotExistsAsync().ConfigureAwait(false);
                 // Create the Blob container name and specifict file name
-                BlobClient blobClient = new(AzureBlobConfiguration.ConnectionString, request.Path, item.FileName);
+                BlobClient blobClient = blobContainer.GetBlobClient(fileDirectoryPath + "/" + item.FileName);
                 // Upload the file
                 using var stream = new MemoryStream(item.File);
                 await blobClient.UploadAsync(stream, item.ReplaceIfExist).ConfigureAwait(false);

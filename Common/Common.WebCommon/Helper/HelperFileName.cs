@@ -1,22 +1,34 @@
-namespace Common.WebCommon.Helper
+namespace Common.WebCommon.Helper;
+
+/// <summary>
+/// Helper para nombres de archivos
+/// </summary>
+public static class HelperFileName
 {
     /// <summary>
-    /// Helper para nombres de archivos
+    /// Formato de Nombre de imagenes de usuario
     /// </summary>
-    public static class HelperFileName
+    /// <param name="extension"></param>
+    /// <param name="now"></param>
+    /// <returns></returns>
+    public static string GetUserImageName(string extension, DateTime? now = null)
     {
-        /// <summary>
-        /// Formato de Nombre de imagenes de usuario
-        /// </summary>
-        /// <param name="extension"></param>
-        /// <param name="now"></param>
-        /// <returns></returns>
-        public static string GetUserImageName(string extension, DateTime? now = null)
-        {
-            var guid = $"{Guid.NewGuid():N}";
-            var last5 = guid.Length >= 5 ? guid[^5..] : guid;
-            return $"UserImage_{now ?? DateTime.Now:yyyyMMddHHmmss}{last5}.{extension}";
-        }
-
+        var guid = $"{Guid.NewGuid():N}";
+        var last5 = guid.Length >= 5 ? guid[^5..] : guid;
+        return $"UserImage_{now ?? DateTime.Now:yyyyMMddHHmmss}{last5}.{extension}";
     }
+
+    /// <summary>
+    /// Formato de Nombre de imagenes de sucursales de gimnasio
+    /// </summary>
+    /// <param name="extension"></param>
+    /// <param name="now"></param>
+    /// <returns></returns>
+    public static string GetGymBranchImageName(string extension, DateTime? now = null)
+    {
+        var guid = $"{Guid.NewGuid():N}";
+        var last5 = guid.Length >= 5 ? guid[^5..] : guid;
+        return $"GymBranch_{now ?? DateTime.Now:yyyyMMddHHmmss}{last5}.{extension}";
+    }
+
 }

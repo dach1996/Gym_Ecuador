@@ -1,3 +1,4 @@
+using Common.WebCommon.Helper;
 using Common.WebCommon.Models.Enum;
 using LogicAdministratorApi.Model.Request.GymBranch;
 using LogicAdministratorApi.Model.Response.GymBranch;
@@ -63,7 +64,8 @@ public class CreateGymBranchHandler(
                 };
                 // Guardar en la base de datos
                 var gymBranch = await UnitOfWork.GymBranchRepository.AddAsync(newGymBranch).ConfigureAwait(false);
-
+                var fileBasePaths = await GetFileBasePathCacheInformationByPathCodeAsync(PathCode.GymBranchImage).ConfigureAwait(false);
+                var folderPath = HelperPathName.GetGymBranchPathName(fileBasePaths.FileDirectoryPath, newGymBranch.Id);
                 await ProcessImagesAsync(
                     request.Images,
                     PathCode.GymBranchImage,
@@ -77,7 +79,9 @@ public class CreateGymBranchHandler(
                             }
                         ).ToList();
                         await UnitOfWork.GymBranchImageRepository.AddRangeIdentityAsync(imagePaths).ConfigureAwait(false);
-                    }
+                    },
+                    getFileExtension: (fileExtension) => HelperFileName.GetGymBranchImageName(fileExtension),
+                    folderPath: folderPath
                 ).ConfigureAwait(false);
                 return new CreateGymBranchResponse(newGymBranch.Guid, newGymBranch.Name, newGymBranch.Code, request.GymGuid)
                 {

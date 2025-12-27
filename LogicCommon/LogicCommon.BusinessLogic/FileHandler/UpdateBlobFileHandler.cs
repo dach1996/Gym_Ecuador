@@ -39,7 +39,7 @@ public class UpdateBlobFileHandler(
         });
         var updateFileRequestsList = await Task.WhenAll(updateFileRequests).ConfigureAwait(false);
         var updateFileResponse = await PluginFactory.GetPlugin<IBlobBus>(fileBasePaths.Implementation, true)
-            .UpdateFileAsync(new(fileBasePaths.FileDirectoryPath, [.. updateFileRequestsList])).ConfigureAwait(false);
+            .UpdateFileAsync(new(request.FolderPath ?? fileBasePaths.FileDirectoryPath, [.. updateFileRequestsList])).ConfigureAwait(false);
         var responseFiles = updateFileResponse.Items
         .Where(where => where.Success)
         .Select(where => new FilePersistence

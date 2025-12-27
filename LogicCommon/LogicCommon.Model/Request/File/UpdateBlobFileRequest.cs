@@ -8,7 +8,8 @@ namespace LogicCommon.Model.Request.File;
 public class UpdateBlobFileRequest(
     PathCode pathCode,
     List<UpdateBlobFileItemRequest> items,
-    CommonContextRequest commonContextRequest
+    CommonContextRequest commonContextRequest,
+    string folderPath = null
     ) : IRequest<UpdateFileResponse>, ICommonBaseRequest
 {
 
@@ -16,6 +17,11 @@ public class UpdateBlobFileRequest(
     /// Código de la ruta
     /// </summary>
     public PathCode PathCode { get; set; } = pathCode;
+
+    /// <summary>
+    /// Ruta de la carpeta
+    /// </summary>
+    public string FolderPath { get; set; } = folderPath;
 
     /// <summary>
     /// Items de actualización de archivo
@@ -42,8 +48,9 @@ public class UpdateBlobFileRequest(
         string fileName,
         PathCode pathCode,
         CommonContextRequest commonContextRequest,
+        string folderPath = null,
         bool? replaceIfExist = true)
-        : this(pathCode, [new UpdateBlobFileItemRequest { File = Convert.FromBase64String(fileEncode), FileName = fileName, ReplaceIfExist = replaceIfExist }], commonContextRequest)
+        : this(pathCode, [new UpdateBlobFileItemRequest { File = Convert.FromBase64String(fileEncode), FileName = fileName, ReplaceIfExist = replaceIfExist }], commonContextRequest, folderPath)
     {
     }
 }

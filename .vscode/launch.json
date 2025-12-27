@@ -59,7 +59,7 @@
         "ASPNETCORE_URLS": "https://0.0.0.0:44326",
         "Serilog:WriteTo:0:Args:connectionString": "",
         "CustomConnectionStrings:0:ConnectionString": "Server=127.0.0.1;Initial Catalog=Gym;Integrated Security=false; User Id=sa;Password=Dach@1996;TrustServerCertificate=True;",
-        "BlobConfiguration:Implementations:Information:ConnectionString": "UseDevelopmentStorage=true",
+        "BlobConfiguration:Implementations:0:Information:ConnectionString": "UseDevelopmentStorage=true",
         "MailNotificationConfiguration:Implementations:0:Information:ApiKey": "",
         "CardServicesConfiguration:Implementations:0:Information:Headers:X-RapidAPI-Key": "2474d801ffmsh5923ae133182ca4p1ac630jsn83e189d0b37f",
         "DocumentationServicesConfiguration:Implementations:0:Information:TokenAuthorization": "Zm6SOpsXms49DLtDtcwW0y1MqtiqXAfPHayd8SRG",
