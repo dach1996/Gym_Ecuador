@@ -25,7 +25,7 @@ public class DeleteBlobFileHandler(
     public override async Task<GenericCommonOperationResponse> Handle(DeleteBlobFileRequest request, CancellationToken cancellationToken)
     => await ExecuteHandlerAsync(request, async () =>
     {
-        await PluginFactory.GetPlugin<IBlobBus>(request.Implementation, true).DeleteFileAsync(new DeleteFileRequest(request.FileName, request.Path)).ConfigureAwait(false);
+        await PluginFactory.GetPlugin<IBlobBus>(request.Implementation, true).DeleteFileAsync(new DeleteFileRequest($"{request.Path}/{request.FileName}")).ConfigureAwait(false);
         return GenericCommonOperationResponse.SuccessOperation();
     }).ConfigureAwait(false);
 }

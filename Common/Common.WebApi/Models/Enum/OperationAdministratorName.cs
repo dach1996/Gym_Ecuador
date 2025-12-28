@@ -548,5 +548,19 @@ public enum OperationAdministratorName : short
     /// </summary>
     [EnumMember(Value = "Eliminar Horario de Sucursal")]
     [FunctionalityMember(FunctionalitiesCodes.DELETE_GYM_BRANCH_SCHEDULE, registerAuditLog: true)]
-    DeleteGymBranchSchedule = 77
+    DeleteGymBranchSchedule = 77,
+
+    /// <summary>
+    /// Obtener Sucursales de Gimnasio Paginadas
+    /// </summary>
+    [EnumMember(Value = "Obtener Sucursales de Gimnasio Paginadas")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_GYM_BRANCHES_PAGINATED)]
+    GetGymBranchesPaginated = 78,
+
+    /// <summary>
+    /// Obtener Detalle de Sucursal de Gimnasio por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Detalle de Sucursal de Gimnasio por GUID")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_GYM_BRANCH_BY_GUID)]
+    GetGymBranchByGuid = 79
 }

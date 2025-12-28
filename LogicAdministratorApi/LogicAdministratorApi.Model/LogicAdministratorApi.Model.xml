@@ -337,6 +337,67 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchByGuidRequest">
+            <summary>
+            Solicitud para obtener detalle de una sucursal de gimnasio por GUID
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchByGuidRequest.GymBranchGuid">
+            <summary>
+            GUID de la sucursal a obtener
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchByGuidRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesRequest">
+            <summary>
+            Solicitud para obtener sucursales de gimnasio paginadas
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesRequest.GymGuid">
+            <summary>
+            GUID del gimnasio para filtrar las sucursales
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesRequest.NameFilter">
+            <summary>
+            Filtro por nombre de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesRequest.IsActiveFilter">
+            <summary>
+            Filtro por estado activo
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesRequest.Page">
+            <summary>
+            Página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest">
             <summary>
             Solicitud para actualizar una sucursal de gimnasio
@@ -417,20 +478,15 @@
             Estado activo de la sucursal
             </summary>
         </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.Images">
+            <summary>
+            Imagen
+            </summary>
+            <value></value>
+        </member>
         <member name="P:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.ContextRequest">
             <summary>
             Context
-            </summary>
-        </member>
-        <member name="M:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.#ctor(Common.WebApi.Models.ContextRequestModel.AdminContextRequest)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="contextRequest"></param>
-        </member>
-        <member name="M:LogicAdministratorApi.Model.Request.GymBranch.UpdateGymBranchRequest.#ctor">
-            <summary>
-            Default Constructor
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Request.Gym.CreateGymRequest">
@@ -701,6 +757,211 @@
         <member name="P:LogicAdministratorApi.Model.Response.GymBranch.CreateGymBranchResponse.GymGuid">
             <summary>
             Guid del gimnasio principal
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.GymBranch.GetGymBranchByGuidResponse">
+            <summary>
+            Respuesta de obtener detalle de sucursal de gimnasio por GUID
+            </summary>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.GymBranch.GetGymBranchByGuidResponse.#ctor(LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail)">
+            <summary>
+            Respuesta de obtener detalle de sucursal de gimnasio por GUID
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GetGymBranchByGuidResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GetGymBranchByGuidResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GetGymBranchByGuidResponse.GymBranch">
+            <summary>
+            Datos de la sucursal
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail">
+            <summary>
+            Detalle completo de sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.Guid">
+            <summary>
+            Guid de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.GymGuid">
+            <summary>
+            GUID del gimnasio principal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.Name">
+            <summary>
+            Nombre de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.Code">
+            <summary>
+            Código de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.Description">
+            <summary>
+            Descripción de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.Address">
+            <summary>
+            Dirección de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.Phone">
+            <summary>
+            Teléfono de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.Email">
+            <summary>
+            Email de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.Latitude">
+            <summary>
+            Latitud para localización
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.Longitude">
+            <summary>
+            Longitud para localización
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.MaxCapacity">
+            <summary>
+            Capacidad máxima de personas
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.AreaSquareMeters">
+            <summary>
+            Área en metros cuadrados
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.FloorCount">
+            <summary>
+            Número de pisos/plantas
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.IsActive">
+            <summary>
+            Estado de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.OpeningDate">
+            <summary>
+            Fecha de apertura de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchDetail.Images">
+            <summary>
+            URLs de las imágenes de la sucursal
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.GymBranch.GetGymBranchesResponse">
+            <summary>
+            Respuesta de obtener sucursales de gimnasio paginadas
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.GymBranch.GetGymBranchesResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicAdministratorApi.Model.Response.GymBranch.GymBranchItem})">
+            <summary>
+            Respuesta de obtener sucursales de gimnasio paginadas
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GetGymBranchesResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GetGymBranchesResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GetGymBranchesResponse.TotalRegister">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GetGymBranchesResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.GymBranch.GymBranchItem">
+            <summary>
+            Item de sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchItem.Guid">
+            <summary>
+            Guid de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchItem.Name">
+            <summary>
+            Nombre de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchItem.Code">
+            <summary>
+            Código de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchItem.Address">
+            <summary>
+            Dirección de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchItem.Phone">
+            <summary>
+            Teléfono de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchItem.Email">
+            <summary>
+            Email de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchItem.IsActive">
+            <summary>
+            Estado de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchItem.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.GymBranch.GymBranchItem.OpeningDate">
+            <summary>
+            Fecha de apertura
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Response.GymBranch.UpdateGymBranchResponse">

@@ -385,4 +385,14 @@ public static class FunctionalitiesCodes
     /// Eliminar Horario de Sucursal
     /// </summary>
     public const string DELETE_GYM_BRANCH_SCHEDULE = "ADM_GYM_BRANCH_SCH_DELETE";
+
+    /// <summary>
+    /// Obtener Sucursales de Gimnasio Paginadas
+    /// </summary>
+    public const string GET_GYM_BRANCHES_PAGINATED = "ADM_GYM_BRANCH_GET_PAGINATED";
+
+    /// <summary>
+    /// Obtener Detalle de Sucursal de Gimnasio por GUID
+    /// </summary>
+    public const string GET_GYM_BRANCH_BY_GUID = "ADM_GYM_BRANCH_GET_BY_GUID";
 }

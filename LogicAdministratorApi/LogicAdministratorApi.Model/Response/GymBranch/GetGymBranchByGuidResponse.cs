@@ -1,66 +1,71 @@
-using Common.WebCommon.Attributes.CustomDataAnnotations;
-using LogicAdministratorApi.Model.Response.GymBranch;
-using Common.WebCommon.Models;
-using LogicCommon.Model.Request.File;
+using LogicCommon.Model.Response.File;
 
-namespace LogicAdministratorApi.Model.Request.GymBranch;
+namespace LogicAdministratorApi.Model.Response.GymBranch;
 
 /// <summary>
-/// Solicitud para actualizar una sucursal de gimnasio
+/// Respuesta de obtener detalle de sucursal de gimnasio por GUID
 /// </summary>
-public class UpdateGymBranchRequest : IApiBaseRequest<UpdateGymBranchResponse>
+public class GetGymBranchByGuidResponse(GymBranchDetail gymBranch) : IApiBaseResponse
 {
     /// <summary>
-    /// GUID de la sucursal a actualizar
+    /// Mensaje al Usuario
     /// </summary>
-    [Required]
-    [ValidateGuid]
-    public Guid GymBranchGuid { get; set; }
+    public string UserMessage { get; set; }
+
+    /// <summary>
+    /// Mostrar Mensaje?
+    /// </summary>
+    public bool ShowMessage { get; set; }
+
+    /// <summary>
+    /// Datos de la sucursal
+    /// </summary>
+    public GymBranchDetail GymBranch { get; set; } = gymBranch;
+}
+
+/// <summary>
+/// Detalle completo de sucursal de gimnasio
+/// </summary>
+public class GymBranchDetail
+{
+    /// <summary>
+    /// Guid de la sucursal
+    /// </summary>
+    public Guid Guid { get; set; }
 
     /// <summary>
     /// GUID del gimnasio principal
     /// </summary>
-    [Required]
-    [ValidateGuid]
     public Guid GymGuid { get; set; }
 
     /// <summary>
     /// Nombre de la sucursal
     /// </summary>
-    [Required]
-    [StringLength(200)]
     public string Name { get; set; }
 
     /// <summary>
     /// Código de la sucursal
     /// </summary>
-    [StringLength(50)]
     public string Code { get; set; }
 
     /// <summary>
     /// Descripción de la sucursal
     /// </summary>
-    [StringLength(1000)]
     public string Description { get; set; }
 
     /// <summary>
     /// Dirección de la sucursal
     /// </summary>
-    [Required]
-    [StringLength(500)]
     public string Address { get; set; }
 
     /// <summary>
     /// Teléfono de la sucursal
     /// </summary>
-    [StringLength(50)]
     public string Phone { get; set; }
 
     /// <summary>
     /// Email de la sucursal
     /// </summary>
-    [StringLength(200)]
-    [EmailAddress]
     public string Email { get; set; }
 
     /// <summary>
@@ -89,25 +94,23 @@ public class UpdateGymBranchRequest : IApiBaseRequest<UpdateGymBranchResponse>
     public byte? FloorCount { get; set; }
 
     /// <summary>
+    /// Estado de la sucursal
+    /// </summary>
+    public bool IsActive { get; set; }
+
+    /// <summary>
     /// Fecha de apertura de la sucursal
     /// </summary>
     public DateTime? OpeningDate { get; set; }
 
     /// <summary>
-    /// Estado activo de la sucursal
+    /// Fecha de registro
     /// </summary>
-    public bool IsActive { get; set; }
-    /// <summary>
-    /// Imagen
-    /// </summary>
-    /// <value></value>
-    public List<RequestEncodeFile> Images { get; set; }
+    public DateTime DateTimeRegister { get; set; }
 
     /// <summary>
-    /// Context
+    /// URLs de las imágenes de la sucursal
     /// </summary>
-    [JsonIgnore]
-    public CommonContextRequest ContextRequest { get; set; }
-
+    public List<FileUrlResponse> Images { get; set; }
 }
 

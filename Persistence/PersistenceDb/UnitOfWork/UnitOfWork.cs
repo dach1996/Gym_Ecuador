@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using EFCore.BulkExtensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
@@ -35,7 +36,9 @@ public abstract class UnitOfWork : IUnitOfWorkBase
     }
 
     public async Task BeginTransactionAsync()
-    => _transaction ??= await Context.Database.BeginTransactionAsync();
+    {
+        _transaction ??= await Context.Database.BeginTransactionAsync();
+    }
 
 
     /// <summary>
@@ -100,7 +103,9 @@ public abstract class UnitOfWork : IUnitOfWorkBase
     {
         if (_transaction is not null)
         {
-            await Context.SaveChangesAsync();
+            await Context.SaveChangesAsync().ConfigureAwait(false);
+            await Context.BulkSaveChangesAsync().ConfigureAwait(false);
+            await N.EntityFrameworkCore.Extensions.DbContextExtensionsAsync.BulkSaveChangesAsync(Context).ConfigureAwait(false);
             await _transaction.CommitAsync().ConfigureAwait(false);
             _transaction = null;
         }

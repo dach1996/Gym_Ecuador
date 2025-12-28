@@ -17,16 +17,17 @@ public class DeleteFileRequest(List<DeleteFileItemRequest> items)
     /// <param name="fileName"></param>
     /// <param name="path"></param>
     /// <returns></returns>
-    public DeleteFileRequest(string fileName, string path) : this([new DeleteFileItemRequest { FileName = fileName, Path = path }]) { }
+    public DeleteFileRequest(string fullPathName) : this([new DeleteFileItemRequest { FullPathName = fullPathName }]) { }
 }
 public class DeleteFileItemRequest
 {
     /// <summary>
     /// Nombre del archivo
     /// </summary>
-    public string FileName { get; set; }
+    public string FullPathName { get; set; }
+
     /// <summary>
-    /// Ruta del archivo
+    /// Identificador del archivo
     /// </summary>
-    public string Path { get; set; }
+    public Guid Identifier { get; set; }
 }

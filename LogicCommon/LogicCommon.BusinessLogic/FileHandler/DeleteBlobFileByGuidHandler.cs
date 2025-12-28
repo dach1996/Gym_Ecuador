@@ -41,15 +41,17 @@ public class DeleteBlobFileByGuidHandler(
 
             var response = await PluginFactory.GetPlugin<IBlobBus>(filesGroup.Key, true)
                      .DeleteFileAsync(new DeleteFileRequest([.. filesGroup.Select(
-                         select => new DeleteFileItemRequest
-                         {
-                             FileName = select.Name,
-                             Path = select.Path
+                         select => {
+                           return new DeleteFileItemRequest
+                            {
+                                FullPathName = select.Path,
+                                Identifier = select.Guid
+                            };
                          })])).ConfigureAwait(false);
             var itemsResponse = response.Items.Join(
                 filesGroup,
-                item => item.FileName,
-                file => file.Name, (
+                item => item.Identifier,
+                file => file.Guid, (
                     item, file) => new DeleteFileItemResponse
                     {
                         Guid = file.Guid,

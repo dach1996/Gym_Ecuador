@@ -72,21 +72,19 @@ public class LocalStorageBlobBus(
         var results = new List<DeleteFileItemResponse>();
         foreach (var item in request.Items)
         {
-            var finalPath = GetFinalPathDirectory(item.Path);
+            var finalPath = GetFinalPathDirectory(item.FullPathName);
             try
             {
-                if (!Directory.Exists(finalPath))
-                    throw new CustomBlobException($"No existe la ruta: '{finalPath}'");
-                var filePath = $"{finalPath}/{item.FileName}";
-                var file = new FileInfo(filePath);
+
+                var file = new FileInfo(finalPath);
                 //Validamos si existe la imagen para eliminarlo
-                if (file.Exists)
-                    await Task.Run(file.Delete).ConfigureAwait(false);
-                logger.LogInformation("Archivo {@FileName} eliminado correctamente en la ruta: '{@Path}'", item.FileName, finalPath);
+                if (!file.Exists)
+                    throw new CustomBlobException($"No existe el archivo en la ruta: {finalPath}");
+                await Task.Run(file.Delete).ConfigureAwait(false);
+                logger.LogInformation("Archivo {@FileName} eliminado correctamente en la ruta: '{@Path}'", file.Name, finalPath);
                 results.Add(new DeleteFileItemResponse
                 {
-                    FileName = item.FileName,
-                    Path = finalPath,
+                    Identifier = item.Identifier,
                     Success = true
                 });
             }
@@ -95,16 +93,15 @@ public class LocalStorageBlobBus(
                 logger.LogError(ex, "Error al Eliminar la Archivo: " +
                   "Folder: '{@Path}' - " +
                   "FileName: '{@FileName}' - " +
-                  "Message: '{@Message}'", finalPath, item.FileName, ex.Message);
+                  "Message: '{@Message}'", finalPath, item.FullPathName, ex.Message);
                 if (ex.InnerException is not null)
                     logger.LogError(ex.InnerException, "Inner Exception: " +
                    "Folder: '{@Path}' - " +
                    "FileName: '{@FileName}' - " +
-                   "Message: '{@Message}'", finalPath, item.FileName, ex.InnerException.Message);
+                   "Message: '{@Message}'", finalPath, item.FullPathName, ex.InnerException.Message);
                 results.Add(new DeleteFileItemResponse
                 {
-                    FileName = item.FileName,
-                    Path = finalPath,
+                    Identifier = item.Identifier,
                     Success = false
                 });
             }

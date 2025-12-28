@@ -101,6 +101,13 @@ public interface IGenericRepository<TEntity> where TEntity : class
     Task<bool> DeleteAsync(TEntity entity);
 
     /// <summary>
+    /// Elimina una Entidad
+    /// </summary>
+    /// <param name="where"></param>
+    /// <returns></returns>
+    Task<bool> DeleteAsync(Expression<Func<TEntity, bool>> where);
+
+    /// <summary>
     /// Obtiene el valor máximo de una tabla
     /// </summary>
     /// <param name="selector"></param>

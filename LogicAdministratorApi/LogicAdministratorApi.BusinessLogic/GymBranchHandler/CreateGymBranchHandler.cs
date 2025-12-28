@@ -64,25 +64,7 @@ public class CreateGymBranchHandler(
                 };
                 // Guardar en la base de datos
                 var gymBranch = await UnitOfWork.GymBranchRepository.AddAsync(newGymBranch).ConfigureAwait(false);
-                var fileBasePaths = await GetFileBasePathCacheInformationByPathCodeAsync(PathCode.GymBranchImage).ConfigureAwait(false);
-                var folderPath = HelperPathName.GetGymBranchPathName(fileBasePaths.FileDirectoryPath, newGymBranch.Id);
-                await ProcessImagesAsync(
-                    request.Images,
-                    PathCode.GymBranchImage,
-                    processCreateImages: async (images, response) =>
-                    {
-                        var imagePaths = response.Items.Select(
-                            select => new GymBranchImage
-                            {
-                                GymBranchId = gymBranch.Id,
-                                FilePersistenceId = select.Id,
-                            }
-                        ).ToList();
-                        await UnitOfWork.GymBranchImageRepository.AddRangeIdentityAsync(imagePaths).ConfigureAwait(false);
-                    },
-                    getFileExtension: (fileExtension) => HelperFileName.GetGymBranchImageName(fileExtension),
-                    folderPath: folderPath
-                ).ConfigureAwait(false);
+                await ProcessGymBranchFiles(request.Images, gymBranch.Id).ConfigureAwait(false);
                 return new CreateGymBranchResponse(newGymBranch.Guid, newGymBranch.Name, newGymBranch.Code, request.GymGuid)
                 {
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),

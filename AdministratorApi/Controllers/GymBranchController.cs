@@ -1,6 +1,5 @@
 using Asp.Versioning;
 using Common.Messages;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Common.WebApi.Models;
 using Common.WebApi.Controller;
@@ -33,7 +32,6 @@ public class GymBranchController(
     /// </summary>
     /// <param name="request">Modelo para crear sucursal de gimnasio</param>
     /// <returns></returns>
-    [Authorize]
     [HttpPost("Create")]
     [ProducesResponseType(200, Type = typeof(GenericResponse<CreateGymBranchResponse>))]
     public async Task<IActionResult> CreateGymBranch([FromBody] CreateGymBranchRequest request)
@@ -44,10 +42,19 @@ public class GymBranchController(
     /// </summary>
     /// <param name="request">Modelo para actualizar sucursal de gimnasio</param>
     /// <returns></returns>
-    [Authorize]
     [HttpPut("Update")]
     [ProducesResponseType(200, Type = typeof(GenericResponse<UpdateGymBranchResponse>))]
     public async Task<IActionResult> UpdateGymBranch([FromBody] UpdateGymBranchRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
+    /// <summary>
+    /// Obtener Sucursal de Gimnasio por GUID
+    /// </summary>
+    /// <param name="request">Modelo para obtener sucursal de gimnasio por GUID</param>
+    /// <returns></returns>
+    [HttpGet("GetByGuid")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GetGymBranchByGuidResponse>))]
+    public async Task<IActionResult> GetGymBranchByGuid([FromQuery] GetGymBranchByGuidRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
     #endregion

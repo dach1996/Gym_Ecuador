@@ -99,19 +99,23 @@ public class AzureStorageBlobBus : BlobBusBase
         var results = new List<DeleteFileItemResponse>();
         foreach (var item in request.Items)
         {
+            var pathSplits = item.FullPathName.Split('/');
+            if (pathSplits.Length < 2)
+                throw new CustomBlobException($"El path del archivo no es válido: {item.FullPathName}");
+            var containerName = pathSplits[1];
+            var filePath = string.Join('/', pathSplits.Skip(2));
             try
             {
                 //create object of BlocContainerClient to verify if exist
-                BlobContainerClient blobContainer = new(AzureBlobConfiguration.ConnectionString, item.Path);
+                BlobContainerClient blobContainer = new(AzureBlobConfiguration.ConnectionString, containerName);
                 await blobContainer.CreateIfNotExistsAsync().ConfigureAwait(false);
                 // Create the Blob container name and specifict file name
-                BlobClient blobClient = new(AzureBlobConfiguration.ConnectionString, item.Path, item.FileName);
+                BlobClient blobClient = blobContainer.GetBlobClient(filePath);
                 var result = await blobClient.DeleteIfExistsAsync().ConfigureAwait(false);
-                Logger.LogInformation("Archivo {@FileName} Eliminado del Contenedor: '{@Container}': {@State}", item.FileName, item.Path, result);
+                Logger.LogInformation("Archivo {@FileName} Eliminado del Contenedor: '{@Container}': {@State}", item.FullPathName, containerName, result);
                 results.Add(new DeleteFileItemResponse
                 {
-                    FileName = item.FileName,
-                    Path = item.Path,
+                    Identifier = item.Identifier,
                     Success = true
                 });
             }
@@ -120,16 +124,15 @@ public class AzureStorageBlobBus : BlobBusBase
                 Logger.LogError(ex, "Error al Eliminar la Archivo: " +
                   "Path: '{@Path}' - " +
                   "FileName: '{@FileName}' - " +
-                  "Message: '{@Message}'", item.Path, item.FileName, ex.Message);
+                  "Message: '{@Message}'", containerName, item.FullPathName, ex.Message);
                 if (ex.InnerException is not null)
                     Logger.LogError(ex.InnerException, "Inner Exception: " +
                    "Path: '{@Path}' - " +
                    "FileName: '{@FileName}' - " +
-                   "Message: '{@Message}'", item.Path, item.FileName, ex.InnerException.Message);
+                   "Message: '{@Message}'", containerName, item.FullPathName, ex.InnerException.Message);
                 results.Add(new DeleteFileItemResponse
                 {
-                    FileName = item.FileName,
-                    Path = item.Path,
+                    Identifier = item.Identifier,
                     Success = false
                 });
             }
@@ -160,8 +163,9 @@ public class AzureStorageBlobBus : BlobBusBase
                 //create object of BlocContainerClient to verify if exist
                 BlobContainerClient blobContainer = new(AzureBlobConfiguration.ConnectionString, containerName);
                 await blobContainer.CreateIfNotExistsAsync().ConfigureAwait(false);
+                var filePath = $"/{fileDirectoryPath}/{item.FileName}";
                 // Create the Blob container name and specifict file name
-                BlobClient blobClient = blobContainer.GetBlobClient(fileDirectoryPath + "/" + item.FileName);
+                BlobClient blobClient = blobContainer.GetBlobClient(filePath);
                 // Upload the file
                 using var stream = new MemoryStream(item.File);
                 await blobClient.UploadAsync(stream, item.ReplaceIfExist).ConfigureAwait(false);
@@ -169,7 +173,7 @@ public class AzureStorageBlobBus : BlobBusBase
                 items.Add(new UpdateFileItemResponse
                 {
                     FileName = item.FileName,
-                    Path = blobClient.Uri.AbsolutePath,
+                    Path = $"/{request.Path}/{item.FileName}",
                     Success = true
                 });
             }

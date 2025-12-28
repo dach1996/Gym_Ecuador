@@ -146,6 +146,27 @@ public class GenericRepository<TEntity>(
     }
 
     /// <summary>
+    /// Elimina una Entidad
+    /// </summary>
+    /// <param name="where"></param>
+    /// <returns></returns>
+    public async Task<bool> DeleteAsync(Expression<Func<TEntity, bool>> where)
+    {
+        try
+        {
+            where ??= t => true;
+            return (await Context.Set<TEntity>().Where(where).ExecuteDeleteAsync().ConfigureAwait(false)) > 0;
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error al eliminar Entidades (Bulk) {@Entity}:{@ErrorMessage} {@InnerException}", typeof(TEntity), ex.Message, ex.InnerException?.Message);
+            if (ex.InnerException is not null)
+                Logger.LogError(ex.InnerException, "Inner exception {Entity} : {ErrorMessage}", typeof(TEntity), ex.InnerException);
+            throw;
+        }
+    }
+
+    /// <summary>
     /// Obtiene el primer registro mediante un filtro y con entidades Incluidas (JOIN)
     /// </summary>
     /// <param name="where"></param>
@@ -268,12 +289,14 @@ public class GenericRepository<TEntity>(
         {
             Context.ChangeTracker.AutoDetectChangesEnabled = false;
             await DbContextExtensionsAsync.BulkInsertAsync(Context, entity).ConfigureAwait(false);
-            await Context.BulkSaveChangesAsync();
+            await DbContextExtensionsAsync.BulkSaveChangesAsync(Context).ConfigureAwait(false);
             return entity;
         }
         catch (Exception ex)
         {
             Logger.LogError(ex, "Exepción agregando varias Entidades de tipo {Entity}: {ErrorMessage}", typeof(TEntity), ex.Message);
+            if (ex.InnerException != null)
+                Logger.LogError(ex.InnerException, "Inner exception {Entity} : {ErrorMessage}", typeof(TEntity), ex.InnerException);
             throw;
         }
     }

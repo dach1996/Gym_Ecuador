@@ -17,6 +17,7 @@ using Common.WebCommon.Models.Queues;
 using Common.WebCommon.Templates.Notification;
 using LogicCommon.Model.CacheModel;
 using LogicCommon.Model.Request.File;
+using LogicCommon.Model.Request.HelperValidation;
 using LogicCommon.Model.Request.NotificationPush;
 using LogicCommon.Model.Request.Queue;
 using LogicCommon.Model.Response.File;
@@ -293,19 +294,21 @@ public abstract class BusinessLogicCommonBase
     /// <param name="images"></param>
     /// <param name="pathCode"></param>
     /// <param name="Func<List<RequestEncodeFile>"></param>
-    /// <param name="processCreateImages"></param>
+    /// <param name="processCreateImagesAsync"></param>
     /// <param name="Func<List<RequestEncodeFile>"></param>
-    /// <param name="processDeleteImages"></param>
+    /// <param name="processDeleteImagesAsync"></param>
     /// <returns></returns>
     protected async Task ProcessImagesAsync(
         List<RequestEncodeFile> images,
         PathCode pathCode,
-        Func<List<RequestEncodeFile>, Model.Response.File.UpdateFileResponse, Task> processCreateImages = null,
-        Func<List<RequestEncodeFile>, Model.Response.File.DeleteFileResponse, Task> processDeleteImages = null,
+        Func<List<RequestEncodeFile>, Model.Response.File.UpdateFileResponse, Task> processCreateImagesAsync = null,
+        Func<List<RequestEncodeFile>, Task> beforeDeleteImagesAsync = null,
+        Func<List<RequestEncodeFile>, Model.Response.File.DeleteFileResponse, Task> processDeleteImagesAsync = null,
         Func<string, string> getFileExtension = null,
         string folderPath = null
         )
     {
+        RequestEncodeFileValidation.Validate(images);
         foreach (var group in images?.GroupBy(group => group.Action))
         {
             switch (group.Key)
@@ -319,12 +322,13 @@ public abstract class BusinessLogicCommonBase
                         ReplaceIfExist = true
                     }).ToList();
                     var imageItemResponse = await Mediator.Send(new UpdateBlobFileRequest(pathCode, items, CommonContextRequest, folderPath)).ConfigureAwait(false);
-                    processCreateImages?.Invoke([.. group], imageItemResponse);
+                    await (processCreateImagesAsync?.Invoke([.. group], imageItemResponse)).ConfigureAwait(false);
                     break;
                 case ActionFile.Delete:
+                    await (beforeDeleteImagesAsync?.Invoke([.. group])).ConfigureAwait(false);
                     var guids = group.Select(select => select.Guid.Value).ToList();
                     var deleteFileResponse = await Mediator.Send(new DeleteBlobFileByGuidRequest(guids, CommonContextRequest)).ConfigureAwait(false);
-                    processDeleteImages?.Invoke([.. group], deleteFileResponse);
+                    await (processDeleteImagesAsync?.Invoke([.. group], deleteFileResponse)).ConfigureAwait(false);
                     break;
                 case ActionFile.None:
                     break;

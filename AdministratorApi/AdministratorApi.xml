@@ -57,6 +57,13 @@
             <param name="request">Modelo para actualizar sucursal de gimnasio</param>
             <returns></returns>
         </member>
+        <member name="M:AdministratorApi.Controllers.GymBranchController.GetGymBranchByGuid(LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchByGuidRequest)">
+            <summary>
+            Obtener Sucursal de Gimnasio por GUID
+            </summary>
+            <param name="request">Modelo para obtener sucursal de gimnasio por GUID</param>
+            <returns></returns>
+        </member>
         <member name="T:AdministratorApi.Controllers.GymBranchScheduleController">
             <summary>
             Controlador de Horarios de Sucursal de Gimnasio

@@ -15,14 +15,9 @@ public class DeleteFileResponse
 public class DeleteFileItemResponse
 {
     /// <summary>
-    /// Nombre del archivo
+    /// Identificador del archivo
     /// </summary>
-    public string FileName { get; set; }
-
-    /// <summary>
-    /// Ruta del archivo
-    /// </summary>
-    public string Path { get; set; }
+    public Guid Identifier { get; set; }
 
     /// <summary>
     /// Id del archivo
