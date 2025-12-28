@@ -534,6 +534,52 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Gym.GetGymsRequest">
+            <summary>
+            Solicitud para obtener gimnasios paginados
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Gym.GetGymsRequest.NameFilter">
+            <summary>
+            Filtro por nombre de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Gym.GetGymsRequest.CodeFilter">
+            <summary>
+            Filtro por código de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Gym.GetGymsRequest.IsActiveFilter">
+            <summary>
+            Filtro por estado activo
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Gym.GetGymsRequest.Page">
+            <summary>
+            Página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Gym.GetGymsRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Gym.GetGymsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Request.Gym.GetGymsRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Request.Gym.GetGymsRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Request.Gym.UpdateGymRequest">
             <summary>
             Solicitud para actualizar un gimnasio
@@ -1048,6 +1094,101 @@
         <member name="M:LogicAdministratorApi.Model.Response.Gym.CreateGymResponse.#ctor">
             <summary>
             Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Gym.GetGymsResponse">
+            <summary>
+            Respuesta de obtener gimnasios paginados
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.Gym.GetGymsResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicAdministratorApi.Model.Response.Gym.GymItem})">
+            <summary>
+            Respuesta de obtener gimnasios paginados
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Gym.GetGymsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Gym.GetGymsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Gym.GetGymsResponse.TotalRegister">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Gym.GetGymsResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Gym.GymItem">
+            <summary>
+            Item de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Gym.GymItem.Guid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Gym.GymItem.Name">
+            <summary>
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Gym.GymItem.Code">
+            <summary>
+            Código del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Gym.GymItem.Description">
+            <summary>
+            Descripción del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Gym.GymItem.ShortDescription">
+            <summary>
+            Descripción corta del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Gym.GymItem.Phone">
+            <summary>
+            Teléfono del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Gym.GymItem.Email">
+            <summary>
+            Email del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Gym.GymItem.Website">
+            <summary>
+            Sitio web del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Gym.GymItem.IsActive">
+            <summary>
+            Estado del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Gym.GymItem.DateTimeRegister">
+            <summary>
+            Fecha de registro
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Response.Gym.UpdateGymResponse">

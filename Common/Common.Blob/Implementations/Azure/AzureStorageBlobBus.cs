@@ -152,10 +152,10 @@ public class AzureStorageBlobBus : BlobBusBase
     {
         var items = new List<UpdateFileItemResponse>();
         var pathSplits = request.Path.Split('/');
-        var containerName = pathSplits[0];
-        var fileDirectoryPath = string.Empty;
-        if (pathSplits.Length > 1)
-            fileDirectoryPath = pathSplits.Skip(1).Aggregate((current, next) => $"{current}/{next}");
+        var containerName = request.Path.StartsWith('/')
+         ? pathSplits[1] : pathSplits[0];
+        int index = request.Path.IndexOf(containerName) + containerName.Length;
+        var fileDirectoryPath = request.Path[index..].TrimStart('/');
         foreach (var item in request.Items)
         {
             try
@@ -173,7 +173,7 @@ public class AzureStorageBlobBus : BlobBusBase
                 items.Add(new UpdateFileItemResponse
                 {
                     FileName = item.FileName,
-                    Path = $"/{request.Path}/{item.FileName}",
+                    Path = $"/{containerName}{filePath}",
                     Success = true
                 });
             }

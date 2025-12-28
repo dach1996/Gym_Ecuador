@@ -131,6 +131,13 @@
             <param name="request">Modelo para actualizar gimnasio</param>
             <returns></returns>
         </member>
+        <member name="M:AdministratorApi.Controllers.GymController.GetGyms(LogicAdministratorApi.Model.Request.Gym.GetGymsRequest)">
+            <summary>
+            Obtener Gimnasios
+            </summary>
+            <param name="request">Modelo para obtener gimnasios</param>
+            <returns></returns>
+        </member>
         <member name="T:Program">
             <summary>
             Auto-generated public partial Program class for top-level statement apps.

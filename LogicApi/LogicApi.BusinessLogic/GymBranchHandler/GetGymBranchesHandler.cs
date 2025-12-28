@@ -1,5 +1,6 @@
 using LogicApi.Model.Request.GymBranch;
 using LogicApi.Model.Response.GymBranch;
+using LogicCommon.Model.Response.File;
 
 namespace LogicApi.BusinessLogic.GymBranchHandler;
 
@@ -32,7 +33,10 @@ public class GetGymBranchesHandler(
                             Name = select.Name,
                             CalificationPercentage = 90,
                             Address = select.Address,
-                            ImageUrls = new List<string> { "https://img.freepik.com/premium-photo/modern-gym-interior-with-sport-fitness-equipment-fitness-center-inteior-inteior-crossfit-workout-gym_875746-17605.jpg" }
+                            ImageUrls = select.GymBranchImages
+                                .Where(image => image.FilePersistence.State)
+                                .Select(image => new FileUrlResponse(image.FilePersistence.Guid, image.FilePersistence.FileBasePath.BaseUrl, image.FilePersistence.Path))
+                                .ToList()
                         },
                         where => true
                     ).ConfigureAwait(false);

@@ -516,51 +516,58 @@ public enum OperationAdministratorName : short
     UpdateGym = 72,
 
     /// <summary>
+    /// Obtener Gimnasios Paginados
+    /// </summary>
+    [EnumMember(Value = "Obtener Gimnasios Paginados")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_GYMS_PAGINATED)]
+    GetGymsPaginated = 73,
+
+    /// <summary>
     /// Crear Sucursal de Gimnasio
     /// </summary>
     [EnumMember(Value = "Crear Sucursal de Gimnasio")]
     [FunctionalityMember(FunctionalitiesCodes.CREATE_GYM_BRANCH, registerAuditLog: true)]
-    CreateGymBranch = 73,
+    CreateGymBranch = 74,
 
     /// <summary>
     /// Actualizar Sucursal de Gimnasio
     /// </summary>
     [EnumMember(Value = "Actualizar Sucursal de Gimnasio")]
     [FunctionalityMember(FunctionalitiesCodes.UPDATE_GYM_BRANCH, registerAuditLog: true)]
-    UpdateGymBranch = 74,
+    UpdateGymBranch = 75,
 
     /// <summary>
     /// Crear Horario de Sucursal
     /// </summary>
     [EnumMember(Value = "Crear Horario de Sucursal")]
     [FunctionalityMember(FunctionalitiesCodes.CREATE_GYM_BRANCH_SCHEDULE, registerAuditLog: true)]
-    CreateGymBranchSchedule = 75,
+    CreateGymBranchSchedule = 76,
 
     /// <summary>
     /// Actualizar Horario de Sucursal
     /// </summary>
     [EnumMember(Value = "Actualizar Horario de Sucursal")]
     [FunctionalityMember(FunctionalitiesCodes.UPDATE_GYM_BRANCH_SCHEDULE, registerAuditLog: true)]
-    UpdateGymBranchSchedule = 76,
+    UpdateGymBranchSchedule = 77,
 
     /// <summary>
     /// Eliminar Horario de Sucursal
     /// </summary>
     [EnumMember(Value = "Eliminar Horario de Sucursal")]
     [FunctionalityMember(FunctionalitiesCodes.DELETE_GYM_BRANCH_SCHEDULE, registerAuditLog: true)]
-    DeleteGymBranchSchedule = 77,
+    DeleteGymBranchSchedule = 78,
 
     /// <summary>
     /// Obtener Sucursales de Gimnasio Paginadas
     /// </summary>
     [EnumMember(Value = "Obtener Sucursales de Gimnasio Paginadas")]
     [FunctionalityMember(FunctionalitiesCodes.GET_GYM_BRANCHES_PAGINATED)]
-    GetGymBranchesPaginated = 78,
+    GetGymBranchesPaginated = 79,
 
     /// <summary>
     /// Obtener Detalle de Sucursal de Gimnasio por GUID
     /// </summary>
     [EnumMember(Value = "Obtener Detalle de Sucursal de Gimnasio por GUID")]
     [FunctionalityMember(FunctionalitiesCodes.GET_GYM_BRANCH_BY_GUID)]
-    GetGymBranchByGuid = 79
+    GetGymBranchByGuid = 80
 }

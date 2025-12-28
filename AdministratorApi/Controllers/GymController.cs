@@ -1,6 +1,5 @@
 using Asp.Versioning;
 using Common.Messages;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Common.WebApi.Models;
 using Common.WebApi.Controller;
@@ -33,7 +32,6 @@ public class GymController(
     /// </summary>
     /// <param name="request">Modelo para crear gimnasio</param>
     /// <returns></returns>
-    [Authorize]
     [HttpPost("Create")]
     [ProducesResponseType(200, Type = typeof(GenericResponse<CreateGymResponse>))]
     public async Task<IActionResult> CreateGym([FromBody] CreateGymRequest request)
@@ -44,10 +42,19 @@ public class GymController(
     /// </summary>
     /// <param name="request">Modelo para actualizar gimnasio</param>
     /// <returns></returns>
-    [Authorize]
     [HttpPut("Update")]
     [ProducesResponseType(200, Type = typeof(GenericResponse<UpdateGymResponse>))]
     public async Task<IActionResult> UpdateGym([FromBody] UpdateGymRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
+    /// <summary>
+    /// Obtener Gimnasios
+    /// </summary>
+    /// <param name="request">Modelo para obtener gimnasios</param>
+    /// <returns></returns>
+    [HttpGet("GetGyms")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GetGymsResponse>))]
+    public async Task<IActionResult> GetGyms([FromQuery] GetGymsRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
     #endregion

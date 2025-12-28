@@ -1,3 +1,5 @@
+using LogicCommon.Model.Response.File;
+
 namespace LogicApi.Model.Response.GymBranch;
 
 /// <summary>
@@ -71,7 +73,7 @@ public class GymBranchItem
     /// URL de la imagen de la sucursal
     /// </summary>
     /// <value></value>
-    public List<string> ImageUrls { get; set; }
+    public List<FileUrlResponse> ImageUrls { get; set; }
 
 }
 

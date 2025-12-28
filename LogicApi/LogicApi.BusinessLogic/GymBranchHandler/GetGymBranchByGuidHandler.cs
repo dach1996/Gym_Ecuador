@@ -1,5 +1,6 @@
 using LogicApi.Model.Request.GymBranch;
 using LogicApi.Model.Response.GymBranch;
+using LogicCommon.Model.Response.File;
 
 namespace LogicApi.BusinessLogic.GymBranchHandler;
 
@@ -31,13 +32,15 @@ public class GetGymBranchByGuidHandler(
                             Description = select.Description,
                             Address = select.Address,
                             Location = new(select.Latitude, select.Longitude),
-
+                            ImageUrls = select.GymBranchImages
+                                .Where(image => image.FilePersistence.State)
+                                .Select(image => new FileUrlResponse(image.FilePersistence.Guid, image.FilePersistence.FileBasePath.BaseUrl, image.FilePersistence.Path))
+                                .ToList()
                         },
                         where => where.Guid == request.GymBranchGuid)
                     .ConfigureAwait(false))
                     ?? throw new CustomException((int)MessagesCodesError.SystemError, "Sucursal de gimnasio no encontrada");
                 branch.CalificationPercentage = 90;
-                branch.ImageUrls = ["https://img.freepik.com/premium-photo/modern-gym-interior-with-sport-fitness-equipment-fitness-center-inteior-inteior-crossfit-workout-gym_875746-17605.jpg", "https://img.freepik.com/premium-photo/dark-empty-gym-interior-with-training-equipment-free-space_1028938-42151.jpg"];
                 branch.Services = [
                                 new("Entrenamiento personal", "PERSONAL_TRAINING"),
                                 new("Clases grupales", "GROUP_CLASSES"),

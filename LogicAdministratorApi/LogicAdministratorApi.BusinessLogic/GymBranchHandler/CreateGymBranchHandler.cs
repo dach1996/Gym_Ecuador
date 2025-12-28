@@ -63,8 +63,10 @@ public class CreateGymBranchHandler(
                     DateTimeRegister = Now,
                 };
                 // Guardar en la base de datos
+                await UnitOfWork.BeginTransactionAsync().ConfigureAwait(false);
                 var gymBranch = await UnitOfWork.GymBranchRepository.AddAsync(newGymBranch).ConfigureAwait(false);
                 await ProcessGymBranchFiles(request.Images, gymBranch.Id).ConfigureAwait(false);
+                await UnitOfWork.CommitAsync().ConfigureAwait(false);
                 return new CreateGymBranchResponse(newGymBranch.Guid, newGymBranch.Name, newGymBranch.Code, request.GymGuid)
                 {
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
