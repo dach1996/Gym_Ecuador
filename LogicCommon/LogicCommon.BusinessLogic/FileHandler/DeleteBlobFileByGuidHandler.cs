@@ -28,7 +28,6 @@ public class DeleteBlobFileByGuidHandler(
         var filePersistence = await UnitOfWork.FileRepository.GetGenericAsync(
             select => new
             {
-                select.Name,
                 select.Guid,
                 select.Id,
                 select.Path,

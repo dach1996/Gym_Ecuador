@@ -322,13 +322,16 @@ public abstract class BusinessLogicCommonBase
                         ReplaceIfExist = true
                     }).ToList();
                     var imageItemResponse = await Mediator.Send(new UpdateBlobFileRequest(pathCode, items, CommonContextRequest, folderPath)).ConfigureAwait(false);
-                    await (processCreateImagesAsync?.Invoke([.. group], imageItemResponse)).ConfigureAwait(false);
+                    if (processCreateImagesAsync is not null)
+                        await processCreateImagesAsync.Invoke([.. group], imageItemResponse).ConfigureAwait(false);
                     break;
                 case ActionFile.Delete:
-                    await (beforeDeleteImagesAsync?.Invoke([.. group])).ConfigureAwait(false);
+                    if (beforeDeleteImagesAsync is not null)
+                        await beforeDeleteImagesAsync.Invoke([.. group]).ConfigureAwait(false);
                     var guids = group.Select(select => select.Guid.Value).ToList();
                     var deleteFileResponse = await Mediator.Send(new DeleteBlobFileByGuidRequest(guids, CommonContextRequest)).ConfigureAwait(false);
-                    await (processDeleteImagesAsync?.Invoke([.. group], deleteFileResponse)).ConfigureAwait(false);
+                    if (processDeleteImagesAsync is not null)
+                        await processDeleteImagesAsync.Invoke([.. group], deleteFileResponse).ConfigureAwait(false);
                     break;
                 case ActionFile.None:
                     break;

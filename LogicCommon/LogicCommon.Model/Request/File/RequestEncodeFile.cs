@@ -33,6 +33,32 @@ public class RequestEncodeFile
     /// </summary>
     [ValidateEnum]
     public ActionFile Action { get; set; }
+
+    /// <summary>
+    /// Convierte a RequestEncodeFile para crear
+    /// </summary>
+    /// <param name="encodeContent"></param>
+    /// <param name="fileExtension"></param>
+    /// <param name="fileName"></param>
+    /// <returns></returns>
+    public static RequestEncodeFile ToCreate(string encodeContent, string fileExtension, string fileName) => new()
+    {
+        EncodeContent = encodeContent,
+        FileExtension = fileExtension,
+        FileName = fileName,
+        Action = ActionFile.Create
+    };
+
+    /// <summary>
+    /// Convierte a RequestEncodeFile para eliminar
+    /// </summary>
+    /// <param name="guid"></param>
+    /// <returns></returns>
+    public static RequestEncodeFile ToDelete(Guid guid) => new()
+    {
+        Guid = guid,
+        Action = ActionFile.Delete
+    };
 }
 /// <summary>
 /// Acciones para el archivo
