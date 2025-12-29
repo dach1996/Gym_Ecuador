@@ -52,8 +52,7 @@ public class AssignPersonRequest : IRequest<LoginResponse>, IApiBaseRequest
     /// </summary>
     /// <value></value>
     [Required]
-    [Range(1, byte.MaxValue)]
-    public byte TypeIdentificationId { get; set; }
+    public string TypeIdentificationId { get; set; }
 
     /// <summary>
     /// Nombre

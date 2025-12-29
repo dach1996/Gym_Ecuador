@@ -29,6 +29,7 @@ public class GoogleAuthenticationServicesImplementation : AuthenticationServices
         Configuration = configuration.GetSection(nameof(AuthenticationServiceConfiguration)).Get<AuthenticationServiceConfiguration<GoogleConfiguration>>()
           ?.Implementations?.FirstOrDefault(where => where.Identifier == $"{ImplementationName}")?.Information
            ?? throw new CustomAuthenticationServicesException($"No se encontró la configuración de servicios de authenticación con identificador{ImplementationName}");
+        Logger.LogInformation("Configuración de servicios de authenticación encontrada: {@Configuration}", Configuration);
     }
 
     /// <summary>
@@ -43,7 +44,8 @@ public class GoogleAuthenticationServicesImplementation : AuthenticationServices
             //configura las validaciones
             var settings = new GoogleJsonWebSignature.ValidationSettings()
             {
-                Audience = Configuration.Audiences
+                Audience = Configuration.Audiences,
+              
             };
             //Validar Payload
             var validPayload = await GoogleJsonWebSignature.ValidateAsync(request.Token, settings).ConfigureAwait(false);

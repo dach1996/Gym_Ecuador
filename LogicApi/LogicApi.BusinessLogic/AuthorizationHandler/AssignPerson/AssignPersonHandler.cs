@@ -10,8 +10,6 @@ public abstract class AssignPersonHandler(
         logger,
         pluginFactory), IAssignPersonHandler
 {
-
-
     /// <summary>
     /// Handler
     /// </summary>
@@ -51,7 +49,6 @@ public abstract class AssignPersonHandler(
     /// <returns></returns>
     protected abstract Task<User> GetUserAsync(AssignPersonRequest request);
 
-
     /// <summary>
     /// Obtiene la persona
     /// </summary>
@@ -79,8 +76,6 @@ public abstract class AssignPersonHandler(
         return person;
     }
 
-
-
     /// <summary>
     /// Ejecuta el proceso de asignar persona
     /// </summary>
@@ -96,15 +91,17 @@ public abstract class AssignPersonHandler(
             throw new CustomException((int)MessagesCodesError.NamesOrLastNameDontMatch, $"El nombre '{request.Name}' no existe en la consulta.");
         if (!person.FullName.ExistString(request.LastName))
             throw new CustomException((int)MessagesCodesError.NamesOrLastNameDontMatch, $"El apellido '{request.LastName}' no existe en la consulta.");
+        var typeIdentificationIdInt = request.TypeIdentificationId.ToInt();
+        if (!await UnitOfWork.TypeIdentificationRepository.ExistAnyAsync(where => where.Id == typeIdentificationIdInt).ConfigureAwait(false))
+            throw new CustomException((int)MessagesCodesError.TypeIdentificationNotFound, $"El tipo de identificación '{request.TypeIdentificationId}' no existe.");
         //Verifica si se ha registrado los datos de la persona
         if (person.UserIdRegister is null)
         {
             person.DateTimeRegister = Clock.Now();
-            person.TypeIdentificationId = request.TypeIdentificationId;
+            person.TypeIdentificationId = (byte)typeIdentificationIdInt;
             person.Name = request.Name;
             person.LastName = request.LastName;
             person.UserIdRegister = user.Id;
-            //Actualiza la persona
             await UnitOfWork.PersonRepository.UpdateAsync(person).ConfigureAwait(false);
         }
         //Actualiza los datos de usuario
@@ -129,5 +126,4 @@ public abstract class AssignPersonHandler(
     /// <param name="user"></param>
     /// <returns></returns>
     protected abstract Task<LoginResponse> GetLoginAsync(AssignPersonRequest request, User user);
-
 }

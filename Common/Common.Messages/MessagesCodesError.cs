@@ -309,5 +309,9 @@ public enum MessagesCodesError
     /// Sucursal de Gimnasio no encontrada
     /// </summary>
     GymBranchNotFound = 137,
+    /// <summary>
+    /// Tipo de identificación no encontrado
+    /// </summary>
+    TypeIdentificationNotFound = 138,
 }
 
