@@ -15,31 +15,4 @@ public class UpdateProcessTrackingResponse : IApiBaseResponse
     /// </summary>
     public bool ShowMessage { get; set; }
 
-    /// <summary>
-    /// Guid del seguimiento de proceso actualizado
-    /// </summary>
-    public Guid ProcessTrackingGuid { get; set; }
-
-    /// <summary>
-    /// Nombre del proceso
-    /// </summary>
-    public string ProcessName { get; set; }
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="processTrackingGuid"></param>
-    /// <param name="processName"></param>
-    public UpdateProcessTrackingResponse(Guid processTrackingGuid, string processName)
-    {
-        ProcessTrackingGuid = processTrackingGuid;
-        ProcessName = processName;
-    }
-
-    /// <summary>
-    /// Default Constructor
-    /// </summary>
-    public UpdateProcessTrackingResponse()
-    {
-    }
 }

@@ -616,6 +616,12 @@ public enum OperationApiName
     [EnumMember(Value = "Actualizar Seguimiento de Proceso")]
     UpdateProcessTracking,
 
+    /// <summary>
+    /// Eliminar Seguimiento de Proceso
+    /// </summary>
+    [EnumMember(Value = "Eliminar Seguimiento de Proceso")]
+    DeleteProcessTracking,
+
     // ========== OPERACIONES DE PLAN DE SUSCRIPCIÓN ==========
 
     /// <summary>

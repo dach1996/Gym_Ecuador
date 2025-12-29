@@ -309,7 +309,7 @@ public abstract class BusinessLogicCommonBase
         )
     {
         RequestEncodeFileValidation.Validate(images);
-        foreach (var group in images?.GroupBy(group => group.Action))
+        foreach (var group in (images ?? []).GroupBy(group => group.Action))
         {
             switch (group.Key)
             {

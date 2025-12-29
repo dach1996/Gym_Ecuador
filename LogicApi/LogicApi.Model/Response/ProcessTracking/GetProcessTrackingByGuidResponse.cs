@@ -1,3 +1,5 @@
+using LogicCommon.Model.Response.File;
+
 namespace LogicApi.Model.Response.ProcessTracking;
 
 /// <summary>
@@ -28,13 +30,6 @@ public class GetProcessTrackingByGuidResponse : IApiBaseResponse
     {
         ProcessTracking = processTracking;
     }
-
-    /// <summary>
-    /// Default Constructor
-    /// </summary>
-    public GetProcessTrackingByGuidResponse()
-    {
-    }
 }
 
 /// <summary>
@@ -48,59 +43,69 @@ public class ProcessTrackingDetail
     public Guid Guid { get; set; }
 
     /// <summary>
+    /// Fecha de registro
+    /// </summary>
+    public DateTime RegistrationDate { get; set; }
+
+    /// <summary>
     /// Información del gimnasio
     /// </summary>
     public GymInfo Gym { get; set; }
 
     /// <summary>
-    /// Tipo de proceso
+    /// Peso corporal actual (en kg o la unidad estándar)
     /// </summary>
-    public string ProcessType { get; set; }
+    public decimal Weight { get; set; }
 
     /// <summary>
-    /// Nombre del proceso
+    /// Altura de la persona (en cm) - No cambia con frecuencia, pero es clave para el IMC.
     /// </summary>
-    public string ProcessName { get; set; }
+    public decimal Height { get; set; }
 
     /// <summary>
-    /// Descripción del proceso
+    /// Porcentaje de grasa corporal estimado.
     /// </summary>
-    public string Description { get; set; }
+    public decimal? BodyFatPercentage { get; set; }
 
     /// <summary>
-    /// Estado del proceso
+    /// Porcentaje de masa muscular.
     /// </summary>
-    public string Status { get; set; }
+    public decimal? MuscleMassPercentage { get; set; }
 
     /// <summary>
-    /// Fecha de inicio
+    /// Circunferencia del pecho o tórax (cm).
     /// </summary>
-    public DateTime StartDate { get; set; }
+    public decimal? ChestMeasurement { get; set; }
 
     /// <summary>
-    /// Fecha de fin
+    /// Circunferencia de la cintura (cm). Clave para salud cardiovascular.
     /// </summary>
-    public DateTime? EndDate { get; set; }
+    public decimal? WaistMeasurement { get; set; }
 
     /// <summary>
-    /// Progreso (porcentaje)
+    /// Circunferencia de la cadera (cm).
     /// </summary>
-    public decimal? Progress { get; set; }
+    public decimal? HipMeasurement { get; set; }
 
     /// <summary>
-    /// Notas adicionales
+    /// Circunferencia del brazo derecho (cm).
     /// </summary>
-    public string Notes { get; set; }
+    public decimal? ArmRightMeasurement { get; set; }
 
     /// <summary>
-    /// Estado activo
+    /// Circunferencia del muslo derecho (cm).
     /// </summary>
-    public bool IsActive { get; set; }
+    public decimal? ThighRightMeasurement { get; set; }
 
     /// <summary>
-    /// Fecha de registro
+    /// Comentarios u observaciones del entrenador o la persona.
     /// </summary>
-    public DateTime? DateTimeRegister { get; set; }
+    public string Observations { get; set; }
+
+    /// <summary>
+    /// Imágenes del seguimiento de proceso
+    /// </summary>
+    public List<FileUrlResponse> Images { get; set; }
 }
 
 /// <summary>

@@ -6,17 +6,27 @@ namespace Common.WebCommon.Helper;
 public static class HelperFileName
 {
     /// <summary>
+    /// Formato de Nombre de imagenes genéricas
+    /// </summary>
+    /// <param name="prefix"></param>
+    /// <param name="extension"></param>
+    /// <param name="now"></param>
+    /// <returns></returns>
+    private static string GenericImageName(string prefix, string extension, DateTime? now = null)
+    {
+        var guid = $"{Guid.NewGuid():N}";
+        var last5 = guid.Length >= 5 ? guid[^5..] : guid;
+        return $"{prefix}_{now ?? DateTime.Now:yyyyMMddHHmmss}{last5}.{extension}";
+    }
+
+    /// <summary>
     /// Formato de Nombre de imagenes de usuario
     /// </summary>
     /// <param name="extension"></param>
     /// <param name="now"></param>
     /// <returns></returns>
     public static string GetUserImageName(string extension, DateTime? now = null)
-    {
-        var guid = $"{Guid.NewGuid():N}";
-        var last5 = guid.Length >= 5 ? guid[^5..] : guid;
-        return $"UserImage_{now ?? DateTime.Now:yyyyMMddHHmmss}{last5}.{extension}";
-    }
+        => GenericImageName("UserImage", extension, now);
 
     /// <summary>
     /// Formato de Nombre de imagenes de sucursales de gimnasio
@@ -25,10 +35,15 @@ public static class HelperFileName
     /// <param name="now"></param>
     /// <returns></returns>
     public static string GetGymBranchImageName(string extension, DateTime? now = null)
-    {
-        var guid = $"{Guid.NewGuid():N}";
-        var last5 = guid.Length >= 5 ? guid[^5..] : guid;
-        return $"GymBranch_{now ?? DateTime.Now:yyyyMMddHHmmss}{last5}.{extension}";
-    }
+        => GenericImageName("GymBranch", extension, now);
+
+    /// <summary>
+    /// Formato de Nombre de imagenes de procesos de seguimiento
+    /// </summary>
+    /// <param name="extension"></param>
+    /// <param name="now"></param>
+    /// <returns></returns>
+    public static string GetProcessTrackingImageName(string extension, DateTime? now = null)
+        => GenericImageName("ProcessTracking", extension, now);
 
 }

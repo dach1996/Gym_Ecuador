@@ -1,5 +1,5 @@
 using LogicApi.Model.Request.ProcessTracking;
-using LogicApi.Model.Response.ProcessTracking;
+using LogicCommon.Model.Response;
 
 namespace LogicApi.BusinessLogic.ProcessTrackingHandler;
 
@@ -10,7 +10,7 @@ namespace LogicApi.BusinessLogic.ProcessTrackingHandler;
 /// <param name="pluginFactory"></param>
 public class UpdateProcessTrackingHandler(
     ILogger<UpdateProcessTrackingHandler> logger,
-    IPluginFactory pluginFactory) : ProcessTrackingBase<UpdateProcessTrackingRequest, UpdateProcessTrackingResponse>(logger, pluginFactory)
+    IPluginFactory pluginFactory) : ProcessTrackingBase<UpdateProcessTrackingRequest, GenericCommonOperationResponse>(logger, pluginFactory)
 {
     /// <summary>
     /// Maneja la actualización de un seguimiento de proceso
@@ -18,33 +18,26 @@ public class UpdateProcessTrackingHandler(
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public override async Task<UpdateProcessTrackingResponse> Handle(UpdateProcessTrackingRequest request, CancellationToken cancellationToken)
-    {
-        return await ExecuteHandlerAsync(
-            OperationApiName.UpdateProcessTracking,
-            request,
-            async () =>
+    public override async Task<GenericCommonOperationResponse> Handle(UpdateProcessTrackingRequest request, CancellationToken cancellationToken)
+        => await ExecuteHandlerAsync(OperationApiName.UpdateProcessTracking, request, async () =>
             {
                 // Buscar el seguimiento de proceso por GUID
                 var processTracking = await UnitOfWork.ProcessTrackingRepository
-                    .GetByFirstOrDefaultAsync(where => where.Guid == request.ProcessTrackingGuid)
-                    .ConfigureAwait(false);
+                    .GetByFirstOrDefaultAsync(where => where.Guid == request.ProcessTrackingGuid && where.UserId == UserId)
+                    .ConfigureAwait(false) ?? throw new CustomException((int)MessagesCodesError.SystemError, "Seguimiento de proceso no encontrado");
 
-                if (processTracking == null)
-                    throw new CustomException((int)MessagesCodesError.SystemError, "Seguimiento de proceso no encontrado");
-
-        
-
-                // Guardar cambios
-                await UnitOfWork.ProcessTrackingRepository.UpdateAsync(processTracking).ConfigureAwait(false);
-
-                return new UpdateProcessTrackingResponse(processTracking.Guid, "")
-                {
-                    UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
-                    ShowMessage = true
-                };
-            },
-            registerLogAudit: true
-        ).ConfigureAwait(false);
-    }
+                processTracking.Weight = request.Weight;
+                processTracking.Height = request.Height;
+                processTracking.BodyFatPercentage = request.BodyFatPercentage;
+                processTracking.MuscleMassPercentage = request.MuscleMassPercentage;
+                processTracking.ChestMeasurement = request.ChestMeasurement;
+                processTracking.WaistMeasurement = request.WaistMeasurement;
+                processTracking.HipMeasurement = request.HipMeasurement;
+                processTracking.ArmRightMeasurement = request.ArmRightMeasurement;
+                processTracking.ThighRightMeasurement = request.ThighRightMeasurement;
+                await UnitOfWork.BeginTransactionAsync().ConfigureAwait(false);
+                await ProcessProcessTrackingImageFiles(request.Images, processTracking.Id, UserId).ConfigureAwait(false);
+                await UnitOfWork.CommitAsync().ConfigureAwait(false);
+                return GenericCommonOperationResponse.SuccessOperation();
+            }).ConfigureAwait(false);
 }

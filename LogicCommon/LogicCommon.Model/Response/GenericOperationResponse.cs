@@ -2,23 +2,18 @@ namespace LogicCommon.Model.Response;
 /// <summary>
 /// Respuesta Genérica
 /// </summary>
-public class GenericCommonOperationResponse
+/// <remarks>
+/// Constructor
+/// </remarks>
+/// <param name="userMessage"></param>
+public class GenericCommonOperationResponse(string userMessage)
 {
     protected const string SUCCESS = "Operación Exitosa";
 
     /// <summary>
     /// Mensaje al Usuario
     /// </summary>
-    public string UserMessage { get; set; }
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="userMessage"></param>
-    public GenericCommonOperationResponse(string userMessage)
-    {
-        UserMessage = userMessage;
-    }
+    public string UserMessage { get; set; } = userMessage;
 
     /// <summary>
     /// Operación correcta

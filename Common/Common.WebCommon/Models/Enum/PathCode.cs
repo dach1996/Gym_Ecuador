@@ -17,4 +17,10 @@ public enum PathCode
     /// </summary>
     [EnumMember(Value = "GYM_BRANCH_IMAGE")]
     GymBranchImage = 2,
+
+    /// <summary>
+    /// Ruta de imágenes de procesos de seguimiento
+    /// </summary>
+    [EnumMember(Value = "PROCESS_TRACKING_IMAGE")]
+    ProcessTrackingImage = 3,
 }

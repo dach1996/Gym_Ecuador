@@ -29,21 +29,17 @@ public class GetProcessTrackingsHandler(
                         select => new ProcessTrackingItem
                         {
                             Guid = select.Guid,
-                            PersonFullName = select.Person.FullName,
-                            GymName = select.GymBranch.Gym.Name,
-                            DateTimeRegister = select.DateTimeRegister
-                        }
+                            RegistrationDate = select.DateTimeRegister,
+                            Weight = select.Weight,
+                            Height = select.Height,
+                        },
+                        where: where => where.UserId == UserId
                     ).ConfigureAwait(false);
 
-
-                return new GetProcessTrackingsResponse(
-                    processTrackings.Items,
-                    processTrackings.TotalItems,
-                    request.Page, request.PageSize)
+                return new GetProcessTrackingsResponse
                 {
-                    UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
-                    ShowMessage = false
+                    Registers = processTrackings.Items,
+                    TotalRegister = processTrackings.TotalItems
                 };
-            }
-        ).ConfigureAwait(false);
+            }).ConfigureAwait(false);
 }

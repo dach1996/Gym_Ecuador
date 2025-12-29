@@ -1,3 +1,4 @@
+
 namespace Common.WebCommon.Helper;
 
 /// <summary>
@@ -13,4 +14,11 @@ public static class HelperPathName
     /// <returns></returns>
     public static string GetGymBranchPathName(string basePath, int gymBranchId) => $"{basePath}/{gymBranchId}";
 
+    /// <summary>
+    ///  Formato de Path de imagenes de procesos de seguimiento
+    /// </summary>
+    /// <param name="fileDirectoryPath"></param>
+    /// <param name="processTrackingId"></param>
+    /// <returns></returns>
+    public static string GetProcessTrackingPathName(string fileDirectoryPath, int processTrackingId) => $"{fileDirectoryPath}/{processTrackingId}";
 }

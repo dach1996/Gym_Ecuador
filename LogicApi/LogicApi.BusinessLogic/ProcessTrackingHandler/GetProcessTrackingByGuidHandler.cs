@@ -1,5 +1,6 @@
 using LogicApi.Model.Request.ProcessTracking;
 using LogicApi.Model.Response.ProcessTracking;
+using LogicCommon.Model.Response.File;
 
 namespace LogicApi.BusinessLogic.ProcessTrackingHandler;
 
@@ -23,30 +24,29 @@ public class GetProcessTrackingByGuidHandler(
             {
                 // Buscar el seguimiento de proceso por GUID con includes
                 var processTracking = await UnitOfWork.ProcessTrackingRepository
-                    .GetByFirstOrDefaultAsync(
-                        where => where.Guid == request.ProcessTrackingGuid
-                    ).ConfigureAwait(false);
+                    .GetFirstOrDefaultGenericAsync(
+                        select => new ProcessTrackingDetail
+                        {
+                            Guid = select.Guid,
+                            Weight = select.Weight,
+                            Height = select.Height,
+                            BodyFatPercentage = select.BodyFatPercentage,
+                            MuscleMassPercentage = select.MuscleMassPercentage,
+                            ChestMeasurement = select.ChestMeasurement,
+                            WaistMeasurement = select.WaistMeasurement,
+                            HipMeasurement = select.HipMeasurement,
+                            ArmRightMeasurement = select.ArmRightMeasurement,
+                            ThighRightMeasurement = select.ThighRightMeasurement,
+                            Observations = select.Observations,
+                            RegistrationDate = select.DateTimeRegister,
+                            Images = select.ProcessTrackingImages
+                            .Where(image => image.FilePersistence.State)
+                            .Select(image => new FileUrlResponse(image.FilePersistence.Guid, image.FilePersistence.FileBasePath.BaseUrl, image.FilePersistence.Path)).ToList()
+                        },
+                        where => where.Guid == request.ProcessTrackingGuid && where.UserId == UserId
+                    ).ConfigureAwait(false) ?? throw new CustomException((int)MessagesCodesError.SystemError, "Seguimiento de proceso no encontrado");
 
-                if (processTracking == null)
-                    throw new CustomException((int)MessagesCodesError.SystemError, "Seguimiento de proceso no encontrado");
-
-                // Mapear a DTO
-                var processTrackingDetail = new ProcessTrackingDetail
-                {
-                    Guid = processTracking.Guid,
-                    Gym = new GymInfo
-                    {
-                    },
-                    
-                    DateTimeRegister = processTracking.DateTimeRegister
-                };
-
-                return new GetProcessTrackingByGuidResponse(processTrackingDetail)
-                {
-                    UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
-                    ShowMessage = false
-                };
-            },
-            registerLogAudit: false
-        ).ConfigureAwait(false);
+                return new GetProcessTrackingByGuidResponse(processTracking);
+               
+            }).ConfigureAwait(false);
 }

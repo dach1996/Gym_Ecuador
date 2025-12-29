@@ -1,5 +1,4 @@
 using Common.Messages;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Common.WebApi.Models;
 using Common.WebApi.Controller;
@@ -7,33 +6,26 @@ using MediatR;
 using LogicApi.Model.Response.ProcessTracking;
 using LogicApi.Model.Request.ProcessTracking;
 using Asp.Versioning;
+using LogicCommon.Model.Response;
 
 namespace GatewayCoreAPI.Controllers.V1;
 
+/// <summary>
+/// Constructor
+/// </summary>
+/// <param name="userMessages"></param>
+/// <param name="logger"></param>
+/// <param name="mediator"></param>
 [Route("api/v{version:apiVersion}/[controller]")]
 [ApiVersion("1.0")]
-public class ProcessTrackingController : SecurityControllerBase
+public class ProcessTrackingController(
+    IUserMessages userMessages,
+    ILogger<ProcessTrackingController> logger,
+    IMediator mediator) : SecurityControllerBase(
+        userMessages,
+        logger,
+        mediator)
 {
-    #region Constructor
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="userMessages"></param>
-    /// <param name="logger"></param>
-    /// <param name="mediator"></param>
-    public ProcessTrackingController(
-        IUserMessages userMessages,
-        ILogger<ProcessTrackingController> logger,
-        IMediator mediator) : base(
-            userMessages,
-            logger,
-            mediator)
-    {
-    }
-
-    #endregion
-
-    #region Methods Controller
 
     /// <summary>
     /// Obtiene la lista de seguimientos de procesos con paginación
@@ -49,16 +41,13 @@ public class ProcessTrackingController : SecurityControllerBase
     /// <summary>
     /// Obtiene un seguimiento de proceso por su GUID
     /// </summary>
-    /// <param name="processTrackingGuid">GUID del seguimiento de proceso</param>
+    /// <param name="request">Modelo para obtener seguimiento de proceso por GUID</param>
     /// <returns></returns>
-    [HttpGet("GetProcessTrackingByGuid/{processTrackingGuid}")]
+    [HttpGet("GetProcessTrackingByGuid")]
     [ProducesResponseType(200, Type = typeof(GenericResponse<GetProcessTrackingByGuidResponse>))]
     [ProducesResponseType(400, Type = typeof(GenericResponse))]
-    public async Task<IActionResult> GetProcessTrackingByGuid([FromRoute] Guid processTrackingGuid)
-    {
-        var request = new GetProcessTrackingByGuidRequest { ProcessTrackingGuid = processTrackingGuid };
-        return Success(await Mediator.Send(request).ConfigureAwait(false));
-    }
+    public async Task<IActionResult> GetProcessTrackingByGuid([FromQuery] GetProcessTrackingByGuidRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
 
     /// <summary>
     /// Crea un nuevo seguimiento de proceso
@@ -82,5 +71,15 @@ public class ProcessTrackingController : SecurityControllerBase
     public async Task<IActionResult> UpdateProcessTracking([FromBody] UpdateProcessTrackingRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
-    #endregion
+    /// <summary>
+    /// Elimina un seguimiento de proceso existente
+    /// </summary>
+    /// <param name="request">Modelo para eliminar seguimiento de proceso</param>
+    /// <returns></returns>
+    [HttpDelete("DeleteProcessTracking")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GenericCommonOperationResponse>))]
+    [ProducesResponseType(400, Type = typeof(GenericResponse))]
+    public async Task<IActionResult> DeleteProcessTracking([FromQuery] DeleteProcessTrackingRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
 }

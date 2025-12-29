@@ -555,6 +555,14 @@
             <param name="request">Modelo para actualizar objetivo personal</param>
             <returns></returns>
         </member>
+        <member name="T:GatewayCoreAPI.Controllers.V1.ProcessTrackingController">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.ProcessTrackingController},MediatR.IMediator)">
             <summary>
             Constructor
@@ -570,11 +578,11 @@
             <param name="request">Modelo para obtener seguimientos de procesos</param>
             <returns></returns>
         </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackingByGuid(System.Guid)">
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackingByGuid(LogicApi.Model.Request.ProcessTracking.GetProcessTrackingByGuidRequest)">
             <summary>
             Obtiene un seguimiento de proceso por su GUID
             </summary>
-            <param name="processTrackingGuid">GUID del seguimiento de proceso</param>
+            <param name="request">Modelo para obtener seguimiento de proceso por GUID</param>
             <returns></returns>
         </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.CreateProcessTracking(LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest)">
@@ -589,6 +597,13 @@
             Actualiza un seguimiento de proceso existente
             </summary>
             <param name="request">Modelo para actualizar seguimiento de proceso</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.DeleteProcessTracking(LogicApi.Model.Request.ProcessTracking.DeleteProcessTrackingRequest)">
+            <summary>
+            Elimina un seguimiento de proceso existente
+            </summary>
+            <param name="request">Modelo para eliminar seguimiento de proceso</param>
             <returns></returns>
         </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.SecurityController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.SecurityController},MediatR.IMediator)">

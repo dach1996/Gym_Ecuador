@@ -13,7 +13,7 @@ public static class RequestEncodeFileValidation
     /// <param name="requestEncodeFiles"></param>
     public static void Validate(this List<RequestEncodeFile> requestEncodeFiles)
     {
-        requestEncodeFiles.GroupBy(group => group.Action).ToList().ForEach(group =>
+        requestEncodeFiles?.GroupBy(group => group.Action).ToList().ForEach(group =>
         {
             switch (group.Key)
             {

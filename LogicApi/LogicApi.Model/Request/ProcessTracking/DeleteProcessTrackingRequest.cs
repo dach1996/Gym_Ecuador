@@ -1,19 +1,16 @@
-using Common.WebApi.Models.ContextRequestModel;
-using LogicApi.Model.Response.ProcessTracking;
-
+using LogicCommon.Model.Response;
 using Common.WebCommon.Models;
-using Common.WebCommon.Attributes.CustomDataAnnotations;
+
 namespace LogicApi.Model.Request.ProcessTracking;
 
 /// <summary>
-/// Solicitud para obtener un seguimiento de proceso por GUID
+/// Solicitud para eliminar un seguimiento de proceso
 /// </summary>
-public class GetProcessTrackingByGuidRequest : IRequest<GetProcessTrackingByGuidResponse>, IApiBaseRequest
+public class DeleteProcessTrackingRequest : IApiBaseRequest<GenericCommonOperationResponse>
 {
     /// <summary>
     /// Guid del seguimiento de proceso
     /// </summary>
-    [ValidateGuid]
     public Guid ProcessTrackingGuid { get; set; }
 
     /// <summary>
@@ -22,3 +19,4 @@ public class GetProcessTrackingByGuidRequest : IRequest<GetProcessTrackingByGuid
     [JsonIgnore]
     public CommonContextRequest ContextRequest { get; set; }
 }
+
