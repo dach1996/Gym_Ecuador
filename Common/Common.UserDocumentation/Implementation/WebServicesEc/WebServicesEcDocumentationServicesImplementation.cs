@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Common.UserDocumentation.DocumentationException;
+using Common.UserDocumentation.Implementation.WebServicesEc.Models.Response;
 using Common.UserDocumentation.Models.Configuration;
 using Common.UserDocumentation.Models.Request;
 using Common.UserDocumentation.Models.Response;

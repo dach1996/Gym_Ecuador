@@ -883,6 +883,12 @@
             </summary>
             <value></value>
         </member>
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.GenderCode">
+            <summary>
+            Código de Género
+            </summary>
+            <value></value>
+        </member>
         <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.Name">
             <summary>
             Nombre
@@ -898,6 +904,12 @@
         <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.Phone">
             <summary>
             Teléfono
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.Birthday">
+            <summary>
+            Fecha de Nacimiento
             </summary>
             <value></value>
         </member>
@@ -2978,6 +2990,33 @@
             <param name="contextRequest"></param>
         </member>
         <member name="M:LogicApi.Model.Request.PersonalGoal.UpdatePersonalGoalRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Person.GetPersonByDocumentNumberRequest">
+            <summary>
+            Solicitud para obtener una persona por número de cédula
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Person.GetPersonByDocumentNumberRequest.DocumentNumber">
+            <summary>
+            Número de documento de la persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Person.GetPersonByDocumentNumberRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Person.GetPersonByDocumentNumberRequest.#ctor(System.String,Common.WebApi.Models.ContextRequestModel.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+            <param name="documentNumber"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Person.GetPersonByDocumentNumberRequest.#ctor">
             <summary>
             Default Constructor
             </summary>
@@ -7233,6 +7272,64 @@
         <member name="M:LogicApi.Model.Response.PersonalGoal.UpdatePersonalGoalResponse.#ctor">
             <summary>
             Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Person.GetPersonByDocumentNumberResponse">
+            <summary>
+            Respuesta de obtener persona por número de cédula
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="person"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.Person.GetPersonByDocumentNumberResponse.#ctor(LogicApi.Model.Response.Person.PersonDetail)">
+            <summary>
+            Respuesta de obtener persona por número de cédula
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="person"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Person.GetPersonByDocumentNumberResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Person.GetPersonByDocumentNumberResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Person.GetPersonByDocumentNumberResponse.Person">
+            <summary>
+            Datos de la persona
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Person.PersonDetail">
+            <summary>
+            Detalle completo de persona
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Person.PersonDetail.DocumentNumber">
+            <summary>
+            Número de documento
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Person.PersonDetail.Names">
+            <summary>
+            Nombre
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Person.PersonDetail.LastNames">
+            <summary>
+            Apellidos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Person.PersonDetail.FullName">
+            <summary>
+            Nombre completo
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Place.GetMyFavoritePlaceResponse">

@@ -22,7 +22,7 @@ public static class EntityFrameworkRepositoryExtensions
     {
         var databaseConfiguration = configuration.GetSection("CustomConnectionStrings").Get<List<DatabaseConfiguration>>().FirstOrDefault()
             ?? throw new InvalidOperationException("No se encontró la configuración de la base de datos en el appsettings.json");
-        services.AddDbContextFactory<PersistenceContext>((serviceProvider, options) =>
+        services.AddPooledDbContextFactory<PersistenceContext>((serviceProvider, options) =>
         {
             var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
             options.UseSqlServer(databaseConfiguration.ConnectionString, optionBuilder =>

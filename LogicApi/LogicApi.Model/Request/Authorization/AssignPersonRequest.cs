@@ -1,4 +1,3 @@
-using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Attributes;
 using LogicApi.Model.Implementations.Authorization;
 using LogicApi.Model.Response.Authorization;
@@ -8,7 +7,7 @@ namespace LogicApi.Model.Request.Authorization;
 /// <summary>
 /// Request para asignar persona
 /// </summary>
-public class AssignPersonRequest : IRequest<LoginResponse>, IApiBaseRequest
+public class AssignPersonRequest : IApiBaseRequest<LoginResponse>
 {
     /// <summary>
     /// Usuario (Encriptado)
@@ -55,6 +54,13 @@ public class AssignPersonRequest : IRequest<LoginResponse>, IApiBaseRequest
     public string TypeIdentificationId { get; set; }
 
     /// <summary>
+    /// Código de Género
+    /// </summary>
+    /// <value></value>
+    [Required]
+    public string GenderCode { get; set; }
+
+    /// <summary>
     /// Nombre
     /// </summary>
     /// <value></value>
@@ -76,12 +82,19 @@ public class AssignPersonRequest : IRequest<LoginResponse>, IApiBaseRequest
     public string Phone { get; set; }
 
     /// <summary>
+    /// Fecha de Nacimiento
+    /// </summary>
+    /// <value></value>
+    [Required]
+    public DateTime Birthday { get; set; }
+
+    /// <summary>
     /// Implementación de Login
     /// </summary>
     [Required]
     public LoginImplementations LoginType { get; set; }
 
- /// <summary>
+    /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]

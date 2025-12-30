@@ -84,7 +84,7 @@ public static class CacheCodes
     /// </summary>
     /// <returns></returns>
     public const string FILE_BASE_PATHS = nameof(FILE_BASE_PATHS);
-    
+
     /// <summary>
     /// Información de Usuario por Id de Usuario
     /// </summary>
@@ -129,4 +129,11 @@ public static class CacheCodes
     /// <param name="mobileId"></param>
     /// <returns></returns>
     public static string DeviceIdByMobileId(string mobileId) => $"{nameof(DeviceIdByMobileId)}_{mobileId}";
+
+    /// <summary>
+    /// Persona por Número de Cédula
+    /// </summary>
+    /// <param name="documentNumber"></param>
+    /// <returns></returns>
+    public static string PersonByDocumentNumber(string documentNumber) => $"{nameof(PersonByDocumentNumber)}_{documentNumber}";
 }

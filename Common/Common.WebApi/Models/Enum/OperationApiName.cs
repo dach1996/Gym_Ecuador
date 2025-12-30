@@ -761,4 +761,12 @@ public enum OperationApiName
     /// </summary>
     [EnumMember(Value = "Obtener Artículos")]
     GetArticles,
+
+    // ========== OPERACIONES DE PERSONA ==========
+
+    /// <summary>
+    /// Obtener Persona por Número de Cédula
+    /// </summary>
+    [EnumMember(Value = "Obtener Persona por Número de Cédula")]
+    GetPersonByDocumentNumber,
 }

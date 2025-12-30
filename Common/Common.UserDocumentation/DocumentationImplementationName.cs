@@ -4,5 +4,6 @@ namespace Common.UserDocumentation;
 /// </summary>
 public enum DocumentationImplementationName
 {
-    WebServicesEc
+    WebServicesEc,
+    BusPlace
 }

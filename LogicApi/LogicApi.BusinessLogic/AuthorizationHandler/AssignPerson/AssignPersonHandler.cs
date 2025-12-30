@@ -1,5 +1,6 @@
 ﻿using LogicApi.Abstractions.Interfaces.Authorization;
 using LogicApi.Model.Request.Authorization;
+using LogicApi.Model.Request.Person;
 using LogicApi.Model.Response.Authorization;
 using PersistenceDb.Models.Authentication;
 
@@ -63,15 +64,9 @@ public abstract class AssignPersonHandler(
         if (person is null)
         {
             //Verificar el documento
-            var documentInformation = await GetPersonInformationAsync(request.DocumentNumber).ConfigureAwait(false);
-            //Agrega la persona
-            person = await UnitOfWork.PersonRepository.AddAsync(new Person
-            {
-                DocumentNumber = request.DocumentNumber,
-                RealNames = documentInformation.Names,
-                RealLastNames = documentInformation.LastNames,
-                FullName = documentInformation.FullName,
-            }).ConfigureAwait(false);
+            _ = await Mediator.Send(new GetPersonByDocumentNumberRequest(request.DocumentNumber, ContextRequest)).ConfigureAwait(false);
+            //Obtiene la persona
+            person = await UnitOfWork.PersonRepository.GetByFirstOrDefaultAsync(where => where.DocumentNumber == request.DocumentNumber).ConfigureAwait(false);
         }
         return person;
     }
@@ -102,8 +97,12 @@ public abstract class AssignPersonHandler(
             person.Name = request.Name;
             person.LastName = request.LastName;
             person.UserIdRegister = user.Id;
-            await UnitOfWork.PersonRepository.UpdateAsync(person).ConfigureAwait(false);
         }
+        var genderCatalog = await UnitOfWork.CatalogRepository.GetIdByCodeAsync(request.GenderCode).ConfigureAwait(false);
+        person.BirthDate = request.Birthday;
+        person.GenderCatalogId = genderCatalog;
+        await UnitOfWork.PersonRepository.UpdateAsync(person).ConfigureAwait(false);
+
         //Actualiza los datos de usuario
         user.Phone = request.Phone;
         user.PersonId = person.Id;

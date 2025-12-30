@@ -187,24 +187,7 @@ public abstract class BusinessLogicBase(
         => (await Mediator.Send(new GetParameterByCodeRequest(parameterCode, ContextRequest)).ConfigureAwait(false)).IntValue;
 
 
-    /// <summary>
-    /// Obtiene la información de Persona
-    /// </summary>
-    /// <param name="documentNumber"></param>
-    /// <returns></returns>
-    protected async Task<VerifyDocumentResponse> GetPersonInformationAsync(string documentNumber, bool throwIfException = true)
-    {
-        try
-        {
-            return await DocumentationServices.GetPersonInformationAsync(new(documentNumber)).ConfigureAwait(false);
-        }
-        catch
-        {
-            if (throwIfException)
-                throw new CustomException((int)MessagesCodesError.PersonInformationNotFound, $"No se pudo encontrar información del documento: '{documentNumber}'");
-            return null;
-        }
-    }
+    
 
 
     /// <summary>
