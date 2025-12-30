@@ -49,5 +49,10 @@ public class PersonDetail
     /// Nombre completo
     /// </summary>
     public string FullName { get; set; }
+
+    /// <summary>
+    /// Fecha de nacimiento
+    /// </summary>
+    public DateTime? BirthDate { get; set; }
 }
 

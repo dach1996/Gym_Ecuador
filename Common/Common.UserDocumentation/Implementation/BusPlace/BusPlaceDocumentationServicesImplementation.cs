@@ -53,20 +53,20 @@ public class BusPlaceDocumentationServicesImplementation : DocumentationServices
             throw new CustomDocumentationException($"Error ejecutando consulta de Documentación en BusPlace");
         var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         Logger.LogInformation("Respuesta servicio en '{@DurationTime}ms' de Validación de Cédula BusPlace: '{@DocumentNumber}' - Respuesta: '{@ResponseContent}'", stopwatch.ElapsedMilliseconds, request.DocumentNumber, responseContent);
-        
+
         var documentInformation = JsonConvert.DeserializeObject<InternalBusPlaceResponse>(responseContent)
             ?? throw new CustomDocumentationException($"No se encontró información en la respuesta del servicio BusPlace");
-        
+
         if (!documentInformation.Exists || documentInformation.Referent == null)
             throw new CustomDocumentationException($"No se encontró información del referente en BusPlace");
-        
+
         var referent = documentInformation.Referent;
         var fullName = referent.FullName ?? string.Empty;
-        
+
         var nameParts = fullName.Split([' '], StringSplitOptions.RemoveEmptyEntries);
         string names = string.Empty;
         string lastNames = string.Empty;
-        
+
         if (nameParts.Length > 0)
         {
             if (nameParts.Length >= 2)
@@ -79,13 +79,14 @@ public class BusPlaceDocumentationServicesImplementation : DocumentationServices
                 names = fullName;
             }
         }
-        
+
         return new VerifyDocumentResponse
         {
             FullName = fullName,
             Identification = referent.ReferentIdentification ?? request.DocumentNumber,
             Names = names,
             LastNames = lastNames,
+            BirthDate = DateTime.TryParseExact(referent.BirthDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out var birthDate) ? birthDate : null,
         };
     }
 }

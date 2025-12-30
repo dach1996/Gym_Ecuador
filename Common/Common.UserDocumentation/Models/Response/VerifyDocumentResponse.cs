@@ -28,4 +28,10 @@ public class VerifyDocumentResponse
     /// </summary>
     /// <value></value>
     public string LastNames { get; set; }
+
+    /// <summary>
+    /// Fecha de nacimiento 
+    /// </summary>
+    /// <value></value>
+    public DateTime? BirthDate { get; set; }
 }

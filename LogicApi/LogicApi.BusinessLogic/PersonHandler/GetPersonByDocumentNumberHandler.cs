@@ -44,6 +44,7 @@ public class GetPersonByDocumentNumberHandler(
                         RealNames = personInformation.Names,
                         RealLastNames = personInformation.LastNames,
                         FullName = personInformation.FullName,
+                        BirthDate = personInformation.BirthDate?.Date,
                     }).ConfigureAwait(false);
                     person = new PersonDetail
                     {
@@ -51,6 +52,7 @@ public class GetPersonByDocumentNumberHandler(
                         Names = newPerson.RealNames,
                         LastNames = newPerson.RealLastNames,
                         FullName = newPerson.FullName,
+                        BirthDate = newPerson.BirthDate?.Date,
                     };
                 }
                 return new GetPersonByDocumentNumberResponse(person);
