@@ -31,6 +31,11 @@ public class GetPersonByDocumentNumberResponse(PersonDetail person) : IApiBaseRe
 public class PersonDetail
 {
     /// <summary>
+    /// Guid de la persona
+    /// </summary>
+    public Guid Guid { get; set; }
+
+    /// <summary>
     /// Número de documento
     /// </summary>
     public string DocumentNumber { get; set; }

@@ -30,6 +30,8 @@ public class GetPersonByDocumentNumberHandler(
                         Names = select.RealNames,
                         LastNames = select.RealLastNames,
                         FullName = select.FullName,
+                        BirthDate = select.BirthDate,
+                        Guid = select.Guid,
                     },
                     where => where.DocumentNumber == request.DocumentNumber).ConfigureAwait(false);
                 //Si la persona no existe en la base de datos, se busca en el servicio de documentación
@@ -45,6 +47,7 @@ public class GetPersonByDocumentNumberHandler(
                         RealLastNames = personInformation.LastNames,
                         FullName = personInformation.FullName,
                         BirthDate = personInformation.BirthDate?.Date,
+                        Guid = Guid.NewGuid(),
                     }).ConfigureAwait(false);
                     person = new PersonDetail
                     {
@@ -53,6 +56,7 @@ public class GetPersonByDocumentNumberHandler(
                         LastNames = newPerson.RealLastNames,
                         FullName = newPerson.FullName,
                         BirthDate = newPerson.BirthDate?.Date,
+                        Guid = newPerson.Guid,
                     };
                 }
                 return new GetPersonByDocumentNumberResponse(person);
