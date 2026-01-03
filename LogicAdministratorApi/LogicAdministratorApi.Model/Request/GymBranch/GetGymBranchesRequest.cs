@@ -8,7 +8,7 @@ namespace LogicAdministratorApi.Model.Request.GymBranch;
 /// <summary>
 /// Solicitud para obtener sucursales de gimnasio paginadas
 /// </summary>
-public class GetGymBranchesRequest : IApiBaseRequest<GetGymBranchesResponse>
+public class GetGymBranchesRequest : IPaginatorApiRequest<GetGymBranchesResponse>
 {
     /// <summary>
     /// GUID del gimnasio para filtrar las sucursales
@@ -29,13 +29,17 @@ public class GetGymBranchesRequest : IApiBaseRequest<GetGymBranchesResponse>
 
     /// <summary>
     /// Página
-    /// </summary>
-    public int Page { get; set; } = 1;
+        /// </summary>
+    [Required]
+    [Range(1, int.MaxValue)]
+    public int PageNumber { get; set; }
 
     /// <summary>
     /// Tamaño de página
     /// </summary>
-    public int PageSize { get; set; } = 10;
+    [Required]
+    [Range(1, int.MaxValue)]
+    public int PageSize { get; set; }
 
     /// <summary>
     /// Context

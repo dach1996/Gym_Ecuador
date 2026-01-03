@@ -1,4 +1,5 @@
-﻿using Azure.Storage.Blobs;
+﻿using Azure;
+using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Common.Blob.BlobException;
 using Common.Blob.Models;
@@ -168,7 +169,14 @@ public class AzureStorageBlobBus : BlobBusBase
                 BlobClient blobClient = blobContainer.GetBlobClient(filePath);
                 // Upload the file
                 using var stream = new MemoryStream(item.File);
-                await blobClient.UploadAsync(stream, item.ReplaceIfExist).ConfigureAwait(false);
+                await blobClient.UploadAsync(stream, new BlobUploadOptions
+                {
+                    HttpHeaders = new BlobHttpHeaders
+                    {
+                        ContentType = GetContentType(item.FileName),
+                        ContentDisposition = "inline"
+                    }
+                }).ConfigureAwait(false);
                 Logger.LogInformation("Archivo {@FileName} cargado correctamente en el contenedor: '{@Container}' - Remplazar si Existe: {@Replace}", item.FileName, request.Path, item.ReplaceIfExist);
                 items.Add(new UpdateFileItemResponse
                 {
@@ -201,4 +209,15 @@ public class AzureStorageBlobBus : BlobBusBase
             Items = items
         };
     }
+
+    // Función auxiliar
+    private static string GetContentType(string fileName) => Path.GetExtension(fileName).ToLower() switch
+    {
+        ".png" => "image/png",
+        ".jpg" or ".jpeg" => "image/jpeg",
+        ".gif" => "image/gif",
+        ".bmp" => "image/bmp",
+        ".svg" => "image/svg+xml",
+        _ => "application/octet-stream"
+    };
 }

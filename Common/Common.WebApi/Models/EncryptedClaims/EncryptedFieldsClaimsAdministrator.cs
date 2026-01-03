@@ -6,40 +6,49 @@ namespace Common.WebApi.Models.EncryptedClaims;
 public class EncryptedFieldsClaimsAdministrator : EncryptedFieldClaimCommon
 {
     /// <summary>
+    /// Guid de usuario
+    /// </summary>
+    /// <value></value>
+    public int UserId { get; set; }
+
+    /// <summary>
     /// Fecha de creación de la sesión de Cache
     /// </summary>
     /// <value></value>
     public DateTime UserInformationCacheDateTimeCreation { get; set; }
 
     /// <summary>
-    /// Id de establecimiento en contexto
+    /// Indica si el usuario es super administrador
     /// </summary>
     /// <value></value>
-    public int EstablishmentId { get; set; }
+    public bool IsSuperAdmin { get; set; }
 
     /// <summary>
-    /// Id de sucursales permitidos
+    /// Id de gimnasios en contexto
     /// </summary>
     /// <value></value>
-    public int EstablishmentBranchIds { get; set; }
+    public List<GymRoleClaim> GymRoleClaims { get; set; }
+}
+/// <summary>
+/// Rol de gimnasio
+/// /// </summary>
+public class GymRoleClaim
+{
+    /// <summary>
+    /// Id de gimnasio
+    /// </summary>
+    /// <value></value>
+    public int GymId { get; set; }
 
     /// <summary>
-    /// Id de sucursales permitidos
+    /// Guid de gimnasio
     /// </summary>
     /// <value></value>
-    public Guid EstablishmentBranchGuids { get; set; }
+    public Guid GymGuid { get; set; }
 
     /// <summary>
-    /// Id de Veterinario
+    /// Roles en contexto
     /// </summary>
     /// <value></value>
-    public int VeterinarianId { get; set; }
-
-    /// <summary>
-    /// Guid de sucursal de establecimiento
-    /// </summary>
-    /// <value></value>
-    public Guid EstablishmentBranchGuid { get; set; }
-
-    
+    public List<string> Roles { get; set; }
 }

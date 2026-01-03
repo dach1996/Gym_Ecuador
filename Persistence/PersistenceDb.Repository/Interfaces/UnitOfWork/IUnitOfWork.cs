@@ -28,6 +28,9 @@ public interface IUnitOfWork : IUnitOfWorkBase
     // Authentication Repositories
     IDeviceRepository DeviceRepository { get; }
     IUserRepository UserRepository { get; }
+    IUserRoleScopeRepository UserRoleScopeRepository { get; }
+    IScopeRepository ScopeRepository { get; }
+    IRoleRepository RoleRepository { get; }
     IUserDeviceRepository UserDeviceRepository { get; }
     IPersonRepository PersonRepository { get; }
     IUserRegistrationFormRepository UserRegistrationFormRepository { get; }
@@ -54,6 +57,7 @@ public interface IUnitOfWork : IUnitOfWorkBase
     IGymReviewRepository GymReviewRepository { get; }
     ITrainerRatingRepository TrainerRatingRepository { get; }
     IPersonalGoalRepository PersonalGoalRepository { get; }
+    IPlatformRepository PlatformRepository { get; }
     IGymSubscriptionPlanRepository GymSubscriptionPlanRepository { get; }
     IServiceRepository ServiceRepository { get; }
     IGymSubscriptionPlanServiceRepository GymSubscriptionPlanServiceRepository { get; }

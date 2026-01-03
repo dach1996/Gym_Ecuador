@@ -101,13 +101,15 @@ public class AdministratorApiConfigureContext(ILogger<AdministratorApiConfigureC
                 UserName = encryptedFieldClaimDecrypt?.UserName,
                 Email = encryptedFieldClaimDecrypt?.Email,
                 UserGuid = encryptedFieldClaimDecrypt?.UserGuid,
-                UserInformationCacheDateTimeCreation = encryptedFieldClaimDecrypt?.UserInformationCacheDateTimeCreation,
-                EstablishmentId = encryptedFieldClaimDecrypt?.EstablishmentId,
-                EstablishmentBranchId = encryptedFieldClaimDecrypt?.EstablishmentBranchIds,
-                VeterinarianId = encryptedFieldClaimDecrypt?.VeterinarianId,
-                EstablishmentBranchGuid = encryptedFieldClaimDecrypt?.EstablishmentBranchGuid,
                 FirstName = encryptedFieldClaimDecrypt?.FirstName,
                 Surname = encryptedFieldClaimDecrypt?.Surname,
+                IsSuperAdmin = encryptedFieldClaimDecrypt?.IsSuperAdmin ?? false,
+                GymRoleContextClaims = encryptedFieldClaimDecrypt?.GymRoleClaims?.Select(select => new GymRoleContextClaim
+                {
+                    GymId = select.GymId,
+                    GymGuid = select.GymGuid,
+                    Roles = select.Roles
+                }).ToList() ?? [],
             },
         };
     }

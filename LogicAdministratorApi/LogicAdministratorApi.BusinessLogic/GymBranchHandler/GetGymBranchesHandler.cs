@@ -43,7 +43,7 @@ public class GetGymBranchesHandler(
                 var paginatedResult = await UnitOfWork.GymBranchRepository
                     .GetPaginatorGenericAsync(
                         itemsByPage: request.PageSize,
-                        page: request.Page,
+                        page: request.PageNumber,
                         select => new GymBranchItem
                         {
                             Guid = select.Guid,

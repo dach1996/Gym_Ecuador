@@ -156,6 +156,8 @@ public interface IGenericRepository<TEntity> where TEntity : class
         Expression<Func<TEntity, dynamic>> orderBy = null,
         OrderByType orderByType = default);
 
+
+
     /// <summary>
     /// Obtiene los Registros Paginados
     /// </summary>
@@ -165,7 +167,6 @@ public interface IGenericRepository<TEntity> where TEntity : class
     /// <param name="where"></param>
     /// <param name="orderBy"></param>
     /// <param name="orderByType"></param>
-    /// <param name="includes"></param>
     /// <typeparam name="TResult"></typeparam>
     /// <returns></returns>
     Task<IPaginator<TResult>> GetPaginatorGenericAsync<TResult>(
@@ -173,6 +174,25 @@ public interface IGenericRepository<TEntity> where TEntity : class
     int page,
     Expression<Func<TEntity, TResult>> selector,
     Expression<Func<TEntity, bool>> where = null,
+    Expression<Func<TEntity, dynamic>> orderBy = null,
+    OrderByType orderByType = default);
+
+    /// <summary>
+    /// Obtiene los Registros Paginados
+    /// </summary>
+    /// <param name="itemsByPage"></param>
+    /// <param name="page"></param>
+    /// <param name="selector"></param>
+    /// <param name="where"></param>
+    /// <param name="orderBy"></param>
+    /// <param name="orderByType"></param>
+    /// <typeparam name="TResult"></typeparam>
+    /// <returns></returns>
+    Task<IPaginator<TResult>> GetPaginatorGenericAsync<TResult>(
+    int itemsByPage,
+    int page,
+    Expression<Func<TEntity, TResult>> selector,
+    List<Expression<Func<TEntity, bool>>> where,
     Expression<Func<TEntity, dynamic>> orderBy = null,
     OrderByType orderByType = default);
 

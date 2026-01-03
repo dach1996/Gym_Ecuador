@@ -28,13 +28,14 @@ public class GetGymsHandler(
                 // Construir el filtro where combinando todas las condiciones
                 var nameFilter = request.NameFilter?.ToLower();
                 var codeFilter = request.CodeFilter?.ToLower();
-                var isActiveFilter = request.IsActiveFilter;
-
-                Expression<Func<Gym, bool>> whereClause = g =>
-                    (string.IsNullOrWhiteSpace(nameFilter) || g.Name.ToLower().Contains(nameFilter)) &&
-                    (string.IsNullOrWhiteSpace(codeFilter) || g.Code.ToLower().Contains(codeFilter)) &&
-                    (!isActiveFilter.HasValue || g.IsActive == (isActiveFilter.Value ? GymStatus.Active : GymStatus.Inactive));
-
+                var isSuperAdmin = ContextRequest.CustomClaims.IsSuperAdmin;
+                var gymRoleContextClaims = ContextRequest.CustomClaims.GymRoleContextClaims.Select(where => where.GymId).ToList();
+                var whereClause = new List<Expression<Func<Gym, bool>>>
+                {
+                    {!request.NameFilter.IsNullOrEmpty(), where => where.Name.ToLower().Contains(nameFilter)},
+                    {!request.CodeFilter.IsNullOrEmpty(), where => where.Code.ToLower().Contains(codeFilter)},
+                    {where => isSuperAdmin || gymRoleContextClaims.Contains(where.Id)},
+                };
                 // Obtener datos paginados
                 var paginatedResult = await UnitOfWork.GymRepository
                     .GetPaginatorGenericAsync(

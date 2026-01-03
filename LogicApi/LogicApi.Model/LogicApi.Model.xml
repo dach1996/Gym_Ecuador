@@ -7283,7 +7283,7 @@
             </remarks>
             <param name="person"></param>
         </member>
-        <member name="M:LogicApi.Model.Response.Person.GetPersonByDocumentNumberResponse.#ctor(LogicApi.Model.Response.Person.PersonDetail)">
+        <member name="M:LogicApi.Model.Response.Person.GetPersonByDocumentNumberResponse.#ctor(LogicCommon.Model.Response.Person.PersonDetail)">
             <summary>
             Respuesta de obtener persona por número de cédula
             </summary>
@@ -7305,31 +7305,6 @@
         <member name="P:LogicApi.Model.Response.Person.GetPersonByDocumentNumberResponse.Person">
             <summary>
             Datos de la persona
-            </summary>
-        </member>
-        <member name="T:LogicApi.Model.Response.Person.PersonDetail">
-            <summary>
-            Detalle completo de persona
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.Person.PersonDetail.DocumentNumber">
-            <summary>
-            Número de documento
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.Person.PersonDetail.Names">
-            <summary>
-            Nombre
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.Person.PersonDetail.LastNames">
-            <summary>
-            Apellidos
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.Person.PersonDetail.FullName">
-            <summary>
-            Nombre completo
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Place.GetMyFavoritePlaceResponse">

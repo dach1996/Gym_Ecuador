@@ -71,32 +71,38 @@ public class CustomClaimsAdministrator : CommonCustomClaims
     public Guid? UserGuid { get; set; }
 
     /// <summary>
-    /// Fecha de creación de la sesión de Cache
+    /// Indica si el usuario es super administrador
     /// </summary>
     /// <value></value>
-    public DateTime? UserInformationCacheDateTimeCreation { get; set; }
+    public bool IsSuperAdmin { get; set; }
 
     /// <summary>
-    /// Id de establecimiento en contexto
+    /// Roles en contexto
     /// </summary>
     /// <value></value>
-    public int? EstablishmentId { get; set; }
+    public List<GymRoleContextClaim> GymRoleContextClaims { get; set; }
+}
+
+
+/// <summary>
+/// Rol de gimnasio
+/// /// </summary>
+public class GymRoleContextClaim
+{
+    /// <summary>
+    /// Id de gimnasio
+    /// </summary>
+    /// <value></value>
+    public int GymId { get; set; }
+
+    /// Guid de gimnasio
+    /// </summary>
+    /// <value></value>
+    public Guid GymGuid { get; set; }
 
     /// <summary>
-    /// Id de sucursal de establecimiento en contexto
+    /// Roles en contexto
     /// </summary>
     /// <value></value>
-    public int? EstablishmentBranchId { get; set; }
-
-    /// <summary>
-    /// Id de Veterinario
-    /// </summary>
-    /// <value></value>
-    public int? VeterinarianId { get; set; }
-
-    /// <summary>
-    /// Guid de sucursal de establecimiento
-    /// </summary>
-    /// <value></value>
-    public Guid? EstablishmentBranchGuid { get; set; }
+    public List<string> Roles { get; set; }
 }

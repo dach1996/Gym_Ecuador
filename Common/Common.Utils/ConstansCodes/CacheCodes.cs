@@ -66,6 +66,17 @@ public static class CacheCodes
     /// </summary>
     /// <returns></returns>
     public const string GET_INITIAL_CATALOGUES = nameof(GET_INITIAL_CATALOGUES);
+    /// <summary>
+    /// Plataformas
+    /// </summary>
+    /// <returns></returns>
+    public const string PLATFORM_ROLES = nameof(PLATFORM_ROLES);
+
+    /// <summary>
+    /// Scopes
+    /// </summary>
+    /// <returns></returns>
+    public const string SCOPES = nameof(SCOPES);
 
     /// <summary>
     /// Lugares

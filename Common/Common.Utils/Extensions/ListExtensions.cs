@@ -6,7 +6,7 @@ public static class ListExtensions
     /// </summary>
     /// <param name="list"></param>
     /// <returns></returns>
-    public static bool AddIf<T>(this List<T> list, bool conditional, T item)
+    public static bool Add<T>(this List<T> list, bool conditional, T item)
     {
         if (conditional)
             list.Add(item);

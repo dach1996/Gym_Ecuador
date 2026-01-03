@@ -64,6 +64,13 @@
             <param name="request">Modelo para obtener sucursal de gimnasio por GUID</param>
             <returns></returns>
         </member>
+        <member name="M:AdministratorApi.Controllers.GymBranchController.GetGymBranchesPaginatedByGymGuid(LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesRequest)">
+            <summary>
+            Obtener Sucursales de Gimnasio por GUID del Gimnasio
+            </summary>
+            <param name="request">Modelo para obtener sucursales de gimnasio por GUID del gimnasio</param>
+            <returns></returns>
+        </member>
         <member name="T:AdministratorApi.Controllers.GymBranchScheduleController">
             <summary>
             Controlador de Horarios de Sucursal de Gimnasio
@@ -136,6 +143,71 @@
             Obtener Gimnasios
             </summary>
             <param name="request">Modelo para obtener gimnasios</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.SecurityController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.SecurityController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.SecurityController.GetPublicKey(LogicAdministratorApi.Model.Request.Security.GetPublicKeyRequest)">
+            <summary>
+            Llave publica
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AdministratorApi.Controllers.UserAdministratorController">
+            <summary>
+            Controlador de Usuarios Administradores
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.UserAdministratorController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.UserAdministratorController},MediatR.IMediator)">
+            <summary>
+            Controlador de Usuarios Administradores
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.UserAdministratorController.CreateUserAdministrator(LogicAdministratorApi.Model.Request.UserAdministrator.CreateUserAdministratorRequest)">
+            <summary>
+            Crear Usuario Administrador
+            </summary>
+            <param name="request">Modelo para crear usuario administrador</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.UserAdministratorController.UpdateUserAdministrator(LogicAdministratorApi.Model.Request.UserAdministrator.UpdateUserAdministratorRequest)">
+            <summary>
+            Actualizar Usuario Administrador
+            </summary>
+            <param name="request">Modelo para actualizar usuario administrador</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.UserAdministratorController.DeleteUserAdministrator(LogicAdministratorApi.Model.Request.UserAdministrator.DeleteUserAdministratorRequest)">
+            <summary>
+            Eliminar Usuario Administrador
+            </summary>
+            <param name="request">Modelo para eliminar usuario administrador</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.UserAdministratorController.GetUserAdministratorByGuid(LogicAdministratorApi.Model.Request.UserAdministrator.GetUserAdministratorByGuidRequest)">
+            <summary>
+            Obtener Usuario Administrador por GUID
+            </summary>
+            <param name="request">Modelo para obtener usuario administrador por GUID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.UserAdministratorController.GetUsersAdministratorPaginated(LogicAdministratorApi.Model.Request.UserAdministrator.GetUsersAdministratorRequest)">
+            <summary>
+            Obtener Usuarios Administradores Paginados
+            </summary>
+            <param name="request">Modelo para obtener usuarios administradores paginados</param>
             <returns></returns>
         </member>
         <member name="T:Program">

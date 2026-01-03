@@ -400,4 +400,26 @@ public static class FunctionalitiesCodes
     /// Obtener Detalle de Sucursal de Gimnasio por GUID
     /// </summary>
     public const string GET_GYM_BRANCH_BY_GUID = "ADM_GYM_BRANCH_GET_BY_GUID";
+
+    // ========== OPERACIONES DE USUARIOS ADMINISTRADORES ==========
+
+    /// <summary>
+    /// Crear Usuario Administrador
+    /// </summary>
+    public const string CREATE_USER_ADMINISTRATOR = "ADM_USER_ADMIN_CREATE";
+
+    /// <summary>
+    /// Eliminar Usuario Administrador
+    /// </summary>
+    public const string DELETE_USER_ADMINISTRATOR = "ADM_USER_ADMIN_DELETE";
+
+    /// <summary>
+    /// Obtener Usuarios Administradores Paginados
+    /// </summary>
+    public const string GET_USERS_ADMINISTRATOR_PAGINATED = "ADM_USER_ADMIN_GET_PAGINATED";
+
+    /// <summary>
+    /// Obtener Detalle de Usuario Administrador por GUID
+    /// </summary>
+    public const string GET_USER_ADMINISTRATOR_BY_GUID = "ADM_USER_ADMIN_GET_BY_GUID";
 }

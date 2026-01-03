@@ -1,10 +1,7 @@
-﻿
-using Common.Tasks;
-using Common.WebApi.Models.AppSettingsModel;
+﻿using Common.WebApi.Models.AppSettingsModel;
 using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Models;
 using Common.WebCommon.Models.Enum;
-using LogicAdministratorApi.Model.CommonModels;
 using LogicCommon.BusinessLogic;
 namespace LogicAdministratorApi.BusinessLogic;
 /// <summary>
@@ -21,12 +18,7 @@ public abstract class BusinessLogicAdministratorBase(
     private AppSettingsAdministrator _appSettingsAdministrator;
     protected AppSettingsAdministrator AppSettingsAdministrator => _appSettingsAdministrator ??= PluginFactory.GetType<AppSettingsAdministrator>();
     protected AdminContextRequest ContextRequest;
-    protected DateTime CurrentUserInformationCacheDateTimeCreation => ContextRequest?.CustomClaims?.UserInformationCacheDateTimeCreation ?? throw NullException.ThrowNullException(nameof(ContextRequest.CustomClaims.UserInformationCacheDateTimeCreation));
     protected Guid CurrentUserGuid => ContextRequest?.CustomClaims?.UserGuid ?? throw NullException.ThrowNullException(nameof(ContextRequest.CustomClaims.UserGuid));
-    protected Guid CurrentEstablishmentBranchGuid => ContextRequest?.CustomClaims?.EstablishmentBranchGuid ?? throw NullException.ThrowNullException(nameof(ContextRequest.CustomClaims.EstablishmentBranchGuid));
-    protected int CurrentEstablishmentId => ContextRequest?.CustomClaims?.EstablishmentId ?? throw NullException.ThrowNullException(nameof(ContextRequest.CustomClaims.EstablishmentId));
-    protected int CurrentEstablishmentBranchId => ContextRequest?.CustomClaims?.EstablishmentBranchId ?? throw NullException.ThrowNullException(nameof(ContextRequest.CustomClaims.EstablishmentBranchId));
-    protected int CurrentVeterinarianId => ContextRequest?.CustomClaims?.VeterinarianId ?? throw NullException.ThrowNullException(nameof(ContextRequest.CustomClaims.VeterinarianId));
     protected UserLanguage CurrentUserLanguage => ContextRequest?.Headers?.UserLanguage ?? throw NullException.ThrowNullException(nameof(ContextRequest.Headers.UserLanguage));
 
     /// <summary>

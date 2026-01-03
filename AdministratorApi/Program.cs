@@ -23,6 +23,7 @@ using LogicAdministratorApi.BusinessLogic;
 using Common.WebApi.Middleware.ConfigureContext;
 using Common.WebApi.Middleware.Infrastructure;
 using Common.WebApi.Models.AppSettingsModel;
+using Common.UserDocumentation.Infrastructure;
 try
 {
     var builder = WebApplication.CreateBuilder(args);
@@ -41,6 +42,7 @@ try
     builder.Services.AddCustomControllers();
     builder.Services.AddUserMessagesApi();
     builder.Services.AddApiVersioning();
+    builder.Services.AddDocumentationServices();
     builder.Services.AddCustomAttributes();
     builder.Services.AddApplicationInsightsTelemetry();
     builder.Services.ScanAutoMapperProfiles(builder.Configuration);
@@ -56,6 +58,7 @@ try
         builderAutofac.UseRsaSecurity();
         builderAutofac.UseCache(builder.Environment.EnvironmentName);
         builderAutofac.UseBlob();
+        builderAutofac.UseDocumentationServices();
         builderAutofac.UseMail();
         builderAutofac.UseAttributeAbstractionsAssemblies();
         builderAutofac.UseMiddlewareAbstractionsAssemblies();

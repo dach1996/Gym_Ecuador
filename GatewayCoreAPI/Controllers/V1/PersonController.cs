@@ -1,11 +1,13 @@
 using Common.Messages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Common.WebApi.Models;
 using Common.WebApi.Controller;
 using MediatR;
-using LogicApi.Model.Request.Person;
-using LogicApi.Model.Response.Person;
+using LogicApi.Model.Response;
 using Asp.Versioning;
+using LogicApi.Model.Response.Person;
+using LogicApi.Model.Request.Person;
 
 namespace GatewayCoreAPI.Controllers.V1;
 
@@ -34,6 +36,7 @@ public class PersonController(
     /// <param name="request">Modelo para obtener persona por número de cédula</param>
     /// <returns></returns>
     [HttpGet("GetByDocumentNumber")]
+    [AllowAnonymous]
     [ProducesResponseType(200, Type = typeof(GenericResponse<GetPersonByDocumentNumberResponse>))]
     [ProducesResponseType(400, Type = typeof(GenericResponse))]
     public async Task<IActionResult> GetPersonByDocumentNumber([FromQuery] GetPersonByDocumentNumberRequest request)

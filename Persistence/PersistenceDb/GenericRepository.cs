@@ -433,21 +433,43 @@ public class GenericRepository<TEntity>(
         Expression<Func<TEntity, bool>> where = null,
         Expression<Func<TEntity, dynamic>> orderBy = null,
         OrderByType orderByType = default)
+        => await GetPaginatorGenericAsync(itemsByPage, page, selector, [where ?? (t => true)], orderBy, orderByType);
+
+
+    /// <summary>
+    /// Obtiene los Registros Paginados
+    /// </summary>
+    /// <param name="itemsByPage"></param>
+    /// <param name="page"></param>
+    /// <param name="selector"></param>
+    /// <param name="where"></param>
+    /// <param name="orderBy"></param>
+    /// <param name="orderByType"></param>
+    /// <typeparam name="TResult"></typeparam>
+    /// <returns></returns>
+    public async Task<IPaginator<TResult>> GetPaginatorGenericAsync<TResult>(
+        int itemsByPage,
+        int page,
+        Expression<Func<TEntity, TResult>> selector,
+        List<Expression<Func<TEntity, bool>>> where,
+        Expression<Func<TEntity, dynamic>> orderBy = null,
+        OrderByType orderByType = default)
     {
         try
         {
             page--;
-            where ??= t => true;
+            if (where.Count == 0)
+                where = [t => true];
             var entitySet = Context.Set<TEntity>();
-            var originalWhereQuery = entitySet.Where(where);
+            var originalWhereQuery = entitySet.AsQueryable();
+            foreach (var itemWhere in where)
+                originalWhereQuery = originalWhereQuery.Where(itemWhere);
             var totalItems = await originalWhereQuery
                 .AsNoTracking()
                 .CountAsync()
                 .ConfigureAwait(false);
             if (orderBy is not null)
                 originalWhereQuery = orderByType == OrderByType.Asc ? originalWhereQuery.OrderBy(orderBy) : originalWhereQuery.OrderByDescending(orderBy);
-            else
-                originalWhereQuery = originalWhereQuery.OrderBy(t => 1);
             var items = await originalWhereQuery
                 .Skip(itemsByPage * page)
                 .Take(itemsByPage)
@@ -459,10 +481,11 @@ public class GenericRepository<TEntity>(
         }
         catch (Exception ex)
         {
-            Logger.LogError(ex, "Exepción buscando los items en base al filtro para {@Entity}: {@ErrorMessage} - {@InnerException}", typeof(TEntity), ex.Message, ex.InnerException?.Message);
+            Logger.LogError(ex, "Exepción buscando los items en base al filtro para {Entity}: {ErrorMessage} - {InnerException}", typeof(TEntity), ex.Message, ex.InnerException?.Message);
             throw;
         }
     }
+
 
     /// <summary>
     /// Actualización directa 

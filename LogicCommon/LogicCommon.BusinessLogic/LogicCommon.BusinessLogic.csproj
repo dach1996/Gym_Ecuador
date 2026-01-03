@@ -13,6 +13,8 @@
     <ProjectReference Include="..\..\Common\Common.PushNotification\Common.PushNotification.csproj" />
     <ProjectReference Include="..\..\Common\Common.Messages\Common.Messages.csproj" />
     <ProjectReference Include="..\..\Common\Common.Blob\Common.Blob.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Security\Common.Security.csproj" />
+    <ProjectReference Include="..\..\Common\Common.UserDocumentation\Common.UserDocumentation.csproj" />
     <ProjectReference Include="..\LogicCommon.Model\LogicCommon.Model.csproj" />
     <ProjectReference Include="..\..\Persistence\PersistenceDb.Repository\PersistenceDb.Repository.csproj" />
     <ProjectReference Include="..\..\Common\Common.Mail\Common.Mail.csproj" />

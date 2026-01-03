@@ -23,17 +23,10 @@ public class DecryptHandler(
     /// <returns></returns>
     public override async Task<DecryptResponse> Handle(DecryptRequest request, CancellationToken cancellationToken)
     => await ExecuteHandlerAsync(OperationApiName.Decrypt, request, async () =>
-        {
-            var rsaImplementation = PluginFactory.GetPlugin<IRsaSecurity>(RsaSecurityImplementation.ServerGeneral.ToString().ToUpper());
-            var dictionaryResponse = new Dictionary<string, string>();
-            foreach (var text in request.ListTextsEncrypt)
-            {
-                var valueEncrypt = text;
-                if (request.HasEncode)
-                    valueEncrypt = text.Decode();
-                var stringResponse = rsaImplementation.Decrypt(valueEncrypt);
-                dictionaryResponse.Add(text, stringResponse);
-            }
-            return await Task.FromResult(new DecryptResponse(dictionaryResponse)).ConfigureAwait(false);
-        });
+    {
+        var dictionaryDecrypted = await DecryptRsaAsync(request.ListTextsEncrypt, request.HasEncode).ConfigureAwait(false);
+        return await Task.FromResult(new DecryptResponse(dictionaryDecrypted)).ConfigureAwait(false);
+    });
+
+   
 }

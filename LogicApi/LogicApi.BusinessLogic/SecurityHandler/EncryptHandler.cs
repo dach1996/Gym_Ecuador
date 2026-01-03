@@ -23,16 +23,10 @@ public class EncryptHandler(
     /// <returns></returns>
     public override async Task<EncryptResponse> Handle(EncryptRequest request, CancellationToken cancellationToken)
     => await ExecuteHandlerAsync(OperationApiName.Encrypt, request, async () =>
-        {
-            var rsaImplementation = PluginFactory.GetPlugin<IRsaSecurity>(RsaSecurityImplementation.ServerGeneral.ToString().ToUpper());
-            var dictionaryResponse = new Dictionary<string, string>();
-            foreach (var text in request.ListTexts.Distinct())
-            {
-                var stringResponse = rsaImplementation.Encrypt(text);
-                if (request.ApplyEncode)
-                    stringResponse = stringResponse.Encode();
-                dictionaryResponse.Add(text, stringResponse);
-            }
-            return await Task.FromResult(new EncryptResponse(dictionaryResponse)).ConfigureAwait(false);
-        });
+    {
+        var dictionaryEncrypted = await EncryptRsaAsync(request.ListTexts, request.ApplyEncode).ConfigureAwait(false);
+        return await Task.FromResult(new EncryptResponse(dictionaryEncrypted)).ConfigureAwait(false);
+    });
+
+
 }

@@ -57,6 +57,16 @@ public class GymBranchController(
     public async Task<IActionResult> GetGymBranchByGuid([FromQuery] GetGymBranchByGuidRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
+    /// <summary>
+    /// Obtener Sucursales de Gimnasio por GUID del Gimnasio
+    /// </summary>
+    /// <param name="request">Modelo para obtener sucursales de gimnasio por GUID del gimnasio</param>
+    /// <returns></returns>
+    [HttpGet("GetPaginatedByGymGuid")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GetGymBranchesResponse>))]
+    public async Task<IActionResult> GetGymBranchesPaginatedByGymGuid([FromQuery] GetGymBranchesRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
     #endregion
 }
 

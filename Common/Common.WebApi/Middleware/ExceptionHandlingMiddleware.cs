@@ -54,7 +54,7 @@ public class ExceptionHandlingMiddleware(
             if (WebHostEnvironment.IsDevelopmentOrDebug())
                 messageResponse = $"{messageResponse} - {ex.Message}";
             Logger.LogError(ex, "Exception (HTTP: {@CodeHttp} - {@Message}) ", (int)HttpStatusCode.InternalServerError, ex.Message);
-            await SetMessageResponse(httpContext, (int)HttpStatusCode.OK, message.Code, messageResponse).ConfigureAwait(false);
+            await SetMessageResponse(httpContext, (int)HttpStatusCode.InternalServerError, message.Code, messageResponse).ConfigureAwait(false);
         }
     }
 

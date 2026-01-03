@@ -6,7 +6,10 @@ using Common.Messages;
 using Common.PushNotification.Model;
 using Common.Queue.Model.Enum;
 using Common.Queue.Model.Template;
+using Common.Security.Interface;
+using Common.Security.Model.Enum;
 using Common.Templates.Interface;
+using Common.UserDocumentation;
 using Common.Utils.ConstansCodes;
 using Common.Utils.CustomExceptions;
 using Common.Utils.Extensions;
@@ -21,9 +24,12 @@ using LogicCommon.Model.Request.HelperValidation;
 using LogicCommon.Model.Request.NotificationPush;
 using LogicCommon.Model.Request.Queue;
 using LogicCommon.Model.Response.File;
+using LogicCommon.Model.Response.Person;
 using LogicCommon.Model.Response.Queue;
 using PersistenceDb.Models.Administration;
+using PersistenceDb.Models.Authentication;
 using PersistenceDb.Models.Core;
+using PersistenceDb.Models.Enums;
 using PersistenceDb.Repository.Interfaces.UnitOfWork;
 
 namespace LogicCommon.BusinessLogic;
@@ -289,6 +295,47 @@ public abstract class BusinessLogicCommonBase
     }
 
     /// <summary>
+    /// Desencripta un texto usando RSA
+    /// </summary>
+    /// <param name="listTextsEncrypt"></param>
+    /// <param name="hasEncode"></param>
+    /// <returns></returns>
+    protected async Task<Dictionary<string, string>> DecryptRsaAsync(IEnumerable<string> listTextsEncrypt, bool hasEncode)
+    {
+        var rsaImplementation = PluginFactory.GetPlugin<IRsaSecurity>(RsaSecurityImplementation.ServerGeneral.ToString().ToUpper());
+        var dictionaryResponse = new Dictionary<string, string>();
+        foreach (var text in listTextsEncrypt)
+        {
+            var valueEncrypt = text;
+            if (hasEncode)
+                valueEncrypt = text.Decode();
+            var stringResponse = rsaImplementation.Decrypt(valueEncrypt);
+            dictionaryResponse.Add(text, stringResponse);
+        }
+        return await Task.FromResult(dictionaryResponse).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Encripta un texto usando RSA
+    /// </summary>
+    /// <param name="listTexts"></param>
+    /// <param name="applyEncode"></param>
+    /// <returns></returns>
+    protected async Task<Dictionary<string, string>> EncryptRsaAsync(IEnumerable<string> listTexts, bool applyEncode)
+    {
+        var rsaImplementation = PluginFactory.GetPlugin<IRsaSecurity>(RsaSecurityImplementation.ServerGeneral.ToString().ToUpper());
+        var dictionaryResponse = new Dictionary<string, string>();
+        foreach (var text in listTexts.Distinct())
+        {
+            var stringResponse = rsaImplementation.Encrypt(text);
+            if (applyEncode)
+                stringResponse = stringResponse.Encode();
+            dictionaryResponse.Add(text, stringResponse);
+        }
+        return await Task.FromResult(dictionaryResponse).ConfigureAwait(false);
+    }
+
+    /// <summary>
     /// Procesa las imágenes
     /// </summary>
     /// <param name="images"></param>
@@ -337,5 +384,73 @@ public abstract class BusinessLogicCommonBase
                     break;
             }
         }
+    }
+
+    /// <summary>
+    /// Obtiene las plataformas
+    /// </summary>
+    /// <returns></returns>
+    public async Task<List<PersistenceDb.Models.Authentication.Platform>> GetPlatformsAsync()
+        => await AdministratorCache.TryGetOrSetAsync(CacheCodes.PLATFORM_ROLES, async () =>
+            await UnitOfWork.PlatformRepository.GetByAsync().ConfigureAwait(false)
+        ).ConfigureAwait(false);
+
+    /// <summary>
+    /// Obtiene los scopes de roles
+    /// </summary>
+    /// <param name="roleName"></param>
+    /// <param name="platformCode"></param>
+    /// <returns></returns>
+    protected async Task<List<Scope>> GetScopesAsync()
+    {
+        return await AdministratorCache.TryGetOrSetAsync(CacheCodes.SCOPES, async () =>
+             await UnitOfWork.ScopeRepository.GetByAsync().ConfigureAwait(false)).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Obtiene la persona por número de documento
+    /// </summary>
+    /// <param name="documentNumber"></param>
+    /// <returns></returns>
+    protected async Task<PersonDetail> GetPersonByDocumentNumberAsync(string documentNumber)
+    {
+        var person = await UnitOfWork.PersonRepository.GetFirstOrDefaultGenericAsync(
+                    select => new PersonDetail
+                    {
+                        DocumentNumber = select.DocumentNumber,
+                        Names = select.RealNames,
+                        LastNames = select.RealLastNames,
+                        FullName = select.FullName,
+                        BirthDate = select.BirthDate,
+                        Guid = select.Guid,
+                    },
+                    where => where.DocumentNumber == documentNumber).ConfigureAwait(false);
+        //Si la persona no existe en la base de datos, se busca en el servicio de documentación
+        if (person is null)
+        {
+            var personInformation = await PluginFactory.GetPlugin<IDocumentationServices>(AppSettings.DocumentationServicesConfiguration.CurrentImplementation)
+            .GetPersonInformationAsync(new(documentNumber)).ConfigureAwait(false)
+                            ?? throw new CustomException((int)MessagesCodesError.PersonInformationNotFound, $"No se pudo encontrar información del documento: '{documentNumber}'");
+
+            var newPerson = await UnitOfWork.PersonRepository.AddAsync(new Person
+            {
+                DocumentNumber = documentNumber,
+                RealNames = personInformation.Names,
+                RealLastNames = personInformation.LastNames,
+                FullName = personInformation.FullName,
+                BirthDate = personInformation.BirthDate?.Date,
+                Guid = Guid.NewGuid(),
+            }).ConfigureAwait(false);
+            person = new PersonDetail
+            {
+                DocumentNumber = newPerson.DocumentNumber,
+                Names = newPerson.RealNames,
+                LastNames = newPerson.RealLastNames,
+                FullName = newPerson.FullName,
+                BirthDate = newPerson.BirthDate?.Date,
+                Guid = newPerson.Guid,
+            };
+        }
+        return person;
     }
 }

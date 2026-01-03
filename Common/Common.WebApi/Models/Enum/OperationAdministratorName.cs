@@ -569,5 +569,35 @@ public enum OperationAdministratorName : short
     /// </summary>
     [EnumMember(Value = "Obtener Detalle de Sucursal de Gimnasio por GUID")]
     [FunctionalityMember(FunctionalitiesCodes.GET_GYM_BRANCH_BY_GUID)]
-    GetGymBranchByGuid = 80
+    GetGymBranchByGuid = 80,
+
+    // ========== OPERACIONES DE USUARIOS ADMINISTRADORES ==========
+
+    /// <summary>
+    /// Crear Usuario Administrador
+    /// </summary>
+    [EnumMember(Value = "Crear Usuario Administrador")]
+    [FunctionalityMember(FunctionalitiesCodes.CREATE_USER_ADMINISTRATOR, registerAuditLog: true)]
+    CreateUserAdministrator = 81,
+
+    /// <summary>
+    /// Eliminar Usuario Administrador
+    /// </summary>
+    [EnumMember(Value = "Eliminar Usuario Administrador")]
+    [FunctionalityMember(FunctionalitiesCodes.DELETE_USER_ADMINISTRATOR, registerAuditLog: true)]
+    DeleteUserAdministrator = 82,
+
+    /// <summary>
+    /// Obtener Usuarios Administradores Paginados
+    /// </summary>
+    [EnumMember(Value = "Obtener Usuarios Administradores Paginados")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_USERS_ADMINISTRATOR_PAGINATED)]
+    GetUsersAdministratorPaginated = 83,
+
+    /// <summary>
+    /// Obtener Detalle de Usuario Administrador por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Detalle de Usuario Administrador por GUID")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_USER_ADMINISTRATOR_BY_GUID)]
+    GetUserAdministratorByGuid = 84
 }

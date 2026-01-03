@@ -55,10 +55,20 @@ public abstract class CreateUserHandler(
                 Guid = Guid.NewGuid(),
                 LanguageCode = $"{ContextRequest.Headers.UserLanguage}",
                 UserRegistrationForms = [.. GetUserRegistrationForms(passwordEncrypted)],
-                Salt = salt
+                Salt = salt,
             };
             //Guarda el neuvo usuario
-            _ = await UnitOfWork.UserRepository.AddAsync(newUser).ConfigureAwait(false);
+            newUser = await UnitOfWork.UserRepository.AddAsync(newUser).ConfigureAwait(false);
+            var roleId = await UnitOfWork.RoleRepository.GetIdByScopeAndPlatformAsync(
+                RoleType.Client, RolePlatformType.Mobile).ConfigureAwait(false);
+            var scopes = (await GetScopesAsync().ConfigureAwait(false))
+            .Find(where => where.Code == RoleScopeType.Global.GetEnumMember());
+            await UnitOfWork.UserRoleScopeRepository.AddAsync(new UserRoleScope
+            {
+                UserId = newUser.Id,
+                RoleId = roleId,
+                ScopeId = scopes.Id
+            }).ConfigureAwait(false);
         }
         return newUser;
     }

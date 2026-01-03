@@ -23,6 +23,7 @@ public class MainUnitOfWork(
     private IFileRepository _fileRepository;
     private INotificationPushRepository _notificationPushRepository;
     private INotificationPushUserRepository _notificationPushUserRepository;
+    private IScopeRepository _scopeRepository;
     private ICountryRepository _countryRepository;
     private IProvinceRepository _provinceRepository;
     private IRegionRepository _regionRepository;
@@ -33,7 +34,9 @@ public class MainUnitOfWork(
     private IForumRepository _forumRepository;
     private IForumCommentRepository _forumCommentRepository;
     private IFileBasePathRepository _fileBasePathRepository;
-
+    private IUserRoleScopeRepository _userRoleScopeRepository;
+    private IRoleRepository _roleRepository;
+    private IPlatformRepository _platformRepository;
     // Authentication Repositories
     private IDeviceRepository _deviceRepository;
     private IUserRepository _userRepository;
@@ -207,4 +210,16 @@ public class MainUnitOfWork(
 
     public IGymBranchImageRepository GymBranchImageRepository => _gymBranchImageRepository ??=
         new GymBranchImageRepository(Context, LoggerFactory.CreateLogger<GymBranchImageRepository>());
+
+    public IUserRoleScopeRepository UserRoleScopeRepository => _userRoleScopeRepository ??=
+        new UserRoleScopeRepository(Context, LoggerFactory.CreateLogger<UserRoleScopeRepository>());
+
+    public IRoleRepository RoleRepository => _roleRepository ??=
+        new RoleRepository(Context, LoggerFactory.CreateLogger<RoleRepository>());
+
+    public IPlatformRepository PlatformRepository => _platformRepository ??=
+        new PlatformRepository(Context, LoggerFactory.CreateLogger<PlatformRepository>());
+
+    public IScopeRepository ScopeRepository => _scopeRepository ??=
+        new ScopeRepository(Context, LoggerFactory.CreateLogger<ScopeRepository>());
 }

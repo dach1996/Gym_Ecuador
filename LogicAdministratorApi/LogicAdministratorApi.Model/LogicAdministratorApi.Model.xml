@@ -372,7 +372,7 @@
             Filtro por estado activo
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesRequest.Page">
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesRequest.PageNumber">
             <summary>
             Página
             </summary>
@@ -625,6 +625,188 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Security.GetPublicKeyRequest">
+            <summary>
+            Modelo Request para obtener llave pública
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Security.GetPublicKeyRequest.RsaImplementation">
+            <summary>
+            Identificador, puede ser tipo : General, Bank
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Security.GetPublicKeyRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.UserAdministrator.CreateUserAdministratorRequest">
+            <summary>
+            Solicitud para crear un usuario administrador
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.CreateUserAdministratorRequest.UserName">
+            <summary>
+            Nombre de usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.CreateUserAdministratorRequest.IdentificationNumber">
+            <summary>
+            Número de identificación del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.CreateUserAdministratorRequest.Email">
+            <summary>
+            Email del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.CreateUserAdministratorRequest.Phone">
+            <summary>
+            Teléfono del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.CreateUserAdministratorRequest.Password">
+            <summary>
+            Contraseña del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.CreateUserAdministratorRequest.LanguageCode">
+            <summary>
+            Código de idioma
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.CreateUserAdministratorRequest.GymGuid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.CreateUserAdministratorRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.UserAdministrator.DeleteUserAdministratorRequest">
+            <summary>
+            Solicitud para eliminar un usuario administrador
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.DeleteUserAdministratorRequest.UserGuid">
+            <summary>
+            GUID del usuario a eliminar
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.DeleteUserAdministratorRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.UserAdministrator.GetUserAdministratorByGuidRequest">
+            <summary>
+            Solicitud para obtener detalle de usuario administrador por GUID
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.GetUserAdministratorByGuidRequest.UserGuid">
+            <summary>
+            Guid del usuario administrador
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.GetUserAdministratorByGuidRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.UserAdministrator.GetUsersAdministratorRequest">
+            <summary>
+            Solicitud para obtener usuarios administradores paginados
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.GetUsersAdministratorRequest.EmailFilter">
+            <summary>
+            Filtro por email
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.GetUsersAdministratorRequest.UserNameFilter">
+            <summary>
+            Filtro por nombre de usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.GetUsersAdministratorRequest.IsBlockedFilter">
+            <summary>
+            Filtro por estado bloqueado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.GetUsersAdministratorRequest.PageNumber">
+            <summary>
+            Página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.GetUsersAdministratorRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.GetUsersAdministratorRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Request.UserAdministrator.GetUsersAdministratorRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Request.UserAdministrator.GetUsersAdministratorRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.UserAdministrator.UpdateUserAdministratorRequest">
+            <summary>
+            Solicitud para actualizar un usuario administrador
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.UpdateUserAdministratorRequest.UserGuid">
+            <summary>
+            GUID del usuario a actualizar
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.UpdateUserAdministratorRequest.UserName">
+            <summary>
+            Nombre de usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.UpdateUserAdministratorRequest.Email">
+            <summary>
+            Email del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.UpdateUserAdministratorRequest.Phone">
+            <summary>
+            Teléfono del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.UpdateUserAdministratorRequest.Password">
+            <summary>
+            Contraseña del usuario (opcional, solo si se desea cambiar)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.UpdateUserAdministratorRequest.LanguageCode">
+            <summary>
+            Código de idioma
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.UpdateUserAdministratorRequest.IsBlocked">
+            <summary>
+            Indica si el usuario está bloqueado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.UpdateUserAdministratorRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Response.Authorization.LoginResponse">
             <summary>
             Objeto de respuesta para ingreso de sistema
@@ -635,9 +817,34 @@
             Secreto para acceso
             </summary>
         </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.Username">
+            <summary>
+            Username
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.PersonName">
+            <summary>
+            Person Name
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.Email">
+            <summary>
+            Email
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.IsSuperAdmin">
+            <summary>
+            Is Super Admin
+            </summary>
+        </member>
         <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.UserMessage">
             <summary>
             Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.GymGuids">
+            <summary>
+            Gym Guids
             </summary>
         </member>
         <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.ShowMessage">
@@ -1258,6 +1465,315 @@
             <param name="message"></param>
             <param name="showMessage"></param>
             <returns></returns>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Security.GetPublicKeyResponse">
+            <summary>
+            Modelo de respuesta para obtener Llave pública
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Security.GetPublicKeyResponse.PublicKey">
+            <summary>
+            Llave publica
+            </summary>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.Security.GetPublicKeyResponse.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="publicKey"></param>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.UserAdministrator.CreateUserAdministratorResponse">
+            <summary>
+            Respuesta de crear usuario administrador
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="userGuid"></param>
+            <param name="userName"></param>
+            <param name="email"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.UserAdministrator.CreateUserAdministratorResponse.#ctor(System.Guid,System.String,System.String)">
+            <summary>
+            Respuesta de crear usuario administrador
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="userGuid"></param>
+            <param name="userName"></param>
+            <param name="email"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.CreateUserAdministratorResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.CreateUserAdministratorResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.CreateUserAdministratorResponse.UserGuid">
+            <summary>
+            Guid del usuario creado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.CreateUserAdministratorResponse.UserName">
+            <summary>
+            Nombre de usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.CreateUserAdministratorResponse.Email">
+            <summary>
+            Email del usuario
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.UserAdministrator.DeleteUserAdministratorResponse">
+            <summary>
+            Respuesta de eliminar usuario administrador
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="success"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.UserAdministrator.DeleteUserAdministratorResponse.#ctor(System.Boolean)">
+            <summary>
+            Respuesta de eliminar usuario administrador
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="success"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.DeleteUserAdministratorResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.DeleteUserAdministratorResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.DeleteUserAdministratorResponse.Success">
+            <summary>
+            Indica si la eliminación fue exitosa
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.UserAdministrator.GetUserAdministratorByGuidResponse">
+            <summary>
+            Respuesta de obtener detalle de usuario administrador por GUID
+            </summary>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.UserAdministrator.GetUserAdministratorByGuidResponse.#ctor(LogicAdministratorApi.Model.Response.UserAdministrator.UserDetail)">
+            <summary>
+            Respuesta de obtener detalle de usuario administrador por GUID
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.GetUserAdministratorByGuidResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.GetUserAdministratorByGuidResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.GetUserAdministratorByGuidResponse.User">
+            <summary>
+            Datos del usuario
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.UserAdministrator.UserDetail">
+            <summary>
+            Detalle completo de usuario administrador
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserDetail.Guid">
+            <summary>
+            Guid del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserDetail.UserName">
+            <summary>
+            Nombre de usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserDetail.Email">
+            <summary>
+            Email del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserDetail.Phone">
+            <summary>
+            Teléfono del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserDetail.LanguageCode">
+            <summary>
+            Código de idioma
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserDetail.IsBlocked">
+            <summary>
+            Indica si el usuario está bloqueado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserDetail.HasCompleteRegistration">
+            <summary>
+            Indica si tiene registro completo
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserDetail.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserDetail.FirstLoginDate">
+            <summary>
+            Fecha del primer login
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserDetail.ImageUrl">
+            <summary>
+            URL de la imagen del usuario
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.UserAdministrator.GetUsersAdministratorResponse">
+            <summary>
+            Respuesta de obtener usuarios administradores paginados
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.UserAdministrator.GetUsersAdministratorResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicAdministratorApi.Model.Response.UserAdministrator.UserItem})">
+            <summary>
+            Respuesta de obtener usuarios administradores paginados
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.GetUsersAdministratorResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.GetUsersAdministratorResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.GetUsersAdministratorResponse.TotalRegister">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.GetUsersAdministratorResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.UserAdministrator.UserItem">
+            <summary>
+            Item de usuario administrador
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserItem.Guid">
+            <summary>
+            Guid del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserItem.UserName">
+            <summary>
+            Nombre de usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserItem.Email">
+            <summary>
+            Email del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserItem.Phone">
+            <summary>
+            Teléfono del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserItem.LanguageCode">
+            <summary>
+            Código de idioma
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserItem.IsBlocked">
+            <summary>
+            Indica si el usuario está bloqueado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserItem.HasCompleteRegistration">
+            <summary>
+            Indica si tiene registro completo
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserItem.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserItem.FirstLoginDate">
+            <summary>
+            Fecha del primer login
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.UserAdministrator.UpdateUserAdministratorResponse">
+            <summary>
+            Respuesta de actualizar usuario administrador
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UpdateUserAdministratorResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UpdateUserAdministratorResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UpdateUserAdministratorResponse.UserGuid">
+            <summary>
+            Guid del usuario actualizado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UpdateUserAdministratorResponse.UserName">
+            <summary>
+            Nombre de usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UpdateUserAdministratorResponse.Email">
+            <summary>
+            Email del usuario
+            </summary>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.UserAdministrator.UpdateUserAdministratorResponse.#ctor(System.Guid,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userGuid"></param>
+            <param name="userName"></param>
+            <param name="email"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.UserAdministrator.UpdateUserAdministratorResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
         </member>
         <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type)">
             <summary>
