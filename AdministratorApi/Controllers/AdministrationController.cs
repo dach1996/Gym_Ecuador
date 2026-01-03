@@ -5,34 +5,26 @@ using Common.WebApi.Models;
 using Common.WebApi.Controller;
 using MediatR;
 using LogicCommon.Model.Response.Administration;
-using LogicCommon.Model.Request.Administration;
 using Asp.Versioning;
+using LogicAdministratorApi.Model.Request.Administration;
 
-namespace GatewayCoreAPI.Controllers.V1;
+namespace AdministratorApi.Controllers;
+/// <summary>
+/// Controlador de Administración
+/// </summary>
+/// <param name="userMessages"></param>
+/// <param name="logger"></param>
+/// <param name="mediator"></param>
 [Route("api/v{version:apiVersion}/[controller]")]
 [ApiVersion("1.0")]
-public class AdministrationController : SecurityControllerBase
+public class AdministrationController(
+    IUserMessages userMessages,
+    ILogger<AdministrationController> logger,
+    IMediator mediator) : SecurityControllerBase(
+        userMessages,
+        logger,
+        mediator)
 {
-    #region Constructor
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="userMessages"></param>
-    /// <param name="logger"></param>
-    /// <param name="mediator"></param>
-    public AdministrationController(
-        IUserMessages userMessages,
-        ILogger<AdministrationController> logger,
-        IMediator mediator) : base(
-            userMessages,
-            logger,
-            mediator)
-    {
-    }
-
-    #endregion
-
-    #region Methods Controller
 
     /// <summary>
     /// Obtiene los catálogos inciales
@@ -43,8 +35,6 @@ public class AdministrationController : SecurityControllerBase
     [HttpGet("GetInitialCatalogues")]
     [ProducesResponseType(200, Type = typeof(GenericResponse<GetInitialCataloguesResponse>))]
     [ProducesResponseType(400, Type = typeof(GenericResponse))]
-    public async Task<IActionResult> GetInitialCatalogues([FromQuery] GetInitialCataloguesCommonRequest request)
+    public async Task<IActionResult> GetInitialCatalogues([FromQuery] GetInitialCataloguesRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
-
-    #endregion
 }

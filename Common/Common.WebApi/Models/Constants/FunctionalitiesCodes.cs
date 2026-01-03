@@ -422,4 +422,31 @@ public static class FunctionalitiesCodes
     /// Obtener Detalle de Usuario Administrador por GUID
     /// </summary>
     public const string GET_USER_ADMINISTRATOR_BY_GUID = "ADM_USER_ADMIN_GET_BY_GUID";
+
+    // ========== OPERACIONES DE EQUIPAMIENTOS ==========
+
+    /// <summary>
+    /// Crear Equipamiento
+    /// </summary>
+    public const string CREATE_EQUIPMENT = "ADM_EQP_CREATE";
+
+    /// <summary>
+    /// Actualizar Equipamiento
+    /// </summary>
+    public const string UPDATE_EQUIPMENT = "ADM_EQP_UPDATE";
+
+    /// <summary>
+    /// Eliminar Equipamiento
+    /// </summary>
+    public const string DELETE_EQUIPMENT = "ADM_EQP_DELETE";
+
+    /// <summary>
+    /// Obtener Equipamientos Paginados
+    /// </summary>
+    public const string GET_EQUIPMENTS_PAGINATED = "ADM_EQP_GET_PAGINATED";
+
+    /// <summary>
+    /// Obtener Detalle de Equipamiento por GUID
+    /// </summary>
+    public const string GET_EQUIPMENT_BY_GUID = "ADM_EQP_GET_BY_GUID";
 }

@@ -120,6 +120,16 @@
         <member name="P:LogicAdministratorApi.Model.CommonRecords.SecretLoginModel.DateTimeRegister">
             <summary></summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Administration.GetInitialCataloguesRequest">
+            <summary>
+            Request para obtener los catálogos iniciales
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Administration.GetInitialCataloguesRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Request.Authorization.LoginRequest">
             <summary>
             Objeto para Ingreso al sistema
@@ -138,6 +148,151 @@
             <value></value>
         </member>
         <member name="P:LogicAdministratorApi.Model.Request.Authorization.LoginRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Equipment.CreateEquipmentRequest">
+            <summary>
+            Solicitud para crear un equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.CreateEquipmentRequest.GymBranchGuid">
+            <summary>
+            GUID de la sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.CreateEquipmentRequest.Name">
+            <summary>
+            Nombre del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.CreateEquipmentRequest.Description">
+            <summary>
+            Descripción del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.CreateEquipmentRequest.EquipmentTypeCatalogCode">
+            <summary>
+            Id del tipo de equipamiento (catálogo)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.CreateEquipmentRequest.Images">
+            <summary>
+            Imágenes del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.CreateEquipmentRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Equipment.DeleteEquipmentRequest">
+            <summary>
+            Solicitud para eliminar un equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.DeleteEquipmentRequest.EquipmentGuid">
+            <summary>
+            GUID del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.DeleteEquipmentRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Equipment.GetEquipmentByGuidRequest">
+            <summary>
+            Solicitud para obtener un equipamiento por GUID
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.GetEquipmentByGuidRequest.EquipmentGuid">
+            <summary>
+            GUID del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.GetEquipmentByGuidRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Equipment.GetEquipmentsRequest">
+            <summary>
+            Solicitud para obtener equipamientos paginados
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.GetEquipmentsRequest.GymBranchGuid">
+            <summary>
+            GUID de la sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.GetEquipmentsRequest.PageNumber">
+            <summary>
+            Número de página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.GetEquipmentsRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.GetEquipmentsRequest.NameFilter">
+            <summary>
+            Filtro por nombre
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.GetEquipmentsRequest.TypeFilter">
+            <summary>
+            Filtro por tipo (código o nombre del tipo)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.GetEquipmentsRequest.IsActiveFilter">
+            <summary>
+            Filtro por estado activo/inactivo
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.GetEquipmentsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Equipment.UpdateEquipmentRequest">
+            <summary>
+            Solicitud para actualizar un equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.UpdateEquipmentRequest.EquipmentGuid">
+            <summary>
+            GUID del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.UpdateEquipmentRequest.Name">
+            <summary>
+            Nombre del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.UpdateEquipmentRequest.Description">
+            <summary>
+            Descripción del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.UpdateEquipmentRequest.EquipmentTypeCatalogCode">
+            <summary>
+            Id del tipo de equipamiento (catálogo)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.UpdateEquipmentRequest.IsActive">
+            <summary>
+            Estado del registro (Activo/Inactivo)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.UpdateEquipmentRequest.Images">
+            <summary>
+            Imágenes del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Equipment.UpdateEquipmentRequest.ContextRequest">
             <summary>
             Context
             </summary>
@@ -852,6 +1007,283 @@
             Mensaje
             </summary>
             <value></value>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Equipment.CreateEquipmentResponse">
+            <summary>
+            Respuesta de crear equipamiento
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="equipmentGuid"></param>
+            <param name="name"></param>
+            <param name="gymBranchGuid"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.Equipment.CreateEquipmentResponse.#ctor(System.Guid,System.String,System.Guid)">
+            <summary>
+            Respuesta de crear equipamiento
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="equipmentGuid"></param>
+            <param name="name"></param>
+            <param name="gymBranchGuid"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.CreateEquipmentResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.CreateEquipmentResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.CreateEquipmentResponse.EquipmentGuid">
+            <summary>
+            Guid del equipamiento creado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.CreateEquipmentResponse.Name">
+            <summary>
+            Nombre del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.CreateEquipmentResponse.GymBranchGuid">
+            <summary>
+            Guid de la sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Equipment.DeleteEquipmentResponse">
+            <summary>
+            Respuesta de eliminar equipamiento
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.Equipment.DeleteEquipmentResponse.#ctor">
+            <summary>
+            Respuesta de eliminar equipamiento
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.DeleteEquipmentResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.DeleteEquipmentResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Equipment.GetEquipmentByGuidResponse">
+            <summary>
+            Respuesta de obtener equipamiento por GUID
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="equipment"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.Equipment.GetEquipmentByGuidResponse.#ctor(LogicAdministratorApi.Model.Response.Equipment.EquipmentDetail)">
+            <summary>
+            Respuesta de obtener equipamiento por GUID
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="equipment"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.GetEquipmentByGuidResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.GetEquipmentByGuidResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.GetEquipmentByGuidResponse.Equipment">
+            <summary>
+            Detalle del equipamiento
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Equipment.EquipmentDetail">
+            <summary>
+            Detalle del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentDetail.Guid">
+            <summary>
+            Guid del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentDetail.GymBranchGuid">
+            <summary>
+            Guid de la sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentDetail.Name">
+            <summary>
+            Nombre del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentDetail.Description">
+            <summary>
+            Descripción del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentDetail.EquipmentTypeCatalogId">
+            <summary>
+            Id del tipo de equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentDetail.EquipmentTypeCode">
+            <summary>
+            Código del tipo de equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentDetail.EquipmentTypeName">
+            <summary>
+            Nombre del tipo de equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentDetail.IsActive">
+            <summary>
+            Estado del registro
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentDetail.Images">
+            <summary>
+            Imágenes del equipamiento
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Equipment.GetEquipmentsResponse">
+            <summary>
+            Respuesta de obtener equipamientos paginados
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.Equipment.GetEquipmentsResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicAdministratorApi.Model.Response.Equipment.EquipmentItem})">
+            <summary>
+            Respuesta de obtener equipamientos paginados
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.GetEquipmentsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.GetEquipmentsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.GetEquipmentsResponse.TotalRegister">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.GetEquipmentsResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Equipment.EquipmentItem">
+            <summary>
+            Item de equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentItem.Guid">
+            <summary>
+            Guid del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentItem.Name">
+            <summary>
+            Nombre del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentItem.Description">
+            <summary>
+            Descripción del equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentItem.EquipmentTypeCode">
+            <summary>
+            Código del tipo de equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentItem.EquipmentTypeName">
+            <summary>
+            Nombre del tipo de equipamiento
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentItem.IsActive">
+            <summary>
+            Estado del registro
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.EquipmentItem.Image">
+            <summary>
+            Imágenes del equipamiento
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Equipment.UpdateEquipmentResponse">
+            <summary>
+            Respuesta de actualizar equipamiento
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="equipmentGuid"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.Equipment.UpdateEquipmentResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Respuesta de actualizar equipamiento
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="equipmentGuid"></param>
+            <param name="name"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.UpdateEquipmentResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.UpdateEquipmentResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.UpdateEquipmentResponse.EquipmentGuid">
+            <summary>
+            Guid del equipamiento actualizado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Equipment.UpdateEquipmentResponse.Name">
+            <summary>
+            Nombre del equipamiento
+            </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Response.GymBranchSchedule.CreateGymBranchScheduleResponse">
             <summary>

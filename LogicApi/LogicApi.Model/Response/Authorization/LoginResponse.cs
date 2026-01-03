@@ -1,5 +1,5 @@
 ﻿using Common.WebCommon.Attributes;
-using LogicApi.Model.Response.Administration;
+using LogicCommon.Model.Response.Administration;
 namespace LogicApi.Model.Response.Authorization;
 /// <summary>
 /// Objeto de respuesta para ingreso de sistema

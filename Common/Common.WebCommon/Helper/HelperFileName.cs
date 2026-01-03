@@ -46,4 +46,13 @@ public static class HelperFileName
     public static string GetProcessTrackingImageName(string extension, DateTime? now = null)
         => GenericImageName("ProcessTracking", extension, now);
 
+    /// <summary>
+    /// Formato de Nombre de imagenes de equipamientos
+    /// </summary>
+    /// <param name="extension"></param>
+    /// <param name="now"></param>
+    /// <returns></returns>
+    public static string GetEquipmentImageName(string extension, DateTime? now = null)
+        => GenericImageName("Equipment", extension, now);
+
 }

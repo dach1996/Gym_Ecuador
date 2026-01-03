@@ -23,4 +23,10 @@ public enum PathCode
     /// </summary>
     [EnumMember(Value = "PROCESS_TRACKING_IMAGE")]
     ProcessTrackingImage = 3,
+
+    /// <summary>
+    /// Ruta de imágenes de equipamientos
+    /// </summary>
+    [EnumMember(Value = "EQUIPMENT_IMAGE")]
+    EquipmentImage = 4,
 }

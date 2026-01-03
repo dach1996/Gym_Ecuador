@@ -63,4 +63,6 @@ public interface IUnitOfWork : IUnitOfWorkBase
     IGymSubscriptionPlanServiceRepository GymSubscriptionPlanServiceRepository { get; }
     IGymBranchScheduleRepository GymBranchScheduleRepository { get; }
     IGymBranchImageRepository GymBranchImageRepository { get; }
+    IEquipmentRepository EquipmentRepository { get; }
+    IEquipmentImageRepository EquipmentImageRepository { get; }
 }

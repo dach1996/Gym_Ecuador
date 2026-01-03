@@ -599,5 +599,40 @@ public enum OperationAdministratorName : short
     /// </summary>
     [EnumMember(Value = "Obtener Detalle de Usuario Administrador por GUID")]
     [FunctionalityMember(FunctionalitiesCodes.GET_USER_ADMINISTRATOR_BY_GUID)]
-    GetUserAdministratorByGuid = 84
+    GetUserAdministratorByGuid = 84,
+
+    /// <summary>
+    /// Crear Equipamiento
+    /// </summary>
+    [EnumMember(Value = "Crear Equipamiento")]
+    [FunctionalityMember(FunctionalitiesCodes.CREATE_EQUIPMENT, registerAuditLog: true)]
+    CreateEquipment = 85,
+
+    /// <summary>
+    /// Actualizar Equipamiento
+    /// </summary>
+    [EnumMember(Value = "Actualizar Equipamiento")]
+    [FunctionalityMember(FunctionalitiesCodes.UPDATE_EQUIPMENT, registerAuditLog: true)]
+    UpdateEquipment = 86,
+
+    /// <summary>
+    /// Eliminar Equipamiento
+    /// </summary>
+    [EnumMember(Value = "Eliminar Equipamiento")]
+    [FunctionalityMember(FunctionalitiesCodes.DELETE_EQUIPMENT, registerAuditLog: true)]
+    DeleteEquipment = 87,
+
+    /// <summary>
+    /// Obtener Equipamientos Paginados
+    /// </summary>
+    [EnumMember(Value = "Obtener Equipamientos Paginados")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_EQUIPMENTS_PAGINATED)]
+    GetEquipmentsPaginated = 88,
+
+    /// <summary>
+    /// Obtener Detalle de Equipamiento por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Detalle de Equipamiento por GUID")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_EQUIPMENT_BY_GUID)]
+    GetEquipmentByGuid = 89
 }

@@ -21,4 +21,12 @@ public static class HelperPathName
     /// <param name="processTrackingId"></param>
     /// <returns></returns>
     public static string GetProcessTrackingPathName(string fileDirectoryPath, int processTrackingId) => $"{fileDirectoryPath}/{processTrackingId}";
+
+    /// <summary>
+    ///  Formato de Path de imagenes de equipamientos
+    /// </summary>
+    /// <param name="basePath"></param>
+    /// <param name="equipmentId"></param>
+    /// <returns></returns>
+    public static string GetEquipmentPathName(string basePath, int equipmentId) => $"{basePath}/{equipmentId}";
 }

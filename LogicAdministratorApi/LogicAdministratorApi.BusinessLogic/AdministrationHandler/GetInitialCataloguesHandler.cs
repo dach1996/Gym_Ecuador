@@ -1,9 +1,9 @@
 ﻿using Common.WebCommon.Models.Enum;
-using LogicApi.Model.Request.Administration;
+using LogicAdministratorApi.Model.Request.Administration;
 using LogicCommon.Model.Request.Administration;
 using LogicCommon.Model.Response.Administration;
 
-namespace LogicApi.BusinessLogic.AdministrationHandler;
+namespace LogicAdministratorApi.BusinessLogic.AdministrationHandler;
 /// <summary>
 /// Constructor
 /// </summary>
@@ -23,5 +23,5 @@ public class GetInitialCataloguesHandler(
    /// <param name="cancellationToken"></param>
    /// <returns></returns>
    public override async Task<GetInitialCataloguesResponse> Handle(GetInitialCataloguesRequest request, CancellationToken cancellationToken)
-    => await Mediator.Send(new GetInitialCataloguesCommonRequest(request.ContextRequest, request.ListCatalogsTypeItemsCodes.Select(select => select.ToString().ToEnumFromMember<CatalogsTypeItemsCodes>()).ToList()), cancellationToken).ConfigureAwait(false);
+      => await Mediator.Send(new GetInitialCataloguesCommonRequest(request.ContextRequest, request.ListCatalogsTypeItemsCodes), cancellationToken).ConfigureAwait(false);
 }

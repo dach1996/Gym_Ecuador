@@ -1,4 +1,5 @@
-namespace LogicApi.Model.Response.Administration;
+
+namespace LogicCommon.Model.Response.Administration;
 /// <summary>
 /// Respuesta de Servicio Obtener Bancos
 /// </summary>
@@ -7,7 +8,7 @@ namespace LogicApi.Model.Response.Administration;
 /// </remarks>
 /// <param name="listCatalogCodes"></param>
 public class GetInitialCataloguesResponse(
-    Dictionary<string, Dictionary<string, string>> listCatalogCodes) : IApiBaseResponse
+    Dictionary<string, Dictionary<string, string>> listCatalogCodes) 
 {
     /// <summary>
     /// Mensaje al Usuario
@@ -28,3 +29,4 @@ public class GetInitialCataloguesResponse(
     public Dictionary<string, Dictionary<string, string>> ListCatalogCodes { get; set; } = listCatalogCodes;
 
 }
+

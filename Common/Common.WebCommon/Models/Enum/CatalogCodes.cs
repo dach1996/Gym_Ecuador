@@ -11,4 +11,10 @@ public enum CatalogCodes
     /// </summary>
     [EnumMember(Value = "GENERO")]
     Gender = 1,
+
+    /// <summary>
+    /// Código de Tipo de Equipamiento Gimnasio
+    /// </summary>
+    [EnumMember(Value = "TIPOS_EQUIPO_GIMNASIO")]
+    EquipmentTypeGym = 2,
 }

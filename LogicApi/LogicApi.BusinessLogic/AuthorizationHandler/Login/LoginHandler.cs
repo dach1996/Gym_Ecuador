@@ -1,7 +1,7 @@
 ﻿using Common.WebApi.Models.EncryptedClaims;
 using Common.WebCommon.Models;
 using LogicApi.Abstractions.Interfaces.Authorization;
-using LogicApi.Model.Request.Administration;
+using LogicCommon.Model.Request.Administration;
 using LogicApi.Model.Request.Authorization;
 using LogicApi.Model.Request.Device;
 using LogicApi.Model.Response.Authorization;
@@ -105,7 +105,7 @@ public class LoginHandler(
                 where => where.Id == user.ImagenId
             ).ConfigureAwait(false);
         //Tarea para Obtener los Catálogos Iniciales
-        loginResponse.GetInitialCataloguesResponse = await Mediator.Send(new GetInitialCataloguesRequest(ContextRequest)).ConfigureAwait(false);
+        loginResponse.GetInitialCataloguesResponse = await Mediator.Send(new GetInitialCataloguesCommonRequest(ContextRequest)).ConfigureAwait(false);
         loginResponse.Configuration = new UserConfiguration
         {
             Language = user.LanguageCode,

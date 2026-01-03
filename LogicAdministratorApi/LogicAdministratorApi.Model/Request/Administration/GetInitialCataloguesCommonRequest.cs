@@ -1,13 +1,14 @@
-using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Models;
 using LogicCommon.Model.Request.Administration;
 using LogicCommon.Model.Response.Administration;
-namespace LogicApi.Model.Request.Administration;
+
+namespace LogicAdministratorApi.Model.Request.Administration;
 /// <summary>
-/// Obtiene los catálogos iniciales
+/// Request para obtener los catálogos iniciales
 /// </summary>
 public class GetInitialCataloguesRequest : GetInitialCataloguesCommonRequest, IApiBaseRequest<GetInitialCataloguesResponse>
 {
+
     /// <summary>
     /// Context
     /// </summary>

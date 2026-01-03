@@ -4,6 +4,29 @@
         <name>AdministratorApi</name>
     </assembly>
     <members>
+        <member name="T:AdministratorApi.Controllers.AdministrationController">
+            <summary>
+            Controlador de Administración
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.AdministrationController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.AdministrationController},MediatR.IMediator)">
+            <summary>
+            Controlador de Administración
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.AdministrationController.GetInitialCatalogues(LogicAdministratorApi.Model.Request.Administration.GetInitialCataloguesRequest)">
+            <summary>
+            Obtiene los catálogos inciales
+            </summary>
+            <param name="request">Modelo para Obtiene los catálogos inciales</param>
+            <returns></returns>
+        </member>
         <member name="T:AdministratorApi.Controllers.AuthController">
             <summary>
             Constructor
@@ -25,6 +48,57 @@
             Autenticación
             </summary>
             <param name="request">Modelo para autenticación</param>
+            <returns></returns>
+        </member>
+        <member name="T:AdministratorApi.Controllers.EquipmentController">
+            <summary>
+            Controlador de Equipamientos
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.EquipmentController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.EquipmentController},MediatR.IMediator)">
+            <summary>
+            Controlador de Equipamientos
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.EquipmentController.CreateEquipment(LogicAdministratorApi.Model.Request.Equipment.CreateEquipmentRequest)">
+            <summary>
+            Crear Equipamiento
+            </summary>
+            <param name="request">Modelo para crear equipamiento</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.EquipmentController.UpdateEquipment(LogicAdministratorApi.Model.Request.Equipment.UpdateEquipmentRequest)">
+            <summary>
+            Actualizar Equipamiento
+            </summary>
+            <param name="request">Modelo para actualizar equipamiento</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.EquipmentController.DeleteEquipment(LogicAdministratorApi.Model.Request.Equipment.DeleteEquipmentRequest)">
+            <summary>
+            Eliminar Equipamiento
+            </summary>
+            <param name="request">Modelo para eliminar equipamiento</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.EquipmentController.GetEquipmentByGuid(LogicAdministratorApi.Model.Request.Equipment.GetEquipmentByGuidRequest)">
+            <summary>
+            Obtener Equipamiento por GUID
+            </summary>
+            <param name="request">Modelo para obtener equipamiento por GUID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.EquipmentController.GetEquipmentsPaginatedByGymBranchGuid(LogicAdministratorApi.Model.Request.Equipment.GetEquipmentsRequest)">
+            <summary>
+            Obtener Equipamientos Paginados por GUID de Sucursal
+            </summary>
+            <param name="request">Modelo para obtener equipamientos paginados</param>
             <returns></returns>
         </member>
         <member name="T:AdministratorApi.Controllers.GymBranchController">
