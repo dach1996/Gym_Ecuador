@@ -1,9 +1,7 @@
 using System.Linq.Expressions;
-using Common.Blob.Models.Response;
 using Common.Cache.Interface;
 using Common.Clock;
 using Common.Messages;
-using Common.PushNotification.Model;
 using Common.Queue.Model.Enum;
 using Common.Queue.Model.Template;
 using Common.Security.Interface;
@@ -13,23 +11,19 @@ using Common.UserDocumentation;
 using Common.Utils.ConstansCodes;
 using Common.Utils.CustomExceptions;
 using Common.Utils.Extensions;
-using Common.WebCommon.Helper;
 using Common.WebCommon.Models;
 using Common.WebCommon.Models.Enum;
 using Common.WebCommon.Models.Queues;
-using Common.WebCommon.Templates.Notification;
 using LogicCommon.Model.CacheModel;
 using LogicCommon.Model.Request.File;
 using LogicCommon.Model.Request.HelperValidation;
 using LogicCommon.Model.Request.NotificationPush;
 using LogicCommon.Model.Request.Queue;
-using LogicCommon.Model.Response.File;
 using LogicCommon.Model.Response.Person;
 using LogicCommon.Model.Response.Queue;
-using PersistenceDb.Models.Administration;
+using PasswordGenerator;
 using PersistenceDb.Models.Authentication;
 using PersistenceDb.Models.Core;
-using PersistenceDb.Models.Enums;
 using PersistenceDb.Repository.Interfaces.UnitOfWork;
 
 namespace LogicCommon.BusinessLogic;
@@ -212,24 +206,6 @@ public abstract class BusinessLogicCommonBase
             _ = Mediator.Send(new DeleteMessageQueueRequest(deleteMessageQueueItems, CommonContextRequest));
     }
 
-
-    /// <summary>
-    /// Envía notificación push
-    /// </summary>
-    /// <param name="title"></param>
-    /// <param name="body"></param>
-    /// <param name="userId"></param>
-    /// <returns></returns>
-    protected async Task SendNotificationAsync(
-        NotificationTemplateModelBase notificationTemplateModelBase,
-        int userId,
-        NotificationAction action = NotificationAction.Notification)
-    {
-        var template = TemplateFactory.NotificationTemplate.GetTemplate($"{notificationTemplateModelBase.NotificationTemplateName}", notificationTemplateModelBase);
-        await Mediator.Send(new SendNotificationPushUsersRequest(template.Title, template.Body, userId, action, CommonContextRequest));
-    }
-
-
     /// <summary>
     /// Obtiene el Guid de los usuarios
     /// </summary>
@@ -402,55 +378,17 @@ public abstract class BusinessLogicCommonBase
     /// <param name="platformCode"></param>
     /// <returns></returns>
     protected async Task<List<Scope>> GetScopesAsync()
-    {
-        return await AdministratorCache.TryGetOrSetAsync(CacheCodes.SCOPES, async () =>
+        => await AdministratorCache.TryGetOrSetAsync(CacheCodes.SCOPES, async () =>
              await UnitOfWork.ScopeRepository.GetByAsync().ConfigureAwait(false)).ConfigureAwait(false);
-    }
 
     /// <summary>
-    /// Obtiene la persona por número de documento
+    /// Genera una contraseña
     /// </summary>
-    /// <param name="documentNumber"></param>
     /// <returns></returns>
-    protected async Task<PersonDetail> GetPersonByDocumentNumberAsync(string documentNumber)
-    {
-        var person = await UnitOfWork.PersonRepository.GetFirstOrDefaultGenericAsync(
-                    select => new PersonDetail
-                    {
-                        DocumentNumber = select.DocumentNumber,
-                        Names = select.RealNames,
-                        LastNames = select.RealLastNames,
-                        FullName = select.FullName,
-                        BirthDate = select.BirthDate,
-                        Guid = select.Guid,
-                    },
-                    where => where.DocumentNumber == documentNumber).ConfigureAwait(false);
-        //Si la persona no existe en la base de datos, se busca en el servicio de documentación
-        if (person is null)
-        {
-            var personInformation = await PluginFactory.GetPlugin<IDocumentationServices>(AppSettings.DocumentationServicesConfiguration.CurrentImplementation)
-            .GetPersonInformationAsync(new(documentNumber)).ConfigureAwait(false)
-                            ?? throw new CustomException((int)MessagesCodesError.PersonInformationNotFound, $"No se pudo encontrar información del documento: '{documentNumber}'");
-
-            var newPerson = await UnitOfWork.PersonRepository.AddAsync(new Person
-            {
-                DocumentNumber = documentNumber,
-                RealNames = personInformation.Names,
-                RealLastNames = personInformation.LastNames,
-                FullName = personInformation.FullName,
-                BirthDate = personInformation.BirthDate?.Date,
-                Guid = Guid.NewGuid(),
-            }).ConfigureAwait(false);
-            person = new PersonDetail
-            {
-                DocumentNumber = newPerson.DocumentNumber,
-                Names = newPerson.RealNames,
-                LastNames = newPerson.RealLastNames,
-                FullName = newPerson.FullName,
-                BirthDate = newPerson.BirthDate?.Date,
-                Guid = newPerson.Guid,
-            };
-        }
-        return person;
-    }
+    protected static string GeneratePassword() => new Password()
+            .IncludeLowercase()
+            .IncludeUppercase()
+            .IncludeNumeric()
+            .LengthRequired(10)
+            .Next();
 }

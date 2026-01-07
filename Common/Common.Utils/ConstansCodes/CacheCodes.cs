@@ -97,6 +97,13 @@ public static class CacheCodes
     public const string FILE_BASE_PATHS = nameof(FILE_BASE_PATHS);
 
     /// <summary>
+    /// Persona por Número de Cédula
+    /// </summary>
+    /// <param name="documentNumber"></param>
+    /// <returns></returns>
+    public static string PersonDetailsByDocumentNumber(string documentNumber) => $"{nameof(PersonDetailsByDocumentNumber)}_{documentNumber}";
+
+    /// <summary>
     /// Información de Usuario por Id de Usuario
     /// </summary>
     /// <param name="userId"></param>

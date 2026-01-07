@@ -18,6 +18,7 @@ public class AdministrationModule : Module
         builder.RegisterType<FileRepository>().As<IFileRepository>().InstancePerLifetimeScope();
         builder.RegisterType<NotificationPushRepository>().As<INotificationPushRepository>().InstancePerLifetimeScope();
         builder.RegisterType<NotificationPushUserRepository>().As<INotificationPushUserRepository>().InstancePerLifetimeScope();
+        builder.RegisterType<NotificationPushUserDeviceRepository>().As<INotificationPushUserDeviceRepository>().InstancePerLifetimeScope();
         builder.RegisterType<CountryRepository>().As<ICountryRepository>().InstancePerLifetimeScope();
         builder.RegisterType<ProvinceRepository>().As<IProvinceRepository>().InstancePerLifetimeScope();
         builder.RegisterType<RegionRepository>().As<IRegionRepository>().InstancePerLifetimeScope();

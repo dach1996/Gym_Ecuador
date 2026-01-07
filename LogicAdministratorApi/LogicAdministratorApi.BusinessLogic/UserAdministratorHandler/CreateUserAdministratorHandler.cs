@@ -1,6 +1,7 @@
 using Common.Utils.Cryptography.Argon2;
 using LogicAdministratorApi.Model.Request.UserAdministrator;
 using LogicAdministratorApi.Model.Response.UserAdministrator;
+using LogicCommon.Model.Request.Person;
 using PersistenceDb.Models.Authentication;
 
 namespace LogicAdministratorApi.BusinessLogic.UserAdministratorHandler;
@@ -24,8 +25,8 @@ public class CreateUserAdministratorHandler(
         => await ExecuteHandlerAsync(OperationAdministratorName.CreateUserAdministrator, request, async () =>
             {
                 // Obtener la persona por el número de identificación
-                var personDetails = await GetPersonByDocumentNumberAsync(request.IdentificationNumber).ConfigureAwait(false);
-                var personId = await UnitOfWork.PersonRepository.GetFirstOrDefaultGenericAsync(select => select.Id, where => where.Guid == personDetails.Guid).ConfigureAwait(false);
+                var personDetails = await Mediator.Send(new GetPersonByDocumentNumberCommonRequest(request.ContextRequest, request.IdentificationNumber), cancellationToken).ConfigureAwait(false);
+                var personId = personDetails.Person.Id;
                 // Validar que el email no exista
                 if (await UnitOfWork.UserRepository
                     .ExistAnyAsync(where => where.Email.ToLower() == request.Email.ToLower())

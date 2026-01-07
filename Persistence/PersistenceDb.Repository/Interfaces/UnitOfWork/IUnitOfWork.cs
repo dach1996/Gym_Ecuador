@@ -14,6 +14,7 @@ public interface IUnitOfWork : IUnitOfWorkBase
     IFileRepository FileRepository { get; }
     INotificationPushRepository NotificationPushRepository { get; }
     INotificationPushUserRepository NotificationPushUserRepository { get; }
+    INotificationPushUserDeviceRepository NotificationPushUserDeviceRepository { get; }
     ICountryRepository CountryRepository { get; }
     IProvinceRepository ProvinceRepository { get; }
     IRegionRepository RegionRepository { get; }

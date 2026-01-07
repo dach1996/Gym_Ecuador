@@ -780,6 +780,98 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Request.NotificationPush.GetNotificationPushesRequest">
+            <summary>
+            Solicitud para obtener notificaciones push enviadas de manera paginada
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.NotificationPush.GetNotificationPushesRequest.TitleFilter">
+            <summary>
+            Filtro por título (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.NotificationPush.GetNotificationPushesRequest.DateFrom">
+            <summary>
+            Filtro por fecha desde (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.NotificationPush.GetNotificationPushesRequest.DateTo">
+            <summary>
+            Filtro por fecha hasta (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.NotificationPush.GetNotificationPushesRequest.PageNumber">
+            <summary>
+            Número de página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.NotificationPush.GetNotificationPushesRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.NotificationPush.GetNotificationPushesRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Request.NotificationPush.GetNotificationPushesRequest.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.NotificationPush.SendNotificationPushByUserGuidsRequest">
+            <summary>
+            Solicitud para enviar notificación push por UserGuids
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.NotificationPush.SendNotificationPushByUserGuidsRequest.Title">
+            <summary>
+            Título de la notificación
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.NotificationPush.SendNotificationPushByUserGuidsRequest.Body">
+            <summary>
+            Cuerpo de la notificación
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.NotificationPush.SendNotificationPushByUserGuidsRequest.ImageUrl">
+            <summary>
+            URL de imagen de la notificación (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.NotificationPush.SendNotificationPushByUserGuidsRequest.UserGuids">
+            <summary>
+            Lista de UserGuids a los que se enviará la notificación
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.NotificationPush.SendNotificationPushByUserGuidsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Person.GetPersonByDocumentNumberRequest">
+            <summary>
+            Solicitud para obtener una persona por número de cédula
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Person.GetPersonByDocumentNumberRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Request.Person.GetPersonByDocumentNumberRequest.#ctor(Common.WebCommon.Models.CommonContextRequest,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+            <param name="documentNumber"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Request.Person.GetPersonByDocumentNumberRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Request.Security.GetPublicKeyRequest">
             <summary>
             Modelo Request para obtener llave pública
@@ -960,6 +1052,87 @@
         <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.UpdateUserAdministratorRequest.ContextRequest">
             <summary>
             Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest">
+            <summary>
+            Solicitud para crear un usuario cliente
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.IdentificationNumber">
+            <summary>
+            Número de identificación del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.Email">
+            <summary>
+            Email del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.Phone">
+            <summary>
+            Teléfono del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.Password">
+            <summary>
+            Contraseña del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.LanguageCode">
+            <summary>
+            Código de idioma
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.UserClient.GetUsersClientRequest">
+            <summary>
+            Solicitud para obtener usuarios clientes paginados
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.GetUsersClientRequest.EmailFilter">
+            <summary>
+            Filtro por email
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.GetUsersClientRequest.UserNameFilter">
+            <summary>
+            Filtro por nombre de usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.GetUsersClientRequest.IsBlockedFilter">
+            <summary>
+            Filtro por estado bloqueado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.GetUsersClientRequest.PageNumber">
+            <summary>
+            Página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.GetUsersClientRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.GetUsersClientRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Request.UserClient.GetUsersClientRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Request.UserClient.GetUsersClientRequest.#ctor">
+            <summary>
+            Default Constructor
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Response.Authorization.LoginResponse">
@@ -1898,6 +2071,161 @@
             <param name="showMessage"></param>
             <returns></returns>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Response.NotificationPush.GetNotificationPushesResponse">
+            <summary>
+            Respuesta de obtener notificaciones push paginadas
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.NotificationPush.GetNotificationPushesResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushItem})">
+            <summary>
+            Respuesta de obtener notificaciones push paginadas
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.GetNotificationPushesResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.GetNotificationPushesResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.GetNotificationPushesResponse.TotalRegister">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.GetNotificationPushesResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushItem">
+            <summary>
+            Item de notificación push
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushItem.Id">
+            <summary>
+            Identificador de la notificación push
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushItem.Title">
+            <summary>
+            Título de la notificación
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushItem.Description">
+            <summary>
+            Descripción de la notificación
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushItem.RegisterDate">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushItem.PushNotificationType">
+            <summary>
+            Tipo de notificación push
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushItem.PushNotificationValue">
+            <summary>
+            Valor del tipo de notificación (Tópico o Token)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushItem.AllowViewUser">
+            <summary>
+            Indica si permite ver al usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushItem.TotalUsersSent">
+            <summary>
+            Cantidad total de usuarios a los que se envió
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushItem.SuccessfullySentCount">
+            <summary>
+            Cantidad de usuarios que recibieron exitosamente la notificación
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushItem.ErrorCount">
+            <summary>
+            Cantidad de usuarios con error en el envío
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.NotificationPush.SendNotificationPushByUserGuidsResponse">
+            <summary>
+            Respuesta de envío de notificación push por UserGuids
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.SendNotificationPushByUserGuidsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.SendNotificationPushByUserGuidsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.SendNotificationPushByUserGuidsResponse.NotificationPushUsers">
+            <summary>
+            Diccionario de Notificaciones Push por UserGuid
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.SendNotificationPushByUserGuidsResponse.TotalUsers">
+            <summary>
+            Total de usuarios a los que se intentó enviar
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.SendNotificationPushByUserGuidsResponse.SuccessUsers">
+            <summary>
+            Total de usuarios con éxito
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.SendNotificationPushByUserGuidsResponse.FailUsers">
+            <summary>
+            Total de usuarios con error
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushUserGuidResponse">
+            <summary>
+            Respuesta de Notificación Push por UserGuid
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushUserGuidResponse.TotalDevices">
+            <summary>
+            Total de dispositivos registrados
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushUserGuidResponse.SuccessDevices">
+            <summary>
+            Dispositivos con notificación enviada exitosamente
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushUserGuidResponse.FailDevices">
+            <summary>
+            Dispositivos con error
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushUserGuidResponse.SuccessOperation">
+            <summary>
+            Operación exitosa?
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Response.Security.GetPublicKeyResponse">
             <summary>
             Modelo de respuesta para obtener Llave pública
@@ -2205,6 +2533,143 @@
         <member name="M:LogicAdministratorApi.Model.Response.UserAdministrator.UpdateUserAdministratorResponse.#ctor">
             <summary>
             Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.UserClient.CreateUserClientResponse">
+            <summary>
+            Respuesta de crear usuario cliente
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="userGuid"></param>
+            <param name="userName"></param>
+            <param name="email"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.UserClient.CreateUserClientResponse.#ctor(System.Guid,System.String,System.String)">
+            <summary>
+            Respuesta de crear usuario cliente
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="userGuid"></param>
+            <param name="userName"></param>
+            <param name="email"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.CreateUserClientResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.CreateUserClientResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.CreateUserClientResponse.UserGuid">
+            <summary>
+            Guid del usuario creado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.CreateUserClientResponse.UserName">
+            <summary>
+            Nombre de usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.CreateUserClientResponse.Email">
+            <summary>
+            Email del usuario
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.UserClient.GetUsersClientResponse">
+            <summary>
+            Respuesta de obtener usuarios clientes paginados
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.UserClient.GetUsersClientResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicAdministratorApi.Model.Response.UserClient.ClientItem})">
+            <summary>
+            Respuesta de obtener usuarios clientes paginados
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.GetUsersClientResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.GetUsersClientResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.GetUsersClientResponse.TotalRegister">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.GetUsersClientResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.UserClient.ClientItem">
+            <summary>
+            Item de usuario cliente
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientItem.Guid">
+            <summary>
+            Guid del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientItem.UserName">
+            <summary>
+            Nombre de usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientItem.Email">
+            <summary>
+            Email del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientItem.Phone">
+            <summary>
+            Teléfono del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientItem.LanguageCode">
+            <summary>
+            Código de idioma
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientItem.IsBlocked">
+            <summary>
+            Indica si el usuario está bloqueado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientItem.HasCompleteRegistration">
+            <summary>
+            Indica si tiene registro completo
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientItem.DateTimeRegister">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientItem.FirstLoginDate">
+            <summary>
+            Fecha del primer login
             </summary>
         </member>
         <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type)">

@@ -742,79 +742,15 @@
             Login por Google
             </summary>
         </member>
-        <member name="T:LogicApi.Model.Request.Administration.GetCooperativeInformationRequest">
-            <summary>
-            Obtiene los catálogos iniciales
-            </summary>
-            <remarks>
-            Constructor
-            </remarks>
-            <param name="contextRequest"></param>
-        </member>
-        <member name="M:LogicApi.Model.Request.Administration.GetCooperativeInformationRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
-            <summary>
-            Obtiene los catálogos iniciales
-            </summary>
-            <remarks>
-            Constructor
-            </remarks>
-            <param name="contextRequest"></param>
-        </member>
-        <member name="P:LogicApi.Model.Request.Administration.GetCooperativeInformationRequest.ContextRequest">
-            <summary>
-            Context
-            </summary>
-        </member>
         <member name="T:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest">
             <summary>
             Obtiene los catálogos iniciales
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest.ListCatalogsTypeItemsCodes">
-            <summary>
-            Códito de Catálogos
-            </summary>
-            <value></value>
-        </member>
         <member name="P:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest.ContextRequest">
             <summary>
             Context
             </summary>
-        </member>
-        <member name="M:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest,System.Collections.Generic.List{LogicApi.Model.Request.Administration.CatalogsTypeItemsCodes})">
-            <summary>
-            Constructor
-            </summary>
-            <param name="contextRequest"></param>
-            <param name="listCatalogsTypeItemsCodes"></param>
-        </member>
-        <member name="M:LogicApi.Model.Request.Administration.GetInitialCataloguesRequest.#ctor">
-            <summary>
-            Default Constructor
-            </summary>
-        </member>
-        <member name="T:LogicApi.Model.Request.Administration.CatalogsTypeItemsCodes">
-            <summary>
-            Códigos de Catálogos
-            </summary>
-        </member>
-        <member name="F:LogicApi.Model.Request.Administration.CatalogsTypeItemsCodes.DocumentType">
-            <summary>
-            Tipos de Documento
-            </summary>
-            <value></value>
-        </member>
-        <member name="F:LogicApi.Model.Request.Administration.CatalogsTypeItemsCodes.Nationality">
-            <summary>
-            Catálogo de Nacionalidades
-            </summary>
-            <value></value>
-        </member>
-        <member name="F:LogicApi.Model.Request.Administration.CatalogsTypeItemsCodes.Gender">
-            <summary>
-            Catálogo de Géneros
-            </summary>
-            <value></value>
         </member>
         <member name="T:LogicApi.Model.Request.Article.GetArticlesRequest">
             <summary>
@@ -877,7 +813,7 @@
             </summary>
             <value></value>
         </member>
-        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.TypeIdentificationId">
+        <member name="P:LogicApi.Model.Request.Authorization.AssignPersonRequest.TypeIdentificationCode">
             <summary>
             Tipo de Documento
             </summary>
@@ -3877,78 +3813,6 @@
             <summary>
             Default Constructor
             </summary>
-        </member>
-        <member name="T:LogicApi.Model.Response.Administration.GetCooperativeInformationResponse">
-            <summary>
-            Respuesta de Servicio Obtener Bancos
-            </summary>
-            <remarks>
-            Constructor
-            </remarks>
-            <param name="cooperativeData"></param>
-        </member>
-        <member name="M:LogicApi.Model.Response.Administration.GetCooperativeInformationResponse.#ctor(LogicApi.Model.Common.CooperativeData)">
-            <summary>
-            Respuesta de Servicio Obtener Bancos
-            </summary>
-            <remarks>
-            Constructor
-            </remarks>
-            <param name="cooperativeData"></param>
-        </member>
-        <member name="P:LogicApi.Model.Response.Administration.GetCooperativeInformationResponse.UserMessage">
-            <summary>
-            Mensaje al Usuario
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.Administration.GetCooperativeInformationResponse.ShowMessage">
-            <summary>
-            Mostrar Mensaje?
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.Administration.GetCooperativeInformationResponse.CooperativeData">
-            <summary>
-            Obtiene la información de cooperative
-            </summary>
-            <value></value>
-        </member>
-        <member name="T:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse">
-            <summary>
-            Respuesta de Servicio Obtener Bancos
-            </summary>
-            <remarks>
-            Constructor
-            </remarks>
-            <param name="listCatalogCodes"></param>
-        </member>
-        <member name="M:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse.#ctor(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}})">
-            <summary>
-            Respuesta de Servicio Obtener Bancos
-            </summary>
-            <remarks>
-            Constructor
-            </remarks>
-            <param name="listCatalogCodes"></param>
-        </member>
-        <member name="P:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse.UserMessage">
-            <summary>
-            Mensaje al Usuario
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse.ShowMessage">
-            <summary>
-            Mostrar Mensaje?
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.Administration.GetInitialCataloguesResponse.ListCatalogCodes">
-            <summary>
-            Lista de códigos de catálgo
-            </summary>
-            <value></value>
         </member>
         <member name="T:LogicApi.Model.Response.Article.GetArticlesResponse">
             <summary>

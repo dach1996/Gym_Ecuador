@@ -21,7 +21,7 @@ public class LogoutHandler(
      => await ExecuteHandlerAsync(OperationApiName.Logout, request, async () =>
         {
             //Registra el Token en cache 
-            await RegisterUsedTokenLogOut(request.ContextRequest.Headers.Authorization).ConfigureAwait(false);
+            await RegisterUsedTokenLogOut(ContextRequest.Headers.Authorization).ConfigureAwait(false);
             //Envía la respuesta
             return HandlerResponse.Complete();
         });

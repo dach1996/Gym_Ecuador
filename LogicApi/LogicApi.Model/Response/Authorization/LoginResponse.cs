@@ -125,19 +125,9 @@ public class UserInfo
     public string FirstName { get; set; }
 
     /// <summary>
-    /// Segundo Nombre
-    /// </summary>
-    public string SecondName { get; set; }
-
-    /// <summary>
     /// Apellido
     /// </summary>
     public string Surname { get; set; }
-
-    /// <summary>
-    /// Segundo apellido
-    /// </summary>
-    public string SecondSurname { get; set; }
 
     /// <summary>
     /// Sobrenombre del usuario

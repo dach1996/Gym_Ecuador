@@ -1,4 +1,3 @@
-using Common.Mail.Model.Templates;
 using Common.PluginFactory.Interface;
 using Common.Queue.Model.Template;
 using Microsoft.Azure.WebJobs;
@@ -15,7 +14,5 @@ public class ForgottenPasswordMailQueue(
 {
     protected override string FunctionName => nameof(ForgottenPasswordMailQueue);
 
-    [FunctionName(nameof(ForgottenPasswordMailQueue))]
-    public async Task Receive([QueueTrigger("forgottenpasswordmail")] string message)
-     => await ExecuteQueueMailAsync<ForgottenPasswordMailQueueTemplate, ForgottenPasswordMailTemplate>(message).ConfigureAwait(false);
+
 }

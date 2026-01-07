@@ -6,18 +6,13 @@ namespace Common.Templates.Implementations;
 /// <summary>
 /// Factoría de Templates
 /// </summary>
-public class TemplateFactory : ITemplateFactory
+/// <remarks>
+/// Constructor
+/// </remarks>
+/// <param name="lifetimeScope"></param>
+public class TemplateFactory(ILifetimeScope lifetimeScope) : ITemplateFactory
 {
-    protected readonly ILifetimeScope LifetimeScope;
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="lifetimeScope"></param>
-    public TemplateFactory(ILifetimeScope lifetimeScope)
-    {
-        LifetimeScope = lifetimeScope;
-    }
+    protected readonly ILifetimeScope LifetimeScope = lifetimeScope;
 
     /// <summary>
     /// Obtiene implementación de Notificaciones
@@ -25,4 +20,11 @@ public class TemplateFactory : ITemplateFactory
     /// <typeparam name="INotificationTemplate"></typeparam>
     /// <returns></returns>
     public INotificationTemplate NotificationTemplate => LifetimeScope.Resolve<INotificationTemplate>();
+
+
+    /// <summary>
+    /// Obtiene implementación de Mail
+    /// </summary>
+    /// <returns></returns>
+    public IMailTemplate MailTemplate => LifetimeScope.Resolve<IMailTemplate>();
 }

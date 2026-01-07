@@ -2,8 +2,6 @@
 using Common.Security.Interface;
 using Common.Security.Model.Enum;
 using Common.Utils.Cryptography.Argon2;
-using PasswordGenerator;
-
 namespace LogicApi.BusinessLogic.AuthorizationHandler;
 public abstract class AuthorizationBase<TRequest, TResponse>(
     ILogger<AuthorizationBase<TRequest, TResponse>> logger,
@@ -39,14 +37,5 @@ public abstract class AuthorizationBase<TRequest, TResponse>(
         await AdministratorCache.SetAsync(CacheCodes.LogOutToken(token), string.Empty, expirationMinutes).ConfigureAwait(false);
     }
 
-    /// <summary>
-    /// Genera una contraseña
-    /// </summary>
-    /// <returns></returns>
-    protected static string GeneratePassword() => new Password()
-            .IncludeLowercase()
-            .IncludeUppercase()
-            .IncludeNumeric()
-            .LengthRequired(10)
-            .Next();
+  
 }

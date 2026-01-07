@@ -40,21 +40,18 @@ public class SendGridMailNotification : MailNotificationBase
         {
             var newMessage = new SendGridMessage();
             if (request.ToMails is not null && request.ToMails.Any())
-                newMessage.AddTos(request.ToMails.Select(m => new EmailAddress(m, m)).ToList());
+                newMessage.AddTos([.. request.ToMails.Select(m => new EmailAddress(m, m))]);
             if (request.ToMailsCco is not null && request.ToMailsCco.Any())
-                newMessage.AddBccs(request.ToMailsCco.Select(m => new EmailAddress(m, m)).ToList());
+                newMessage.AddBccs([.. request.ToMailsCco.Select(m => new EmailAddress(m, m))]);
             if (DefaultConfiguration.DefaultBccs.Any())
             {
                 var bccs = DefaultConfiguration.DefaultBccs.Where(where => !request.ToMails.Any(any => any.Equals(where, StringComparison.InvariantCultureIgnoreCase)));
                 if (bccs.Any())
-                    newMessage.AddBccs(bccs.Select(m => new EmailAddress(m, m)).ToList());
+                    newMessage.AddBccs([.. bccs.Select(m => new EmailAddress(m, m))]);
             }
-            var template = SendGridConfiguration.Templates.FirstOrDefault(where => where.Identifier == request.TemplateIdentifier)
-            ?? throw new CustomMailException($"No se encuentra configurado el Template con Identificador: {request.TemplateIdentifier}");
-            newMessage.SetTemplateId(template.Code);
+            newMessage.SetTemplateId(request.TemplateId);
             newMessage.SetTemplateData(request.TemplateData);
-            var from = string.IsNullOrEmpty(template.From) ? DefaultConfiguration.DefaultFrom : template.From;
-            newMessage.SetFrom(new EmailAddress(from));
+            newMessage.SetFrom(new EmailAddress(DefaultConfiguration.DefaultFrom));
 
             if (request.Attachments is not null && request.Attachments.Count != 0)
             {

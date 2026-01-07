@@ -1,6 +1,8 @@
 ﻿using Common.Queue.Model.Template;
+using Common.Templates.Models.Mail;
 using LogicApi.Model.Request.Authorization;
 using LogicApi.Model.Response.Authorization;
+using LogicCommon.Model.Request.Mail;
 namespace LogicApi.BusinessLogic.AuthorizationHandler;
 /// <summary>
 /// Constructor
@@ -33,6 +35,7 @@ public class PasswordForgottenHandler(
                                    select.HasCompleteRegistration,
                                    select.IsBlocked,
                                    select.Salt,
+                                   select.Person.RealNames,
                                },
                                where => where.Email == request.Email
                            ).ConfigureAwait(false))
@@ -51,11 +54,17 @@ public class PasswordForgottenHandler(
                      (user => user.PasswordTemporary, passwordEncrypted),
                      where => where.UserId == userCurrent.Id && where.UserTypeRegister == UserTypeRegister.Manual
                  ).ConfigureAwait(false);
-                await SendQueueMessageAsync(new ForgottenPasswordMailQueueTemplate
+
+                await Mediator.Send(new SendMailRequest
                 {
-                    NewPassword = newPassword,
-                    UserName = userCurrent.UserName,
-                    To = userCurrent.Email.ToListElements(),
+                    MailTemplateModel = new ForgottenPasswordMailMailTemplateModel
+                    {
+                        Link = "https://fitcenter-app-service.azurewebsites.net/",
+                        PolityLink = "https://fitcenter.fit/politica-de-privacidad",
+                        Password = newPassword,
+                        FirstName = userCurrent.RealNames.Split(' ').FirstOrDefault(),
+                    },
+                    To = [userCurrent.Email],
                 }).ConfigureAwait(false);
                 //Genera la Respuesta
                 return new PasswordForgottenResponse

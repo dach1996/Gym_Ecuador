@@ -1,4 +1,3 @@
-using Common.WebApi.Models.ContextRequestModel;
 using LogicApi.Model.Response;
 
 using Common.WebCommon.Models;
@@ -6,7 +5,7 @@ namespace LogicApi.Model.Request.Authorization;
 /// <summary>
 /// Request Logout
 /// </summary>
-public class LogoutRequest : IRequest<HandlerResponse>, IApiBaseRequest
+public class LogoutRequest : IApiBaseRequest<HandlerResponse>
 {
 
  /// <summary>

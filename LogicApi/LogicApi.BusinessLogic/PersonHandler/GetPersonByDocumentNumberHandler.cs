@@ -1,7 +1,6 @@
 using LogicApi.Model.Request.Person;
 using LogicApi.Model.Response.Person;
-using LogicCommon.Model.Response.Person;
-using PersistenceDb.Models.Authentication;
+using LogicCommon.Model.Request.Person;
 
 namespace LogicApi.BusinessLogic.PersonHandler;
 
@@ -22,10 +21,9 @@ public class GetPersonByDocumentNumberHandler(
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public override async Task<GetPersonByDocumentNumberResponse> Handle(GetPersonByDocumentNumberRequest request, CancellationToken cancellationToken)
-        => await ExecuteHandlerCacheAsync(OperationApiName.GetPersonByDocumentNumber, CacheCodes.PersonByDocumentNumber(request.DocumentNumber), request, async () =>
-            {
-                var person = await GetPersonByDocumentNumberAsync(request.DocumentNumber).ConfigureAwait(false);
-                return new GetPersonByDocumentNumberResponse(person);
-            }).ConfigureAwait(false);
+    {
+        var commonResponse = await Mediator.Send(new GetPersonByDocumentNumberCommonRequest(request.ContextRequest, request.DocumentNumber), cancellationToken).ConfigureAwait(false);
+        return new GetPersonByDocumentNumberResponse(commonResponse.Person);
+    }
 }
 

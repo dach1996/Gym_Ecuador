@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.WebCommon\Common.WebCommon.csproj" />
     <ProjectReference Include="..\..\Common\Common.Queue\Common.Queue.csproj" />
+    <ProjectReference Include="..\..\Common\Common.Templates\Common.Templates.csproj" />
     <ProjectReference Include="..\..\Common\Common.PushNotification\Common.PushNotification.csproj" />
   </ItemGroup>
 

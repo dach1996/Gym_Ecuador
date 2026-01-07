@@ -51,19 +51,20 @@ public class ServiciosEcuadorDocumentationServicesImplementation : Documentation
         var queryParams = Microsoft.AspNetCore.WebUtilities.QueryHelpers.AddQueryString(
             "api/v1/person/GetByDocumentNumber",
             new Dictionary<string, string> { { "DocumentNumber", request.DocumentNumber } });
-        
+
         var response = await HttpClient.GetAsync(queryParams).ConfigureAwait(false);
-        if (!response.IsSuccessStatusCode)
-            throw new CustomDocumentationException($"Error ejecutando consulta de Documentación en ServiciosEcuador");
         var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         Logger.LogInformation("Respuesta servicio en '{@DurationTime}ms' de Validación de Cédula ServiciosEcuador: '{@DocumentNumber}' - Respuesta: '{@ResponseContent}'", stopwatch.ElapsedMilliseconds, request.DocumentNumber, responseContent);
-        
+
+        if (!response.IsSuccessStatusCode)
+            throw new CustomDocumentationException($"Error ejecutando consulta de Documentación en ServiciosEcuador");
+
         var apiResponse = JsonConvert.DeserializeObject<PersonByDocumentResponse>(responseContent)
             ?? throw new CustomDocumentationException($"No se pudo deserializar la respuesta del servicio ServiciosEcuador");
-        
+
         if (apiResponse.Code != 0 || apiResponse.Content?.Person == null)
             throw new CustomDocumentationException($"No se encontró información en la respuesta del servicio ServiciosEcuador: {apiResponse.Message}");
-        
+
         var person = apiResponse.Content.Person;
         return new VerifyDocumentResponse
         {

@@ -2,17 +2,20 @@
 using AGConnectAdmin.Messaging;
 using Common.PushNotification.Configuration;
 using Common.PushNotification.Configuration.FirebaseHuawei;
+using Common.PushNotification.Implementations.FirebaseHuawei.Models;
 using Common.PushNotification.Model;
+using Common.PushNotification.Model.Enum;
+using Common.PushNotification.Model.Request;
 using Common.PushNotification.PushNotificationException;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace Common.PushNotification.Implementations.FirebaseHuawei.Huawei;
 
-public class HuaweiPushNotification : PushNotificationPlatformBase, IPushNotificationPlatform
+internal class HuaweiPushNotification : PushNotificationPlatformBase, IPushNotificationPlatform
 {
     protected override PushNotificationPlatformImplementationNames Implementation => PushNotificationPlatformImplementationNames.Huawei;
-    protected readonly PlatformNotificationPushImplementation NotificationConfiguration;
+    protected readonly PlatformNotificationPushImplementation PlatformNotificationPushImplementation;
 
     /// <summary>
     /// Constructor
@@ -31,7 +34,7 @@ public class HuaweiPushNotification : PushNotificationPlatformBase, IPushNotific
         var firebaseHuaweiConfiguration = configuration.GetSection(nameof(PushNotificationConfiguration)).Get<PushNotificationConfiguration<FirebaseHuaweiConfiguration>>()
            ?.Implementations?.FirstOrDefault(where => where.Identifier == PushNotificationImplementationNames.FirebaseHuawei)?.Information
             ?? throw new CustomPushNotificationException($"No se encontró la configuración de servicios de Documentación con identificador{nameof(FirebaseHuaweiConfiguration)}");
-        NotificationConfiguration = firebaseHuaweiConfiguration.Implementations?.FirstOrDefault(impl => impl.Identifier == Implementation)
+        PlatformNotificationPushImplementation = firebaseHuaweiConfiguration.Implementations?.FirstOrDefault(impl => impl.Identifier == Implementation)
             ?? throw new CustomPushNotificationException($"No se encontró la configuración de servicios de Documentación con identificador{nameof(Implementation)}");
     }
 
@@ -41,29 +44,23 @@ public class HuaweiPushNotification : PushNotificationPlatformBase, IPushNotific
     /// <param name="notificationToken"></param>
     /// <returns></returns>
     /// <exception cref="CustomPushNotificationException"></exception>
-    public async Task<NotificationResponse> SendNotificationAsync(NotificationTokensPlatform notificationToken)
+    public async  Task<NotificationResponse> SendNotificationAsync(NotificationTokensPlatformRequest notificationToken)
     {
         try
         {
-            List<NotificationItem> notificationsItem = new();
-            //Verifica si está encendido
-            if (!NotificationConfiguration.Enable)
-                notificationsItem = notificationToken.Tokens.Select(select => NotificationItem.Fail(select, DISABLED_MESSAGE)).ToList();
-            else
-            {
-                //Armar mensaje
-                var message = BuildMessageHuiawei(notificationToken);
-                //Agregar token para notificación individual
-                message.Token = new List<string>(notificationToken.Tokens);
-                //Obtener instancia de huawei
-                var messageId = await AGConnectMessaging.DefaultInstance.SendAsync(message).ConfigureAwait(false);
-                //Crea la lista de respuestas
-                var tokensIndex = notificationToken.Tokens.ToArray();
-                for (int i = 0; i < notificationToken.Tokens.Count(); i++)
-                    notificationsItem.Add(!string.IsNullOrEmpty(messageId) ?
-                        NotificationItem.Success(messageId, tokensIndex[i]) :
-                        NotificationItem.Fail(tokensIndex[i], messageId));
-            }
+            //Armar mensaje
+            var message = BuildMessageHuiawei(notificationToken);
+            //Agregar token para notificación individual
+            message.Token = [.. notificationToken.Tokens];
+            //Obtener instancia de huawei
+            var messageId = await AGConnectMessaging.DefaultInstance.SendAsync(message).ConfigureAwait(false);
+            //Crea la lista de respuestas
+            var tokensIndex = notificationToken.Tokens.ToArray();
+            List<NotificationItem> notificationsItem = [];
+            for (int i = 0; i < notificationToken.Tokens.Count(); i++)
+                notificationsItem.Add(!string.IsNullOrEmpty(messageId) ?
+                    NotificationItem.Success(messageId, tokensIndex[i]) :
+                    NotificationItem.Fail(tokensIndex[i], messageId));
             //Enviar notificación
             return new NotificationResponse(notificationsItem);
         }
@@ -81,24 +78,18 @@ public class HuaweiPushNotification : PushNotificationPlatformBase, IPushNotific
     /// <param name="notificationTopic"></param>
     /// <returns></returns>
     /// <exception cref="CustomPushNotificationException"></exception>
-    public async Task<NotificationResponse> SendNotificationAsync(NotificationTopic notificationTopic)
+    public async  Task<NotificationResponse> SendNotificationAsync(NotificationByTopicRequest notificationTopic)
     {
         try
         {
-            NotificationResponse notificationResponse = null;
-            if (!NotificationConfiguration.Enable)
-                notificationResponse = new NotificationResponse(DISABLED_MESSAGE, notificationTopic.Topic, false);
-            else
-            {//Armar mensaje
-                var message = BuildMessageHuiawei(notificationTopic);
-                //Agregar token para notificación individual
-                message.Topic = notificationTopic.Topic;
-                //Obtener instancia de huawei
-                var messageId = await AGConnectMessaging.DefaultInstance.SendAsync(message).ConfigureAwait(false);
-                notificationResponse = new NotificationResponse(messageId, message.Topic);
-            }
+            //Armar mensaje
+            var message = BuildMessageHuiawei(notificationTopic);
+            //Agregar token para notificación individual
+            message.Topic = notificationTopic.Topic;
+            //Obtener instancia de huawei
+            var messageId = await AGConnectMessaging.DefaultInstance.SendAsync(message).ConfigureAwait(false);
             //Enviar notificación
-            return notificationResponse;
+            return new NotificationResponse(messageId, message.Topic);
         }
         catch (Exception ex)
         {
@@ -112,7 +103,7 @@ public class HuaweiPushNotification : PushNotificationPlatformBase, IPushNotific
     /// </summary>
     /// <param name="NotificationModel"></param>
     /// <returns></returns>
-    private static Message BuildMessageHuiawei(NotificationModelBase NotificationModel)
+    private static Message BuildMessageHuiawei(NotificationRequestBase NotificationModel)
     {
         //Armar request de huawei
         var message = new Message()
@@ -137,16 +128,16 @@ public class HuaweiPushNotification : PushNotificationPlatformBase, IPushNotific
         //Agregar url de redirección
         message.Android.Notification.ClickAction = NotificationModel.Action switch
         {
-            NotificationAction.OpenApp => ClickAction.OpenApp(),
-            NotificationAction.OpenUrl => ClickAction.OpenUrl(NotificationModel.RedirectUrl),
+            ClickActionType.OpenApp => ClickAction.OpenApp(),
+            ClickActionType.OpenUrl => ClickAction.OpenUrl(NotificationModel.RedirectUrl),
             _ => throw new NotImplementedException()
         };
         return message;
     }
 
-    protected void InitialConfiguration()
+    protected  void InitialConfiguration()
     {
-        var decodeString = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(NotificationConfiguration.CredentialBase64));
+        var decodeString = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(PlatformNotificationPushImplementation.CredentialBase64));
         _ = AGConnectApp.Create(new AppOptions()
         {
             LoginUri = string.Empty,

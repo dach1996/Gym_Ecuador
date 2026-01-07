@@ -1,5 +1,4 @@
-﻿using Common.WebApi.Models.ContextRequestModel;
-using LogicApi.Model.Implementations.Authorization;
+﻿using LogicApi.Model.Implementations.Authorization;
 using LogicApi.Model.Response.Authorization;
 using Common.WebCommon.Models;
 namespace LogicApi.Model.Request.Authorization;
@@ -21,7 +20,7 @@ public class LoginRequest : IRequest<LoginResponse>, IApiBaseRequest
     /// </summary>
     [Required]
     public string Password { get; set; }
-    
+
     /// <summary>
     /// Token para Push
     /// </summary>
@@ -33,7 +32,7 @@ public class LoginRequest : IRequest<LoginResponse>, IApiBaseRequest
     [Required]
     public LoginImplementations LoginType { get; set; }
 
- /// <summary>
+    /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]

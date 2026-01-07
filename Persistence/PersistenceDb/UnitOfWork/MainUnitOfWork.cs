@@ -23,6 +23,7 @@ public class MainUnitOfWork(
     private IFileRepository _fileRepository;
     private INotificationPushRepository _notificationPushRepository;
     private INotificationPushUserRepository _notificationPushUserRepository;
+    private INotificationPushUserDeviceRepository _notificationPushUserDeviceRepository;
     private IScopeRepository _scopeRepository;
     private ICountryRepository _countryRepository;
     private IProvinceRepository _provinceRepository;
@@ -92,6 +93,9 @@ public class MainUnitOfWork(
 
     public INotificationPushUserRepository NotificationPushUserRepository => _notificationPushUserRepository ??=
         new NotificationPushUserRepository(Context, LoggerFactory.CreateLogger<NotificationPushUserRepository>());
+
+    public INotificationPushUserDeviceRepository NotificationPushUserDeviceRepository => _notificationPushUserDeviceRepository ??=
+        new NotificationPushUserDeviceRepository(Context, LoggerFactory.CreateLogger<NotificationPushUserDeviceRepository>());
 
     public ICountryRepository CountryRepository => _countryRepository ??=
         new CountryRepository(Context, LoggerFactory.CreateLogger<CountryRepository>());

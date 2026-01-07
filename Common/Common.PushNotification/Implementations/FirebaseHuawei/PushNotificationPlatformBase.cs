@@ -1,5 +1,4 @@
-﻿using Common.PushNotification.Model;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace Common.PushNotification.Implementations.FirebaseHuawei;
@@ -18,5 +17,4 @@ public abstract class PushNotificationPlatformBase(
     protected abstract PushNotificationPlatformImplementationNames Implementation { get; }
     protected readonly ILogger<PushNotificationPlatformBase> Logger = logger;
     protected readonly IConfiguration Configuration = configuration;
-    protected const string DISABLED_MESSAGE = "Implementación Desactivada";
 }

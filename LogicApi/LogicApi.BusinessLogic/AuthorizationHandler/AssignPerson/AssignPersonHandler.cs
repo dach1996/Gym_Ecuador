@@ -86,14 +86,14 @@ public abstract class AssignPersonHandler(
             throw new CustomException((int)MessagesCodesError.NamesOrLastNameDontMatch, $"El nombre '{request.Name}' no existe en la consulta.");
         if (!person.FullName.ExistString(request.LastName))
             throw new CustomException((int)MessagesCodesError.NamesOrLastNameDontMatch, $"El apellido '{request.LastName}' no existe en la consulta.");
-        var typeIdentificationIdInt = request.TypeIdentificationId.ToInt();
-        if (!await UnitOfWork.TypeIdentificationRepository.ExistAnyAsync(where => where.Id == typeIdentificationIdInt).ConfigureAwait(false))
-            throw new CustomException((int)MessagesCodesError.TypeIdentificationNotFound, $"El tipo de identificación '{request.TypeIdentificationId}' no existe.");
+        var typeIdentificationId = await UnitOfWork.TypeIdentificationRepository.GetFirstOrDefaultGenericAsync(
+            select => new { select.Id },
+            where => where.Code == request.TypeIdentificationCode).ConfigureAwait(false);
         //Verifica si se ha registrado los datos de la persona
         if (person.UserIdRegister is null)
         {
             person.DateTimeRegister = Clock.Now();
-            person.TypeIdentificationId = (byte)typeIdentificationIdInt;
+            person.TypeIdentificationId = typeIdentificationId?.Id;
             person.Name = request.Name;
             person.LastName = request.LastName;
             person.UserIdRegister = user.Id;

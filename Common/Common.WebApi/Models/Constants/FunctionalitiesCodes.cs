@@ -449,4 +449,21 @@ public static class FunctionalitiesCodes
     /// Obtener Detalle de Equipamiento por GUID
     /// </summary>
     public const string GET_EQUIPMENT_BY_GUID = "ADM_EQP_GET_BY_GUID";
+
+    // ========== OPERACIONES DE NOTIFICACIONES PUSH ==========
+
+    /// <summary>
+    /// Enviar Notificación Push por UserGuids
+    /// </summary>
+    public const string SEND_NOTIFICATION_PUSH_BY_USER_GUIDS = "ADM_NOTIF_PUSH_SEND_BY_USER_GUIDS";
+
+    /// <summary>
+    /// Obtener Notificaciones Push enviadas de manera paginada
+    /// </summary>
+    public const string GET_NOTIFICATION_PUSHES_PAGINATED = "ADM_NOTIF_PUSH_GET_PAGINATED";
+
+    /// <summary>
+    /// Crear Usuario Cliente
+    /// </summary>
+    public const string CREATE_USER_CLIENT = "ADM_CLIENT_CREATE";
 }

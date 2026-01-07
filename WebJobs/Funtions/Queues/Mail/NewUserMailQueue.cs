@@ -1,4 +1,3 @@
-using Common.Mail.Model.Templates;
 using Common.PluginFactory.Interface;
 using Common.Queue.Model.Template;
 using Microsoft.Azure.WebJobs;
@@ -15,7 +14,5 @@ public class NewUserMailQueue(
 {
     protected override string FunctionName => nameof(NewUserMailQueue);
 
-    [FunctionName(nameof(NewUserMailQueue))]
-    public async Task Receive([QueueTrigger("newusermail")] string message)
-     => await ExecuteQueueMailAsync<NewUserMailQueueTemplate, NewUserTemporalPassowordMailTemplate>(message).ConfigureAwait(false);
+
 }

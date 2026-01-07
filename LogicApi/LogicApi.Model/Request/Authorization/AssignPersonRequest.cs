@@ -51,7 +51,7 @@ public class AssignPersonRequest : IApiBaseRequest<LoginResponse>
     /// </summary>
     /// <value></value>
     [Required]
-    public string TypeIdentificationId { get; set; }
+    public string TypeIdentificationCode { get; set; }
 
     /// <summary>
     /// Código de Género

@@ -41,6 +41,7 @@ public class GatewayCoreApiConfigureContext(ILogger<GatewayCoreApiConfigureConte
         var deviceId = GetHeaderValueFromName("X-Device", httpContext);
         var xmodel = GetHeaderValueFromName("X-Model", httpContext);
         var xbrand = GetHeaderValueFromName("X-Brand", httpContext);
+        var xauthorization = GetHeaderValueFromName("Authorization", httpContext);
         var xchannel = GetHeaderValueFromName("X-Channel", httpContext);
         var xLanguage = GetHeaderValueFromName("X-Language", httpContext);
         var xTimezone = GetHeaderValueFromName("X-Timezone", httpContext);
@@ -94,6 +95,7 @@ public class GatewayCoreApiConfigureContext(ILogger<GatewayCoreApiConfigureConte
                 TimeZone = xTimezone,
                 Content = xContent,
                 Secret = xSecret,
+                Authorization = xauthorization,
                 Time = xtime,
                 SystemOperation = xSystemOperation,
                 HasGoogleServices = bool.TryParse(xHasGoogleServices, out var result) && result,

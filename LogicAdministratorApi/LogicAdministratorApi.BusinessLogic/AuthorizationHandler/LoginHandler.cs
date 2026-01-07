@@ -1,8 +1,10 @@
-﻿using Common.Utils.Cryptography.Argon2;
+﻿using Common.Templates.Models.Mail;
+using Common.Utils.Cryptography.Argon2;
 using Common.WebApi.Models.EncryptedClaims;
 using Common.WebCommon.Models;
 using LogicAdministratorApi.Model.Request.Authorization;
 using LogicAdministratorApi.Model.Response.Authorization;
+using LogicCommon.Model.Request.Mail;
 namespace LogicAdministratorApi.BusinessLogic.AuthorizationHandler;
 /// <summary>
 /// Constructor

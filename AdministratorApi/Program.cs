@@ -24,6 +24,7 @@ using Common.WebApi.Middleware.ConfigureContext;
 using Common.WebApi.Middleware.Infrastructure;
 using Common.WebApi.Models.AppSettingsModel;
 using Common.UserDocumentation.Infrastructure;
+using Common.Templates.Infrastructure;
 try
 {
     var builder = WebApplication.CreateBuilder(args);
@@ -60,6 +61,7 @@ try
         builderAutofac.UseBlob();
         builderAutofac.UseDocumentationServices();
         builderAutofac.UseMail();
+        builderAutofac.UseTemplates(); 
         builderAutofac.UseAttributeAbstractionsAssemblies();
         builderAutofac.UseMiddlewareAbstractionsAssemblies();
         builderAutofac.UseAuthenticationServices();

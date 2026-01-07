@@ -1,11 +1,10 @@
 using System.Text.Json.Serialization;
-using Common.PushNotification.Model;
 using LogicCommon.Model.Response.NotificationPush;
 namespace LogicCommon.Model.Request.NotificationPush;
 /// <summary>
 /// Request para Envío de Notificación Push
 /// </summary>
-public class SendNotificationPushUsersRequest : SendNotificationBaseRequest, ICommonBaseRequest<NotificationPushResponse>
+public class SendNotificationPushUsersRequest : SendNotificationRequestBase, ICommonBaseRequest<NotificationPushResponse>
 {
     /// <summary>
     /// UserIds
@@ -32,13 +31,11 @@ public class SendNotificationPushUsersRequest : SendNotificationBaseRequest, ICo
         string title,
         string body,
         IEnumerable<int> usersId,
-        NotificationAction action,
         CommonContextRequest commonContextRequest)
     {
         Title = title;
         Body = body;
         UsersId = usersId;
-        Action = action;
         CommonContextRequest = commonContextRequest;
     }
 
@@ -54,14 +51,12 @@ public class SendNotificationPushUsersRequest : SendNotificationBaseRequest, ICo
         string title,
         string body,
         int userId,
-        NotificationAction action,
         CommonContextRequest commonContextRequest
         )
     {
         Title = title;
         Body = body;
         UsersId = [userId];
-        Action = action;
         CommonContextRequest = commonContextRequest;
     }
 }

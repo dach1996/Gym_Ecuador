@@ -21,6 +21,7 @@
     <ProjectReference Include="..\..\Common\Common.EventHub\Common.EventHub.csproj" />
     <ProjectReference Include="..\..\Common\Common.Templates\Common.Templates.csproj" />
     <ProjectReference Include="..\..\Common\Common.Cache\Common.Cache.csproj" />
+    <PackageReference Include="PasswordGenerator" Version="2.1.0" />
   </ItemGroup>
 
   <PropertyGroup>

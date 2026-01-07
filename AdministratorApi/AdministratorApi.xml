@@ -219,6 +219,59 @@
             <param name="request">Modelo para obtener gimnasios</param>
             <returns></returns>
         </member>
+        <member name="T:AdministratorApi.Controllers.NotificationPushController">
+            <summary>
+            Controlador de Notificaciones Push
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.NotificationPushController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.NotificationPushController},MediatR.IMediator)">
+            <summary>
+            Controlador de Notificaciones Push
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.NotificationPushController.SendNotificationPushByUserGuids(LogicAdministratorApi.Model.Request.NotificationPush.SendNotificationPushByUserGuidsRequest)">
+            <summary>
+            Enviar Notificación Push por UserGuids
+            </summary>
+            <param name="request">Modelo para enviar notificación push por UserGuids</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.NotificationPushController.GetNotificationPushes(LogicAdministratorApi.Model.Request.NotificationPush.GetNotificationPushesRequest)">
+            <summary>
+            Obtener Notificaciones Push enviadas de manera paginada
+            </summary>
+            <param name="request">Modelo para obtener notificaciones push paginadas</param>
+            <returns></returns>
+        </member>
+        <member name="T:AdministratorApi.Controllers.PersonController">
+            <summary>
+            Controlador de Persona
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.PersonController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.PersonController},MediatR.IMediator)">
+            <summary>
+            Controlador de Persona
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.PersonController.GetPersonByDocumentNumber(LogicAdministratorApi.Model.Request.Person.GetPersonByDocumentNumberRequest)">
+            <summary>
+            Obtiene una persona por su número de cédula
+            </summary>
+            <param name="request">Modelo para obtener persona por número de cédula</param>
+            <returns></returns>
+        </member>
         <member name="M:AdministratorApi.Controllers.SecurityController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.SecurityController},MediatR.IMediator)">
             <summary>
             Constructor
@@ -282,6 +335,36 @@
             Obtener Usuarios Administradores Paginados
             </summary>
             <param name="request">Modelo para obtener usuarios administradores paginados</param>
+            <returns></returns>
+        </member>
+        <member name="T:AdministratorApi.Controllers.UserClientController">
+            <summary>
+            Controlador de Usuarios Clientes
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.UserClientController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.UserClientController},MediatR.IMediator)">
+            <summary>
+            Controlador de Usuarios Clientes
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.UserClientController.GetUsersClientPaginated(LogicAdministratorApi.Model.Request.UserClient.GetUsersClientRequest)">
+            <summary>
+            Obtener Usuarios Clientes Paginados
+            </summary>
+            <param name="request">Modelo para obtener usuarios clientes paginados</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.UserClientController.CreateUserClient(LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest)">
+            <summary>
+            Crear Usuario Cliente
+            </summary>
+            <param name="request">Modelo para crear usuario cliente</param>
             <returns></returns>
         </member>
         <member name="T:Program">

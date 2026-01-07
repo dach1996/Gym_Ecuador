@@ -89,10 +89,8 @@ public class LoginHandler(
         {
             DocumentNumber = user.Person.DocumentNumber,
             Email = user.Email,
-            FirstName = user.Person.Name,
-            SecondName = user.Person.LastName,
-            Surname = user.Person.RealNames,
-            SecondSurname = user.Person.RealLastNames,
+            FirstName = user.Person.Name ?? user.Person.RealNames.Split(' ').FirstOrDefault(),
+            Surname = user.Person.LastName ?? user.Person.RealLastNames.Split(' ').FirstOrDefault(),
             PhoneNumber = user.Phone,
             IdentificationType = user.Person.IdentificationType,
             Username = user.HasCompleteRegistration ? user.UserName : user.Email,

@@ -634,5 +634,26 @@ public enum OperationAdministratorName : short
     /// </summary>
     [EnumMember(Value = "Obtener Detalle de Equipamiento por GUID")]
     [FunctionalityMember(FunctionalitiesCodes.GET_EQUIPMENT_BY_GUID)]
-    GetEquipmentByGuid = 89
+    GetEquipmentByGuid = 89,
+
+    /// <summary>
+    /// Enviar Notificación Push por UserGuids
+    /// </summary>
+    [EnumMember(Value = "Enviar Notificación Push por UserGuids")]
+    [FunctionalityMember(FunctionalitiesCodes.SEND_NOTIFICATION_PUSH_BY_USER_GUIDS, registerAuditLog: true)]
+    SendNotificationPushByUserGuids = 90,
+
+    /// <summary>
+    /// Obtener Notificaciones Push enviadas de manera paginada
+    /// </summary>
+    [EnumMember(Value = "Obtener Notificaciones Push enviadas de manera paginada")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_NOTIFICATION_PUSHES_PAGINATED)]
+    GetNotificationPushesPaginated = 91,
+
+    /// <summary>
+    /// Crear Usuario Cliente
+    /// </summary>
+    [EnumMember(Value = "Crear Usuario Cliente")]
+    [FunctionalityMember(FunctionalitiesCodes.CREATE_USER_CLIENT, registerAuditLog: true)]
+    CreateUserClient = 92
 }

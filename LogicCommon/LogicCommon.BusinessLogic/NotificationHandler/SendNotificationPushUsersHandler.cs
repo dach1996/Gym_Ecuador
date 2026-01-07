@@ -1,4 +1,4 @@
-using Common.PushNotification.Model;
+using Common.PushNotification.Model.Request;
 using Common.Utils.CustomExceptions;
 using Common.Utils.Extensions;
 using Common.WebCommon.Models.Enum;
@@ -7,7 +7,7 @@ using LogicCommon.Model.Request.NotificationPush;
 using LogicCommon.Model.Response.NotificationPush;
 using PersistenceDb.Models.Administration;
 using PersistenceDb.Models.Enums;
-using static Common.PushNotification.Model.NotificationTokens;
+using static Common.PushNotification.Model.Request.NotificationByTokenRequest;
 
 namespace LogicCommon.BusinessLogic.NotificationHandler;
 /// <summary>
@@ -41,17 +41,15 @@ public class SendNotificationPushUsersHandler(
             //Obtiene la lista de notificaciones push para enviar al usuario
             var usersTokenNotification = await GetUserTokenNotificationAsync(request).ConfigureAwait(false);
             //Crea el modelo para envío de Notificaciones
-            var notificationToken = new NotificationTokens(
+            var notificationToken = new NotificationByTokenRequest(
                     request.Title,
                     request.Body,
-                    usersTokenNotification.Select(select => new NotificationTokenImplementationRequestModel
-                    {
-                        Token = select.Token,
-                        Implementation = select.Implementation
-                    }));
+                    usersTokenNotification.GroupBy(group => group.Implementation.ToEnum<NotificationPushImplementationType>())
+                    .ToDictionary(key => GetBrandNotificationType(key.Key.Value), value => value.Select(select => select.Token).ToList())
+                    );
             //Envía Notificaciones
             var notificationPushResponse = await PushNotificationPlatform.SendNotificationAsync(notificationToken).ConfigureAwait(false);
-            var notificationsPushDeviceRepository = usersTokenNotification.Join(
+            var newNotificationsPushUser = usersTokenNotification.Join(
                 notificationPushResponse.NotificationItems,
                 usersTokenNotification => usersTokenNotification.Token,
                 notificationPushResponse => notificationPushResponse.Identifier,
@@ -64,23 +62,38 @@ public class SendNotificationPushUsersHandler(
                     StatusNotification = notificationPushResponse.IsSuccess ? EnumsDataBase.StatusNotification.Sended : EnumsDataBase.StatusNotification.Error
                 })
                 .GroupBy(group => group.UserId)
-                .Select(select => new NotificationPushUser
+                .Select(select =>
                 {
-                    UserId = select.Key,
-                    PushNotificationId = notificationPushRespository.Id,
-                    NotificationPushUserDevices = [.. select.Select(select => new NotificationPushUserDevice
+                    return new
                     {
-                        DeviceId = select.DeviceId,
-                        NotificationPushUserId = notificationPushRespository.Id,
-                        StatusNotification = select.StatusNotification,
-                        AdditionalInformation = select.AdditionalInformation
-                    })]
-                });
+                        NotificationPushUser = new NotificationPushUser
+                        {
+                            UserId = select.Key,
+                            PushNotificationId = notificationPushRespository.Id,
+
+                        },
+                        NotificationPushUserDevices = select.Select(select => new NotificationPushUserDevice
+                        {
+                            DeviceId = select.DeviceId,
+                            NotificationPushUserId = notificationPushRespository.Id,
+                            StatusNotification = select.StatusNotification,
+                            AdditionalInformation = select.AdditionalInformation
+                        }).ToList()
+                    };
+                }).ToList();
             //Almacena las notificaciones Push del usuario
-            await UnitOfWork.NotificationPushUserRepository.AddRangeAsync(notificationsPushDeviceRepository, includeChildren: true).ConfigureAwait(false);
+            await UnitOfWork.NotificationPushUserRepository.AddRangeIdentityAsync(newNotificationsPushUser.Select(select => select.NotificationPushUser).ToList()).ConfigureAwait(false);
+            newNotificationsPushUser.ForEach(notificationPushUser =>
+                    {
+                        notificationPushUser.NotificationPushUserDevices.ForEach(notificationPushUserDevice =>
+                        {
+                            notificationPushUserDevice.NotificationPushUserId = notificationPushUser.NotificationPushUser.Id;
+                        });
+                    });
+            await UnitOfWork.NotificationPushUserDeviceRepository.AddRangeIdentityAsync(newNotificationsPushUser.SelectMany(select => select.NotificationPushUserDevices).ToList()).ConfigureAwait(false);
             return new NotificationPushResponse(
-                notificationsPushDeviceRepository.ToDictionary(
-                    key => key.UserId,
+                newNotificationsPushUser.ToDictionary(
+                    key => key.NotificationPushUser.UserId,
                     value => new NotificationPushResponse.NotificationPushUserResponse(
                         value.NotificationPushUserDevices.Count,
                         value.NotificationPushUserDevices.Count(countWhere => countWhere.StatusNotification == EnumsDataBase.StatusNotification.Sended)
@@ -88,6 +101,21 @@ public class SendNotificationPushUsersHandler(
                 )
             );
         }).ConfigureAwait(false);
+
+    /// <summary>
+    /// Obtiene el tipo de notificación por la implementación
+    /// </summary>
+    /// <param name="notificationPushImplementationType"></param>
+    /// <returns></returns>
+    private static BrandNotificationType GetBrandNotificationType(NotificationPushImplementationType notificationPushImplementationType)
+    {
+        return notificationPushImplementationType switch
+        {
+            NotificationPushImplementationType.Firebase => BrandNotificationType.AndroidIOS,
+            NotificationPushImplementationType.Huawei => BrandNotificationType.Huawei,
+            _ => throw new NotImplementedException($"No se encuentra implementación para :{notificationPushImplementationType}"),
+        };
+    }
 
     /// <summary>
     /// Obtiene una lista de Notificaciones Push de Usuario
@@ -104,7 +132,7 @@ public class SendNotificationPushUsersHandler(
                     DeviceId = select.DeviceId,
                     UserId = select.UserId.Value,
                     Token = select.PushToken,
-                    Implementation = GetImplementation(select.NotificationPushImplementationType)
+                    Implementation = $"{select.NotificationPushImplementationType}"
                 },
                 where => request.UsersId.Contains(where.UserId.Value) && !string.IsNullOrEmpty(where.PushToken)
         ).ConfigureAwait(false);
@@ -113,16 +141,5 @@ public class SendNotificationPushUsersHandler(
         return [.. usersTokenNotification];
     }
 
-    /// <summary>
-    /// Obtiene la implementación a usar
-    /// </summary>
-    /// <param name="notificationPushImplementationType"></param>
-    /// <returns></returns>
-    private static string GetImplementation(NotificationPushImplementationType notificationPushImplementationType)
-     => notificationPushImplementationType switch
-     {
-         NotificationPushImplementationType.Firebase => $"{NotificationPushImplementationType.Firebase}",
-         NotificationPushImplementationType.Huawei => $"{NotificationPushImplementationType.Huawei}",
-         _ => throw new NotImplementedException($"No se encuentra implementación para :{notificationPushImplementationType}"),
-     };
+
 }

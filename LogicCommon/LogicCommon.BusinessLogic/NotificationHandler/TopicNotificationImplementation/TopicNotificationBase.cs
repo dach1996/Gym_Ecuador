@@ -29,7 +29,7 @@ public abstract class TopicNotificationBase(
     /// </summary>
     /// <param name="where"></param>
     /// <returns></returns>
-    protected async Task<IEnumerable<UserNotification>> GetUserNotificationAsync(Expression<Func<UserDevicePushToken, bool>> where = null)
+    protected async Task<List<UserNotification>> GetUserNotificationAsync(Expression<Func<UserDevicePushToken, bool>> where = null)
     {
         //Obtiene la información del los usuarios y dispositivos
         return await UnitOfWork.UserDevicePushTokenRepository
@@ -38,22 +38,11 @@ public abstract class TopicNotificationBase(
                 {
                     UserId = select.UserId.Value,
                     DeviceId = select.DeviceId,
-                    Implementation = GetImplementation(select.NotificationPushImplementationType)
+                    Implementation = $"{select.NotificationPushImplementationType}"
                 },
                 where
         ).ConfigureAwait(false);
     }
 
-    /// <summary>
-    /// Obtiene la implementación a usar
-    /// </summary>
-    /// <param name="notificationPushImplementationType"></param>
-    /// <returns></returns>
-    private static string GetImplementation(NotificationPushImplementationType notificationPushImplementationType)
-     => notificationPushImplementationType switch
-     {
-         NotificationPushImplementationType.Firebase => $"{NotificationPushImplementationType.Firebase}",
-         NotificationPushImplementationType.Huawei => $"{NotificationPushImplementationType.Huawei}",
-         _ => throw new NotImplementedException($"No se encuentra implementación para :{notificationPushImplementationType}"),
-     };
+    
 }

@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace LogicCommon.Model.Response.Person;
 
 /// <summary>
@@ -5,6 +7,12 @@ namespace LogicCommon.Model.Response.Person;
 /// </summary>
 public class PersonDetail
 {
+    /// <summary>
+    /// Id de la persona
+    /// </summary>
+    [JsonIgnore]
+    public int Id { get; set; }
+
     /// <summary>
     /// Guid de la persona
     /// </summary>

@@ -1,5 +1,3 @@
-using Common.PushNotification.Model;
-
 namespace Common.PushNotification.Configuration;
 
 /// <summary>

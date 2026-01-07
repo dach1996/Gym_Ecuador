@@ -47,10 +47,10 @@ public class WebServicesEcDocumentationServicesImplementation : DocumentationSer
         var stopwatch = new Stopwatch();
         stopwatch.Restart();
         var response = await HttpClient.GetAsync($"api/cedula/{request.DocumentNumber}").ConfigureAwait(false);
-        if (!response.IsSuccessStatusCode)
-            throw new CustomDocumentationException($"Error ejecutando consulta de Documentación");
         var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         Logger.LogInformation("Respuesta servicio en '{@DurationTime}ms' de Validación de Cédula: '{@DocumentNumber}'", stopwatch.ElapsedMilliseconds, responseContent);
+        if (!response.IsSuccessStatusCode)
+            throw new CustomDocumentationException($"Error ejecutando consulta de Documentación");
         var documentInformation = JsonConvert.DeserializeObject<InternalVerifyDocumentResponse>(responseContent)
             ?.Data?.Response
             ?? throw new CustomDocumentationException($"No se encontró información en la respuesta del servicio");

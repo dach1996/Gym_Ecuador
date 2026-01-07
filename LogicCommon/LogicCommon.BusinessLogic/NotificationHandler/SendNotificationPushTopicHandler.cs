@@ -1,4 +1,5 @@
 using Common.PushNotification.Model;
+using Common.PushNotification.Model.Request;
 using Common.Utils.CustomExceptions;
 using Common.Utils.Extensions;
 using LogicCommon.Abstraction.Interfaces.Notification;
@@ -42,29 +43,40 @@ public class SendNotificationPushTopicHandler(
             NullException.ThrowIfNullOrEmpty(userNotifications, nameof(userNotifications), nameof(SendNotificationPushTopicHandler));
 
             //Envía Notificaciones
-            var notificationPushResponse = (await PushNotificationPlatform.SendNotificationAsync(new NotificationTopic(
+            var notificationPushResponse = (await PushNotificationPlatform.SendNotificationAsync(new NotificationByTopicRequest(
                     request.Title,
                     request.Body,
                     $"{request.Topic}")).ConfigureAwait(false))
                 ?.NotificationItems?.FirstOrDefault();
             var notificationsPushDeviceRepository = userNotifications.GroupBy(group => group.UserId)
-            .Select(select => new NotificationPushUser
+            .Select(select => new
             {
-                UserId = select.Key,
-                PushNotificationId = notificationPushRespository.Id,
-                NotificationPushUserDevices = [.. select.Select(select => new NotificationPushUserDevice
+                NotificationPushUser = new NotificationPushUser
+                {
+                    UserId = select.Key,
+                    PushNotificationId = notificationPushRespository.Id,
+                },
+                NotificationPushUserDevices = select.Select(select => new NotificationPushUserDevice
                 {
                     DeviceId = select.DeviceId,
                     NotificationPushUserId = notificationPushRespository.Id,
                     StatusNotification = notificationPushResponse.IsSuccess ? StatusNotification.Sended : StatusNotification.Error,
                     AdditionalInformation = notificationPushResponse.IsSuccess ? notificationPushResponse.MessageId : notificationPushResponse.Message
-                })]
-            });
+                }).ToList()
+            }).ToList();
             //Almacena las notificaciones Push del usuario
-            await UnitOfWork.NotificationPushUserRepository.AddRangeAsync(notificationsPushDeviceRepository).ConfigureAwait(false);
+            await UnitOfWork.NotificationPushUserRepository.AddRangeAsync(notificationsPushDeviceRepository.Select(select => select.NotificationPushUser).ToList()).ConfigureAwait(false);
+            notificationsPushDeviceRepository.ForEach(notificationPushUser =>
+                     {
+                         notificationPushUser.NotificationPushUserDevices.ForEach(notificationPushUserDevice =>
+                         {
+                             notificationPushUserDevice.NotificationPushUserId = notificationPushUser.NotificationPushUser.Id;
+                         });
+                     });
+            await UnitOfWork.NotificationPushUserDeviceRepository.AddRangeIdentityAsync(notificationsPushDeviceRepository.SelectMany(select => select.NotificationPushUserDevices).ToList()).ConfigureAwait(false);
             return new NotificationPushResponse(
                 notificationsPushDeviceRepository.ToDictionary(
-                    key => key.UserId,
+                    key => key.NotificationPushUser.UserId,
                     value => new NotificationPushResponse.NotificationPushUserResponse(
                         value.NotificationPushUserDevices.Count,
                         value.NotificationPushUserDevices.Count(countWhere => countWhere.StatusNotification == StatusNotification.Sended)

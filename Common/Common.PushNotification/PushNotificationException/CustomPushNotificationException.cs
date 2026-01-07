@@ -1,16 +1,13 @@
-﻿using System.Runtime.Serialization;
-namespace Common.PushNotification.PushNotificationException;
+﻿namespace Common.PushNotification.PushNotificationException;
 /// <summary>
 /// Push Notification Exception
 /// </summary>
-
-public class CustomPushNotificationException : Exception
+/// <remarks>
+/// Constructor
+/// </remarks>
+/// <param name="message"></param>
+public class CustomPushNotificationException(string message) : Exception(message)
 {
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="message"></param>
-    public CustomPushNotificationException(string message) : base(message)
-    {
-    }
 }
+
+

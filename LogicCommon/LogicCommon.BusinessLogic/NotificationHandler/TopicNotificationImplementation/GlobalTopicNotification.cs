@@ -26,7 +26,7 @@ public class GlobalTopicNotification(
     /// Obtiene todos los usuarios que aplican al Topico
     /// </summary>
     /// <returns></returns>
-    public async Task<IEnumerable<UserNotification>> GetUserNotificationsApplyTopicAsync(ICommonBaseRequest commonContextRequest)
+    public async Task<List<UserNotification>> GetUserNotificationsApplyTopicAsync(ICommonBaseRequest commonContextRequest)
         => await ExecuteHandlerAsync(commonContextRequest, async () =>
              await GetUserNotificationAsync(
                 where => where.UserId != null && where.PushToken != null

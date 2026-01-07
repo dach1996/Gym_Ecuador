@@ -29,6 +29,7 @@ using Common.EventHub.Infrastructure;
 using Common.WebApi.Middleware.ConfigureContext;
 using Common.WebApi.Middleware.Infrastructure;
 using Common.WebApi.Models;
+using Common.Templates.Infrastructure;
 try
 {
     var builder = WebApplication.CreateBuilder(args);
@@ -73,6 +74,7 @@ try
         builderAutofac.UseAttributeAbstractionsAssemblies();
         builderAutofac.UseMiddlewareAbstractionsAssemblies();
         builderAutofac.UseAuthenticationServices();
+        builderAutofac.UseTemplates(); 
         builderAutofac.UseCardServices();
         builderAutofac.UseDocumentationServices();
         builderAutofac.UseAbstractionsAssemblies();

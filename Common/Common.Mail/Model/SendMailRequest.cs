@@ -3,59 +3,62 @@ namespace Common.Mail.Model;
 /// <summary>
 /// Clase base para envío de Mail
 /// </summary>
-public abstract class MailBaseRequest
+/// <remarks>
+/// Constructor
+/// </remarks>
+/// <param name="toMails"></param>
+/// <param name="toMailsCco"></param>
+/// <param name="attachments"></param>
+public abstract class MailBaseRequest(
+    IList<string> toMails,
+    IList<string> toMailsCco = null,
+    List<MailAttachment> attachments = null)
 {
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="toMails"></param>
-    /// <param name="toMailsCco"></param>
-    /// <param name="attachments"></param>
-    protected MailBaseRequest(
-        IList<string> toMails,
-        IList<string> toMailsCco = null,
-        List<MailAttachment> attachments = null)
-    {
-        ToMails = toMails;
-        ToMailsCco = toMailsCco;
-        Attachments = attachments;
-    }
 
     /// <summary>
     /// Mails destino
     /// </summary>
     /// <value></value>
-    public IList<string> ToMails { get; private set; }
+    public IList<string> ToMails { get; private set; } = toMails;
 
     /// <summary>
     /// Mails destino copia oculta
     /// </summary>
     /// <value></value>
-    public IList<string> ToMailsCco { get; private set; }
+    public IList<string> ToMailsCco { get; private set; } = toMailsCco;
 
     /// <summary>
     /// Archivos
     /// </summary>
     /// <value></value>
-    public List<MailAttachment> Attachments { get; private set; }
+    public List<MailAttachment> Attachments { get; private set; } = attachments;
 }
 
 /// <summary>
 /// Clase para envío de Mail
 /// </summary>
-public class MailTemplateRequest : MailBaseRequest
+/// <remarks>
+/// Constructor
+/// </remarks>
+/// <param name="templateIdentifier"></param>
+/// <param name="templateData"></param>
+/// <param name="to"></param>
+public class MailTemplateRequest(
+    string templateId,
+    object templateData,
+    IEnumerable<string> to) : MailBaseRequest([.. to], null, null)
 {
     /// <summary>
     /// Id de template
     /// </summary>
     /// <value></value>
-    public string TemplateIdentifier { get; private set; }
-
+    public string TemplateId { get; private set; } = templateId;
+    
     /// <summary>
     /// Implementaciones de Template
     /// </summary>
     /// <value></value>
-    public object TemplateData { get; private set; }
+    public object TemplateData { get; private set; } = templateData;
 
     /// <summary>
     /// Constructor
@@ -67,23 +70,7 @@ public class MailTemplateRequest : MailBaseRequest
         string templateIdentifier,
         object templateData,
         string to)
-        : this(templateIdentifier, templateData, new[] { to })
+        : this(templateIdentifier, templateData, [to])
     {
     }
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="templateIdentifier"></param>
-    /// <param name="templateData"></param>
-    /// <param name="to"></param>
-    public MailTemplateRequest(
-        string templateIdentifier,
-        object templateData,
-        IEnumerable<string> to) : base(to.ToList(), null, null)
-    {
-        TemplateIdentifier = templateIdentifier;
-        TemplateData = templateData;
-    }
-
 }

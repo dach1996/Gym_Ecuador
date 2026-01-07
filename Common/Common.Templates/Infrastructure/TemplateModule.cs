@@ -10,5 +10,6 @@ public class TemplateModule : Module
     {
         builder.RegisterType<TemplateFactory>().As<ITemplateFactory>().SingleInstance();
         builder.RegisterType<NotificationTemplate>().As<INotificationTemplate>().SingleInstance();
+        builder.RegisterType<MailTemplate>().As<IMailTemplate>().SingleInstance();
     }
 }

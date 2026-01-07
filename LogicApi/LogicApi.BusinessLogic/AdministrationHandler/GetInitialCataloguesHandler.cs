@@ -16,12 +16,12 @@ public class GetInitialCataloguesHandler(
         pluginFactory)
 {
 
-   /// <summary>
-   /// Handler
-   /// </summary>
-   /// <param name="request"></param>
-   /// <param name="cancellationToken"></param>
-   /// <returns></returns>
-   public override async Task<GetInitialCataloguesResponse> Handle(GetInitialCataloguesRequest request, CancellationToken cancellationToken)
-    => await Mediator.Send(new GetInitialCataloguesCommonRequest(request.ContextRequest, request.ListCatalogsTypeItemsCodes.Select(select => select.ToString().ToEnumFromMember<CatalogsTypeItemsCodes>()).ToList()), cancellationToken).ConfigureAwait(false);
+    /// <summary>
+    /// Handler
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public override async Task<GetInitialCataloguesResponse> Handle(GetInitialCataloguesRequest request, CancellationToken cancellationToken)
+     => await Mediator.Send(new GetInitialCataloguesCommonRequest(request.ContextRequest, request.ListCatalogsTypeItemsCodes)).ConfigureAwait(false);
 }

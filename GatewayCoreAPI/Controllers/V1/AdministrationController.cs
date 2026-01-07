@@ -7,6 +7,7 @@ using MediatR;
 using LogicCommon.Model.Response.Administration;
 using LogicCommon.Model.Request.Administration;
 using Asp.Versioning;
+using LogicApi.Model.Request.Administration;
 
 namespace GatewayCoreAPI.Controllers.V1;
 [Route("api/v{version:apiVersion}/[controller]")]
@@ -43,7 +44,7 @@ public class AdministrationController : SecurityControllerBase
     [HttpGet("GetInitialCatalogues")]
     [ProducesResponseType(200, Type = typeof(GenericResponse<GetInitialCataloguesResponse>))]
     [ProducesResponseType(400, Type = typeof(GenericResponse))]
-    public async Task<IActionResult> GetInitialCatalogues([FromQuery] GetInitialCataloguesCommonRequest request)
+    public async Task<IActionResult> GetInitialCatalogues([FromQuery] GetInitialCataloguesRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
     #endregion
