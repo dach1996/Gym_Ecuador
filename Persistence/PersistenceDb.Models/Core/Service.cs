@@ -47,9 +47,5 @@ public class Service
     [Column("SER_ESTADO")]
     public bool IsActive { get; set; }
 
-    /// <summary>
-    /// Navegación a los servicios de sucursales
-    /// </summary>
-    public virtual ICollection<GymSubscriptionPlanService> GymSubscriptionPlanServices { get; set; }
 }
 

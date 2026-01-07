@@ -22,7 +22,7 @@ public class UpdateGymSubscriptionPlanHandler(
         => await ExecuteHandlerAsync(OperationApiName.UpdateGymSubscriptionPlan, request, async () =>
             {
                 // Buscar el plan por GUID
-                var plan = await UnitOfWork.GymSubscriptionPlanRepository
+                var plan = await UnitOfWork.BranchPlanRepository
                     .GetByFirstOrDefaultAsync(where => where.Guid == request.PlanGuid)
                     .ConfigureAwait(false);
 
@@ -32,10 +32,10 @@ public class UpdateGymSubscriptionPlanHandler(
                 // Validar que no exista otro plan con el mismo nombre (excluyendo el actual)
                 if (!string.IsNullOrWhiteSpace(request.Name))
                 {
-                    var existingPlan = await UnitOfWork.GymSubscriptionPlanRepository
+                    var existingPlan = await UnitOfWork.BranchPlanRepository
                         .GetByFirstOrDefaultAsync(where => where.Name.ToLower() == request.Name.ToLower() 
                             && where.Id != plan.Id 
-                            && where.GymId == plan.GymId)
+                            && where.GymBranchId == plan.GymBranchId)
                         .ConfigureAwait(false);
 
                     if (existingPlan != null)

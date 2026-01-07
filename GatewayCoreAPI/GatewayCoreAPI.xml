@@ -401,35 +401,6 @@
             <param name="request">Modelo para obtener plan por GUID</param>
             <returns></returns>
         </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanServiceController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanServiceController},MediatR.IMediator)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="userMessages"></param>
-            <param name="logger"></param>
-            <param name="mediator"></param>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanServiceController.AssignServiceToPlan(LogicApi.Model.Request.GymSubscriptionPlanService.AssignServiceToPlanRequest)">
-            <summary>
-            Asigna un servicio a un plan de suscripción
-            </summary>
-            <param name="request">Modelo para asignar servicio</param>
-            <returns></returns>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanServiceController.RemoveServiceFromPlan(LogicApi.Model.Request.GymSubscriptionPlanService.RemoveServiceFromPlanRequest)">
-            <summary>
-            Remueve un servicio de un plan de suscripción
-            </summary>
-            <param name="request">Modelo para remover servicio</param>
-            <returns></returns>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.GymSubscriptionPlanServiceController.GetServicesByPlan(LogicApi.Model.Request.GymSubscriptionPlanService.GetServicesByPlanRequest)">
-            <summary>
-            Obtiene los servicios de un plan de suscripción
-            </summary>
-            <param name="request">Modelo para obtener servicios por plan</param>
-            <returns></returns>
-        </member>
         <member name="T:GatewayCoreAPI.Controllers.V1.HomeController">
             <summary>
             Controlador de Home/Dashboard

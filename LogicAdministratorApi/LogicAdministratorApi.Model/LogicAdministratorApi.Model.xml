@@ -1074,11 +1074,6 @@
             Teléfono del usuario
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.Password">
-            <summary>
-            Contraseña del usuario
-            </summary>
-        </member>
         <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.LanguageCode">
             <summary>
             Código de idioma

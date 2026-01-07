@@ -67,9 +67,10 @@ public class MainUnitOfWork(
     private IGymReviewRepository _gymReviewRepository;
     private ITrainerRatingRepository _trainerRatingRepository;
     private IPersonalGoalRepository _personalGoalRepository;
-    private IGymSubscriptionPlanRepository _gymSubscriptionPlanRepository;
+    private IBranchPlanRepository _branchPlanRepository;
+    private IClientGymBranchRepository _clientGymBranchRepository;
+    private IClientMembershipRepository _clientMembershipRepository;
     private IServiceRepository _serviceRepository;
-    private IGymSubscriptionPlanServiceRepository _gymSubscriptionPlanServiceRepository;
     private IGymBranchScheduleRepository _gymBranchScheduleRepository;
     private IGymBranchImageRepository _gymBranchImageRepository;
     private IEquipmentRepository _equipmentRepository;
@@ -202,14 +203,17 @@ public class MainUnitOfWork(
     public IPersonalGoalRepository PersonalGoalRepository => _personalGoalRepository ??=
         new PersonalGoalRepository(Context, LoggerFactory.CreateLogger<PersonalGoalRepository>());
 
-    public IGymSubscriptionPlanRepository GymSubscriptionPlanRepository => _gymSubscriptionPlanRepository ??=
-        new GymSubscriptionPlanRepository(Context, LoggerFactory.CreateLogger<GymSubscriptionPlanRepository>());
+    public IBranchPlanRepository BranchPlanRepository => _branchPlanRepository ??=
+        new BranchPlanRepository(Context, LoggerFactory.CreateLogger<BranchPlanRepository>());
+
+    public IClientGymBranchRepository ClientGymBranchRepository => _clientGymBranchRepository ??=
+        new ClientGymBranchRepository(Context, LoggerFactory.CreateLogger<ClientGymBranchRepository>());
+
+    public IClientMembershipRepository ClientMembershipRepository => _clientMembershipRepository ??=
+        new ClientMembershipRepository(Context, LoggerFactory.CreateLogger<ClientMembershipRepository>());
 
     public IServiceRepository ServiceRepository => _serviceRepository ??=
         new ServiceRepository(Context, LoggerFactory.CreateLogger<ServiceRepository>());
-
-    public IGymSubscriptionPlanServiceRepository GymSubscriptionPlanServiceRepository => _gymSubscriptionPlanServiceRepository ??=
-        new GymSubscriptionPlanServiceRepository(Context, LoggerFactory.CreateLogger<GymSubscriptionPlanServiceRepository>());
 
     public IGymBranchScheduleRepository GymBranchScheduleRepository => _gymBranchScheduleRepository ??=
         new GymBranchScheduleRepository(Context, LoggerFactory.CreateLogger<GymBranchScheduleRepository>());

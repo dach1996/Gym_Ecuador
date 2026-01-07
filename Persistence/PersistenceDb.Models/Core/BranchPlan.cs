@@ -1,3 +1,4 @@
+
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
@@ -5,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 namespace PersistenceDb.Models.Core;
 
 /// <summary>
-/// Tabla de Planes de Suscripción
-/// Define los diferentes planes de pago que ofrece un gimnasio
+/// Tabla de Planes de Sucursal
+/// Define los diferentes planes de pago que ofrece una sucursal de gimnasio
 /// </summary>
-[Table(name: "SUCURSAL_PLAN_SUSCRIPCION", Schema = "CORE")]
-public class GymBranchSubscriptionPlan
+[Table(name: "PLAN_SUCURSAL", Schema = "CORE")]
+public class BranchPlan
 {
     /// <summary>
     /// Id
@@ -17,23 +18,23 @@ public class GymBranchSubscriptionPlan
     [Key]
     [Required]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    [Column("SPS_ID")]
+    [Column("PLS_ID")]
     public int Id { get; set; }
 
     /// <summary>
     /// Guid
     /// </summary>
     [Required]
-    [Column("SPS_GUID")]
+    [Column("PLS_GUID")]
     public Guid Guid { get; set; }
 
     /// <summary>
-    /// Id del gimnasio
+    /// Id de la sucursal de gimnasio
     /// </summary>
     [Required]
     [Column("SGY_ID")]
-    [ForeignKey(nameof(Gym))]
-    public int GymId { get; set; }
+    [ForeignKey(nameof(GymBranch))]
+    public int GymBranchId { get; set; }
 
     /// <summary>
     /// Nombre del plan
@@ -41,28 +42,28 @@ public class GymBranchSubscriptionPlan
     /// </summary>
     [Required]
     [StringLength(200)]
-    [Column("SPS_NOMBRE")]
+    [Column("PLS_NOMBRE")]
     public string Name { get; set; }
 
     /// <summary>
     /// Código único del plan
     /// </summary>
     [StringLength(50)]
-    [Column("SPS_CODIGO")]
+    [Column("PLS_CODIGO")]
     public string Code { get; set; }
 
     /// <summary>
     /// Descripción del plan
     /// </summary>
     [StringLength(1000)]
-    [Column("SPS_DESCRIPCION")]
+    [Column("PLS_DESCRIPCION")]
     public string Description { get; set; }
 
     /// <summary>
     /// Precio del plan
     /// </summary>
     [Required]
-    [Column("SPS_PRECIO")]
+    [Column("PLS_PRECIO")]
     [Precision(18, 2)]
     public decimal Price { get; set; }
 
@@ -70,13 +71,13 @@ public class GymBranchSubscriptionPlan
     /// Duración del plan en días
     /// </summary>
     [Required]
-    [Column("SPS_DURACION_DIAS")]
+    [Column("PLS_DURACION_DIAS")]
     public int DurationDays { get; set; }
 
     /// <summary>
     /// Precio de inscripción o setup fee
     /// </summary>
-    [Column("SPS_PRECIO_INSCRIPCION")]
+    [Column("PLS_PRECIO_INSCRIPCION")]
     [Precision(18, 2)]
     public decimal? EnrollmentFee { get; set; }
 
@@ -84,17 +85,17 @@ public class GymBranchSubscriptionPlan
     /// Estado del plan
     /// </summary>
     [Required]
-    [Column("SPS_ESTADO")]
+    [Column("PLS_ESTADO")]
     public bool IsActive { get; set; }
 
     /// <summary>
-    /// Navegación al gimnasio
+    /// Navegación a la sucursal de gimnasio
     /// </summary>
-    public Gym Gym { get; set; }
+    public GymBranch GymBranch { get; set; }
 
     /// <summary>
-    /// Navegación a las membresías con este plan
+    /// Navegación a las membresías de clientes con este plan
     /// </summary>
-    public ICollection<Membership> Memberships { get; set; }
+    public ICollection<ClientMembership> ClientMemberships { get; set; }
 }
 

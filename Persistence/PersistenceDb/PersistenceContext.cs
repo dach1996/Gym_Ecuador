@@ -92,6 +92,9 @@ public class PersistenceContext(
     public DbSet<PersonalGoal> PersonalGoals { get; set; }
     public DbSet<Equipment> Equipments { get; set; }
     public DbSet<EquipmentImage> EquipmentImages { get; set; }
+    public DbSet<BranchPlan> BranchPlans { get; set; }
+    public DbSet<ClientGymBranch> ClientGymBranches { get; set; }
+    public DbSet<ClientMembership> ClientMemberships { get; set; }
 
     #endregion
 }

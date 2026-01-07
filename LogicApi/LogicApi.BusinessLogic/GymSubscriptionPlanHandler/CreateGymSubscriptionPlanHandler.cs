@@ -22,25 +22,25 @@ public class CreateGymSubscriptionPlanHandler(
     public override async Task<CreateGymSubscriptionPlanResponse> Handle(CreateGymSubscriptionPlanRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.CreateGymSubscriptionPlan, request, async () =>
             {
-                // Validar que el gimnasio existe
-                var gym = await UnitOfWork.GymRepository
+                // Validar que la sucursal de gimnasio existe
+                var gymBranch = await UnitOfWork.GymBranchRepository
                     .GetByFirstOrDefaultAsync(where => where.Guid == request.GymGuid)
                     .ConfigureAwait(false);
 
-                if (gym == null)
-                    throw new CustomException((int)MessagesCodesError.SystemError, "Gimnasio no encontrado");
+                if (gymBranch == null)
+                    throw new CustomException((int)MessagesCodesError.SystemError, "Sucursal de gimnasio no encontrada");
 
-                // Validar que no exista un plan con el mismo nombre en el mismo gimnasio
-                if (await UnitOfWork.GymSubscriptionPlanRepository
-                    .ExistAnyAsync(where => where.GymId == gym.Id && where.Name.ToLower() == request.Name.ToLower())
+                // Validar que no exista un plan con el mismo nombre en la misma sucursal
+                if (await UnitOfWork.BranchPlanRepository
+                    .ExistAnyAsync(where => where.GymBranchId == gymBranch.Id && where.Name.ToLower() == request.Name.ToLower())
                     .ConfigureAwait(false))
-                    throw new CustomException((int)MessagesCodesError.SystemError, "Ya existe un plan con este nombre en el gimnasio");
+                    throw new CustomException((int)MessagesCodesError.SystemError, "Ya existe un plan con este nombre en la sucursal");
 
                 // Crear el nuevo plan
-                var newPlan = new GymBranchSubscriptionPlan
+                var newPlan = new BranchPlan
                 {
                     Guid = Guid.NewGuid(),
-                    GymId = gym.Id,
+                    GymBranchId = gymBranch.Id,
                     Name = request.Name,
                     Code = request.Code,
                     Description = request.Description,
@@ -51,7 +51,7 @@ public class CreateGymSubscriptionPlanHandler(
                 };
 
                 // Guardar en la base de datos
-                await UnitOfWork.GymSubscriptionPlanRepository.AddAsync(newPlan).ConfigureAwait(false);
+                await UnitOfWork.BranchPlanRepository.AddAsync(newPlan).ConfigureAwait(false);
 
                 return new CreateGymSubscriptionPlanResponse(newPlan.Guid, newPlan.Name)
                 {

@@ -22,8 +22,8 @@ public class GetGymSubscriptionPlanByGuidHandler(
     public override async Task<GetGymSubscriptionPlanByGuidResponse> Handle(GetGymSubscriptionPlanByGuidRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetGymSubscriptionPlanByGuid, request, async () =>
             {
-                // Buscar el plan con el gimnasio incluido
-                var plan = await UnitOfWork.GymSubscriptionPlanRepository
+                // Buscar el plan con la sucursal y gimnasio incluidos
+                var plan = await UnitOfWork.BranchPlanRepository
                     .GetByFirstOrDefaultAsync(where => where.Guid == request.PlanGuid)
                     .ConfigureAwait(false);
 
@@ -34,9 +34,9 @@ public class GetGymSubscriptionPlanByGuidHandler(
                 var planDetail = new GymSubscriptionPlanDetail
                 {
                     Guid = plan.Guid,
-                    GymId = plan.GymId,
-                    GymGuid = plan.Gym?.Guid ?? Guid.Empty,
-                    GymName = plan.Gym?.Name,
+                    GymId = plan.GymBranch?.GymId ?? 0,
+                    GymGuid = plan.GymBranch?.Gym?.Guid ?? Guid.Empty,
+                    GymName = plan.GymBranch?.Gym?.Name,
                     Name = plan.Name,
                     Code = plan.Code,
                     Description = plan.Description,

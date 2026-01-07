@@ -23,7 +23,7 @@ public class GetGymSubscriptionPlansHandler(
         => await ExecuteHandlerAsync(OperationApiName.GetGymSubscriptionPlans, request, async () =>
             {
                 /* // Construir query con filtros
-                var query = UnitOfWork.GymSubscriptionPlanRepository.GetByFirstOrDefaultAsync(where => where.GymId == request.GymId);
+                var query = UnitOfWork.BranchPlanRepository.GetByFirstOrDefaultAsync(where => where.GymBranchId == request.GymBranchId);
 
                 // Filtrar por gimnasio si se proporciona
                 if (request.GymGuid.HasValue)
