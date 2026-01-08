@@ -42,15 +42,12 @@ public class CreateUserAdministratorHandler(
                 // Generar salt y contraseña
                 var salt = Argon2.GenerateRandomSecretBytes();
                 var passwordEncrypted = GetPasswordEncrypted(request.Password, salt);
-                var roleType = RoleType.Admin.GetEnumMember();
+                var roleType = RoleType.GymAdministrator.GetEnumMember();
                 var platformType = RolePlatformType.Web.GetEnumMember();
                 var roleId = (await UnitOfWork.RoleRepository.GetFirstOrDefaultGenericAsync(
                     select => (int?)select.Id,
                      where => where.Name == roleType && where.Platform.Code == platformType).ConfigureAwait(false))
                     ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el rol de administrador");
-                var userRoleScopes = await GetScopesAsync().ConfigureAwait(false);
-                var scope = userRoleScopes.FirstOrDefault(where => where.Code == RoleScopeType.Gym.GetEnumMember())
-                 ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el scope de negocio");
                 var gymId = await UnitOfWork.GymRepository.GetFirstOrDefaultGenericAsync(
                     select => (int?)select.Id,
                      where => where.Guid == request.GymGuid).ConfigureAwait(false)
@@ -83,7 +80,6 @@ public class CreateUserAdministratorHandler(
                         new ()
                         {
                             RoleId = roleId,
-                            ScopeId = scope.Id,
                             ScopeIdentifier = gymId
                         }
                     ]

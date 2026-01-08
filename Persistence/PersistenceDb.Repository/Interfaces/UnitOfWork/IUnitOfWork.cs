@@ -30,7 +30,6 @@ public interface IUnitOfWork : IUnitOfWorkBase
     IDeviceRepository DeviceRepository { get; }
     IUserRepository UserRepository { get; }
     IUserRoleScopeRepository UserRoleScopeRepository { get; }
-    IScopeRepository ScopeRepository { get; }
     IRoleRepository RoleRepository { get; }
     IUserDeviceRepository UserDeviceRepository { get; }
     IPersonRepository PersonRepository { get; }

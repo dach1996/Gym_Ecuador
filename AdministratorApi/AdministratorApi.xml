@@ -50,6 +50,57 @@
             <param name="request">Modelo para autenticación</param>
             <returns></returns>
         </member>
+        <member name="T:AdministratorApi.Controllers.BranchPlanController">
+            <summary>
+            Controlador de Planes de Sucursal
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.BranchPlanController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.BranchPlanController},MediatR.IMediator)">
+            <summary>
+            Controlador de Planes de Sucursal
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.BranchPlanController.CreateBranchPlan(LogicAdministratorApi.Model.Request.BranchPlan.CreateBranchPlanRequest)">
+            <summary>
+            Crear Plan de Sucursal
+            </summary>
+            <param name="request">Modelo para crear plan de sucursal</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.BranchPlanController.UpdateBranchPlan(LogicAdministratorApi.Model.Request.BranchPlan.UpdateBranchPlanRequest)">
+            <summary>
+            Actualizar Plan de Sucursal
+            </summary>
+            <param name="request">Modelo para actualizar plan de sucursal</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.BranchPlanController.DeleteBranchPlan(LogicAdministratorApi.Model.Request.BranchPlan.DeleteBranchPlanRequest)">
+            <summary>
+            Eliminar Plan de Sucursal
+            </summary>
+            <param name="request">Modelo para eliminar plan de sucursal</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.BranchPlanController.GetBranchPlanByGuid(LogicAdministratorApi.Model.Request.BranchPlan.GetBranchPlanByGuidRequest)">
+            <summary>
+            Obtener Plan de Sucursal por GUID
+            </summary>
+            <param name="request">Modelo para obtener plan de sucursal por GUID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.BranchPlanController.GetBranchPlansPaginatedByGymBranchGuid(LogicAdministratorApi.Model.Request.BranchPlan.GetBranchPlansRequest)">
+            <summary>
+            Obtener Planes de Sucursal Paginados por GUID de Sucursal
+            </summary>
+            <param name="request">Modelo para obtener planes de sucursal paginados</param>
+            <returns></returns>
+        </member>
         <member name="T:AdministratorApi.Controllers.EquipmentController">
             <summary>
             Controlador de Equipamientos

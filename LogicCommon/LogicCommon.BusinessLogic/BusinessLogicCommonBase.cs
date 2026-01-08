@@ -372,16 +372,6 @@ public abstract class BusinessLogicCommonBase
         ).ConfigureAwait(false);
 
     /// <summary>
-    /// Obtiene los scopes de roles
-    /// </summary>
-    /// <param name="roleName"></param>
-    /// <param name="platformCode"></param>
-    /// <returns></returns>
-    protected async Task<List<Scope>> GetScopesAsync()
-        => await AdministratorCache.TryGetOrSetAsync(CacheCodes.SCOPES, async () =>
-             await UnitOfWork.ScopeRepository.GetByAsync().ConfigureAwait(false)).ConfigureAwait(false);
-
-    /// <summary>
     /// Genera una contraseña
     /// </summary>
     /// <returns></returns>

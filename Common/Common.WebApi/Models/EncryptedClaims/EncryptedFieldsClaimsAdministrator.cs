@@ -1,5 +1,6 @@
 
 using Common.WebCommon.Models;
+using PersistenceDb.Models.Enums;
 
 namespace Common.WebApi.Models.EncryptedClaims;
 
@@ -35,20 +36,14 @@ public class EncryptedFieldsClaimsAdministrator : EncryptedFieldClaimCommon
 public class GymRoleClaim
 {
     /// <summary>
-    /// Id de gimnasio
+    /// Identificador del rol
     /// </summary>
     /// <value></value>
-    public int GymId { get; set; }
-
+    public int? Identifier { get; set; }
+    
     /// <summary>
-    /// Guid de gimnasio
+    /// Tipo de rol
     /// </summary>
     /// <value></value>
-    public Guid GymGuid { get; set; }
-
-    /// <summary>
-    /// Roles en contexto
-    /// </summary>
-    /// <value></value>
-    public List<string> Roles { get; set; }
+    public RoleType RoleType { get; set; }
 }

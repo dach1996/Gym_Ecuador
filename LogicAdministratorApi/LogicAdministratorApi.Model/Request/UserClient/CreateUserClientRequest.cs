@@ -1,5 +1,6 @@
 using LogicAdministratorApi.Model.Response.UserClient;
 using Common.WebCommon.Models;
+using Common.WebCommon.Attributes.CustomDataAnnotations;
 
 namespace LogicAdministratorApi.Model.Request.UserClient;
 
@@ -34,6 +35,12 @@ public class CreateUserClientRequest : IApiBaseRequest<CreateUserClientResponse>
     /// </summary>
     [StringLength(50)]
     public string LanguageCode { get; set; }
+
+    /// <summary>
+    /// GUID del plan de sucursal a asignar al cliente (opcional)
+    /// </summary>
+    [ValidateGuid]
+    public Guid BranchPlanGuid { get; set; }
 
     /// <summary>
     /// Context

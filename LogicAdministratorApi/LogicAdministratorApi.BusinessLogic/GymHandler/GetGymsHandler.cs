@@ -29,12 +29,17 @@ public class GetGymsHandler(
                 var nameFilter = request.NameFilter?.ToLower();
                 var codeFilter = request.CodeFilter?.ToLower();
                 var isSuperAdmin = ContextRequest.CustomClaims.IsSuperAdmin;
-                var gymRoleContextClaims = ContextRequest.CustomClaims.GymRoleContextClaims.Select(where => where.GymId).ToList();
+                var gymsRoleIds = ContextRequest.CustomClaims.GymRoleContextClaims
+                .Where(where => where.RoleType == RoleType.GymAdministrator)
+                .Select(where => where.Identifier).ToList();
+                var gymsBranchRoleIds = ContextRequest.CustomClaims.GymRoleContextClaims
+                .Where(where => where.RoleType == RoleType.GymBranchAdministrator)
+                .Select(where => where.Identifier).ToList();
                 var whereClause = new List<Expression<Func<Gym, bool>>>
                 {
                     {!request.NameFilter.IsNullOrEmpty(), where => where.Name.ToLower().Contains(nameFilter)},
                     {!request.CodeFilter.IsNullOrEmpty(), where => where.Code.ToLower().Contains(codeFilter)},
-                    {where => isSuperAdmin || gymRoleContextClaims.Contains(where.Id)},
+                    {where => isSuperAdmin || gymsRoleIds.Contains(where.Id)},
                 };
                 // Obtener datos paginados
                 var paginatedResult = await UnitOfWork.GymRepository

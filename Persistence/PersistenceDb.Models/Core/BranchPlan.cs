@@ -72,7 +72,7 @@ public class BranchPlan
     /// </summary>
     [Required]
     [Column("PLS_DURACION_DIAS")]
-    public int DurationDays { get; set; }
+    public int? DurationDays { get; set; }
 
     /// <summary>
     /// Precio de inscripción o setup fee

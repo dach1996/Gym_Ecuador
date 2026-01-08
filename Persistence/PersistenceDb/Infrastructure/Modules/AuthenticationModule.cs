@@ -14,7 +14,6 @@ public class AuthenticationModule : Module
         builder.RegisterType<PersonRepository>().As<IPersonRepository>().InstancePerLifetimeScope();
         builder.RegisterType<UserRegistrationFormRepository>().As<IUserRegistrationFormRepository>().InstancePerLifetimeScope();
         builder.RegisterType<UserDevicePushTokenRepository>().As<IUserDevicePushTokenRepository>().InstancePerLifetimeScope();
-        builder.RegisterType<ScopeRepository>().As<IScopeRepository>().InstancePerLifetimeScope();
         builder.RegisterType<ModuleRepository>().As<IModuleRepository>().InstancePerLifetimeScope();
         builder.RegisterType<FunctionRepository>().As<IFunctionRepository>().InstancePerLifetimeScope();
         builder.RegisterType<FunctionalityRepository>().As<IFunctionalityRepository>().InstancePerLifetimeScope();

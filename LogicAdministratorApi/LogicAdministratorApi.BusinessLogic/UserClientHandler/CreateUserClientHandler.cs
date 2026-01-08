@@ -5,6 +5,7 @@ using LogicAdministratorApi.Model.Response.UserClient;
 using LogicCommon.Model.Request.Mail;
 using LogicCommon.Model.Request.Person;
 using PersistenceDb.Models.Authentication;
+using PersistenceDb.Models.Core;
 
 namespace LogicAdministratorApi.BusinessLogic.UserClientHandler;
 
@@ -26,46 +27,72 @@ public class CreateUserClientHandler(
     public override async Task<CreateUserClientResponse> Handle(CreateUserClientRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationAdministratorName.CreateUserClient, request, async () =>
             {
-                // Obtener la persona por el número de identificación
-                var personDetails = await Mediator.Send(new GetPersonByDocumentNumberCommonRequest(request.ContextRequest, request.IdentificationNumber), cancellationToken).ConfigureAwait(false);
-
-                // Validar que el email no exista
-                if (await UnitOfWork.UserRepository
-                    .ExistAnyAsync(where => where.Email.ToLower() == request.Email.ToLower()
+                // Obtener el plan por GUID
+                var branchPlan = await UnitOfWork.BranchPlanRepository
+                    .GetFirstOrDefaultGenericAsync(select => new
+                    {
+                        select.Id,
+                        select.GymBranchId,
+                        select.DurationDays,
+                        select.IsActive
+                    }, where => where.Guid == request.BranchPlanGuid)
+                    .ConfigureAwait(false)
+                    ?? throw new CustomException((int)MessagesCodesError.SystemError, "Plan de sucursal no encontrado");
+                // Validar que el plan de sucursal está activo
+                if (!branchPlan.IsActive)
+                    throw new CustomException((int)MessagesCodesError.SystemError, "El plan de sucursal no está activo");
+                // Validar que el usuario no exista
+                var currentUser = await UnitOfWork.UserRepository
+                    .GetFirstOrDefaultGenericAsync(select => new
+                    {
+                        select.Id,
+                        select.Guid,
+                        select.Email,
+                        select.UserName,
+                        select.PersonId,
+                        Names = select.Person.RealNames,
+                        LastNames = select.Person.RealLastNames,
+                    },
+                    where => where.Email.ToLower() == request.Email.ToLower()
                     || where.UserName.ToLower() == request.Email.ToLower())
-                    .ConfigureAwait(false))
-                    throw new CustomException((int)MessagesCodesError.SystemError, "Ya existe un usuario con este email");
-
-                // Generar salt y contraseña
-                var salt = Argon2.GenerateRandomSecretBytes();
+                    .ConfigureAwait(false);
                 var password = GeneratePassword();
-                var passwordEncrypted = GetPasswordEncrypted(password, salt);
-
-                // Obtener el rol de cliente móvil
-                var roleId = await UnitOfWork.RoleRepository.GetIdByScopeAndPlatformAsync(
-                        RoleType.Client, RolePlatformType.Mobile).ConfigureAwait(false);
-
-                // Obtener el scope global
-                var scope = (await GetScopesAsync().ConfigureAwait(false))
-                    .Find(where => where.Code == RoleScopeType.Global.GetEnumMember())
-                    ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el scope global");
-
-                // Crear el nuevo usuario
-                var newUser = new User
+                var isNewUser = currentUser is null;
+                if (isNewUser)
                 {
-                    Guid = Guid.NewGuid(),
-                    UserName = request.Email,
-                    Email = request.Email,
-                    Phone = request.Phone,
-                    PersonId = personDetails.Person.Id,
-                    LanguageCode = request.LanguageCode ?? "es",
-                    DateTimeRegister = Now,
-                    IsBlocked = false,
-                    HasCompleteRegistration = true,
-                    Salt = salt,
-                    UserRegistrationForms =
-                    [
-                        new ()
+                    // Obtener la persona por el número de identificación
+                    var personDetails = await Mediator.Send(new GetPersonByDocumentNumberCommonRequest(request.ContextRequest, request.IdentificationNumber), cancellationToken).ConfigureAwait(false);
+
+                    // Validar que el email no exista
+                    if (await UnitOfWork.UserRepository
+                        .ExistAnyAsync(where => where.Email.ToLower() == request.Email.ToLower()
+                        || where.UserName.ToLower() == request.Email.ToLower())
+                        .ConfigureAwait(false))
+                        throw new CustomException((int)MessagesCodesError.SystemError, "Ya existe un usuario con este email");
+
+                    // Generar salt y contraseña
+                    var salt = Argon2.GenerateRandomSecretBytes();
+                    var passwordEncrypted = GetPasswordEncrypted(password, salt);
+
+                    // Obtener el rol de cliente móvil
+                    var roleId = await UnitOfWork.RoleRepository.GetIdByScopeAndPlatformAsync(
+                            RoleType.Client, RolePlatformType.Mobile).ConfigureAwait(false);
+                    // Crear el nuevo usuario
+                    var newUser = new User
+                    {
+                        Guid = Guid.NewGuid(),
+                        UserName = request.Email,
+                        Email = request.Email,
+                        Phone = request.Phone,
+                        PersonId = personDetails.Person.Id,
+                        LanguageCode = request.LanguageCode ?? "es",
+                        DateTimeRegister = Now,
+                        IsBlocked = false,
+                        HasCompleteRegistration = true,
+                        Salt = salt,
+                        UserRegistrationForms =
+                        [
+                            new ()
                         {
                             DateTimeRegister = Now,
                             DateTimeLastAccess = Now,
@@ -73,33 +100,81 @@ public class CreateUserClientHandler(
                             Password = passwordEncrypted,
                             PasswordTemporary = passwordEncrypted
                         }
-                    ],
-                    UserRoleScopes = [
-                        new ()
+                        ],
+                        UserRoleScopes = [
+                            new ()
                         {
                             RoleId = roleId,
-                            ScopeId = scope.Id
                         }
-                    ]
-                };
+                        ]
+                    };
+                    newUser = await UnitOfWork.UserRepository.AddAsync(newUser).ConfigureAwait(false);
+                    currentUser = new
+                    {
+                        newUser.Id,
+                        newUser.Guid,
+                        newUser.Email,
+                        newUser.UserName,
+                        newUser.PersonId,
+                        personDetails.Person.Names,
+                        personDetails.Person.LastNames,
+                    };
+                }
 
                 // Guardar en la base de datos
                 await UnitOfWork.BeginTransactionAsync().ConfigureAwait(false);
-                await UnitOfWork.UserRepository.AddAsync(newUser).ConfigureAwait(false);
+
+                // Verificar si ya existe un ClientGymBranch para este usuario y sucursal
+                var clientGymBranch = await UnitOfWork.ClientGymBranchRepository
+                    .GetFirstOrDefaultGenericAsync(select => new
+                    {
+                        select.Id,
+                    }, where => where.UserId == currentUser.Id && where.GymBranchId == branchPlan.GymBranchId)
+                    .ConfigureAwait(false);
+                if (clientGymBranch is null)
+                {
+                    // Crear nuevo ClientGymBranch
+                    var newClientGymBranch = new ClientGymBranch
+                    {
+                        Guid = Guid.NewGuid(),
+                        UserId = currentUser.Id,
+                        GymBranchId = branchPlan.GymBranchId,
+                        RegistrationDate = Now,
+                        Status = true
+                    };
+                    newClientGymBranch = await UnitOfWork.ClientGymBranchRepository.AddAsync(newClientGymBranch).ConfigureAwait(false);
+                    clientGymBranch = new
+                    {
+                        newClientGymBranch.Id,
+                    };
+                }
+
+                // Crear la membresía (ClientMembership)
+                await UnitOfWork.ClientMembershipRepository.AddAsync(new ClientMembership
+                {
+                    Guid = Guid.NewGuid(),
+                    ClientGymBranchId = clientGymBranch.Id,
+                    BranchPlanId = branchPlan.Id,
+                    StartDate = Now,
+                    EndDate = branchPlan.DurationDays.HasValue ? Now.AddDays(branchPlan.DurationDays.Value) : null,
+                    IsActive = true,
+                    RegistrationDate = Now
+                }).ConfigureAwait(false);
+
                 await UnitOfWork.CommitAsync().ConfigureAwait(false);
                 await Mediator.Send(new SendMailRequest
                 {
                     MailTemplateModel = new NewUserManualRegisterMailTemplateModel
                     {
-                        PersonName = personDetails.Person?.Names.Split(' ').FirstOrDefault() + " " + personDetails.Person.LastNames?.Split(' ').FirstOrDefault(),
-                        Email = newUser.UserName,
+                        PersonName = currentUser.Names.Split(' ').FirstOrDefault() + " " + currentUser.LastNames?.Split(' ').FirstOrDefault(),
+                        Email = currentUser.Email,
                         Password = password,
                         SupportEmail = "soporte@fitecenter.fit",
                         Link = "https://fitcenter-administrator-app-service.azurewebsites.net/"
                     },
-                    To = [newUser.Email]
+                    To = [currentUser.Email]
                 }).ConfigureAwait(false);
-                return new CreateUserClientResponse(newUser.Guid, newUser.UserName, newUser.Email)
+                return new CreateUserClientResponse(currentUser.Guid, currentUser.UserName, currentUser.Email)
                 {
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
                     ShowMessage = true

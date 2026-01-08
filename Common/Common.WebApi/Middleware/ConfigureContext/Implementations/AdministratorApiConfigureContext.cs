@@ -106,9 +106,8 @@ public class AdministratorApiConfigureContext(ILogger<AdministratorApiConfigureC
                 IsSuperAdmin = encryptedFieldClaimDecrypt?.IsSuperAdmin ?? false,
                 GymRoleContextClaims = encryptedFieldClaimDecrypt?.GymRoleClaims?.Select(select => new GymRoleContextClaim
                 {
-                    GymId = select.GymId,
-                    GymGuid = select.GymGuid,
-                    Roles = select.Roles
+                    Identifier = select.Identifier,
+                    RoleType = select.RoleType
                 }).ToList() ?? [],
             },
         };

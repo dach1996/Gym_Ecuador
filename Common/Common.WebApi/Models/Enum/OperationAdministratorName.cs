@@ -655,5 +655,42 @@ public enum OperationAdministratorName : short
     /// </summary>
     [EnumMember(Value = "Crear Usuario Cliente")]
     [FunctionalityMember(FunctionalitiesCodes.CREATE_USER_CLIENT, registerAuditLog: true)]
-    CreateUserClient = 92
+    CreateUserClient = 92,
+
+    // ========== OPERACIONES DE PLANES DE SUCURSAL ==========
+
+    /// <summary>
+    /// Crear Plan de Sucursal
+    /// </summary>
+    [EnumMember(Value = "Crear Plan de Sucursal")]
+    [FunctionalityMember(FunctionalitiesCodes.CREATE_BRANCH_PLAN, registerAuditLog: true)]
+    CreateBranchPlan = 93,
+
+    /// <summary>
+    /// Actualizar Plan de Sucursal
+    /// </summary>
+    [EnumMember(Value = "Actualizar Plan de Sucursal")]
+    [FunctionalityMember(FunctionalitiesCodes.UPDATE_BRANCH_PLAN, registerAuditLog: true)]
+    UpdateBranchPlan = 94,
+
+    /// <summary>
+    /// Eliminar Plan de Sucursal
+    /// </summary>
+    [EnumMember(Value = "Eliminar Plan de Sucursal")]
+    [FunctionalityMember(FunctionalitiesCodes.DELETE_BRANCH_PLAN, registerAuditLog: true)]
+    DeleteBranchPlan = 95,
+
+    /// <summary>
+    /// Obtener Planes de Sucursal Paginados
+    /// </summary>
+    [EnumMember(Value = "Obtener Planes de Sucursal Paginados")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_BRANCH_PLANS_PAGINATED)]
+    GetBranchPlansPaginated = 96,
+
+    /// <summary>
+    /// Obtener Detalle de Plan de Sucursal por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Detalle de Plan de Sucursal por GUID")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_BRANCH_PLAN_BY_GUID)]
+    GetBranchPlanByGuid = 97
 }

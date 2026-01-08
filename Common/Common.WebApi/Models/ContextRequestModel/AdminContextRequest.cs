@@ -1,4 +1,6 @@
 ﻿using Common.WebCommon.Models;
+using PersistenceDb.Models.Authentication;
+using PersistenceDb.Models.Enums;
 
 namespace Common.WebApi.Models.ContextRequestModel;
 
@@ -93,16 +95,11 @@ public class GymRoleContextClaim
     /// Id de gimnasio
     /// </summary>
     /// <value></value>
-    public int GymId { get; set; }
-
-    /// Guid de gimnasio
-    /// </summary>
-    /// <value></value>
-    public Guid GymGuid { get; set; }
-
+    public int? Identifier { get; set; }
+    
     /// <summary>
     /// Roles en contexto
     /// </summary>
     /// <value></value>
-    public List<string> Roles { get; set; }
+    public RoleType RoleType { get; set; }
 }

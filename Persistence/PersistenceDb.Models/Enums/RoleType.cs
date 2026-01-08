@@ -17,11 +17,17 @@ public enum RoleType
     /// Administrador
     /// </summary>
     [EnumMember(Value = "ADMIN")]
-    Admin = 2,
+    GymAdministrator = 2,
+
+    /// <summary>
+    /// Administrador de sucursal
+    /// </summary>
+    [EnumMember(Value = "ADMIN_SUCURSAL")]
+    GymBranchAdministrator = 3,
     
     /// <summary>
     /// Cliente
     /// </summary>
     [EnumMember(Value = "CLIENTE")]
-    Client = 3,
+    Client = 4,
 }

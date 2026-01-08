@@ -24,7 +24,6 @@ public class MainUnitOfWork(
     private INotificationPushRepository _notificationPushRepository;
     private INotificationPushUserRepository _notificationPushUserRepository;
     private INotificationPushUserDeviceRepository _notificationPushUserDeviceRepository;
-    private IScopeRepository _scopeRepository;
     private ICountryRepository _countryRepository;
     private IProvinceRepository _provinceRepository;
     private IRegionRepository _regionRepository;
@@ -236,6 +235,4 @@ public class MainUnitOfWork(
     public IPlatformRepository PlatformRepository => _platformRepository ??=
         new PlatformRepository(Context, LoggerFactory.CreateLogger<PlatformRepository>());
 
-    public IScopeRepository ScopeRepository => _scopeRepository ??=
-        new ScopeRepository(Context, LoggerFactory.CreateLogger<ScopeRepository>());
 }

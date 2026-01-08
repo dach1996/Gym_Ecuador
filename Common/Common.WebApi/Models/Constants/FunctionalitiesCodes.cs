@@ -466,4 +466,31 @@ public static class FunctionalitiesCodes
     /// Crear Usuario Cliente
     /// </summary>
     public const string CREATE_USER_CLIENT = "ADM_CLIENT_CREATE";
+
+    // ========== OPERACIONES DE PLANES DE SUCURSAL ==========
+
+    /// <summary>
+    /// Crear Plan de Sucursal
+    /// </summary>
+    public const string CREATE_BRANCH_PLAN = "ADM_BRANCH_PLAN_CREATE";
+
+    /// <summary>
+    /// Actualizar Plan de Sucursal
+    /// </summary>
+    public const string UPDATE_BRANCH_PLAN = "ADM_BRANCH_PLAN_UPDATE";
+
+    /// <summary>
+    /// Eliminar Plan de Sucursal
+    /// </summary>
+    public const string DELETE_BRANCH_PLAN = "ADM_BRANCH_PLAN_DELETE";
+
+    /// <summary>
+    /// Obtener Planes de Sucursal Paginados
+    /// </summary>
+    public const string GET_BRANCH_PLANS_PAGINATED = "ADM_BRANCH_PLAN_GET_PAGINATED";
+
+    /// <summary>
+    /// Obtener Detalle de Plan de Sucursal por GUID
+    /// </summary>
+    public const string GET_BRANCH_PLAN_BY_GUID = "ADM_BRANCH_PLAN_GET_BY_GUID";
 }

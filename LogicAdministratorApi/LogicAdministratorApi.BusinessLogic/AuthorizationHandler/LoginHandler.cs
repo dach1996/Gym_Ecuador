@@ -53,7 +53,7 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
                             }).FirstOrDefault(),
                         Roles = select.UserRoleScopes
                         .Where(where => where.Role.PlatformId == platformId)
-                        .Select(select => new { select.Role.Name, select.Scope.Code, select.ScopeIdentifier }).ToList()
+                        .Select(select => new { select.Role.Name, select.ScopeIdentifier }).ToList()
                     },
                     where => where.UserName == request.Username || where.Email == request.Username
                     ).ConfigureAwait(false))
@@ -67,14 +67,13 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
             //Verifica la contraseña
             if (!Argon2.VerifyHashes(request.Password, [manualFormRegister.Password, manualFormRegister.PasswordTemporary ?? string.Empty], user.Salt))
                 throw new CustomException((int)MessagesCodesError.InfoUserNotFound, $"Contraseña Incorrecta.");
-            var gymIdentifiers = user.Roles
-                .Where(where => where.ScopeIdentifier.HasValue)
-                .Select(where => where.ScopeIdentifier.Value)
-                .ToList();
-            var gyms = await UnitOfWork.GymRepository.GetGenericAsync(
-                select => new { select.Id, select.Guid, select.Name },
-                where => gymIdentifiers.Contains(where.Id)
-                ).ConfigureAwait(false);
+            var userRoleInfo = user.Roles
+                .Select(select => new
+                {
+                    RoleType = select.Name.ToEnumFromMember<RoleType>(),
+                    select.ScopeIdentifier
+                }).ToList();
+      
             var jwt = await GenerateJwtAsync(new EncryptedFieldsClaimsAdministrator
             {
                 UserId = user.Id,
@@ -82,14 +81,11 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
                 UserGuid = user.Guid,
                 Email = user.Email,
                 IsSuperAdmin = user.Roles.Any(where => where.Name.Equals(RoleType.SuperAdmin.GetEnumMember(), StringComparison.OrdinalIgnoreCase)),
-                GymRoleClaims = [.. gyms
-                .Select(gymInfo => new GymRoleClaim
+                GymRoleClaims = [.. userRoleInfo
+                .Select(select => new GymRoleClaim
                 {
-                    GymId = gymInfo.Id,
-                    GymGuid = gymInfo.Guid,
-                    Roles = [.. user.Roles
-                    .Where(select => select.ScopeIdentifier.HasValue && select.ScopeIdentifier.Value == gymInfo.Id)
-                    .Select(select => select.Name)]
+                    Identifier = select.ScopeIdentifier,
+                    RoleType = select.RoleType
                 })]
             }).ConfigureAwait(false);
             //Respondemos con el token
@@ -99,7 +95,6 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
                 Username = user.UserName,
                 Email = user.Email,
                 IsSuperAdmin = user.Roles.Any(where => where.Name.Equals(RoleType.SuperAdmin.GetEnumMember(), StringComparison.OrdinalIgnoreCase)),
-                GymGuids = [.. gyms.Select(where => where.Guid)],
                 PersonName = user.PersonName,
             };
         }, false);

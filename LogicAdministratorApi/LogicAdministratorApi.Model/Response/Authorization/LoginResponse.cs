@@ -35,11 +35,6 @@ public class LoginResponse : IApiBaseResponse
     public string UserMessage { get; set; }
 
     /// <summary>
-    /// Gym Guids
-    /// </summary>
-    public List<Guid> GymGuids { get; set; }
-
-    /// <summary>
     /// Mensaje
     /// </summary>
     /// <value></value>

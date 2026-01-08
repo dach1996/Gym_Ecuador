@@ -152,6 +152,171 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Request.BranchPlan.CreateBranchPlanRequest">
+            <summary>
+            Solicitud para crear un plan de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.CreateBranchPlanRequest.GymBranchGuid">
+            <summary>
+            GUID de la sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.CreateBranchPlanRequest.Name">
+            <summary>
+            Nombre del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.CreateBranchPlanRequest.Code">
+            <summary>
+            Código único del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.CreateBranchPlanRequest.Description">
+            <summary>
+            Descripción del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.CreateBranchPlanRequest.Price">
+            <summary>
+            Precio del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.CreateBranchPlanRequest.DurationDays">
+            <summary>
+            Duración del plan en días
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.CreateBranchPlanRequest.EnrollmentFee">
+            <summary>
+            Precio de inscripción o setup fee
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.CreateBranchPlanRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.BranchPlan.DeleteBranchPlanRequest">
+            <summary>
+            Solicitud para eliminar un plan de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.DeleteBranchPlanRequest.BranchPlanGuid">
+            <summary>
+            GUID del plan de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.DeleteBranchPlanRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.BranchPlan.GetBranchPlanByGuidRequest">
+            <summary>
+            Solicitud para obtener un plan de sucursal por GUID
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.GetBranchPlanByGuidRequest.BranchPlanGuid">
+            <summary>
+            GUID del plan de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.GetBranchPlanByGuidRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.BranchPlan.GetBranchPlansRequest">
+            <summary>
+            Solicitud para obtener planes de sucursal paginados
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.GetBranchPlansRequest.GymBranchGuid">
+            <summary>
+            GUID de la sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.GetBranchPlansRequest.PageNumber">
+            <summary>
+            Número de página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.GetBranchPlansRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.GetBranchPlansRequest.NameFilter">
+            <summary>
+            Filtro por nombre
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.GetBranchPlansRequest.CodeFilter">
+            <summary>
+            Filtro por código
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.GetBranchPlansRequest.IsActiveFilter">
+            <summary>
+            Filtro por estado activo/inactivo
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.GetBranchPlansRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.BranchPlan.UpdateBranchPlanRequest">
+            <summary>
+            Solicitud para actualizar un plan de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.UpdateBranchPlanRequest.BranchPlanGuid">
+            <summary>
+            GUID del plan de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.UpdateBranchPlanRequest.Name">
+            <summary>
+            Nombre del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.UpdateBranchPlanRequest.Code">
+            <summary>
+            Código único del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.UpdateBranchPlanRequest.Description">
+            <summary>
+            Descripción del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.UpdateBranchPlanRequest.Price">
+            <summary>
+            Precio del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.UpdateBranchPlanRequest.DurationDays">
+            <summary>
+            Duración del plan en días
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.UpdateBranchPlanRequest.EnrollmentFee">
+            <summary>
+            Precio de inscripción o setup fee
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.UpdateBranchPlanRequest.IsActive">
+            <summary>
+            Estado del registro (Activo/Inactivo)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.UpdateBranchPlanRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Request.Equipment.CreateEquipmentRequest">
             <summary>
             Solicitud para crear un equipamiento
@@ -1079,6 +1244,11 @@
             Código de idioma
             </summary>
         </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.BranchPlanGuid">
+            <summary>
+            GUID del plan de sucursal a asignar al cliente (opcional)
+            </summary>
+        </member>
         <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.ContextRequest">
             <summary>
             Context
@@ -1165,16 +1335,292 @@
             Mensaje al Usuario
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.GymGuids">
-            <summary>
-            Gym Guids
-            </summary>
-        </member>
         <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.ShowMessage">
             <summary>
             Mensaje
             </summary>
             <value></value>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.BranchPlan.CreateBranchPlanResponse">
+            <summary>
+            Respuesta de crear plan de sucursal
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="branchPlanGuid"></param>
+            <param name="name"></param>
+            <param name="gymBranchGuid"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.BranchPlan.CreateBranchPlanResponse.#ctor(System.Guid,System.String,System.Guid)">
+            <summary>
+            Respuesta de crear plan de sucursal
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="branchPlanGuid"></param>
+            <param name="name"></param>
+            <param name="gymBranchGuid"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.CreateBranchPlanResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.CreateBranchPlanResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.CreateBranchPlanResponse.BranchPlanGuid">
+            <summary>
+            Guid del plan de sucursal creado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.CreateBranchPlanResponse.Name">
+            <summary>
+            Nombre del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.CreateBranchPlanResponse.GymBranchGuid">
+            <summary>
+            Guid de la sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.BranchPlan.DeleteBranchPlanResponse">
+            <summary>
+            Respuesta de eliminar plan de sucursal
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.BranchPlan.DeleteBranchPlanResponse.#ctor">
+            <summary>
+            Respuesta de eliminar plan de sucursal
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.DeleteBranchPlanResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.DeleteBranchPlanResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.BranchPlan.GetBranchPlanByGuidResponse">
+            <summary>
+            Respuesta de obtener plan de sucursal por GUID
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="branchPlan"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.BranchPlan.GetBranchPlanByGuidResponse.#ctor(LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanDetail)">
+            <summary>
+            Respuesta de obtener plan de sucursal por GUID
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="branchPlan"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.GetBranchPlanByGuidResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.GetBranchPlanByGuidResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.GetBranchPlanByGuidResponse.BranchPlan">
+            <summary>
+            Detalle del plan de sucursal
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanDetail">
+            <summary>
+            Detalle del plan de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanDetail.Guid">
+            <summary>
+            Guid del plan de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanDetail.GymBranchGuid">
+            <summary>
+            Guid de la sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanDetail.Name">
+            <summary>
+            Nombre del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanDetail.Code">
+            <summary>
+            Código único del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanDetail.Description">
+            <summary>
+            Descripción del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanDetail.Price">
+            <summary>
+            Precio del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanDetail.DurationDays">
+            <summary>
+            Duración del plan en días
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanDetail.EnrollmentFee">
+            <summary>
+            Precio de inscripción o setup fee
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanDetail.IsActive">
+            <summary>
+            Estado del registro
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.BranchPlan.GetBranchPlansResponse">
+            <summary>
+            Respuesta de obtener planes de sucursal paginados
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.BranchPlan.GetBranchPlansResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanItem})">
+            <summary>
+            Respuesta de obtener planes de sucursal paginados
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.GetBranchPlansResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.GetBranchPlansResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.GetBranchPlansResponse.TotalRegister">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.GetBranchPlansResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanItem">
+            <summary>
+            Item de plan de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanItem.Guid">
+            <summary>
+            Guid del plan de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanItem.Name">
+            <summary>
+            Nombre del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanItem.Code">
+            <summary>
+            Código único del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanItem.Description">
+            <summary>
+            Descripción del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanItem.Price">
+            <summary>
+            Precio del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanItem.DurationDays">
+            <summary>
+            Duración del plan en días
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanItem.EnrollmentFee">
+            <summary>
+            Precio de inscripción o setup fee
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.BranchPlanItem.IsActive">
+            <summary>
+            Estado del registro
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.BranchPlan.UpdateBranchPlanResponse">
+            <summary>
+            Respuesta de actualizar plan de sucursal
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="branchPlanGuid"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.BranchPlan.UpdateBranchPlanResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Respuesta de actualizar plan de sucursal
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="branchPlanGuid"></param>
+            <param name="name"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.UpdateBranchPlanResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.UpdateBranchPlanResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.UpdateBranchPlanResponse.BranchPlanGuid">
+            <summary>
+            Guid del plan de sucursal actualizado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.UpdateBranchPlanResponse.Name">
+            <summary>
+            Nombre del plan
+            </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Response.Equipment.CreateEquipmentResponse">
             <summary>

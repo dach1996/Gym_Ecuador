@@ -35,14 +35,6 @@ public class UserRoleScope
     public int RoleId { get; set; }
 
     /// <summary>
-    /// Scope Id
-    /// </summary>
-    [Required]
-    [ForeignKey(nameof(Scope))]
-    [Column("AMB_ID")]
-    public byte ScopeId { get; set; }
-
-    /// <summary>
     /// Scope Identifier
     /// </summary>
     [Column("URA_IDENTIFICADOR")]
@@ -58,8 +50,4 @@ public class UserRoleScope
     /// </summary>
     public Role Role { get; set; }
 
-    /// <summary>
-    /// Scope
-    /// </summary>
-    public Scope Scope { get; set; }
 }

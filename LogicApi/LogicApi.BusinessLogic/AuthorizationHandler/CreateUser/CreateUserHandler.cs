@@ -61,13 +61,10 @@ public abstract class CreateUserHandler(
             newUser = await UnitOfWork.UserRepository.AddAsync(newUser).ConfigureAwait(false);
             var roleId = await UnitOfWork.RoleRepository.GetIdByScopeAndPlatformAsync(
                 RoleType.Client, RolePlatformType.Mobile).ConfigureAwait(false);
-            var scopes = (await GetScopesAsync().ConfigureAwait(false))
-            .Find(where => where.Code == RoleScopeType.Global.GetEnumMember());
             await UnitOfWork.UserRoleScopeRepository.AddAsync(new UserRoleScope
             {
                 UserId = newUser.Id,
                 RoleId = roleId,
-                ScopeId = scopes.Id
             }).ConfigureAwait(false);
         }
         return newUser;
