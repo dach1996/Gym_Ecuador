@@ -67,6 +67,11 @@ public class PersistenceContext(
     public DbSet<QueueMessage> QueueMessages { get; set; }
     public DbSet<ProcessTracking> ProcessTrackings { get; set; }
     public DbSet<ProcessTrackingImage> ProcessTrackingImages { get; set; }
+    public DbSet<Routine> Routines { get; set; }
+    public DbSet<Exercise> Exercises { get; set; }
+    public DbSet<ExerciseTag> ExerciseTags { get; set; }
+    public DbSet<RoutineExercise> RoutineExercises { get; set; }
+    public DbSet<SeriesRecord> SeriesRecords { get; set; }
 
     #endregion
 

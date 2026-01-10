@@ -15,5 +15,10 @@ public class CoreModule : Module
         builder.RegisterType<GymBranchScheduleRepository>().As<IGymBranchScheduleRepository>().InstancePerLifetimeScope();
         builder.RegisterType<EquipmentRepository>().As<IEquipmentRepository>().InstancePerLifetimeScope();
         builder.RegisterType<EquipmentImageRepository>().As<IEquipmentImageRepository>().InstancePerLifetimeScope();
+        builder.RegisterType<RoutineRepository>().As<IRoutineRepository>().InstancePerLifetimeScope();
+        builder.RegisterType<ExerciseRepository>().As<IExerciseRepository>().InstancePerLifetimeScope();
+        builder.RegisterType<ExerciseTagRepository>().As<IExerciseTagRepository>().InstancePerLifetimeScope();
+        builder.RegisterType<RoutineExerciseRepository>().As<IRoutineExerciseRepository>().InstancePerLifetimeScope();
+        builder.RegisterType<SeriesRecordRepository>().As<ISeriesRecordRepository>().InstancePerLifetimeScope();
     }
 }

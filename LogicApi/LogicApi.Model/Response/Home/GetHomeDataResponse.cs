@@ -25,6 +25,16 @@ public class GetHomeDataResponse : IApiBaseResponse
     /// </summary>
     public MealPlan MealPlan { get; set; }
 
+    /// <summary>
+    /// Community articles section
+    /// </summary>
+    public List<CommunityArticleItem> CommunityArticles { get; set; }
+
+    /// <summary>
+    /// Forum section
+    /// </summary>
+    public List<ForumItem> Forums { get; set; }
+
 }
 
 /// <summary>
@@ -121,4 +131,66 @@ public class MealPlan
     /// Grasas usadas
     /// </summary>
     public int UsedFats { get; set; }
+}
+
+/// <summary>
+/// Community article item for home
+/// </summary>
+public class CommunityArticleItem
+{
+    /// <summary>
+    /// Article GUID
+    /// </summary>
+    public Guid Guid { get; set; }
+
+    /// <summary>
+    /// Article image URL
+    /// </summary>
+    public string ImageUrl { get; set; }
+
+    /// <summary>
+    /// Article category
+    /// </summary>
+    public string Category { get; set; }
+
+    /// <summary>
+    /// Article title
+    /// </summary>
+    public string Title { get; set; }
+
+    /// <summary>
+    /// Article description
+    /// </summary>
+    public string Description { get; set; }
+}
+
+/// <summary>
+/// Forum item for home
+/// </summary>
+public class ForumItem
+{
+    /// <summary>
+    /// Forum GUID
+    /// </summary>
+    public Guid Guid { get; set; }
+
+    /// <summary>
+    /// Forum category
+    /// </summary>
+    public string Category { get; set; }
+
+    /// <summary>
+    /// Forum title
+    /// </summary>
+    public string Title { get; set; }
+
+    /// <summary>
+    /// Forum description
+    /// </summary>
+    public string Description { get; set; }
+
+    /// <summary>
+    /// Number of comments
+    /// </summary>
+    public int CommentCount { get; set; }
 }

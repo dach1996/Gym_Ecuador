@@ -1,5 +1,6 @@
 using LogicApi.Model.Request.Forum;
 using LogicApi.Model.Response.Forum;
+using PersistenceDb.Models.Administration;
 
 namespace LogicApi.BusinessLogic.ForumHandler;
 
@@ -21,9 +22,33 @@ public class UpdateForumHandler(
     public override async Task<UpdateForumResponse> Handle(UpdateForumRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.UpdateForum, request, async () =>
             {
-                // TODO: Implementar cuando se agregue ForumRepository al UnitOfWork
-                // Por ahora retornamos el GUID del request
-                return new UpdateForumResponse(request.ForumGuid, request.Title ?? string.Empty)
+                // Buscar el foro por GUID
+                var forum = await UnitOfWork.ForumRepository
+                    .GetByFirstOrDefaultAsync(
+                        where: f => f.Guid == request.ForumGuid
+                    ).ConfigureAwait(false)
+                    ?? throw new CustomException((int)MessagesCodesError.SystemError, "Foro no encontrado");
+
+                // Validar que el usuario sea el creador del foro
+                if (forum.UserIdRegister != UserId)
+                    throw new CustomException((int)MessagesCodesError.SystemError, "No tienes permisos para actualizar este foro");
+
+                // Actualizar los campos si se proporcionan
+                if (!string.IsNullOrWhiteSpace(request.Title))
+                    forum.Title = request.Title;
+
+                if (!string.IsNullOrWhiteSpace(request.Description))
+                    forum.Content = request.Description;
+
+                if (request.IsActive.HasValue)
+                    forum.IsActive = request.IsActive.Value;
+
+                // Guardar los cambios
+                await UnitOfWork.BeginTransactionAsync().ConfigureAwait(false);
+                await UnitOfWork.ForumRepository.UpdateAsync(forum).ConfigureAwait(false);
+                await UnitOfWork.CommitAsync().ConfigureAwait(false);
+
+                return new UpdateForumResponse(forum.Guid, forum.Title)
                 {
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
                     ShowMessage = true

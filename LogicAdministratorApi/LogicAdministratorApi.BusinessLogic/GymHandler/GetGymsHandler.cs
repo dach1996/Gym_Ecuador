@@ -39,7 +39,6 @@ public class GetGymsHandler(
                 {
                     {!request.NameFilter.IsNullOrEmpty(), where => where.Name.ToLower().Contains(nameFilter)},
                     {!request.CodeFilter.IsNullOrEmpty(), where => where.Code.ToLower().Contains(codeFilter)},
-                    {where => isSuperAdmin || gymsRoleIds.Contains(where.Id)},
                 };
                 // Obtener datos paginados
                 var paginatedResult = await UnitOfWork.GymRepository

@@ -49,6 +49,11 @@ public class MainUnitOfWork(
     private IQueueMessageRepository _queueMessageRepository;
     private IProcessTrackingRepository _processTrackingRepository;
     private IProcessTrackingImageRepository _processTrackingImageRepository;
+    private IRoutineRepository _routineRepository;
+    private IExerciseRepository _exerciseRepository;
+    private IExerciseTagRepository _exerciseTagRepository;
+    private IRoutineExerciseRepository _routineExerciseRepository;
+    private ISeriesRecordRepository _seriesRecordRepository;
 
     // Gym Repositories
     private IGymRepository _gymRepository;
@@ -155,6 +160,21 @@ public class MainUnitOfWork(
 
     public IProcessTrackingImageRepository ProcessTrackingImageRepository => _processTrackingImageRepository ??= 
         new ProcessTrackingImageRepository(Context, LoggerFactory.CreateLogger<ProcessTrackingImageRepository>());
+
+    public IRoutineRepository RoutineRepository => _routineRepository ??=
+        new RoutineRepository(Context, LoggerFactory.CreateLogger<RoutineRepository>());
+
+    public IExerciseRepository ExerciseRepository => _exerciseRepository ??=
+        new ExerciseRepository(Context, LoggerFactory.CreateLogger<ExerciseRepository>());
+
+    public IExerciseTagRepository ExerciseTagRepository => _exerciseTagRepository ??=
+        new ExerciseTagRepository(Context, LoggerFactory.CreateLogger<ExerciseTagRepository>());
+
+    public IRoutineExerciseRepository RoutineExerciseRepository => _routineExerciseRepository ??=
+        new RoutineExerciseRepository(Context, LoggerFactory.CreateLogger<RoutineExerciseRepository>());
+
+    public ISeriesRecordRepository SeriesRecordRepository => _seriesRecordRepository ??=
+        new SeriesRecordRepository(Context, LoggerFactory.CreateLogger<SeriesRecordRepository>());
 
     // Gym Repository Properties
     public IGymRepository GymRepository => _gymRepository ??=

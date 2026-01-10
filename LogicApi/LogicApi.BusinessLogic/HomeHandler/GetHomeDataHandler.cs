@@ -21,6 +21,43 @@ public class GetHomeDataHandler(
     public override async Task<GetHomeDataResponse> Handle(GetHomeDataRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetHomeData, request, async () =>
             {
+                // Get latest community articles (limit 5)
+                var articles = await UnitOfWork.ArticleRepository
+                    .GetByAsync(
+                        where: article => article.IsActive && article.PublicationDate <= DateTime.UtcNow && article.MaximumPublicationDate >= DateTime.UtcNow,
+                        orderBy: article => article.PublicationDate,
+                        orderByType: PersistenceDb.Models.Enums.OrderByType.Desc,
+                        top: 5
+                    ).ConfigureAwait(false);
+
+                var communityArticles = articles.Select(article => new CommunityArticleItem
+                {
+                    Guid = article.Guid,
+                    ImageUrl = article.ImageUrl ?? string.Empty,
+                    Category = "Fitness", // Default category, can be enhanced later
+                    Title = article.Title,
+                    Description = article.Summary ?? string.Empty
+                }).ToList();
+
+                // Get latest forums with comment count (limit 5)
+                var forumsData = await UnitOfWork.ForumRepository
+                    .GetByAsync(
+                        where: forum => forum.IsActive,
+                        orderBy: forum => forum.CreationDate,
+                        orderByType: PersistenceDb.Models.Enums.OrderByType.Desc,
+                        top: 5,
+                        includes: forum => forum.ForumComments
+                    ).ConfigureAwait(false);
+
+                var forums = forumsData.Select(forum => new ForumItem
+                {
+                    Guid = forum.Guid,
+                    Category = "General", // Default category, can be enhanced later
+                    Title = forum.Title,
+                    Description = forum.Content.Length > 200 ? forum.Content.Substring(0, 200) + "..." : forum.Content,
+                    CommentCount = forum.ForumComments != null ? forum.ForumComments.Count(c => c.IsActive) : 0
+                }).ToList();
+
                 return new GetHomeDataResponse
                 {
                     DashboardMeasurementData = new DashboardMeasurementData
@@ -39,7 +76,9 @@ public class GetHomeDataHandler(
                         UsedCarbohydrates = 0,
                         UsedProtein = 0,
                         UsedFats = 0,
-                    }
+                    },
+                    CommunityArticles = communityArticles.ToList(),
+                    Forums = forums.ToList()
                 };
             }
         ).ConfigureAwait(false);

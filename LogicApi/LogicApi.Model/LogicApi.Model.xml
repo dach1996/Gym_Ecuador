@@ -752,6 +752,21 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Request.Article.GetArticleByGuidRequest">
+            <summary>
+            Request to get article detail by GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Article.GetArticleByGuidRequest.ArticleGuid">
+            <summary>
+            Article GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Article.GetArticleByGuidRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Request.Article.GetArticlesRequest">
             <summary>
             Solicitud para obtener artículos paginados
@@ -1025,6 +1040,46 @@
             <value></value>
         </member>
         <member name="P:LogicApi.Model.Request.Authorization.UpdateUserRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.BranchEquipment.GetBranchEquipmentByGuidRequest">
+            <summary>
+            Solicitud para obtener detalle de equipo de sucursal por GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.BranchEquipment.GetBranchEquipmentByGuidRequest.EquipmentGuid">
+            <summary>
+            Guid del equipo de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.BranchEquipment.GetBranchEquipmentByGuidRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.BranchEquipment.GetBranchEquipmentsRequest">
+            <summary>
+            Solicitud para obtener equipos de sucursal paginados
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.BranchEquipment.GetBranchEquipmentsRequest.GymBranchGuid">
+            <summary>
+            GUID de la sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.BranchEquipment.GetBranchEquipmentsRequest.PageNumber">
+            <summary>
+            Número de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.BranchEquipment.GetBranchEquipmentsRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.BranchEquipment.GetBranchEquipmentsRequest.ContextRequest">
             <summary>
             Context
             </summary>
@@ -1414,6 +1469,46 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Request.Exercise.GetExerciseByGuidRequest">
+            <summary>
+            Solicitud para obtener detalle de ejercicio por GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Exercise.GetExerciseByGuidRequest.ExerciseGuid">
+            <summary>
+            Guid del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Exercise.GetExerciseByGuidRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Exercise.GetExercisesRequest">
+            <summary>
+            Solicitud para obtener ejercicios con paginación
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Exercise.GetExercisesRequest.PageNumber">
+            <summary>
+            Número de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Exercise.GetExercisesRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Exercise.GetExercisesRequest.CatalogId">
+            <summary>
+            Filtro por tag/categoría (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Exercise.GetExercisesRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Request.Forum.CommentForumRequest">
             <summary>
             Solicitud para comentar en un foro
@@ -1474,6 +1569,21 @@
         <member name="M:LogicApi.Model.Request.Forum.CreateForumRequest.#ctor">
             <summary>
             Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Forum.GetForumByGuidRequest">
+            <summary>
+            Request to get forum detail by GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.GetForumByGuidRequest.ForumGuid">
+            <summary>
+            Forum GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Forum.GetForumByGuidRequest.ContextRequest">
+            <summary>
+            Context
             </summary>
         </member>
         <member name="T:LogicApi.Model.Request.Forum.GetForumsRequest">
@@ -3182,6 +3292,91 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Request.Routine.CreateRoutineWithExercisesRequest">
+            <summary>
+            Solicitud para crear rutina con ejercicios
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Routine.CreateRoutineWithExercisesRequest.Name">
+            <summary>
+            Nombre de la rutina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Routine.CreateRoutineWithExercisesRequest.Exercises">
+            <summary>
+            Lista de ejercicios con sus parámetros
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Routine.CreateRoutineWithExercisesRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Routine.RoutineExerciseItem">
+            <summary>
+            Item de ejercicio para rutina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Routine.RoutineExerciseItem.ExerciseGuid">
+            <summary>
+            Guid del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Routine.RoutineExerciseItem.Series">
+            <summary>
+            Número de series
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Routine.RoutineExerciseItem.RepetitionsFrom">
+            <summary>
+            Desde cuántas repeticiones
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Routine.RoutineExerciseItem.RepetitionsTo">
+            <summary>
+            Hasta cuántas repeticiones
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Routine.RoutineExerciseItem.RestSeconds">
+            <summary>
+            Segundos de descanso
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Routine.GetMyRoutinesRequest">
+            <summary>
+            Solicitud para obtener mis rutinas con paginación
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Routine.GetMyRoutinesRequest.PageNumber">
+            <summary>
+            Número de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Routine.GetMyRoutinesRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Routine.GetMyRoutinesRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Routine.GetRoutineExercisesByGuidRequest">
+            <summary>
+            Solicitud para obtener ejercicios de rutina por GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Routine.GetRoutineExercisesByGuidRequest.RoutineGuid">
+            <summary>
+            Guid de la rutina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Routine.GetRoutineExercisesByGuidRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Request.Seat.GetSeatAvailableRequest">
             <summary>
             Request de reservar un asiento
@@ -3344,6 +3539,61 @@
             <value></value>
         </member>
         <member name="P:LogicApi.Model.Request.Security.GetPublicKeyRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.SeriesRecord.CreateSeriesRecordRequest">
+            <summary>
+            Solicitud para crear registro de serie
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.SeriesRecord.CreateSeriesRecordRequest.ExerciseGuid">
+            <summary>
+            Guid del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.SeriesRecord.CreateSeriesRecordRequest.Weight">
+            <summary>
+            Peso utilizado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.SeriesRecord.CreateSeriesRecordRequest.Repetitions">
+            <summary>
+            Repeticiones realizadas
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.SeriesRecord.CreateSeriesRecordRequest.RegistrationDate">
+            <summary>
+            Fecha de registro (opcional, por defecto fecha actual)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.SeriesRecord.CreateSeriesRecordRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.SeriesRecord.GetSeriesRecordsHistoryRequest">
+            <summary>
+            Solicitud para obtener historial de registros de series con paginación
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.SeriesRecord.GetSeriesRecordsHistoryRequest.PageNumber">
+            <summary>
+            Número de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.SeriesRecord.GetSeriesRecordsHistoryRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.SeriesRecord.GetSeriesRecordsHistoryRequest.ExerciseGuid">
+            <summary>
+            Filtro por ejercicio (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.SeriesRecord.GetSeriesRecordsHistoryRequest.ContextRequest">
             <summary>
             Context
             </summary>
@@ -3731,6 +3981,51 @@
             Default Constructor
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Response.Article.GetArticleByGuidResponse">
+            <summary>
+            Response to get article detail by GUID
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Article.GetArticleByGuidResponse.#ctor(LogicApi.Model.Response.Article.ArticleDetail)">
+            <summary>
+            Response to get article detail by GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.GetArticleByGuidResponse.UserMessage">
+            <summary>
+            User message
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.GetArticleByGuidResponse.ShowMessage">
+            <summary>
+            Show message?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.GetArticleByGuidResponse.Article">
+            <summary>
+            Article detail
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Article.ArticleDetail">
+            <summary>
+            Article detail
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleDetail.FullContent">
+            <summary>
+            Full content of the article
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleDetail.PublicationDate">
+            <summary>
+            Publication date
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Article.ArticleDetail.CreationDate">
+            <summary>
+            Creation date
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Response.Article.GetArticlesResponse">
             <summary>
             Respuesta de obtener artículos
@@ -4064,6 +4359,113 @@
             Mostrar Mensaje?
             </summary>
             <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.BranchEquipment.GetBranchEquipmentByGuidResponse">
+            <summary>
+            Respuesta de obtener detalle de equipo de sucursal por GUID
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.BranchEquipment.GetBranchEquipmentByGuidResponse.#ctor(LogicApi.Model.Response.BranchEquipment.BranchEquipmentDetail)">
+            <summary>
+            Respuesta de obtener detalle de equipo de sucursal por GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.GetBranchEquipmentByGuidResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.GetBranchEquipmentByGuidResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.GetBranchEquipmentByGuidResponse.Equipment">
+            <summary>
+            Datos del equipo
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.BranchEquipment.BranchEquipmentDetail">
+            <summary>
+            Detalle completo de equipo de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.BranchEquipmentDetail.GymBranchGuid">
+            <summary>
+            Guid de la sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.BranchEquipmentDetail.IsActive">
+            <summary>
+            Estado del registro (Activo/Inactivo)
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.BranchEquipment.GetBranchEquipmentsResponse">
+            <summary>
+            Respuesta de obtener equipos de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.GetBranchEquipmentsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.GetBranchEquipmentsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.GetBranchEquipmentsResponse.TotalRegister">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.BranchEquipment.GetBranchEquipmentsResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicApi.Model.Response.BranchEquipment.BranchEquipmentItem})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.GetBranchEquipmentsResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.BranchEquipment.BranchEquipmentItem">
+            <summary>
+            Item de equipo de sucursal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.BranchEquipmentItem.Guid">
+            <summary>
+            Guid del equipo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.BranchEquipmentItem.Name">
+            <summary>
+            Nombre del equipo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.BranchEquipmentItem.Description">
+            <summary>
+            Descripción del equipo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.BranchEquipmentItem.EquipmentTypeCode">
+            <summary>
+            Código del tipo de equipo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.BranchEquipmentItem.EquipmentTypeName">
+            <summary>
+            Nombre del tipo de equipo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.BranchEquipment.BranchEquipmentItem.ImageUrls">
+            <summary>
+            URL de la imagen del equipo
+            </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Card.CardItem">
             <summary>
@@ -4576,6 +4978,143 @@
             Mensaje al Usuario
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Response.Exercise.GetExerciseByGuidResponse">
+            <summary>
+            Respuesta de obtener detalle de ejercicio por GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.GetExerciseByGuidResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.GetExerciseByGuidResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.GetExerciseByGuidResponse.Exercise">
+            <summary>
+            Detalle completo del ejercicio
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Exercise.ExerciseDetail">
+            <summary>
+            Detalle completo de ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.ExerciseDetail.Guid">
+            <summary>
+            Guid del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.ExerciseDetail.Name">
+            <summary>
+            Nombre del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.ExerciseDetail.Description">
+            <summary>
+            Descripción del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.ExerciseDetail.Instructions">
+            <summary>
+            Instrucciones del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.ExerciseDetail.ImageUrl">
+            <summary>
+            URL de la imagen del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.ExerciseDetail.Tags">
+            <summary>
+            Lista de tags/categorías del ejercicio
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Exercise.ExerciseTagItem">
+            <summary>
+            Item de tag/categoría de ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.ExerciseTagItem.CatalogId">
+            <summary>
+            Id del catálogo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.ExerciseTagItem.Code">
+            <summary>
+            Código del catálogo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.ExerciseTagItem.Name">
+            <summary>
+            Nombre del tag/categoría
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Exercise.GetExercisesResponse">
+            <summary>
+            Respuesta de obtener ejercicios
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.GetExercisesResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.GetExercisesResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.GetExercisesResponse.TotalRegister">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Exercise.GetExercisesResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Exercise.ExerciseItem})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.GetExercisesResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Exercise.ExerciseItem">
+            <summary>
+            Item de ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.ExerciseItem.Guid">
+            <summary>
+            Guid del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.ExerciseItem.Name">
+            <summary>
+            Nombre del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.ExerciseItem.Description">
+            <summary>
+            Descripción del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.ExerciseItem.ImageUrl">
+            <summary>
+            URL de la imagen del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Exercise.ExerciseItem.Tags">
+            <summary>
+            Lista de tags/categorías del ejercicio
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Response.Forum.CommentForumResponse">
             <summary>
             Respuesta de comentar en foro
@@ -4648,6 +5187,86 @@
         <member name="M:LogicApi.Model.Response.Forum.CreateForumResponse.#ctor">
             <summary>
             Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Forum.GetForumByGuidResponse">
+            <summary>
+            Response to get forum detail by GUID
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Forum.GetForumByGuidResponse.#ctor(LogicApi.Model.Response.Forum.ForumDetail)">
+            <summary>
+            Response to get forum detail by GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.GetForumByGuidResponse.UserMessage">
+            <summary>
+            User message
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.GetForumByGuidResponse.ShowMessage">
+            <summary>
+            Show message?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.GetForumByGuidResponse.Forum">
+            <summary>
+            Forum detail
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Forum.ForumDetail">
+            <summary>
+            Forum detail
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumDetail.Category">
+            <summary>
+            Forum category
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumDetail.FullContent">
+            <summary>
+            Full content of the forum
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumDetail.CreationDate">
+            <summary>
+            Creation date
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumDetail.AuthorName">
+            <summary>
+            Author name
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumDetail.Comments">
+            <summary>
+            Forum comments
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Forum.ForumCommentItem">
+            <summary>
+            Forum comment item
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumCommentItem.Guid">
+            <summary>
+            Comment GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumCommentItem.Comment">
+            <summary>
+            Comment text
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumCommentItem.AuthorName">
+            <summary>
+            Author name
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Forum.ForumCommentItem.RegistrationDate">
+            <summary>
+            Registration date
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Forum.GetForumsResponse">
@@ -5795,6 +6414,16 @@
             Plan de alimentación
             </summary>
         </member>
+        <member name="P:LogicApi.Model.Response.Home.GetHomeDataResponse.CommunityArticles">
+            <summary>
+            Community articles section
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.GetHomeDataResponse.Forums">
+            <summary>
+            Forum section
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Response.Home.DashboardMeasurementData">
             <summary>
             Datos de medición del dashboard
@@ -5887,6 +6516,66 @@
         <member name="P:LogicApi.Model.Response.Home.MealPlan.UsedFats">
             <summary>
             Grasas usadas
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Home.CommunityArticleItem">
+            <summary>
+            Community article item for home
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.CommunityArticleItem.Guid">
+            <summary>
+            Article GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.CommunityArticleItem.ImageUrl">
+            <summary>
+            Article image URL
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.CommunityArticleItem.Category">
+            <summary>
+            Article category
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.CommunityArticleItem.Title">
+            <summary>
+            Article title
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.CommunityArticleItem.Description">
+            <summary>
+            Article description
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Home.ForumItem">
+            <summary>
+            Forum item for home
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.ForumItem.Guid">
+            <summary>
+            Forum GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.ForumItem.Category">
+            <summary>
+            Forum category
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.ForumItem.Title">
+            <summary>
+            Forum title
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.ForumItem.Description">
+            <summary>
+            Forum description
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Home.ForumItem.CommentCount">
+            <summary>
+            Number of comments
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Logger.RegisterLogResponse">
@@ -7258,6 +7947,173 @@
             Mostrar Mensaje?
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Response.Routine.CreateRoutineWithExercisesResponse">
+            <summary>
+            Respuesta de crear rutina con ejercicios
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.CreateRoutineWithExercisesResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.CreateRoutineWithExercisesResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.CreateRoutineWithExercisesResponse.RoutineGuid">
+            <summary>
+            Guid de la rutina creada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.CreateRoutineWithExercisesResponse.Name">
+            <summary>
+            Nombre de la rutina creada
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.CreateRoutineWithExercisesResponse.ExercisesCount">
+            <summary>
+            Cantidad de ejercicios agregados
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Routine.GetMyRoutinesResponse">
+            <summary>
+            Respuesta de obtener mis rutinas
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.GetMyRoutinesResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.GetMyRoutinesResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.GetMyRoutinesResponse.TotalRegister">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Routine.GetMyRoutinesResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicApi.Model.Response.Routine.RoutineItem})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.GetMyRoutinesResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Routine.RoutineItem">
+            <summary>
+            Item de rutina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineItem.Guid">
+            <summary>
+            Guid de la rutina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineItem.Name">
+            <summary>
+            Nombre de la rutina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineItem.CreationDate">
+            <summary>
+            Fecha de creación
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineItem.ExerciseCount">
+            <summary>
+            Cantidad de ejercicios en la rutina
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Routine.GetRoutineExercisesByGuidResponse">
+            <summary>
+            Respuesta de obtener ejercicios de rutina por GUID
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.GetRoutineExercisesByGuidResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.GetRoutineExercisesByGuidResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.GetRoutineExercisesByGuidResponse.Routine">
+            <summary>
+            Detalle de la rutina con ejercicios
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Routine.RoutineDetail">
+            <summary>
+            Detalle completo de rutina con ejercicios
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineDetail.Guid">
+            <summary>
+            Guid de la rutina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineDetail.Name">
+            <summary>
+            Nombre de la rutina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineDetail.CreationDate">
+            <summary>
+            Fecha de creación
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineDetail.Exercises">
+            <summary>
+            Lista de ejercicios de la rutina
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Routine.RoutineExerciseDetail">
+            <summary>
+            Detalle de ejercicio en rutina
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineExerciseDetail.ExerciseGuid">
+            <summary>
+            Guid del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineExerciseDetail.ExerciseName">
+            <summary>
+            Nombre del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineExerciseDetail.Series">
+            <summary>
+            Número de series
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineExerciseDetail.RepetitionsFrom">
+            <summary>
+            Desde cuántas repeticiones
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineExerciseDetail.RepetitionsTo">
+            <summary>
+            Hasta cuántas repeticiones
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineExerciseDetail.RestSeconds">
+            <summary>
+            Segundos de descanso
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Response.Seat.GetSeatAvailableResponse">
             <summary>
             Asientos Disponibles
@@ -7442,6 +8298,108 @@
             Constructor
             </summary>
             <param name="publicKey"></param>
+        </member>
+        <member name="T:LogicApi.Model.Response.SeriesRecord.CreateSeriesRecordResponse">
+            <summary>
+            Respuesta de crear registro de serie
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.CreateSeriesRecordResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.CreateSeriesRecordResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.CreateSeriesRecordResponse.SeriesRecordGuid">
+            <summary>
+            Guid del registro creado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.CreateSeriesRecordResponse.ExerciseGuid">
+            <summary>
+            Guid del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.CreateSeriesRecordResponse.ExerciseName">
+            <summary>
+            Nombre del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.CreateSeriesRecordResponse.RegistrationDate">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.SeriesRecord.GetSeriesRecordsHistoryResponse">
+            <summary>
+            Respuesta de obtener historial de registros de series
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.GetSeriesRecordsHistoryResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.GetSeriesRecordsHistoryResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.GetSeriesRecordsHistoryResponse.TotalRegister">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.SeriesRecord.GetSeriesRecordsHistoryResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicApi.Model.Response.SeriesRecord.SeriesRecordItem})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.GetSeriesRecordsHistoryResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.SeriesRecord.SeriesRecordItem">
+            <summary>
+            Item de registro de serie
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.SeriesRecordItem.Guid">
+            <summary>
+            Guid del registro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.SeriesRecordItem.ExerciseGuid">
+            <summary>
+            Guid del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.SeriesRecordItem.ExerciseName">
+            <summary>
+            Nombre del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.SeriesRecordItem.RegistrationDate">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.SeriesRecordItem.Weight">
+            <summary>
+            Peso utilizado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.SeriesRecord.SeriesRecordItem.Repetitions">
+            <summary>
+            Repeticiones realizadas
+            </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Service.CreateServiceResponse">
             <summary>

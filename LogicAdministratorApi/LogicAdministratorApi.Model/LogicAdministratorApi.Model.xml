@@ -462,6 +462,51 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Exercise.GetExerciseByGuidRequest">
+            <summary>
+            Solicitud para obtener detalle de ejercicio por GUID
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.GetExerciseByGuidRequest.ExerciseGuid">
+            <summary>
+            Guid del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.GetExerciseByGuidRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Exercise.GetExercisesRequest">
+            <summary>
+            Solicitud para obtener ejercicios con paginación
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.GetExercisesRequest.PageNumber">
+            <summary>
+            Número de página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.GetExercisesRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.GetExercisesRequest.NameFilter">
+            <summary>
+            Filtro por nombre (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.GetExercisesRequest.CatalogId">
+            <summary>
+            Filtro por tag/categoría (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.GetExercisesRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Request.GymBranchSchedule.CreateGymBranchScheduleRequest">
             <summary>
             Solicitud para crear horario de sucursal
@@ -1035,6 +1080,106 @@
         <member name="M:LogicAdministratorApi.Model.Request.Person.GetPersonByDocumentNumberRequest.#ctor">
             <summary>
             Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Routine.CreateRoutineWithExercisesForUserRequest">
+            <summary>
+            Solicitud para crear rutina con ejercicios asignada a un usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.CreateRoutineWithExercisesForUserRequest.UserGuid">
+            <summary>
+            Guid del usuario al que se asigna la rutina
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.CreateRoutineWithExercisesForUserRequest.Name">
+            <summary>
+            Nombre de la rutina
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.CreateRoutineWithExercisesForUserRequest.Exercises">
+            <summary>
+            Lista de ejercicios con sus parámetros
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.CreateRoutineWithExercisesForUserRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Routine.RoutineExerciseItem">
+            <summary>
+            Item de ejercicio para rutina
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.RoutineExerciseItem.ExerciseGuid">
+            <summary>
+            Guid del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.RoutineExerciseItem.Series">
+            <summary>
+            Número de series
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.RoutineExerciseItem.RepetitionsFrom">
+            <summary>
+            Desde cuántas repeticiones
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.RoutineExerciseItem.RepetitionsTo">
+            <summary>
+            Hasta cuántas repeticiones
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.RoutineExerciseItem.RestSeconds">
+            <summary>
+            Segundos de descanso
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Routine.GetRoutineExercisesByGuidRequest">
+            <summary>
+            Solicitud para obtener ejercicios de rutina por GUID
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.GetRoutineExercisesByGuidRequest.RoutineGuid">
+            <summary>
+            Guid de la rutina
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.GetRoutineExercisesByGuidRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Routine.GetRoutinesCreatedByAdminRequest">
+            <summary>
+            Solicitud para obtener rutinas creadas por el administrador con paginación
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.GetRoutinesCreatedByAdminRequest.PageNumber">
+            <summary>
+            Número de página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.GetRoutinesCreatedByAdminRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.GetRoutinesCreatedByAdminRequest.NameFilter">
+            <summary>
+            Filtro por nombre de rutina (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.GetRoutinesCreatedByAdminRequest.UserGuidFilter">
+            <summary>
+            Filtro por UserGuid del usuario asignado (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.GetRoutinesCreatedByAdminRequest.ContextRequest">
+            <summary>
+            Context
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Request.Security.GetPublicKeyRequest">
@@ -1899,6 +2044,145 @@
             Nombre del equipamiento
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Exercise.GetExerciseByGuidResponse">
+            <summary>
+            Respuesta de obtener detalle de ejercicio por GUID
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.GetExerciseByGuidResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.GetExerciseByGuidResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.GetExerciseByGuidResponse.Exercise">
+            <summary>
+            Detalle completo del ejercicio
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Exercise.ExerciseDetail">
+            <summary>
+            Detalle completo de ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseDetail.Guid">
+            <summary>
+            Guid del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseDetail.Name">
+            <summary>
+            Nombre del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseDetail.Description">
+            <summary>
+            Descripción del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseDetail.Instructions">
+            <summary>
+            Instrucciones del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseDetail.ImageUrl">
+            <summary>
+            URL de la imagen del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseDetail.Tags">
+            <summary>
+            Lista de tags/categorías del ejercicio
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Exercise.ExerciseTagItem">
+            <summary>
+            Item de tag/categoría de ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseTagItem.CatalogId">
+            <summary>
+            Id del catálogo
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseTagItem.Code">
+            <summary>
+            Código del catálogo
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseTagItem.Name">
+            <summary>
+            Nombre del tag/categoría
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Exercise.GetExercisesResponse">
+            <summary>
+            Respuesta de obtener ejercicios
+            </summary>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.Exercise.GetExercisesResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicAdministratorApi.Model.Response.Exercise.ExerciseItem})">
+            <summary>
+            Respuesta de obtener ejercicios
+            </summary>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.GetExercisesResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.GetExercisesResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.GetExercisesResponse.TotalRegister">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.GetExercisesResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Exercise.ExerciseItem">
+            <summary>
+            Item de ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseItem.Guid">
+            <summary>
+            Guid del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseItem.Name">
+            <summary>
+            Nombre del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseItem.Description">
+            <summary>
+            Descripción del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseItem.ImageUrl">
+            <summary>
+            URL de la imagen del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseItem.Tags">
+            <summary>
+            Lista de tags/categorías del ejercicio
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Response.GymBranchSchedule.CreateGymBranchScheduleResponse">
             <summary>
             Respuesta de crear horario de sucursal
@@ -2665,6 +2949,205 @@
         <member name="P:LogicAdministratorApi.Model.Response.NotificationPush.NotificationPushUserGuidResponse.SuccessOperation">
             <summary>
             Operación exitosa?
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Routine.CreateRoutineWithExercisesForUserResponse">
+            <summary>
+            Respuesta de crear rutina con ejercicios asignada a un usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.CreateRoutineWithExercisesForUserResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.CreateRoutineWithExercisesForUserResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.CreateRoutineWithExercisesForUserResponse.RoutineGuid">
+            <summary>
+            Guid de la rutina creada
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.CreateRoutineWithExercisesForUserResponse.Name">
+            <summary>
+            Nombre de la rutina creada
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.CreateRoutineWithExercisesForUserResponse.UserGuid">
+            <summary>
+            Guid del usuario asignado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.CreateRoutineWithExercisesForUserResponse.ExercisesCount">
+            <summary>
+            Cantidad de ejercicios agregados
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Routine.GetRoutineExercisesByGuidResponse">
+            <summary>
+            Respuesta de obtener ejercicios de rutina por GUID
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.GetRoutineExercisesByGuidResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.GetRoutineExercisesByGuidResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.GetRoutineExercisesByGuidResponse.Routine">
+            <summary>
+            Detalle de la rutina con ejercicios
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Routine.RoutineDetail">
+            <summary>
+            Detalle completo de rutina con ejercicios
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineDetail.Guid">
+            <summary>
+            Guid de la rutina
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineDetail.Name">
+            <summary>
+            Nombre de la rutina
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineDetail.CreationDate">
+            <summary>
+            Fecha de creación
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineDetail.UserGuid">
+            <summary>
+            Guid del usuario asignado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineDetail.UserName">
+            <summary>
+            Nombre del usuario asignado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineDetail.Exercises">
+            <summary>
+            Lista de ejercicios de la rutina
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Routine.RoutineExerciseDetail">
+            <summary>
+            Detalle de ejercicio en rutina
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineExerciseDetail.ExerciseGuid">
+            <summary>
+            Guid del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineExerciseDetail.ExerciseName">
+            <summary>
+            Nombre del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineExerciseDetail.Series">
+            <summary>
+            Número de series
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineExerciseDetail.RepetitionsFrom">
+            <summary>
+            Desde cuántas repeticiones
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineExerciseDetail.RepetitionsTo">
+            <summary>
+            Hasta cuántas repeticiones
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineExerciseDetail.RestSeconds">
+            <summary>
+            Segundos de descanso
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Routine.GetRoutinesCreatedByAdminResponse">
+            <summary>
+            Respuesta de obtener rutinas creadas por el administrador
+            </summary>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.Routine.GetRoutinesCreatedByAdminResponse.#ctor(System.Int32,System.Collections.Generic.IEnumerable{LogicAdministratorApi.Model.Response.Routine.RoutineAdminItem})">
+            <summary>
+            Respuesta de obtener rutinas creadas por el administrador
+            </summary>
+            <param name="totalRegister"></param>
+            <param name="registers"></param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.GetRoutinesCreatedByAdminResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.GetRoutinesCreatedByAdminResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.GetRoutinesCreatedByAdminResponse.TotalRegister">
+            <summary>
+            Total de registros
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.GetRoutinesCreatedByAdminResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Routine.RoutineAdminItem">
+            <summary>
+            Item de rutina para administrador
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineAdminItem.Guid">
+            <summary>
+            Guid de la rutina
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineAdminItem.Name">
+            <summary>
+            Nombre de la rutina
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineAdminItem.CreationDate">
+            <summary>
+            Fecha de creación
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineAdminItem.UserGuid">
+            <summary>
+            Guid del usuario asignado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineAdminItem.UserName">
+            <summary>
+            Nombre del usuario asignado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineAdminItem.UserEmail">
+            <summary>
+            Email del usuario asignado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineAdminItem.ExerciseCount">
+            <summary>
+            Cantidad de ejercicios en la rutina
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Response.Security.GetPublicKeyResponse">

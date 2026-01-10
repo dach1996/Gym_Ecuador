@@ -152,6 +152,36 @@
             <param name="request">Modelo para obtener equipamientos paginados</param>
             <returns></returns>
         </member>
+        <member name="T:AdministratorApi.Controllers.ExerciseController">
+            <summary>
+            Controlador de Ejercicios
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.ExerciseController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.ExerciseController},MediatR.IMediator)">
+            <summary>
+            Controlador de Ejercicios
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.ExerciseController.GetExercises(LogicAdministratorApi.Model.Request.Exercise.GetExercisesRequest)">
+            <summary>
+            Obtiene la lista de ejercicios con paginación
+            </summary>
+            <param name="request">Modelo para obtener ejercicios</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.ExerciseController.GetExerciseByGuid(LogicAdministratorApi.Model.Request.Exercise.GetExerciseByGuidRequest)">
+            <summary>
+            Obtiene el detalle de un ejercicio por GUID
+            </summary>
+            <param name="request">Modelo para obtener detalle de ejercicio por GUID</param>
+            <returns></returns>
+        </member>
         <member name="T:AdministratorApi.Controllers.GymBranchController">
             <summary>
             Controlador de Sucursales de Gimnasio
@@ -321,6 +351,43 @@
             Obtiene una persona por su número de cédula
             </summary>
             <param name="request">Modelo para obtener persona por número de cédula</param>
+            <returns></returns>
+        </member>
+        <member name="T:AdministratorApi.Controllers.RoutineController">
+            <summary>
+            Controlador de Rutinas
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.RoutineController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.RoutineController},MediatR.IMediator)">
+            <summary>
+            Controlador de Rutinas
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.RoutineController.GetRoutinesCreatedByAdmin(LogicAdministratorApi.Model.Request.Routine.GetRoutinesCreatedByAdminRequest)">
+            <summary>
+            Obtiene las rutinas creadas por el administrador con paginación
+            </summary>
+            <param name="request">Modelo para obtener rutinas creadas por el admin</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.RoutineController.GetRoutineExercisesByGuid(LogicAdministratorApi.Model.Request.Routine.GetRoutineExercisesByGuidRequest)">
+            <summary>
+            Obtiene los ejercicios de una rutina por GUID
+            </summary>
+            <param name="request">Modelo para obtener ejercicios de rutina por GUID</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.RoutineController.CreateRoutineWithExercisesForUser(LogicAdministratorApi.Model.Request.Routine.CreateRoutineWithExercisesForUserRequest)">
+            <summary>
+            Crea una nueva rutina con ejercicios asignada a un usuario
+            </summary>
+            <param name="request">Modelo para crear rutina con ejercicios para un usuario</param>
             <returns></returns>
         </member>
         <member name="M:AdministratorApi.Controllers.SecurityController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.SecurityController},MediatR.IMediator)">

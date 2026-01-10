@@ -85,7 +85,7 @@ public class GymSubscriptionPlanDetail
     /// <summary>
     /// Duración en días
     /// </summary>
-    public int DurationDays { get; set; }
+    public int? DurationDays { get; set; }
 
     /// <summary>
     /// Precio de inscripción

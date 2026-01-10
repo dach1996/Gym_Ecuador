@@ -75,6 +75,17 @@ public class ForumController(
     public async Task<IActionResult> CommentForum([FromBody] CommentForumRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
+    /// <summary>
+    /// Get forum detail by GUID
+    /// </summary>
+    /// <param name="request">Request to get forum detail</param>
+    /// <returns></returns>
+    [HttpGet("GetForumByGuid")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GetForumByGuidResponse>))]
+    [ProducesResponseType(400, Type = typeof(GenericResponse))]
+    public async Task<IActionResult> GetForumByGuid([FromQuery] GetForumByGuidRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
     #endregion
 }
 

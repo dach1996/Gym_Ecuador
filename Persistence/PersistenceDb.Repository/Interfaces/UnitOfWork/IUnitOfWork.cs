@@ -40,6 +40,11 @@ public interface IUnitOfWork : IUnitOfWorkBase
     IQueueMessageRepository QueueMessageRepository { get; }
     IProcessTrackingRepository ProcessTrackingRepository { get; }
     IProcessTrackingImageRepository ProcessTrackingImageRepository { get; }
+    IRoutineRepository RoutineRepository { get; }
+    IExerciseRepository ExerciseRepository { get; }
+    IExerciseTagRepository ExerciseTagRepository { get; }
+    IRoutineExerciseRepository RoutineExerciseRepository { get; }
+    ISeriesRecordRepository SeriesRecordRepository { get; }
 
     // Gym Repositories
     IGymRepository GymRepository { get; }

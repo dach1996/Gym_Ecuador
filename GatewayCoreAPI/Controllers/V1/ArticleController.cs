@@ -39,6 +39,17 @@ public class ArticleController(
     public async Task<IActionResult> GetArticles([FromQuery] GetArticlesRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
+    /// <summary>
+    /// Get article detail by GUID
+    /// </summary>
+    /// <param name="request">Request to get article detail</param>
+    /// <returns></returns>
+    [HttpGet("GetArticleByGuid")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GetArticleByGuidResponse>))]
+    [ProducesResponseType(400, Type = typeof(GenericResponse))]
+    public async Task<IActionResult> GetArticleByGuid([FromQuery] GetArticleByGuidRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
     #endregion
 }
 

@@ -769,4 +769,82 @@ public enum OperationApiName
     /// </summary>
     [EnumMember(Value = "Obtener Persona por Número de Cédula")]
     GetPersonByDocumentNumber,
+
+    // ========== OPERACIONES DE EQUIPOS DE SUCURSAL ==========
+
+    /// <summary>
+    /// Obtener Equipos de Sucursal
+    /// </summary>
+    [EnumMember(Value = "Obtener Equipos de Sucursal")]
+    GetBranchEquipments,
+
+    /// <summary>
+    /// Obtener Equipo de Sucursal por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Equipo de Sucursal por GUID")]
+    GetBranchEquipmentByGuid,
+
+    // ========== OPERACIONES DE ARTÍCULOS DETALLE ==========
+
+    /// <summary>
+    /// Get Article by GUID
+    /// </summary>
+    [EnumMember(Value = "Get Article by GUID")]
+    GetArticleByGuid,
+
+    // ========== OPERACIONES DE FORO DETALLE ==========
+
+    /// <summary>
+    /// Get Forum by GUID
+    /// </summary>
+    [EnumMember(Value = "Get Forum by GUID")]
+    GetForumByGuid,
+
+    // ========== OPERACIONES DE RUTINAS ==========
+
+    /// <summary>
+    /// Obtener mis rutinas
+    /// </summary>
+    [EnumMember(Value = "Obtener mis rutinas")]
+    GetMyRoutines,
+
+    /// <summary>
+    /// Obtener ejercicios de rutina por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener ejercicios de rutina por GUID")]
+    GetRoutineExercisesByGuid,
+
+    /// <summary>
+    /// Crear rutina con ejercicios
+    /// </summary>
+    [EnumMember(Value = "Crear rutina con ejercicios")]
+    CreateRoutineWithExercises,
+
+    // ========== OPERACIONES DE EJERCICIOS ==========
+
+    /// <summary>
+    /// Obtener ejercicios
+    /// </summary>
+    [EnumMember(Value = "Obtener ejercicios")]
+    GetExercises,
+
+    /// <summary>
+    /// Obtener detalle de ejercicio por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener detalle de ejercicio por GUID")]
+    GetExerciseByGuid,
+
+    // ========== OPERACIONES DE REGISTRO DE SERIES ==========
+
+    /// <summary>
+    /// Obtener historial de registros de series
+    /// </summary>
+    [EnumMember(Value = "Obtener historial de registros de series")]
+    GetSeriesRecordsHistory,
+
+    /// <summary>
+    /// Crear registro de serie
+    /// </summary>
+    [EnumMember(Value = "Crear registro de serie")]
+    CreateSeriesRecord,
 }

@@ -692,5 +692,39 @@ public enum OperationAdministratorName : short
     /// </summary>
     [EnumMember(Value = "Obtener Detalle de Plan de Sucursal por GUID")]
     [FunctionalityMember(FunctionalitiesCodes.GET_BRANCH_PLAN_BY_GUID)]
-    GetBranchPlanByGuid = 97
+    GetBranchPlanByGuid = 97,
+
+    // ========== OPERACIONES DE RUTINAS ==========
+
+    /// <summary>
+    /// Obtener rutinas creadas por el administrador
+    /// </summary>
+    [EnumMember(Value = "Obtener rutinas creadas por el administrador")]
+    GetRoutinesCreatedByAdmin = 98,
+
+    /// <summary>
+    /// Obtener ejercicios de rutina por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener ejercicios de rutina por GUID")]
+    GetRoutineExercisesByGuid = 99,
+
+    /// <summary>
+    /// Crear rutina con ejercicios para un usuario
+    /// </summary>
+    [EnumMember(Value = "Crear rutina con ejercicios para un usuario")]
+    CreateRoutineWithExercisesForUser = 100,
+
+    // ========== OPERACIONES DE EJERCICIOS ==========
+
+    /// <summary>
+    /// Obtener ejercicios
+    /// </summary>
+    [EnumMember(Value = "Obtener ejercicios")]
+    GetExercises = 101,
+
+    /// <summary>
+    /// Obtener detalle de ejercicio por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener detalle de ejercicio por GUID")]
+    GetExerciseByGuid = 102
 }

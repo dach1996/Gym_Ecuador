@@ -42,6 +42,13 @@
             <param name="request">Modelo para obtener artículos</param>
             <returns></returns>
         </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ArticleController.GetArticleByGuid(LogicApi.Model.Request.Article.GetArticleByGuidRequest)">
+            <summary>
+            Get article detail by GUID
+            </summary>
+            <param name="request">Request to get article detail</param>
+            <returns></returns>
+        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.AuthController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.AuthController},MediatR.IMediator)">
             <summary>
             Constructor
@@ -109,6 +116,36 @@
             Borrar Biométrico
             </summary>
             <param name="request">Borrar Biométrico</param>
+            <returns></returns>
+        </member>
+        <member name="T:GatewayCoreAPI.Controllers.V1.BranchEquipmentController">
+            <summary>
+            Controlador de Equipos de Sucursal
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.BranchEquipmentController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.BranchEquipmentController},MediatR.IMediator)">
+            <summary>
+            Controlador de Equipos de Sucursal
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.BranchEquipmentController.GetBranchEquipments(LogicApi.Model.Request.BranchEquipment.GetBranchEquipmentsRequest)">
+            <summary>
+            Obtiene la lista de equipos de sucursal con paginación
+            </summary>
+            <param name="request">Modelo para obtener equipos de sucursal</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.BranchEquipmentController.GetBranchEquipmentByGuid(LogicApi.Model.Request.BranchEquipment.GetBranchEquipmentByGuidRequest)">
+            <summary>
+            Obtiene el detalle de un equipo de sucursal por GUID
+            </summary>
+            <param name="request">Modelo para obtener el detalle de un equipo de sucursal por GUID</param>
             <returns></returns>
         </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.ClassReservationController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.ClassReservationController},MediatR.IMediator)">
@@ -186,6 +223,36 @@
             <param name="request">Request de actualización</param>
             <returns></returns>
         </member>
+        <member name="T:GatewayCoreAPI.Controllers.V1.ExerciseController">
+            <summary>
+            Controlador de Ejercicios
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ExerciseController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.ExerciseController},MediatR.IMediator)">
+            <summary>
+            Controlador de Ejercicios
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ExerciseController.GetExercises(LogicApi.Model.Request.Exercise.GetExercisesRequest)">
+            <summary>
+            Obtiene la lista de ejercicios con paginación
+            </summary>
+            <param name="request">Modelo para obtener ejercicios</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ExerciseController.GetExerciseByGuid(LogicApi.Model.Request.Exercise.GetExerciseByGuidRequest)">
+            <summary>
+            Obtiene el detalle de un ejercicio por GUID
+            </summary>
+            <param name="request">Modelo para obtener detalle de ejercicio por GUID</param>
+            <returns></returns>
+        </member>
         <member name="T:GatewayCoreAPI.Controllers.V1.ForumController">
             <summary>
             Controlador de Foro
@@ -228,6 +295,13 @@
             Comenta en un foro
             </summary>
             <param name="request">Modelo para comentar en foro</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ForumController.GetForumByGuid(LogicApi.Model.Request.Forum.GetForumByGuidRequest)">
+            <summary>
+            Get forum detail by GUID
+            </summary>
+            <param name="request">Request to get forum detail</param>
             <returns></returns>
         </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.GroupClassController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.GroupClassController},MediatR.IMediator)">
@@ -600,6 +674,43 @@
             <param name="request">Modelo para eliminar seguimiento de proceso</param>
             <returns></returns>
         </member>
+        <member name="T:GatewayCoreAPI.Controllers.V1.RoutineController">
+            <summary>
+            Controlador de Rutinas
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.RoutineController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.RoutineController},MediatR.IMediator)">
+            <summary>
+            Controlador de Rutinas
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.RoutineController.GetMyRoutines(LogicApi.Model.Request.Routine.GetMyRoutinesRequest)">
+            <summary>
+            Obtiene la lista de mis rutinas con paginación
+            </summary>
+            <param name="request">Modelo para obtener mis rutinas</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.RoutineController.GetRoutineExercisesByGuid(LogicApi.Model.Request.Routine.GetRoutineExercisesByGuidRequest)">
+            <summary>
+            Obtiene los ejercicios de una rutina por GUID
+            </summary>
+            <param name="request">Modelo para obtener ejercicios de rutina por GUID</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.RoutineController.CreateRoutineWithExercises(LogicApi.Model.Request.Routine.CreateRoutineWithExercisesRequest)">
+            <summary>
+            Crea una nueva rutina con ejercicios
+            </summary>
+            <param name="request">Modelo para crear rutina con ejercicios</param>
+            <returns></returns>
+        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.SecurityController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.SecurityController},MediatR.IMediator)">
             <summary>
             Constructor
@@ -630,6 +741,36 @@
             <summary>
             Decrypt (Solo para uso de desarrollo)
             </summary>
+            <returns></returns>
+        </member>
+        <member name="T:GatewayCoreAPI.Controllers.V1.SeriesRecordController">
+            <summary>
+            Controlador de Registro de Series
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.SeriesRecordController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.SeriesRecordController},MediatR.IMediator)">
+            <summary>
+            Controlador de Registro de Series
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.SeriesRecordController.GetSeriesRecordsHistory(LogicApi.Model.Request.SeriesRecord.GetSeriesRecordsHistoryRequest)">
+            <summary>
+            Obtiene el historial de registros de series con paginación
+            </summary>
+            <param name="request">Modelo para obtener historial de series</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.SeriesRecordController.CreateSeriesRecord(LogicApi.Model.Request.SeriesRecord.CreateSeriesRecordRequest)">
+            <summary>
+            Crea un nuevo registro de serie
+            </summary>
+            <param name="request">Modelo para crear registro de serie</param>
             <returns></returns>
         </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.ServiceController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.ServiceController},MediatR.IMediator)">
