@@ -75,5 +75,10 @@ public class UserDetail
     /// URL de la imagen del usuario
     /// </summary>
     public string ImageUrl { get; set; }
+
+    /// <summary>
+    /// Lista de GUIDs de los roles asignados al usuario
+    /// </summary>
+    public List<Guid> RoleGuids { get; set; } = new();
 }
 

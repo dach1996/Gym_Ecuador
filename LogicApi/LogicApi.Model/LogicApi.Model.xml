@@ -3342,6 +3342,11 @@
             Segundos de descanso
             </summary>
         </member>
+        <member name="P:LogicApi.Model.Request.Routine.RoutineExerciseItem.Day">
+            <summary>
+            Día de la semana en que se debe realizar el ejercicio (1-7, donde 1=Lunes, 7=Domingo)
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Request.Routine.GetMyRoutinesRequest">
             <summary>
             Solicitud para obtener mis rutinas con paginación
@@ -8112,6 +8117,11 @@
         <member name="P:LogicApi.Model.Response.Routine.RoutineExerciseDetail.RestSeconds">
             <summary>
             Segundos de descanso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Routine.RoutineExerciseDetail.Day">
+            <summary>
+            Día de la semana en que se debe realizar el ejercicio (1-7, donde 1=Lunes, 7=Domingo)
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Seat.GetSeatAvailableResponse">

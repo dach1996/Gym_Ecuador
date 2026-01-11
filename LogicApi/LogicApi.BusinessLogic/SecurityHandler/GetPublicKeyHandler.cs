@@ -26,7 +26,7 @@ public class GetPublicKeyHandler(
      $"{nameof(GetPublicKeyHandler)}-{request.RsaImplementation}",
      request, async () =>
         {
-            var rsaSecurityImplementation = request.RsaImplementation.ToEnum<RsaSecurityImplementation>()
+            var rsaSecurityImplementation = request.RsaImplementation.ToEnumOrDefault<RsaSecurityImplementation>()
             ?? throw new CustomException((int)MessagesCodesError.EnumDontMapped, $"La cadena de texto '{request.RsaImplementation}' no puede ser mapeado a un tipo '{nameof(RsaSecurityImplementation)}'");
             var rsaImplementation = PluginFactory.GetPlugin<IRsaSecurity>(rsaSecurityImplementation.ToString().ToUpper());
             return await Task.FromResult(new GetPublicKeyResponse(rsaImplementation.GetPublicKey())).ConfigureAwait(false);

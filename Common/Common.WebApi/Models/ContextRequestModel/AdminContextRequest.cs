@@ -76,13 +76,13 @@ public class CustomClaimsAdministrator : CommonCustomClaims
     /// Indica si el usuario es super administrador
     /// </summary>
     /// <value></value>
-    public bool IsSuperAdmin { get; set; }
+    public bool IsSuperAdmin => InformationRoles.Any(where => where.Scope == (byte)RoleScope.Global);
 
     /// <summary>
     /// Roles en contexto
     /// </summary>
     /// <value></value>
-    public List<GymRoleContextClaim> GymRoleContextClaims { get; set; }
+    public List<GymRoleContextClaim> InformationRoles { get; set; }
 }
 
 
@@ -92,14 +92,20 @@ public class CustomClaimsAdministrator : CommonCustomClaims
 public class GymRoleContextClaim
 {
     /// <summary>
-    /// Id de gimnasio
+    /// Identificador del alcance del rol
     /// </summary>
     /// <value></value>
     public int? Identifier { get; set; }
-    
+
     /// <summary>
-    /// Roles en contexto
+    /// Alcance del rol
     /// </summary>
     /// <value></value>
-    public RoleType RoleType { get; set; }
+    public byte Scope { get; set; }
+
+    /// <summary>
+    /// Id del rol
+    /// </summary>
+    /// <value></value>
+    public int RoleId { get; set; }
 }

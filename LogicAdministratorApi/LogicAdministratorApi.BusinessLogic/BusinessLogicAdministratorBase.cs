@@ -3,6 +3,7 @@ using Common.WebApi.Models.ContextRequestModel;
 using Common.WebCommon.Models;
 using Common.WebCommon.Models.Enum;
 using LogicCommon.BusinessLogic;
+using LogicCommon.Model.CacheModel;
 namespace LogicAdministratorApi.BusinessLogic;
 /// <summary>
 /// Constructor
@@ -82,9 +83,6 @@ public abstract class BusinessLogicAdministratorBase(
         bool verifyUserFunctionality = true)
             => await AdministratorCache.TryGetOrSetAsync(cacheKey, () => ExecuteHandlerAsync<T>(operationName, request, process, verifyUserFunctionality)).ConfigureAwait(false);
 
-
-
-
     /// <summary>
     /// Configura el Contexto
     /// </summary>
@@ -103,4 +101,59 @@ public abstract class BusinessLogicAdministratorBase(
     protected string GetSuccessMessage(MessagesCodesSucess messagesCodesSucess = MessagesCodesSucess.Ok)
         => UserMessages.GetSucessMessageByCode((int)messagesCodesSucess, (Common.Messages.Models.UserLanguage)CurrentUserLanguage)
             ?.Message;
+
+    /// <summary>
+    /// Obtiene los IDs de las sucursales del contexto
+    /// </summary>
+    /// <returns></returns>
+    protected async Task<List<int>> GetBranchsIdsByContextAsync()
+    {
+        var gymCacheInformation = await GetGymCacheInformationAsync().ConfigureAwait(false);
+        var contextInformationRoles = ContextRequest.CustomClaims.InformationRoles;
+        var branchsResponseIds = gymCacheInformation.Select(select => select.GymBranchId);
+        if (contextInformationRoles.Any(where => where.Scope != (byte)RoleScope.Global))
+        {
+            var gymsIds = contextInformationRoles.Where(where => where.Scope == (byte)RoleScope.Gym).Select(select => select.Identifier).ToList();
+            branchsResponseIds = [.. gymCacheInformation.Where(where => gymsIds.Contains(where.GymId)).Select(select => select.GymBranchId)];
+            var branchsIds = contextInformationRoles.Where(where => where.Scope == (byte)RoleScope.GymBranch).Select(select => select.Identifier.Value).ToList();
+            branchsResponseIds = [.. branchsResponseIds.Concat(branchsIds)];
+        }
+        return [.. branchsResponseIds.Distinct()];
+    }
+
+    /// <summary>
+    /// Obtiene los IDs de los gimnasios del contexto
+    /// </summary>
+    /// <returns></returns>
+    protected async Task<List<int>> GetGymsIdsByContextAsync()
+    {
+        var gymCacheInformation = await GetGymCacheInformationAsync().ConfigureAwait(false);
+        var contextInformationRoles = ContextRequest.CustomClaims.InformationRoles;
+        var gymResponseIds = gymCacheInformation.Select(select => select.GymBranchId);
+        if (contextInformationRoles.Any(where => where.Scope != (byte)RoleScope.Global))
+        {
+            var branchsIds = contextInformationRoles.Where(where => where.Scope == (byte)RoleScope.GymBranch).Select(select => select.Identifier.Value).ToList();
+            gymResponseIds = gymCacheInformation.Where(where => branchsIds.Contains(where.GymBranchId)).Select(select => select.GymId);
+        }
+        return [.. gymResponseIds.Distinct()];
+    }
+
+
+    /// <summary>
+    /// Obtiene la información del gimnasio en caché
+    /// </summary>
+    /// <param name="gymId"></param>
+    /// <returns></returns>
+    protected async Task<List<GymCacheInformation>> GetGymCacheInformationAsync()
+        => await AdministratorCache.TryGetOrSetAsync(CacheCodes.GYM_INFORMATION, async () => await UnitOfWork.GymBranchRepository.GetGenericAsync(
+            select => new GymCacheInformation
+            {
+                GymId = select.Gym.Id,
+                GymGuid = select.Gym.Guid,
+                GymBranchId = select.Id,
+                GymBranchGuid = select.Guid,
+            },
+            where => where.Gym.IsActive == GymStatus.Active
+        ).ConfigureAwait(false)).ConfigureAwait(false);
+
 }

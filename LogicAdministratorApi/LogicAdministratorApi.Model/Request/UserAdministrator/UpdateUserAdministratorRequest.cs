@@ -53,6 +53,16 @@ public class UpdateUserAdministratorRequest : IApiBaseRequest<UpdateUserAdminist
     public bool? IsBlocked { get; set; }
 
     /// <summary>
+    /// Lista de GUIDs de roles a asignar al usuario (opcional, si se proporciona reemplaza los roles existentes)
+    /// </summary>
+    public List<Guid> RoleGuids { get; set; }
+
+    /// <summary>
+    /// Guid del gimnasio para los roles (opcional, solo necesario si se asignan roles con alcance Gym)
+    /// </summary>
+    public Guid? GymGuid { get; set; }
+
+    /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]

@@ -1,10 +1,8 @@
-﻿using Common.Templates.Models.Mail;
-using Common.Utils.Cryptography.Argon2;
+﻿using Common.Utils.Cryptography.Argon2;
 using Common.WebApi.Models.EncryptedClaims;
 using Common.WebCommon.Models;
 using LogicAdministratorApi.Model.Request.Authorization;
 using LogicAdministratorApi.Model.Response.Authorization;
-using LogicCommon.Model.Request.Mail;
 namespace LogicAdministratorApi.BusinessLogic.AuthorizationHandler;
 /// <summary>
 /// Constructor
@@ -53,7 +51,13 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
                             }).FirstOrDefault(),
                         Roles = select.UserRoleScopes
                         .Where(where => where.Role.PlatformId == platformId)
-                        .Select(select => new { select.Role.Name, select.ScopeIdentifier }).ToList()
+                        .Select(select => new
+                        {
+                            select.ScopeIdentifier,
+                            Name=select.Role.Code,
+                            select.Role.Scope,
+                            select.Role.Id
+                        }).ToList()
                     },
                     where => where.UserName == request.Username || where.Email == request.Username
                     ).ConfigureAwait(false))
@@ -67,25 +71,17 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
             //Verifica la contraseña
             if (!Argon2.VerifyHashes(request.Password, [manualFormRegister.Password, manualFormRegister.PasswordTemporary ?? string.Empty], user.Salt))
                 throw new CustomException((int)MessagesCodesError.InfoUserNotFound, $"Contraseña Incorrecta.");
-            var userRoleInfo = user.Roles
-                .Select(select => new
-                {
-                    RoleType = select.Name.ToEnumFromMember<RoleType>(),
-                    select.ScopeIdentifier
-                }).ToList();
-      
             var jwt = await GenerateJwtAsync(new EncryptedFieldsClaimsAdministrator
             {
                 UserId = user.Id,
                 UserName = user.UserName,
                 UserGuid = user.Guid,
-                Email = user.Email,
-                IsSuperAdmin = user.Roles.Any(where => where.Name.Equals(RoleType.SuperAdmin.GetEnumMember(), StringComparison.OrdinalIgnoreCase)),
-                GymRoleClaims = [.. userRoleInfo
-                .Select(select => new GymRoleClaim
+                RoleScopeClaims = [.. user.Roles
+                .Select(select => new RoleScopeClaim
                 {
                     Identifier = select.ScopeIdentifier,
-                    RoleType = select.RoleType
+                    Scope = (byte)select.Scope,
+                    RoleId = select.Id,
                 })]
             }).ConfigureAwait(false);
             //Respondemos con el token
@@ -95,7 +91,6 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
                 Username = user.UserName,
                 Email = user.Email,
                 RoleName = user.Roles.FirstOrDefault()?.Name,
-                IsSuperAdmin = user.Roles.Any(where => where.Name.Equals(RoleType.SuperAdmin.GetEnumMember(), StringComparison.OrdinalIgnoreCase)),
                 PersonName = user.PersonName,
             };
         }, false);

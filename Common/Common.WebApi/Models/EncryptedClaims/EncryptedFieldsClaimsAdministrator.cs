@@ -1,49 +1,36 @@
 
 using Common.WebCommon.Models;
-using PersistenceDb.Models.Enums;
 
 namespace Common.WebApi.Models.EncryptedClaims;
 
 public class EncryptedFieldsClaimsAdministrator : EncryptedFieldClaimCommon
 {
     /// <summary>
-    /// Guid de usuario
+    /// Alcances del rol en contexto
     /// </summary>
     /// <value></value>
-    public int UserId { get; set; }
-
-    /// <summary>
-    /// Fecha de creación de la sesión de Cache
-    /// </summary>
-    /// <value></value>
-    public DateTime UserInformationCacheDateTimeCreation { get; set; }
-
-    /// <summary>
-    /// Indica si el usuario es super administrador
-    /// </summary>
-    /// <value></value>
-    public bool IsSuperAdmin { get; set; }
-
-    /// <summary>
-    /// Id de gimnasios en contexto
-    /// </summary>
-    /// <value></value>
-    public List<GymRoleClaim> GymRoleClaims { get; set; }
+    public List<RoleScopeClaim> RoleScopeClaims { get; set; }
 }
 /// <summary>
-/// Rol de gimnasio
+/// Alcance del rol
 /// /// </summary>
-public class GymRoleClaim
+public class RoleScopeClaim
 {
     /// <summary>
-    /// Identificador del rol
+    /// Identificador del alcance del rol
     /// </summary>
     /// <value></value>
     public int? Identifier { get; set; }
-    
+
     /// <summary>
-    /// Tipo de rol
+    /// Alcance del rol
     /// </summary>
     /// <value></value>
-    public RoleType RoleType { get; set; }
+    public byte Scope { get; set; }
+
+    /// <summary>
+    /// Id del rol
+    /// </summary>
+    /// <value></value>
+    public int RoleId { get; set; }
 }

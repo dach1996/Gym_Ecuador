@@ -108,7 +108,6 @@ public class GatewayCoreApiConfigureContext(ILogger<GatewayCoreApiConfigureConte
                 Sub = GetClaimValueOrNullFromName(nameof(CommonCustomClaims.Sub), httpContext),
                 UserId = encryptedFieldClaimDecrypt?.UserId,
                 UserName = encryptedFieldClaimDecrypt?.UserName,
-                Email = encryptedFieldClaimDecrypt?.Email,
                 DeviceId = encryptedFieldClaimDecrypt?.DeviceId,
                 MobileId = encryptedFieldClaimDecrypt?.MobileId,
                 PersonId = encryptedFieldClaimDecrypt?.PersonId,

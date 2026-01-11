@@ -582,6 +582,16 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Functionality.GetFunctionalitiesRequest">
+            <summary>
+            Solicitud para obtener todas las funcionalidades
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Functionality.GetFunctionalitiesRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Request.GymBranchSchedule.CreateGymBranchScheduleRequest">
             <summary>
             Solicitud para crear horario de sucursal
@@ -1157,6 +1167,96 @@
             Default Constructor
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Role.CreateRoleRequest">
+            <summary>
+            Solicitud para crear un nuevo rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Role.CreateRoleRequest.Name">
+            <summary>
+            Nombre del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Role.CreateRoleRequest.Description">
+            <summary>
+            Descripción del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Role.CreateRoleRequest.ScopeCode">
+            <summary>
+            Alcance del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Role.CreateRoleRequest.FunctionalityGuids">
+            <summary>
+            Lista de GUIDs de funcionalidades a asignar al rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Role.CreateRoleRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Role.GetRoleDetailRequest">
+            <summary>
+            Solicitud para obtener detalle de rol por GUID
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Role.GetRoleDetailRequest.RoleGuid">
+            <summary>
+            Guid del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Role.GetRoleDetailRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Role.GetRolesRequest">
+            <summary>
+            Solicitud para obtener todos los roles
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Role.GetRolesRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Role.UpdateRoleRequest">
+            <summary>
+            Solicitud para actualizar un rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Role.UpdateRoleRequest.RoleGuid">
+            <summary>
+            Guid del rol a actualizar
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Role.UpdateRoleRequest.Name">
+            <summary>
+            Nombre del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Role.UpdateRoleRequest.Description">
+            <summary>
+            Descripción del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Role.UpdateRoleRequest.ScopeCode">
+            <summary>
+            Alcance del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Role.UpdateRoleRequest.FunctionalityGuids">
+            <summary>
+            Lista de GUIDs de funcionalidades a asignar al rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Role.UpdateRoleRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Request.Routine.CreateRoutineWithExercisesForUserRequest">
             <summary>
             Solicitud para crear rutina con ejercicios asignada a un usuario
@@ -1318,6 +1418,11 @@
             Guid del gimnasio
             </summary>
         </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.CreateUserAdministratorRequest.RoleGuids">
+            <summary>
+            Lista de GUIDs de roles a asignar al usuario
+            </summary>
+        </member>
         <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.CreateUserAdministratorRequest.ContextRequest">
             <summary>
             Context
@@ -1439,6 +1544,16 @@
             Indica si el usuario está bloqueado
             </summary>
         </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.UpdateUserAdministratorRequest.RoleGuids">
+            <summary>
+            Lista de GUIDs de roles a asignar al usuario (opcional, si se proporciona reemplaza los roles existentes)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.UpdateUserAdministratorRequest.GymGuid">
+            <summary>
+            Guid del gimnasio para los roles (opcional, solo necesario si se asignan roles con alcance Gym)
+            </summary>
+        </member>
         <member name="P:LogicAdministratorApi.Model.Request.UserAdministrator.UpdateUserAdministratorRequest.ContextRequest">
             <summary>
             Context
@@ -1553,6 +1668,11 @@
         <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.IsSuperAdmin">
             <summary>
             Is Super Admin
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.RoleName">
+            <summary>
+            Role Name
             </summary>
         </member>
         <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.UserMessage">
@@ -2326,6 +2446,61 @@
             Nombre del ejercicio actualizado
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Functionality.GetFunctionalitiesResponse">
+            <summary>
+            Respuesta de obtener todas las funcionalidades
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.GetFunctionalitiesResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.GetFunctionalitiesResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.GetFunctionalitiesResponse.Functionalities">
+            <summary>
+            Lista de funcionalidades
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Functionality.FunctionalityItem">
+            <summary>
+            Item de funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.FunctionalityItem.Id">
+            <summary>
+            Guid de la funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.FunctionalityItem.Name">
+            <summary>
+            Nombre de la funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.FunctionalityItem.Code">
+            <summary>
+            Código de la funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.FunctionalityItem.Description">
+            <summary>
+            Descripción de la funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.FunctionalityItem.FunctionName">
+            <summary>
+            Nombre de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.FunctionalityItem.ModuleName">
+            <summary>
+            Nombre del módulo
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Response.GymBranchSchedule.CreateGymBranchScheduleResponse">
             <summary>
             Respuesta de crear horario de sucursal
@@ -3094,6 +3269,166 @@
             Operación exitosa?
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Role.CreateRoleResponse">
+            <summary>
+            Respuesta de crear un nuevo rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.CreateRoleResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.CreateRoleResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.CreateRoleResponse.RoleGuid">
+            <summary>
+            Guid del rol creado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.CreateRoleResponse.Name">
+            <summary>
+            Nombre del rol creado
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Role.GetRoleDetailResponse">
+            <summary>
+            Respuesta de obtener detalle de rol por GUID
+            </summary>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.Role.GetRoleDetailResponse.#ctor(LogicAdministratorApi.Model.Response.Role.RoleDetail)">
+            <summary>
+            Respuesta de obtener detalle de rol por GUID
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.GetRoleDetailResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.GetRoleDetailResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.GetRoleDetailResponse.Role">
+            <summary>
+            Datos del rol
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Role.RoleDetail">
+            <summary>
+            Detalle completo de rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.RoleDetail.Guid">
+            <summary>
+            Guid del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.RoleDetail.Name">
+            <summary>
+            Nombre del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.RoleDetail.Description">
+            <summary>
+            Descripción del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.RoleDetail.ScopeCode">
+            <summary>
+            Alcance del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.RoleDetail.PlatformName">
+            <summary>
+            Nombre de la plataforma
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.RoleDetail.FunctionalityGuids">
+            <summary>
+            Lista de GUIDs de las funcionalidades asignadas al rol
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Role.GetRolesResponse">
+            <summary>
+            Respuesta de obtener todos los roles
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.GetRolesResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.GetRolesResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.GetRolesResponse.Roles">
+            <summary>
+            Lista de roles
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Role.RoleItem">
+            <summary>
+            Item de rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.RoleItem.Guid">
+            <summary>
+            Guid del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.RoleItem.Name">
+            <summary>
+            Nombre del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.RoleItem.Description">
+            <summary>
+            Descripción del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.RoleItem.ScopeCode">
+            <summary>
+            Alcance del rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.RoleItem.PlatformName">
+            <summary>
+            Nombre de la plataforma
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Role.UpdateRoleResponse">
+            <summary>
+            Respuesta de actualizar un rol
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.UpdateRoleResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.UpdateRoleResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.UpdateRoleResponse.RoleGuid">
+            <summary>
+            Guid del rol actualizado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Role.UpdateRoleResponse.Name">
+            <summary>
+            Nombre del rol actualizado
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Response.Routine.CreateRoutineWithExercisesForUserResponse">
             <summary>
             Respuesta de crear rutina con ejercicios asignada a un usuario
@@ -3472,6 +3807,11 @@
         <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserDetail.ImageUrl">
             <summary>
             URL de la imagen del usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.UserDetail.RoleGuids">
+            <summary>
+            Lista de GUIDs de los roles asignados al usuario
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Response.UserAdministrator.GetUsersAdministratorResponse">

@@ -32,13 +32,18 @@ public static class StringExtension
     /// <summary>
     /// Convierte a Enum un string
     /// </summary>
-    public static T? ToEnum<T>(this string cadena) where T : struct
+    public static T? ToEnumOrDefault<T>(this string cadena) where T : struct
     {
         if (cadena == null)
             return null;
         var isEnum = Enum.TryParse(typeof(T), cadena, out var result);
         return isEnum ? (T?)result : null;
     }
+
+    /// <summary>
+    /// Convierte a Enum un string
+    /// </summary>
+    public static T ToEnum<T>(this string cadena) where T : struct => ToEnumOrDefault<T>(cadena) ?? throw new FormatException($"No se pudo Parcear a un tipo '{typeof(T)}' el valor de '{cadena}'");
 
     /// <summary>
     /// Transforma en enumerable desde un EnumMember

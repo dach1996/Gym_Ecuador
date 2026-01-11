@@ -2,8 +2,6 @@ using System.Linq.Expressions;
 using LogicAdministratorApi.Model.Request.Gym;
 using LogicAdministratorApi.Model.Response.Gym;
 using PersistenceDb.Models.Core;
-using PersistenceDb.Models.Enums;
-using Common.WebCommon.Models.Enum;
 
 namespace LogicAdministratorApi.BusinessLogic.GymHandler;
 
@@ -28,17 +26,12 @@ public class GetGymsHandler(
                 // Construir el filtro where combinando todas las condiciones
                 var nameFilter = request.NameFilter?.ToLower();
                 var codeFilter = request.CodeFilter?.ToLower();
-                var isSuperAdmin = ContextRequest.CustomClaims.IsSuperAdmin;
-                var gymsRoleIds = ContextRequest.CustomClaims.GymRoleContextClaims
-                .Where(where => where.RoleType == RoleType.GymAdministrator)
-                .Select(where => where.Identifier).ToList();
-                var gymsBranchRoleIds = ContextRequest.CustomClaims.GymRoleContextClaims
-                .Where(where => where.RoleType == RoleType.GymBranchAdministrator)
-                .Select(where => where.Identifier).ToList();
+                var gymsIds = await GetGymsIdsByContextAsync().ConfigureAwait(false);
                 var whereClause = new List<Expression<Func<Gym, bool>>>
                 {
                     {!request.NameFilter.IsNullOrEmpty(), where => where.Name.ToLower().Contains(nameFilter)},
                     {!request.CodeFilter.IsNullOrEmpty(), where => where.Code.ToLower().Contains(codeFilter)},
+                    {where => ContextRequest.CustomClaims.IsSuperAdmin || gymsIds.Contains(where.Id)},
                 };
                 // Obtener datos paginados
                 var paginatedResult = await UnitOfWork.GymRepository

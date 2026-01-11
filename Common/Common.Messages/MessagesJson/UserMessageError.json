@@ -8,6 +8,13 @@
       }
     },
     {
+      "Code": 61,
+      "Message": {
+        "Spanish": "Ocurrió un error en nuestra plataforma, por favor intente mas tarde",
+        "English": "Ocurrió un error en nuestra plataforma, por favor intente mas tarde"
+      }
+    },
+    {
       "Code": 62,
       "Message": {
         "Spanish": "Ocurrió un error en nuestra plataforma, por favor intente mas tarde",

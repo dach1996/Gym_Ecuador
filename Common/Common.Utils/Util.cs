@@ -88,7 +88,7 @@ public static class Util
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public static List<string> GetListEnumMember<T>() where T : Enum =>
-        Enum.GetValues(typeof(T)).Cast<T>().Select(t => t.GetEnumMember()).ToList();
+        [.. Enum.GetValues(typeof(T)).Cast<T>().Select(t => t.GetEnumMember())];
 
     /// <summary>
     /// Obtiene la lista de los enumerables
@@ -103,8 +103,9 @@ public static class Util
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static IDictionary<T, string> GetDictionaryEnums<T>() where T : Enum =>
-        Enum.GetValues(typeof(T)).Cast<T>().ToDictionary(t => t, t => t.GetEnumMember());
+    public static Dictionary<T, string> GetDictionaryEnums<T>() where T : Enum =>
+        Enum.GetValues(typeof(T)).Cast<T>()
+            .ToDictionary(key => key, value => value.GetEnumMember());
 
     #endregion
 

@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using PersistenceDb.Models.Enums;
 
 namespace PersistenceDb.Models.Authentication;
 
@@ -19,20 +20,27 @@ public class Role
     public int Id { get; set; }
 
     /// <summary>
+    /// Role Guid
+    /// </summary>
+    [Required]
+    [Column("ROL_GUID")]
+    public Guid Guid { get; set; }
+
+    /// <summary>
     /// Role Name
     /// </summary>
     [Required]
     [StringLength(32)]
-    [Column("ROL_NOMBRE")]
-    public string Name { get; set; }
+    [Column("ROL_CODIGO")]
+    public string Code { get; set; }
 
     /// <summary>
     /// Role Description
     /// </summary>
     [Required]
     [StringLength(64)]
-    [Column("ROL_DESCRIPCION")]
-    public string Description { get; set; }
+    [Column("ROL_NOMBRE")]
+    public string Name { get; set; }
 
     /// <summary>
     /// Platform Id
@@ -41,6 +49,13 @@ public class Role
     [ForeignKey(nameof(Platform))]
     [Column("PTF_ID")]
     public byte PlatformId { get; set; }
+
+    /// <summary>
+    /// Alcance del rol
+    /// </summary>
+    [Required]
+    [Column("ROL_ALCANCE")]
+    public RoleScope Scope { get; set; }
 
     /// <summary>
     /// Platform

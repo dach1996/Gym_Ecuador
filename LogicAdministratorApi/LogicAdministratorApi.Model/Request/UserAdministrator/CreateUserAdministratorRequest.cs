@@ -54,6 +54,11 @@ public class CreateUserAdministratorRequest : IApiBaseRequest<CreateUserAdminist
     public Guid GymGuid { get; set; }
 
     /// <summary>
+    /// Lista de GUIDs de roles a asignar al usuario
+    /// </summary>
+    public List<Guid> RoleGuids { get; set; } = new();
+
+    /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]

@@ -42,16 +42,70 @@ public class CreateUserAdministratorHandler(
                 // Generar salt y contraseña
                 var salt = Argon2.GenerateRandomSecretBytes();
                 var passwordEncrypted = GetPasswordEncrypted(request.Password, salt);
-                var roleType = RoleType.GymAdministrator.GetEnumMember();
-                var platformType = RolePlatformType.Web.GetEnumMember();
-                var roleId = (await UnitOfWork.RoleRepository.GetFirstOrDefaultGenericAsync(
-                    select => (int?)select.Id,
-                     where => where.Name == roleType && where.Platform.Code == platformType).ConfigureAwait(false))
-                    ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el rol de administrador");
-                var gymId = await UnitOfWork.GymRepository.GetFirstOrDefaultGenericAsync(
-                    select => (int?)select.Id,
-                     where => where.Guid == request.GymGuid).ConfigureAwait(false)
-                    ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el gimnasio");
+                
+                // Obtener el gimnasio si se proporciona
+                int? gymId = null;
+                if (request.GymGuid != Guid.Empty)
+                {
+                    gymId = await UnitOfWork.GymRepository.GetFirstOrDefaultGenericAsync(
+                        select => (int?)select.Id,
+                        where => where.Guid == request.GymGuid).ConfigureAwait(false)
+                        ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el gimnasio");
+                }
+
+                // Validar y obtener los roles por GUID
+                var userRoleScopes = new List<UserRoleScope>();
+                if (request.RoleGuids != null && request.RoleGuids.Any())
+                {
+                    var roles = await UnitOfWork.RoleRepository.GetGenericAsync(
+                        select => new { select.Id, select.Guid, select.Scope },
+                        where => request.RoleGuids.Contains(where.Guid)
+                    ).ConfigureAwait(false);
+
+                    if (roles.Count != request.RoleGuids.Count)
+                        throw new CustomException((int)MessagesCodesError.SystemError, "Uno o más roles no fueron encontrados");
+
+                    foreach (var role in roles)
+                    {
+                        int? scopeIdentifier = null;
+                        
+                        // Si el rol requiere alcance Gym o GymBranch, se necesita el gymId
+                        if (role.Scope == RoleScope.Gym || role.Scope == RoleScope.GymBranch)
+                        {
+                            if (!gymId.HasValue)
+                                throw new CustomException((int)MessagesCodesError.SystemError, $"El rol {role.Guid} requiere un gimnasio");
+                            scopeIdentifier = gymId.Value;
+                        }
+
+                        userRoleScopes.Add(new UserRoleScope
+                        {
+                            RoleId = role.Id,
+                            ScopeIdentifier = scopeIdentifier
+                        });
+                    }
+                }
+                else
+                {
+                    // Si no se proporcionan roles, usar el comportamiento por defecto
+                    var roleType = RoleScope.Gym.GetEnumMember();
+                    var platformType = RolePlatformType.Web.GetEnumMember();
+                    var roleIdNullable = await UnitOfWork.RoleRepository.GetFirstOrDefaultGenericAsync(
+                        select => (int?)select.Id,
+                        where => where.Code == roleType && where.Platform.Code == platformType).ConfigureAwait(false);
+                    
+                    if (!roleIdNullable.HasValue)
+                        throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el rol de administrador");
+                    
+                    if (!gymId.HasValue)
+                        throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el gimnasio");
+
+                    userRoleScopes.Add(new UserRoleScope
+                    {
+                        RoleId = roleIdNullable.Value,
+                        ScopeIdentifier = gymId
+                    });
+                }
+
                 // Crear el nuevo usuario
                 var newUser = new User
                 {
@@ -76,13 +130,7 @@ public class CreateUserAdministratorHandler(
                             PasswordTemporary = passwordEncrypted
                         }
                     ],
-                    UserRoleScopes = [
-                        new ()
-                        {
-                            RoleId = roleId,
-                            ScopeIdentifier = gymId
-                        }
-                    ]
+                    UserRoleScopes = userRoleScopes
                 };
 
                 // Guardar en la base de datos

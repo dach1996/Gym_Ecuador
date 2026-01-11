@@ -76,7 +76,6 @@ public class LoginHandler(
             new EncryptedFieldsApi
             {
                 UserId = userId,
-                Email = user.Email,
                 UserName = user.UserName,
                 DeviceId = deviceId,
                 MobileId = ContextRequest.Headers.DeviceId,

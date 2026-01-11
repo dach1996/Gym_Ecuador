@@ -109,11 +109,7 @@ public class HeaderCommon
 public class CommonCustomClaims
 {
 
-    /// <summary>
-    /// Correo Electrónico
-    /// </summary>
-    public string Email { get; set; }
-
+ 
     /// <summary>
     /// Primer Nombre
     /// </summary>

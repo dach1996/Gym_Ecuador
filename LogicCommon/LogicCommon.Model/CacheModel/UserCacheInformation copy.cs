@@ -1,36 +1,29 @@
 namespace LogicCommon.Model.CacheModel;
 /// <summary>
-///     Información del usuario en caché
+///     Información del gimnasio en caché
 /// </summary>
-public class FileBasePathCacheInformation
+public class GymCacheInformation
 {
     /// <summary>
-    ///     Id de la ruta de almacenamiento
+    ///  Id del gimnasio
     /// </summary>
     /// <value></value>
-    public byte Id { get; set; }
-     
-    /// <summary>
-    ///     Código de la ruta de almacenamiento
-    /// </summary>
-    /// <value></value>
-    public PathCode PathCode { get; set; }
+    public int GymId { get; set; }
 
     /// <summary>
-    ///     URL base de la ruta de almacenamiento
+    /// Guid del gimnasio
     /// </summary>
     /// <value></value>
-    public string BaseUrl { get; set; }
-
+    public Guid GymGuid { get; set; }
     /// <summary>
-    ///     Ruta del directorio de archivos
+    /// Id de la sucursal de gimnasio
     /// </summary>
     /// <value></value>
-    public string FileDirectoryPath { get; set; }
-
+    public int GymBranchId { get; set; }
+    
     /// <summary>
-    ///     Implementación de la ruta de almacenamiento
+    /// Guid de la sucursal de gimnasio
     /// </summary>
     /// <value></value>
-    public string Implementation { get; set; }
+    public Guid GymBranchGuid { get; set; }
 }

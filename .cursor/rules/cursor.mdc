@@ -1,0 +1,380 @@
+---
+alwaysApply: true
+---
+
+# Reglas del Proyecto Gym (.NET)
+
+## Arquitectura y Estructura
+
+### Arquitectura en Capas
+- **Controllers**: Capa de presentación (API REST)
+- **BusinessLogic**: Lógica de negocio (Handlers con MediatR)
+- **Model**: Modelos de Request/Response separados por dominio
+- **Persistence**: Acceso a datos (Repositories, UnitOfWork, Entity Framework)
+- **Common**: Librerías compartidas y utilidades
+
+### Patrón CQRS con MediatR
+- Usar MediatR para separar comandos y consultas
+- Cada operación tiene un Request y un Response específico
+- Los Handlers implementan `IRequestHandler<TRequest, TResponse>`
+
+## Estructura de Handlers
+
+### Clases Base por Dominio
+- Cada dominio tiene una clase base abstracta (ej: `UserAdministratorBase<TRequest, TResponse>`)
+- Las clases base heredan de `BusinessLogicBase` o `BusinessLogicAdministratorBase`
+- Los handlers concretos heredan de la clase base del dominio
+
+### Ejemplo de Handler
+```csharp
+public class CreateUserAdministratorHandler(
+    ILogger<CreateUserAdministratorHandler> logger,
+    IPluginFactory pluginFactory) 
+    : UserAdministratorBase<CreateUserAdministratorRequest, CreateUserAdministratorResponse>(logger, pluginFactory)
+{
+    public override async Task<CreateUserAdministratorResponse> Handle(
+        CreateUserAdministratorRequest request, 
+        CancellationToken cancellationToken)
+        => await ExecuteHandlerAsync(OperationAdministratorName.CreateUserAdministrator, request, async () =>
+        {
+            // Lógica del handler
+        }).ConfigureAwait(false);
+}
+```
+
+### Método ExecuteHandlerAsync
+- Siempre usar `ExecuteHandlerAsync` para ejecutar la lógica del handler
+- Pasar el nombre de la operación desde el enum correspondiente
+- El método maneja automáticamente el contexto, logging y manejo de errores
+
+## Estructura de Controllers
+
+### Herencia de Clases Base
+- Controllers heredan de `GenericControlerBase` o `SecurityControllerBase`
+- Usar inyección de dependencias con primary constructors (C# 12)
+
+### Ejemplo de Controller
+```csharp
+[Route("api/v{version:apiVersion}/[controller]")]
+[ApiVersion("1.0")]
+public class UserAdministratorController(
+    IUserMessages userMessages,
+    ILogger<UserAdministratorController> logger,
+    IMediator mediator) 
+    : SecurityControllerBase(userMessages, logger, mediator)
+{
+    [HttpPost("Create")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<CreateUserAdministratorResponse>))]
+    public async Task<IActionResult> CreateUserAdministrator([FromBody] CreateUserAdministratorRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+}
+```
+
+## Convenciones de Nomenclatura
+
+### Clases y Archivos
+- **Handlers**: `{Accion}{Entidad}Handler` (ej: `CreateUserAdministratorHandler`)
+- **Requests**: `{Accion}{Entidad}Request` (ej: `CreateUserAdministratorRequest`)
+- **Responses**: `{Accion}{Entidad}Response` (ej: `CreateUserAdministratorResponse`)
+- **Controllers**: `{Entidad}Controller` (ej: `UserAdministratorController`)
+- **Clases Base**: `{Entidad}Base` (ej: `UserAdministratorBase`)
+
+### Propiedades y Métodos
+- Usar PascalCase para propiedades públicas
+- Usar camelCase para parámetros y variables locales
+- Usar verbos en infinitivo para métodos (ej: `GetUserAsync`, `CreateUserAsync`)
+
+### Identificadores
+- Usar `Guid` para identificadores externos (exposición en API)
+- Usar `int` para identificadores internos (claves primarias de base de datos)
+- Propiedades Guid deben terminar en `Guid` (ej: `UserGuid`, `RoleGuid`)
+
+## Requests y Responses
+
+### Estructura de Request
+- Debe implementar `IApiBaseRequest<TResponse>`
+- Incluir `ContextRequest` como propiedad con `[JsonIgnore]`
+- Usar Data Annotations para validación (`[Required]`, `[ValidateGuid]`, etc.)
+- Documentar todas las propiedades con comentarios XML en español
+
+### Estructura de Response
+- Debe implementar `IApiBaseResponse`
+- Incluir propiedades `UserMessage` (string) y `ShowMessage` (bool)
+- Usar primary constructors cuando sea apropiado
+- Documentar todas las propiedades con comentarios XML en español
+
+## Validación
+
+### Data Annotations
+- Usar atributos de validación en Requests (`[Required]`, `[StringLength]`, `[ValidateGuid]`, etc.)
+- La validación se ejecuta automáticamente por el middleware
+
+### Validación en Handlers
+- Validar existencia de entidades antes de operar
+- Validar reglas de negocio antes de persistir
+- Lanzar `CustomException` con código de error y mensaje descriptivo
+
+## Manejo de Errores
+
+### CustomException
+- Usar `CustomException` para errores de negocio
+- Pasar código de error desde `MessagesCodesError` enum
+- Incluir mensaje descriptivo en español
+- Ejemplo: `throw new CustomException((int)MessagesCodesError.SystemError, "Usuario no encontrado");`
+
+### Middleware de Excepciones
+- El `ExceptionHandlingMiddleware` captura todas las excepciones
+- Convierte `CustomException` a respuestas HTTP apropiadas
+- Registra errores en logs con Serilog
+
+## Transacciones y UnitOfWork
+
+### Uso de UnitOfWork
+- Acceder a repositorios a través de `UnitOfWork.{Entity}Repository`
+- Usar `UnitOfWork.BeginTransactionAsync()` antes de múltiples operaciones
+- Usar `UnitOfWork.CommitAsync()` para confirmar cambios
+- Siempre usar transacciones para operaciones que modifican múltiples entidades
+
+### Ejemplo de Transacción
+```csharp
+await UnitOfWork.BeginTransactionAsync().ConfigureAwait(false);
+await UnitOfWork.UserRepository.AddAsync(newUser).ConfigureAwait(false);
+await UnitOfWork.CommitAsync().ConfigureAwait(false);
+```
+
+## Async/Await
+
+### ConfigureAwait
+- **SIEMPRE** usar `.ConfigureAwait(false)` en llamadas async
+- Esto mejora el rendimiento y evita deadlocks
+
+### Ejemplo
+```csharp
+var result = await SomeMethodAsync().ConfigureAwait(false);
+```
+
+## Documentación
+
+### Comentarios XML
+- Documentar todas las clases públicas con comentarios XML
+- Documentar todos los métodos públicos y propiedades importantes
+- Usar español para la documentación
+- Incluir descripción de parámetros con `<param name="...">`
+- Incluir descripción de retornos con `<returns>`
+
+### Ejemplo
+```csharp
+/// <summary>
+/// Handler para crear usuario administrador
+/// </summary>
+/// <param name="logger"></param>
+/// <param name="pluginFactory"></param>
+public class CreateUserAdministratorHandler(...)
+```
+
+## Logging
+
+### Serilog
+- Usar `ILogger<T>` inyectado en constructores
+- Usar niveles apropiados: `Information`, `Warning`, `Error`
+- Incluir contexto relevante en los logs usando structured logging
+- Ejemplo: `Logger.LogError("Usuario no encontrado: {UserGuid}", userGuid);`
+
+## Dependency Injection
+
+### Autofac
+- El proyecto usa Autofac como contenedor de DI
+- Usar `IPluginFactory` para obtener dependencias lazy-loaded
+- Registrar servicios en módulos de Autofac
+
+### Primary Constructors
+- Usar primary constructors (C# 12) para inyección de dependencias
+- Ejemplo: `public class Handler(ILogger<Handler> logger, IPluginFactory pluginFactory)`
+
+## Mapeo de Objetos
+
+### AutoMapper
+- Usar AutoMapper para mapear entre entidades y DTOs
+- Acceder al mapper a través de `Mapper` property en `BusinessLogicBase`
+- Crear perfiles de mapeo en carpetas `Profiles`
+
+## Respuestas de API
+
+### GenericResponse
+- Todas las respuestas de API deben envolverse en `GenericResponse<T>`
+- Usar método `Success<T>(T data)` en controllers para respuestas exitosas
+- La respuesta incluye: `Code`, `ResponseType`, `Message`, `Content`
+
+### Códigos de Mensaje
+- Usar enums `MessagesCodesSucess` y `MessagesCodesError`
+- Obtener mensajes a través de `UserMessages.GetSucessMessageByCode()` o `GetErrorMessageByCode()`
+- Los mensajes se internacionalizan según el idioma del usuario
+
+## API Versioning
+
+### Versionado de APIs
+- Usar `[ApiVersion("1.0")]` en controllers
+- Rutas deben incluir `{version:apiVersion}`: `[Route("api/v{version:apiVersion}/[controller]")]`
+
+## Repositorios
+
+### Patrón Repository
+- Acceder a repositorios a través de `UnitOfWork.{Entity}Repository`
+- Usar métodos genéricos del repositorio: `GetFirstOrDefaultGenericAsync`, `GetGenericAsync`, `ExistAnyAsync`, etc.
+
+### Uso de Métodos Genéricos para Acceso a Relaciones
+
+#### Regla CRÍTICA: Nunca usar `include` en `GetByFirstOrDefaultAsync`
+- **PROHIBIDO**: Usar `GetByFirstOrDefaultAsync` con parámetros `include`
+- **PERMITIDO**: Usar `GetByFirstOrDefaultAsync` SIN `include` cuando el handler necesite actualizar la entidad (necesita la entidad rastreada por Entity Framework)
+- **OBLIGATORIO**: Usar `GetFirstOrDefaultGenericAsync` o `GetGenericAsync` con selectores que accedan directamente a propiedades relacionadas usando notación de punto cuando solo se necesita leer datos
+
+#### Razón
+- Los métodos genéricos con selectores permiten proyecciones directas en SQL
+- Entity Framework optimiza las consultas cargando solo los datos necesarios
+- Evita cargar entidades completas innecesariamente
+- Mejora el rendimiento y reduce el uso de memoria
+- Cuando se necesita actualizar una entidad, se requiere la entidad rastreada del contexto (no una proyección)
+
+#### Ejemplo INCORRECTO (NO hacer esto)
+```csharp
+// ❌ INCORRECTO: Usar GetByFirstOrDefaultAsync con include
+var userEntity = await UnitOfWork.UserRepository
+    .GetByFirstOrDefaultAsync(
+        where => where.Guid == request.UserGuid,
+        include => include.UserRoleScopes,
+        include => include.UserRoleScopes.Select(urs => urs.Role),
+        include => include.Image
+    ).ConfigureAwait(false);
+
+var roleGuids = userEntity.UserRoleScopes?
+    .Select(urs => urs.Role?.Guid ?? Guid.Empty)
+    .ToList();
+```
+
+#### Ejemplo PERMITIDO (Cuando se necesita actualizar)
+```csharp
+// ✅ PERMITIDO: Usar GetByFirstOrDefaultAsync SIN include cuando se necesita actualizar la entidad
+var userEntity = await UnitOfWork.UserRepository
+    .GetByFirstOrDefaultAsync(
+        where => where.Guid == request.UserGuid
+    ).ConfigureAwait(false)
+    ?? throw new CustomException((int)MessagesCodesError.SystemError, "Usuario no encontrado");
+
+// Actualizar propiedades
+userEntity.UserName = request.UserName;
+userEntity.Email = request.Email;
+
+// Guardar cambios
+await UnitOfWork.UserRepository.UpdateAsync(userEntity).ConfigureAwait(false);
+await UnitOfWork.CommitAsync().ConfigureAwait(false);
+```
+
+#### Ejemplo CORRECTO (Hacer esto)
+```csharp
+// ✅ CORRECTO: Usar GetFirstOrDefaultGenericAsync con notación de punto
+var user = await UnitOfWork.UserRepository
+    .GetFirstOrDefaultGenericAsync(
+        select => new UserDetail
+        {
+            Guid = select.Guid,
+            UserName = select.UserName,
+            Email = select.Email,
+            RoleGuids = select.UserRoleScopes
+                .Select(urs => urs.Role.Guid)
+                .ToList(),
+            ImageUrl = select.Image != null && select.Image.State
+                ? select.Image.FileBasePath.BaseUrl + select.Image.Path
+                : null
+        },
+        where => where.Guid == request.UserGuid
+    ).ConfigureAwait(false)
+    ?? throw new CustomException((int)MessagesCodesError.SystemError, "Usuario no encontrado");
+```
+
+#### Ejemplo con Relaciones Anidadas
+```csharp
+// ✅ CORRECTO: Acceso directo a propiedades relacionadas con notación de punto
+var branchPlan = await UnitOfWork.BranchPlanRepository
+    .GetFirstOrDefaultGenericAsync(
+        select => new BranchPlanDetail
+        {
+            Guid = select.Guid,
+            GymBranchGuid = select.GymBranch.Guid,  // Acceso directo con punto
+            Name = select.Name,
+            GymName = select.GymBranch.Gym.Name      // Relaciones anidadas
+        },
+        where => where.Guid == request.BranchPlanGuid
+    ).ConfigureAwait(false);
+```
+
+#### Ejemplo con GetGenericAsync para Listas
+```csharp
+// ✅ CORRECTO: Para obtener listas con relaciones
+var roles = await UnitOfWork.RoleRepository
+    .GetGenericAsync(
+        select => new RoleItem
+        {
+            Guid = select.Guid,
+            Name = select.Name,
+            PlatformCode = select.Platform.Code,     // Acceso directo con punto
+            Scope = select.Scope
+        },
+        where => request.RoleGuids.Contains(select.Guid)
+    ).ConfigureAwait(false);
+```
+
+#### Métodos Disponibles
+- `GetFirstOrDefaultGenericAsync<TResult>`: Para obtener un solo registro con proyección
+- `GetGenericAsync<TResult>`: Para obtener listas con proyección
+- Ambos métodos aceptan un `selector` que define qué propiedades proyectar
+- El selector puede acceder a propiedades relacionadas usando notación de punto: `entity.RelatedEntity.Property`
+
+## Seguridad
+
+### Encriptación
+- Usar Argon2 para encriptación de contraseñas
+- Generar salt aleatorio con `Argon2.GenerateRandomSecretBytes()`
+- Encriptar con `Argon2.GenerateHash(password, salt)`
+
+### Contexto de Usuario
+- Acceder al usuario actual a través de propiedades en `BusinessLogicBase`:
+  - `UserId`, `UserGuid`, `PersonId`, `DeviceId`
+- Estas propiedades obtienen valores del `ContextRequest`
+
+## Caché
+
+### Uso de Caché
+- Usar `ExecuteHandlerCacheAsync` para operaciones que pueden ser cacheadas
+- Especificar clave de caché única
+- El caché se maneja automáticamente
+
+## Convenciones de Código
+
+### Organización
+- Agrupar código relacionado en regiones cuando sea apropiado
+- Usar `#region` para métodos del controller, propiedades, etc.
+
+### Null Safety
+- Validar nulls antes de usar objetos
+- Usar null-conditional operators (`?.`) cuando sea apropiado
+- Usar `??` para valores por defecto
+
+### LINQ
+- Preferir métodos de LINQ sobre loops cuando sea posible
+- Usar `Any()` en lugar de `Count() > 0` para verificar existencia
+- Usar `FirstOrDefault()` cuando se espera un solo resultado
+
+## Testing
+
+### Estructura de Tests
+- Crear tests en proyecto `Test`
+- Usar nombres descriptivos para métodos de test
+- Seguir convenciones de nomenclatura de tests
+
+## Configuración
+
+### appsettings.json
+- Usar diferentes archivos de configuración por ambiente: `appsettings.Development.json`, `appsettings.Production.json`
+- Usar `appsettings.Debug.json` para configuración de debug
+- Acceder a configuración a través de `IConfiguration` o clases de configuración tipadas

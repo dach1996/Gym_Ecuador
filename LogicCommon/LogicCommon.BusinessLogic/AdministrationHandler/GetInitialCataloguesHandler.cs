@@ -1,9 +1,11 @@
+using Common.Utils;
 using Common.Utils.ConstansCodes;
 using Common.Utils.Extensions;
 using Common.WebCommon.Models.Enum;
 using LogicCommon.Model.Request.Administration;
 using LogicCommon.Model.Response.Administration;
 using Microsoft.AspNetCore.StaticAssets;
+using PersistenceDb.Models.Enums;
 
 namespace LogicCommon.BusinessLogic.AdministrationHandler;
 /// <summary>
@@ -38,6 +40,7 @@ public class GetInitialCataloguesHandler(
                       select => new { select.Code, select.Name }
                    ).ConfigureAwait(false)).ToDictionary(select => select.Code, select => select.Name);
                   listCatalogCodes.Add($"{CatalogsTypeItemsCodes.DocumentType}", typeIdentifications);
+                  listCatalogCodes.Add($"{CatalogsTypeItemsCodes.AdministratorRoleScope}", Util.GetDictionaryEnums<RoleScope>().ToDictionary(select => $"{select.Key}", select => select.Value));
                   var catalogs = (await UnitOfWork.CatalogRepository.GetGenericAsync(
                       select => new
                       {

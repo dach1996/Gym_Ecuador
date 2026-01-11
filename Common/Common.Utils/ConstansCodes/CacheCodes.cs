@@ -6,13 +6,6 @@ namespace Common.Utils.ConstansCodes;
 /// </summary>
 public static class CacheCodes
 {
-
-    /// <summary>
-    /// Items de catálogo
-    /// </summary>
-    /// <returns></returns>
-    public const string ITEM_CATALOGUE = nameof(ITEM_CATALOGUE);
-
     /// <summary>
     /// Catálogo de archivos
     /// </summary>
@@ -32,36 +25,6 @@ public static class CacheCodes
     public const string PARAMETER = nameof(PARAMETER);
 
     /// <summary>
-    /// Validación de expresiones regulares
-    /// </summary>
-    /// <returns></returns>
-    public const string PASSWORD_VALIDATE_REGULAR_EXPRESSION = nameof(PASSWORD_VALIDATE_REGULAR_EXPRESSION);
-
-    /// <summary>
-    /// Cooperativas
-    /// </summary>
-    /// <returns></returns>
-    public const string COOPERATIVES_IMPLEMENTATION = nameof(COOPERATIVES_IMPLEMENTATION);
-
-    /// <summary>
-    /// Cooperativas
-    /// </summary>
-    /// <returns></returns>
-    public const string COOPERATIVES_DATA = nameof(COOPERATIVES_DATA);
-
-    /// <summary>
-    /// Información de Bus
-    /// </summary>
-    /// <returns></returns>
-    public const string BUS_INFORMATION = nameof(BUS_INFORMATION);
-
-    /// <summary>
-    /// Información de Lugares
-    /// </summary>
-    /// <returns></returns>
-    public const string PLACE_INFORMATION = nameof(PLACE_INFORMATION);
-
-    /// <summary>
     /// Catálogos iniciales
     /// </summary>
     /// <returns></returns>
@@ -73,28 +36,16 @@ public static class CacheCodes
     public const string PLATFORM_ROLES = nameof(PLATFORM_ROLES);
 
     /// <summary>
-    /// Scopes
-    /// </summary>
-    /// <returns></returns>
-    public const string SCOPES = nameof(SCOPES);
-
-    /// <summary>
-    /// Lugares
-    /// </summary>
-    /// <returns></returns>
-    public const string PLACES = nameof(PLACES);
-
-    /// <summary>
-    /// Lugares
-    /// </summary>
-    /// <returns></returns>
-    public const string PLACES_INFORMATION = nameof(PLACES_INFORMATION);
-
-    /// <summary>
     /// Rutas de almacenamiento
     /// </summary>
     /// <returns></returns>
     public const string FILE_BASE_PATHS = nameof(FILE_BASE_PATHS);
+
+    /// <summary>
+    /// Información del gimnasio
+    /// </summary>
+    /// <returns></returns>
+    public const string GYM_INFORMATION = nameof(GYM_INFORMATION);
 
     /// <summary>
     /// Persona por Número de Cédula
@@ -109,23 +60,6 @@ public static class CacheCodes
     /// <param name="userId"></param>
     /// <returns></returns>
     public static string UserInformationByUserId(int userId) => $"{nameof(UserInformationByUserId)}_{userId}";
-
-    /// <summary>
-    /// Información de Ruta por Guid de Ruta
-    /// </summary>
-    /// <param name="routeGuid"></param>
-    /// <returns></returns>
-    public static string RouteDataByRouteGuid(Guid routeGuid) => $"{nameof(RouteDataByRouteGuid)}_{routeGuid}";
-
-    /// <summary>
-    /// Asiento por Guid de Ruta, Asiento y Guid de Piso de Bus
-    /// </summary>
-    /// <param name="routeGuid"></param>
-    /// <param name="floorBusCooperativeGuid"></param>
-    /// <param name="seatIdentifier"></param>
-    /// <returns></returns>
-    public static string SeatIdByData(Guid routeGuid, Guid floorBusCooperativeGuid, string seatIdentifier)
-    => $"{nameof(SeatIdByData)}_{routeGuid}_{floorBusCooperativeGuid}_{seatIdentifier}";
 
     /// <summary>
     /// Información de Usuario por Guid de Usuario
@@ -148,10 +82,4 @@ public static class CacheCodes
     /// <returns></returns>
     public static string DeviceIdByMobileId(string mobileId) => $"{nameof(DeviceIdByMobileId)}_{mobileId}";
 
-    /// <summary>
-    /// Persona por Número de Cédula
-    /// </summary>
-    /// <param name="documentNumber"></param>
-    /// <returns></returns>
-    public static string PersonByDocumentNumber(string documentNumber) => $"{nameof(PersonByDocumentNumber)}_{documentNumber}";
 }

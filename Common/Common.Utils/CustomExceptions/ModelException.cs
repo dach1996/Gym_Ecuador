@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using System.Runtime.Serialization;
 
 namespace Common.Utils.CustomExceptions;
 
@@ -13,7 +12,17 @@ public class ModelException : BaseException
     /// Excepción para manejo de errores en la validación del modelo 
     /// </summary>
     /// <param name="additionalInfo">Razón del error</param>
-    public ModelException(string additionalInfo) : base(additionalInfo) => CodeHttp = (int)HttpStatusCode.BadRequest;
+    public ModelException(string additionalInfo, Dictionary<string, string[]> validationErrors = null) : base(additionalInfo)
+    {
+        CodeHttp = (int)HttpStatusCode.BadRequest;
+        ValidationErrors = validationErrors ?? [];
+    }
+
+
+    /// <summary>
+    /// Errores de validación
+    /// </summary>
+    public Dictionary<string, string[]> ValidationErrors { get; set; } = [];
 
     /// <summary>
     /// Lanza una excepción por validación de tamaño

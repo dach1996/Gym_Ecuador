@@ -10,18 +10,17 @@ public class RoleRepository(PersistenceContext dbContext, ILogger<RoleRepository
 : GenericRepository<Role>(dbContext, logger), IRoleRepository
 {
     /// <summary>
-    /// Obtiene el ID del rol por el tipo de ambito y plataforma
+    /// Obtiene los IDs de los roles por el alcance y plataforma
     /// </summary>
-    /// <param name="roleType"></param>
-    /// <param name="platformType"></param>
+    /// <param name="scope"></param>
+    /// <param name="platformId"></param>
     /// <returns></returns>
-    public async Task<int> GetIdByScopeAndPlatformAsync(RoleType roleType, RolePlatformType platformType)
+    public async Task<List<int>> GetIdsByScopeAndPlatformAsync(RoleScope scope, RolePlatformType platformType)
     {
-        var roleName = roleType.GetEnumMember();
         var platformCode = platformType.GetEnumMember();
-        return await GetFirstOrDefaultGenericAsync(
-            select => (int?)select.Id,
-            where => where.Name == roleName && where.Platform.Code == platformCode).ConfigureAwait(false)
-            ?? throw new InvalidOperationException($"No se encontró el rol con el tipo: {roleType} y plataforma: {platformType}");
+        return await GetGenericAsync(
+            select => select.Id,
+            where => where.Scope == scope && where.Platform.Code == platformCode
+        ).ConfigureAwait(false);
     }
 }

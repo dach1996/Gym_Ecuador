@@ -75,8 +75,7 @@ public class CreateUserClientHandler(
                     var passwordEncrypted = GetPasswordEncrypted(password, salt);
 
                     // Obtener el rol de cliente móvil
-                    var roleId = await UnitOfWork.RoleRepository.GetIdByScopeAndPlatformAsync(
-                            RoleType.Client, RolePlatformType.Mobile).ConfigureAwait(false);
+                    var roleIds = await UnitOfWork.RoleRepository.GetIdsByScopeAndPlatformAsync(RoleScope.Client, RolePlatformType.Mobile).ConfigureAwait(false);
                     // Crear el nuevo usuario
                     var newUser = new User
                     {
@@ -101,12 +100,10 @@ public class CreateUserClientHandler(
                             PasswordTemporary = passwordEncrypted
                         }
                         ],
-                        UserRoleScopes = [
-                            new ()
+                        UserRoleScopes = [.. roleIds.Select(roleId => new UserRoleScope
                         {
                             RoleId = roleId,
-                        }
-                        ]
+                        })]
                     };
                     newUser = await UnitOfWork.UserRepository.AddAsync(newUser).ConfigureAwait(false);
                     currentUser = new

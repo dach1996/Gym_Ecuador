@@ -88,6 +88,12 @@ public class AppSettingsCommon
     public CurrentImplementationBase EventHubConfiguration { get; set; }
 
     /// <summary>
+    /// Muestra el mensaje de excepción personalizada
+    /// </summary>
+    /// <value></value>
+    public bool ShowExceptionDetailsMessage { get; set; }
+
+    /// <summary>
     /// Zona Horaria
     /// </summary>
     /// <value></value>

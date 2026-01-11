@@ -99,15 +99,14 @@ public class AdministratorApiConfigureContext(ILogger<AdministratorApiConfigureC
                 Scope = GetClaimValueOrNullFromName(nameof(CommonCustomClaims.Scope), httpContext),
                 Sub = GetClaimValueOrNullFromName(nameof(CommonCustomClaims.Sub), httpContext),
                 UserName = encryptedFieldClaimDecrypt?.UserName,
-                Email = encryptedFieldClaimDecrypt?.Email,
                 UserGuid = encryptedFieldClaimDecrypt?.UserGuid,
-                FirstName = encryptedFieldClaimDecrypt?.FirstName,
-                Surname = encryptedFieldClaimDecrypt?.Surname,
-                IsSuperAdmin = encryptedFieldClaimDecrypt?.IsSuperAdmin ?? false,
-                GymRoleContextClaims = encryptedFieldClaimDecrypt?.GymRoleClaims?.Select(select => new GymRoleContextClaim
+                FirstName = "-",
+                Surname = "-",
+                InformationRoles = encryptedFieldClaimDecrypt?.RoleScopeClaims?.Select(select => new GymRoleContextClaim
                 {
                     Identifier = select.Identifier,
-                    RoleType = select.RoleType
+                    Scope = select.Scope,
+                    RoleId = select.RoleId
                 }).ToList() ?? [],
             },
         };

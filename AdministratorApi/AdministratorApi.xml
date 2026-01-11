@@ -367,6 +367,57 @@
             <param name="request">Modelo para obtener persona por número de cédula</param>
             <returns></returns>
         </member>
+        <member name="T:AdministratorApi.Controllers.RoleController">
+            <summary>
+            Controlador de Roles y Funcionalidades
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.RoleController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.RoleController},MediatR.IMediator)">
+            <summary>
+            Controlador de Roles y Funcionalidades
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.RoleController.GetRoles(LogicAdministratorApi.Model.Request.Role.GetRolesRequest)">
+            <summary>
+            Obtener todos los roles
+            </summary>
+            <param name="request">Modelo para obtener roles</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.RoleController.GetRoleDetail(LogicAdministratorApi.Model.Request.Role.GetRoleDetailRequest)">
+            <summary>
+            Obtener detalle de rol por GUID
+            </summary>
+            <param name="request">Modelo para obtener detalle de rol</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.RoleController.GetFunctionalities(LogicAdministratorApi.Model.Request.Functionality.GetFunctionalitiesRequest)">
+            <summary>
+            Obtener todas las funcionalidades
+            </summary>
+            <param name="request">Modelo para obtener funcionalidades</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.RoleController.UpdateRole(LogicAdministratorApi.Model.Request.Role.UpdateRoleRequest)">
+            <summary>
+            Actualizar un rol
+            </summary>
+            <param name="request">Modelo para actualizar un rol</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.RoleController.CreateRole(LogicAdministratorApi.Model.Request.Role.CreateRoleRequest)">
+            <summary>
+            Crear un nuevo rol
+            </summary>
+            <param name="request">Modelo para crear un rol</param>
+            <returns></returns>
+        </member>
         <member name="T:AdministratorApi.Controllers.RoutineController">
             <summary>
             Controlador de Rutinas

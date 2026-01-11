@@ -44,7 +44,7 @@ public class SendNotificationPushUsersHandler(
             var notificationToken = new NotificationByTokenRequest(
                     request.Title,
                     request.Body,
-                    usersTokenNotification.GroupBy(group => group.Implementation.ToEnum<NotificationPushImplementationType>())
+                    usersTokenNotification.GroupBy(group => group.Implementation.ToEnumOrDefault<NotificationPushImplementationType>())
                     .ToDictionary(key => GetBrandNotificationType(key.Key.Value), value => value.Select(select => select.Token).ToList())
                     );
             //Envía Notificaciones

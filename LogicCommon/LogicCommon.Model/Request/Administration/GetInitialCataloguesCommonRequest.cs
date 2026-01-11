@@ -72,5 +72,11 @@ public enum CatalogsTypeItemsCodes
     /// Catálogo de Tipos de Músculo
     /// </summary>
     /// <value></value>
-    MuscleType = 5
+    MuscleType = 5,
+
+    /// <summary>
+    /// Catálogo de Scopes de Roles de Usuario Administrador
+    /// </summary>
+    /// <value></value>
+    AdministratorRoleScope = 6,
 }

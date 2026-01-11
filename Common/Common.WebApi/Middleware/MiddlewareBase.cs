@@ -1,5 +1,6 @@
 ﻿using Common.Messages;
 using Common.PluginFactory.Interface;
+using Common.WebCommon.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,7 @@ public abstract class MiddlewareBase
     protected readonly RequestDelegate Next;
     protected readonly IUserMessages UserMessages;
     protected readonly IWebHostEnvironment WebHostEnvironment;
+    protected readonly AppSettingsCommon AppSettingsCommon;
 
     /// <summary>
     /// Constructor
@@ -29,6 +31,7 @@ public abstract class MiddlewareBase
         PluginFactory = pluginFactory;
         UserMessages = PluginFactory.GetType<IUserMessages>();
         WebHostEnvironment = PluginFactory.GetType<IWebHostEnvironment>();
+        AppSettingsCommon = PluginFactory.GetType<AppSettingsCommon>();
     }
 
     /// <summary>

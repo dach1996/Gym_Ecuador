@@ -59,13 +59,13 @@ public abstract class CreateUserHandler(
             };
             //Guarda el neuvo usuario
             newUser = await UnitOfWork.UserRepository.AddAsync(newUser).ConfigureAwait(false);
-            var roleId = await UnitOfWork.RoleRepository.GetIdByScopeAndPlatformAsync(
-                RoleType.Client, RolePlatformType.Mobile).ConfigureAwait(false);
-            await UnitOfWork.UserRoleScopeRepository.AddAsync(new UserRoleScope
+            var roleIds = await UnitOfWork.RoleRepository.GetIdsByScopeAndPlatformAsync(
+                RoleScope.Client, RolePlatformType.Mobile).ConfigureAwait(false);
+            await UnitOfWork.UserRoleScopeRepository.AddRangeAsync(roleIds.Select(roleId => new UserRoleScope
             {
                 UserId = newUser.Id,
                 RoleId = roleId,
-            }).ConfigureAwait(false);
+            })).ConfigureAwait(false);
         }
         return newUser;
     }

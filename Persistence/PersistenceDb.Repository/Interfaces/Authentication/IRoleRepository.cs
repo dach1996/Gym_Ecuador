@@ -6,10 +6,10 @@ namespace PersistenceDb.Repository.Interfaces.Authentication;
 public interface IRoleRepository : IGenericRepository<Role>
 {
     /// <summary>
-    /// Obtiene el ID del rol por el tipo de ambito y plataforma
+    /// Obtiene los IDs de los roles por el alcance y plataforma
     /// </summary>
-    /// <param name="scopeType"></param>
-    /// <param name="rolePlatformType"></param>
+    /// <param name="scope"></param>
+    /// <param name="platformId"></param>
     /// <returns></returns>
-    Task<int> GetIdByScopeAndPlatformAsync(RoleType roleType, RolePlatformType platformType);
+    Task<List<int>> GetIdsByScopeAndPlatformAsync(RoleScope scope, RolePlatformType platformType);
 }
