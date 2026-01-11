@@ -493,4 +493,16 @@ public static class FunctionalitiesCodes
     /// Obtener Detalle de Plan de Sucursal por GUID
     /// </summary>
     public const string GET_BRANCH_PLAN_BY_GUID = "ADM_BRANCH_PLAN_GET_BY_GUID";
+
+    // ========== OPERACIONES DE EJERCICIOS ==========
+
+    /// <summary>
+    /// Crear ejercicio
+    /// </summary>
+    public const string CREATE_EXERCISE = "ADM_EXERCISE_CREATE";
+
+    /// <summary>
+    /// Actualizar ejercicio
+    /// </summary>
+    public const string UPDATE_EXERCISE = "ADM_EXERCISE_UPDATE";
 }

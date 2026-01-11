@@ -462,6 +462,41 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Exercise.CreateExerciseRequest">
+            <summary>
+            Solicitud para crear un ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.CreateExerciseRequest.Name">
+            <summary>
+            Nombre del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.CreateExerciseRequest.Description">
+            <summary>
+            Descripción del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.CreateExerciseRequest.Instructions">
+            <summary>
+            Instrucciones del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.CreateExerciseRequest.Image">
+            <summary>
+            Imagen del ejercicio (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.CreateExerciseRequest.TagCatalogCodes">
+            <summary>
+            Lista de códigos de catálogo (tags/categorías) del ejercicio (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.CreateExerciseRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Request.Exercise.GetExerciseByGuidRequest">
             <summary>
             Solicitud para obtener detalle de ejercicio por GUID
@@ -503,6 +538,46 @@
             </summary>
         </member>
         <member name="P:LogicAdministratorApi.Model.Request.Exercise.GetExercisesRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Exercise.UpdateExerciseRequest">
+            <summary>
+            Solicitud para actualizar un ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.UpdateExerciseRequest.ExerciseGuid">
+            <summary>
+            Guid del ejercicio a actualizar
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.UpdateExerciseRequest.Name">
+            <summary>
+            Nombre del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.UpdateExerciseRequest.Description">
+            <summary>
+            Descripción del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.UpdateExerciseRequest.Instructions">
+            <summary>
+            Instrucciones del ejercicio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.UpdateExerciseRequest.Image">
+            <summary>
+            Imagen del ejercicio (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.UpdateExerciseRequest.TagCatalogCodes">
+            <summary>
+            Lista de códigos de catálogo (tags/categorías) del ejercicio (opcional)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Exercise.UpdateExerciseRequest.ContextRequest">
             <summary>
             Context
             </summary>
@@ -1135,6 +1210,11 @@
         <member name="P:LogicAdministratorApi.Model.Request.Routine.RoutineExerciseItem.RestSeconds">
             <summary>
             Segundos de descanso
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Routine.RoutineExerciseItem.Day">
+            <summary>
+            Día de la semana en que se debe realizar el ejercicio (1-7, donde 1=Lunes, 7=Domingo)
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Request.Routine.GetRoutineExercisesByGuidRequest">
@@ -2044,6 +2124,40 @@
             Nombre del equipamiento
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Exercise.CreateExerciseResponse">
+            <summary>
+            Respuesta de crear ejercicio
+            </summary>
+            <param name="exerciseGuid">Guid del ejercicio creado</param>
+            <param name="name">Nombre del ejercicio creado</param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.Exercise.CreateExerciseResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Respuesta de crear ejercicio
+            </summary>
+            <param name="exerciseGuid">Guid del ejercicio creado</param>
+            <param name="name">Nombre del ejercicio creado</param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.CreateExerciseResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.CreateExerciseResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.CreateExerciseResponse.ExerciseGuid">
+            <summary>
+            Guid del ejercicio creado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.CreateExerciseResponse.Name">
+            <summary>
+            Nombre del ejercicio creado
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Response.Exercise.GetExerciseByGuidResponse">
             <summary>
             Respuesta de obtener detalle de ejercicio por GUID
@@ -2102,11 +2216,6 @@
         <member name="T:LogicAdministratorApi.Model.Response.Exercise.ExerciseTagItem">
             <summary>
             Item de tag/categoría de ejercicio
-            </summary>
-        </member>
-        <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseTagItem.CatalogId">
-            <summary>
-            Id del catálogo
             </summary>
         </member>
         <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseTagItem.Code">
@@ -2181,6 +2290,40 @@
         <member name="P:LogicAdministratorApi.Model.Response.Exercise.ExerciseItem.Tags">
             <summary>
             Lista de tags/categorías del ejercicio
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Exercise.UpdateExerciseResponse">
+            <summary>
+            Respuesta de actualizar ejercicio
+            </summary>
+            <param name="exerciseGuid">Guid del ejercicio actualizado</param>
+            <param name="name">Nombre del ejercicio actualizado</param>
+        </member>
+        <member name="M:LogicAdministratorApi.Model.Response.Exercise.UpdateExerciseResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Respuesta de actualizar ejercicio
+            </summary>
+            <param name="exerciseGuid">Guid del ejercicio actualizado</param>
+            <param name="name">Nombre del ejercicio actualizado</param>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.UpdateExerciseResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.UpdateExerciseResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.UpdateExerciseResponse.ExerciseGuid">
+            <summary>
+            Guid del ejercicio actualizado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Exercise.UpdateExerciseResponse.Name">
+            <summary>
+            Nombre del ejercicio actualizado
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Response.GymBranchSchedule.CreateGymBranchScheduleResponse">
@@ -3074,6 +3217,11 @@
         <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineExerciseDetail.RestSeconds">
             <summary>
             Segundos de descanso
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Routine.RoutineExerciseDetail.Day">
+            <summary>
+            Día de la semana en que se debe realizar el ejercicio (1-7, donde 1=Lunes, 7=Domingo)
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Response.Routine.GetRoutinesCreatedByAdminResponse">

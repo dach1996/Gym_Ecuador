@@ -43,7 +43,8 @@ public class GetRoutineExercisesByGuidHandler(
                         Series = re.Series,
                         RepetitionsFrom = re.RepetitionsFrom,
                         RepetitionsTo = re.RepetitionsTo,
-                        RestSeconds = re.RestSeconds
+                        RestSeconds = re.RestSeconds,
+                        Day = re.Day
                     }).ToList()
                 };
 

@@ -67,5 +67,10 @@ public enum CatalogsTypeItemsCodes
     /// </summary>
     /// <value></value>
     EquipmentTypeGym = 4,
-}
 
+    /// <summary>   
+    /// Catálogo de Tipos de Músculo
+    /// </summary>
+    /// <value></value>
+    MuscleType = 5
+}

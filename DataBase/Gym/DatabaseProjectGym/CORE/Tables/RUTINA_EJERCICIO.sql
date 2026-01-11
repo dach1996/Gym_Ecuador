@@ -6,6 +6,7 @@ CREATE TABLE [CORE].[RUTINA_EJERCICIO] (
     [RUE_REPETICIONES_DESDE]   INT NOT NULL,
     [RUE_REPETICIONES_HASTA]   INT NOT NULL,
     [RUE_SEGUNDOS_DESCANSO]    INT NOT NULL,
+    [RUE_DIA]                  TINYINT NOT NULL DEFAULT 1,
     CONSTRAINT [PK_RUTINA_EJERCICIO] PRIMARY KEY CLUSTERED ([RUE_ID] ASC),
     CONSTRAINT [FK_RUTINA_EJERCICIO_RUTINA] FOREIGN KEY ([RUT_ID]) REFERENCES [CORE].[RUTINAS] ([RUT_ID]) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT [FK_RUTINA_EJERCICIO_EJERCICIO] FOREIGN KEY ([EJE_ID]) REFERENCES [CORE].[EJERCICIOS] ([EJE_ID]) ON DELETE CASCADE ON UPDATE CASCADE
@@ -45,6 +46,11 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Rango máxi
 GO
 
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Segundos de descanso entre series para este ejercicio en la rutina.', @level0type = N'SCHEMA', @level0name = N'CORE', @level1type = N'TABLE', @level1name = N'RUTINA_EJERCICIO', @level2type = N'COLUMN', @level2name = N'RUE_SEGUNDOS_DESCANSO';
+
+
+GO
+
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Día de la semana en que se debe realizar el ejercicio (1-7, donde 1=Lunes, 7=Domingo).', @level0type = N'SCHEMA', @level0name = N'CORE', @level1type = N'TABLE', @level1name = N'RUTINA_EJERCICIO', @level2type = N'COLUMN', @level2name = N'RUE_DIA';
 
 
 GO

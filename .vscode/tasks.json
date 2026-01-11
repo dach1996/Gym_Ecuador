@@ -2,19 +2,16 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "clean",
             "command": "dotnet",
             "type": "process",
             "args": [
-                "build",
-                "${workspaceFolder}/GatewayCoreAPI/GatewayCoreAPI.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "clean",
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "buildAdministratorApi",
+            "label": "build AdministratorApi",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -26,33 +23,11 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "buildWebSocketsApp",
+            "label": "build GatewayCoreAPI",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/WebSocketsApp/WebSocketsApp.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "buildWebJob",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/WebJobs/WebJobs.csproj",
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "publish",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
                 "${workspaceFolder}/GatewayCoreAPI/GatewayCoreAPI.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
@@ -60,43 +35,56 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "watch",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "watch",
-                "run",
-                "--project",
-                "${workspaceFolder}/GatewayCoreAPI/GatewayCoreAPI.csproj"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "clean",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "clean",
-                "${workspaceFolder}/GatewayCoreAPI",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "publish-release",
+            "label": "publish GatewayCoreAPI",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/GatewayCoreAPI",
+                "${workspaceFolder}/GatewayCoreAPI/GatewayCoreAPI.csproj",
                 "--configuration",
-                "Release",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "${input:build_env}",
+                "--output",
+                "${config:publish_path}/${input:build_env}/GatewayCoreAPI"
             ],
-            "problemMatcher": "$msCompile",
-            "dependsOn": "clean"
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish AdministratorApi",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/AdministratorApi/AdministratorApi.csproj",
+                "--configuration",
+                "${input:build_env}",
+                "--output",
+                "${config:publish_path}/${input:build_env}/AdministratorApi"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Publish All",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "clean",
+                "publish AdministratorApi",
+                "publish GatewayCoreAPI",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "build_env",
+            "description": "Build Environment",
+            "type": "pickString",
+            "options": [
+                "Develop",
+                "Staging"
+            ]
         }
     ]
 }

@@ -17,4 +17,10 @@ public enum CatalogCodes
     /// </summary>
     [EnumMember(Value = "TIPOS_EQUIPO_GIMNASIO")]
     EquipmentTypeGym = 2,
+
+    /// <summary>
+    /// Código de Tipo de Musculo
+    /// </summary>
+    [EnumMember(Value = "NOMBRES_MUSCULOS")]
+    MuscleType = 3,
 }

@@ -24,11 +24,11 @@ public static class SwaggerExtension
     {
         var swaggerConfiguration = app.Configuration.GetSection(nameof(SwaggerConfiguration)).Get<SwaggerConfiguration>();
         var env = app.Environment;
+        app.UseSwagger();
         //Verifica el ambiente
         if (env.IsDevelopmentOrDebug())
         {
             //Configura el Swagger normalmente
-            app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.RoutePrefix = string.Empty;
@@ -38,19 +38,10 @@ public static class SwaggerExtension
         }
         else
         {
-            //Inyecta una sobrecarga de la pagina de Inicio
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string assemblyName = assembly.ManifestModule.Name.Replace(".dll", "");
-            var guid = Guid.NewGuid();
-            app.UseSwagger(o =>
-            {
-                o.RouteTemplate = $"/swagger/{guid}/swagger.json";
-            });
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint($"/swagger/{guid}/swagger.json", "Gateway Mobile");
                 c.RoutePrefix = string.Empty;
-                c.IndexStream = () => assembly.GetManifestResourceStream($"{assemblyName}.SwaggerNotAvailable.html");
+                c.IndexStream = () => File.OpenRead(Path.Combine(AppContext.BaseDirectory, "SwaggerNotAvailable.html"));
             });
         }
         return app;

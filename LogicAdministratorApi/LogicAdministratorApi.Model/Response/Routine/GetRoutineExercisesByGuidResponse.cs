@@ -91,4 +91,9 @@ public class RoutineExerciseDetail
     /// Segundos de descanso
     /// </summary>
     public int RestSeconds { get; set; }
+
+    /// <summary>
+    /// Día de la semana en que se debe realizar el ejercicio (1-7, donde 1=Lunes, 7=Domingo)
+    /// </summary>
+    public byte Day { get; set; }
 }

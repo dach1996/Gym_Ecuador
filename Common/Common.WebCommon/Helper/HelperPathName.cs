@@ -29,4 +29,12 @@ public static class HelperPathName
     /// <param name="equipmentId"></param>
     /// <returns></returns>
     public static string GetEquipmentPathName(string basePath, int equipmentId) => $"{basePath}/{equipmentId}";
+
+    /// <summary>
+    ///  Formato de Path de imagenes de ejercicios
+    /// </summary>
+    /// <param name="basePath"></param>
+    /// <param name="exerciseId"></param>
+    /// <returns></returns>
+    public static string GetExercisePathName(string basePath, int exerciseId) => $"{basePath}/{exerciseId}";
 }

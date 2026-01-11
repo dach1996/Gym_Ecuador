@@ -35,6 +35,12 @@ public class SwaggerConfiguration
     public string Description { get; set; }
 
     /// <summary>
+    /// Mostrar documentación
+    /// </summary>
+    /// <value></value>
+    public bool ShowDocumentation { get; set; }
+
+    /// <summary>
     /// Nombres de documentos Xml
     /// </summary>
     /// <value></value>

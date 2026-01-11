@@ -55,4 +55,14 @@ public static class HelperFileName
     public static string GetEquipmentImageName(string extension, DateTime? now = null)
         => GenericImageName("Equipment", extension, now);
 
+    /// <summary>
+    /// Formato de Nombre de imagenes de ejercicios
+    /// </summary>
+    /// <param name="extension"></param>
+    /// <param name="exerciseId"></param>
+    /// <param name="now"></param>
+    /// <returns></returns>
+    public static string GetExerciseImageName(string extension, int exerciseId, DateTime? now = null)
+        => GenericImageName($"Exercise_{exerciseId}", extension, now);
+
 }

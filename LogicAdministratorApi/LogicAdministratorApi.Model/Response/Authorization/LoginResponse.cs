@@ -30,6 +30,11 @@ public class LoginResponse : IApiBaseResponse
     public bool IsSuperAdmin { get; set; }
 
     /// <summary>
+    /// Role Name
+    /// </summary>
+    public string RoleName { get; set; }
+
+    /// <summary>
     /// Mensaje al Usuario
     /// </summary>
     public string UserMessage { get; set; }

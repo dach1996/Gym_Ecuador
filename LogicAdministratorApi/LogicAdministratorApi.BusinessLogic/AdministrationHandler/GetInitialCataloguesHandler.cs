@@ -1,5 +1,4 @@
-﻿using Common.WebCommon.Models.Enum;
-using LogicAdministratorApi.Model.Request.Administration;
+﻿using LogicAdministratorApi.Model.Request.Administration;
 using LogicCommon.Model.Request.Administration;
 using LogicCommon.Model.Response.Administration;
 

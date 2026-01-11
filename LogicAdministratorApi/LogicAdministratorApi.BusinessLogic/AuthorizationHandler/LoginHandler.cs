@@ -94,6 +94,7 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
                 AccessToken = jwt.Token,
                 Username = user.UserName,
                 Email = user.Email,
+                RoleName = user.Roles.FirstOrDefault()?.Name,
                 IsSuperAdmin = user.Roles.Any(where => where.Name.Equals(RoleType.SuperAdmin.GetEnumMember(), StringComparison.OrdinalIgnoreCase)),
                 PersonName = user.PersonName,
             };

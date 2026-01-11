@@ -182,6 +182,20 @@
             <param name="request">Modelo para obtener detalle de ejercicio por GUID</param>
             <returns></returns>
         </member>
+        <member name="M:AdministratorApi.Controllers.ExerciseController.CreateExercise(LogicAdministratorApi.Model.Request.Exercise.CreateExerciseRequest)">
+            <summary>
+            Crea un nuevo ejercicio
+            </summary>
+            <param name="request">Modelo para crear ejercicio</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.ExerciseController.UpdateExercise(LogicAdministratorApi.Model.Request.Exercise.UpdateExerciseRequest)">
+            <summary>
+            Actualiza un ejercicio existente
+            </summary>
+            <param name="request">Modelo para actualizar ejercicio</param>
+            <returns></returns>
+        </member>
         <member name="T:AdministratorApi.Controllers.GymBranchController">
             <summary>
             Controlador de Sucursales de Gimnasio

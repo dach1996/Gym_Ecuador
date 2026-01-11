@@ -65,11 +65,6 @@ public class ExerciseDetail
 public class ExerciseTagItem
 {
     /// <summary>
-    /// Id del catálogo
-    /// </summary>
-    public int CatalogId { get; set; }
-
-    /// <summary>
     /// Código del catálogo
     /// </summary>
     public string Code { get; set; }

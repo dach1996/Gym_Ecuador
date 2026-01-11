@@ -39,24 +39,9 @@ public abstract class BusinessLogicAdministratorBase(
         bool verifyUserFunctionality = true)
     {
         SetContextRequest(request.ContextRequest);
-        try
-        {
-            //Ejecuta el proceso
-            var result = await process().ConfigureAwait(false);
-
-            return result;
-        }
-        catch (CustomException ex)
-        {
-            var message = $"{UserMessages.GetErrorMessageByCode(ex.Code).Message}" + (ex.Message.IsNullOrEmpty() ? $"Razón: {ex.Message}" : string.Empty);
-            //  await ExecuteTaskCreateAuditLogAsync(RegisterLogAuditExecutorModel.ErrorRegister(operationName, request, message)).ConfigureAwait(false);
-            throw;
-        }
-        catch (Exception ex)
-        {
-            //await ExecuteTaskCreateAuditLogAsync(RegisterLogAuditExecutorModel.ErrorRegister(operationName, request, ex.Message)).ConfigureAwait(false);
-            throw;
-        }
+        //Ejecuta el proceso
+        var result = await process().ConfigureAwait(false);
+        return result;
     }
 
     /* /// <summary>

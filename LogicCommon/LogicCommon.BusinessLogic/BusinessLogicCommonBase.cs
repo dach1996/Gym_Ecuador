@@ -92,19 +92,11 @@ public abstract class BusinessLogicCommonBase
            Func<Task<T>> process
            )
     {
-        try
-        {
-            CommonContextRequest ??= request.CommonContextRequest
-                ?? throw new CustomException((int)MessagesCodesError.SystemError, "El contexto está vacío");
-            //Ejecuta el proceso
-            var result = await process().ConfigureAwait(false);
-            return result;
-        }
-        catch (Exception ex)
-        {
-            Logger.LogError(ex, "Error: {@Message}", ex.Message);
-            return default;
-        }
+        CommonContextRequest ??= request.CommonContextRequest
+            ?? throw new CustomException((int)MessagesCodesError.SystemError, "El contexto está vacío");
+        //Ejecuta el proceso
+        var result = await process().ConfigureAwait(false);
+        return result;
     }
 
 

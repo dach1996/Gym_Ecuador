@@ -167,6 +167,7 @@ BEGIN TRY
             [RUE_REPETICIONES_DESDE] INT NOT NULL,
             [RUE_REPETICIONES_HASTA] INT NOT NULL,
             [RUE_SEGUNDOS_DESCANSO] INT NOT NULL,
+            [RUE_DIA] TINYINT NOT NULL DEFAULT 1,
             
             CONSTRAINT [PK_RUTINA_EJERCICIO] PRIMARY KEY CLUSTERED ([RUE_ID] ASC),
             CONSTRAINT [FK_RUTINA_EJERCICIO_RUTINA] FOREIGN KEY ([RUT_ID]) 
@@ -198,11 +199,11 @@ BEGIN TRY
         PRINT '  ✓ Índice para ejercicio creado.'
     END
 
-    -- Crear índice único compuesto para evitar duplicados
+    -- Crear índice único compuesto para evitar duplicados (misma rutina, mismo ejercicio, mismo día)
     IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_RUTINA_EJERCICIO_UNIQUE' AND object_id = OBJECT_ID('CORE.RUTINA_EJERCICIO'))
     BEGIN
         CREATE UNIQUE NONCLUSTERED INDEX [IX_RUTINA_EJERCICIO_UNIQUE] 
-        ON [CORE].[RUTINA_EJERCICIO] ([RUT_ID], [EJE_ID]);
+        ON [CORE].[RUTINA_EJERCICIO] ([RUT_ID], [EJE_ID], [RUE_DIA]);
         PRINT '  ✓ Índice único compuesto creado para evitar duplicados.'
     END
 
@@ -444,6 +445,13 @@ BEGIN TRY
         EXECUTE sp_addextendedproperty @name = N'MS_Description', 
             @value = N'Segundos de descanso entre series para este ejercicio en la rutina.', 
             @level0type = N'SCHEMA', @level0name = N'CORE', @level1type = N'TABLE', @level1name = N'RUTINA_EJERCICIO', @level2type = N'COLUMN', @level2name = N'RUE_SEGUNDOS_DESCANSO';
+    END
+
+    IF NOT EXISTS (SELECT * FROM sys.extended_properties WHERE major_id = OBJECT_ID('CORE.RUTINA_EJERCICIO') AND minor_id = COLUMNPROPERTY(OBJECT_ID('CORE.RUTINA_EJERCICIO'), 'RUE_DIA', 'ColumnId') AND name = 'MS_Description')
+    BEGIN
+        EXECUTE sp_addextendedproperty @name = N'MS_Description', 
+            @value = N'Día de la semana en que se debe realizar el ejercicio (1-7, donde 1=Lunes, 7=Domingo).', 
+            @level0type = N'SCHEMA', @level0name = N'CORE', @level1type = N'TABLE', @level1name = N'RUTINA_EJERCICIO', @level2type = N'COLUMN', @level2name = N'RUE_DIA';
     END
 
     -- Comentarios para tabla REGISTRO_SERIES

@@ -726,5 +726,19 @@ public enum OperationAdministratorName : short
     /// Obtener detalle de ejercicio por GUID
     /// </summary>
     [EnumMember(Value = "Obtener detalle de ejercicio por GUID")]
-    GetExerciseByGuid = 102
+    GetExerciseByGuid = 102,
+
+    /// <summary>
+    /// Crear ejercicio
+    /// </summary>
+    [EnumMember(Value = "Crear ejercicio")]
+    [FunctionalityMember(FunctionalitiesCodes.CREATE_EXERCISE, registerAuditLog: true)]
+    CreateExercise = 103,
+
+    /// <summary>
+    /// Actualizar ejercicio
+    /// </summary>
+    [EnumMember(Value = "Actualizar ejercicio")]
+    [FunctionalityMember(FunctionalitiesCodes.UPDATE_EXERCISE, registerAuditLog: true)]
+    UpdateExercise = 104
 }

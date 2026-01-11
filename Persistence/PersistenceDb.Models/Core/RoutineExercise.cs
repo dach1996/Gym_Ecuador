@@ -63,6 +63,13 @@ public class RoutineExercise
     public int RestSeconds { get; set; }
 
     /// <summary>
+    /// Día de la semana en que se debe realizar el ejercicio (1-7, donde 1=Lunes, 7=Domingo)
+    /// </summary>
+    [Required]
+    [Column("RUE_DIA")]
+    public byte Day { get; set; }
+
+    /// <summary>
     /// Navegación a la rutina
     /// </summary>
     public Routine Routine { get; set; }

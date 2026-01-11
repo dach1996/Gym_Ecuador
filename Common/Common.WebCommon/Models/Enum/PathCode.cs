@@ -29,4 +29,10 @@ public enum PathCode
     /// </summary>
     [EnumMember(Value = "EQUIPMENT_IMAGE")]
     EquipmentImage = 4,
+
+    /// <summary>
+    /// Ruta de imágenes de ejercicios
+    /// </summary>
+    [EnumMember(Value = "EXERCISE_IMAGE")]
+    ExerciseImage = 5,
 }

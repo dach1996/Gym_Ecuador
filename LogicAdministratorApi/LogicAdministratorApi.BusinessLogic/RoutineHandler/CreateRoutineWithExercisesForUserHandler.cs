@@ -72,7 +72,8 @@ public class CreateRoutineWithExercisesForUserHandler(
                         Series = e.Series,
                         RepetitionsFrom = e.RepetitionsFrom,
                         RepetitionsTo = e.RepetitionsTo,
-                        RestSeconds = e.RestSeconds
+                        RestSeconds = e.RestSeconds,
+                        Day = e.Day
                     };
                 }).ToList();
 

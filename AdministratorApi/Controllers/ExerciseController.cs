@@ -49,5 +49,27 @@ public class ExerciseController(
     public async Task<IActionResult> GetExerciseByGuid([FromQuery] GetExerciseByGuidRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
+    /// <summary>
+    /// Crea un nuevo ejercicio
+    /// </summary>
+    /// <param name="request">Modelo para crear ejercicio</param>
+    /// <returns></returns>
+    [HttpPost("CreateExercise")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<CreateExerciseResponse>))]
+    [ProducesResponseType(400, Type = typeof(GenericResponse))]
+    public async Task<IActionResult> CreateExercise([FromBody] CreateExerciseRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
+    /// <summary>
+    /// Actualiza un ejercicio existente
+    /// </summary>
+    /// <param name="request">Modelo para actualizar ejercicio</param>
+    /// <returns></returns>
+    [HttpPut("UpdateExercise")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<UpdateExerciseResponse>))]
+    [ProducesResponseType(400, Type = typeof(GenericResponse))]
+    public async Task<IActionResult> UpdateExercise([FromBody] UpdateExerciseRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
     #endregion
 }

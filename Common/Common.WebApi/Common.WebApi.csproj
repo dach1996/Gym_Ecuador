@@ -1,36 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
-    <NoWarn>S3903;NU1701</NoWarn>
-  </PropertyGroup>
+		<NoWarn>S3903;NU1701</NoWarn>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.3.0" />
-	  <PackageReference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions" Version="2.3.0" />
-	  <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0" />
-	  <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0" />
-	  <PackageReference Include="NodaTime" Version="3.2.2" />
-	  <PackageReference Include="Seq.Extensions.Logging" Version="9.0.0" />
-	  <PackageReference Include="SonarAnalyzer.CSharp" Version="10.15.0.120848">
-	    <PrivateAssets>all</PrivateAssets>
-	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  </PackageReference>
-	  <PackageReference Include="Swashbuckle" Version="5.6.0" />
-	  <PackageReference Include="Swashbuckle.AspNetCore" Version="10.0.1" />
-	  <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="10.0.1" />
-	  <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="10.0.1" />
-	  <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.0.1" />
-	  <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.0.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.3.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions" Version="2.3.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0" />
+		<PackageReference Include="NodaTime" Version="3.2.2" />
+		<PackageReference Include="Seq.Extensions.Logging" Version="9.0.0" />
+		<PackageReference Include="SonarAnalyzer.CSharp" Version="10.15.0.120848">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Swashbuckle" Version="5.6.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="10.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="10.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="10.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.0.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<ContentWithTargetPath Include="Pages\SwaggerNotAvailable.html">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<TargetPath>SwaggerNotAvailable.html</TargetPath>
+		</ContentWithTargetPath>
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Common.Messages\Common.Messages.csproj" />
-    <ProjectReference Include="..\Common.PluginFactory\Common.PluginFactory.csproj" />
-    <ProjectReference Include="..\Common.Security\Common.Security.csproj" />
-    <ProjectReference Include="..\Common.WebCommon\Common.WebCommon.csproj" />
-    <ProjectReference Include="..\Common.Cache\Common.Cache.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Common.Messages\Common.Messages.csproj" />
+		<ProjectReference Include="..\Common.PluginFactory\Common.PluginFactory.csproj" />
+		<ProjectReference Include="..\Common.Security\Common.Security.csproj" />
+		<ProjectReference Include="..\Common.WebCommon\Common.WebCommon.csproj" />
+		<ProjectReference Include="..\Common.Cache\Common.Cache.csproj" />
+	</ItemGroup>
 
 </Project>
