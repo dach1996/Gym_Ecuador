@@ -87,11 +87,11 @@ public class CreateUserAdministratorHandler(
                 else
                 {
                     // Si no se proporcionan roles, usar el comportamiento por defecto
-                    var roleType = RoleScope.Gym.GetEnumMember();
+                    var roleType = RoleScope.Gym;
                     var platformType = RolePlatformType.Web.GetEnumMember();
                     var roleIdNullable = await UnitOfWork.RoleRepository.GetFirstOrDefaultGenericAsync(
                         select => (int?)select.Id,
-                        where => where.Code == roleType && where.Platform.Code == platformType).ConfigureAwait(false);
+                        where => where.Scope == roleType && where.Platform.Code == platformType).ConfigureAwait(false);
                     
                     if (!roleIdNullable.HasValue)
                         throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el rol de administrador");

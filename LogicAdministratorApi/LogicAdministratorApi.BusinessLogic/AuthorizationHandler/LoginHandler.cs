@@ -54,7 +54,7 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
                         .Select(select => new
                         {
                             select.ScopeIdentifier,
-                            Name=select.Role.Code,
+                            select.Role.Name,
                             select.Role.Scope,
                             select.Role.Id
                         }).ToList()
