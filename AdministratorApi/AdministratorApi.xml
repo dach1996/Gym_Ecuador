@@ -418,6 +418,41 @@
             <param name="request">Modelo para crear un rol</param>
             <returns></returns>
         </member>
+        <member name="M:AdministratorApi.Controllers.RoleController.CreateFunctionality(LogicAdministratorApi.Model.Request.Functionality.CreateFunctionalityRequest)">
+            <summary>
+            Crear una nueva funcionalidad
+            </summary>
+            <param name="request">Modelo para crear una funcionalidad</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.RoleController.UpdateFunctionality(LogicAdministratorApi.Model.Request.Functionality.UpdateFunctionalityRequest)">
+            <summary>
+            Actualizar una funcionalidad
+            </summary>
+            <param name="request">Modelo para actualizar una funcionalidad</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.RoleController.GetFunctions(LogicAdministratorApi.Model.Request.Function.GetFunctionsRequest)">
+            <summary>
+            Obtener todas las funciones
+            </summary>
+            <param name="request">Modelo para obtener funciones</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.RoleController.CreateFunction(LogicAdministratorApi.Model.Request.Function.CreateFunctionRequest)">
+            <summary>
+            Crear una nueva función
+            </summary>
+            <param name="request">Modelo para crear una función</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.RoleController.UpdateFunction(LogicAdministratorApi.Model.Request.Function.UpdateFunctionRequest)">
+            <summary>
+            Actualizar una función
+            </summary>
+            <param name="request">Modelo para actualizar una función</param>
+            <returns></returns>
+        </member>
         <member name="T:AdministratorApi.Controllers.RoutineController">
             <summary>
             Controlador de Rutinas

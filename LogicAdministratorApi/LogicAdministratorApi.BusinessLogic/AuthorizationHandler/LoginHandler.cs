@@ -56,7 +56,17 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
                             select.ScopeIdentifier,
                             select.Role.Name,
                             select.Role.Scope,
-                            select.Role.Id
+                            select.Role.Id,
+                            Functionalities = select.Role.RoleFunctionalities.Select(functionality => new
+                            {
+                                functionality.Functionality.Id,
+                                FunctionalityCode = functionality.Functionality.Code,
+                                functionality.Functionality.Function.Code,
+                                functionality.Functionality.Function.Route,
+                                functionality.Functionality.Function.Icon,
+                                functionality.Functionality.Function.Order,
+                                functionality.Functionality.Function.Name,
+                            }).ToList()
                         }).ToList()
                     },
                     where => where.UserName == request.Username || where.Email == request.Username
@@ -92,6 +102,16 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
                 Email = user.Email,
                 RoleName = user.Roles.FirstOrDefault()?.Name,
                 PersonName = user.PersonName,
+                MenuItems = [.. user.Roles.SelectMany(select => select.Functionalities)
+                .GroupBy(select => select.FunctionalityCode)
+                .Select(select => select.FirstOrDefault())
+                .OrderBy(select => select.Order)
+                .Select(select => new MenuItem
+                {
+                    Name = select.Name,
+                    Route = select.Route,
+                    Icon = select.Icon,
+                })]
             };
         }, false);
 

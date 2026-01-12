@@ -38,6 +38,8 @@ public class MainUnitOfWork(
     private IRoleRepository _roleRepository;
     private IPlatformRepository _platformRepository;
     private IFunctionalityRepository _functionalityRepository;
+    private IFunctionRepository _functionRepository;
+    private IModuleRepository _moduleRepository;
     private IRoleFunctionalityRepository _roleFunctionalityRepository;
     // Authentication Repositories
     private IDeviceRepository _deviceRepository;
@@ -259,6 +261,12 @@ public class MainUnitOfWork(
 
     public IFunctionalityRepository FunctionalityRepository => _functionalityRepository ??=
         new FunctionalityRepository(Context, LoggerFactory.CreateLogger<FunctionalityRepository>());
+
+    public IFunctionRepository FunctionRepository => _functionRepository ??=
+        new FunctionRepository(Context, LoggerFactory.CreateLogger<FunctionRepository>());
+
+    public IModuleRepository ModuleRepository => _moduleRepository ??=
+        new ModuleRepository(Context, LoggerFactory.CreateLogger<ModuleRepository>());
 
     public IRoleFunctionalityRepository RoleFunctionalityRepository => _roleFunctionalityRepository ??=
         new RoleFunctionalityRepository(Context, LoggerFactory.CreateLogger<RoleFunctionalityRepository>());

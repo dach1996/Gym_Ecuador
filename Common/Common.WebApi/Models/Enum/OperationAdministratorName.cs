@@ -231,18 +231,21 @@ public enum OperationAdministratorName : short
     /// Obtener rutinas creadas por el administrador
     /// </summary>
     [EnumMember(Value = "Obtener rutinas creadas por el administrador")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_ROUTINES_CREATED_BY_ADMIN)]
     GetRoutinesCreatedByAdmin = 98,
 
     /// <summary>
     /// Obtener ejercicios de rutina por GUID
     /// </summary>
     [EnumMember(Value = "Obtener ejercicios de rutina por GUID")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_ROUTINE_EXERCISES_BY_GUID)]
     GetRoutineExercisesByGuid = 99,
 
     /// <summary>
     /// Crear rutina con ejercicios para un usuario
     /// </summary>
     [EnumMember(Value = "Crear rutina con ejercicios para un usuario")]
+    [FunctionalityMember(FunctionalitiesCodes.CREATE_ROUTINE_WITH_EXERCISES_FOR_USER, registerAuditLog: true)]
     CreateRoutineWithExercisesForUser = 100,
 
     // ========== OPERACIONES DE EJERCICIOS ==========
@@ -251,12 +254,14 @@ public enum OperationAdministratorName : short
     /// Obtener ejercicios
     /// </summary>
     [EnumMember(Value = "Obtener ejercicios")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_EXERCISES)]
     GetExercises = 101,
 
     /// <summary>
     /// Obtener detalle de ejercicio por GUID
     /// </summary>
     [EnumMember(Value = "Obtener detalle de ejercicio por GUID")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_EXERCISE_BY_GUID)]
     GetExerciseByGuid = 102,
 
     /// <summary>
@@ -286,12 +291,14 @@ public enum OperationAdministratorName : short
     /// Obtener todos los roles
     /// </summary>
     [EnumMember(Value = "Obtener todos los roles")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_ROLES)]
     GetRoles = 106,
 
     /// <summary>
     /// Obtener todas las funcionalidades
     /// </summary>
     [EnumMember(Value = "Obtener todas las funcionalidades")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_ALL_FUNCTIONALITIES)]
     GetFunctionalities = 107,
 
     /// <summary>
@@ -305,11 +312,48 @@ public enum OperationAdministratorName : short
     /// Crear un nuevo rol
     /// </summary>
     [EnumMember(Value = "Crear un nuevo rol")]
+    [FunctionalityMember(FunctionalitiesCodes.CREATE_ROLE, registerAuditLog: true)]
     CreateRole = 109,
 
     /// <summary>
     /// Obtener detalle de rol por GUID
     /// </summary>
     [EnumMember(Value = "Obtener detalle de rol por GUID")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_ROLE_DETAIL)]
     GetRoleDetail = 110,
+
+    /// <summary>
+    /// Crear funcionalidad
+    /// </summary>
+    [EnumMember(Value = "Crear funcionalidad")]
+    [FunctionalityMember(FunctionalitiesCodes.CREATE_FUNCTIONALITY, registerAuditLog: true)]
+    CreateFunctionality = 111,
+
+    /// <summary>
+    /// Actualizar funcionalidad
+    /// </summary>
+    [EnumMember(Value = "Actualizar funcionalidad")]
+    [FunctionalityMember(FunctionalitiesCodes.UPDATE_FUNCTIONALITY, registerAuditLog: true)]
+    UpdateFunctionality = 112,
+
+    /// <summary>
+    /// Obtener todas las funciones
+    /// </summary>
+    [EnumMember(Value = "Obtener todas las funciones")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_FUNCTIONS)]
+    GetFunctions = 113,
+
+    /// <summary>
+    /// Crear función
+    /// </summary>
+    [EnumMember(Value = "Crear función")]
+    [FunctionalityMember(FunctionalitiesCodes.CREATE_FUNCTION, registerAuditLog: true)]
+    CreateFunction = 114,
+
+    /// <summary>
+    /// Actualizar función
+    /// </summary>
+    [EnumMember(Value = "Actualizar función")]
+    [FunctionalityMember(FunctionalitiesCodes.UPDATE_FUNCTION, registerAuditLog: true)]
+    UpdateFunction = 115,
 }

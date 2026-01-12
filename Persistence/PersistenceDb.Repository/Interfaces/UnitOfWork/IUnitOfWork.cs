@@ -32,6 +32,8 @@ public interface IUnitOfWork : IUnitOfWorkBase
     IUserRoleScopeRepository UserRoleScopeRepository { get; }
     IRoleRepository RoleRepository { get; }
     IFunctionalityRepository FunctionalityRepository { get; }
+    IFunctionRepository FunctionRepository { get; }
+    IModuleRepository ModuleRepository { get; }
     IRoleFunctionalityRepository RoleFunctionalityRepository { get; }
     IUserDeviceRepository UserDeviceRepository { get; }
     IPersonRepository PersonRepository { get; }

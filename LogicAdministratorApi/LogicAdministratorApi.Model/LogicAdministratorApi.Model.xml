@@ -582,12 +582,212 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Functionality.CreateFunctionalityRequest">
+            <summary>
+            Solicitud para crear una nueva funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Functionality.CreateFunctionalityRequest.Code">
+            <summary>
+            Código de la funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Functionality.CreateFunctionalityRequest.Name">
+            <summary>
+            Nombre de la funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Functionality.CreateFunctionalityRequest.Description">
+            <summary>
+            Descripción de la funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Functionality.CreateFunctionalityRequest.FunctionId">
+            <summary>
+            ID de la función asociada
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Functionality.CreateFunctionalityRequest.IsActive">
+            <summary>
+            Estado de la funcionalidad (activa/inactiva)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Functionality.CreateFunctionalityRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Request.Functionality.GetFunctionalitiesRequest">
             <summary>
             Solicitud para obtener todas las funcionalidades
             </summary>
         </member>
         <member name="P:LogicAdministratorApi.Model.Request.Functionality.GetFunctionalitiesRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Functionality.UpdateFunctionalityRequest">
+            <summary>
+            Solicitud para actualizar una funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Functionality.UpdateFunctionalityRequest.FunctionalityGuid">
+            <summary>
+            Guid de la funcionalidad a actualizar
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Functionality.UpdateFunctionalityRequest.Code">
+            <summary>
+            Código de la funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Functionality.UpdateFunctionalityRequest.Name">
+            <summary>
+            Nombre de la funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Functionality.UpdateFunctionalityRequest.Description">
+            <summary>
+            Descripción de la funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Functionality.UpdateFunctionalityRequest.FunctionId">
+            <summary>
+            ID de la función asociada
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Functionality.UpdateFunctionalityRequest.IsActive">
+            <summary>
+            Estado de la funcionalidad (activa/inactiva)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Functionality.UpdateFunctionalityRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Function.CreateFunctionRequest">
+            <summary>
+            Solicitud para crear una nueva función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.CreateFunctionRequest.Code">
+            <summary>
+            Código de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.CreateFunctionRequest.Name">
+            <summary>
+            Nombre de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.CreateFunctionRequest.Description">
+            <summary>
+            Descripción de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.CreateFunctionRequest.ModuleId">
+            <summary>
+            ID del módulo asociado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.CreateFunctionRequest.IsActive">
+            <summary>
+            Estado de la función (activa/inactiva)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.CreateFunctionRequest.Route">
+            <summary>
+            Ruta de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.CreateFunctionRequest.Icon">
+            <summary>
+            Icono de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.CreateFunctionRequest.Order">
+            <summary>
+            Orden de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.CreateFunctionRequest.IsVisible">
+            <summary>
+            Visibilidad de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.CreateFunctionRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Function.GetFunctionsRequest">
+            <summary>
+            Solicitud para obtener todas las funciones
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.GetFunctionsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.Function.UpdateFunctionRequest">
+            <summary>
+            Solicitud para actualizar una función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.UpdateFunctionRequest.FunctionId">
+            <summary>
+            ID de la función a actualizar
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.UpdateFunctionRequest.Code">
+            <summary>
+            Código de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.UpdateFunctionRequest.Name">
+            <summary>
+            Nombre de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.UpdateFunctionRequest.Description">
+            <summary>
+            Descripción de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.UpdateFunctionRequest.ModuleId">
+            <summary>
+            ID del módulo asociado
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.UpdateFunctionRequest.IsActive">
+            <summary>
+            Estado de la función (activa/inactiva)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.UpdateFunctionRequest.Route">
+            <summary>
+            Ruta de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.UpdateFunctionRequest.Icon">
+            <summary>
+            Icono de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.UpdateFunctionRequest.Order">
+            <summary>
+            Orden de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.UpdateFunctionRequest.IsVisible">
+            <summary>
+            Visibilidad de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.Function.UpdateFunctionRequest.ContextRequest">
             <summary>
             Context
             </summary>
@@ -1675,6 +1875,11 @@
             Role Name
             </summary>
         </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.MenuItems">
+            <summary>
+            Menu Items
+            </summary>
+        </member>
         <member name="P:LogicAdministratorApi.Model.Response.Authorization.LoginResponse.UserMessage">
             <summary>
             Mensaje al Usuario
@@ -1685,6 +1890,26 @@
             Mensaje
             </summary>
             <value></value>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Authorization.MenuItem">
+            <summary>
+            Item de funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.MenuItem.Name">
+            <summary>
+            Nombre de la funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.MenuItem.Route">
+            <summary>
+            Ruta de la funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Authorization.MenuItem.Icon">
+            <summary>
+            Icono de la funcionalidad
+            </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Response.BranchPlan.CreateBranchPlanResponse">
             <summary>
@@ -2446,6 +2671,31 @@
             Nombre del ejercicio actualizado
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Functionality.CreateFunctionalityResponse">
+            <summary>
+            Respuesta de crear una nueva funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.CreateFunctionalityResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.CreateFunctionalityResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.CreateFunctionalityResponse.FunctionalityGuid">
+            <summary>
+            Guid de la funcionalidad creada
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.CreateFunctionalityResponse.Name">
+            <summary>
+            Nombre de la funcionalidad creada
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Response.Functionality.GetFunctionalitiesResponse">
             <summary>
             Respuesta de obtener todas las funcionalidades
@@ -2499,6 +2749,156 @@
         <member name="P:LogicAdministratorApi.Model.Response.Functionality.FunctionalityItem.ModuleName">
             <summary>
             Nombre del módulo
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Functionality.UpdateFunctionalityResponse">
+            <summary>
+            Respuesta de actualizar una funcionalidad
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.UpdateFunctionalityResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.UpdateFunctionalityResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.UpdateFunctionalityResponse.FunctionalityGuid">
+            <summary>
+            Guid de la funcionalidad actualizada
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Functionality.UpdateFunctionalityResponse.Name">
+            <summary>
+            Nombre de la funcionalidad actualizada
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Function.CreateFunctionResponse">
+            <summary>
+            Respuesta de crear una nueva función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.CreateFunctionResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.CreateFunctionResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.CreateFunctionResponse.FunctionId">
+            <summary>
+            ID de la función creada
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.CreateFunctionResponse.Name">
+            <summary>
+            Nombre de la función creada
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Function.GetFunctionsResponse">
+            <summary>
+            Respuesta de obtener todas las funciones
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.GetFunctionsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.GetFunctionsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.GetFunctionsResponse.Functions">
+            <summary>
+            Lista de funciones
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Function.FunctionItem">
+            <summary>
+            Item de función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.FunctionItem.Id">
+            <summary>
+            ID de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.FunctionItem.Code">
+            <summary>
+            Código de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.FunctionItem.Name">
+            <summary>
+            Nombre de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.FunctionItem.Description">
+            <summary>
+            Descripción de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.FunctionItem.ModuleName">
+            <summary>
+            Nombre del módulo
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.FunctionItem.IsActive">
+            <summary>
+            Estado de la función (activa/inactiva)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.FunctionItem.Route">
+            <summary>
+            Ruta de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.FunctionItem.Icon">
+            <summary>
+            Icono de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.FunctionItem.Order">
+            <summary>
+            Orden de la función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.FunctionItem.IsVisible">
+            <summary>
+            Visibilidad de la función
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.Function.UpdateFunctionResponse">
+            <summary>
+            Respuesta de actualizar una función
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.UpdateFunctionResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.UpdateFunctionResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.UpdateFunctionResponse.FunctionId">
+            <summary>
+            ID de la función actualizada
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.Function.UpdateFunctionResponse.Name">
+            <summary>
+            Nombre de la función actualizada
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Response.GymBranchSchedule.CreateGymBranchScheduleResponse">

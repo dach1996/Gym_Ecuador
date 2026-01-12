@@ -8,6 +8,8 @@ using LogicAdministratorApi.Model.Request.Role;
 using LogicAdministratorApi.Model.Response.Role;
 using LogicAdministratorApi.Model.Request.Functionality;
 using LogicAdministratorApi.Model.Response.Functionality;
+using LogicAdministratorApi.Model.Request.Function;
+using LogicAdministratorApi.Model.Response.Function;
 
 namespace AdministratorApi.Controllers;
 
@@ -77,6 +79,56 @@ public class RoleController(
     [HttpPost("Create")]
     [ProducesResponseType(200, Type = typeof(GenericResponse<CreateRoleResponse>))]
     public async Task<IActionResult> CreateRole([FromBody] CreateRoleRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
+    /// <summary>
+    /// Crear una nueva funcionalidad
+    /// </summary>
+    /// <param name="request">Modelo para crear una funcionalidad</param>
+    /// <returns></returns>
+    [HttpPost("CreateFunctionality")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<CreateFunctionalityResponse>))]
+    public async Task<IActionResult> CreateFunctionality([FromBody] CreateFunctionalityRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
+    /// <summary>
+    /// Actualizar una funcionalidad
+    /// </summary>
+    /// <param name="request">Modelo para actualizar una funcionalidad</param>
+    /// <returns></returns>
+    [HttpPut("UpdateFunctionality")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<UpdateFunctionalityResponse>))]
+    public async Task<IActionResult> UpdateFunctionality([FromBody] UpdateFunctionalityRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
+    /// <summary>
+    /// Obtener todas las funciones
+    /// </summary>
+    /// <param name="request">Modelo para obtener funciones</param>
+    /// <returns></returns>
+    [HttpPost("GetFunctions")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GetFunctionsResponse>))]
+    public async Task<IActionResult> GetFunctions([FromBody] GetFunctionsRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
+    /// <summary>
+    /// Crear una nueva función
+    /// </summary>
+    /// <param name="request">Modelo para crear una función</param>
+    /// <returns></returns>
+    [HttpPost("CreateFunction")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<CreateFunctionResponse>))]
+    public async Task<IActionResult> CreateFunction([FromBody] CreateFunctionRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
+    /// <summary>
+    /// Actualizar una función
+    /// </summary>
+    /// <param name="request">Modelo para actualizar una función</param>
+    /// <returns></returns>
+    [HttpPut("UpdateFunction")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<UpdateFunctionResponse>))]
+    public async Task<IActionResult> UpdateFunction([FromBody] UpdateFunctionRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
     #endregion

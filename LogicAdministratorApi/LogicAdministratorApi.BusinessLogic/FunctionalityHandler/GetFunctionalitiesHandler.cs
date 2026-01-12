@@ -25,7 +25,7 @@ public class GetFunctionalitiesHandler(
                 select => new FunctionalityItem
                 {
                     Id = select.Id,
-                    Name = select.Name,
+                    Name = select.Name + " - " + select.Function.Name,
                     Code = select.Code,
                     Description = select.Description,
                     FunctionName = select.Function.Name,

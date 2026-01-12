@@ -1,8 +1,5 @@
 using LogicAdministratorApi.Model.Request.Role;
 using LogicAdministratorApi.Model.Response.Role;
-using Common.Utils.CustomExceptions;
-using Common.Messages;
-using Common.WebCommon.Models.Enum;
 
 namespace LogicAdministratorApi.BusinessLogic.RoleHandler;
 
