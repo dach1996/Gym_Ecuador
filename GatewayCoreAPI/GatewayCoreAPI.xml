@@ -653,6 +653,13 @@
             <param name="request">Modelo para obtener seguimiento de proceso por GUID</param>
             <returns></returns>
         </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackingStatistics(LogicApi.Model.Request.ProcessTracking.GetProcessTrackingStatisticsRequest)">
+            <summary>
+            Obtiene estadísticas de seguimientos de procesos
+            </summary>
+            <param name="request">Modelo para obtener estadísticas de seguimientos de procesos</param>
+            <returns></returns>
+        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.CreateProcessTracking(LogicApi.Model.Request.ProcessTracking.CreateProcessTrackingRequest)">
             <summary>
             Crea un nuevo seguimiento de proceso

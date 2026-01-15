@@ -33,7 +33,7 @@ public class GetHomeDataResponse : IApiBaseResponse
     /// <summary>
     /// Forum section
     /// </summary>
-    public List<ForumItem> Forums { get; set; }
+    public List<HomeForumItem> Forums { get; set; }
 
 }
 
@@ -167,7 +167,7 @@ public class CommunityArticleItem
 /// <summary>
 /// Forum item for home
 /// </summary>
-public class ForumItem
+public class HomeForumItem
 {
     /// <summary>
     /// Forum GUID

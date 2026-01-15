@@ -26,7 +26,7 @@ public class GetHomeDataHandler(
                     .GetByAsync(
                         where: article => article.IsActive && article.PublicationDate <= DateTime.UtcNow && article.MaximumPublicationDate >= DateTime.UtcNow,
                         orderBy: article => article.PublicationDate,
-                        orderByType: PersistenceDb.Models.Enums.OrderByType.Desc,
+                        orderByType: OrderByType.Desc,
                         top: 5
                     ).ConfigureAwait(false);
 
@@ -49,7 +49,7 @@ public class GetHomeDataHandler(
                         includes: forum => forum.ForumComments
                     ).ConfigureAwait(false);
 
-                var forums = forumsData.Select(forum => new ForumItem
+                var forums = forumsData.Select(forum => new HomeForumItem
                 {
                     Guid = forum.Guid,
                     Category = "General", // Default category, can be enhanced later

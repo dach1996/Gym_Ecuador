@@ -103,7 +103,7 @@ public class LoginHandler : AuthorizationBase<LoginRequest, LoginResponse>
                 RoleName = user.Roles.FirstOrDefault()?.Name,
                 PersonName = user.PersonName,
                 MenuItems = [.. user.Roles.SelectMany(select => select.Functionalities)
-                .GroupBy(select => select.FunctionalityCode)
+                .GroupBy(select => select.Code)
                 .Select(select => select.FirstOrDefault())
                 .OrderBy(select => select.Order)
                 .Select(select => new MenuItem

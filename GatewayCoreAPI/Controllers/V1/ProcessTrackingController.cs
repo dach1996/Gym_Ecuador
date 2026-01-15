@@ -50,6 +50,17 @@ public class ProcessTrackingController(
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
     /// <summary>
+    /// Obtiene estadísticas de seguimientos de procesos
+    /// </summary>
+    /// <param name="request">Modelo para obtener estadísticas de seguimientos de procesos</param>
+    /// <returns></returns>
+    [HttpGet("GetProcessTrackingStatistics")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GetProcessTrackingStatisticsResponse>))]
+    [ProducesResponseType(400, Type = typeof(GenericResponse))]
+    public async Task<IActionResult> GetProcessTrackingStatistics([FromQuery] GetProcessTrackingStatisticsRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
+    /// <summary>
     /// Crea un nuevo seguimiento de proceso
     /// </summary>
     /// <param name="request">Modelo para crear seguimiento de proceso</param>

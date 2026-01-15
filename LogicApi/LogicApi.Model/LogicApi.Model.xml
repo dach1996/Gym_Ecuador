@@ -3222,6 +3222,26 @@
             Default Constructor
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingStatisticsRequest">
+            <summary>
+            Solicitud para obtener estadísticas de seguimientos de procesos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingStatisticsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingStatisticsRequest.StartDate">
+            <summary>
+            Fecha de inicio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingStatisticsRequest.EndDate">
+            <summary>
+            Fecha de fin
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest">
             <summary>
             Solicitud para actualizar un seguimiento de proceso
@@ -6553,32 +6573,32 @@
             Article description
             </summary>
         </member>
-        <member name="T:LogicApi.Model.Response.Home.ForumItem">
+        <member name="T:LogicApi.Model.Response.Home.HomeForumItem">
             <summary>
             Forum item for home
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.Home.ForumItem.Guid">
+        <member name="P:LogicApi.Model.Response.Home.HomeForumItem.Guid">
             <summary>
             Forum GUID
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.Home.ForumItem.Category">
+        <member name="P:LogicApi.Model.Response.Home.HomeForumItem.Category">
             <summary>
             Forum category
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.Home.ForumItem.Title">
+        <member name="P:LogicApi.Model.Response.Home.HomeForumItem.Title">
             <summary>
             Forum title
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.Home.ForumItem.Description">
+        <member name="P:LogicApi.Model.Response.Home.HomeForumItem.Description">
             <summary>
             Forum description
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.Home.ForumItem.CommentCount">
+        <member name="P:LogicApi.Model.Response.Home.HomeForumItem.CommentCount">
             <summary>
             Number of comments
             </summary>
@@ -7932,9 +7952,194 @@
             Peso corporal actual (en kg o la unidad estándar)
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Height">
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.FatPercentage">
             <summary>
-            Altura de la persona (en cm) - No cambia con frecuencia, pero es clave para el IMC.
+            Porcentaje de grasa corporal medido en el seguimiento.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.ChestMeasurement">
+            <summary>
+            Medida del pecho (en cm)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.WaistMeasurement">
+            <summary>
+            Medida de la cintura (en cm)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.ArmRightMeasurement">
+            <summary>
+            Medida del brazo (en cm)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.ThighRightMeasurement">
+            <summary>
+            Medida de la pierna (en cm)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Images">
+            <summary>
+            Lista de imágenes asociadas al seguimiento de proceso.
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingStatisticsResponse">
+            <summary>
+            Respuesta de obtener estadísticas de seguimientos de procesos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingStatisticsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingStatisticsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingStatisticsResponse.Metrics">
+            <summary>
+            List of metrics
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingStatisticsResponse.WeightControlStatistics">
+            <summary>
+            Estadísticas generales
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingStatisticsResponse.WeightComparison">
+            <summary>
+            Weight comparison
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.WeightComparison">
+            <summary>
+            Representa los datos de comparación de peso entre el primer y último registro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightComparison.InitialDate">
+            <summary>
+            Peso inicial registrado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightComparison.InitialWeight">
+            <summary>
+            Peso final registrado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightComparison.CurrentDate">
+            <summary>
+            Fecha actual
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightComparison.CurrentWeight">
+            <summary>
+            Peso actual registrado
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightComparison.Message">
+            <summary>
+            Message of the weight comparison
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.MeasurementMetricItem">
+            <summary>
+            Represents a metric item
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.MeasurementMetricItem.Label">
+            <summary>
+            Label of the metric
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.MeasurementMetricItem.Value">
+            <summary>
+            Value of the metric
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.MeasurementMetricItem.ComparisonValue">
+            <summary>
+            Comparison value of the metric
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.MeasurementMetricItem.Unit">
+            <summary>
+            Unit of the metric
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.MeasurementMetricItem.Icon">
+            <summary>
+            Icon of the metric
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.WeightControlCartesianPoint">
+            <summary>
+            Represents a point in the weight control Cartesian plane
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightControlCartesianPoint.MinXAxisValue">
+            <summary>
+            Minimum value of the X axis
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightControlCartesianPoint.MaxXAxisValue">
+            <summary>
+            Maximum value of the X axis
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightControlCartesianPoint.MinYAxisValue">
+            <summary>
+            Minimum value of the Y axis
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightControlCartesianPoint.MaxYAxisValue">
+            <summary>
+            Maximum value of the Y axis
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightControlCartesianPoint.CartesianPoints">
+            <summary>
+            Represents a list of points in the Cartesian plane
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.CartesianPoin">
+            <summary>
+            Represents a point in the Cartesian plane
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoin.XLabel">
+            <summary>
+            The X coordinate (for example: date or time, as ticks or unix timestamp)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoin.YLabel">
+            <summary>
+            The Y coordinate (weight in kilograms)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoin.YValue">
+            <summary>
+            The value of the Y coordinate
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoin.XValue">
+            <summary>
+            The value of the X coordinate
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.ProcessTracking.UpdateProcessTrackingResponse">

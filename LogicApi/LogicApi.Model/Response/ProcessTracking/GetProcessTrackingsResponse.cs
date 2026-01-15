@@ -1,4 +1,5 @@
 using Common.WebCommon.Models;
+using LogicCommon.Model.Response.File;
 
 namespace LogicApi.Model.Response.ProcessTracking;
 
@@ -40,8 +41,32 @@ public class ProcessTrackingItem
     public decimal Weight { get; set; }
 
     /// <summary>
-    /// Altura de la persona (en cm) - No cambia con frecuencia, pero es clave para el IMC.
+    /// Porcentaje de grasa corporal medido en el seguimiento.
     /// </summary>
-    public decimal Height { get; set; }
+    public decimal? FatPercentage { get; set; }
 
+    /// <summary>
+    /// Medida del pecho (en cm)
+    /// </summary>
+    public decimal? ChestMeasurement { get; set; }
+
+    /// <summary>
+    /// Medida de la cintura (en cm)
+    /// </summary>
+    public decimal? WaistMeasurement { get; set; }
+
+    /// <summary>
+    /// Medida del brazo (en cm)
+    /// </summary>
+    public decimal? ArmRightMeasurement { get; set; }
+
+    /// <summary>
+    /// Medida de la pierna (en cm)
+    /// </summary>
+    public decimal? ThighRightMeasurement { get; set; }
+
+    /// <summary>
+    /// Lista de imágenes asociadas al seguimiento de proceso.
+    /// </summary>
+    public List<FileUrlResponse> Images { get; set; } = new();
 }

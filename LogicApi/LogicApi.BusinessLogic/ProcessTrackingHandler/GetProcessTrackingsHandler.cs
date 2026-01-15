@@ -1,5 +1,6 @@
 using LogicApi.Model.Request.ProcessTracking;
 using LogicApi.Model.Response.ProcessTracking;
+using LogicCommon.Model.Response.File;
 
 namespace LogicApi.BusinessLogic.ProcessTrackingHandler;
 
@@ -31,9 +32,17 @@ public class GetProcessTrackingsHandler(
                             Guid = select.Guid,
                             RegistrationDate = select.DateTimeRegister,
                             Weight = select.Weight,
-                            Height = select.Height,
+                            FatPercentage = select.BodyFatPercentage,
+                            ChestMeasurement = select.ChestMeasurement,
+                            WaistMeasurement = select.WaistMeasurement,
+                            ArmRightMeasurement = select.ArmRightMeasurement,
+                            ThighRightMeasurement = select.ThighRightMeasurement,
+                            Images = select.ProcessTrackingImages.Where(image => image.FilePersistence.State)
+                                .Select(image => new FileUrlResponse(image.FilePersistence.Guid, image.FilePersistence.FileBasePath.BaseUrl, image.FilePersistence.Path)).ToList()
                         },
-                        where: where => where.UserId == UserId
+                        where: where => where.UserId == UserId,
+                        orderBy: processTracking => processTracking.DateTimeRegister,
+                        orderByType: OrderByType.Desc
                     ).ConfigureAwait(false);
 
                 return new GetProcessTrackingsResponse

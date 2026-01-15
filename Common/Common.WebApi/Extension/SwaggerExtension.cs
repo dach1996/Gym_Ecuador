@@ -23,27 +23,19 @@ public static class SwaggerExtension
     public static IApplicationBuilder UseSwaggerSetting(this WebApplication app)
     {
         var swaggerConfiguration = app.Configuration.GetSection(nameof(SwaggerConfiguration)).Get<SwaggerConfiguration>();
-        var env = app.Environment;
         app.UseSwagger();
         //Verifica el ambiente
-        if (env.IsDevelopmentOrDebug())
+        app.UseSwaggerUI(c =>
         {
-            //Configura el Swagger normalmente
-            app.UseSwaggerUI(c =>
+            c.RoutePrefix = string.Empty;
+            if (swaggerConfiguration.ShowDocumentation)
             {
-                c.RoutePrefix = string.Empty;
                 string basePath = string.IsNullOrWhiteSpace(c.RoutePrefix) ? string.Empty : "..";
                 c.SwaggerEndpoint($"{basePath}/swagger/{swaggerConfiguration.Path}/swagger.json", swaggerConfiguration.ApplicationName);
-            });
-        }
-        else
-        {
-            app.UseSwaggerUI(c =>
-            {
-                c.RoutePrefix = string.Empty;
+            }
+            else
                 c.IndexStream = () => File.OpenRead(Path.Combine(AppContext.BaseDirectory, "SwaggerNotAvailable.html"));
-            });
-        }
+        });
         return app;
     }
 
