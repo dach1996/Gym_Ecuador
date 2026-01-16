@@ -1,5 +1,6 @@
 ﻿using Common.Blob;
 using Common.Blob.Models.Request;
+using Common.Utils;
 using Common.Utils.ImageTools;
 using LogicCommon.Model.Request.File;
 using LogicCommon.Model.Response.File;
@@ -29,7 +30,7 @@ public class UpdateBlobFileHandler(
         var fileBasePaths = await GetFileBasePathCacheInformationByPathCodeAsync(request.PathCode).ConfigureAwait(false);
         var updateFileRequests = request.Items.Select(async select =>
         {
-            var optimizedImage = await ImageManagement.OptimizeImageAsync(select.File).ConfigureAwait(false);
+            var optimizedImage = select.FileName?.IsImage() ?? false ? await ImageManagement.OptimizeImageAsync(select.File).ConfigureAwait(false) : select.File;
             return new UpdateFileItemRequest
             {
                 FileName = select.FileName,

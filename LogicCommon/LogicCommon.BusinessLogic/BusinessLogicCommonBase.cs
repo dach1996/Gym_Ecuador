@@ -333,7 +333,7 @@ public abstract class BusinessLogicCommonBase
                     var items = group.Select(select => new UpdateBlobFileItemRequest
                     {
                         File = Convert.FromBase64String(select.EncodeContent),
-                        FileName = getFileExtension?.Invoke(select.FileExtension) ?? select.FileName,
+                        FileName = getFileExtension?.Invoke(select.FileExtension) ?? (select.FileName + "." + select.FileExtension.Replace(".", "")),
                         ReplaceIfExist = true
                     }).ToList();
                     var imageItemResponse = await Mediator.Send(new UpdateBlobFileRequest(pathCode, items, CommonContextRequest, folderPath)).ConfigureAwait(false);

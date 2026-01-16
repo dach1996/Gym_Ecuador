@@ -106,6 +106,9 @@ public static class Util
     public static Dictionary<T, string> GetDictionaryEnums<T>() where T : Enum =>
         Enum.GetValues(typeof(T)).Cast<T>()
             .ToDictionary(key => key, value => value.GetEnumMember());
+    private static readonly string[] sourceArray = [".png", ".jpg", ".jpeg"];
+
+    public static bool IsImage(this string fileName) => sourceArray.Contains(fileName.ToLower());
 
     #endregion
 

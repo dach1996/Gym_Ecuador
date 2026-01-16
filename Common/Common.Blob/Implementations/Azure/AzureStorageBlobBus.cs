@@ -161,6 +161,7 @@ public class AzureStorageBlobBus : BlobBusBase
         {
             try
             {
+                containerName = containerName.ToLower();
                 //create object of BlocContainerClient to verify if exist
                 BlobContainerClient blobContainer = new(AzureBlobConfiguration.ConnectionString, containerName);
                 await blobContainer.CreateIfNotExistsAsync().ConfigureAwait(false);

@@ -47,6 +47,12 @@
     </ContentWithTargetPath>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="web.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
   <Target Name="PostpublishScript" AfterTargets="Publish">
     <Exec Command="dotnet publish ..\WebJobs\ -o $(PublishDir)App_Data\Jobs\continuous\WebJobs" />
   </Target>
