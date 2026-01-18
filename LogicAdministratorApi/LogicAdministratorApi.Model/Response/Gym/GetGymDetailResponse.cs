@@ -1,23 +1,45 @@
-using Common.WebApi.Models.ContextRequestModel;
-using LogicAdministratorApi.Model.Response.Gym;
-using Common.WebCommon.Models;
-
-namespace LogicAdministratorApi.Model.Request.Gym;
+namespace LogicAdministratorApi.Model.Response.Gym;
 
 /// <summary>
-/// Solicitud para actualizar un gimnasio
+/// Respuesta de obtener detalle de gimnasio por GUID
 /// </summary>
-public class UpdateGymRequest : IApiBaseRequest<UpdateGymResponse>
+public class GetGymDetailResponse(GymDetail gym) : IApiBaseResponse
+{
+    /// <summary>
+    /// Mensaje al Usuario
+    /// </summary>
+    public string UserMessage { get; set; }
+
+    /// <summary>
+    /// Mostrar Mensaje?
+    /// </summary>
+    public bool ShowMessage { get; set; }
+
+    /// <summary>
+    /// Datos del gimnasio
+    /// </summary>
+    public GymDetail Gym { get; set; } = gym;
+}
+
+/// <summary>
+/// Detalle completo de gimnasio
+/// </summary>
+public class GymDetail
 {
     /// <summary>
     /// Guid del gimnasio
     /// </summary>
-    public Guid GymGuid { get; set; }
+    public Guid Guid { get; set; }
 
     /// <summary>
     /// Nombre del gimnasio
     /// </summary>
     public string Name { get; set; }
+
+    /// <summary>
+    /// Código del gimnasio
+    /// </summary>
+    public string Code { get; set; }
 
     /// <summary>
     /// Descripción del gimnasio
@@ -45,15 +67,12 @@ public class UpdateGymRequest : IApiBaseRequest<UpdateGymResponse>
     public string Website { get; set; }
 
     /// <summary>
-    /// Estado activo del gimnasio
+    /// Estado del gimnasio
     /// </summary>
     public bool IsActive { get; set; }
 
     /// <summary>
-    /// Context
+    /// Fecha de registro
     /// </summary>
-    [JsonIgnore]
-    public CommonContextRequest ContextRequest { get; set; }
-
+    public DateTime DateTimeRegister { get; set; }
 }
-

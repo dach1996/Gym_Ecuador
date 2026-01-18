@@ -24,14 +24,12 @@ public class GetGymsHandler(
         => await ExecuteHandlerAsync(OperationAdministratorName.GetGymsPaginated, request, async () =>
             {
                 // Construir el filtro where combinando todas las condiciones
-                var nameFilter = request.NameFilter?.ToLower();
-                var codeFilter = request.CodeFilter?.ToLower();
-                var gymsIds = await GetGymsIdsByContextAsync().ConfigureAwait(false);
+                var nameFilter = request.Filter?.ToLower();
                 var whereClause = new List<Expression<Func<Gym, bool>>>
                 {
-                    {!request.NameFilter.IsNullOrEmpty(), where => where.Name.ToLower().Contains(nameFilter)},
-                    {!request.CodeFilter.IsNullOrEmpty(), where => where.Code.ToLower().Contains(codeFilter)},
-                    {where => ContextRequest.CustomClaims.IsSuperAdmin || gymsIds.Contains(where.Id)},
+                    {!request.Filter.IsNullOrEmpty(), where => where.Name.ToLower().Contains(nameFilter)},
+                    {request.GymGuid.HasValue, where => where.Guid == request.GymGuid.Value},
+                    {request.GymBranchGuid.HasValue, where => where.GymBranches.Any(gb => gb.Guid == request.GymBranchGuid.Value)},
                 };
                 // Obtener datos paginados
                 var paginatedResult = await UnitOfWork.GymRepository
@@ -42,20 +40,20 @@ public class GetGymsHandler(
                         {
                             Guid = select.Guid,
                             Name = select.Name,
-                            Code = select.Code,
-                            Description = select.Description,
-                            ShortDescription = select.ShortDescription,
                             Phone = select.Phone,
-                            Email = select.Email,
-                            Website = select.Website,
                             IsActive = select.IsActive == GymStatus.Active,
-                            DateTimeRegister = select.DateTimeRegister
+                            DateTimeRegister = select.DateTimeRegister,
+                            GymBranches = select.GymBranches.Select(gb => new GymItem.GymBranchPartialItem
+                            {
+                                Guid = gb.Guid,
+                                Name = gb.Name,
+                                MemberCount = gb.ClientGymBranches.Count
+                            })
                         },
                         where: whereClause,
                         orderBy: g => g.Name,
                         orderByType: OrderByType.Asc
                     ).ConfigureAwait(false);
-
                 return new GetGymsResponse(paginatedResult.TotalItems, paginatedResult.Items)
                 {
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),

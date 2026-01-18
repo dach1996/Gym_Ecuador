@@ -1,5 +1,3 @@
-using Common.WebApi.Models.ContextRequestModel;
-using Common.WebCommon.Attributes.CustomDataAnnotations;
 using LogicAdministratorApi.Model.Response.Gym;
 using Common.WebCommon.Models;
 
@@ -13,17 +11,17 @@ public class GetGymsRequest : IApiBaseRequest<GetGymsResponse>
     /// <summary>
     /// Filtro por nombre de gimnasio
     /// </summary>
-    public string NameFilter { get; set; }
+    public string Filter { get; set; }
 
     /// <summary>
-    /// Filtro por código de gimnasio
+    /// Filtro por nombre de gimnasio
     /// </summary>
-    public string CodeFilter { get; set; }
+    public Guid? GymGuid { get; set; }
 
     /// <summary>
-    /// Filtro por estado activo
+    /// GUID del gimnasio
     /// </summary>
-    public bool? IsActiveFilter { get; set; }
+    public Guid? GymBranchGuid { get; set; }
 
     /// <summary>
     /// Página
@@ -40,21 +38,5 @@ public class GetGymsRequest : IApiBaseRequest<GetGymsResponse>
     /// </summary>
     [JsonIgnore]
     public CommonContextRequest ContextRequest { get; set; }
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="contextRequest"></param>
-    public GetGymsRequest(ContextRequest contextRequest)
-    {
-        ContextRequest = contextRequest;
-    }
-
-    /// <summary>
-    /// Default Constructor
-    /// </summary>
-    public GetGymsRequest()
-    {
-    }
 }
 

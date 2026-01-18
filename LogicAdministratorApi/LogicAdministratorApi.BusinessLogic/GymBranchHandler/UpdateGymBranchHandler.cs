@@ -47,16 +47,9 @@ public class UpdateGymBranchHandler(
                 .ConfigureAwait(false))
                 throw new CustomException((int)MessagesCodesError.SystemError, "Ya existe una sucursal con este nombre para el gimnasio");
 
-            // Validar que el código no exista en otra sucursal (si se proporciona)
-            if (!string.IsNullOrEmpty(request.Code) && await UnitOfWork.GymBranchRepository
-                    .ExistAnyAsync(where => where.Code.ToLower() == request.Code.ToLower() && where.Id != gymBranch.Id)
-                    .ConfigureAwait(false))
-                throw new CustomException((int)MessagesCodesError.SystemError, "Ya existe una sucursal con este código");
-
             // Actualizar los campos
             gymBranch.GymId = gym.Id;
             gymBranch.Name = request.Name;
-            gymBranch.Code = request.Code;
             gymBranch.Description = request.Description;
             gymBranch.Address = request.Address;
             gymBranch.Phone = request.Phone;
@@ -64,7 +57,6 @@ public class UpdateGymBranchHandler(
             gymBranch.Latitude = request.Latitude;
             gymBranch.Longitude = request.Longitude;
             gymBranch.MaxCapacity = request.MaxCapacity;
-            gymBranch.AreaSquareMeters = request.AreaSquareMeters;
             gymBranch.FloorCount = request.FloorCount;
             gymBranch.OpeningDate = request.OpeningDate;
             gymBranch.IsActive = request.IsActive;

@@ -37,6 +37,11 @@ public static class FunctionalitiesCodes
     public const string GET_GYMS_PAGINATED = "ADM_GYM_GET_PAGINATED";
 
     /// <summary>
+    /// Obtener Detalle de Gimnasio por GUID
+    /// </summary>
+    public const string GET_GYM_DETAIL = "ADM_GYM_GET_DETAIL";
+
+    /// <summary>
     /// Crear Sucursal de Gimnasio
     /// </summary>
     public const string CREATE_GYM_BRANCH = "ADM_GYM_BRANCH_CREATE";

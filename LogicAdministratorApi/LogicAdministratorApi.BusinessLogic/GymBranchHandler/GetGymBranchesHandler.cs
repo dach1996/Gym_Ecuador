@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using LogicAdministratorApi.Model.Request.GymBranch;
 using LogicAdministratorApi.Model.Response.GymBranch;
+using LogicCommon.Model.Response.File;
 using PersistenceDb.Models.Core;
 
 namespace LogicAdministratorApi.BusinessLogic.GymBranchHandler;
@@ -23,21 +24,21 @@ public class GetGymBranchesHandler(
     public override async Task<GetGymBranchesResponse> Handle(GetGymBranchesRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationAdministratorName.GetGymBranchesPaginated, request, async () =>
             {
-                // Validar que el gimnasio existe
-                var gymId = await UnitOfWork.GymRepository
-                    .GetFirstOrDefaultGenericAsync(
-                        select => (int?)select.Id,
-                        where => where.Guid == request.GymGuid)
-                    .ConfigureAwait(false) ?? throw new CustomException((int)MessagesCodesError.GymBranchNotFound, "No se encontró el gimnasio especificado");
-
+                var gymId = (await GetGymCacheInformationAsync().ConfigureAwait(false))
+                .Find(where => where.GymGuid == request.GymGuid)?.GymBranchId ?? throw new CustomException((int)MessagesCodesError.GymBranchNotFound, "No se encontró el gimnasio especificado");
                 // Construir el filtro where combinando todas las condiciones
-                var nameFilter = request.NameFilter?.ToLower();
-                var isActiveFilter = request.IsActiveFilter;
+                var filter = request.Filter?.ToLower();
 
-                Expression<Func<GymBranch, bool>> whereClause = gb =>
-                    gb.GymId == gymId &&
-                    (string.IsNullOrWhiteSpace(nameFilter) || gb.Name.ToLower().Contains(nameFilter)) &&
-                    (!isActiveFilter.HasValue || gb.IsActive == isActiveFilter.Value);
+                var whereClause = new List<Expression<Func<GymBranch, bool>>>
+                {
+                    {where => where.GymId == gymId},
+                    {!request.Filter.IsNullOrEmpty(),
+                        where => where.Name.ToLower().Contains(filter) ||
+                        where.Address.ToLower().Contains(filter) ||
+                        where.Phone.ToLower().Contains(filter) ||
+                        where.Email.ToLower().Contains(filter) 
+                        }
+                };
 
                 // Obtener datos paginados
                 var paginatedResult = await UnitOfWork.GymBranchRepository
@@ -48,13 +49,17 @@ public class GetGymBranchesHandler(
                         {
                             Guid = select.Guid,
                             Name = select.Name,
-                            Code = select.Code,
                             Address = select.Address,
                             Phone = select.Phone,
                             Email = select.Email,
                             IsActive = select.IsActive,
-                            DateTimeRegister = select.DateTimeRegister,
-                            OpeningDate = select.OpeningDate
+                            Latitude = select.Latitude,
+                            Longitude = select.Longitude,
+                            OpeningDate = select.OpeningDate,
+                            ImageUrl = select.GymBranchImages
+                                .Where(image => image.FilePersistence.State)
+                                .Select(image => new FileUrlResponse(image.FilePersistence.Guid, image.FilePersistence.FileBasePath.BaseUrl, image.FilePersistence.Path))
+                                .FirstOrDefault()
                         },
                         where: whereClause,
                         orderBy: gb => gb.Name,

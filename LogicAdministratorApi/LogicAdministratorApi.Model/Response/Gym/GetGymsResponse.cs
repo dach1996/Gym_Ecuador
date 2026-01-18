@@ -37,6 +37,11 @@ public class GetGymsResponse(int totalRegister, IEnumerable<GymItem> registers) 
 public class GymItem
 {
     /// <summary>
+    /// Id del gimnasio
+    /// </summary>
+    public int Id { get; set; }
+
+    /// <summary>
     /// Guid del gimnasio
     /// </summary>
     public Guid Guid { get; set; }
@@ -47,34 +52,9 @@ public class GymItem
     public string Name { get; set; }
 
     /// <summary>
-    /// Código del gimnasio
-    /// </summary>
-    public string Code { get; set; }
-
-    /// <summary>
-    /// Descripción del gimnasio
-    /// </summary>
-    public string Description { get; set; }
-
-    /// <summary>
-    /// Descripción corta del gimnasio
-    /// </summary>
-    public string ShortDescription { get; set; }
-
-    /// <summary>
     /// Teléfono del gimnasio
     /// </summary>
     public string Phone { get; set; }
-
-    /// <summary>
-    /// Email del gimnasio
-    /// </summary>
-    public string Email { get; set; }
-
-    /// <summary>
-    /// Sitio web del gimnasio
-    /// </summary>
-    public string Website { get; set; }
 
     /// <summary>
     /// Estado del gimnasio
@@ -85,5 +65,31 @@ public class GymItem
     /// Fecha de registro
     /// </summary>
     public DateTime DateTimeRegister { get; set; }
+
+    /// <summary>
+    /// Sucursales del gimnasio
+    /// </summary>
+    public IEnumerable<GymBranchPartialItem> GymBranches { get; set; }
+
+    /// <summary>
+    /// Item de sucursal de gimnasio
+    /// </summary>
+    public class GymBranchPartialItem
+    {
+        /// <summary>
+        /// Guid de la sucursal
+        /// </summary>
+        public Guid Guid { get; set; }
+
+        /// <summary>
+        /// Nombre de la sucursal
+        /// </summary>
+        public string Name { get; set; }
+    
+         /// <summary>
+         /// Cantidad de miembros
+         /// </summary>
+         public int MemberCount { get; set; }
+    }
 }
 

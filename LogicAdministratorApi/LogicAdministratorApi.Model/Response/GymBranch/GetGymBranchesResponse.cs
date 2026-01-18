@@ -1,3 +1,5 @@
+using LogicCommon.Model.Response.File;
+
 namespace LogicAdministratorApi.Model.Response.GymBranch;
 
 /// <summary>
@@ -47,11 +49,6 @@ public class GymBranchItem
     public string Name { get; set; }
 
     /// <summary>
-    /// Código de la sucursal
-    /// </summary>
-    public string Code { get; set; }
-
-    /// <summary>
     /// Dirección de la sucursal
     /// </summary>
     public string Address { get; set; }
@@ -72,13 +69,23 @@ public class GymBranchItem
     public bool IsActive { get; set; }
 
     /// <summary>
-    /// Fecha de registro
+    /// Latitud de la sucursal
     /// </summary>
-    public DateTime DateTimeRegister { get; set; }
+    public double Latitude { get; set; }
+
+    /// <summary>
+    /// Longitud de la sucursal
+    /// </summary>
+    public double Longitude { get; set; }
 
     /// <summary>
     /// Fecha de apertura
     /// </summary>
-    public DateTime? OpeningDate { get; set; }
+    public DateTime OpeningDate { get; set; }
+
+    /// <summary>
+    /// URL de la imagen de la sucursal
+    /// </summary>
+    public FileUrlResponse ImageUrl { get; set; }
 }
 

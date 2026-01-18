@@ -37,7 +37,6 @@ public class GetGymBranchByGuidHandler(
                         Latitude = select.Latitude,
                         Longitude = select.Longitude,
                         MaxCapacity = select.MaxCapacity,
-                        AreaSquareMeters = select.AreaSquareMeters,
                         FloorCount = select.FloorCount,
                         IsActive = select.IsActive,
                         OpeningDate = select.OpeningDate,

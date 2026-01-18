@@ -71,27 +71,22 @@ public class GymBranchDetail
     /// <summary>
     /// Latitud para localización
     /// </summary>
-    public decimal Latitude { get; set; }
+    public double Latitude { get; set; }
 
     /// <summary>
     /// Longitud para localización
     /// </summary>
-    public decimal Longitude { get; set; }
+    public double Longitude { get; set; }
 
     /// <summary>
     /// Capacidad máxima de personas
     /// </summary>
-    public int? MaxCapacity { get; set; }
-
-    /// <summary>
-    /// Área en metros cuadrados
-    /// </summary>
-    public decimal? AreaSquareMeters { get; set; }
+    public int MaxCapacity { get; set; }
 
     /// <summary>
     /// Número de pisos/plantas
     /// </summary>
-    public byte? FloorCount { get; set; }
+    public byte FloorCount { get; set; }
 
     /// <summary>
     /// Estado de la sucursal
@@ -101,7 +96,7 @@ public class GymBranchDetail
     /// <summary>
     /// Fecha de apertura de la sucursal
     /// </summary>
-    public DateTime? OpeningDate { get; set; }
+    public DateTime OpeningDate { get; set; }
 
     /// <summary>
     /// Fecha de registro

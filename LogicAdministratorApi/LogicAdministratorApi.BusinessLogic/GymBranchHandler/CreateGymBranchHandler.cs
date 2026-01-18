@@ -1,5 +1,3 @@
-using Common.WebCommon.Helper;
-using Common.WebCommon.Models.Enum;
 using LogicAdministratorApi.Model.Request.GymBranch;
 using LogicAdministratorApi.Model.Response.GymBranch;
 using PersistenceDb.Models.Core;
@@ -56,7 +54,6 @@ public class CreateGymBranchHandler(
                     Latitude = request.Latitude,
                     Longitude = request.Longitude,
                     MaxCapacity = request.MaxCapacity,
-                    AreaSquareMeters = request.AreaSquareMeters,
                     FloorCount = request.FloorCount,
                     OpeningDate = request.OpeningDate,
                     IsActive = true,

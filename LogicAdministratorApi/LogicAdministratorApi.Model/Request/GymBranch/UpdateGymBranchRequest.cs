@@ -32,12 +32,6 @@ public class UpdateGymBranchRequest : IApiBaseRequest<UpdateGymBranchResponse>
     public string Name { get; set; }
 
     /// <summary>
-    /// Código de la sucursal
-    /// </summary>
-    [StringLength(50)]
-    public string Code { get; set; }
-
-    /// <summary>
     /// Descripción de la sucursal
     /// </summary>
     [StringLength(1000)]
@@ -66,32 +60,27 @@ public class UpdateGymBranchRequest : IApiBaseRequest<UpdateGymBranchResponse>
     /// <summary>
     /// Latitud para localización
     /// </summary>
-    public decimal Latitude { get; set; }
+    public double Latitude { get; set; }
 
     /// <summary>
     /// Longitud para localización
     /// </summary>
-    public decimal Longitude { get; set; }
+    public double Longitude { get; set; }
 
     /// <summary>
     /// Capacidad máxima de personas
     /// </summary>
-    public int? MaxCapacity { get; set; }
-
-    /// <summary>
-    /// Área en metros cuadrados
-    /// </summary>
-    public decimal? AreaSquareMeters { get; set; }
+    public int MaxCapacity { get; set; }
 
     /// <summary>
     /// Número de pisos/plantas
     /// </summary>
-    public byte? FloorCount { get; set; }
+    public byte FloorCount { get; set; }
 
     /// <summary>
     /// Fecha de apertura de la sucursal
     /// </summary>
-    public DateTime? OpeningDate { get; set; }
+    public DateTime OpeningDate { get; set; }
 
     /// <summary>
     /// Estado activo de la sucursal

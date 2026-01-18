@@ -57,6 +57,16 @@ public class GymController(
     public async Task<IActionResult> GetGyms([FromQuery] GetGymsRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
+    /// <summary>
+    /// Obtener Detalle de Gimnasio
+    /// </summary>
+    /// <param name="request">Modelo para obtener detalle de gimnasio</param>
+    /// <returns></returns>
+    [HttpGet("GetDetail")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GetGymDetailResponse>))]
+    public async Task<IActionResult> GetGymDetail([FromQuery] GetGymDetailRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
     #endregion
 }
 

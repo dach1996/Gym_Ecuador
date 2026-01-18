@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using NetTopologySuite.Geometries;
 
 namespace PersistenceDb.Models.Core;
 
@@ -51,6 +52,7 @@ public class GymBranch
     /// Código de la sucursal
     /// </summary>
     [StringLength(50)]
+    [Required]
     [Column("SGY_CODIGO")]
     public string Code { get; set; }
 
@@ -87,34 +89,26 @@ public class GymBranch
     /// Latitud para localización
     /// </summary>
     [Column("SGY_LATITUD")]
-    [Precision(5, 2)]	
-    public decimal Latitude { get; set; }
+    public double Latitude { get; set; }
 
     /// <summary>
     /// Longitud para localización
     /// </summary>
     [Column("SGY_LONGITUD")]
-    [Precision(5, 2)]	
-    public decimal Longitude { get; set; }
+    public double Longitude { get; set; }
 
     /// <summary>
     /// Capacidad máxima de personas
     /// </summary>
     [Column("SGY_CAPACIDAD_MAXIMA")]
-    public int? MaxCapacity { get; set; }
+    public int MaxCapacity { get; set; }
 
-    /// <summary>
-    /// Área en metros cuadrados
-    /// </summary>
-    [Column("SGY_AREA_M2")]
-    [Precision(5, 2)]	
-    public decimal? AreaSquareMeters { get; set; }
 
     /// <summary>
     /// Número de pisos/plantas
     /// </summary>
     [Column("SGY_NUMERO_PISOS")]
-    public byte? FloorCount { get; set; }
+    public byte FloorCount { get; set; }
 
     /// <summary>
     /// Estado de la sucursal
@@ -127,7 +121,16 @@ public class GymBranch
     /// Fecha de apertura de la sucursal
     /// </summary>
     [Column("SGY_FECHA_APERTURA")]
-    public DateTime? OpeningDate { get; set; }
+    public DateTime OpeningDate { get; set; }
+
+
+    /// <summary>
+    /// Geographical Location
+    /// </summary>
+    [Column("SGY_UBICACION_CALCULADA")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+    [Required]
+    public Point Location { get; set; }
 
     /// <summary>
     /// Navegación al gimnasio principal
@@ -145,6 +148,9 @@ public class GymBranch
     /// </summary>
     public ICollection<GymBranchImage> GymBranchImages { get; set; }
 
-
+    /// <summary>
+    /// Navegación a los clientes de la sucursal
+    /// </summary>
+    public ICollection<ClientGymBranch> ClientGymBranches { get; set; }
 }
 

@@ -32,11 +32,9 @@ public class UpdateGymHandler(
                     throw new CustomException((int)MessagesCodesError.SystemError, "El nombre del gimnasio es requerido");
 
                 // Validar que no exista otro gimnasio con el mismo nombre (excluyendo el actual)
-                var existingGym = await UnitOfWork.GymRepository
-                    .GetByFirstOrDefaultAsync(where => where.Name.ToLower() == request.Name.ToLower() && where.Id != gym.Id)
-                    .ConfigureAwait(false);
-
-                if (existingGym != null)
+                if (await UnitOfWork.GymRepository
+                    .ExistAnyAsync(where => where.Name.ToLower() == request.Name.ToLower() && where.Guid != request.GymGuid)
+                    .ConfigureAwait(false))
                     throw new CustomException((int)MessagesCodesError.SystemError, "Ya existe otro gimnasio con este nombre");
 
                 // Actualizar los campos
@@ -46,6 +44,7 @@ public class UpdateGymHandler(
                 gym.Phone = request.Phone;
                 gym.Email = request.Email;
                 gym.Website = request.Website;
+                gym.IsActive = request.IsActive ? GymStatus.Active : GymStatus.Inactive;
                 await UnitOfWork.GymRepository.UpdateAsync(gym).ConfigureAwait(false);
 
                 return new UpdateGymResponse(gym.Guid, gym.Name)

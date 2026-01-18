@@ -54,6 +54,13 @@ public enum OperationAdministratorName : short
     GetGymsPaginated = 73,
 
     /// <summary>
+    /// Obtener Detalle de Gimnasio por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Detalle de Gimnasio por GUID")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_GYM_DETAIL)]
+    GetGymDetail = 118,
+
+    /// <summary>
     /// Crear Sucursal de Gimnasio
     /// </summary>
     [EnumMember(Value = "Crear Sucursal de Gimnasio")]

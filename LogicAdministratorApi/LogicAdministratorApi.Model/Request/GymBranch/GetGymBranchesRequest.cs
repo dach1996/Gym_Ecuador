@@ -18,14 +18,9 @@ public class GetGymBranchesRequest : IPaginatorApiRequest<GetGymBranchesResponse
     public Guid GymGuid { get; set; }
 
     /// <summary>
-    /// Filtro por nombre de sucursal
+    /// Filtro
     /// </summary>
-    public string NameFilter { get; set; }
-
-    /// <summary>
-    /// Filtro por estado activo
-    /// </summary>
-    public bool? IsActiveFilter { get; set; }
+    public string Filter { get; set; }
 
     /// <summary>
     /// Página

@@ -321,6 +321,13 @@
             <param name="request">Modelo para obtener gimnasios</param>
             <returns></returns>
         </member>
+        <member name="M:AdministratorApi.Controllers.GymController.GetGymDetail(LogicAdministratorApi.Model.Request.Gym.GetGymDetailRequest)">
+            <summary>
+            Obtener Detalle de Gimnasio
+            </summary>
+            <param name="request">Modelo para obtener detalle de gimnasio</param>
+            <returns></returns>
+        </member>
         <member name="T:AdministratorApi.Controllers.NotificationPushController">
             <summary>
             Controlador de Notificaciones Push
