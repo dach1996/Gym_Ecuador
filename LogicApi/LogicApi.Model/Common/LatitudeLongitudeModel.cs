@@ -9,14 +9,14 @@ public class LatitudeLongitudeModel
     /// </summary>
     [Required]
     [Range(-90, 90)]
-    public decimal Latitude { get; set; }
+    public double Latitude { get; set; }
 
     /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="latitude"></param>
     /// <param name="longitude"></param>
-    public LatitudeLongitudeModel(decimal latitude, decimal longitude)
+    public LatitudeLongitudeModel(double latitude, double longitude)
     {
         Latitude = latitude;
         Longitude = longitude;
@@ -33,7 +33,7 @@ public class LatitudeLongitudeModel
     /// </summary>
     [Required]
     [Range(-180, 180)]
-    public decimal Longitude { get; set; }
+    public double Longitude { get; set; }
 
 
 }
