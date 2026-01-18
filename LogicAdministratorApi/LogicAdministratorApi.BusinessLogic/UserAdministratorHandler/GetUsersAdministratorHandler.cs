@@ -24,35 +24,43 @@ public class GetUsersAdministratorHandler(
         => await ExecuteHandlerAsync(OperationAdministratorName.GetUsersAdministratorPaginated, request, async () =>
             {
                 // Construir el filtro where combinando todas las condiciones
-                var emailFilter = request.EmailFilter?.ToLower();
-                var userNameFilter = request.UserNameFilter?.ToLower();
+                var filter = request.Filter?.ToLower();
                 var webPlatformId = (await GetPlatformsAsync().ConfigureAwait(false))
                 .Find(where => where.Code == RolePlatformType.Web.GetEnumMember())?.Id;
-                Expression<Func<User, bool>> whereClause = u =>
-                    (string.IsNullOrWhiteSpace(emailFilter) || u.Email.ToLower().Contains(emailFilter)) &&
-                    (string.IsNullOrWhiteSpace(userNameFilter) || u.UserName.ToLower().Contains(userNameFilter)) &&
-                    u.UserRoleScopes.Any(ur => ur.Role.PlatformId == webPlatformId) ;
+                List<Expression<Func<User, bool>>> whereClause = new List<Expression<Func<User, bool>>>
+                {
+                    u => u.UserRoleScopes.Any(ur => ur.Role.PlatformId == webPlatformId),
+                    { !request.Filter.IsNullOrEmpty(), where =>
+                    where.UserName.ToLower().Contains(filter) ||
+                    where.Email.ToLower().Contains(filter) ||
+                    where.Phone.ToLower().Contains(filter) ||
+                    where.Person.RealNames.ToLower().Contains(filter) }
+                };
 
                 // Obtener datos paginados
                 var paginatedResult = await UnitOfWork.UserRepository
                     .GetPaginatorGenericAsync(
                         itemsByPage: request.PageSize,
                         page: request.PageNumber,
-                        select => new UserItem
+                        select => new AdministratorUserItem
                         {
                             Guid = select.Guid,
                             UserName = select.UserName,
                             Email = select.Email,
                             Phone = select.Phone,
-                            LanguageCode = select.LanguageCode,
-                            IsBlocked = select.IsBlocked,
-                            HasCompleteRegistration = select.HasCompleteRegistration,
+                            PersonName = select.Person.FullName,
+                            Id = select.Id,
                             DateTimeRegister = select.DateTimeRegister,
-                            FirstLoginDate = select.FirstLoginDate
+                            IsBlocked = select.IsBlocked,
+                            UserRoleScopes = select.UserRoleScopes.Select(urs => new AdministratorUserRoleScopeItem
+                            {
+                                Guid = urs.Role.Guid,
+                                Name = urs.Role.Name
+                            }).ToList()
                         },
                         where: whereClause,
-                        orderBy: u => u.UserName,
-                        orderByType: OrderByType.Asc
+                        orderBy: u => u.Id,
+                        orderByType: OrderByType.Desc
                     ).ConfigureAwait(false);
 
                 return new GetUsersAdministratorResponse(paginatedResult.TotalItems, paginatedResult.Items)

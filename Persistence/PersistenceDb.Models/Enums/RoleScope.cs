@@ -9,25 +9,25 @@ public enum RoleScope : byte
     /// <summary>
     /// Global
     /// </summary>
-    [EnumMember(Value = "Global")]
+    [EnumMember(Value = "SUPER_ADMIN")]
     Global = 1,
 
     /// <summary>
     /// Gym
     /// </summary>
     /// <value></value>
-    [EnumMember(Value = "Gimnasio")]
+    [EnumMember(Value = "ADMINISTRADOR_GYM")]
     Gym = 2,
 
     /// <summary>
     /// Gym Branch
     /// </summary>
-    [EnumMember(Value = "Sucursal de Gimnasio")]
+    [EnumMember(Value = "ADMINISTRADOR_SUCURSAL")]
     GymBranch = 3,
 
     /// <summary>
     /// Client
     /// </summary>
-    [EnumMember(Value = "Cliente")]
+    [EnumMember(Value = "CLIENTE")]
     Client = 4,
 }

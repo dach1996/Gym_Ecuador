@@ -20,12 +20,7 @@ public class UserPasswordCreateUserHandler(
             newUser.ManualUserRegistrationForm.Password = passwordEncrypted;
             newUser.ManualUserRegistrationForm.PasswordTemporary = passwordEncrypted;
             _ = await UnitOfWork.UserRepository.UpdateAsync(newUser).ConfigureAwait(false);
-            await SendQueueMessageAsync(new NewUserMailQueueTemplate
-            {
-                User = request.Email,
-                Password = newPassword,
-                To = newUser.Email.ToListElements()
-            }).ConfigureAwait(false);
+           
             //Configura el contexto
             ContextRequest.CustomClaims.ConfigureUser(newUser.Id, newUser.UserName);
             //Responde la respuesta

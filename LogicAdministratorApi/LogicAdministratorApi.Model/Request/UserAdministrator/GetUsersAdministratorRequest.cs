@@ -1,5 +1,4 @@
 using Common.WebApi.Models.ContextRequestModel;
-using Common.WebCommon.Attributes.CustomDataAnnotations;
 using LogicAdministratorApi.Model.Response.UserAdministrator;
 using Common.WebCommon.Models;
 
@@ -11,19 +10,9 @@ namespace LogicAdministratorApi.Model.Request.UserAdministrator;
 public class GetUsersAdministratorRequest : IPaginatorApiRequest<GetUsersAdministratorResponse>
 {
     /// <summary>
-    /// Filtro por email
-    /// </summary>
-    public string EmailFilter { get; set; }
-
-    /// <summary>
     /// Filtro por nombre de usuario
     /// </summary>
-    public string UserNameFilter { get; set; }
-
-    /// <summary>
-    /// Filtro por estado bloqueado
-    /// </summary>
-    public bool? IsBlockedFilter { get; set; }
+    public string Filter { get; set; }
 
     /// <summary>
     /// Página
@@ -44,21 +33,5 @@ public class GetUsersAdministratorRequest : IPaginatorApiRequest<GetUsersAdminis
     /// </summary>
     [JsonIgnore]
     public CommonContextRequest ContextRequest { get; set; }
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="contextRequest"></param>
-    public GetUsersAdministratorRequest(ContextRequest contextRequest)
-    {
-        ContextRequest = contextRequest;
-    }
-
-    /// <summary>
-    /// Default Constructor
-    /// </summary>
-    public GetUsersAdministratorRequest()
-    {
-    }
 }
 

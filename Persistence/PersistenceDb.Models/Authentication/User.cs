@@ -182,4 +182,9 @@ public class User
     /// <value></value>
     public ICollection<UserRoleScope> UserRoleScopes { get; set; }
 
+    /// <summary>
+    /// Lista de clientes de sucursales de gimnasio
+    /// </summary>
+    /// <value></value>
+    public ICollection<ClientGymBranch> ClientGymBranches { get; set; }
 }

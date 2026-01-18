@@ -71,6 +71,11 @@ public static class FunctionalitiesCodes
     /// </summary>
     public const string GET_GYM_BRANCH_BY_GUID = "ADM_GYM_BRANCH_GET_BY_GUID";
 
+    /// <summary>
+    /// Obtener Sucursales de Gimnasio por Funcionalidad
+    /// </summary>
+    public const string GET_GYM_BRANCHES_BY_FUNCTIONALITY = "ADM_GYM_BRANCH_GET_BY_FUNCTIONALITY";
+
     // ========== OPERACIONES DE USUARIOS ADMINISTRADORES ==========
 
     /// <summary>
@@ -136,6 +141,11 @@ public static class FunctionalitiesCodes
     /// Crear Usuario Cliente
     /// </summary>
     public const string CREATE_USER_CLIENT = "ADM_CLIENT_CREATE";
+
+    /// <summary>
+    /// Obtener Detalle de Usuario Cliente por GUID
+    /// </summary>
+    public const string GET_USER_CLIENT_BY_GUID = "ADM_CLIENT_GET_BY_GUID";
 
     // ========== OPERACIONES DE PLANES DE SUCURSAL ==========
 

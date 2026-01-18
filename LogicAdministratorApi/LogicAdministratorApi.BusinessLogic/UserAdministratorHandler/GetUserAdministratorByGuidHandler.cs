@@ -1,6 +1,5 @@
 using LogicAdministratorApi.Model.Request.UserAdministrator;
 using LogicAdministratorApi.Model.Response.UserAdministrator;
-using PersistenceDb.Models.Authentication;
 
 namespace LogicAdministratorApi.BusinessLogic.UserAdministratorHandler;
 
@@ -22,32 +21,29 @@ public class GetUserAdministratorByGuidHandler(
     public override async Task<GetUserAdministratorByGuidResponse> Handle(GetUserAdministratorByGuidRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationAdministratorName.GetUserAdministratorByGuid, request, async () =>
             {
+                var webPlatformId = (await GetPlatformsAsync().ConfigureAwait(false))
+                    .Find(where => where.Code == RolePlatformType.Web.GetEnumMember())?.Id;
                 // Buscar el usuario por GUID usando GetFirstOrDefaultGenericAsync con proyección directa
                 var user = await UnitOfWork.UserRepository
                     .GetFirstOrDefaultGenericAsync(
-                        select => new UserDetail
+                        select => new AdministratorUserDetail
                         {
                             Guid = select.Guid,
+                            Id = select.Id,
                             UserName = select.UserName,
                             Email = select.Email,
                             Phone = select.Phone,
-                            LanguageCode = select.LanguageCode,
                             IsBlocked = select.IsBlocked,
-                            HasCompleteRegistration = select.HasCompleteRegistration,
+                            PersonName = select.Person.FullName,
                             DateTimeRegister = select.DateTimeRegister,
-                            FirstLoginDate = select.FirstLoginDate,
-                            ImageUrl = select.Image != null && select.Image.State && select.Image.FileBasePath != null
-                                ? select.Image.FileBasePath.BaseUrl + select.Image.Path
-                                : null,
-                            RoleGuids = select.UserRoleScopes != null
-                                ? select.UserRoleScopes
-                                    .Where(urs => urs.Role != null)
-                                    .Select(urs => urs.Role.Guid)
-                                    .Where(guid => guid != Guid.Empty)
-                                    .ToList()
-                                : new List<Guid>()
+                            UserRoleScopes = select.UserRoleScopes
+                            .Select(urs => new AdministratorUserRoleScopeItem
+                            {
+                                Guid = urs.Role.Guid,
+                                Name = urs.Role.Name
+                            }).ToList()
                         },
-                        where => where.Guid == request.UserGuid
+                        where => where.Guid == request.UserGuid && where.UserRoleScopes.Any(urs => urs.Role.PlatformId == webPlatformId)
                     ).ConfigureAwait(false)
                     ?? throw new CustomException((int)MessagesCodesError.SystemError, "Usuario no encontrado");
 

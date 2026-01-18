@@ -55,7 +55,7 @@ public class GetGymBranchSchedulesHandler(
             registerLogAudit: false
         ).ConfigureAwait(false);
 
-    private string GetDayOfWeekName(int dayId)
+    private static string GetDayOfWeekName(int dayId)
     {
         return dayId switch
         {

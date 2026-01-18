@@ -37,14 +37,19 @@ public class GetUsersClientResponse(int totalRegister, IEnumerable<ClientItem> r
 public class ClientItem
 {
     /// <summary>
+    /// Guid del cliente (ClientGymBranch)
+    /// </summary>
+    public string Id { get; set; }
+
+    /// <summary>
     /// Guid del usuario
     /// </summary>
     public Guid Guid { get; set; }
 
     /// <summary>
-    /// Nombre de usuario
+    /// Nombre completo de la persona
     /// </summary>
-    public string UserName { get; set; }
+    public string PersonName { get; set; }
 
     /// <summary>
     /// Email del usuario
@@ -57,28 +62,13 @@ public class ClientItem
     public string Phone { get; set; }
 
     /// <summary>
-    /// Código de idioma
-    /// </summary>
-    public string LanguageCode { get; set; }
-
-    /// <summary>
     /// Indica si el usuario está bloqueado
     /// </summary>
     public bool IsBlocked { get; set; }
 
     /// <summary>
-    /// Indica si tiene registro completo
-    /// </summary>
-    public bool HasCompleteRegistration { get; set; }
-
-    /// <summary>
     /// Fecha de registro
     /// </summary>
     public DateTime DateTimeRegister { get; set; }
-
-    /// <summary>
-    /// Fecha del primer login
-    /// </summary>
-    public DateTime? FirstLoginDate { get; set; }
 }
 

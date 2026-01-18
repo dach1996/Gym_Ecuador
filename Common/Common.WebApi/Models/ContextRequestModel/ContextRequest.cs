@@ -70,10 +70,7 @@ public class ContextRequest : CommonContextRequest
 public class CustomClaimsApi : CommonCustomClaims
 {
 
-    /// <summary>
-    /// Id de usuario 
-    /// </summary>
-    public int? UserId { get; set; }
+   
 
     /// <summary>
     /// Id de usuario 

@@ -1,29 +1,18 @@
-using System.Linq.Expressions;
 using Common.Cache.Interface;
 using Common.Clock;
 using Common.Messages;
-using Common.Queue.Model.Enum;
-using Common.Queue.Model.Template;
 using Common.Security.Interface;
 using Common.Security.Model.Enum;
 using Common.Templates.Interface;
-using Common.UserDocumentation;
 using Common.Utils.ConstansCodes;
 using Common.Utils.CustomExceptions;
 using Common.Utils.Extensions;
 using Common.WebCommon.Models;
 using Common.WebCommon.Models.Enum;
-using Common.WebCommon.Models.Queues;
 using LogicCommon.Model.CacheModel;
 using LogicCommon.Model.Request.File;
 using LogicCommon.Model.Request.HelperValidation;
-using LogicCommon.Model.Request.NotificationPush;
-using LogicCommon.Model.Request.Queue;
-using LogicCommon.Model.Response.Person;
-using LogicCommon.Model.Response.Queue;
 using PasswordGenerator;
-using PersistenceDb.Models.Authentication;
-using PersistenceDb.Models.Core;
 using PersistenceDb.Repository.Interfaces.UnitOfWork;
 
 namespace LogicCommon.BusinessLogic;
@@ -76,9 +65,6 @@ public abstract class BusinessLogicCommonBase
         return clockInstance;
     }
 
-
-
-
     /// <summary>
     /// Ejecuta el proceso
     /// </summary>
@@ -97,148 +83,6 @@ public abstract class BusinessLogicCommonBase
         //Ejecuta el proceso
         var result = await process().ConfigureAwait(false);
         return result;
-    }
-
-
-    /// <summary>
-    /// Envía de Queue
-    /// </summary>
-    /// <param name="queueTemplate"></param>
-    /// <param name="delaySeconds"></param>
-    /// <returns></returns>
-    protected async Task<SendMessageQueueResponse> SendQueueMessageAsync(
-        IQueueTemplate queueTemplate,
-        int delaySeconds = 0)
-        => await Mediator.Send(new SendMessageQueueRequest(queueTemplate, CommonContextRequest, delaySeconds)).ConfigureAwait(false);
-
-    /// <summary>
-    /// Envía de Queue y guarda el Registro
-    /// </summary>
-    /// <param name="queueTemplate"></param>
-    /// <param name="delaySeconds"></param>
-    /// <param name="dateTime"></param>
-    /// <returns></returns>
-    protected async Task<QueueMessage> SendAndSaveQueueMessageAsync(
-        IQueueTemplate queueTemplate,
-        int delaySeconds = 0,
-        DateTime? dateTime = null
-        )
-    {
-        var sendMessageResponse = await SendQueueMessageAsync(queueTemplate, delaySeconds).ConfigureAwait(false);
-        return await UnitOfWork.QueueMessageRepository.AddAsync(new()
-        {
-            DateTimeRegister = dateTime ?? Clock.Now(),
-            InternlaIdentifier = sendMessageResponse.InternalIdentifier,
-            Type = sendMessageResponse.TypeCode,
-            AdditionalInformation = new SendMessageQueueAzureResponse(sendMessageResponse.MessageId, sendMessageResponse.PopReceipt).ToJson()
-        }).ConfigureAwait(false);
-    }
-
-    /// <summary>
-    /// Elimina un mensaje del Queue
-    /// </summary>
-    /// <param name="queueTemplate"></param>
-    /// <param name="delaySeconds"></param>
-    /// <returns></returns>
-    protected async Task<DeleteMessageQueueResponse> DeleteQueueMessageAsync(Expression<Func<QueueMessage, bool>> where)
-    {
-        var deleteMessageQueueItems = (await UnitOfWork.QueueMessageRepository.GetGenericAsync(
-            select => new
-            {
-                select.AdditionalInformation,
-                select.Type
-            },
-            where
-        ).ConfigureAwait(false))
-        ?.Select(select => new
-        {
-            queueMessage = select,
-            sendMessageQueueAzureResponse = select.AdditionalInformation.ToObject<SendMessageQueueAzureResponse>()
-        })
-        .Select(select => new DeleteMessageQueueItem((QueueTemplateName)select.queueMessage.Type, select.sendMessageQueueAzureResponse.MessageId, select.sendMessageQueueAzureResponse.PopReceipt));
-        return deleteMessageQueueItems.IsNullOrEmpty()
-            ? DeleteMessageQueueResponse.FailResponse(0)
-            : await Mediator.Send(new DeleteMessageQueueRequest(deleteMessageQueueItems, CommonContextRequest)).ConfigureAwait(false);
-    }
-
-    /// <summary>
-    /// Elimina un mensaje
-    /// </summary>
-    /// <param name="queue"></param>
-    /// <returns></returns>
-    protected async Task<DeleteMessageQueueResponse> DeleteQueueMessageAsync(QueueMessage queue)
-    {
-        var sendMessageQueueAzureResponse = queue.AdditionalInformation.ToObject<SendMessageQueueAzureResponse>();
-        return await Mediator.Send(new DeleteMessageQueueRequest((QueueTemplateName)queue.Type, sendMessageQueueAzureResponse.MessageId, sendMessageQueueAzureResponse.PopReceipt, CommonContextRequest)).ConfigureAwait(false);
-    }
-
-    /// <summary>
-    /// Elimina un mensaje del Queue
-    /// </summary>
-    /// <param name="queueTemplate"></param>
-    /// <param name="delaySeconds"></param>
-    /// <returns></returns>
-    protected async Task DeleteQueueMessageWithoutResponseAsync(Expression<Func<QueueMessage, bool>> where)
-    {
-        var deleteMessageQueueItems = (await UnitOfWork.QueueMessageRepository.GetGenericAsync(
-            select => new
-            {
-                select.AdditionalInformation,
-                select.Type
-            },
-            where
-        ).ConfigureAwait(false))
-        ?.Select(select => new
-        {
-            queueMessage = select,
-            sendMessageQueueAzureResponse = select.AdditionalInformation.ToObject<SendMessageQueueAzureResponse>()
-        })
-        .Select(select => new DeleteMessageQueueItem((QueueTemplateName)select.queueMessage.Type, select.sendMessageQueueAzureResponse.MessageId, select.sendMessageQueueAzureResponse.PopReceipt));
-        if (!deleteMessageQueueItems.IsNullOrEmpty())
-            _ = Mediator.Send(new DeleteMessageQueueRequest(deleteMessageQueueItems, CommonContextRequest));
-    }
-
-    /// <summary>
-    /// Obtiene el Guid de los usuarios
-    /// </summary>
-    /// <param name="userIds"></param>
-    /// <returns></returns>
-    protected async Task<Dictionary<int, UserCacheInformation>> GetUserInformationByUserIdAsync(IEnumerable<int> userIds)
-    {
-        userIds = [.. userIds.Distinct()];
-        //Obtiene los usuarios de la cache
-        var userCacheInformationTasks =
-            userIds.ToDictionary(key => key, value => AdministratorCache.TryGetAsync<UserCacheInformation>(
-            CacheCodes.UserInformationByUserId(value)));
-        //Espera a que se obtengan los usuarios de la cache
-        await Task.WhenAll(userCacheInformationTasks.Values).ConfigureAwait(false);
-        //Obtiene los usuarios de la cache
-        var userCacheInformation = userCacheInformationTasks.ToDictionary(key => key.Key, value => value.Value.Result);
-        //Obtiene los usuarios que no se encontraron en la cache
-        var userCacheNotFind = userCacheInformation.Where(user => user.Value is null);
-        if (!userCacheNotFind.IsNullOrEmpty())
-        {
-            var userIdsNotFind = userCacheNotFind.Select(user => user.Key);
-            var newUsers = await UnitOfWork.UserRepository.GetGenericAsync(
-                select => new UserCacheInformation
-                {
-                    Guid = select.Guid,
-                    Id = select.Id,
-                },
-                where: user => userIdsNotFind.Contains(user.Id)
-            ).ConfigureAwait(false);
-
-            foreach (var user in newUsers)
-            {
-                //Agrega los usuarios a la cache
-                userCacheInformation[user.Id] = user;
-                //Agrega los usuarios a la cache
-                _ = AdministratorCache.SetAsync(
-                    CacheCodes.UserInformationByUserId(user.Id),
-                    user).ConfigureAwait(false);
-            }
-        }
-        return userCacheInformation;
     }
 
     /// <summary>
@@ -353,6 +197,18 @@ public abstract class BusinessLogicCommonBase
             }
         }
     }
+
+    /// <summary>
+    /// Obtiene los roles
+    /// </summary>
+    /// <returns></returns>
+    protected async Task<List<PersistenceDb.Models.Authentication.Role>> GetRolesAsync()
+    {
+        return await AdministratorCache.TryGetOrSetAsync(CacheCodes.ROLES, async () =>
+            await UnitOfWork.RoleRepository.GetByAsync().ConfigureAwait(false)
+        ).ConfigureAwait(false);
+    }
+
 
     /// <summary>
     /// Obtiene las plataformas

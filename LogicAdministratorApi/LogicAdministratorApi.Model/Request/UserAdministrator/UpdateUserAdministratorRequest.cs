@@ -17,19 +17,6 @@ public class UpdateUserAdministratorRequest : IApiBaseRequest<UpdateUserAdminist
     public Guid UserGuid { get; set; }
 
     /// <summary>
-    /// Nombre de usuario
-    /// </summary>
-    [StringLength(100)]
-    public string UserName { get; set; }
-
-    /// <summary>
-    /// Email del usuario
-    /// </summary>
-    [StringLength(100)]
-    [EmailAddress]
-    public string Email { get; set; }
-
-    /// <summary>
     /// Teléfono del usuario
     /// </summary>
     [StringLength(20)]
@@ -42,12 +29,6 @@ public class UpdateUserAdministratorRequest : IApiBaseRequest<UpdateUserAdminist
     public string Password { get; set; }
 
     /// <summary>
-    /// Código de idioma
-    /// </summary>
-    [StringLength(50)]
-    public string LanguageCode { get; set; }
-
-    /// <summary>
     /// Indica si el usuario está bloqueado
     /// </summary>
     public bool? IsBlocked { get; set; }
@@ -55,12 +36,12 @@ public class UpdateUserAdministratorRequest : IApiBaseRequest<UpdateUserAdminist
     /// <summary>
     /// Lista de GUIDs de roles a asignar al usuario (opcional, si se proporciona reemplaza los roles existentes)
     /// </summary>
-    public List<Guid> RoleGuids { get; set; }
+    public Guid RoleGuid { get; set; }
 
     /// <summary>
     /// Guid del gimnasio para los roles (opcional, solo necesario si se asignan roles con alcance Gym)
     /// </summary>
-    public Guid? GymGuid { get; set; }
+    public Guid? Identifier { get; set; }
 
     /// <summary>
     /// Context

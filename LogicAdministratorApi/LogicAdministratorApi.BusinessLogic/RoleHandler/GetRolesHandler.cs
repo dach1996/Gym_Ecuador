@@ -21,6 +21,8 @@ public class GetRolesHandler(
     public override async Task<GetRolesResponse> Handle(GetRolesRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationAdministratorName.GetRoles, request, async () =>
         {
+            var platformId = (await GetPlatformsAsync().ConfigureAwait(false))
+                .Find(where => where.Code == RolePlatformType.Web.GetEnumMember())?.Id;
             var roles = await UnitOfWork.RoleRepository.GetGenericAsync(
                 select => new RoleItem
                 {
@@ -29,7 +31,8 @@ public class GetRolesHandler(
                     Description = select.Name,
                     ScopeCode = select.Scope.ToString(),
                     PlatformName = select.Platform.Name
-                }
+                },
+                where => where.PlatformId == platformId
             ).ConfigureAwait(false);
 
             return new GetRolesResponse

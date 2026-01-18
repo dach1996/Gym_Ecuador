@@ -21,8 +21,10 @@ public abstract class BusinessLogicAdministratorBase(
     protected AdminContextRequest ContextRequest;
     protected Guid CurrentUserGuid => ContextRequest?.CustomClaims?.UserGuid ?? throw NullException.ThrowNullException(nameof(ContextRequest.CustomClaims.UserGuid));
     protected UserLanguage CurrentUserLanguage => ContextRequest?.Headers?.UserLanguage ?? throw NullException.ThrowNullException(nameof(ContextRequest.Headers.UserLanguage));
+    protected int CurrentUserId => ContextRequest?.CustomClaims.UserId ?? throw NullException.ThrowNullException(nameof(ContextRequest.CustomClaims.UserId));
+    protected List<GymRoleContextClaim> CurrentUserRoles => ContextRequest?.CustomClaims.InformationRoles ?? throw NullException.ThrowNullException(nameof(ContextRequest.CustomClaims.InformationRoles));
 
-    /// <summary>
+    /// <summary>   
     /// Ejecuta el proceso dentro de la configuración inicial
     /// </summary>
     /// <param name="operationName">Nombre de Operación</param>
@@ -150,8 +152,10 @@ public abstract class BusinessLogicAdministratorBase(
             {
                 GymId = select.Gym.Id,
                 GymGuid = select.Gym.Guid,
+                GymName = select.Gym.Name,
                 GymBranchId = select.Id,
                 GymBranchGuid = select.Guid,
+                GymBranchName = select.Name,
             },
             where => where.Gym.IsActive == GymStatus.Active
         ).ConfigureAwait(false)).ConfigureAwait(false);

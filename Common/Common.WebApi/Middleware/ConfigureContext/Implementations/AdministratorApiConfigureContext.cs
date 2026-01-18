@@ -100,6 +100,7 @@ public class AdministratorApiConfigureContext(ILogger<AdministratorApiConfigureC
                 Sub = GetClaimValueOrNullFromName(nameof(CommonCustomClaims.Sub), httpContext),
                 UserName = encryptedFieldClaimDecrypt?.UserName,
                 UserGuid = encryptedFieldClaimDecrypt?.UserGuid,
+                UserId = encryptedFieldClaimDecrypt?.UserId,
                 FirstName = "-",
                 Surname = "-",
                 InformationRoles = encryptedFieldClaimDecrypt?.RoleScopeClaims?.Select(select => new GymRoleContextClaim

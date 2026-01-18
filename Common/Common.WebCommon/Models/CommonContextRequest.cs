@@ -108,8 +108,11 @@ public class HeaderCommon
 /// </summary>
 public class CommonCustomClaims
 {
+    /// <summary>
+    /// Id de usuario 
+    /// </summary>
+    public int? UserId { get; set; }
 
- 
     /// <summary>
     /// Primer Nombre
     /// </summary>

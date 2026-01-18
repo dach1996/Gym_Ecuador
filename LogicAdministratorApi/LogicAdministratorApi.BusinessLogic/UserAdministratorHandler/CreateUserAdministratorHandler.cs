@@ -34,7 +34,7 @@ public class CreateUserAdministratorHandler(
                     throw new CustomException((int)MessagesCodesError.SystemError, "Ya existe un usuario con este email");
 
                 // Validar que el username no exista
-                if (!string.IsNullOrEmpty(request.UserName) && await UnitOfWork.UserRepository
+                if (await UnitOfWork.UserRepository
                     .ExistAnyAsync(where => where.UserName.ToLower() == request.UserName.ToLower())
                     .ConfigureAwait(false))
                     throw new CustomException((int)MessagesCodesError.SystemError, "Ya existe un usuario con este nombre de usuario");
@@ -42,70 +42,27 @@ public class CreateUserAdministratorHandler(
                 // Generar salt y contraseña
                 var salt = Argon2.GenerateRandomSecretBytes();
                 var passwordEncrypted = GetPasswordEncrypted(request.Password, salt);
-                
-                // Obtener el gimnasio si se proporciona
-                int? gymId = null;
-                if (request.GymGuid != Guid.Empty)
+
+                var roles = (await GetRolesAsync().ConfigureAwait(false)).Find(where => where.Guid == request.RoleGuid)
+                    ?? throw new CustomException((int)MessagesCodesError.SystemError, "Rol no encontrado");
+                // Si el rol requiere un gimnasio o sucursal, se necesita el identifier
+                if (new[] { RoleScope.Gym, RoleScope.GymBranch }.Contains(roles.Scope) && !request.Identifier.HasValue)
+                    throw new CustomException((int)MessagesCodesError.SystemError, "El rol requiere un identificador de asignación");
+                var identifier = (int?)null;
+                // Validar que el gimnasio existe
+                if (RoleScope.Gym == roles.Scope)
                 {
-                    gymId = await UnitOfWork.GymRepository.GetFirstOrDefaultGenericAsync(
+                    identifier = await UnitOfWork.GymRepository.GetFirstOrDefaultGenericAsync(
                         select => (int?)select.Id,
-                        where => where.Guid == request.GymGuid).ConfigureAwait(false)
-                        ?? throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el gimnasio");
+                        where => where.Guid == request.Identifier.Value).ConfigureAwait(false);
                 }
-
-                // Validar y obtener los roles por GUID
-                var userRoleScopes = new List<UserRoleScope>();
-                if (request.RoleGuids != null && request.RoleGuids.Any())
+                // Validar que la sucursal de gimnasio existe
+                if (RoleScope.GymBranch == roles.Scope)
                 {
-                    var roles = await UnitOfWork.RoleRepository.GetGenericAsync(
-                        select => new { select.Id, select.Guid, select.Scope },
-                        where => request.RoleGuids.Contains(where.Guid)
-                    ).ConfigureAwait(false);
-
-                    if (roles.Count != request.RoleGuids.Count)
-                        throw new CustomException((int)MessagesCodesError.SystemError, "Uno o más roles no fueron encontrados");
-
-                    foreach (var role in roles)
-                    {
-                        int? scopeIdentifier = null;
-                        
-                        // Si el rol requiere alcance Gym o GymBranch, se necesita el gymId
-                        if (role.Scope == RoleScope.Gym || role.Scope == RoleScope.GymBranch)
-                        {
-                            if (!gymId.HasValue)
-                                throw new CustomException((int)MessagesCodesError.SystemError, $"El rol {role.Guid} requiere un gimnasio");
-                            scopeIdentifier = gymId.Value;
-                        }
-
-                        userRoleScopes.Add(new UserRoleScope
-                        {
-                            RoleId = role.Id,
-                            ScopeIdentifier = scopeIdentifier
-                        });
-                    }
-                }
-                else
-                {
-                    // Si no se proporcionan roles, usar el comportamiento por defecto
-                    var roleType = RoleScope.Gym;
-                    var platformType = RolePlatformType.Web.GetEnumMember();
-                    var roleIdNullable = await UnitOfWork.RoleRepository.GetFirstOrDefaultGenericAsync(
+                    identifier = await UnitOfWork.GymBranchRepository.GetFirstOrDefaultGenericAsync(
                         select => (int?)select.Id,
-                        where => where.Scope == roleType && where.Platform.Code == platformType).ConfigureAwait(false);
-                    
-                    if (!roleIdNullable.HasValue)
-                        throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el rol de administrador");
-                    
-                    if (!gymId.HasValue)
-                        throw new CustomException((int)MessagesCodesError.SystemError, "No se encontró el gimnasio");
-
-                    userRoleScopes.Add(new UserRoleScope
-                    {
-                        RoleId = roleIdNullable.Value,
-                        ScopeIdentifier = gymId
-                    });
+                        where => where.Guid == request.Identifier.Value).ConfigureAwait(false);
                 }
-
                 // Crear el nuevo usuario
                 var newUser = new User
                 {
@@ -130,7 +87,14 @@ public class CreateUserAdministratorHandler(
                             PasswordTemporary = passwordEncrypted
                         }
                     ],
-                    UserRoleScopes = userRoleScopes
+                    UserRoleScopes = [.. new List<UserRoleScope>
+                    {
+                        new ()
+                        {
+                            RoleId = roles.Id,
+                            ScopeIdentifier = identifier
+                        }
+                    }]
                 };
 
                 // Guardar en la base de datos

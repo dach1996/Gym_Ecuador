@@ -48,6 +48,12 @@ public static class CacheCodes
     public const string GYM_INFORMATION = nameof(GYM_INFORMATION);
 
     /// <summary>
+    /// Roles
+    /// </summary>
+    /// <returns></returns>
+    public const string ROLES = nameof(ROLES);
+
+    /// <summary>
     /// Persona por Número de Cédula
     /// </summary>
     /// <param name="documentNumber"></param>

@@ -48,6 +48,16 @@ public class UserClientController(
     public async Task<IActionResult> CreateUserClient([FromBody] CreateUserClientRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
+    /// <summary>
+    /// Obtener Usuario Cliente por GUID
+    /// </summary>
+    /// <param name="request">Modelo para obtener usuario cliente por GUID</param>
+    /// <returns></returns>
+    [HttpGet("GetByGuid")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GetUserClientByGuidResponse>))]
+    public async Task<IActionResult> GetUserClientByGuid([FromQuery] GetUserClientByGuidRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
     #endregion
 }
 

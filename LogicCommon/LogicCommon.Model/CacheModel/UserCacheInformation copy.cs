@@ -15,15 +15,27 @@ public class GymCacheInformation
     /// </summary>
     /// <value></value>
     public Guid GymGuid { get; set; }
+
+    /// <summary>
+    /// Nombre del gimnasio
+    /// </summary>
+    /// <value></value>
+    public string GymName { get; set; }
     /// <summary>
     /// Id de la sucursal de gimnasio
     /// </summary>
     /// <value></value>
     public int GymBranchId { get; set; }
-    
+
     /// <summary>
     /// Guid de la sucursal de gimnasio
     /// </summary>
     /// <value></value>
     public Guid GymBranchGuid { get; set; }
+
+    /// <summary>
+    /// Nombre de la sucursal de gimnasio
+    /// </summary>
+    /// <value></value>
+    public string GymBranchName { get; set; }
 }

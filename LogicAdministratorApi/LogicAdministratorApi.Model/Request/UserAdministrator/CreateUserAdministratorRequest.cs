@@ -12,6 +12,7 @@ public class CreateUserAdministratorRequest : IApiBaseRequest<CreateUserAdminist
     /// Nombre de usuario
     /// </summary>
     [StringLength(100)]
+    [Required]
     public string UserName { get; set; }
 
     /// <summary>
@@ -51,12 +52,12 @@ public class CreateUserAdministratorRequest : IApiBaseRequest<CreateUserAdminist
     /// <summary>
     /// Guid del gimnasio
     /// </summary>
-    public Guid GymGuid { get; set; }
+    public Guid? Identifier { get; set; }
 
     /// <summary>
-    /// Lista de GUIDs de roles a asignar al usuario
+    /// Guid del rol a asignar al usuario
     /// </summary>
-    public List<Guid> RoleGuids { get; set; } = new();
+    public Guid RoleGuid { get; set; }
 
     /// <summary>
     /// Context

@@ -240,6 +240,13 @@
             <param name="request">Modelo para obtener sucursales de gimnasio por GUID del gimnasio</param>
             <returns></returns>
         </member>
+        <member name="M:AdministratorApi.Controllers.GymBranchController.GetGymBranchesByFunctionality(LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesByFunctionalityRequest)">
+            <summary>
+            Obtener Sucursales de Gimnasio por Funcionalidad
+            </summary>
+            <param name="request">Modelo para obtener sucursales de gimnasio por funcionalidad</param>
+            <returns></returns>
+        </member>
         <member name="T:AdministratorApi.Controllers.GymBranchScheduleController">
             <summary>
             Controlador de Horarios de Sucursal de Gimnasio
@@ -583,6 +590,13 @@
             Crear Usuario Cliente
             </summary>
             <param name="request">Modelo para crear usuario cliente</param>
+            <returns></returns>
+        </member>
+        <member name="M:AdministratorApi.Controllers.UserClientController.GetUserClientByGuid(LogicAdministratorApi.Model.Request.UserClient.GetUserClientByGuidRequest)">
+            <summary>
+            Obtener Usuario Cliente por GUID
+            </summary>
+            <param name="request">Modelo para obtener usuario cliente por GUID</param>
             <returns></returns>
         </member>
         <member name="T:Program">

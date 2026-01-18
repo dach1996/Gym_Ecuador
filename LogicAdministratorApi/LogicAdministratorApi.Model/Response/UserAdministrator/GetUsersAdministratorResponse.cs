@@ -8,7 +8,7 @@ namespace LogicAdministratorApi.Model.Response.UserAdministrator;
 /// </remarks>
 /// <param name="totalRegister"></param>
 /// <param name="registers"></param>
-public class GetUsersAdministratorResponse(int totalRegister, IEnumerable<UserItem> registers) : IPaginatorApiResponse<UserItem>
+public class GetUsersAdministratorResponse(int totalRegister, IEnumerable<AdministratorUserItem> registers) : IPaginatorApiResponse<AdministratorUserItem>
 {
     /// <summary>
     /// Mensaje al Usuario
@@ -28,14 +28,25 @@ public class GetUsersAdministratorResponse(int totalRegister, IEnumerable<UserIt
     /// <summary>
     /// Registros
     /// </summary>
-    public IEnumerable<UserItem> Registers { get; set; } = registers;
+    public IEnumerable<AdministratorUserItem> Registers { get; set; } = registers;
 }
 
 /// <summary>
 /// Item de usuario administrador
 /// </summary>
-public class UserItem
+public class AdministratorUserItem
 {
+
+    /// <summary>
+    /// Id del usuario
+    /// </summary>
+    public int Id { get; set; }
+    
+    /// <summary>
+    /// Nombre completo de la persona
+    /// </summary>
+    public string PersonName { get; set; }
+
     /// <summary>
     /// Guid del usuario
     /// </summary>
@@ -50,6 +61,11 @@ public class UserItem
     /// Email del usuario
     /// </summary>
     public string Email { get; set; }
+    
+    /// <summary>
+    /// Indica si el usuario está bloqueado
+    /// </summary>
+    public bool IsBlocked { get; set; }
 
     /// <summary>
     /// Teléfono del usuario
@@ -57,28 +73,27 @@ public class UserItem
     public string Phone { get; set; }
 
     /// <summary>
-    /// Código de idioma
-    /// </summary>
-    public string LanguageCode { get; set; }
-
-    /// <summary>
-    /// Indica si el usuario está bloqueado
-    /// </summary>
-    public bool IsBlocked { get; set; }
-
-    /// <summary>
-    /// Indica si tiene registro completo
-    /// </summary>
-    public bool HasCompleteRegistration { get; set; }
-
-    /// <summary>
     /// Fecha de registro
     /// </summary>
     public DateTime DateTimeRegister { get; set; }
 
     /// <summary>
-    /// Fecha del primer login
+    /// Roles de usuario
     /// </summary>
-    public DateTime? FirstLoginDate { get; set; }
+    public List<AdministratorUserRoleScopeItem> UserRoleScopes { get; set; }
 }
+/// <summary>
+/// Item de rol de usuario
+/// </summary>
+public class AdministratorUserRoleScopeItem
+{
+    /// <summary>
+    /// Guid del rol
+    /// </summary>
+    public Guid Guid { get; set; }
 
+    /// <summary>
+    /// Nombre del rol
+    /// </summary>
+    public string Name { get; set; }
+}

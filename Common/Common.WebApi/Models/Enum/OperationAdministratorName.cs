@@ -102,6 +102,13 @@ public enum OperationAdministratorName : short
     [FunctionalityMember(FunctionalitiesCodes.GET_GYM_BRANCH_BY_GUID)]
     GetGymBranchByGuid = 80,
 
+    /// <summary>
+    /// Obtener Sucursales de Gimnasio por Funcionalidad
+    /// </summary>
+    [EnumMember(Value = "Obtener Sucursales de Gimnasio por Funcionalidad")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_GYM_BRANCHES_BY_FUNCTIONALITY)]
+    GetGymBranchesByFunctionality = 116,
+
     // ========== OPERACIONES DE USUARIOS ADMINISTRADORES ==========
 
     /// <summary>
@@ -187,6 +194,13 @@ public enum OperationAdministratorName : short
     [EnumMember(Value = "Crear Usuario Cliente")]
     [FunctionalityMember(FunctionalitiesCodes.CREATE_USER_CLIENT, registerAuditLog: true)]
     CreateUserClient = 92,
+
+    /// <summary>
+    /// Obtener Detalle de Usuario Cliente por GUID
+    /// </summary>
+    [EnumMember(Value = "Obtener Detalle de Usuario Cliente por GUID")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_USER_CLIENT_BY_GUID)]
+    GetUserClientByGuid = 117,
 
     // ========== OPERACIONES DE PLANES DE SUCURSAL ==========
 
