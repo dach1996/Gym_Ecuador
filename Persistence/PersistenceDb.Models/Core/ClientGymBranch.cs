@@ -31,9 +31,9 @@ public class ClientGymBranch
     /// Id del usuario
     /// </summary>
     [Required]
-    [Column("USR_ID")]
-    [ForeignKey(nameof(User))]
-    public int UserId { get; set; }
+    [Column("PNA_ID")]
+    [ForeignKey(nameof(Person))]
+    public int PersonId { get; set; }
 
     /// <summary>
     /// Id de la sucursal de gimnasio
@@ -60,7 +60,7 @@ public class ClientGymBranch
     /// <summary>
     /// Navegación al usuario
     /// </summary>
-    public User User { get; set; }
+    public Person Person { get; set; }
 
     /// <summary>
     /// Navegación a la sucursal de gimnasio

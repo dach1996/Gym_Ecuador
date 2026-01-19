@@ -1369,18 +1369,6 @@
             Context
             </summary>
         </member>
-        <member name="M:LogicAdministratorApi.Model.Request.Person.GetPersonByDocumentNumberRequest.#ctor(Common.WebCommon.Models.CommonContextRequest,System.String)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="contextRequest"></param>
-            <param name="documentNumber"></param>
-        </member>
-        <member name="M:LogicAdministratorApi.Model.Request.Person.GetPersonByDocumentNumberRequest.#ctor">
-            <summary>
-            Default Constructor
-            </summary>
-        </member>
         <member name="T:LogicAdministratorApi.Model.Request.Role.CreateRoleRequest">
             <summary>
             Solicitud para crear un nuevo rol
@@ -1742,9 +1730,9 @@
             Solicitud para crear un usuario cliente
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.IdentificationNumber">
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.PersonClient">
             <summary>
-            Número de identificación del usuario
+            Persona cliente
             </summary>
         </member>
         <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.Email">
@@ -1757,11 +1745,6 @@
             Teléfono del usuario
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.LanguageCode">
-            <summary>
-            Código de idioma
-            </summary>
-        </member>
         <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.BranchPlanGuid">
             <summary>
             GUID del plan de sucursal a asignar al cliente (opcional)
@@ -1770,6 +1753,36 @@
         <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreateUserClientRequest.ContextRequest">
             <summary>
             Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.UserClient.CreatePersonClientRequest">
+            <summary>
+            Solicitud para crear una persona cliente
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreatePersonClientRequest.Guid">
+            <summary>
+            Guid de la persona
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreatePersonClientRequest.Name">
+            <summary>
+            Nombre de la persona
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreatePersonClientRequest.LastName">
+            <summary>
+            Apellido de la persona
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreatePersonClientRequest.BirthDate">
+            <summary>
+            Fecha de nacimiento de la persona
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.UserClient.CreatePersonClientRequest.GenderItemCatalogCode">
+            <summary>
+            Código de género de la persona
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Request.UserClient.GetUserClientByGuidRequest">
@@ -4485,7 +4498,7 @@
             </remarks>
             <param name="client"></param>
         </member>
-        <member name="M:LogicAdministratorApi.Model.Response.UserClient.GetUserClientByGuidResponse.#ctor(LogicAdministratorApi.Model.Response.UserClient.UserClientDetail)">
+        <member name="M:LogicAdministratorApi.Model.Response.UserClient.GetUserClientByGuidResponse.#ctor(LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail)">
             <summary>
             Respuesta de obtener detalle de usuario cliente por GUID
             </summary>
@@ -4509,122 +4522,122 @@
             Detalle del cliente
             </summary>
         </member>
-        <member name="T:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail">
+        <member name="T:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail">
             <summary>
             Detalle completo de usuario cliente
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.Guid">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.Guid">
             <summary>
             Guid del cliente (ClientGymBranch)
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.RegistrationDate">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.RegistrationDate">
             <summary>
             Fecha de registro del cliente en la sucursal
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.Status">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.Status">
             <summary>
             Estado del cliente en la sucursal
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.UserGuid">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.UserGuid">
             <summary>
             Guid del usuario
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.UserName">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.UserName">
             <summary>
             Nombre de usuario
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.Email">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.Email">
             <summary>
             Email del usuario
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.Phone">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.Phone">
             <summary>
             Teléfono del usuario
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.LanguageCode">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.LanguageCode">
             <summary>
             Código de idioma
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.IsBlocked">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.IsBlocked">
             <summary>
             Indica si el usuario está bloqueado
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.HasCompleteRegistration">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.HasCompleteRegistration">
             <summary>
             Indica si tiene registro completo
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.DateTimeRegister">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.DateTimeRegister">
             <summary>
             Fecha de registro del usuario
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.FirstLoginDate">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.FirstLoginDate">
             <summary>
             Fecha del primer login
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.ImageUrl">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.ImageUrl">
             <summary>
             URL de la imagen del usuario
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.PersonGuid">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.PersonGuid">
             <summary>
             Guid de la persona
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.PersonName">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.PersonName">
             <summary>
             Nombre de la persona
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.PersonLastName">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.PersonLastName">
             <summary>
             Apellido de la persona
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.PersonDocumentNumber">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.PersonDocumentNumber">
             <summary>
             Número de documento de la persona
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.PersonBirthDate">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.PersonBirthDate">
             <summary>
             Fecha de nacimiento de la persona
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.GymBranchGuid">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.GymBranchGuid">
             <summary>
             Guid de la sucursal de gimnasio
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.GymBranchName">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.GymBranchName">
             <summary>
             Nombre de la sucursal de gimnasio
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.GymGuid">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.GymGuid">
             <summary>
             Guid del gimnasio
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.GymName">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.GymName">
             <summary>
             Nombre del gimnasio
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.UserClientDetail.Memberships">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.PersonClientDetail.Memberships">
             <summary>
             Lista de membresías del cliente
             </summary>
@@ -4739,14 +4752,45 @@
             Teléfono del usuario
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientItem.IsBlocked">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientItem.MembershipsItems">
             <summary>
-            Indica si el usuario está bloqueado
+            Lista de membresías del cliente
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.UserClient.ClientMembershipItem">
+            <summary>
+            Item de membresía del cliente
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientItem.DateTimeRegister">
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientMembershipItem.GymName">
             <summary>
-            Fecha de registro
+            Nombre del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientMembershipItem.GymBranchName">
+            <summary>
+            Nombre de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientMembershipItem.Status">
+            <summary>
+            Estado de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientMembershipItem.RegistrationDate">
+            <summary>
+            Fecha de registro de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientMembershipItem.StartDate">
+            <summary>
+            Fecha de registro de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientMembershipItem.EndDate">
+            <summary>
+            Fecha de fin de la membresía
             </summary>
         </member>
         <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type)">

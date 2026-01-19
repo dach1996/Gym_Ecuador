@@ -67,8 +67,8 @@ public class CreateUserAdministratorHandler(
                 var newUser = new User
                 {
                     Guid = Guid.NewGuid(),
-                    UserName = request.UserName,
-                    Email = request.Email,
+                    UserName = request.UserName.Trim().ToLower(),
+                    Email = request.Email.Trim().ToLower(),
                     Phone = request.Phone,
                     PersonId = personId,
                     LanguageCode = request.LanguageCode ?? "es",

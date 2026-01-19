@@ -4,33 +4,6 @@
         <name>LogicApi.Model</name>
     </assembly>
     <members>
-        <member name="T:LogicApi.Model.Common.LatitudeLongitudeModel">
-            <summary>
-            Modelo de datos para la latitud y longitud
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Common.LatitudeLongitudeModel.Latitude">
-            <summary>
-            Latitud
-            </summary>
-        </member>
-        <member name="M:LogicApi.Model.Common.LatitudeLongitudeModel.#ctor(System.Decimal,System.Decimal)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="latitude"></param>
-            <param name="longitude"></param>
-        </member>
-        <member name="M:LogicApi.Model.Common.LatitudeLongitudeModel.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Common.LatitudeLongitudeModel.Longitude">
-            <summary>
-            Longitud
-            </summary>
-        </member>
         <member name="T:LogicApi.Model.Common.BiometricModel">
             <summary>
             Modelo de datos para la biometría
@@ -444,6 +417,33 @@
             Nombre de implementación de Coperativa
             </summary>
             <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Common.LatitudeLongitudeModel">
+            <summary>
+            Modelo de datos para la latitud y longitud
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.LatitudeLongitudeModel.Latitude">
+            <summary>
+            Latitud
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Common.LatitudeLongitudeModel.#ctor(System.Double,System.Double)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="latitude"></param>
+            <param name="longitude"></param>
+        </member>
+        <member name="M:LogicApi.Model.Common.LatitudeLongitudeModel.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Common.LatitudeLongitudeModel.Longitude">
+            <summary>
+            Longitud
+            </summary>
         </member>
         <member name="T:LogicApi.Model.Common.PlaceInformation">
             <summary>

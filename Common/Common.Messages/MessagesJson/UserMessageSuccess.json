@@ -76,6 +76,13 @@
         "Spanish": "Orden Generada Exitosamente.",
         "English": "Sucess Operation"
       }
+    },
+    {
+      "Code": 139,
+      "Message": {
+        "Spanish": "El cliente ya tiene una membresía en esta sucursal",
+        "English": "Sucess Operation"
+      }
     }
   ]
 }

@@ -25,23 +25,23 @@ public class GetUsersClientHandler(
         => await ExecuteHandlerAsync(OperationAdministratorName.GetUserClientsPaginated, request, async () =>
             {
                 var filter = request.Filter?.ToLower();
-                var whereClause = new List<Expression<Func<User, bool>>>
+                var whereClause = new List<Expression<Func<Person, bool>>>
                 {
                        {!request.Filter.IsNullOrEmpty(),
-                        where => where.Email.ToLower().Contains(filter)||
-                        where.UserName.ToLower().Contains(request.Filter)||
-                        where.Phone.ToLower().Contains(filter)||
-                        where.Email.ToLower().Contains(filter)||
-                        where.Phone.ToLower().Contains(filter)||
-                        where.Person.Name.ToLower().Contains(filter)||
-                        where.Person.LastName.ToLower().Contains(filter)},
-                    { where =>where.ClientGymBranches.Any()},
+                        where => where.Users.Any(u => u.Email.ToLower().Contains(filter)||
+                        u.UserName.ToLower().Contains(request.Filter)||
+                        u.Person.DocumentNumber.ToLower().Contains(filter)||
+                        u.Phone.ToLower().Contains(filter)||
+                        u.Email.ToLower().Contains(filter)||
+                        u.Phone.ToLower().Contains(filter)||
+                        u.Person.Name.ToLower().Contains(filter)||
+                        u.Person.LastName.ToLower().Contains(filter))},
+                    { where => where.ClientGymBranches.Any()},
                     {request.GymGuid.HasValue, where => where.ClientGymBranches.Any(cg => cg.GymBranch.Gym.Guid == request.GymGuid.Value)},
                     {request.GymBranchGuid.HasValue, where => where.ClientGymBranches.Any(cg => cg.GymBranch.Guid == request.GymBranchGuid.Value)},
                 };
-
                 // Obtener datos paginados
-                var paginatedResult = await UnitOfWork.UserRepository
+                var paginatedResult = await UnitOfWork.PersonRepository
                     .GetPaginatorGenericAsync(
                         itemsByPage: request.PageSize,
                         page: request.PageNumber,
@@ -49,11 +49,18 @@ public class GetUsersClientHandler(
                         {
                             Id = select.Id.ToString(),
                             Guid = select.Guid,
-                            PersonName = select.Person.RealNames,
-                            Email = select.Email,
-                            Phone = select.Phone,
-                            IsBlocked = select.IsBlocked,
-                            DateTimeRegister = select.DateTimeRegister
+                            PersonName = select.Name + " " + select.LastName,
+                            Email = select.Users.FirstOrDefault().Email,
+                            Phone = select.Users.FirstOrDefault().Phone,
+                            MembershipsItems = select.ClientGymBranches.Select(cg => new ClientMembershipItem
+                            {
+                                GymName = cg.GymBranch.Gym.Name,
+                                GymBranchName = cg.GymBranch.Name,
+                                Status = cg.Status,
+                                RegistrationDate = cg.RegistrationDate,
+                                StartDate = cg.ClientMemberships.FirstOrDefault().StartDate,
+                                EndDate = cg.ClientMemberships.FirstOrDefault().EndDate
+                            }).ToList()
                         },
                         where: whereClause,
                         orderBy: u => u.Id,

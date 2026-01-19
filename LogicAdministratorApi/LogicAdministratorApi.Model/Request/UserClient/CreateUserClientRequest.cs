@@ -10,11 +10,9 @@ namespace LogicAdministratorApi.Model.Request.UserClient;
 public class CreateUserClientRequest : IApiBaseRequest<CreateUserClientResponse>
 {
     /// <summary>
-    /// Número de identificación del usuario
+    /// Persona cliente
     /// </summary>
-    [Required]
-    [StringLength(50)]
-    public string IdentificationNumber { get; set; }
+    public CreatePersonClientRequest PersonClient { get; set; }
 
     /// <summary>
     /// Email del usuario
@@ -31,12 +29,6 @@ public class CreateUserClientRequest : IApiBaseRequest<CreateUserClientResponse>
     public string Phone { get; set; }
 
     /// <summary>
-    /// Código de idioma
-    /// </summary>
-    [StringLength(50)]
-    public string LanguageCode { get; set; }
-
-    /// <summary>
     /// GUID del plan de sucursal a asignar al cliente (opcional)
     /// </summary>
     [ValidateGuid]
@@ -49,3 +41,40 @@ public class CreateUserClientRequest : IApiBaseRequest<CreateUserClientResponse>
     public CommonContextRequest ContextRequest { get; set; }
 }
 
+/// <summary>
+/// Solicitud para crear una persona cliente
+/// </summary>
+public class CreatePersonClientRequest
+{
+    /// <summary>
+    /// Guid de la persona
+    /// </summary>
+    [ValidateGuid]
+    public Guid Guid { get; set; }
+
+    /// <summary>
+    /// Nombre de la persona
+    /// </summary>
+    [Required]
+    [StringLength(100)]
+    public string Name { get; set; }
+    /// <summary>
+    /// Apellido de la persona
+    /// </summary>
+    [Required]
+    [StringLength(100)]
+    public string LastName { get; set; }
+
+    /// <summary>
+    /// Fecha de nacimiento de la persona
+    /// </summary>
+    [Required]
+    public DateTime BirthDate { get; set; }
+
+    /// <summary>
+    /// Código de género de la persona
+    /// </summary>
+    [Required]
+    [StringLength(50)]
+    public string GenderItemCatalogCode { get; set; }
+}

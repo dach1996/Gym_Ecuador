@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using PersistenceDb.Models.Administration;
+using PersistenceDb.Models.Core;
 
 namespace PersistenceDb.Models.Authentication;
 /// <summary>
@@ -32,7 +33,7 @@ public class Person
     /// </summary>
     /// <value></value>
     [Column("PNA_FECHA_REGISTRO")]
-    public DateTime? DateTimeRegister { get; set; }
+    public DateTime DateTimeRegister { get; set; }
 
     /// <summary>
     /// Documento
@@ -128,5 +129,16 @@ public class Person
     /// </summary>
     /// <value></value>
     public TypeIdentification TypeIdentification { get; set; }
+    /// <summary>
+    /// Lista de usuarios registrados
+    /// </summary>
+    /// <value></value>
+    public ICollection<User> Users { get; set; }
 
+
+    /// <summary>
+    /// Lista de clientes de sucursales de gimnasio
+    /// </summary>
+    /// <value></value>
+    public ICollection<ClientGymBranch> ClientGymBranches { get; set; }
 }

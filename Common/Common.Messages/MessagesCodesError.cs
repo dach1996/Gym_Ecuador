@@ -313,5 +313,20 @@ public enum MessagesCodesError
     /// Tipo de identificación no encontrado
     /// </summary>
     TypeIdentificationNotFound = 138,
+
+    /// <summary>
+    /// El cliente ya tiene una membresía en esta sucursal
+    /// </summary>
+    ClientMembershipAlreadyExists = 139,
+
+    /// <summary>
+    /// El cliente ya tiene una membresía en esta sucursal
+    /// </summary>
+    ClientMembershipAlreadyExistsInBranch = 140,
+
+    /// <summary>
+    /// El correo electrónico o el nombre de usuario ya están en uso por otra persona
+    /// </summary>
+    EmailOrUsernameAlreadyExists = 141,
 }
 

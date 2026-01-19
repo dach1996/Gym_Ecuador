@@ -40,6 +40,9 @@ public class GetPersonByDocumentNumberHandler(
                                                 FullName = select.FullName,
                                                 BirthDate = select.BirthDate,
                                                 Guid = select.Guid,
+                                                GenderItemCatalogCode = select.GenderCatalog.Code,
+                                                Phone = select.Users.FirstOrDefault().Phone,
+                                                Email = select.Users.FirstOrDefault().Email,
                                             },
                                             where => where.DocumentNumber == request.DocumentNumber).ConfigureAwait(false);
                         //Si la persona no existe en la base de datos, se busca en el servicio de documentación

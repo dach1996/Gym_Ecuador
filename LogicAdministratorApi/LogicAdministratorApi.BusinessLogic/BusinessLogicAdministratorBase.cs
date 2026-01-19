@@ -105,59 +105,18 @@ public abstract class BusinessLogicAdministratorBase(
             ?.Message;
 
     /// <summary>
-    /// Obtiene los IDs de las sucursales del contexto
-    /// </summary>
-    /// <returns></returns>
-    protected async Task<List<int>> GetBranchsIdsByContextAsync()
-    {
-        var gymCacheInformation = await GetGymCacheInformationAsync().ConfigureAwait(false);
-        var contextInformationRoles = ContextRequest.CustomClaims.InformationRoles;
-        var branchsResponseIds = gymCacheInformation.Select(select => select.GymBranchId);
-        if (contextInformationRoles.Any(where => where.Scope != (byte)RoleScope.Global))
-        {
-            var gymsIds = contextInformationRoles.Where(where => where.Scope == (byte)RoleScope.Gym).Select(select => select.Identifier).ToList();
-            branchsResponseIds = [.. gymCacheInformation.Where(where => gymsIds.Contains(where.GymId)).Select(select => select.GymBranchId)];
-            var branchsIds = contextInformationRoles.Where(where => where.Scope == (byte)RoleScope.GymBranch).Select(select => select.Identifier.Value).ToList();
-            branchsResponseIds = [.. branchsResponseIds.Concat(branchsIds)];
-        }
-        return [.. branchsResponseIds.Distinct()];
-    }
-
-    /// <summary>
-    /// Obtiene los IDs de los gimnasios del contexto
-    /// </summary>
-    /// <returns></returns>
-    protected async Task<List<int>> GetGymsIdsByContextAsync()
-    {
-        var gymCacheInformation = await GetGymCacheInformationAsync().ConfigureAwait(false);
-        var contextInformationRoles = ContextRequest.CustomClaims.InformationRoles;
-        var gymResponseIds = gymCacheInformation.Select(select => select.GymBranchId);
-        if (contextInformationRoles.Any(where => where.Scope != (byte)RoleScope.Global))
-        {
-            var branchsIds = contextInformationRoles.Where(where => where.Scope == (byte)RoleScope.GymBranch).Select(select => select.Identifier.Value).ToList();
-            gymResponseIds = gymCacheInformation.Where(where => branchsIds.Contains(where.GymBranchId)).Select(select => select.GymId);
-        }
-        return [.. gymResponseIds.Distinct()];
-    }
-
-
-    /// <summary>
     /// Obtiene la información del gimnasio en caché
     /// </summary>
     /// <param name="gymId"></param>
     /// <returns></returns>
-    protected async Task<List<GymCacheInformation>> GetGymCacheInformationAsync()
-        => await AdministratorCache.TryGetOrSetAsync(CacheCodes.GYM_INFORMATION, async () => await UnitOfWork.GymBranchRepository.GetGenericAsync(
-            select => new GymCacheInformation
-            {
-                GymId = select.Gym.Id,
-                GymGuid = select.Gym.Guid,
-                GymName = select.Gym.Name,
-                GymBranchId = select.Id,
-                GymBranchGuid = select.Guid,
-                GymBranchName = select.Name,
-            },
-            where => where.Gym.IsActive == GymStatus.Active
-        ).ConfigureAwait(false)).ConfigureAwait(false);
-
+    protected async Task<GymCacheInformation> GetGymCacheInformationAsync()
+        => await AdministratorCache.TryGetOrSetAsync(CacheCodes.GYM_INFORMATION,
+        async () =>
+        {
+            var gyms = await UnitOfWork.GymRepository.GetGenericAsync(
+            select => new GymCacheItem(select.Id, select.Guid, select.Name, select.GymBranches.Select(gb => new GymBranchCacheItem(gb.Id, gb.Guid, gb.Name)).ToArray()),
+            where => true
+        ).ConfigureAwait(false);
+            return new GymCacheInformation([.. gyms]);
+        }).ConfigureAwait(false);
 }

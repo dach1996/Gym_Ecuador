@@ -50,7 +50,7 @@ public abstract class CreateUserHandler(
             newUser = new User
             {
                 UserName = $"Temporal_{Guid.NewGuid().ToString().ToUpper()}",
-                Email = request.Email,
+                Email = request.Email.Trim().ToLower(),
                 DateTimeRegister = Now,
                 Guid = Guid.NewGuid(),
                 LanguageCode = $"{ContextRequest.Headers.UserLanguage}",

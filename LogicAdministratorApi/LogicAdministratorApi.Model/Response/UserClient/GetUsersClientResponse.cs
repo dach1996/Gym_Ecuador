@@ -62,13 +62,43 @@ public class ClientItem
     public string Phone { get; set; }
 
     /// <summary>
-    /// Indica si el usuario está bloqueado
+    /// Lista de membresías del cliente
     /// </summary>
-    public bool IsBlocked { get; set; }
-
-    /// <summary>
-    /// Fecha de registro
-    /// </summary>
-    public DateTime DateTimeRegister { get; set; }
+    /// <value></value>
+    public List<ClientMembershipItem> MembershipsItems { get; set; } = [];
 }
 
+/// <summary>
+/// Item de membresía del cliente
+/// </summary>
+public class ClientMembershipItem{
+   
+    /// <summary>
+    /// Nombre del gimnasio
+    /// </summary>
+    public string GymName { get; set; }
+    /// <summary>
+    /// Nombre de la sucursal
+    /// </summary>
+    public string GymBranchName { get; set; }
+
+    /// <summary>
+    /// Estado de la membresía
+    /// </summary>
+    public bool Status { get; set; }
+
+    /// <summary>
+    /// Fecha de registro de la membresía
+    /// </summary>
+    public DateTime RegistrationDate { get; set; }
+
+    /// <summary>
+    /// Fecha de registro de la membresía
+    /// </summary>
+    public DateTime StartDate { get; set; }
+
+    /// <summary>
+    /// Fecha de fin de la membresía
+    /// </summary>
+    public DateTime? EndDate { get; set; }
+}

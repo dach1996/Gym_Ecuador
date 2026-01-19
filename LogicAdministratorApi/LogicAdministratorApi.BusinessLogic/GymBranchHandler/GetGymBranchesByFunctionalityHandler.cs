@@ -25,22 +25,29 @@ public class GetGymBranchesByFunctionalityHandler(
     public override async Task<GetGymBranchesByFunctionalityResponse> Handle(GetGymBranchesByFunctionalityRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationAdministratorName.GetGymBranchesByFunctionality, request, async () =>
         {
-            var gymCacheInformation = await GetGymCacheInformationAsync().ConfigureAwait(false);
-            var branches = new List<GymCacheInformation>();
+            var gymBranches = (await GetGymCacheInformationAsync().ConfigureAwait(false))
+                .Gyms.SelectMany(select => select.Branches.Select(gb => new
+                {
+                    Branch = gb,
+                    Gym = select,
+                })).ToArray();
+            var branches = gymBranches.ToList();
+            branches.Clear();
+
             if (CurrentUserRoles.Any(where => where.Scope == (byte)RoleScope.GymBranch))
-                branches = [.. branches.Concat(gymCacheInformation.Where(where => CurrentUserRoles.Any(role => role.Identifier == where.GymBranchId)))];
+                branches = [.. branches.Concat(gymBranches.Where(where => CurrentUserRoles.Any(role => role.Identifier == where.Branch.Id)))];
             if (CurrentUserRoles.Any(where => where.Scope == (byte)RoleScope.Gym))
-                branches = [.. branches.Concat(gymCacheInformation.Where(where => CurrentUserRoles.Any(role => role.Identifier == where.GymId)))];
+                branches = [.. branches.Concat(gymBranches.Where(where => CurrentUserRoles.Any(role => role.Identifier == where.Gym.Id)))];
             if (CurrentUserRoles.Any(where => where.Scope == (byte)RoleScope.Global))
-                branches = [.. branches.Concat(gymCacheInformation)];
-            var branchesResponse = branches.Distinct().GroupBy(select => select.GymGuid).Select(select => new GymByFunctionalityItem
+                branches = [.. branches.Concat(gymBranches)];
+            var branchesResponse = branches.Distinct().GroupBy(select => select.Gym.Guid).Select(select => new GymByFunctionalityItem
             {
                 Guid = select.Key,
-                GymName = select.First().GymName,
+                GymName = select.First().Gym.Name,
                 Branches = select.Select(b => new GymByFunctionalityItem.GymBranchByFunctionalityItem
                 {
-                    Guid = b.GymBranchGuid,
-                    Name = b.GymBranchName,
+                    Guid = b.Branch.Guid,
+                    Name = b.Branch.Name,
                 }),
             });
             return new GetGymBranchesByFunctionalityResponse

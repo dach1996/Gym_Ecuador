@@ -22,46 +22,12 @@ public class GetUserClientByGuidHandler(
         => await ExecuteHandlerAsync(OperationAdministratorName.GetUserClientByGuid, request, async () =>
             {
                 // Buscar el cliente por GUID usando GetFirstOrDefaultGenericAsync con proyección directa
-                var client = await UnitOfWork.ClientGymBranchRepository
+                var client = await UnitOfWork.PersonRepository
                     .GetFirstOrDefaultGenericAsync(
-                        select => new UserClientDetail
+                        select => new PersonClientDetail
                         {
                             Guid = select.Guid,
-                            RegistrationDate = select.RegistrationDate,
-                            Status = select.Status,
-                            UserGuid = select.User.Guid,
-                            UserName = select.User.UserName,
-                            Email = select.User.Email,
-                            Phone = select.User.Phone,
-                            LanguageCode = select.User.LanguageCode,
-                            IsBlocked = select.User.IsBlocked,
-                            HasCompleteRegistration = select.User.HasCompleteRegistration,
-                            DateTimeRegister = select.User.DateTimeRegister,
-                            FirstLoginDate = select.User.FirstLoginDate,
-                            ImageUrl = select.User.Image != null && select.User.Image.State && select.User.Image.FileBasePath != null
-                                ? select.User.Image.FileBasePath.BaseUrl + select.User.Image.Path
-                                : null,
-                            PersonGuid = select.User.Person != null ? select.User.Person.Guid : Guid.Empty,
-                            PersonName = select.User.Person != null ? select.User.Person.RealNames : null,
-                            PersonLastName = select.User.Person != null ? select.User.Person.RealLastNames : null,
-                            PersonDocumentNumber = select.User.Person != null ? select.User.Person.DocumentNumber : null,
-                            PersonBirthDate = select.User.Person != null ? select.User.Person.BirthDate : null,
-                            GymBranchGuid = select.GymBranch.Guid,
-                            GymBranchName = select.GymBranch.Name,
-                            GymGuid = select.GymBranch.Gym.Guid,
-                            GymName = select.GymBranch.Gym.Name,
-                            Memberships = select.ClientMemberships
-                                .Select(cm => new ClientMembershipDetail
-                                {
-                                    Guid = cm.Guid,
-                                    BranchPlanGuid = cm.BranchPlan.Guid,
-                                    PlanName = cm.BranchPlan.Name,
-                                    StartDate = cm.StartDate,
-                                    EndDate = cm.EndDate,
-                                    IsActive = cm.IsActive,
-                                    RegistrationDate = cm.RegistrationDate
-                                })
-                                .ToList()
+                            RegistrationDate = select.DateTimeRegister,
                         },
                         where => where.Guid == request.ClientGuid
                     ).ConfigureAwait(false)

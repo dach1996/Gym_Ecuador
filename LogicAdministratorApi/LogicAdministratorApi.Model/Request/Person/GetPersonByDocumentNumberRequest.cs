@@ -14,23 +14,5 @@ public class GetPersonByDocumentNumberRequest : GetPersonByDocumentNumberCommonR
     /// </summary>
     [JsonIgnore]
     public CommonContextRequest ContextRequest { get; set; }
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="contextRequest"></param>
-    /// <param name="documentNumber"></param>
-    public GetPersonByDocumentNumberRequest(CommonContextRequest contextRequest, string documentNumber) 
-        : base(contextRequest, documentNumber)
-    {
-        ContextRequest = contextRequest;
-    }
-
-    /// <summary>
-    /// Default Constructor
-    /// </summary>
-    public GetPersonByDocumentNumberRequest() : base()
-    {
-    }
 }
 

@@ -1,7 +1,6 @@
 using System.Text.Json.Serialization;
 
 namespace LogicCommon.Model.Response.Person;
-
 /// <summary>
 /// Detalle completo de persona
 /// </summary>
@@ -42,4 +41,20 @@ public class PersonDetail
     /// Fecha de nacimiento
     /// </summary>
     public DateTime? BirthDate { get; set; }
+
+    /// <summary>
+    /// Código del género
+    /// </summary>
+    public string GenderItemCatalogCode { get; set; }
+
+    /// <summary>
+    ///  Teléfono
+    /// </summary>
+    /// <value></value>
+    public string Phone { get; set; }
+
+    /// <summary>
+    /// Email
+    /// </summary>
+    public string Email { get; set; }
 }

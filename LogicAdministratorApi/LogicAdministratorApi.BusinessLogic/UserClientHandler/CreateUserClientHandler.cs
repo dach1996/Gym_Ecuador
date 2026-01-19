@@ -3,7 +3,6 @@ using Common.Utils.Cryptography.Argon2;
 using LogicAdministratorApi.Model.Request.UserClient;
 using LogicAdministratorApi.Model.Response.UserClient;
 using LogicCommon.Model.Request.Mail;
-using LogicCommon.Model.Request.Person;
 using PersistenceDb.Models.Authentication;
 using PersistenceDb.Models.Core;
 
@@ -27,6 +26,11 @@ public class CreateUserClientHandler(
     public override async Task<CreateUserClientResponse> Handle(CreateUserClientRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationAdministratorName.CreateUserClient, request, async () =>
             {
+                if (await UnitOfWork.ClientMembershipRepository.ExistAnyAsync(
+                        where => where.ClientGymBranch.Person.Guid == request.PersonClient.Guid 
+                        && where.BranchPlan.Guid == request.BranchPlanGuid).ConfigureAwait(false))
+                    throw new CustomException((int)MessagesCodesError.ClientMembershipAlreadyExists, "El cliente ya tiene una membresía en esta sucursal");
+                var newMailUser = request.Email.Trim().ToLower();
                 // Obtener el plan por GUID
                 var branchPlan = await UnitOfWork.BranchPlanRepository
                     .GetFirstOrDefaultGenericAsync(select => new
@@ -50,26 +54,28 @@ public class CreateUserClientHandler(
                         select.Email,
                         select.UserName,
                         select.PersonId,
-                        Names = select.Person.RealNames,
-                        LastNames = select.Person.RealLastNames,
+                        PersonGuid = select.Person.Guid,
+                        select.Person.Name,
+                        select.Person.LastName,
+                        ClientGymBranches = select.Person.ClientGymBranches.Select(c => c.GymBranch.Guid)
                     },
-                    where => where.Email.ToLower() == request.Email.ToLower()
-                    || where.UserName.ToLower() == request.Email.ToLower())
+                    where => where.Email == newMailUser || where.UserName == newMailUser)
                     .ConfigureAwait(false);
                 var password = GeneratePassword();
                 var isNewUser = currentUser is null;
+                if (!isNewUser && currentUser.PersonGuid != request.PersonClient.Guid)
+                    throw new CustomException((int)MessagesCodesError.EmailOrUsernameAlreadyExists, "El correo electrónico o el nombre de usuario ya están en uso por otra persona");
+
                 if (isNewUser)
                 {
-                    // Obtener la persona por el número de identificación
-                    var personDetails = await Mediator.Send(new GetPersonByDocumentNumberCommonRequest(request.ContextRequest, request.IdentificationNumber), cancellationToken).ConfigureAwait(false);
-
-                    // Validar que el email no exista
-                    if (await UnitOfWork.UserRepository
-                        .ExistAnyAsync(where => where.Email.ToLower() == request.Email.ToLower()
-                        || where.UserName.ToLower() == request.Email.ToLower())
-                        .ConfigureAwait(false))
-                        throw new CustomException((int)MessagesCodesError.SystemError, "Ya existe un usuario con este email");
-
+                    var person = (await UnitOfWork.PersonRepository.GetByFirstOrDefaultAsync(where => where.Guid == request.PersonClient.Guid).ConfigureAwait(false))
+                     ?? throw new CustomException((int)MessagesCodesError.PersonNotFound, "Persona no encontrada");
+                    person.BirthDate = request.PersonClient.BirthDate;
+                    person.GenderCatalogId = await UnitOfWork.CatalogRepository.GetIdByCodeAsync(request.PersonClient.GenderItemCatalogCode).ConfigureAwait(false);
+                    person.Name = request.PersonClient.Name;
+                    person.LastName = request.PersonClient.LastName;
+                    person = await UnitOfWork.PersonRepository.UpdateAsync(person).ConfigureAwait(false);
+                    await AdministratorCache.RemoveAsync(CacheCodes.PersonDetailsByDocumentNumber(person.DocumentNumber)).ConfigureAwait(false);
                     // Generar salt y contraseña
                     var salt = Argon2.GenerateRandomSecretBytes();
                     var passwordEncrypted = GetPasswordEncrypted(password, salt);
@@ -80,11 +86,11 @@ public class CreateUserClientHandler(
                     var newUser = new User
                     {
                         Guid = Guid.NewGuid(),
-                        UserName = request.Email,
-                        Email = request.Email,
+                        UserName = newMailUser,
+                        Email = newMailUser,
                         Phone = request.Phone,
-                        PersonId = personDetails.Person.Id,
-                        LanguageCode = request.LanguageCode ?? "es",
+                        PersonId = person.Id,
+                        LanguageCode = "Spanish",
                         DateTimeRegister = Now,
                         IsBlocked = false,
                         HasCompleteRegistration = true,
@@ -113,8 +119,10 @@ public class CreateUserClientHandler(
                         newUser.Email,
                         newUser.UserName,
                         newUser.PersonId,
-                        personDetails.Person.Names,
-                        personDetails.Person.LastNames,
+                        PersonGuid = person.Guid,
+                        person.Name,
+                        person.LastName,
+                        ClientGymBranches = Enumerable.Empty<Guid>()
                     };
                 }
 
@@ -126,7 +134,7 @@ public class CreateUserClientHandler(
                     .GetFirstOrDefaultGenericAsync(select => new
                     {
                         select.Id,
-                    }, where => where.UserId == currentUser.Id && where.GymBranchId == branchPlan.GymBranchId)
+                    }, where => where.PersonId == currentUser.PersonId && where.GymBranchId == branchPlan.GymBranchId)
                     .ConfigureAwait(false);
                 if (clientGymBranch is null)
                 {
@@ -134,7 +142,7 @@ public class CreateUserClientHandler(
                     var newClientGymBranch = new ClientGymBranch
                     {
                         Guid = Guid.NewGuid(),
-                        UserId = currentUser.Id,
+                        PersonId = currentUser.PersonId.Value,
                         GymBranchId = branchPlan.GymBranchId,
                         RegistrationDate = Now,
                         Status = true
@@ -163,7 +171,7 @@ public class CreateUserClientHandler(
                 {
                     MailTemplateModel = new NewUserManualRegisterMailTemplateModel
                     {
-                        PersonName = currentUser.Names.Split(' ').FirstOrDefault() + " " + currentUser.LastNames?.Split(' ').FirstOrDefault(),
+                        PersonName = currentUser.Name + " " + currentUser.LastName,
                         Email = currentUser.Email,
                         Password = password,
                         SupportEmail = "soporte@fitecenter.fit",

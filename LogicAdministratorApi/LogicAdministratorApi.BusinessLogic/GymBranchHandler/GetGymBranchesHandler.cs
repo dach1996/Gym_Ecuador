@@ -24,8 +24,7 @@ public class GetGymBranchesHandler(
     public override async Task<GetGymBranchesResponse> Handle(GetGymBranchesRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationAdministratorName.GetGymBranchesPaginated, request, async () =>
             {
-                var gymId = (await GetGymCacheInformationAsync().ConfigureAwait(false))
-                .Find(where => where.GymGuid == request.GymGuid)?.GymId ?? throw new CustomException((int)MessagesCodesError.GymBranchNotFound, "No se encontró el gimnasio especificado");
+                var gymId = (await GetGymCacheInformationAsync().ConfigureAwait(false)).GetGymIdByGuid(request.GymGuid);
                 // Construir el filtro where combinando todas las condiciones
                 var filter = request.Filter?.ToLower();
 

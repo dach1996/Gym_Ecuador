@@ -7,7 +7,7 @@ namespace LogicAdministratorApi.Model.Response.UserClient;
 /// Constructor
 /// </remarks>
 /// <param name="client"></param>
-public class GetUserClientByGuidResponse(UserClientDetail client) : IApiBaseResponse
+public class GetUserClientByGuidResponse(PersonClientDetail client) : IApiBaseResponse
 {
     /// <summary>
     /// Mensaje al Usuario
@@ -22,13 +22,13 @@ public class GetUserClientByGuidResponse(UserClientDetail client) : IApiBaseResp
     /// <summary>
     /// Detalle del cliente
     /// </summary>
-    public UserClientDetail Client { get; set; } = client;
+    public PersonClientDetail Client { get; set; } = client;
 }
 
 /// <summary>
 /// Detalle completo de usuario cliente
 /// </summary>
-public class UserClientDetail
+public class PersonClientDetail
 {
     /// <summary>
     /// Guid del cliente (ClientGymBranch)

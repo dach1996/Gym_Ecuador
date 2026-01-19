@@ -106,7 +106,7 @@ public abstract class AssignPersonHandler(
         //Actualiza los datos de usuario
         user.Phone = request.Phone;
         user.PersonId = person.Id;
-        user.UserName = request.UserName;
+        user.UserName = request.UserName.Trim().ToLower();
         user.HasCompleteRegistration = true;
 
         var manualUserRegistrationForm = user.ManualUserRegistrationForm;
