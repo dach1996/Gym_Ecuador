@@ -209,6 +209,15 @@ public enum OperationAdministratorName : short
     [FunctionalityMember(FunctionalitiesCodes.GET_USER_CLIENT_BY_GUID)]
     GetUserClientByGuid = 117,
 
+    // ========== OPERACIONES DE MEMBRESÍAS DE CLIENTES ==========
+
+    /// <summary>
+    /// Obtener Membresías de Clientes Paginadas
+    /// </summary>
+    [EnumMember(Value = "Obtener Membresías de Clientes Paginadas")]
+    [FunctionalityMember(FunctionalitiesCodes.GET_CLIENT_MEMBERSHIPS_PAGINATED)]
+    GetClientMembershipsPaginated = 119,
+
     // ========== OPERACIONES DE PLANES DE SUCURSAL ==========
 
     /// <summary>

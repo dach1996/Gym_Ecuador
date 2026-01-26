@@ -152,6 +152,13 @@ public static class FunctionalitiesCodes
     /// </summary>
     public const string GET_USER_CLIENT_BY_GUID = "ADM_CLIENT_GET_BY_GUID";
 
+    // ========== OPERACIONES DE MEMBRESÍAS DE CLIENTES ==========
+
+    /// <summary>
+    /// Obtener Membresías de Clientes Paginadas
+    /// </summary>
+    public const string GET_CLIENT_MEMBERSHIPS_PAGINATED = "ADM_CLIENT_MEMBERSHIP_GET_PAGINATED";
+
     // ========== OPERACIONES DE PLANES DE SUCURSAL ==========
 
     /// <summary>

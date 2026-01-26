@@ -41,25 +41,17 @@ public class GetProcessTrackingStatisticsHandler(
 
                 return new GetProcessTrackingStatisticsResponse
                 {
-                    WeightControlStatistics = new WeightControlCartesianPoint
+                    StatisticsControl = new List<CartesianPoint>
                     {
-                        MinXAxisValue = 50,
-                        MaxXAxisValue = 100,
-                        MinYAxisValue = 1,
-                        MaxYAxisValue = 5,
-                        CartesianPoints = new List<CartesianPoin>
-                        {
-                            new () { XLabel = "1 OCT", YLabel = "1", XValue = 1, YValue = 70 },
-                            new () { XLabel = "15 OCT", YLabel = "2", XValue = 2, YValue = 75 },
-                            new () { XLabel = "HOY", YLabel = "3", XValue = 3, YValue = 79.5m },
-                        }
+                        new CartesianPoint { Label = "Peso Corporal", CurrentValue = "70", ValueType = "kg", IconCode = "WeightIcon", DifferenceValue = "10 kg", DifferenceValueType = DifferenceValueType.Positive , MinXAxisValue = 50, MaxXAxisValue = 100, MinYAxisValue = 1, MaxYAxisValue = 5 , CartesianPoints = new List<CartesianPoin> { new () { XLabel = "1 OCT", YLabel = "1", XValue = 1, YValue = 70 }, new () { XLabel = "15 OCT", YLabel = "2", XValue = 2, YValue = 75 }, new () { XLabel = "HOY", YLabel = "3", XValue = 3, YValue = 79.5m } } },
+                        new CartesianPoint { Label = "Porcentaje de Grasa Corporal", CurrentValue = "20", ValueType = "%", IconCode = "FatPercentageIcon", DifferenceValue = "10 %", DifferenceValueType = DifferenceValueType.Positive , MinXAxisValue = 50, MaxXAxisValue = 100, MinYAxisValue = 1, MaxYAxisValue = 5 , CartesianPoints = new List<CartesianPoin> { new () { XLabel = "1 OCT", YLabel = "1", XValue = 1, YValue = 70 }, new () { XLabel = "15 OCT", YLabel = "2", XValue = 2, YValue = 75 }, new () { XLabel = "HOY", YLabel = "3", XValue = 3, YValue = 79.5m } } },
                     },
-                    Metrics = new List<MeasurementMetricItem>
+                    CartesianEstadistics = new List<CartesianPoint>
                     {
-                        new () { Label = "IMC", Value = 24.5m, ComparisonValue = 1.5m, Unit = "kg/m2", Icon = "ImcIcon" },
-                        new () { Label = "Pecho", Value = 90m, ComparisonValue = -5m, Unit = "cm", Icon = "ChestIcon" },
-                        new () { Label = "Cintura", Value = 80m, ComparisonValue = +2m, Unit = "cm", Icon = "WaistIcon" },
-                        new () { Label = "Brazo", Value = 30m, ComparisonValue = -3m, Unit = "cm", Icon = "ArmRightIcon" },
+                        new () { Label = "Cintura", CurrentValue = "80", ValueType = "cm", IconCode = "WaistIcon", DifferenceValue = "10 cm", DifferenceValueType = DifferenceValueType.Positive , MinXAxisValue = 50, MaxXAxisValue = 100, MinYAxisValue = 1, MaxYAxisValue = 5 , CartesianPoints = new List<CartesianPoin> { new () { XLabel = "1 OCT", YLabel = "1", XValue = 1, YValue = 70 }, new () { XLabel = "15 OCT", YLabel = "2", XValue = 2, YValue = 75 }, new () { XLabel = "HOY", YLabel = "3", XValue = 3, YValue = 79.5m } } },
+                        new () { Label = "Cadera", CurrentValue = "90", ValueType = "cm", IconCode = "HipIcon", DifferenceValue = "10 cm", DifferenceValueType = DifferenceValueType.Positive , MinXAxisValue = 50, MaxXAxisValue = 100, MinYAxisValue = 1, MaxYAxisValue = 5 , CartesianPoints = new List<CartesianPoin> { new () { XLabel = "1 OCT", YLabel = "1", XValue = 1, YValue = 70 }, new () { XLabel = "15 OCT", YLabel = "2", XValue = 2, YValue = 75 }, new () { XLabel = "HOY", YLabel = "3", XValue = 3, YValue = 79.5m } } },
+                        new () { Label = "Biceps", CurrentValue = "80", ValueType = "cm", IconCode = "BicepsIcon", DifferenceValue = "10 cm", DifferenceValueType = DifferenceValueType.Positive , MinXAxisValue = 50, MaxXAxisValue = 100, MinYAxisValue = 1, MaxYAxisValue = 5 , CartesianPoints = new List<CartesianPoin> { new () { XLabel = "1 OCT", YLabel = "1", XValue = 1, YValue = 70 }, new () { XLabel = "15 OCT", YLabel = "2", XValue = 2, YValue = 75 }, new () { XLabel = "HOY", YLabel = "3", XValue = 3, YValue = 79.5m } } },
+                        new () { Label = "Pecho", CurrentValue = "30", ValueType = "cm", IconCode = "ThighRightIcon", DifferenceValue = "10 cm", DifferenceValueType = DifferenceValueType.Positive , MinXAxisValue = 50, MaxXAxisValue = 100, MinYAxisValue = 1, MaxYAxisValue = 5 , CartesianPoints = new List<CartesianPoin> { new () { XLabel = "1 OCT", YLabel = "1", XValue = 1, YValue = 70 }, new () { XLabel = "15 OCT", YLabel = "2", XValue = 2, YValue = 75 }, new () { XLabel = "HOY", YLabel = "3", XValue = 3, YValue = 79.5m } } },
                     },
                     WeightComparison = new WeightComparison
                     {

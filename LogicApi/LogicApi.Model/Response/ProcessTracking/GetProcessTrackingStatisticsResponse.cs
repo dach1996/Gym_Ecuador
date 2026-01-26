@@ -16,15 +16,15 @@ public class GetProcessTrackingStatisticsResponse : IApiBaseResponse
     public bool ShowMessage { get; set; }
 
     /// <summary>
-    /// List of metrics
-    /// </summary>
-    /// <value></value>
-    public List<MeasurementMetricItem> Metrics { get; set; }
-
-    /// <summary>
     /// Estadísticas generales
     /// </summary>
-    public WeightControlCartesianPoint WeightControlStatistics { get; set; }
+    public List<CartesianPoint> StatisticsControl { get; set; }
+
+    /// <summary>
+    /// List of Cartesian points
+    /// </summary>
+    /// <value></value>
+    public List<CartesianPoint> CartesianEstadistics { get; set; }
 
     /// <summary>
     /// Weight comparison
@@ -52,19 +52,19 @@ public class WeightComparison
     /// Fecha actual
     /// </summary>
     /// <value></value>
-     public DateTime CurrentDate { get; set; }
-     
-     /// <summary>
-     /// Peso actual registrado
-     /// </summary>
-     /// <value></value>
-     public decimal CurrentWeight { get; set; }
+    public DateTime CurrentDate { get; set; }
 
-      /// <summary>
-      /// Message of the weight comparison
-      /// </summary>
-      /// <value></value>
-      public string Message { get; set; }
+    /// <summary>
+    /// Peso actual registrado
+    /// </summary>
+    /// <value></value>
+    public decimal CurrentWeight { get; set; }
+
+    /// <summary>
+    /// Message of the weight comparison
+    /// </summary>
+    /// <value></value>
+    public string Message { get; set; }
 }
 
 
@@ -78,7 +78,7 @@ public class MeasurementMetricItem
     /// </summary>
     /// <value></value>
     public string Label { get; set; }
-    
+
     /// <summary>
     /// Value of the metric
     /// </summary>
@@ -107,8 +107,45 @@ public class MeasurementMetricItem
 /// <summary>
 /// Represents a point in the weight control Cartesian plane
 /// </summary>
-public class WeightControlCartesianPoint
+public class CartesianPoint
 {
+
+    /// <summary>
+    /// Label of the Cartesian point
+    /// </summary>
+    /// <value></value>
+    public string Label { get; set; }
+
+    /// <summary>
+    /// Value of the Cartesian point
+    /// </summary>
+    /// <value></value>
+    public string CurrentValue { get; set; }
+
+    /// <summary>
+    /// Value type of the Cartesian point
+    /// </summary>
+    /// <value></value>
+    public string ValueType { get; set; }
+
+    /// <summary>
+    /// Icon code of the Cartesian point
+    /// </summary>
+    /// <value></value>
+    public string IconCode { get; set; }
+
+    /// <summary>
+    /// Difference value of the Cartesian point
+    /// </summary>
+    /// <value></value>
+    public string DifferenceValue { get; set; }
+
+    /// <summary>
+    /// Difference value of the Cartesian point
+    /// </summary>
+    /// <value></value>
+    public DifferenceValueType DifferenceValueType { get; set; }
+
     /// <summary>
     /// Minimum value of the X axis
     /// </summary>
@@ -163,3 +200,21 @@ public class CartesianPoin
     public decimal XValue { get; set; }
 }
 
+/// <summary>
+/// Represents the type of difference value
+/// </summary>
+public enum DifferenceValueType
+{
+    /// <summary>
+    /// Positive difference
+    /// </summary>
+    Positive,
+    /// <summary>
+    /// Negative difference
+    /// </summary>
+    Negative,
+    /// <summary>
+    /// Zero difference
+    /// </summary>
+    Zero
+}

@@ -202,15 +202,28 @@ public class GenericRepository<TEntity>(
     public async Task<TResult> GetFirstOrDefaultGenericAsync<TResult>(
         Expression<Func<TEntity, TResult>> selector,
         Expression<Func<TEntity, bool>> where = null)
+        => await GetFirstOrDefaultGenericAsync(selector, [where ?? (t => true)]);
+
+    /// <summary>
+    /// Obtiene el primer registro mediante una lista de filtros y con entidades Incluidas (JOIN)
+    /// </summary>
+    /// <param name="selector"></param>
+    /// <param name="whereClauses"></param>
+    /// <typeparam name="TResult"></typeparam>
+    /// <returns></returns>
+    public async Task<TResult> GetFirstOrDefaultGenericAsync<TResult>(
+        Expression<Func<TEntity, TResult>> selector,
+        List<Expression<Func<TEntity, bool>>> whereClauses)
     {
         try
         {
-            where ??= t => true;
-            return await Context.Set<TEntity>()
-                .AsNoTracking()
-                .Where(where)
-                .Select(selector)
-                .FirstOrDefaultAsync().ConfigureAwait(false);
+            if (whereClauses.Count == 0)
+                whereClauses = [where => true];
+            var entitySet = Context.Set<TEntity>();
+            var originalWhereQuery = entitySet.AsQueryable();
+            foreach (var itemWhere in whereClauses)
+                originalWhereQuery = originalWhereQuery.Where(itemWhere);
+            return await originalWhereQuery.AsNoTracking().Select(selector).FirstOrDefaultAsync().ConfigureAwait(false);
         }
         catch (Exception ex)
         {

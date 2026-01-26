@@ -44,6 +44,16 @@ public interface IGenericRepository<TEntity> where TEntity : class
         Expression<Func<TEntity, bool>> where = null);
 
     /// <summary>
+    /// Obtiene el primer registro mediante una lista de filtros y con entidades Incluidas (JOIN)
+    /// </summary>
+    /// <param name="where"></param>
+    /// <param name="includes"></param>
+    /// <returns></returns>
+    Task<TResult> GetFirstOrDefaultGenericAsync<TResult>(
+        Expression<Func<TEntity, TResult>> selector,
+        List<Expression<Func<TEntity, bool>>> whereClauses);
+
+    /// <summary>
     /// Verifica si existe algún registro en una tabla
     /// </summary>
     /// <param name="where"></param>

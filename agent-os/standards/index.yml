@@ -1,0 +1,25 @@
+api:
+  controller-pattern:
+    description: Herencia de controllers y uso de MediatR
+  response-envelope:
+    description: Estructura GenericResponse<T> para respuestas API
+  routing-conventions:
+    description: Convenciones de rutas y naming de endpoints
+
+backend:
+  error-handling:
+    description: Manejo de errores con CustomException
+  handler-structure:
+    description: Estructura de Handlers y patrón ExecuteHandlerAsync
+  repository-pattern:
+    description: Patrón Repository con GetGenericAsync y GetByAsync
+  request-models:
+    description: Estructura de Request con IApiBaseRequest y validaciones
+  response-models:
+    description: Estructura de Response con IApiBaseResponse y paginación
+  response-pattern:
+    description: Patrón de Response con UserMessage y ShowMessage
+
+global:
+  tech-stack:
+    description: Stack tecnológico del proyecto (.NET, SQL Server)

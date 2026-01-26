@@ -328,5 +328,10 @@ public enum MessagesCodesError
     /// El correo electrónico o el nombre de usuario ya están en uso por otra persona
     /// </summary>
     EmailOrUsernameAlreadyExists = 141,
+
+    /// <summary>
+    /// Registro no encontrado
+    /// </summary>
+    RecordNotFound = 142,
 }
 

@@ -101,6 +101,29 @@
             <param name="request">Modelo para obtener planes de sucursal paginados</param>
             <returns></returns>
         </member>
+        <member name="T:AdministratorApi.Controllers.ClientMembershipController">
+            <summary>
+            Controlador de Membresías de Clientes
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.ClientMembershipController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{AdministratorApi.Controllers.ClientMembershipController},MediatR.IMediator)">
+            <summary>
+            Controlador de Membresías de Clientes
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:AdministratorApi.Controllers.ClientMembershipController.GetClientMembershipsPaginatedByGymAndBranch(LogicAdministratorApi.Model.Request.ClientMembership.GetClientMembershipsRequest)">
+            <summary>
+            Obtener Membresías de Clientes Paginadas por Gimnasio y Sucursal
+            </summary>
+            <param name="request">Modelo para obtener membresías de clientes paginadas</param>
+            <returns></returns>
+        </member>
         <member name="T:AdministratorApi.Controllers.EquipmentController">
             <summary>
             Controlador de Equipamientos

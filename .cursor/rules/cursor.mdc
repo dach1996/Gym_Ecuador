@@ -1,41 +1,101 @@
 ---
 alwaysApply: true
 ---
----
 
-## Comandos Agent-OS Disponibles
+# Reglas del Proyecto - Gym Management System
 
-Este proyecto utiliza la estructura de `agent-os` para planificación, especificación e implementación de funcionalidades. Los siguientes comandos están disponibles:
+## Framework Agent-OS
 
-### Planificación de Producto
-- **`@agent-os/commands/plan-product/plan-product.md`** - Proceso completo de planificación del producto
-  - `1-product-concept.md` - Recopilar concepto del producto
-  - `2-create-mission.md` - Crear documento de misión
-  - `3-create-roadmap.md` - Crear roadmap de funcionalidades
-  - `4-create-tech-stack.md` - Documentar stack tecnológico
+Este proyecto utiliza el framework **agent-os** para la gestión de estándares, documentación de producto y automatización de tareas.
 
-### Especificación de Funcionalidades
-- **`@agent-os/commands/shape-spec/shape-spec.md`** - Proceso completo para dar forma a especificaciones
-  - `1-initialize-spec.md` - Inicializar estructura de especificación
-  - `2-shape-spec.md` - Investigar y recopilar requisitos
+### Estructura Agent-OS
 
-- **`@agent-os/commands/write-spec/write-spec.md`** - Crear especificación técnica completa
-
-### Implementación de Tareas
-- **`@agent-os/commands/create-tasks/create-tasks.md`** - Crear lista de tareas desde especificaciones
-- **`@agent-os/commands/implement-tasks/implement-tasks.md`** - Implementar tareas
-- **`@agent-os/commands/orchestrate-tasks/orchestrate-tasks.md`** - Orquestar múltiples tareas
-
-### Uso de Comandos
-Para ejecutar un comando, menciona el archivo con `@` en una conversación:
-- `@agent-os/commands/plan-product/1-product-concept.md run` - Ejecuta el comando
-- Los comandos guían paso a paso el proceso
-- Sigue las instrucciones en orden numérico cuando hay múltiples pasos
+```
+agent-os/
+├── product/           # Documentación del producto
+│   ├── mission.md     # Misión y visión del producto
+│   ├── roadmap.md     # Roadmap de desarrollo
+│   └── tech-stack.md  # Stack tecnológico
+├── standards/         # Estándares de desarrollo
+│   ├── global/        # Estándares globales
+│   └── index.yml      # Índice de estándares
+└── commands/          # Skills y comandos personalizados
+```
 
 ### Documentación del Producto
-- `@agent-os/product/mission.md` - Misión y visión del producto
-- `@agent-os/product/roadmap.md` - Roadmap de funcionalidades
-- `@agent-os/product/tech-stack.md` - Stack tecnológico completo
 
-### Estándares y Referencias
-Todos los estándares están disponibles en `@agent-os/standards/` y se aplican automáticamente según las reglas de este archivo.
+**SIEMPRE** consulta estos archivos antes de implementar funcionalidades:
+
+- `agent-os/product/mission.md` - Contexto del problema y usuarios objetivo
+- `agent-os/product/roadmap.md` - Fases del producto y funcionalidades planeadas
+- `agent-os/product/tech-stack.md` - Tecnologías y arquitectura del proyecto
+
+### Estándares de Desarrollo
+
+**SIEMPRE** sigue los estándares definidos en `agent-os/standards/`:
+
+1. Antes de escribir código, revisa si existe un estándar aplicable
+2. Los estándares en `global/` aplican a todo el proyecto
+3. Los estándares específicos tienen prioridad sobre los globales
+4. Si no existe un estándar para algo, propón crearlo
+
+### Skills Disponibles (agent-os)
+
+Utiliza estos comandos para tareas específicas:
+
+- `/agent-os:plan-product` - Planificar misión, roadmap y tech stack
+- `/agent-os:shape-spec` - Diseñar especificaciones de funcionalidades
+- `/agent-os:discover-standards` - Descubrir estándares del proyecto
+- `/agent-os:index-standards` - Indexar estándares existentes
+- `/agent-os:inject-standards` - Inyectar estándares en el contexto
+- `/agent-os:update-swagger` - Actualizar documentación Swagger
+
+**Nota**: Los skills se actualizan constantemente. Consulta la lista disponible ejecutando `/help` o revisando `agent-os/commands/`.
+
+## Stack Tecnológico
+
+### Backend (.NET)
+- **.NET / C#** - Framework principal
+- **ASP.NET Core Web API** - APIs RESTful
+- **Entity Framework Core** - ORM
+- **SQL Server** - Base de datos
+
+### Arquitectura
+- Patrón Repository para acceso a datos
+- Arquitectura en capas: Controllers → Business Logic → Persistence
+- Dos APIs principales:
+  - **AdministratorApi** - Gestión de gimnasios, clientes, membresías
+  - **LogicApi** - Servicios para usuarios clientes (dietas, rutinas, progreso)
+
+## Reglas de Código
+
+### General
+- Responde siempre en **español**
+- Sigue los estándares de `agent-os/standards/` cuando existan
+- Mantén consistencia con el código existente
+- No sobre-ingenierizar: implementa solo lo necesario
+
+### Naming Conventions
+- **Clases y métodos**: PascalCase
+- **Variables locales y parámetros**: camelCase
+- **Constantes**: UPPER_SNAKE_CASE
+- **Interfaces**: Prefijo "I" (ej: `IGenericRepository`)
+
+### Estructura de Archivos
+- Controllers en `*/Controllers/`
+- Handlers de lógica de negocio en `*/BusinessLogic/*Handler/`
+- Modelos de Request en `*/Model/Request/`
+- Modelos de Response en `*/Model/Response/`
+- Repositorios en `Persistence/`
+
+### Commits
+- Mensajes en inglés
+- Formato: `tipo: descripción breve`
+- Tipos: feat, fix, refactor, docs, test, chore
+
+## Flujo de Trabajo Recomendado
+
+1. **Antes de implementar**: Revisa `agent-os/product/` para contexto
+2. **Durante la implementación**: Sigue `agent-os/standards/`
+3. **Si falta un estándar**: Usa `/agent-os:discover-standards` o propón uno nuevo
+4. **Para nuevas features**: Usa `/agent-os:shape-spec` para diseñar primero

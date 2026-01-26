@@ -317,6 +317,31 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicAdministratorApi.Model.Request.ClientMembership.GetClientMembershipsRequest">
+            <summary>
+            Solicitud para obtener membresías de clientes paginadas
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.ClientMembership.GetClientMembershipsRequest.PersonGuid">
+            <summary>
+            GUID de la persona
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.ClientMembership.GetClientMembershipsRequest.GymGuid">
+            <summary>
+            GUID del gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.ClientMembership.GetClientMembershipsRequest.GymBranchGuid">
+            <summary>
+            GUID de la sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.ClientMembership.GetClientMembershipsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Request.Equipment.CreateEquipmentRequest">
             <summary>
             Solicitud para crear un equipamiento
@@ -2185,6 +2210,109 @@
         <member name="P:LogicAdministratorApi.Model.Response.BranchPlan.UpdateBranchPlanResponse.Name">
             <summary>
             Nombre del plan
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse">
+            <summary>
+            Respuesta de obtener membresías de clientes paginadas
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.PersonName">
+            <summary>
+            Person full name
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.PersonDocumentNumber">
+            <summary>
+            Person document number
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.PersonBirthDate">
+            <summary>
+            Person birth date
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.Email">
+            <summary>
+            Email of the user
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.Phone">
+            <summary>
+            Phone of the user
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.Status">
+            <summary>
+            Status of the client membership
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.FirstSubscriptionDate">
+            <summary>
+            First subscription date
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.Registers">
+            <summary>
+            Registros
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.ClientMembership.CurrentSubscription">
+            <summary>
+            Datos de la suscripción actual
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.CurrentSubscription.MembershipGuid">
+            <summary>
+            Guid de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.CurrentSubscription.StartDate">
+            <summary>
+            Fecha de inicio del periodo vigente
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.CurrentSubscription.EndDate">
+            <summary>
+            Fecha de fin del periodo vigente
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.CurrentSubscription.IsActive">
+            <summary>
+            Estado de la suscripción (activo/inactivo)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.CurrentSubscription.PlanName">
+            <summary>
+            Nombre del plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.CurrentSubscription.SubscriptionValue">
+            <summary>
+            Valor de la suscripción
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.CurrentSubscription.PaymentMethod">
+            <summary>
+            Método de pago
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.CurrentSubscription.SubscriptionPhoto">
+            <summary>
+            Foto de la suscripción (comprobante o imagen relacionada)
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Response.Equipment.CreateEquipmentResponse">

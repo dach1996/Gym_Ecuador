@@ -1,40 +1,55 @@
-## Stack tecnológico
+# Tech Stack
 
-Define tu stack técnico a continuación. Esto sirve como referencia para todos los miembros del equipo y ayuda a mantener la consistencia en todo el proyecto.
+## Backend
 
-### Framework & Runtime
-- **Application Framework:** ASP.NET Core (Web API)
-- **Language/Runtime:** C# 12 (.NET)
-- **Package Manager:** NuGet
+- **.NET 10.0** - Framework principal
+- **ASP.NET Core Web API** - APIs RESTful
+- **C#** - Lenguaje de programación
 
-### Arquitectura
-- **Patrón CQRS:** MediatR para separar comandos y consultas
-- **Dependency Injection:** Autofac como contenedor de DI
-- **Mapping:** AutoMapper para mapeo entre entidades y DTOs
-- **Arquitectura en Capas:** Controllers → BusinessLogic → Persistence → Model
+## Base de Datos
 
-### Database & Storage
-- **Database:** SQL Server
-- **ORM:** Entity Framework Core
-- **Patrón Repository:** UnitOfWork con repositorios por entidad
+- **Microsoft SQL Server** - Base de datos relacional
+- **Entity Framework Core 10.0** - ORM
 
-### Logging & Monitoring
-- **Logging:** Serilog con structured logging
-- **ILogger<T>:** Inyección de logger tipado en todos los handlers y controllers
+## Librerías Principales
 
-### Security
-- **Encriptación de Contraseñas:** Argon2
-- **Autenticación:** JWT (implementación personalizada)
+| Librería | Versión | Uso |
+|----------|---------|-----|
+| MediatR | 13.1.0 | Patrón mediador para handlers |
+| AutoMapper | 15.1.0 | Mapeo de objetos |
+| Autofac | 9.0.0 | Inyección de dependencias |
+| EFCore.BulkExtensions | 10.0.0 | Operaciones bulk en BD |
+| BCrypt.Net-Next | 4.0.3 | Hash de contraseñas |
+| Asp.Versioning.Mvc | 8.1.0 | Versionado de API |
 
-### API
-- **API Versioning:** ASP.NET Core API Versioning
-- **Formato de Respuesta:** GenericResponse<T> para todas las respuestas
-- **Mensajes Internacionalizados:** Sistema de mensajes por código (MessagesCodesSucess, MessagesCodesError)
+## Monitoreo y Calidad
 
-### Testing & Quality
-- **Test Framework:** xUnit, NUnit o MSTest
-- **Proyecto de Tests:** Proyecto separado `Test`
+- **Application Insights** - Telemetría y monitoreo
+- **SonarAnalyzer** - Análisis estático de código
 
-### Configuration
-- **Configuración:** appsettings.json con variantes por ambiente (Development, Production, Debug)
-- **IConfiguration:** Acceso a configuración tipada
+## Arquitectura
+
+```
+├── AdministratorApi/        # API para administradores
+├── GatewayCoreAPI/          # API para usuarios clientes
+├── LogicAdministratorApi/   # Lógica de negocio admin
+├── LogicApi/                # Lógica de negocio core
+├── LogicCommon/             # Lógica compartida
+├── Persistence/             # Acceso a datos (Repository)
+├── Common/                  # Utilidades compartidas
+├── WebJobs/                 # Trabajos en background
+└── WebSocketsApp/           # Comunicación tiempo real
+```
+
+## Patrones
+
+- **MediatR** - Handlers desacoplados de controllers
+- **Repository Pattern** - Abstracción de acceso a datos
+- **Unit of Work** - Gestión de transacciones
+- **Arquitectura en capas** - Controllers → BusinessLogic → Persistence
+
+## Frontend (Repositorio separado)
+
+- Angular
+- Tailwind CSS
+- PrimeNG

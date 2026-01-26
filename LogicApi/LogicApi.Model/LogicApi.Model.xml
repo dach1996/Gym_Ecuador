@@ -7997,16 +7997,16 @@
             Mostrar Mensaje?
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingStatisticsResponse.Metrics">
-            <summary>
-            List of metrics
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingStatisticsResponse.WeightControlStatistics">
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingStatisticsResponse.StatisticsControl">
             <summary>
             Estadísticas generales
             </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingStatisticsResponse.CartesianEstadistics">
+            <summary>
+            List of Cartesian points
+            </summary>
+            <value></value>
         </member>
         <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingStatisticsResponse.WeightComparison">
             <summary>
@@ -8082,36 +8082,72 @@
             </summary>
             <value></value>
         </member>
-        <member name="T:LogicApi.Model.Response.ProcessTracking.WeightControlCartesianPoint">
+        <member name="T:LogicApi.Model.Response.ProcessTracking.CartesianPoint">
             <summary>
             Represents a point in the weight control Cartesian plane
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightControlCartesianPoint.MinXAxisValue">
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoint.Label">
+            <summary>
+            Label of the Cartesian point
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoint.CurrentValue">
+            <summary>
+            Value of the Cartesian point
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoint.ValueType">
+            <summary>
+            Value type of the Cartesian point
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoint.IconCode">
+            <summary>
+            Icon code of the Cartesian point
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoint.DifferenceValue">
+            <summary>
+            Difference value of the Cartesian point
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoint.DifferenceValueType">
+            <summary>
+            Difference value of the Cartesian point
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoint.MinXAxisValue">
             <summary>
             Minimum value of the X axis
             </summary>
             <value></value>
         </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightControlCartesianPoint.MaxXAxisValue">
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoint.MaxXAxisValue">
             <summary>
             Maximum value of the X axis
             </summary>
             <value></value>
         </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightControlCartesianPoint.MinYAxisValue">
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoint.MinYAxisValue">
             <summary>
             Minimum value of the Y axis
             </summary>
             <value></value>
         </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightControlCartesianPoint.MaxYAxisValue">
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoint.MaxYAxisValue">
             <summary>
             Maximum value of the Y axis
             </summary>
             <value></value>
         </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightControlCartesianPoint.CartesianPoints">
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoint.CartesianPoints">
             <summary>
             Represents a list of points in the Cartesian plane
             </summary>
@@ -8140,6 +8176,26 @@
         <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoin.XValue">
             <summary>
             The value of the X coordinate
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.DifferenceValueType">
+            <summary>
+            Represents the type of difference value
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Response.ProcessTracking.DifferenceValueType.Positive">
+            <summary>
+            Positive difference
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Response.ProcessTracking.DifferenceValueType.Negative">
+            <summary>
+            Negative difference
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Response.ProcessTracking.DifferenceValueType.Zero">
+            <summary>
+            Zero difference
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.ProcessTracking.UpdateProcessTrackingResponse">
