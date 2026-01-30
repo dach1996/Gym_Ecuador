@@ -259,4 +259,18 @@ public abstract class BusinessLogicCommonBase
         return objectResponse;
     }
 
+    /// <summary>
+    /// Obtiene la url de la imagen por el id del archivo
+    /// </summary>
+    /// <param name="fileId"></param>
+    /// <returns></returns>
+    protected async Task<string> GetUrlImageByCacheAsync(int fileId)
+    {
+        return await AdministratorCache.TryGetOrSetAsync(CacheCodes.UrlImageByFileId(fileId),
+        async () => await UnitOfWork.FileRepository.GetFirstOrDefaultGenericAsync(
+            select => select.FileBasePath.BaseUrl + select.Name,
+            where => where.Id == fileId
+        ).ConfigureAwait(false)).ConfigureAwait(false);
+    }
+
 }

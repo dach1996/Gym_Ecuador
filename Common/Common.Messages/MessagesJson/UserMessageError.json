@@ -146,6 +146,20 @@
         "Spanish": "Biométrico Incorrecto",
         "English": "Sucess Operation"
       }
+    },
+    {
+      "Code": 146,
+      "Message": {
+        "Spanish": "El número de documento no coincide con el número de documento de la persona",
+        "English": "Document number does not match the person's document number"
+      }
+    },
+    {
+      "Code": 147,
+      "Message": {
+        "Spanish": "No se pudo extraer el número de documento",
+        "English": "Could not extract document number"
+      }
     }
   ]
 }

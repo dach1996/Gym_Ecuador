@@ -88,4 +88,11 @@ public static class CacheCodes
     /// <returns></returns>
     public static string DeviceIdByMobileId(string mobileId) => $"{nameof(DeviceIdByMobileId)}_{mobileId}";
 
+    /// <summary>
+    /// Url de Imagen por Id de Archivo
+    /// </summary>
+    /// <param name="guid"></param>
+    /// <returns></returns>
+    public static string UrlImageByFileId(int fileId) => $"{nameof(UrlImageByFileId)}_{fileId}";
+
 }

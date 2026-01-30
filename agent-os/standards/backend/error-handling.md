@@ -24,6 +24,61 @@ public enum MessagesCodesError
 }
 ```
 
+## Sincronización de Mensajes JSON
+
+**IMPORTANTE**: Cuando se agregue un nuevo código de error al enum `MessagesCodesError`, se **DEBE** actualizar también el archivo JSON correspondiente.
+
+### Archivos de Mensajes
+
+| Tipo | Enum | Archivo JSON |
+|------|------|--------------|
+| Errores | `MessagesCodesError` | `Common/Common.Messages/MessagesJson/UserMessageError.json` |
+| Éxito | `MessagesCodesSuccess` | `Common/Common.Messages/MessagesJson/UserMessageSuccess.json` |
+
+### Formato del Archivo JSON
+
+```json
+{
+  "Messages": [
+    {
+      "Code": 139,
+      "Message": {
+        "Spanish": "El cliente ya tiene una membresía en esta sucursal",
+        "English": "The client already has a membership at this branch"
+      }
+    }
+  ]
+}
+```
+
+### Pasos Obligatorios al Crear un Nuevo Código
+
+1. Agregar el código al enum correspondiente con su `<summary>`:
+   ```csharp
+   /// <summary>
+   /// Descripción del nuevo error
+   /// </summary>
+   NuevoCodigoError = 148,
+   ```
+
+2. Agregar la entrada en el archivo JSON con mensajes en **Spanish** e **English**:
+   ```json
+   {
+     "Code": 148,
+     "Message": {
+       "Spanish": "Mensaje descriptivo en español",
+       "English": "Descriptive message in English"
+     }
+   }
+   ```
+
+### Reglas de Sincronización
+
+- El `Code` en el JSON debe coincidir exactamente con el valor del enum
+- Siempre proporcionar mensajes en ambos idiomas (Spanish e English)
+- Los mensajes deben ser claros y útiles para el usuario final
+- Mantener consistencia en el tono y estilo de los mensajes existentes
+
 ## Reglas
 
 - Usar `CustomException` para errores de negocio (no encontrado, ya existe, etc.)

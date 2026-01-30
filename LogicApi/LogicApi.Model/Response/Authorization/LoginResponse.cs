@@ -163,4 +163,9 @@ public class UserInfo
     /// Ha verificado datos
     /// </summary>
     public bool HasVerifiedData { get; set; }
+
+    /// <summary>
+    /// Ha realizado seguimiento
+    /// </summary>
+    public bool HasAnyProcessTracking { get; set; }
 }

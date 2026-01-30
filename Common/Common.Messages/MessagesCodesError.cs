@@ -353,5 +353,11 @@ public enum MessagesCodesError
     /// El número de documento no coincide con el número de documento de la persona
     /// </summary>
     DocumentNumberMismatch = 146,
+
+    /// <summary>
+    /// No se pudo extraer el número de documento
+    /// </summary>
+    DocumentNumberNotFound = 147,
+
 }
 

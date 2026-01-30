@@ -32,7 +32,9 @@ public class VerifyDocumentWithAIHandler(
                 select => new { select.Person.DocumentNumber },
                 where => where.Id == UserId
             );
-            var frontDocumentNumber = frontDocumentResponse.IdentificationNumber.Trim().Replace("-", "").Replace(".", "").Replace(" ", "");
+            if (frontDocumentResponse?.IdentificationNumber is null)
+                throw new CustomException((int)MessagesCodesError.DocumentNumberNotFound, "No se pudo extraer el número de documento de la imagen.");
+            var frontDocumentNumber = frontDocumentResponse.IdentificationNumber?.Trim().Replace("-", "").Replace(".", "").Replace(" ", "");
             if (frontDocumentNumber != currentUserPerson.DocumentNumber)
                 throw new CustomException((int)MessagesCodesError.DocumentNumberMismatch, "El número de documento no coincide con el número de documento de la persona");
             await UnitOfWork.UserRepository.UpdateByAsync((user => user.HasVerifiedData, true), where => where.Id == UserId).ConfigureAwait(false);

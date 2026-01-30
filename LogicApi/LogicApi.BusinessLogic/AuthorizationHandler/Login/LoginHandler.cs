@@ -95,14 +95,12 @@ public class LoginHandler(
             IdentificationType = user.Person.IdentificationType,
             Username = user.HasCompleteRegistration ? user.UserName : user.Email,
             GuidIdentifier = user.Guid,
-            HasVerifiedData = user.HasVerifiedData
+            HasVerifiedData = user.HasVerifiedData,
+            HasAnyProcessTracking = await UnitOfWork.ProcessTrackingRepository.ExistAnyAsync(where => where.UserId == userId).ConfigureAwait(false)
         };
         //Obtiene la imagen si existe
         if (user.ImagenId.HasValue)
-            loginResponse.InfoUser.UrlImage = await UnitOfWork.FileRepository.GetFirstOrDefaultGenericAsync(
-                select => select.FileBasePath.BaseUrl + select.Name,
-                where => where.Id == user.ImagenId
-            ).ConfigureAwait(false);
+            loginResponse.InfoUser.UrlImage = await GetUrlImageByCacheAsync(user.ImagenId.Value).ConfigureAwait(false);
         //Tarea para Obtener los Catálogos Iniciales
         loginResponse.GetInitialCataloguesResponse = await Mediator.Send(new GetInitialCataloguesCommonRequest(ContextRequest)).ConfigureAwait(false);
         loginResponse.Configuration = new UserConfiguration
@@ -138,6 +136,8 @@ public class LoginHandler(
         };
         return loginResponse;
     }
+
+   
 
     /// <summary>
     /// Actualiza la Información del Dipositivo y Usuario
