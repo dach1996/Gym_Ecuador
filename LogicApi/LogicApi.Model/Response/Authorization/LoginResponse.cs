@@ -158,4 +158,9 @@ public class UserInfo
     /// Imagen
     /// </summary>
     public string UrlImage { get; set; }
+
+    /// <summary>
+    /// Ha verificado datos
+    /// </summary>
+    public bool HasVerifiedData { get; set; }
 }

@@ -853,4 +853,12 @@ public enum OperationApiName
     /// </summary>
     [EnumMember(Value = "Crear registro de serie")]
     CreateSeriesRecord,
+
+    // ========== OPERACIONES DE VERIFICACIÓN DE DOCUMENTOS ==========
+
+    /// <summary>
+    /// Verificar documento con IA
+    /// </summary>
+    [EnumMember(Value = "Verificar documento con IA")]
+    VerifyDocumentWithAI,
 }

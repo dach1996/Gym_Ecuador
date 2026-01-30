@@ -2984,6 +2984,21 @@
             Default Constructor
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Request.Person.VerifyDocumentWithAIRequest">
+            <summary>
+            Request para verificar documento con IA
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Person.VerifyDocumentWithAIRequest.FrontImageBase64">
+            <summary>
+            Imagen del documento de identidad en Base64
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Person.VerifyDocumentWithAIRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Request.Place.GetMyFavoritePlaceRequest">
             <summary>
             Request para obtener los lugares favoritos de un usuario
@@ -4323,6 +4338,11 @@
         <member name="P:LogicApi.Model.Response.Authorization.UserInfo.UrlImage">
             <summary>
             Imagen
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.HasVerifiedData">
+            <summary>
+            Ha verificado datos
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Authorization.PasswordForgottenResponse">
@@ -7650,6 +7670,27 @@
             <summary>
             Datos de la persona
             </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Person.VerifyDocumentWithAIResponse">
+            <summary>
+            Respuesta de verificación de documento con IA
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Person.VerifyDocumentWithAIResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Person.VerifyDocumentWithAIResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Person.VerifyDocumentWithAIResponse.Success">
+            <summary>
+            Respuesta exitosa
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:LogicApi.Model.Response.Place.GetMyFavoritePlaceResponse">
             <summary>

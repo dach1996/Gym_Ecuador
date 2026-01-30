@@ -50,6 +50,7 @@ public class LoginHandler(
                 select.LanguageCode,
                 select.FirstLoginDate,
                 select.ImagenId,
+                select.HasVerifiedData,
                 Person = select.PersonId.HasValue ? new
                 {
                     select.Person.Id,
@@ -93,7 +94,8 @@ public class LoginHandler(
             PhoneNumber = user.Phone,
             IdentificationType = user.Person.IdentificationType,
             Username = user.HasCompleteRegistration ? user.UserName : user.Email,
-            GuidIdentifier = user.Guid
+            GuidIdentifier = user.Guid,
+            HasVerifiedData = user.HasVerifiedData
         };
         //Obtiene la imagen si existe
         if (user.ImagenId.HasValue)

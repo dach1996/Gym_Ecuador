@@ -1,3 +1,5 @@
+using Common.ArtificialIntelligence;
+using Common.ArtificialIntelligence.Model.Common;
 using Common.Cache.Interface;
 using Common.Clock;
 using Common.Messages;
@@ -7,6 +9,7 @@ using Common.Templates.Interface;
 using Common.Utils.ConstansCodes;
 using Common.Utils.CustomExceptions;
 using Common.Utils.Extensions;
+using Common.WebCommon.IaTemplateModel;
 using Common.WebCommon.Models;
 using Common.WebCommon.Models.Enum;
 using LogicCommon.Model.CacheModel;
@@ -229,4 +232,31 @@ public abstract class BusinessLogicCommonBase
             .IncludeNumeric()
             .LengthRequired(10)
             .Next();
+
+    /// <summary>
+    /// Procesa un documento con una plantilla de la IA y devuelve el objeto de respuesta
+    /// </summary>
+    /// <param name="document"></param>
+    /// <param name="externalSuiteTemplate"></param>
+    /// <typeparam name="TIaObjectResponse"></typeparam>
+    /// <returns></returns>
+    protected async Task<TIaObjectResponse> ProcessDocumentTemplateIaAsJsonAsync<
+    TIaObjectResponse>(byte[] document,
+    IIaTemplateModel IaTemplateModel)
+    {
+        //Obtiene la plantilla de la IA
+        var iaTemplateModelResponse = PluginFactory.GetType<IaTemplateFormat>().GetTemplate(IaTemplateModel);
+        //Procesa la imagen con la IA
+        var processedTextResponse = await PluginFactory.GetPlugin<IArtificialIntelligence>(iaTemplateModelResponse.AiImplementation)
+            .ProcessDocumentAsync(new(
+                document,
+                iaTemplateModelResponse.Behavior,
+                iaTemplateModelResponse.Indications,
+                iaTemplateModelResponse.ResponseType.ToEnum<ProcessResponseType>()))
+            .ConfigureAwait(false);
+        var objectResponse = processedTextResponse.ToObject<TIaObjectResponse>()
+            ?? throw new CustomException((int)MessagesCodesError.SystemError, $"No se pudo parsear la información de la IA: {processedTextResponse}");
+        return objectResponse;
+    }
+
 }

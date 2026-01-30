@@ -18,9 +18,11 @@ agent-os/
 │   └── tech-stack.md  # Stack tecnológico
 ├── standards/         # Estándares de desarrollo
 │   ├── global/        # Estándares globales
+│   ├── <otras carpetas posibles>  # Pueden existir más carpetas para agrupar estándares específicos
 │   └── index.yml      # Índice de estándares
 └── commands/          # Skills y comandos personalizados
 ```
+
 
 ### Documentación del Producto
 
@@ -48,7 +50,6 @@ Utiliza estos comandos para tareas específicas:
 - `/agent-os:discover-standards` - Descubrir estándares del proyecto
 - `/agent-os:index-standards` - Indexar estándares existentes
 - `/agent-os:inject-standards` - Inyectar estándares en el contexto
-- `/agent-os:update-swagger` - Actualizar documentación Swagger
 
 **Nota**: Los skills se actualizan constantemente. Consulta la lista disponible ejecutando `/help` o revisando `agent-os/commands/`.
 

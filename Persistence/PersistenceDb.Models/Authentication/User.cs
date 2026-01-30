@@ -109,6 +109,12 @@ public class User
     public bool HasCompleteRegistration { get; set; }
 
     /// <summary>
+    /// Tiene datos verificados por IA
+    /// </summary>
+    [Column("USR_TIENE_DATOS_VERIFICADOS")]
+    public bool HasVerifiedData { get; set; }
+
+    /// <summary>
     /// Salt
     /// </summary>
     [Column("USR_SALT")]

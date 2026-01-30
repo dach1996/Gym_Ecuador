@@ -15,6 +15,7 @@
     <ProjectReference Include="..\..\Common\Common.UserDocumentation\Common.UserDocumentation.csproj" />
     <ProjectReference Include="..\..\Common\Common.Authentication\Common.Authentication.csproj" />
     <ProjectReference Include="..\..\Common\Common.Cooperative\Common.Cooperative.csproj" />
+    <ProjectReference Include="..\..\Common\Common.ArtificialIntelligence\Common.ArtificialIntelligence.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -333,5 +333,25 @@ public enum MessagesCodesError
     /// Registro no encontrado
     /// </summary>
     RecordNotFound = 142,
+
+    /// <summary>
+    /// Imagen del documento inválida
+    /// </summary>
+    InvalidDocumentImage = 143,
+
+    /// <summary>
+    /// Imagen selfie inválida
+    /// </summary>
+    InvalidSelfieImage = 144,
+
+    /// <summary>
+    /// Error en verificación de documento
+    /// </summary>
+    DocumentVerificationError = 145,
+
+    /// <summary>
+    /// El número de documento no coincide con el número de documento de la persona
+    /// </summary>
+    DocumentNumberMismatch = 146,
 }
 

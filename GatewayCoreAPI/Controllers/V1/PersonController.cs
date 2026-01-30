@@ -42,5 +42,17 @@ public class PersonController(
     public async Task<IActionResult> GetPersonByDocumentNumber([FromQuery] GetPersonByDocumentNumberRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
+    /// <summary>
+    /// Verifica el documento de identidad del usuario usando IA (Requiere autenticación)
+    /// </summary>
+    /// <param name="request">Modelo con imágenes en Base64</param>
+    /// <returns>Resultado de la verificación</returns>
+    [HttpPost("VerifyDocumentWithAI")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<VerifyDocumentWithAIResponse>))]
+    [ProducesResponseType(400, Type = typeof(GenericResponse))]
+    [ProducesResponseType(401)]
+    public async Task<IActionResult> VerifyDocumentWithAI([FromBody] VerifyDocumentWithAIRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
 }
 

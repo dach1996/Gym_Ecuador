@@ -105,6 +105,11 @@ public class AppSettingsCommon
     /// <value></value>
     public string CustomSeparator { get; set; }
 
+    /// <summary>
+    /// ArtificialIntelligenceTemplateConfiguration
+    /// </summary>
+    public Dictionary<string, ArtificialIntelligenceTemplateConfiguration> IATemplates { get; set; }
+
 }
 
 
@@ -238,4 +243,36 @@ public class JwtSetting
     /// </summary>
     /// <value></value>
     public int AccessExpiration { get; set; }
+}
+
+
+/// <summary>
+/// Configuración de la plantilla de la Artificial Intelligence
+/// </summary>
+public class ArtificialIntelligenceTemplateConfiguration
+{
+    /// <summary>
+    /// Behavior
+    /// </summary>
+    public string Behavior { get; set; }
+
+    /// <summary>
+    /// Indications
+    /// </summary>
+    public string Indications { get; set; }
+
+    /// <summary>
+    /// Template
+    /// </summary>
+    public string AiImplementation { get; set; }
+
+    /// <summary>
+    /// ResponseType
+    /// </summary>
+    public string ResponseType { get; set; }
+
+    /// <summary>
+    /// Umbral mínimo de confianza para aprobar verificación (0-100)
+    /// </summary>
+    public int? MinimumConfidenceThreshold { get; set; }
 }

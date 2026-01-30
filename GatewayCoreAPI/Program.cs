@@ -30,6 +30,8 @@ using Common.WebApi.Middleware.ConfigureContext;
 using Common.WebApi.Middleware.Infrastructure;
 using Common.WebApi.Models;
 using Common.Templates.Infrastructure;
+using Common.ArtificialIntelligence.Infrastructure;
+using Common.WebCommon.IaTemplateModel;
 try
 {
     var builder = WebApplication.CreateBuilder(args);
@@ -55,9 +57,11 @@ try
     builder.Services.AddCatalogsTypeItems();
     builder.Services.AddClock();
     builder.Services.AddCardServices();
+    builder.Services.AddArtificialIntelligenceHttpClients();
     builder.Services.AddDocumentationServices();
     builder.Services.AddCooperativeServices();
     builder.Services.AddEventHub();
+    builder.Services.AddSingleton<IaTemplateFormat>();
     builder.Services.AddMediatrTypes(typeof(BusinessLogicBase), typeof(BusinessLogicCommonBase));
     builder.Services.AddCustomDatabaseConfiguration(builder.Configuration);
     builder.Host.ConfigureContainer<ContainerBuilder>(builderAutofac =>
@@ -75,6 +79,7 @@ try
         builderAutofac.UseMiddlewareAbstractionsAssemblies();
         builderAutofac.UseAuthenticationServices();
         builderAutofac.UseTemplates(); 
+        builderAutofac.UseArtificialIntelligence();
         builderAutofac.UseCardServices();
         builderAutofac.UseDocumentationServices();
         builderAutofac.UseAbstractionsAssemblies();

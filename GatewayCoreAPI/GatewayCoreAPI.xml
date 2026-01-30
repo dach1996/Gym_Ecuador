@@ -623,6 +623,13 @@
             <param name="request">Modelo para obtener persona por número de cédula</param>
             <returns></returns>
         </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.PersonController.VerifyDocumentWithAI(LogicApi.Model.Request.Person.VerifyDocumentWithAIRequest)">
+            <summary>
+            Verifica el documento de identidad del usuario usando IA (Requiere autenticación)
+            </summary>
+            <param name="request">Modelo con imágenes en Base64</param>
+            <returns>Resultado de la verificación</returns>
+        </member>
         <member name="T:GatewayCoreAPI.Controllers.V1.ProcessTrackingController">
             <summary>
             Constructor

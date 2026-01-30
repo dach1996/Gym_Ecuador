@@ -12,6 +12,7 @@ CREATE TABLE [AUTENTICACION].[USUARIO] (
     [USR_BLOQUEADO]                          BIT              NOT NULL,
     [PNA_ID]                                 INT              NULL,
     [USR_TIENE_REGISTRO_COMPLETO]            BIT              NOT NULL,
+    [USR_TIENE_DATOS_VERIFICADOS]            BIT              NOT NULL CONSTRAINT [DF_USUARIO_TIENE_DATOS_VERIFICADOS] DEFAULT (0),
     [USR_SALT]                               VARCHAR (128)    NOT NULL,
     [USR_GUID]                               UNIQUEIDENTIFIER CONSTRAINT [DEFAULT_USUARIO_USR_GUID] DEFAULT (newid()) NOT NULL,
     CONSTRAINT [PK_USUARIO] PRIMARY KEY CLUSTERED ([USR_ID] ASC),
@@ -133,6 +134,11 @@ EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Nombre de U
 GO
 
 EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Verifica si tiene registro completo ', @level0type = N'SCHEMA', @level0name = N'AUTENTICACION', @level1type = N'TABLE', @level1name = N'USUARIO', @level2type = N'COLUMN', @level2name = N'USR_TIENE_REGISTRO_COMPLETO';
+
+
+GO
+
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Tiene datos verificados por IA', @level0type = N'SCHEMA', @level0name = N'AUTENTICACION', @level1type = N'TABLE', @level1name = N'USUARIO', @level2type = N'COLUMN', @level2name = N'USR_TIENE_DATOS_VERIFICADOS';
 
 
 GO
