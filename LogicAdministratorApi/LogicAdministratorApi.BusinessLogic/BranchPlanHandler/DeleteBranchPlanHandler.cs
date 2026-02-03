@@ -36,8 +36,13 @@ public class DeleteBranchPlanHandler(
                 if (hasMemberships)
                     throw new CustomException((int)MessagesCodesError.SystemError, "No se puede eliminar el plan porque tiene membresías asociadas");
 
-                // Eliminar el plan
+                // Eliminar el plan y sus características
                 await UnitOfWork.BeginTransactionAsync().ConfigureAwait(false);
+
+                // Eliminar características del plan primero
+                await UnitOfWork.PlanFeatureRepository.DeleteAsync(where => where.BranchPlanId == branchPlanId).ConfigureAwait(false);
+
+                // Eliminar el plan
                 await UnitOfWork.BranchPlanRepository.DeleteAsync(where => where.Id == branchPlanId).ConfigureAwait(false);
                 await UnitOfWork.CommitAsync().ConfigureAwait(false);
 

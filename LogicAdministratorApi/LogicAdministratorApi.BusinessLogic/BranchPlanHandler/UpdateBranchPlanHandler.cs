@@ -1,5 +1,6 @@
 using LogicAdministratorApi.Model.Request.BranchPlan;
 using LogicAdministratorApi.Model.Response.BranchPlan;
+using PersistenceDb.Models.Core;
 
 namespace LogicAdministratorApi.BusinessLogic.BranchPlanHandler;
 
@@ -55,6 +56,27 @@ public class UpdateBranchPlanHandler(
 
             await UnitOfWork.BeginTransactionAsync().ConfigureAwait(false);
             await UnitOfWork.BranchPlanRepository.UpdateAsync(branchPlan).ConfigureAwait(false);
+
+            // Actualizar características del plan si se proporcionan
+            if (request.Features != null)
+            {
+                // Eliminar características existentes
+                await UnitOfWork.PlanFeatureRepository.DeleteAsync(where => where.BranchPlanId == branchPlan.Id).ConfigureAwait(false);
+
+                // Crear las nuevas características
+                if (request.Features.Any())
+                {
+                    var planFeatures = request.Features.Select(f => new PlanFeature
+                    {
+                        BranchPlanId = branchPlan.Id,
+                        Description = f.Description,
+                        Type = (PlanFeatureType)f.Type
+                    }).ToList();
+
+                    await UnitOfWork.PlanFeatureRepository.AddRangeAsync(planFeatures).ConfigureAwait(false);
+                }
+            }
+
             await UnitOfWork.CommitAsync().ConfigureAwait(false);
 
             return new UpdateBranchPlanResponse(branchPlan.Guid, branchPlan.Name)

@@ -99,6 +99,7 @@ public class PersistenceContext(
     public DbSet<BranchPlan> BranchPlans { get; set; }
     public DbSet<ClientGymBranch> ClientGymBranches { get; set; }
     public DbSet<ClientMembership> ClientMemberships { get; set; }
+    public DbSet<PlanFeature> PlanFeatures { get; set; }
 
     #endregion
 }

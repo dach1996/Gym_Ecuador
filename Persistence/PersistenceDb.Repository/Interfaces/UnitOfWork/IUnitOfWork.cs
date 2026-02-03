@@ -75,4 +75,5 @@ public interface IUnitOfWork : IUnitOfWorkBase
     IGymBranchImageRepository GymBranchImageRepository { get; }
     IEquipmentRepository EquipmentRepository { get; }
     IEquipmentImageRepository EquipmentImageRepository { get; }
+    IPlanFeatureRepository PlanFeatureRepository { get; }
 }

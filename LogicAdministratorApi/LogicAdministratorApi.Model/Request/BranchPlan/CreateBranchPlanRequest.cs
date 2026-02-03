@@ -53,9 +53,33 @@ public class CreateBranchPlanRequest : IApiBaseRequest<CreateBranchPlanResponse>
     public decimal? EnrollmentFee { get; set; }
 
     /// <summary>
+    /// Características del plan
+    /// </summary>
+    public List<PlanFeatureInput> Features { get; set; }
+
+    /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]
     public CommonContextRequest ContextRequest { get; set; }
+}
+
+/// <summary>
+/// Input para característica de plan
+/// </summary>
+public class PlanFeatureInput
+{
+    /// <summary>
+    /// Descripción de la característica
+    /// </summary>
+    [Required]
+    [StringLength(500)]
+    public string Description { get; set; }
+
+    /// <summary>
+    /// Tipo de característica (1 = Incluido, 2 = Excluido)
+    /// </summary>
+    [Required]
+    public int Type { get; set; }
 }
 

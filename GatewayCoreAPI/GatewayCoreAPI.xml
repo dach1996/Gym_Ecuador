@@ -185,6 +185,29 @@
             <param name="request">Modelo para crear horario de clase</param>
             <returns></returns>
         </member>
+        <member name="T:GatewayCoreAPI.Controllers.V1.ClientMembershipController">
+            <summary>
+            Controller de membresías de cliente
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ClientMembershipController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.ClientMembershipController},MediatR.IMediator)">
+            <summary>
+            Controller de membresías de cliente
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ClientMembershipController.GetMyMemberships(LogicApi.Model.Request.ClientMembership.GetMyMembershipsRequest)">
+            <summary>
+            Obtiene mis membresías agrupadas por sucursal de gimnasio
+            </summary>
+            <param name="request">Modelo para obtener mis membresías</param>
+            <returns></returns>
+        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.CompanionController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.CompanionController},MediatR.IMediator)">
             <summary>
             Constructor

@@ -83,6 +83,7 @@ public class MainUnitOfWork(
     private IGymBranchImageRepository _gymBranchImageRepository;
     private IEquipmentRepository _equipmentRepository;
     private IEquipmentImageRepository _equipmentImageRepository;
+    private IPlanFeatureRepository _planFeatureRepository;
 
     // Administration Repository Properties
     public IAuditLogRepository AuditLogRepository => _auditLogRepository ??=
@@ -270,5 +271,8 @@ public class MainUnitOfWork(
 
     public IRoleFunctionalityRepository RoleFunctionalityRepository => _roleFunctionalityRepository ??=
         new RoleFunctionalityRepository(Context, LoggerFactory.CreateLogger<RoleFunctionalityRepository>());
+
+    public IPlanFeatureRepository PlanFeatureRepository => _planFeatureRepository ??=
+        new PlanFeatureRepository(Context, LoggerFactory.CreateLogger<PlanFeatureRepository>());
 
 }

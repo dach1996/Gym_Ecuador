@@ -152,5 +152,10 @@ public class GymBranch
     /// Navegación a los clientes de la sucursal
     /// </summary>
     public ICollection<ClientGymBranch> ClientGymBranches { get; set; }
+
+    /// <summary>
+    /// Navegación a los planes de la sucursal
+    /// </summary>
+    public ICollection<BranchPlan> BranchPlans { get; set; }
 }
 

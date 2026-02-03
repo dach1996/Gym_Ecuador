@@ -59,6 +59,11 @@ public class UpdateBranchPlanRequest : IApiBaseRequest<UpdateBranchPlanResponse>
     public bool IsActive { get; set; }
 
     /// <summary>
+    /// Características del plan (reemplaza las existentes)
+    /// </summary>
+    public List<PlanFeatureInput> Features { get; set; }
+
+    /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]

@@ -861,4 +861,12 @@ public enum OperationApiName
     /// </summary>
     [EnumMember(Value = "Verificar documento con IA")]
     VerifyDocumentWithAI,
+
+    // ========== OPERACIONES DE MEMBRESÍA DE CLIENTE ==========
+
+    /// <summary>
+    /// Obtener mis membresías
+    /// </summary>
+    [EnumMember(Value = "Obtener mis membresías")]
+    GetMyMemberships,
 }

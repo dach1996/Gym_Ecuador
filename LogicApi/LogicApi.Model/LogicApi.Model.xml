@@ -1256,6 +1256,16 @@
             Default Constructor
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Request.ClientMembership.GetMyMembershipsRequest">
+            <summary>
+            Solicitud para obtener mis membresías agrupadas por sucursal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ClientMembership.GetMyMembershipsRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Request.CommonConfiguration.GetItemsCatalogByCodeCatalogFileRequest">
             <summary>
             Request Obtiene una lista de items de catálogo
@@ -4345,6 +4355,11 @@
             Ha verificado datos
             </summary>
         </member>
+        <member name="P:LogicApi.Model.Response.Authorization.UserInfo.HasAnyProcessTracking">
+            <summary>
+            Ha realizado seguimiento
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Response.Authorization.PasswordForgottenResponse">
             <summary>
             Objeto de respuesta resetear contraseña
@@ -4754,6 +4769,121 @@
         <member name="M:LogicApi.Model.Response.ClassSchedule.CreateClassScheduleResponse.#ctor">
             <summary>
             Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ClientMembership.GetMyMembershipsResponse">
+            <summary>
+            Respuesta de obtener mis membresías agrupadas por sucursal
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.ClientMembership.GetMyMembershipsResponse.#ctor(System.Collections.Generic.List{LogicApi.Model.Response.ClientMembership.GymBranchMembershipGroup})">
+            <summary>
+            Respuesta de obtener mis membresías agrupadas por sucursal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.GetMyMembershipsResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.GetMyMembershipsResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.GetMyMembershipsResponse.GymBranchMemberships">
+            <summary>
+            Membresías agrupadas por sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ClientMembership.GymBranchMembershipGroup">
+            <summary>
+            Grupo de membresías por sucursal de gimnasio
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.GymBranchMembershipGroup.GymBranchGuid">
+            <summary>
+            GUID de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.GymBranchMembershipGroup.GymBranchName">
+            <summary>
+            Nombre de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.GymBranchMembershipGroup.GymBranchImageUrl">
+            <summary>
+            URL de imagen de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.GymBranchMembershipGroup.ActiveMembership">
+            <summary>
+            Membresía activa actual (null si no tiene)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.GymBranchMembershipGroup.MembershipHistory">
+            <summary>
+            Historial de membresías en esta sucursal
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ClientMembership.MembershipHistoryItem">
+            <summary>
+            Item del historial de membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.MembershipHistoryItem.MembershipGuid">
+            <summary>
+            GUID de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.MembershipHistoryItem.PlanName">
+            <summary>
+            Nombre del plan
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.MembershipHistoryItem.PlanDescription">
+            <summary>
+            Descripción del plan
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.MembershipHistoryItem.PlanPrice">
+            <summary>
+            Precio del plan
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.MembershipHistoryItem.StartDate">
+            <summary>
+            Fecha de inicio de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.MembershipHistoryItem.EndDate">
+            <summary>
+            Fecha de fin de la membresía
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ClientMembership.MembershipHistoryItem.Status">
+            <summary>
+            Estado de la membresía
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ClientMembership.MembershipStatus">
+            <summary>
+            Estado de la membresía
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Response.ClientMembership.MembershipStatus.Active">
+            <summary>
+            Membresía activa
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Response.ClientMembership.MembershipStatus.Expired">
+            <summary>
+            Membresía expirada
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Response.ClientMembership.MembershipStatus.Cancelled">
+            <summary>
+            Membresía cancelada
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.CommonConfiguration.Common.ItemCatalogResponse">
@@ -5591,6 +5721,11 @@
             Reseñas de la sucursal
             </summary>
         </member>
+        <member name="P:LogicApi.Model.Response.GymBranch.GymBranchDetail.Subscriptions">
+            <summary>
+            Suscripciones disponibles en la sucursal
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Response.GymBranch.GymBranchServiceItem">
             <summary>
             Item de servicio de la sucursal
@@ -5641,6 +5776,66 @@
             Comentario de la reseña
             </summary>
             <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.GymBranch.GymBranchSubscriptionItem">
+            <summary>
+            Item de suscripción de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymBranch.GymBranchSubscriptionItem.Name">
+            <summary>
+            Nombre de la suscripción
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymBranch.GymBranchSubscriptionItem.Description">
+            <summary>
+            Descripción de la suscripción
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymBranch.GymBranchSubscriptionItem.Price">
+            <summary>
+            Precio de la suscripción
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymBranch.GymBranchSubscriptionItem.DurationDays">
+            <summary>
+            Duración en días de la suscripción
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymBranch.GymBranchSubscriptionItem.Features">
+            <summary>
+            Características de la suscripción
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.GymBranch.SubscriptionFeatureItem">
+            <summary>
+            Item de característica de suscripción
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymBranch.SubscriptionFeatureItem.Name">
+            <summary>
+            Nombre de la característica
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.GymBranch.SubscriptionFeatureItem.Type">
+            <summary>
+            Tipo de característica (Included, Excluded)
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.GymBranch.SubscriptionFeatureType">
+            <summary>
+            Tipo de característica de suscripción
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Response.GymBranch.SubscriptionFeatureType.Included">
+            <summary>
+            Característica incluida en la suscripción
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Response.GymBranch.SubscriptionFeatureType.Excluded">
+            <summary>
+            Característica excluida de la suscripción
+            </summary>
         </member>
         <member name="T:LogicApi.Model.Response.GymBranch.GetGymBranchesResponse">
             <summary>

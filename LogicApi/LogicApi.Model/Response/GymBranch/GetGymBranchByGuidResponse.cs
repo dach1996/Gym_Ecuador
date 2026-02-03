@@ -56,7 +56,11 @@ public class GymBranchDetail : GymBranchItem
     /// Reseñas de la sucursal
     /// </summary>
     public List<GymBranchReviewItem> Reviews { get; set; }
-    
+
+    /// <summary>
+    /// Suscripciones disponibles en la sucursal
+    /// </summary>
+    public List<GymBranchSubscriptionItem> Subscriptions { get; set; }
 }
 
 /// <summary>
@@ -105,4 +109,67 @@ public class GymBranchReviewItem
     /// </summary>
     /// <value></value>
     public string Comment { get; set; }
-}   
+}
+
+/// <summary>
+/// Item de suscripción de la sucursal
+/// </summary>
+public class GymBranchSubscriptionItem
+{
+    /// <summary>
+    /// Nombre de la suscripción
+    /// </summary>
+    public string Name { get; set; }
+
+    /// <summary>
+    /// Descripción de la suscripción
+    /// </summary>
+    public string Description { get; set; }
+
+    /// <summary>
+    /// Precio de la suscripción
+    /// </summary>
+    public decimal Price { get; set; }
+
+    /// <summary>
+    /// Duración en días de la suscripción
+    /// </summary>
+    public int? DurationDays { get; set; }
+
+    /// <summary>
+    /// Características de la suscripción
+    /// </summary>
+    public List<SubscriptionFeatureItem> Features { get; set; }
+}
+
+/// <summary>
+/// Item de característica de suscripción
+/// </summary>
+public class SubscriptionFeatureItem
+{
+    /// <summary>
+    /// Nombre de la característica
+    /// </summary>
+    public string Name { get; set; }
+
+    /// <summary>
+    /// Tipo de característica (Included, Excluded)
+    /// </summary>
+    public SubscriptionFeatureType Type { get; set; }
+}
+
+/// <summary>
+/// Tipo de característica de suscripción
+/// </summary>
+public enum SubscriptionFeatureType
+{
+    /// <summary>
+    /// Característica incluida en la suscripción
+    /// </summary>
+    Included = 1,
+
+    /// <summary>
+    /// Característica excluida de la suscripción
+    /// </summary>
+    Excluded = 2
+}

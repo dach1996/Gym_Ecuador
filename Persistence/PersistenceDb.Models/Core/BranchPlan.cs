@@ -97,5 +97,10 @@ public class BranchPlan
     /// Navegación a las membresías de clientes con este plan
     /// </summary>
     public ICollection<ClientMembership> ClientMemberships { get; set; }
+
+    /// <summary>
+    /// Navegación a las características del plan
+    /// </summary>
+    public ICollection<PlanFeature> PlanFeatures { get; set; }
 }
 

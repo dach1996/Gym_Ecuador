@@ -192,9 +192,29 @@
             Precio de inscripción o setup fee
             </summary>
         </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.CreateBranchPlanRequest.Features">
+            <summary>
+            Características del plan
+            </summary>
+        </member>
         <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.CreateBranchPlanRequest.ContextRequest">
             <summary>
             Context
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Request.BranchPlan.PlanFeatureInput">
+            <summary>
+            Input para característica de plan
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.PlanFeatureInput.Description">
+            <summary>
+            Descripción de la característica
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.PlanFeatureInput.Type">
+            <summary>
+            Tipo de característica (1 = Incluido, 2 = Excluido)
             </summary>
         </member>
         <member name="T:LogicAdministratorApi.Model.Request.BranchPlan.DeleteBranchPlanRequest">
@@ -310,6 +330,11 @@
         <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.UpdateBranchPlanRequest.IsActive">
             <summary>
             Estado del registro (Activo/Inactivo)
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.UpdateBranchPlanRequest.Features">
+            <summary>
+            Características del plan (reemplaza las existentes)
             </summary>
         </member>
         <member name="P:LogicAdministratorApi.Model.Request.BranchPlan.UpdateBranchPlanRequest.ContextRequest">

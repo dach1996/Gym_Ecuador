@@ -20,5 +20,6 @@ public class CoreModule : Module
         builder.RegisterType<ExerciseTagRepository>().As<IExerciseTagRepository>().InstancePerLifetimeScope();
         builder.RegisterType<RoutineExerciseRepository>().As<IRoutineExerciseRepository>().InstancePerLifetimeScope();
         builder.RegisterType<SeriesRecordRepository>().As<ISeriesRecordRepository>().InstancePerLifetimeScope();
+        builder.RegisterType<PlanFeatureRepository>().As<IPlanFeatureRepository>().InstancePerLifetimeScope();
     }
 }

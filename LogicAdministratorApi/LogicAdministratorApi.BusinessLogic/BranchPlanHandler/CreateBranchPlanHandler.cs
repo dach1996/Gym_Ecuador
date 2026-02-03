@@ -59,6 +59,20 @@ public class CreateBranchPlanHandler(
                 // Guardar en la base de datos
                 await UnitOfWork.BeginTransactionAsync().ConfigureAwait(false);
                 await UnitOfWork.BranchPlanRepository.AddAsync(newBranchPlan).ConfigureAwait(false);
+
+                // Crear las características del plan si existen
+                if (request.Features?.Any() == true)
+                {
+                    var planFeatures = request.Features.Select(f => new PlanFeature
+                    {
+                        BranchPlanId = newBranchPlan.Id,
+                        Description = f.Description,
+                        Type = (PlanFeatureType)f.Type
+                    }).ToList();
+
+                    await UnitOfWork.PlanFeatureRepository.AddRangeAsync(planFeatures).ConfigureAwait(false);
+                }
+
                 await UnitOfWork.CommitAsync().ConfigureAwait(false);
 
                 return new CreateBranchPlanResponse(newBranchPlan.Guid, newBranchPlan.Name, request.GymBranchGuid)

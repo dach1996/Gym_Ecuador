@@ -32,6 +32,13 @@ public class GetGymBranchByGuidHandler(
                             Description = select.Description,
                             Address = select.Address,
                             Location = new(select.Latitude, select.Longitude),
+                            Subscriptions = select.BranchPlans.Where(plan => plan.IsActive).Select(plan => new GymBranchSubscriptionItem
+                            {
+                                Name = plan.Name,
+                                Description = plan.Description,
+                                Price = plan.Price,
+                                DurationDays = plan.DurationDays,
+                            }).ToList(),
                             ImageUrls = select.GymBranchImages
                                 .Where(image => image.FilePersistence.State)
                                 .Select(image => new FileUrlResponse(image.FilePersistence.Guid, image.FilePersistence.FileBasePath.BaseUrl, image.FilePersistence.Path))
@@ -69,6 +76,17 @@ public class GetGymBranchByGuidHandler(
                                     Comment = "El gimnasio tiene un ambiente muy acogedor y el personal es muy amable."
                                 },
                             ];
+                foreach (var subscription in branch.Subscriptions)
+                {
+                    subscription.Features = [
+                                        new() { Name = "Acceso a equipos", Type = SubscriptionFeatureType.Included },
+                                        new() { Name = "Vestidores y duchas", Type = SubscriptionFeatureType.Included },
+                                        new() { Name = "Wifi gratuito", Type = SubscriptionFeatureType.Included },
+                                        new() { Name = "Clases grupales", Type = SubscriptionFeatureType.Excluded },
+                                        new() { Name = "Entrenamiento personal", Type = SubscriptionFeatureType.Excluded },
+                                        new() { Name = "Acceso a sauna", Type = SubscriptionFeatureType.Excluded },
+                                    ];
+                }
                 return new GetGymBranchByGuidResponse(branch);
             }).ConfigureAwait(false);
 }
