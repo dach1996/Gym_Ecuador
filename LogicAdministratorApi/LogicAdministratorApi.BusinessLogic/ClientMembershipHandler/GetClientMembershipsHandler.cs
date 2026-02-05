@@ -59,6 +59,7 @@ public class GetClientMembershipsHandler(
                                     PlanName = cm.BranchPlan.Name,
                                     SubscriptionValue = cm.BranchPlan.Price,
                                     PaymentMethod = "Tarjeta",
+                                    PeriodicityName = "Por Mes"
                                 }
                             }),
                         },
