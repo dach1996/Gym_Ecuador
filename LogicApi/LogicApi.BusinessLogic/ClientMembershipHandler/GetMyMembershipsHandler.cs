@@ -47,7 +47,8 @@ public class GetMyMembershipsHandler(
                                         ? MembershipStatus.Active
                                         : (m.EndDate.HasValue && m.EndDate.Value < DateTime.UtcNow
                                             ? MembershipStatus.Expired
-                                            : MembershipStatus.Cancelled)
+                                            : MembershipStatus.Cancelled),
+                                    PeriodicityName = "Por Mes"
                                 }).ToList()
                         },
                         where => where.PersonId == PersonId && where.Status)

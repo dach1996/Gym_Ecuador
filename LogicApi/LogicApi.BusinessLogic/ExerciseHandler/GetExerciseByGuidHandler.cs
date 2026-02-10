@@ -23,34 +23,27 @@ public class GetExerciseByGuidHandler(
     public override async Task<GetExerciseByGuidResponse> Handle(GetExerciseByGuidRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetExerciseByGuid, request, async () =>
             {
-                // Buscar el ejercicio por GUID con todas sus relaciones
-                var exercise = await UnitOfWork.ExerciseRepository
-                    .GetByFirstOrDefaultAsync(
-                        where => where.Guid == request.ExerciseGuid,
-                        include => include.ExerciseTags,
-                        include => include.ExerciseTags.Select(et => et.Catalog),
-                        include => include.ExerciseTags.Select(et => et.Catalog.CatalogLanguages),
-                        include => include.Image,
-                        include => include.Image != null ? include.Image.FileBasePath : null)
-                    .ConfigureAwait(false)
-                    ?? throw new CustomException((int)MessagesCodesError.SystemError, "Ejercicio no encontrado");
 
-                var exerciseDetail = new ExerciseDetail
-                {
-                    Guid = exercise.Guid,
-                    Name = exercise.Name,
-                    Description = exercise.Description,
-                    Instructions = exercise.Instructions,
-                    ImageUrl = exercise.Image != null && exercise.Image.State
-                        ? new FileUrlResponse(exercise.Image.Guid, exercise.Image.FileBasePath.BaseUrl, exercise.Image.Path)
-                        : null,
-                    Tags = exercise.ExerciseTags.Select(et => new ExerciseTagItem
+
+                var exerciseDetail = await UnitOfWork.ExerciseRepository
+                    .GetFirstOrDefaultGenericAsync(select => new ExerciseDetail
                     {
-                        CatalogId = et.CatalogId,
-                        Code = et.Catalog.Code,
-                        Name = et.Catalog.CatalogLanguages.FirstOrDefault()?.Name ?? et.Catalog.Code
-                    }).ToList()
-                };
+                        Guid = select.Guid,
+                        Name = select.Name,
+                        Description = select.Description,
+                        Instructions = select.Instructions,
+                        ImageUrl = select.Image != null && select.Image.State
+                        ? new FileUrlResponse(select.Image.Guid, select.Image.FileBasePath.BaseUrl, select.Image.Path)
+                        : null,
+                        Tags = select.ExerciseTags.Select(et => new ExerciseTagItem
+                        {
+                            CatalogId = et.CatalogId,
+                            Code = et.Catalog.Code,
+                            Name = et.Catalog.CatalogLanguages.FirstOrDefault().Name
+                        }).ToList()
+                    }, where => where.Guid == request.ExerciseGuid)
+                .ConfigureAwait(false)
+                ?? throw new CustomException((int)MessagesCodesError.SystemError, "Ejercicio no encontrado");
 
                 return new GetExerciseByGuidResponse
                 {

@@ -22,35 +22,31 @@ public class GetRoutineExercisesByGuidHandler(
     public override async Task<GetRoutineExercisesByGuidResponse> Handle(GetRoutineExercisesByGuidRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetRoutineExercisesByGuid, request, async () =>
             {
-                // Buscar la rutina por GUID con sus ejercicios relacionados
+                // Buscar la rutina por GUID con proyección (acceso directo a navegación, sin Include)
                 var routine = await UnitOfWork.RoutineRepository
-                    .GetByFirstOrDefaultAsync(
-                        where => where.Guid == request.RoutineGuid,
-                        include => include.RoutineExercises,
-                        include => include.RoutineExercises.Select(re => re.Exercise))
+                    .GetFirstOrDefaultGenericAsync(
+                        select => new RoutineDetail
+                        {
+                            Guid = select.Guid,
+                            Name = select.Name,
+                            CreationDate = select.CreationDate,
+                            Exercises = select.RoutineExercises.Select(re => new RoutineExerciseDetail
+                            {
+                                ExerciseGuid = re.Exercise.Guid,
+                                ExerciseName = re.Exercise.Name,
+                                Series = re.Series,
+                                RepetitionsFrom = re.RepetitionsFrom,
+                                RepetitionsTo = re.RepetitionsTo,
+                                RestSeconds = re.RestSeconds,
+                                Day = re.Day
+                            }).ToList()
+                        },
+                        where => where.Guid == request.RoutineGuid)
                     .ConfigureAwait(false)
                     ?? throw new CustomException((int)MessagesCodesError.SystemError, "Rutina no encontrada");
-
-                var routineDetail = new RoutineDetail
-                {
-                    Guid = routine.Guid,
-                    Name = routine.Name,
-                    CreationDate = routine.CreationDate,
-                    Exercises = routine.RoutineExercises.Select(re => new RoutineExerciseDetail
-                    {
-                        ExerciseGuid = re.Exercise.Guid,
-                        ExerciseName = re.Exercise.Name,
-                        Series = re.Series,
-                        RepetitionsFrom = re.RepetitionsFrom,
-                        RepetitionsTo = re.RepetitionsTo,
-                        RestSeconds = re.RestSeconds,
-                        Day = re.Day
-                    }).ToList()
-                };
-
                 return new GetRoutineExercisesByGuidResponse
                 {
-                    Routine = routineDetail
+                    Routine = routine
                 };
             }
         ).ConfigureAwait(false);

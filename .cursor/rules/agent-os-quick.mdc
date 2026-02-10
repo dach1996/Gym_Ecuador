@@ -1,0 +1,71 @@
+---
+description: Agente rápido para implementar siguiendo estándares Agent OS (nuevo servicio, handler, endpoint) sin planeamiento pesado
+globs: ["**/*.cs", "**/Controllers/**", "**/BusinessLogic/**", "**/Model/**"]
+alwaysApply: false
+---
+
+# Agent OS – Implementación Rápida
+
+Usa esta regla cuando vayas a **implementar algo rápido** (nuevo servicio, handler, endpoint, request/response) y quieras seguir los estándares del proyecto **sin** pasar por shape-spec ni planeamiento largo.
+
+## Cómo usar
+
+1. Invoca esta regla (ej. `@agent-os-quick`) al inicio del chat o cuando pidas la implementación.
+2. Indica **qué quieres crear** y **para qué** (ej. "crear un servicio para enviar recordatorios de pago", "crear endpoint GET planes por sucursal").
+3. El asistente aplicará los estándares abajo y te entregará código listo.
+
+## Tipos de tarea → Estándares
+
+| Si vas a... | Cargar y aplicar |
+|------------|-------------------|
+| **Nuevo endpoint (API)** | `agent-os/standards/api/controller-pattern.md`, `api/response-envelope.md`, `backend/handler-structure.md`, `backend/response-pattern.md` |
+| **Nuevo handler (lógica)** | `agent-os/standards/backend/handler-structure.md`, `backend/repository-pattern.md`, `backend/response-pattern.md`, `backend/error-handling.md` |
+| **Nuevo Request/Response** | `agent-os/standards/backend/request-models.md`, `backend/response-models.md`, `api/response-envelope.md` |
+| **Tocar repositorio / consultas** | `agent-os/standards/backend/repository-pattern.md` |
+| **Cualquier cambio pequeño** | Al menos: `handler-structure`, `response-pattern`, `repository-pattern` |
+
+## Checklist rápido (no saltar)
+
+### Nuevo endpoint
+- [ ] Controller hereda de `SecurityControllerBase` (o el base correcto del proyecto).
+- [ ] Acción usa `Mediator.Send(request)` y retorna `Success(...)`.
+- [ ] Request/Response ya existen o se crean siguiendo request-models y response-models.
+- [ ] `.ConfigureAwait(false)` en llamadas async.
+
+### Nuevo handler
+- [ ] Handler hereda de `{Entity}Base<TRequest, TResponse>` (o base existente).
+- [ ] `Handle()` implementado con `ExecuteHandlerAsync(OperationName, request, async () => { ... })`.
+- [ ] Repositorios solo vía `UnitOfWork.{Entity}Repository`.
+- [ ] **Sin `.Include()`**: lecturas con `GetGenericAsync` / `GetFirstOrDefaultGenericAsync` y proyección; updates con `GetByFirstOrDefaultAsync(where)`.
+- [ ] Response con `UserMessage = GetSuccessMessage(...)` y `ShowMessage` según si es crear/actualizar/eliminar (true) o consultar (false).
+- [ ] `.ConfigureAwait(false)` en todas las async.
+
+### Nuevo Request o Response
+- [ ] Request implementa la interfaz base del proyecto (ej. `IApiBaseRequest`) si aplica.
+- [ ] Response con `UserMessage` y `ShowMessage` si es respuesta de handler.
+- [ ] Validaciones en Request si aplica (DataAnnotations o Fluent).
+
+### Consultas / repositorio
+- [ ] Lecturas: `GetGenericAsync` o `GetFirstOrDefaultGenericAsync` con proyección (acceso a navegación en el `select`, **no** `Include`).
+- [ ] Updates: `GetByFirstOrDefaultAsync(where)` + `UpdateAsync(entity)`.
+- [ ] `.ConfigureAwait(false)` en todas las llamadas async.
+
+## Reglas de oro (resumen)
+
+- **No usar `.Include()`** — usar proyección en `GetGenericAsync` / `GetFirstOrDefaultGenericAsync`.
+- **Siempre** `ExecuteHandlerAsync` en handlers y `Success()` en controllers.
+- **Siempre** `.ConfigureAwait(false)` en async.
+- Repositorios **solo** por `UnitOfWork.{Entity}Repository`.
+
+## Referencia de estándares (rutas)
+
+- `agent-os/standards/api/controller-pattern.md`
+- `agent-os/standards/api/response-envelope.md`
+- `agent-os/standards/backend/handler-structure.md`
+- `agent-os/standards/backend/repository-pattern.md`
+- `agent-os/standards/backend/response-pattern.md`
+- `agent-os/standards/backend/error-handling.md`
+- `agent-os/standards/backend/request-models.md`
+- `agent-os/standards/backend/response-models.md`
+
+Cuando uses esta regla, **lee los estándares indicados para el tipo de tarea** y aplica el checklist antes de generar código.

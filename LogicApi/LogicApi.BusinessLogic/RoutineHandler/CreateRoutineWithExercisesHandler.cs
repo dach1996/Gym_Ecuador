@@ -31,31 +31,21 @@ public class CreateRoutineWithExercisesHandler(
 
                 if (exercises.Count != exerciseGuids.Count)
                     throw new CustomException((int)MessagesCodesError.SystemError, "Uno o más ejercicios no fueron encontrados");
-
-                // Obtener el ID del usuario por GUID
-                var user = await UnitOfWork.UserRepository
-                    .GetFirstOrDefaultGenericAsync(
-                        select => new { select.Id },
-                        where => where.Guid == UserGuid)
-                    .ConfigureAwait(false)
-                    ?? throw new CustomException((int)MessagesCodesError.SystemError, "Usuario no encontrado");
-
                 // Crear la rutina
                 var newRoutine = new Routine
                 {
                     Guid = Guid.NewGuid(),
                     Name = request.Name,
                     CreationDate = Now,
-                    UserId = user.Id,
-                    CreatedUserId = user.Id
+                    UserId = UserId,
+                    CreatedUserId = UserId
                 };
-
                 await UnitOfWork.RoutineRepository.AddAsync(newRoutine).ConfigureAwait(false);
 
                 // Crear las relaciones con ejercicios
                 var routineExercises = request.Exercises.Select(e =>
                 {
-                    var exercise = exercises.First(ex => ex.Guid == e.ExerciseGuid);
+                    var exercise = exercises.First(select => select.Guid == e.ExerciseGuid);
                     return new RoutineExercise
                     {
                         RoutineId = newRoutine.Id,

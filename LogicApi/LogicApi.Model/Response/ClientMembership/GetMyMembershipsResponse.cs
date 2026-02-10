@@ -91,6 +91,11 @@ public class MembershipHistoryItem
     /// Estado de la membresía
     /// </summary>
     public MembershipStatus Status { get; set; }
+
+    /// <summary>
+    /// Nombre de la periodicidad (ejemplo: mensual, anual)
+    /// </summary>
+    public string PeriodicityName { get; set; }
 }
 
 /// <summary>

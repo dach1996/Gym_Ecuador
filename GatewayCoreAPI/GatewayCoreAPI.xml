@@ -536,64 +536,6 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.MembershipController},MediatR.IMediator)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="userMessages"></param>
-            <param name="logger"></param>
-            <param name="mediator"></param>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipController.GetMemberships(LogicApi.Model.Request.Membership.GetMembershipsRequest)">
-            <summary>
-            Obtiene la lista de membresías con paginación
-            </summary>
-            <param name="request">Modelo para obtener membresías</param>
-            <returns></returns>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipController.GetMembershipByGuid(System.Guid)">
-            <summary>
-            Obtiene una membresía por su GUID
-            </summary>
-            <param name="membershipGuid">GUID de la membresía</param>
-            <returns></returns>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipController.CreateMembership(LogicApi.Model.Request.Membership.CreateMembershipRequest)">
-            <summary>
-            Crea una nueva membresía
-            </summary>
-            <param name="request">Modelo para crear membresía</param>
-            <returns></returns>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipController.UpdateMembership(LogicApi.Model.Request.Membership.UpdateMembershipRequest)">
-            <summary>
-            Actualiza una membresía existente
-            </summary>
-            <param name="request">Modelo para actualizar membresía</param>
-            <returns></returns>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipTypeController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.MembershipTypeController},MediatR.IMediator)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="userMessages"></param>
-            <param name="logger"></param>
-            <param name="mediator"></param>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipTypeController.GetMembershipTypes(LogicApi.Model.Request.MembershipType.GetMembershipTypesRequest)">
-            <summary>
-            Obtiene la lista de tipos de membresía con paginación
-            </summary>
-            <param name="request">Modelo para obtener tipos de membresía</param>
-            <returns></returns>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.MembershipTypeController.CreateMembershipType(LogicApi.Model.Request.MembershipType.CreateMembershipTypeRequest)">
-            <summary>
-            Crea un nuevo tipo de membresía
-            </summary>
-            <param name="request">Modelo para crear tipo de membresía</param>
-            <returns></returns>
-        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.PersonalGoalController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.PersonalGoalController},MediatR.IMediator)">
             <summary>
             Constructor

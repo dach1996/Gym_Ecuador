@@ -45,8 +45,11 @@ agent-os/
 
 Utiliza estos comandos para tareas específicas:
 
+- **`@agent-os-quick`** — Agente rápido: implementar algo nuevo (servicio, handler, endpoint) siguiendo estándares **sin** planeamiento pesado. Incluye checklist y estándares por tipo de tarea.
+- **`/agent-os:quick-create <tipo> [descripción]`** — Crear algo nuevo rápido: `endpoint`, `handler`, `servicio`, `request`, `response`, `consulta`. Carga estándares y aplica (ej: `/agent-os:quick-create handler "GetPlansByBranch"`).
+- `/agent-os:quick-impl <descripción>` — Implementar un cambio pequeño o funcionalidad ya descrita (ej: agregar campo al response).
 - `/agent-os:plan-product` - Planificar misión, roadmap y tech stack
-- `/agent-os:shape-spec` - Diseñar especificaciones de funcionalidades
+- `/agent-os:shape-spec` - Diseñar especificaciones de funcionalidades (para features complejas)
 - `/agent-os:discover-standards` - Descubrir estándares del proyecto
 - `/agent-os:index-standards` - Indexar estándares existentes
 - `/agent-os:inject-standards` - Inyectar estándares en el contexto

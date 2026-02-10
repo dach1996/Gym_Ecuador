@@ -105,8 +105,4 @@ public class CurrentSubscription
     /// </summary>
     public FileUrlResponse SubscriptionPhoto { get; set; }
 
-    /// <summary>
-    /// Nombre de la periodicidad (ejemplo: mensual, anual)
-    /// </summary>
-    public string PeriodicityName { get; set; }
 }

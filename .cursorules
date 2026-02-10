@@ -1,0 +1,219 @@
+# Gym Project Standards Rules for Cursor AI
+# This file defines how Cursor AI should behave when working with this project
+
+## Project Context
+- Project: Gym Management System (Ecuador)
+- Tech Stack: .NET 8+, C#, SQL Server, Entity Framework Core, MediatR
+- Architecture: Clean Architecture with Repository Pattern
+- API: RESTful with JWT authentication
+
+## Code Generation Standards
+
+### When generating C# code, ALWAYS follow:
+
+1. **Repository Pattern (GetGenericAsync)**
+   - Use `GetGenericAsync()` for reading with projections to DTO
+   - Use `GetFirstOrDefaultGenericAsync()` for single record with related data
+   - Use `GetByFirstOrDefaultAsync()` for updates (complete entity)
+   - NEVER use `.Include()` - use projection instead
+   - Always use `.ConfigureAwait(false)`
+
+2. **Request Models (IApiBaseRequest)**
+   - Implement `IApiBaseRequest<TResponse>`
+   - Include `[JsonIgnore] public CommonContextRequest ContextRequest`
+   - Use `[Required]` and `[ValidateGuid]` for validation
+   - Located in `Logic{Api}.Model/Request/{Entity}/`
+   - Example: `Create{Entity}Request.cs`
+
+3. **Response Models (IApiBaseResponse)**
+   - Implement `IApiBaseResponse` or `IPaginatorApiResponse<T>`
+   - Always include `public string UserMessage` and `public bool ShowMessage`
+   - Include constructor with parameters and empty constructor
+   - Located in `Logic{Api}.Model/Response/{Entity}/`
+   - Example: `Create{Entity}Response.cs`
+
+4. **Handler Structure (IRequestHandler)**
+   - Implement `IRequestHandler<TRequest, TResponse>`
+   - Wrap logic in try-catch with logging
+   - Use `_logger`, `_unitOfWork`, `_pluginFactory`
+   - Include null-checks for all dependencies
+   - Located in `LogicApi.BusinessLogic/{Entity}/`
+   - Example: `Create{Entity}Handler.cs`
+
+5. **Controller Pattern (SecurityControllerBase)**
+   - Inherit from `SecurityControllerBase` (requires [Authorize])
+   - Use `Mediator.Send(request)` for all business logic
+   - Use `Success()` wrapper for responses
+   - Include `[ProducesResponseType]` attributes
+   - Always use `.ConfigureAwait(false)`
+
+## Naming Conventions
+
+- **Classes**: PascalCase (CreateGymRequest, GetEquipmentsResponse)
+- **Properties**: PascalCase (GymGuid, EquipmentName)
+- **Methods**: PascalCase (Handle, Execute)
+- **Variables**: camelCase (_logger, _unitOfWork)
+- **Files**: Match class name (CreateGymRequest.cs)
+
+## Async/Await Rules
+
+- ALWAYS use `.ConfigureAwait(false)` on every async call
+- Use `async Task<T>` for handlers, `async ValueTask<T>` only for frequently called methods
+- Never use `.Result` or `.Wait()`
+
+## Error Handling
+
+- Use `CustomException` for business logic errors
+- Catch general `Exception` in handlers and log with category
+- Include exception context in logs
+- Return meaningful messages in `UserMessage`
+
+## Validation Rules
+
+- Use `[Required]` for mandatory fields
+- Use `[ValidateGuid]` custom attribute for GUID validation
+- Use `[Email]` for email properties
+- Use `[StringLength]` or `[MaxLength]` for strings
+- Validate in Request model, NOT in handler
+
+## File Locations Reference
+
+```
+LogicApi.Model/
+├── Request/
+│   └── {Entity}/
+│       ├── Create{Entity}Request.cs
+│       ├── Update{Entity}Request.cs
+│       ├── Get{Entity}sRequest.cs (list/paginated)
+│       └── Delete{Entity}Request.cs
+├── Response/
+│   └── {Entity}/
+│       ├── Create{Entity}Response.cs
+│       ├── Get{Entity}sResponse.cs
+│       ├── {Entity}Item.cs
+│       └── Update{Entity}Response.cs
+
+LogicApi.BusinessLogic/
+└── {Entity}/
+    ├── Create{Entity}Handler.cs
+    ├── Get{Entity}sHandler.cs
+    ├── Update{Entity}Handler.cs
+    └── Delete{Entity}Handler.cs
+
+GatewayCoreAPI/
+└── Controllers/
+    ├── {Entity}Controller.cs
+    └── AccountController.cs
+```
+
+## Common Patterns
+
+### Reading with Projection
+```csharp
+var items = await UnitOfWork.{Entity}Repository.GetGenericAsync(
+    select => new {Entity}Item(select.Id, select.Name),
+    where => where.IsActive
+).ConfigureAwait(false);
+```
+
+### Reading with Related Data
+```csharp
+var item = await UnitOfWork.{Entity}Repository.GetFirstOrDefaultGenericAsync(
+    select => new {Entity}Detail
+    {
+        Guid = select.Guid,
+        RelatedItems = select.Relationships.Select(r => new ItemDetail
+        {
+            Name = r.Name
+        }).ToList()
+    },
+    where => where.Guid == request.Guid
+).ConfigureAwait(false);
+```
+
+### Update Pattern
+```csharp
+var entity = await UnitOfWork.{Entity}Repository.GetByFirstOrDefaultAsync(
+    where => where.Guid == request.Guid
+).ConfigureAwait(false);
+
+entity.Property = request.NewValue;
+await UnitOfWork.{Entity}Repository.UpdateAsync(entity).ConfigureAwait(false);
+```
+
+### Handler Structure
+```csharp
+public async Task<{Response}> Handle({Request} request, CancellationToken cancellationToken)
+{
+    try
+    {
+        // Business logic here
+        var result = await _unitOfWork.{Entity}Repository.GetGenericAsync(
+            select => /* projection */,
+            where => /* conditions */
+        ).ConfigureAwait(false);
+        
+        return new {Response}(/* data */)
+        {
+            UserMessage = "Operation successful",
+            ShowMessage = true
+        };
+    }
+    catch (Exception ex)
+    {
+        _logger.LogError(ex, "Error in {HandlerName}");
+        throw;
+    }
+}
+```
+
+## Controller Endpoint Pattern
+```csharp
+[HttpPost("{route}")]
+[Authorize]
+[ProducesResponseType(typeof(GenericResponse<{Response}>), 201)]
+public async Task<IActionResult> {MethodName}([FromBody] {Request} request)
+{
+    return Success(await Mediator.Send(request).ConfigureAwait(false));
+}
+```
+
+## When Creating NEW Code:
+
+1. ✅ Ask clarifying questions if requirements are ambiguous
+2. ✅ Follow the exact structure shown above
+3. ✅ Include all async/await configurations
+4. ✅ Add proper validation attributes
+5. ✅ Include error handling
+6. ✅ Add constructors (with params and empty)
+7. ✅ Use `[JsonIgnore]` for internal properties
+8. ✅ Test against the standards in `agent-os/standards/`
+
+## When Reviewing Code:
+
+1. ❌ Reject uses of `.Result` or `.Wait()`
+2. ❌ Reject missing `.ConfigureAwait(false)`
+3. ❌ Reject direct service calls instead of MediatR
+4. ❌ Reject incorrect file locations
+5. ❌ Reject missing validation attributes
+6. ❌ Reject `.Include()` - suggest projection instead
+7. ❌ Reject responses without UserMessage/ShowMessage
+
+## Special Commands for Cursor
+
+When you see commands like:
+- `@generate-service`: Use CodeGeneratorAgent to create full services
+- `@verify-standards`: Check code against standards
+- `@repo-pattern`: Apply repository pattern correctly
+- `@handler-template`: Generate handler template
+- `@request-template`: Generate request model template
+- `@response-template`: Generate response model template
+- `@controller-template`: Generate controller endpoint template
+
+## Database Context
+
+- Primary DB: SQL Server
+- ORM: Entity Framework Core
+- Connection: Via IUnitOfWork abstraction
+- Repositories: Generic + Entity-Specific
+- No raw SQL queries - always use LINQ with EF
