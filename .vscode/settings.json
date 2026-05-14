@@ -3,5 +3,6 @@
     "sonarlint.connectedMode.project": {
         "connectionId": "",
         "projectKey": ""
-    }
+    },
+    "snyk.advanced.autoSelectOrganization": true
 }

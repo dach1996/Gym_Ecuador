@@ -1082,6 +1082,11 @@
             GUID del gimnasio para filtrar las sucursales
             </summary>
         </member>
+        <member name="P:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesRequest.GymBranchGuid">
+            <summary>
+            GUID de la sucursal para filtrar las sucursales
+            </summary>
+        </member>
         <member name="P:LogicAdministratorApi.Model.Request.GymBranch.GetGymBranchesRequest.Filter">
             <summary>
             Filtro
@@ -2255,42 +2260,52 @@
             Mostrar Mensaje?
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.PersonName">
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.Item">
+            <summary>
+            Item de membresía del cliente
+            </summary>
+        </member>
+        <member name="T:LogicAdministratorApi.Model.Response.ClientMembership.ClientMembershipInformation">
+            <summary>
+            Item de membresía del cliente
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.ClientMembershipInformation.PersonName">
             <summary>
             Person full name
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.PersonDocumentNumber">
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.ClientMembershipInformation.PersonDocumentNumber">
             <summary>
             Person document number
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.PersonBirthDate">
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.ClientMembershipInformation.PersonBirthDate">
             <summary>
             Person birth date
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.Email">
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.ClientMembershipInformation.Email">
             <summary>
             Email of the user
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.Phone">
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.ClientMembershipInformation.Phone">
             <summary>
             Phone of the user
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.Status">
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.ClientMembershipInformation.Status">
             <summary>
             Status of the client membership
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.FirstSubscriptionDate">
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.ClientMembershipInformation.FirstSubscriptionDate">
             <summary>
             First subscription date
             </summary>
         </member>
-        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.GetClientMembershipsResponse.Registers">
+        <member name="P:LogicAdministratorApi.Model.Response.ClientMembership.ClientMembershipInformation.Registers">
             <summary>
             Registros
             </summary>
@@ -4921,9 +4936,19 @@
             Nombre del gimnasio
             </summary>
         </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientMembershipItem.GymGuid">
+            <summary>
+            Guid del gimnasio
+            </summary>
+        </member>
         <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientMembershipItem.GymBranchName">
             <summary>
             Nombre de la sucursal
+            </summary>
+        </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientMembershipItem.GymBranchGuid">
+            <summary>
+            Guid de la sucursal
             </summary>
         </member>
         <member name="P:LogicAdministratorApi.Model.Response.UserClient.ClientMembershipItem.Status">

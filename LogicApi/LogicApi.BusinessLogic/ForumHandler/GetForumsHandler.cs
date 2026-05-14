@@ -30,8 +30,8 @@ public class GetForumsHandler(
                             Guid = select.Guid,
                             Title = select.Title,
                             Description = select.Content.Length > 200 ? select.Content.Substring(0, 200) + "..." : select.Content,
-                            AuthorName = select.Creator != null && select.Creator.Person != null ?
-                                $"{select.Creator.Person.RealNames ?? string.Empty} {select.Creator.Person.RealLastNames ?? string.Empty}".Trim() :
+                            AuthorName = select.User != null && select.User.Person != null ?
+                                $"{select.User.Person.RealNames ?? string.Empty} {select.User.Person.RealLastNames ?? string.Empty}".Trim() :
                                 "Anonymous",
                             CreatedDate = select.CreationDate,
                             CommentCount = select.ForumComments != null ? select.ForumComments.Count(c => c.IsActive) : 0,

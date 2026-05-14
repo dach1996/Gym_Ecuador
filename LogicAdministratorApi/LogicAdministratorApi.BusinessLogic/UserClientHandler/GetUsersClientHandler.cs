@@ -55,7 +55,9 @@ public class GetUsersClientHandler(
                             MembershipsItems = select.ClientGymBranches.Select(cg => new ClientMembershipItem
                             {
                                 GymName = cg.GymBranch.Gym.Name,
+                                GymGuid = cg.GymBranch.Gym.Guid,
                                 GymBranchName = cg.GymBranch.Name,
+                                GymBranchGuid = cg.GymBranch.Guid,
                                 Status = cg.Status,
                                 RegistrationDate = cg.RegistrationDate,
                                 StartDate = cg.ClientMemberships.FirstOrDefault().StartDate,
@@ -67,7 +69,18 @@ public class GetUsersClientHandler(
                         orderByType: OrderByType.Desc
                     ).ConfigureAwait(false);
 
-                return new GetUsersClientResponse(paginatedResult.TotalItems, paginatedResult.Items)
+                var items = paginatedResult.Items.Select(item =>
+                {
+                    var membershipsItems = item.MembershipsItems;
+                    if (request.GymGuid.HasValue)
+                        membershipsItems = [.. membershipsItems.Where(m => m.GymGuid == request.GymGuid.Value)];
+                    if (request.GymBranchGuid.HasValue)
+                        membershipsItems = [.. membershipsItems.Where(m => m.GymBranchGuid == request.GymBranchGuid.Value)];
+                    item.MembershipsItems = membershipsItems;
+                    return item;
+                });
+
+                return new GetUsersClientResponse(paginatedResult.TotalItems, items)
                 {
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
                     ShowMessage = false

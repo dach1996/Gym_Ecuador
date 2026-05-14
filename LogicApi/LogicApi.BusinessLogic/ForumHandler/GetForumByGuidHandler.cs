@@ -24,7 +24,7 @@ public class GetForumByGuidHandler(
                 var forumEntity = await UnitOfWork.ForumRepository
                     .GetByFirstOrDefaultAsync(
                         forum => forum.Guid == request.ForumGuid && forum.IsActive,
-                        forum => forum.Creator,
+                        forum => forum.User,
                         forum => forum.ForumComments
                     ).ConfigureAwait(false)
                     ?? throw new CustomException((int)MessagesCodesError.SystemError, "Forum not found");
@@ -36,8 +36,8 @@ public class GetForumByGuidHandler(
                     Description = forumEntity.Content.Length > 200 ? forumEntity.Content.Substring(0, 200) + "..." : forumEntity.Content,
                     FullContent = forumEntity.Content,
                     Category = "General", // Default category, can be enhanced later
-                    AuthorName = forumEntity.Creator != null && forumEntity.Creator.Person != null ? 
-                        $"{forumEntity.Creator.Person.RealNames ?? string.Empty} {forumEntity.Creator.Person.RealLastNames ?? string.Empty}".Trim() : 
+                    AuthorName = forumEntity.User != null && forumEntity.User.Person != null ? 
+                        $"{forumEntity.User.Person.RealNames ?? string.Empty} {forumEntity.User.Person.RealLastNames ?? string.Empty}".Trim() : 
                         "Anonymous",
                     CreatedDate = forumEntity.CreationDate,
                     CreationDate = forumEntity.CreationDate,
@@ -51,8 +51,8 @@ public class GetForumByGuidHandler(
                             {
                                 Guid = c.Guid,
                                 Comment = c.Comment,
-                                AuthorName = c.Author != null && c.Author.Person != null ?
-                                    $"{c.Author.Person.RealNames ?? string.Empty} {c.Author.Person.RealLastNames ?? string.Empty}".Trim() :
+                                AuthorName = c.User != null && c.User.Person != null ?
+                                    $"{c.User.Person.RealNames ?? string.Empty} {c.User.Person.RealLastNames ?? string.Empty}".Trim() :
                                     "Anonymous",
                                 RegistrationDate = c.DateTimeRegister
                             }).ToList() :

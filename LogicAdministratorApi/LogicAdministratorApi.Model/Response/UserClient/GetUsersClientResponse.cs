@@ -71,17 +71,25 @@ public class ClientItem
 /// <summary>
 /// Item de membresía del cliente
 /// </summary>
-public class ClientMembershipItem{
-   
+public class ClientMembershipItem
+{
     /// <summary>
     /// Nombre del gimnasio
     /// </summary>
     public string GymName { get; set; }
+
+    /// <summary>
+    /// Guid del gimnasio
+    /// </summary>
+    public Guid GymGuid { get; set; }
     /// <summary>
     /// Nombre de la sucursal
     /// </summary>
     public string GymBranchName { get; set; }
-
+    /// <summary>
+    /// Guid de la sucursal
+    /// </summary>
+    public Guid GymBranchGuid { get; set; }
     /// <summary>
     /// Estado de la membresía
     /// </summary>

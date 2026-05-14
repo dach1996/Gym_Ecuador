@@ -21,6 +21,18 @@ public class GetClientMembershipsResponse : IApiBaseResponse
     public bool ShowMessage { get; set; }
 
     /// <summary>
+    /// Item de membresía del cliente
+    /// </summary>
+    public ClientMembershipInformation Item { get; set; }
+}
+
+/// <summary>
+/// Item de membresía del cliente
+/// </summary>
+public class ClientMembershipInformation
+{
+
+    /// <summary>
     /// Person full name
     /// </summary>
     public string PersonName { get; set; }
@@ -33,7 +45,7 @@ public class GetClientMembershipsResponse : IApiBaseResponse
     /// Person birth date
     /// </summary>
     public DateTime? PersonBirthDate { get; set; }
-    
+
     /// <summary>
     /// Email of the user
     /// </summary>
@@ -58,6 +70,7 @@ public class GetClientMembershipsResponse : IApiBaseResponse
     /// Registros
     /// </summary>
     public IEnumerable<CurrentSubscription> Registers { get; set; } = [];
+
 }
 
 /// <summary>

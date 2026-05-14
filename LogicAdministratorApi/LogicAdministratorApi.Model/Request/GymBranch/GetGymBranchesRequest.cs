@@ -18,6 +18,12 @@ public class GetGymBranchesRequest : IPaginatorApiRequest<GetGymBranchesResponse
     public Guid GymGuid { get; set; }
 
     /// <summary>
+    /// GUID de la sucursal para filtrar las sucursales
+    /// </summary>
+    [ValidateGuid]
+    public Guid? GymBranchGuid { get; set; }
+
+    /// <summary>
     /// Filtro
     /// </summary>
     public string Filter { get; set; }

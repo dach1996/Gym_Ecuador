@@ -55,18 +55,16 @@ public class UpdateUserAdministratorHandler(
             var identifier = (int?)null;
             // Validar que el gimnasio existe
             if (RoleScope.Gym == roles.Scope)
-            {
-                identifier = await UnitOfWork.GymRepository.GetFirstOrDefaultGenericAsync(
+                identifier = (await UnitOfWork.GymRepository.GetFirstOrDefaultGenericAsync(
                     select => (int?)select.Id,
-                    where => where.Guid == request.Identifier.Value).ConfigureAwait(false);
-            }
+                    where => where.Guid == request.Identifier.Value).ConfigureAwait(false))
+                    ?? throw new CustomException((int)MessagesCodesError.SystemError, "Gimnasio no encontrado");
             // Validar que la sucursal de gimnasio existe
             if (RoleScope.GymBranch == roles.Scope)
-            {
-                identifier = await UnitOfWork.GymBranchRepository.GetFirstOrDefaultGenericAsync(
+                identifier = (await UnitOfWork.GymBranchRepository.GetFirstOrDefaultGenericAsync(
                     select => (int?)select.Id,
-                    where => where.Guid == request.Identifier.Value).ConfigureAwait(false);
-            }
+                    where => where.Guid == request.Identifier.Value).ConfigureAwait(false))
+                    ?? throw new CustomException((int)MessagesCodesError.SystemError, "Sucursal no encontrada");
 
             await UnitOfWork.BeginTransactionAsync().ConfigureAwait(false);
             await UnitOfWork.UserRoleScopeRepository.DeleteAsync(where => where.UserId == user.Id).ConfigureAwait(false);

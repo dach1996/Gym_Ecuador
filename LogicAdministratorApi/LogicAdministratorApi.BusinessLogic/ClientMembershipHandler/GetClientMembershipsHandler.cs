@@ -31,7 +31,7 @@ public class GetClientMembershipsHandler(
                     };
 
                 // Obtener datos paginados
-                var clientGymBranch = (await UnitOfWork.ClientGymBranchRepository
+                var clientGymBranch = await UnitOfWork.ClientGymBranchRepository
                     .GetFirstOrDefaultGenericAsync(
                         select => new
                         {
@@ -63,21 +63,24 @@ public class GetClientMembershipsHandler(
                             }),
                         },
                         whereClause
-                    ).ConfigureAwait(false))
-                    ?? throw new CustomException((int)MessagesCodesError.RecordNotFound, "Registro no encontrado");
-                var suscriptions = clientGymBranch.Subscriptions.OrderByDescending(s => s.RegistrationDate).Select(s => s.Subscription);
+                    ).ConfigureAwait(false);
+                var suscriptions = clientGymBranch?.Subscriptions?.OrderByDescending(s => s.RegistrationDate).Select(s => s.Subscription);
                 return new GetClientMembershipsResponse
                 {
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
                     ShowMessage = false,
-                    PersonName = clientGymBranch.PersonInfo.PersonName,
-                    PersonDocumentNumber = clientGymBranch.PersonInfo.PersonDocumentNumber,
-                    PersonBirthDate = clientGymBranch.PersonInfo.PersonBirthDate,
-                    Email = clientGymBranch.PersonInfo.UserInfo?.UserEmail,
-                    Phone = clientGymBranch.PersonInfo.UserInfo?.UserPhone,
-                    Status = suscriptions.Any(s => s.IsActive),
-                    FirstSubscriptionDate = suscriptions.LastOrDefault().StartDate,
-                    Registers = suscriptions,
+                    Item = suscriptions != null ? new ClientMembershipInformation
+                    {
+                        PersonName = clientGymBranch.PersonInfo.PersonName,
+                        PersonDocumentNumber = clientGymBranch.PersonInfo.PersonDocumentNumber,
+                        PersonBirthDate = clientGymBranch.PersonInfo.PersonBirthDate,
+                        Email = clientGymBranch.PersonInfo.UserInfo?.UserEmail,
+                        Phone = clientGymBranch.PersonInfo.UserInfo?.UserPhone,
+                        Status = suscriptions.Any(s => s.IsActive),
+                        FirstSubscriptionDate = suscriptions.LastOrDefault().StartDate,
+                        Registers = suscriptions,
+                    }
+                    : null
                 };
             }
         ).ConfigureAwait(false);

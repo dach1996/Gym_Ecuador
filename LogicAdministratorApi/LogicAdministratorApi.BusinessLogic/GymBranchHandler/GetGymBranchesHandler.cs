@@ -31,11 +31,12 @@ public class GetGymBranchesHandler(
                 var whereClause = new List<Expression<Func<GymBranch, bool>>>
                 {
                     {where => where.GymId == gymId},
+                    {request.GymBranchGuid.HasValue, where => where.Guid == request.GymBranchGuid.Value},
                     {!request.Filter.IsNullOrEmpty(),
                         where => where.Name.ToLower().Contains(filter) ||
                         where.Address.ToLower().Contains(filter) ||
                         where.Phone.ToLower().Contains(filter) ||
-                        where.Email.ToLower().Contains(filter) 
+                        where.Email.ToLower().Contains(filter)
                         }
                 };
 

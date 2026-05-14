@@ -62,7 +62,7 @@ public class Forum
     public bool IsActive { get; set; }
 
     [Column("USR_ID_REGISTRADOR")]
-    [ForeignKey(nameof(User))]
+    [ForeignKey(nameof(Authentication.User))]
     /// <summary>
     /// Id del Usuario que registró el Foro
     /// </summary>
@@ -73,7 +73,7 @@ public class Forum
     /// Usuario Creador
     /// </summary>
     /// <value></value>
-    public User Creator { get; set; }
+    public User User { get; set; }
 
     /// <summary>
     /// Comentarios del Foro

@@ -373,3 +373,4 @@ __azurite_db_blob_extent__.json
 /__blobstorage__
 /__blobstorage__/AzuriteConfig
 AzuriteConfig
+*.lscache

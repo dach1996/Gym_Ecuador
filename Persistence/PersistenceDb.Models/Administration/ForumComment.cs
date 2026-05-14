@@ -54,7 +54,7 @@ public class ForumComment
     public bool IsActive { get; set; }
 
     [Column("USR_ID_REGISTRADOR")]
-    [ForeignKey(nameof(User))]
+    [ForeignKey(nameof(Authentication.User))]
     /// <summary>
     /// Id del Usuario que registró el Comentario
     /// </summary>
@@ -79,6 +79,6 @@ public class ForumComment
     /// Usuario Autor del Comentario
     /// </summary>
     /// <value></value>
-    public User Author { get; set; }
+    public User User { get; set; }
 }
 
