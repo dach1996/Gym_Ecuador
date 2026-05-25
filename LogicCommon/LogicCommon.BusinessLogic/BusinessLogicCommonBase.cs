@@ -56,6 +56,8 @@ public abstract class BusinessLogicCommonBase
         AppSettings = PluginFactory.GetType<AppSettingsCommon>();
     }
 
+
+
     /// <summary>
     /// Configura la Instancia de Clock
     /// </summary>
@@ -273,4 +275,11 @@ public abstract class BusinessLogicCommonBase
         ).ConfigureAwait(false)).ConfigureAwait(false);
     }
 
+    /// <summary>
+    /// Calcula el índice de masa corporal
+    /// </summary>
+    /// <param name="weight">Peso en kilogramos</param>
+    /// <param name="height">Altura en metros</param>
+    /// <returns></returns>
+    public static decimal CalculateBmi(decimal weight, decimal height) => Math.Round(weight / (height * height), 2);
 }

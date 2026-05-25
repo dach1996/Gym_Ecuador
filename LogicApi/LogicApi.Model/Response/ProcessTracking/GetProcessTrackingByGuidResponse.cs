@@ -5,7 +5,11 @@ namespace LogicApi.Model.Response.ProcessTracking;
 /// <summary>
 /// Respuesta de obtener seguimiento de proceso por GUID
 /// </summary>
-public class GetProcessTrackingByGuidResponse : IApiBaseResponse
+/// <remarks>
+/// Constructor
+/// </remarks>
+/// <param name="processTracking"></param>
+public class GetProcessTrackingByGuidResponse(ProcessTrackingDetail processTracking) : IApiBaseResponse
 {
     /// <summary>
     /// Mensaje al Usuario
@@ -20,16 +24,7 @@ public class GetProcessTrackingByGuidResponse : IApiBaseResponse
     /// <summary>
     /// Detalle del seguimiento de proceso
     /// </summary>
-    public ProcessTrackingDetail ProcessTracking { get; set; }
-
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    /// <param name="processTracking"></param>
-    public GetProcessTrackingByGuidResponse(ProcessTrackingDetail processTracking)
-    {
-        ProcessTracking = processTracking;
-    }
+    public ProcessTrackingDetail ProcessTracking { get; set; } = processTracking;
 }
 
 /// <summary>

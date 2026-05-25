@@ -7,7 +7,7 @@ namespace LogicApi.Model.Request.PersonalGoal;
 /// <summary>
 /// Solicitud para obtener objetivos personales
 /// </summary>
-public class GetPersonalGoalsRequest : IRequest<GetPersonalGoalsResponse>, IApiBaseRequest
+public class GetPersonalGoalsRequest : IApiBaseRequest<GetPersonalGoalsResponse>
 {
     /// <summary>
     /// Id de la persona (filtro opcional)
@@ -34,7 +34,7 @@ public class GetPersonalGoalsRequest : IRequest<GetPersonalGoalsResponse>, IApiB
     /// </summary>
     public int PageSize { get; set; } = 10;
 
- /// <summary>
+    /// <summary>
     /// Context
     /// </summary>
     [JsonIgnore]

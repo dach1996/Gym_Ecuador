@@ -625,6 +625,13 @@
             <param name="request">Modelo para obtener seguimiento de proceso por GUID</param>
             <returns></returns>
         </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetCurrentProcessTracking(LogicApi.Model.Request.ProcessTracking.GetCurrentProcessTrackingRequest)">
+            <summary>
+            Obtiene el seguimiento de proceso más reciente del usuario autenticado
+            </summary>
+            <param name="request">Modelo para obtener el seguimiento de proceso actual</param>
+            <returns></returns>
+        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackingStatistics(LogicApi.Model.Request.ProcessTracking.GetProcessTrackingStatisticsRequest)">
             <summary>
             Obtiene estadísticas de seguimientos de procesos

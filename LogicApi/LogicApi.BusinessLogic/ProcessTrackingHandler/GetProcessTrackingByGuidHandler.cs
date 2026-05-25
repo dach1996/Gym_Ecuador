@@ -21,7 +21,7 @@ public class GetProcessTrackingByGuidHandler(
     /// <returns></returns>
     public override async Task<GetProcessTrackingByGuidResponse> Handle(GetProcessTrackingByGuidRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetProcessTrackingByGuid, request, async () =>
-            {
+            { 
                 // Buscar el seguimiento de proceso por GUID con includes
                 var processTracking = await UnitOfWork.ProcessTrackingRepository
                     .GetFirstOrDefaultGenericAsync(

@@ -164,7 +164,8 @@ public interface IGenericRepository<TEntity> where TEntity : class
         Expression<Func<TEntity, TResult>> selector,
         Expression<Func<TEntity, bool>> where = null,
         Expression<Func<TEntity, dynamic>> orderBy = null,
-        OrderByType orderByType = default);
+        OrderByType orderByType = default,
+        int? top = null);
 
 
 

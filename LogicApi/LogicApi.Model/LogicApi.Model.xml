@@ -2914,6 +2914,16 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Request.ProcessTracking.GetCurrentProcessTrackingRequest">
+            <summary>
+            Solicitud para obtener el seguimiento de proceso más reciente del usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetCurrentProcessTrackingRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingByGuidRequest">
             <summary>
             Solicitud para obtener un seguimiento de proceso por GUID
@@ -7282,10 +7292,106 @@
             Default Constructor
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.GetCurrentProcessTrackingResponse">
+            <summary>
+            Respuesta de obtener el seguimiento de proceso más reciente del usuario
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="processTracking"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.ProcessTracking.GetCurrentProcessTrackingResponse.#ctor(LogicApi.Model.Response.ProcessTracking.CurrentProcessTrackingDetail)">
+            <summary>
+            Respuesta de obtener el seguimiento de proceso más reciente del usuario
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="processTracking"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetCurrentProcessTrackingResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetCurrentProcessTrackingResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetCurrentProcessTrackingResponse.ProcessTracking">
+            <summary>
+            Detalle del seguimiento de proceso más reciente
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.CurrentProcessTrackingDetail">
+            <summary>
+            Detalle del seguimiento de proceso más reciente
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CurrentProcessTrackingDetail.Weight">
+            <summary>
+            Peso corporal actual (en kg o la unidad estándar)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CurrentProcessTrackingDetail.PreviousWeight">
+            <summary>
+            Peso corporal anterior (en kg o la unidad estándar)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CurrentProcessTrackingDetail.WeightPercentageDifference">
+            <summary>
+            Porcentaje de diferencia de peso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CurrentProcessTrackingDetail.BodyFatPercentage">
+            <summary>
+            Porcentaje de grasa corporal estimado.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CurrentProcessTrackingDetail.PreviousBodyFatPercentage">
+            <summary>
+            Porcentaje de grasa corporal anterior.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CurrentProcessTrackingDetail.BodyFatPercentageDifference">
+            <summary>
+            Porcentaje de diferencia de grasa corporal
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CurrentProcessTrackingDetail.Bmi">
+            <summary>
+            Índice de masa corporal.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CurrentProcessTrackingDetail.PreviousBmi">
+            <summary>
+            Porcentaje de diferencia de IMC
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.CurrentProcessTrackingDetail.BmiDifference">
+            <summary>
+            Porcentaje de diferencia de IMC
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingByGuidResponse">
             <summary>
             Respuesta de obtener seguimiento de proceso por GUID
             </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="processTracking"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingByGuidResponse.#ctor(LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail)">
+            <summary>
+            Respuesta de obtener seguimiento de proceso por GUID
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="processTracking"></param>
         </member>
         <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingByGuidResponse.UserMessage">
             <summary>
@@ -7301,12 +7407,6 @@
             <summary>
             Detalle del seguimiento de proceso
             </summary>
-        </member>
-        <member name="M:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingByGuidResponse.#ctor(LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="processTracking"></param>
         </member>
         <member name="T:LogicApi.Model.Response.ProcessTracking.ProcessTrackingDetail">
             <summary>

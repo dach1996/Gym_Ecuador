@@ -409,7 +409,8 @@ public class GenericRepository<TEntity>(
         Expression<Func<TEntity, TResult>> selector,
         Expression<Func<TEntity, bool>> where = null,
         Expression<Func<TEntity, dynamic>> orderBy = null,
-        OrderByType orderByType = default)
+        OrderByType orderByType = default,
+        int? top = null)
     {
         try
         {
@@ -418,6 +419,8 @@ public class GenericRepository<TEntity>(
             var query = entitySet.Where(where);
             if (orderBy is not null)
                 query = orderByType == OrderByType.Asc ? query.OrderBy(orderBy) : query.OrderByDescending(orderBy);
+            if (top is not null)
+                query = query.Take(top.Value);
             return await query.AsNoTracking().Select(selector).ToListAsync().ConfigureAwait(false);
         }
         catch (Exception ex)

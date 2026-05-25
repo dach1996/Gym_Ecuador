@@ -50,6 +50,17 @@ public class ProcessTrackingController(
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
     /// <summary>
+    /// Obtiene el seguimiento de proceso más reciente del usuario autenticado
+    /// </summary>
+    /// <param name="request">Modelo para obtener el seguimiento de proceso actual</param>
+    /// <returns></returns>
+    [HttpGet("GetCurrentProcessTracking")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GetCurrentProcessTrackingResponse>))]
+    [ProducesResponseType(400, Type = typeof(GenericResponse))]
+    public async Task<IActionResult> GetCurrentProcessTracking([FromQuery] GetCurrentProcessTrackingRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
+
+    /// <summary>
     /// Obtiene estadísticas de seguimientos de procesos
     /// </summary>
     /// <param name="request">Modelo para obtener estadísticas de seguimientos de procesos</param>
