@@ -56,12 +56,12 @@ internal class DeepSeekArtificialIntelligence : ArtificialIntelligenceImplementa
     /// <returns>Response de texto procesado</returns>
     public async Task<string> ProcessTextAsync(ProcessTextRequest request)
     {
-         var deepSeekRequest = new DeepSeekProcessTextRequest
+        var deepSeekRequest = new DeepSeekProcessTextRequest
         {
             Model = _model,
             Messages =
-            [
-            new() {
+           [
+           new() {
                 Role = "system",
                 Content = $"{request.Behavior}. {request.Indications}"
             },
@@ -167,9 +167,9 @@ internal class DeepSeekArtificialIntelligence : ArtificialIntelligenceImplementa
     {
         // DeepSeek soporta tool calling pero por ahora implementación básica
         // sin function calling para mantener compatibilidad
-        
+
         var messages = new List<DeepSeekProcessTextRequest.Message>();
-        
+
         // Agregar mensaje del sistema
         messages.Add(new()
         {
@@ -178,16 +178,13 @@ internal class DeepSeekArtificialIntelligence : ArtificialIntelligenceImplementa
         });
 
         // Agregar mensajes del historial
-        foreach (var msg in request.Messages)
+        foreach (var msg in request.Messages.Where(where => !string.IsNullOrEmpty(where.Content)))
         {
-            if (!string.IsNullOrEmpty(msg.Content))
+            messages.Add(new()
             {
-                messages.Add(new()
-                {
-                    Role = msg.Role,
-                    Content = msg.Content
-                });
-            }
+                Role = msg.Role,
+                Content = msg.Content
+            });
         }
 
         var deepSeekRequest = new DeepSeekProcessTextRequest
@@ -200,7 +197,7 @@ internal class DeepSeekArtificialIntelligence : ArtificialIntelligenceImplementa
         const string endpoint = "chat/completions";
         var responseContent = await SendPostModelAsync(endpoint, deepSeekRequest);
         var deepSeekResponse = JsonConvert.DeserializeObject<DeepSeekProcessTextResponse>(responseContent);
-        
+
         var choice = deepSeekResponse?.Choices?.FirstOrDefault();
         if (choice == null)
             throw new ArtificialIntelligenceException("No se pudo obtener una respuesta válida de DeepSeek");

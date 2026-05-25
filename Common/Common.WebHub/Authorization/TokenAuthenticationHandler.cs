@@ -2,6 +2,7 @@
 using Common.Security.Interface;
 using Common.Security.Model.Enum;
 using Common.Utils.Extensions;
+using Common.WebCommon.Models;
 using Common.WebHub.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
@@ -21,7 +22,7 @@ public class JwtAuthenticationHandler(
         encoder
             )
 {
-    private readonly string _aesSecret = appSettingsWebSockets.AesConfiguration.Keys.FirstValueOrDefault(AesConfiguration.AesImplementationName.ServerGeneral);
+    private readonly string _aesSecret = appSettingsWebSockets.AesConfiguration.Keys.FirstValueOrDefault(Common.WebCommon.Models.AesConfiguration.AesImplementationName.ServerGeneral);
     private readonly IJwtManager _jwtManager = pluginFactory.GetPlugin<IJwtManager>(JwtIdentifier.Mobile.ToString());
     protected override Task<AuthenticateResult> HandleAuthenticateAsync()
     {

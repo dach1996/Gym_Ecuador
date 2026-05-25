@@ -1,0 +1,20 @@
+<Project>
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);NU1608</NoWarn>
+  </PropertyGroup>
+
+  <!-- Alinea versiones de Microsoft.Extensions y dependencias compartidas (evita NU1605). -->
+  <ItemGroup>
+    <PackageReference Update="Autofac" Version="9.1.0" />
+    <PackageReference Update="Microsoft.AspNetCore.WebUtilities" Version="10.0.8" />
+    <PackageReference Update="Microsoft.Azure.SignalR" Version="1.33.0" />
+    <PackageReference Update="Microsoft.Extensions.Configuration" Version="10.0.8" />
+    <PackageReference Update="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.8" />
+    <PackageReference Update="Microsoft.Extensions.Configuration.Binder" Version="10.0.8" />
+    <PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="10.0.8" />
+    <PackageReference Update="Microsoft.Extensions.Hosting" Version="10.0.8" />
+    <PackageReference Update="Microsoft.Extensions.Http" Version="10.0.8" />
+    <PackageReference Update="Microsoft.Extensions.Logging.Abstractions" Version="10.0.8" />
+    <PackageReference Update="Microsoft.Extensions.Logging.Configuration" Version="10.0.8" />
+  </ItemGroup>
+</Project>

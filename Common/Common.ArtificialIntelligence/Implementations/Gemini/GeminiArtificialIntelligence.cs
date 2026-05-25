@@ -124,19 +124,16 @@ internal class GeminiArtificialIntelligence : ArtificialIntelligenceImplementati
     {
         // Gemini soporta function calling pero con un formato diferente
         // Por ahora, implementación básica sin tool calls para mantener compatibilidad
-        
+
         var parts = new List<Part>();
-        
+
         // Agregar comportamiento del sistema
         parts.Add(new Part { Text = request.Behavior });
 
         // Agregar mensajes
-        foreach (var msg in request.Messages)
+        foreach (var msg in request.Messages.Where(where => !string.IsNullOrEmpty(where.Content)))
         {
-            if (!string.IsNullOrEmpty(msg.Content))
-            {
-                parts.Add(new Part { Text = msg.Content });
-            }
+            parts.Add(new Part { Text = msg.Content });
         }
 
         var geminiRequest = new GeminiProcessTextRequest
@@ -148,7 +145,7 @@ internal class GeminiArtificialIntelligence : ArtificialIntelligenceImplementati
         var fullpath = $"models/{_model}:generateContent?key={_key}";
         var responseContent = await SendPostModelAsync(fullpath, geminiRequest);
         var geminiResponse = JsonConvert.DeserializeObject<GeminiProcessTextResponse>(responseContent);
-        
+
         var candidate = geminiResponse?.Candidates?.FirstOrDefault();
         if (candidate == null)
             throw new ArtificialIntelligenceException("No se pudo obtener una respuesta válida de Gemini");
