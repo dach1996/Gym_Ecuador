@@ -11,12 +11,6 @@ public class AppSettingsWebSockets : AppSettingsCommon
     /// </summary>
     /// <value></value>
     public string ApiKey { get; set; }
-
-    /// <summary>
-    /// Configuración de AES
-    /// </summary>
-    /// <value></value>
-    public AesConfiguration AesConfiguration { get; set; }
 }
 
 /// <summary>

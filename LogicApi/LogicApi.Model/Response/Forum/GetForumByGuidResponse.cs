@@ -42,11 +42,6 @@ public class ForumDetail : ForumItem
     public DateTime CreationDate { get; set; }
 
     /// <summary>
-    /// Author name
-    /// </summary>
-    public string AuthorName { get; set; }
-
-    /// <summary>
     /// Forum comments
     /// </summary>
     public List<ForumCommentItem> Comments { get; set; }

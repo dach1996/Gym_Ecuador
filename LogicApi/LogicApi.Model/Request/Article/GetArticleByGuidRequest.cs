@@ -16,6 +16,10 @@ public class GetArticleByGuidRequest : IApiBaseRequest<GetArticleByGuidResponse>
     [ValidateGuid]
     public Guid ArticleGuid { get; set; }
 
+    /// <summary>
+    /// A2rtiasdcle GUID
+    /// </summary>
+    [ValidateGuid]
     public Guid A2rtiasdcleGuid { get; set; }
 
     /// <summary>

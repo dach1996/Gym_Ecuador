@@ -7,22 +7,22 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.3.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions" Version="2.3.0" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0" />
-		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0" />
-		<PackageReference Include="NodaTime" Version="3.2.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.3.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions" Version="2.3.10" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8" />
+		<PackageReference Include="NodaTime" Version="3.3.2" />
 		<PackageReference Include="Seq.Extensions.Logging" Version="9.0.0" />
-		<PackageReference Include="SonarAnalyzer.CSharp" Version="10.15.0.120848">
+		<PackageReference Include="SonarAnalyzer.CSharp" Version="10.26.0.140279">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Swashbuckle" Version="5.6.0" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="10.0.1" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="10.0.1" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="10.0.1" />
-		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.0.1" />
-		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.7" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="10.1.7" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="10.1.7" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.1.7" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.1.7" />
 	</ItemGroup>
 	<ItemGroup>
 		<ContentWithTargetPath Include="Pages\SwaggerNotAvailable.html">

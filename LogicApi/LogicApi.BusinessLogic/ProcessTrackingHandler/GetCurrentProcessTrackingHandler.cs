@@ -1,6 +1,7 @@
+using LogicApi.Model.Common;
+using LogicApi.Model.Enum;
 using LogicApi.Model.Request.ProcessTracking;
 using LogicApi.Model.Response.ProcessTracking;
-using LogicCommon.Model.Response.File;
 
 namespace LogicApi.BusinessLogic.ProcessTrackingHandler;
 
@@ -37,26 +38,40 @@ public class GetCurrentProcessTrackingHandler(
                     ).ConfigureAwait(false);
 
                 var currentProcessTracking = results.FirstOrDefault();
-                CurrentProcessTrackingDetail currentProcessTrackingDetail = null;
+                var currentProcessTrackingDetail = new CurrentProcessTrackingDetail();
                 if (currentProcessTracking is not null)
                 {
-                    currentProcessTrackingDetail = new CurrentProcessTrackingDetail
+                    var weight = new StatisticComparisonModel
                     {
-                        Weight = currentProcessTracking.Weight,
-                        BodyFatPercentage = currentProcessTracking.BodyFatPercentage ?? 0,
-                        Bmi = CalculateBmi(currentProcessTracking.Weight, currentProcessTracking.Height),
+                        Code = "WEIGHT",
+                        Label = "Peso",
+                        Value = currentProcessTracking.Weight.Round(2),
+                        DifferenceValueType = DifferenceValueType.Positive,
                     };
+
+                    var bodyFatPercentage = new StatisticComparisonModel
+                    {
+                        Code = "BODY_FAT_PERCENTAGE",
+                        Label = "Porcentaje de Grasa Corporal",
+                        Value = currentProcessTracking.BodyFatPercentage.Round(2),
+                        DifferenceValueType = DifferenceValueType.Negative,
+                    };
+
+                    var bmi = new StatisticComparisonModel
+                    {
+                        Code = "BMI",
+                        Label = "IMC",
+                        Value = CalculateBmi(currentProcessTracking.Weight, currentProcessTracking.Height),
+                        DifferenceValueType = DifferenceValueType.Positive,
+                    };
+                    currentProcessTrackingDetail.Statistics.AddRange([weight, bodyFatPercentage, bmi]);
+
                     var secondProcessTracking = results.Count > 1 ? results.Skip(1).FirstOrDefault() : null;
                     if (secondProcessTracking is not null)
                     {
-                        var bmi = CalculateBmi(secondProcessTracking.Weight, secondProcessTracking.Height);
-                        currentProcessTrackingDetail.PreviousWeight = secondProcessTracking.Weight;
-                        currentProcessTrackingDetail.PreviousBodyFatPercentage = secondProcessTracking.BodyFatPercentage;
-                        currentProcessTrackingDetail.PreviousBmi = bmi;
-                        currentProcessTrackingDetail.WeightPercentageDifference = currentProcessTrackingDetail.Weight.CalculatePercentageDifference(secondProcessTracking.Weight);
-                        if (currentProcessTracking.BodyFatPercentage.HasValue && secondProcessTracking.BodyFatPercentage.HasValue)
-                            currentProcessTrackingDetail.BodyFatPercentageDifference = currentProcessTrackingDetail.BodyFatPercentage.CalculatePercentageDifference(secondProcessTracking.BodyFatPercentage);
-                        currentProcessTrackingDetail.BmiDifference = currentProcessTrackingDetail.Bmi.CalculatePercentageDifference(bmi);
+                        weight.PreviousValue = secondProcessTracking.Weight.Round(2);
+                        bodyFatPercentage.PreviousValue = secondProcessTracking.BodyFatPercentage.Round(2);
+                        bmi.PreviousValue = CalculateBmi(secondProcessTracking.Weight, secondProcessTracking.Height);
                     }
                 }
 

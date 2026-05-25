@@ -4,7 +4,6 @@ using Common.Security.Model.Enum;
 using Common.Utils.Extensions;
 using Common.WebHub.Models;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;

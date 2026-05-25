@@ -208,32 +208,6 @@
             <param name="request">Modelo para obtener mis membresías</param>
             <returns></returns>
         </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.CompanionController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.CompanionController},MediatR.IMediator)">
-            <summary>
-            Constructor
-            </summary>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.CompanionController.CreateOrUpdateCompanion(LogicApi.Model.Request.Companion.CreateOrUpdateCompanionRequest)">
-            <summary>
-            Crear Compañero
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.CompanionController.GetMyCompanion(LogicApi.Model.Request.Companion.GetMyCompanionRequest)">
-            <summary>
-            Obteniene compañeros registrados
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.CompanionController.SearchCompanion(LogicApi.Model.Request.Companion.SearchCompanionRequest)">
-            <summary>
-            Busca compañero de viaje
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.DeviceController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.DeviceController},MediatR.IMediator)">
             <summary>
             Constructor

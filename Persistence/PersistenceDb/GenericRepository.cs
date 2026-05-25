@@ -665,7 +665,7 @@ public class GenericRepository<TEntity>(
 /// </summary>
 /// <typeparam name="TKey"></typeparam>
 /// <typeparam name="TEntity"></typeparam>
-public class GenericRepositoryRowControl<TEntity>(PersistenceContext context, ILogger<GenericRepository<TEntity>> logger)
+public class GenericRepositoryRowControl<TEntity>(PersistenceContext context, ILogger<GenericRepositoryRowControl<TEntity>> logger)
     : GenericRepository<TEntity>(context, logger), IGenericRepositoryRowControl<TEntity> where TEntity : class, IEntityControlRow
 {
     /// <summary>

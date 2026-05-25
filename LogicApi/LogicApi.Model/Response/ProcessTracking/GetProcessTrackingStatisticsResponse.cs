@@ -1,3 +1,5 @@
+using LogicApi.Model.Enum;
+
 namespace LogicApi.Model.Response.ProcessTracking;
 
 /// <summary>
@@ -198,23 +200,4 @@ public class CartesianPoin
     /// The value of the X coordinate
     /// </summary>
     public decimal XValue { get; set; }
-}
-
-/// <summary>
-/// Represents the type of difference value
-/// </summary>
-public enum DifferenceValueType
-{
-    /// <summary>
-    /// Positive difference
-    /// </summary>
-    Positive,
-    /// <summary>
-    /// Negative difference
-    /// </summary>
-    Negative,
-    /// <summary>
-    /// Zero difference
-    /// </summary>
-    Zero
 }

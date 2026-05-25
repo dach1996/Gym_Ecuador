@@ -49,22 +49,22 @@ public class ToolCallMessage
     /// <summary>
     /// Contenido del mensaje (solo para roles: system, user, assistant)
     /// </summary>
-    public string? Content { get; set; }
+    public string Content { get; set; }
 
     /// <summary>
     /// Llamadas a herramientas (solo para rol: assistant)
     /// </summary>
-    public List<ToolCall>? ToolCalls { get; set; }
+    public List<ToolCall> ToolCalls { get; set; }
 
     /// <summary>
     /// ID de la tool call (solo para rol: tool)
     /// </summary>
-    public string? ToolCallId { get; set; }
+    public string ToolCallId { get; set; }
 
     /// <summary>
     /// Nombre de la herramienta (solo para rol: tool)
     /// </summary>
-    public string? Name { get; set; }
+    public string Name { get; set; }
 }
 
 /// <summary>

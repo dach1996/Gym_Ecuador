@@ -51,7 +51,6 @@ try
     builder.Services.AddUserMessagesApi();
     builder.Services.AddApiVersioning();
     builder.Services.AddCustomAttributes();
-    builder.Services.AddApplicationInsightsTelemetry();
     builder.Services.ScanAutoMapperProfiles(builder.Configuration);
     builder.Services.AddHttpContextAccessor();
     builder.Services.AddCatalogsTypeItems();

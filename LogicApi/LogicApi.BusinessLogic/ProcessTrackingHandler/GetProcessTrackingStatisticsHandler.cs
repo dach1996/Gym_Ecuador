@@ -1,6 +1,7 @@
 using LogicApi.Model.Request.ProcessTracking;
 using LogicApi.Model.Response.ProcessTracking;
 using Common.WebCommon.Models.Enum;
+using LogicApi.Model.Enum;
 
 namespace LogicApi.BusinessLogic.ProcessTrackingHandler;
 

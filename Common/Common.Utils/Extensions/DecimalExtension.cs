@@ -29,4 +29,22 @@ public static class DecimalExtension
             return 0;
         return Math.Round((value1 - value2) / value2 * 100, round);
     }
+
+    /// <summary>
+    /// Redondea un decimal
+    /// </summary>
+    /// <param name="value">Valor</param>
+    /// <param name="round">Decimales</param>
+    /// <returns>Decimal redondeado</returns>
+    public static decimal? Round(this decimal? value, short round = 2)
+     => value.HasValue ? Math.Round(value.Value, round) : null;
+
+    /// <summary>
+    /// Redondea un decimal
+    /// </summary>
+    /// <param name="value">Valor</param>
+    /// <param name="round">Decimales</param>
+    /// <returns>Decimal redondeado</returns>
+    public static decimal Round(this decimal value, short round = 2)
+    => Math.Round(value, round);
 }
