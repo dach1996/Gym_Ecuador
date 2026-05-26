@@ -7,7 +7,7 @@ namespace LogicApi.Model.Request.ProcessTracking;
 /// <summary>
 /// Solicitud para actualizar un seguimiento de proceso
 /// </summary>
-public class UpdateProcessTrackingRequest : IApiBaseRequest<GenericCommonOperationResponse>
+public class UpdateProcessTrackingRequest : IApiBaseRequest<GenericCommonOperationResponse>, IProcessTrackingMeasurementsInput
 {
     /// <summary>
     /// Guid del seguimiento de proceso

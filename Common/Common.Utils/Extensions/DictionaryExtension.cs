@@ -31,12 +31,13 @@ public static class DictionaryExtension
     /// Retorna el primer valor o Null comparado con el Key
     /// </summary>
     /// <param name="inputDictionary"></param>
-    /// <param name="predicate"></param>
+    /// <param name="compareValue"></param>
+    /// <param name="defaultValue"></param>
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="TU"></typeparam>
     /// <returns></returns>
-    public static TU FirstValueOrDefault<T, TU>(this IDictionary<T, TU> inputDictionary, T compareValue)
-    => inputDictionary.FirstOrDefault(first => first.Key.Equals(compareValue)).Equals(default(KeyValuePair<T, TU>)) ? default : inputDictionary.SingleOrDefault(first => first.Key.Equals(compareValue)).Value;
+    public static TU FirstValueOrDefault<T, TU>(this IDictionary<T, TU> inputDictionary, T compareValue, TU defaultValue = default)
+    => inputDictionary.FirstOrDefault(first => first.Key.Equals(compareValue)).Equals(default(KeyValuePair<T, TU>)) ? defaultValue : inputDictionary.SingleOrDefault(first => first.Key.Equals(compareValue)).Value;
 
     /// <summary>
     /// Retorna el primer registro encontrado o null

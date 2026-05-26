@@ -54,6 +54,12 @@ public static class CacheCodes
     public const string ROLES = nameof(ROLES);
 
     /// <summary>
+    /// Parámetros físicos
+    /// </summary>
+    /// <returns></returns>
+    public const string PHYSICAL_PARAMETERS = nameof(PHYSICAL_PARAMETERS);
+
+    /// <summary>
     /// Persona por Número de Cédula
     /// </summary>
     /// <param name="documentNumber"></param>

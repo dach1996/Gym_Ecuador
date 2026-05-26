@@ -44,6 +44,8 @@ public interface IUnitOfWork : IUnitOfWorkBase
     IQueueMessageRepository QueueMessageRepository { get; }
     IProcessTrackingRepository ProcessTrackingRepository { get; }
     IProcessTrackingImageRepository ProcessTrackingImageRepository { get; }
+    IPhysicalParameterRepository PhysicalParameterRepository { get; }
+    IProcessTrackingMeasurementRepository ProcessTrackingMeasurementRepository { get; }
     IRoutineRepository RoutineRepository { get; }
     IExerciseRepository ExerciseRepository { get; }
     IExerciseTagRepository ExerciseTagRepository { get; }

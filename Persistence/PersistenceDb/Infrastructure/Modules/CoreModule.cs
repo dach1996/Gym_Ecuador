@@ -10,6 +10,8 @@ public class CoreModule : Module
     {
         builder.RegisterType<QueueMessageRepository>().As<IQueueMessageRepository>().InstancePerLifetimeScope();
         builder.RegisterType<ProcessTrackingRepository>().As<IProcessTrackingRepository>().InstancePerLifetimeScope();
+        builder.RegisterType<PhysicalParameterRepository>().As<IPhysicalParameterRepository>().InstancePerLifetimeScope();
+        builder.RegisterType<ProcessTrackingMeasurementRepository>().As<IProcessTrackingMeasurementRepository>().InstancePerLifetimeScope();
         builder.RegisterType<TrainerGymRepository>().As<ITrainerGymRepository>().InstancePerLifetimeScope();
         builder.RegisterType<GymBranchRepository>().As<IGymBranchRepository>().InstancePerLifetimeScope();
         builder.RegisterType<GymBranchScheduleRepository>().As<IGymBranchScheduleRepository>().InstancePerLifetimeScope();

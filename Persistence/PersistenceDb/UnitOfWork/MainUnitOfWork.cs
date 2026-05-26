@@ -53,6 +53,8 @@ public class MainUnitOfWork(
     private IQueueMessageRepository _queueMessageRepository;
     private IProcessTrackingRepository _processTrackingRepository;
     private IProcessTrackingImageRepository _processTrackingImageRepository;
+    private IPhysicalParameterRepository _physicalParameterRepository;
+    private IProcessTrackingMeasurementRepository _processTrackingMeasurementRepository;
     private IRoutineRepository _routineRepository;
     private IExerciseRepository _exerciseRepository;
     private IExerciseTagRepository _exerciseTagRepository;
@@ -165,6 +167,12 @@ public class MainUnitOfWork(
 
     public IProcessTrackingImageRepository ProcessTrackingImageRepository => _processTrackingImageRepository ??= 
         new ProcessTrackingImageRepository(Context, LoggerFactory.CreateLogger<ProcessTrackingImageRepository>());
+
+    public IPhysicalParameterRepository PhysicalParameterRepository => _physicalParameterRepository ??=
+        new PhysicalParameterRepository(Context, LoggerFactory.CreateLogger<PhysicalParameterRepository>());
+
+    public IProcessTrackingMeasurementRepository ProcessTrackingMeasurementRepository => _processTrackingMeasurementRepository ??=
+        new ProcessTrackingMeasurementRepository(Context, LoggerFactory.CreateLogger<ProcessTrackingMeasurementRepository>());
 
     public IRoutineRepository RoutineRepository => _routineRepository ??=
         new RoutineRepository(Context, LoggerFactory.CreateLogger<RoutineRepository>());

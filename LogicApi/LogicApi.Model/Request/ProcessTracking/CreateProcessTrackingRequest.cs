@@ -7,7 +7,7 @@ namespace LogicApi.Model.Request.ProcessTracking;
 /// <summary>
 /// Solicitud para crear un seguimiento de proceso
 /// </summary>
-public class CreateProcessTrackingRequest : IApiBaseRequest<GenericCommonOperationResponse>
+public class CreateProcessTrackingRequest : IApiBaseRequest<GenericCommonOperationResponse>, IProcessTrackingMeasurementsInput
 {
     /// <summary>
     /// Peso corporal actual (en kg o la unidad estándar)

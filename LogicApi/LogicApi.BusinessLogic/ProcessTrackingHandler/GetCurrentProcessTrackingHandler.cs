@@ -23,64 +23,30 @@ public class GetCurrentProcessTrackingHandler(
     public override async Task<GetCurrentProcessTrackingResponse> Handle(GetCurrentProcessTrackingRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetCurrentProcessTracking, request, async () =>
             {
+                CurrentProcessTrackingDetail currentProcessTrackingDetail = null;
+
                 var results = await UnitOfWork.ProcessTrackingRepository
                     .GetGenericAsync(
-                        select => new
-                        {
-                            select.Weight,
-                            select.BodyFatPercentage,
-                            select.Height,
-                        },
+                        select => new { select.Id },
                         tracking => tracking.UserId == UserId,
                         orderBy => orderBy.Id,
                         OrderByType.Desc,
                         top: 2
                     ).ConfigureAwait(false);
 
-                var currentProcessTracking = results.FirstOrDefault();
-                var currentProcessTrackingDetail = new CurrentProcessTrackingDetail();
-                if (currentProcessTracking is not null)
+                if (results.Count != 0)
                 {
-                    var weight = new StatisticComparisonModel
-                    {
-                        Code = "WEIGHT",
-                        Label = "Peso",
-                        Value = currentProcessTracking.Weight.Round(2),
-                        DifferenceValueType = DifferenceValueType.Positive,
-                    };
+                    var trackingToSearchIds = results.Select(result => result.Id).ToList();
+                    var measurementsByProcessTrackingId = await GetMeasurementValuesByProcessTrackingIdsAsync(trackingToSearchIds).ConfigureAwait(false);
 
-                    var bodyFatPercentage = new StatisticComparisonModel
+                    var current = measurementsByProcessTrackingId[results[0].Id];
+                    var previous = measurementsByProcessTrackingId.Count > 1 ? measurementsByProcessTrackingId[results[1].Id] : null;
+                    currentProcessTrackingDetail = new()
                     {
-                        Code = "BODY_FAT_PERCENTAGE",
-                        Label = "Porcentaje de Grasa Corporal",
-                        Value = currentProcessTracking.BodyFatPercentage.Round(2),
-                        DifferenceValueType = DifferenceValueType.Negative,
+                        Statistics = CalculatePartialMeasurementsDifference(current, previous ?? [])
                     };
-
-                    var bmi = new StatisticComparisonModel
-                    {
-                        Code = "BMI",
-                        Label = "IMC",
-                        Value = CalculateBmi(currentProcessTracking.Weight, currentProcessTracking.Height),
-                        DifferenceValueType = DifferenceValueType.Positive,
-                    };
-                    currentProcessTrackingDetail.Statistics.AddRange([weight, bodyFatPercentage, bmi]);
-
-                    var secondProcessTracking = results.Count > 1 ? results.Skip(1).FirstOrDefault() : null;
-                    if (secondProcessTracking is not null)
-                    {
-                        weight.PreviousValue = secondProcessTracking.Weight.Round(2);
-                        bodyFatPercentage.PreviousValue = secondProcessTracking.BodyFatPercentage.Round(2);
-                        bmi.PreviousValue = CalculateBmi(secondProcessTracking.Weight, secondProcessTracking.Height);
-                    }
                 }
-
-                return new GetCurrentProcessTrackingResponse(currentProcessTrackingDetail)
-                {
-                    UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
-                    ShowMessage = false
-                };
-            },
-            registerLogAudit: false
+                return new GetCurrentProcessTrackingResponse(currentProcessTrackingDetail);
+            }
         ).ConfigureAwait(false);
 }

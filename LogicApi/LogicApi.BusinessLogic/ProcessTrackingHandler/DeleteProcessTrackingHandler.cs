@@ -35,7 +35,8 @@ public class DeleteProcessTrackingHandler(
 
                 // Eliminar el seguimiento de proceso
                 await UnitOfWork.BeginTransactionAsync().ConfigureAwait(false);
-                await ProcessProcessTrackingImageFiles(processTracking.Images.Select(image => RequestEncodeFile.ToDelete(image)).ToList(), processTracking.Id, UserId).ConfigureAwait(false);
+                await ProcessProcessTrackingImageFiles([.. processTracking.Images.Select(image => RequestEncodeFile.ToDelete(image))], processTracking.Id, UserId).ConfigureAwait(false);
+                await UnitOfWork.ProcessTrackingMeasurementRepository.DeleteAsync(where => where.ProcessTrackingId == processTracking.Id).ConfigureAwait(false);
                 await UnitOfWork.ProcessTrackingRepository.DeleteAsync(where => where.Id == processTracking.Id).ConfigureAwait(false);
                 await UnitOfWork.CommitAsync().ConfigureAwait(false);
 

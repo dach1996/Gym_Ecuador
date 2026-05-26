@@ -21,21 +21,24 @@ public class UpdateProcessTrackingHandler(
     public override async Task<GenericCommonOperationResponse> Handle(UpdateProcessTrackingRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.UpdateProcessTracking, request, async () =>
             {
-                // Buscar el seguimiento de proceso por GUID
                 var processTracking = await UnitOfWork.ProcessTrackingRepository
                     .GetByFirstOrDefaultAsync(where => where.Guid == request.ProcessTrackingGuid && where.UserId == UserId)
                     .ConfigureAwait(false) ?? throw new CustomException((int)MessagesCodesError.SystemError, "Seguimiento de proceso no encontrado");
 
-                processTracking.Weight = request.Weight;
-                processTracking.Height = request.Height;
-                processTracking.BodyFatPercentage = request.BodyFatPercentage;
-                processTracking.MuscleMassPercentage = request.MuscleMassPercentage;
-                processTracking.ChestMeasurement = request.ChestMeasurement;
-                processTracking.WaistMeasurement = request.WaistMeasurement;
-                processTracking.HipMeasurement = request.HipMeasurement;
-                processTracking.ArmRightMeasurement = request.ArmRightMeasurement;
-                processTracking.ThighRightMeasurement = request.ThighRightMeasurement;
+                processTracking.Observations = request.Observations;
+
                 await UnitOfWork.BeginTransactionAsync().ConfigureAwait(false);
+                await UnitOfWork.ProcessTrackingRepository.UpdateAsync(processTracking).ConfigureAwait(false);
+
+                await UnitOfWork.ProcessTrackingMeasurementRepository
+                    .DeleteAsync(where => where.ProcessTrackingId == processTracking.Id)
+                    .ConfigureAwait(false);
+
+                var measurements = await MapToMeasurementEntitiesAsync(request, processTracking).ConfigureAwait(false);
+
+                if (measurements.Count > 0)
+                    await UnitOfWork.ProcessTrackingMeasurementRepository.AddRangeAsync(measurements).ConfigureAwait(false);
+
                 await ProcessProcessTrackingImageFiles(request.Images, processTracking.Id, UserId).ConfigureAwait(false);
                 await UnitOfWork.CommitAsync().ConfigureAwait(false);
                 return GenericCommonOperationResponse.SuccessOperation();

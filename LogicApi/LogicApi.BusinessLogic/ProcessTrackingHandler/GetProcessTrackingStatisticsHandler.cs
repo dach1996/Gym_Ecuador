@@ -23,22 +23,12 @@ public class GetProcessTrackingStatisticsHandler(
     public override async Task<GetProcessTrackingStatisticsResponse> Handle(GetProcessTrackingStatisticsRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetProcessTrackingStatistics, request, async () =>
             {
-                // Obtener todos los registros del usuario ordenados por fecha
-                var processTrackings = await UnitOfWork.ProcessTrackingRepository
+                // TODO: Reemplazar respuesta mock por agregación real agrupada por PAF_CODIGO desde SEGUIMIENTO_PROCESOS_MEDIDAS
+                _ = await UnitOfWork.ProcessTrackingRepository
                     .GetGenericAsync(
-                        select => new
-                        {
-                            ArmRightMeasurement = select.ArmRightMeasurement,
-                            ChestMeasurement = select.ChestMeasurement,
-                            WaistMeasurement = select.WaistMeasurement,
-                            ThighRightMeasurement = select.ThighRightMeasurement,
-                            HipMeasurement = select.HipMeasurement,
-                            BodyFatPercentage = select.BodyFatPercentage,
-                            MuscleMassPercentage = select.MuscleMassPercentage,
-                            Weight = select.Weight,
-                        },
-                        where => where.UserId == UserId
-                    ).ConfigureAwait(false);
+                        select => select.Id,
+                        where => where.UserId == UserId)
+                    .ConfigureAwait(false);
 
                 return new GetProcessTrackingStatisticsResponse
                 {

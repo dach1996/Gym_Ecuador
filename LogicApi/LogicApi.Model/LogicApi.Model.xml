@@ -2185,6 +2185,56 @@
             Fecha de fin
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Request.ProcessTracking.IProcessTrackingMeasurementsInput">
+            <summary>
+            Contrato de campos planos de medidas en requests de seguimiento de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.IProcessTrackingMeasurementsInput.Weight">
+            <summary>
+            Peso corporal actual (en kg o la unidad estándar)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.IProcessTrackingMeasurementsInput.Height">
+            <summary>
+            Altura de la persona (en cm) - No cambia con frecuencia, pero es clave para el IMC.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.IProcessTrackingMeasurementsInput.BodyFatPercentage">
+            <summary>
+            Porcentaje de grasa corporal estimado.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.IProcessTrackingMeasurementsInput.MuscleMassPercentage">
+            <summary>
+            Porcentaje de masa muscular.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.IProcessTrackingMeasurementsInput.ChestMeasurement">
+            <summary>
+            Circunferencia del pecho o tórax (cm).
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.IProcessTrackingMeasurementsInput.WaistMeasurement">
+            <summary>
+            Circunferencia de la cintura (cm). Clave para salud cardiovascular.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.IProcessTrackingMeasurementsInput.HipMeasurement">
+            <summary>
+            Circunferencia de la cadera (cm).
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.IProcessTrackingMeasurementsInput.ArmRightMeasurement">
+            <summary>
+            Circunferencia del brazo derecho (cm).
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.IProcessTrackingMeasurementsInput.ThighRightMeasurement">
+            <summary>
+            Circunferencia del muslo derecho (cm).
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Request.ProcessTracking.UpdateProcessTrackingRequest">
             <summary>
             Solicitud para actualizar un seguimiento de proceso
@@ -3883,6 +3933,56 @@
             Obtiene el valor en int
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:LogicApi.Model.Response.Common.ProcessTracking.IProcessTrackingMeasurement">
+            <summary>
+            Interface for process tracking measurements
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Common.ProcessTracking.IProcessTrackingMeasurement.Weight">
+            <summary>
+            Peso corporal actual (en kg o la unidad estándar)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Common.ProcessTracking.IProcessTrackingMeasurement.Height">
+            <summary>
+            Altura de la persona (en cm) - No cambia con frecuencia, pero es clave para el IMC.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Common.ProcessTracking.IProcessTrackingMeasurement.BodyFatPercentage">
+            <summary>
+            Porcentaje de grasa corporal estimado.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Common.ProcessTracking.IProcessTrackingMeasurement.MuscleMassPercentage">
+            <summary>
+            Porcentaje de masa muscular.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Common.ProcessTracking.IProcessTrackingMeasurement.ChestMeasurement">
+            <summary>
+            Circunferencia del pecho o tórax (cm).
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Common.ProcessTracking.IProcessTrackingMeasurement.WaistMeasurement">
+            <summary>
+            Circunferencia de la cintura (cm). Clave para salud cardiovascular.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Common.ProcessTracking.IProcessTrackingMeasurement.HipMeasurement">
+            <summary>
+            Circunferencia de la cadera (cm).
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Common.ProcessTracking.IProcessTrackingMeasurement.ArmRightMeasurement">
+            <summary>
+            Circunferencia del brazo derecho (cm).
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Common.ProcessTracking.IProcessTrackingMeasurement.ThighRightMeasurement">
+            <summary>
+            Circunferencia del muslo derecho (cm).
+            </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Device.RefreshTokenPushResponse">
             <summary>
@@ -6165,29 +6265,44 @@
             Peso corporal actual (en kg o la unidad estándar)
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.FatPercentage">
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Height">
             <summary>
-            Porcentaje de grasa corporal medido en el seguimiento.
+            Altura de la persona (en cm) - No cambia con frecuencia, pero es clave para el IMC.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.BodyFatPercentage">
+            <summary>
+            Porcentaje de grasa corporal estimado.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.MuscleMassPercentage">
+            <summary>
+            Porcentaje de masa muscular.
             </summary>
         </member>
         <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.ChestMeasurement">
             <summary>
-            Medida del pecho (en cm)
+            Circunferencia del pecho o tórax (cm).
             </summary>
         </member>
         <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.WaistMeasurement">
             <summary>
-            Medida de la cintura (en cm)
+            Circunferencia de la cintura (cm). Clave para salud cardiovascular.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.HipMeasurement">
+            <summary>
+            Circunferencia de la cadera (cm).
             </summary>
         </member>
         <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.ArmRightMeasurement">
             <summary>
-            Medida del brazo (en cm)
+            Circunferencia del brazo derecho (cm).
             </summary>
         </member>
         <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.ThighRightMeasurement">
             <summary>
-            Medida de la pierna (en cm)
+            Circunferencia del muslo derecho (cm).
             </summary>
         </member>
         <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Images">

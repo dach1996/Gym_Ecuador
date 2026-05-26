@@ -21,31 +21,27 @@ public class CreateProcessTrackingHandler(
     /// <returns></returns>
     public override async Task<GenericCommonOperationResponse> Handle(CreateProcessTrackingRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.CreateProcessTracking, request, async () =>
+        {
+            var newProcessTracking = new ProcessTracking
             {
-                // Validar que la persona exista
-                var newProcessTracking = new ProcessTracking
-                {
-                    Guid = Guid.NewGuid(),
-                    DateTimeRegister = Now,
-                    Weight = request.Weight,
-                    Height = request.Height,
-                    BodyFatPercentage = request.BodyFatPercentage,
-                    MuscleMassPercentage = request.MuscleMassPercentage,
-                    ChestMeasurement = request.ChestMeasurement,
-                    WaistMeasurement = request.WaistMeasurement,
-                    HipMeasurement = request.HipMeasurement,
-                    ArmRightMeasurement = request.ArmRightMeasurement,
-                    ThighRightMeasurement = request.ThighRightMeasurement,
-                    Observations = request.Observations,
-                    UserId = UserId,
-                };
-                // Guardar en la base de datos
-                await UnitOfWork.BeginTransactionAsync().ConfigureAwait(false);
-                await UnitOfWork.ProcessTrackingRepository.AddAsync(newProcessTracking).ConfigureAwait(false);
-                await ProcessProcessTrackingImageFiles(request.Images, newProcessTracking.Id, UserId).ConfigureAwait(false);
-                await UnitOfWork.CommitAsync().ConfigureAwait(false);
-                return GenericCommonOperationResponse.SuccessOperation();
-            }
+                Guid = Guid.NewGuid(),
+                DateTimeRegister = Now,
+                Observations = request.Observations,
+                UserId = UserId,
+            };
+
+            await UnitOfWork.BeginTransactionAsync().ConfigureAwait(false);
+            await UnitOfWork.ProcessTrackingRepository.AddAsync(newProcessTracking).ConfigureAwait(false);
+
+            var measurements = await MapToMeasurementEntitiesAsync(request, newProcessTracking).ConfigureAwait(false);
+
+            if (measurements.Count > 0)
+                await UnitOfWork.ProcessTrackingMeasurementRepository.AddRangeAsync(measurements).ConfigureAwait(false);
+
+            await ProcessProcessTrackingImageFiles(request.Images, newProcessTracking.Id, UserId).ConfigureAwait(false);
+            await UnitOfWork.CommitAsync().ConfigureAwait(false);
+            return GenericCommonOperationResponse.SuccessOperation();
+        }
         ).ConfigureAwait(false);
 
 }

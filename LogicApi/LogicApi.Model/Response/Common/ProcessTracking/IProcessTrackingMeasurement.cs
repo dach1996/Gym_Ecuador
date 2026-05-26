@@ -1,41 +1,10 @@
-using Common.WebCommon.Models;
-using LogicApi.Model.Response.Common.ProcessTracking;
-using LogicCommon.Model.Response.File;
-
-namespace LogicApi.Model.Response.ProcessTracking;
+namespace LogicApi.Model.Response.Common.ProcessTracking;
 
 /// <summary>
-/// Respuesta de obtener seguimientos de procesos
+/// Interface for process tracking measurements
 /// </summary>
-public class GetProcessTrackingsResponse : IPaginatorResponse<ProcessTrackingItem>
+public interface IProcessTrackingMeasurement
 {
-    /// <summary>
-    /// Lista de seguimientos de procesos
-    /// </summary>
-    public IEnumerable<ProcessTrackingItem> Registers { get; set; }
-
-    /// <summary>
-    /// Total de registros
-    /// </summary>
-    public int TotalRegister { get; set; }
-
-}
-
-/// <summary>
-/// Item de seguimiento de proceso
-/// </summary>
-public class ProcessTrackingItem : IProcessTrackingMeasurement
-{
-    /// <summary>
-    /// Guid del seguimiento de proceso
-    /// </summary>
-    public Guid Guid { get; set; }
-
-    /// <summary>
-    /// Fecha de registro
-    /// </summary>
-    public DateTime RegistrationDate { get; set; }
-
     /// <summary>
     /// Peso corporal actual (en kg o la unidad estándar)
     /// </summary>
@@ -80,9 +49,4 @@ public class ProcessTrackingItem : IProcessTrackingMeasurement
     /// Circunferencia del muslo derecho (cm).
     /// </summary>
     public decimal? ThighRightMeasurement { get; set; }
-
-    /// <summary>
-    /// Lista de imágenes asociadas al seguimiento de proceso.
-    /// </summary>
-    public List<FileUrlResponse> Images { get; set; } = [];
 }

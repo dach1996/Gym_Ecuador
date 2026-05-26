@@ -21,32 +21,34 @@ public class GetProcessTrackingByGuidHandler(
     /// <returns></returns>
     public override async Task<GetProcessTrackingByGuidResponse> Handle(GetProcessTrackingByGuidRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetProcessTrackingByGuid, request, async () =>
-            { 
-                // Buscar el seguimiento de proceso por GUID con includes
+            {
                 var processTracking = await UnitOfWork.ProcessTrackingRepository
                     .GetFirstOrDefaultGenericAsync(
-                        select => new ProcessTrackingDetail
+                        select => new
                         {
-                            Guid = select.Guid,
-                            Weight = select.Weight,
-                            Height = select.Height,
-                            BodyFatPercentage = select.BodyFatPercentage,
-                            MuscleMassPercentage = select.MuscleMassPercentage,
-                            ChestMeasurement = select.ChestMeasurement,
-                            WaistMeasurement = select.WaistMeasurement,
-                            HipMeasurement = select.HipMeasurement,
-                            ArmRightMeasurement = select.ArmRightMeasurement,
-                            ThighRightMeasurement = select.ThighRightMeasurement,
-                            Observations = select.Observations,
-                            RegistrationDate = select.DateTimeRegister,
-                            Images = select.ProcessTrackingImages
-                            .Where(image => image.FilePersistence.State)
-                            .Select(image => new FileUrlResponse(image.FilePersistence.Guid, image.FilePersistence.FileBasePath.BaseUrl, image.FilePersistence.Path)).ToList()
+                            select.Id,
+                            Detail = new ProcessTrackingDetail
+                            {
+                                Guid = select.Guid,
+                                Observations = select.Observations,
+                                RegistrationDate = select.DateTimeRegister,
+                                Images = select.ProcessTrackingImages
+                                    .Where(image => image.FilePersistence.State)
+                                    .Select(image => new FileUrlResponse(
+                                        image.FilePersistence.Guid,
+                                        image.FilePersistence.FileBasePath.BaseUrl,
+                                        image.FilePersistence.Path))
+                                    .ToList()
+                            }
                         },
                         where => where.Guid == request.ProcessTrackingGuid && where.UserId == UserId
                     ).ConfigureAwait(false) ?? throw new CustomException((int)MessagesCodesError.SystemError, "Seguimiento de proceso no encontrado");
 
-                return new GetProcessTrackingByGuidResponse(processTracking);
-               
+                var measurementsByProcessTrackingId = await GetMeasurementValuesByProcessTrackingIdsAsync([processTracking.Id]).ConfigureAwait(false);
+                ApplyMeasurementsToDetail(processTracking.Detail, measurementsByProcessTrackingId[processTracking.Id]);
+
+                return new GetProcessTrackingByGuidResponse(processTracking.Detail);
             }).ConfigureAwait(false);
+
+
 }

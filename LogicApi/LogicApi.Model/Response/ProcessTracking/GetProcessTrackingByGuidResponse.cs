@@ -1,5 +1,5 @@
+using LogicApi.Model.Response.Common.ProcessTracking;
 using LogicCommon.Model.Response.File;
-
 namespace LogicApi.Model.Response.ProcessTracking;
 
 /// <summary>
@@ -30,7 +30,7 @@ public class GetProcessTrackingByGuidResponse(ProcessTrackingDetail processTrack
 /// <summary>
 /// Detalle del seguimiento de proceso
 /// </summary>
-public class ProcessTrackingDetail
+public class ProcessTrackingDetail : IProcessTrackingMeasurement
 {
     /// <summary>
     /// Guid del seguimiento de proceso
@@ -102,6 +102,7 @@ public class ProcessTrackingDetail
     /// </summary>
     public List<FileUrlResponse> Images { get; set; }
 }
+
 
 /// <summary>
 /// Información del gimnasio

@@ -63,6 +63,24 @@ public static class StringExtension
     }
 
     /// <summary>
+    /// Transforma en enumerable desde un EnumMember
+    /// </summary>
+    /// <param name="enumMemberString"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public static T? TryToEnumFromMember<T>(this string enumMemberString) where T : struct
+    {
+        var enumType = typeof(T);
+        foreach (var name in Enum.GetNames(enumType))
+        {
+            var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
+            if (enumMemberAttribute.Value == enumMemberString) return (T)Enum.Parse(enumType, name);
+        }
+        return null;
+    }
+
+
+    /// <summary>
     /// Convierte la Json a Objeto
     /// </summary>
     /// <typeparam name="T"></typeparam>

@@ -22,32 +22,40 @@ public class GetProcessTrackingsHandler(
     public override async Task<GetProcessTrackingsResponse> Handle(GetProcessTrackingsRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetProcessTrackings, request, async () =>
             {
-                // Construir la consulta base con includes
                 var processTrackings = await UnitOfWork.ProcessTrackingRepository
                     .GetPaginatorGenericAsync(
                         itemsByPage: request.PageSize,
                         page: request.Page,
-                        select => new ProcessTrackingItem
+                        select => new
                         {
-                            Guid = select.Guid,
-                            RegistrationDate = select.DateTimeRegister,
-                            Weight = select.Weight,
-                            FatPercentage = select.BodyFatPercentage,
-                            ChestMeasurement = select.ChestMeasurement,
-                            WaistMeasurement = select.WaistMeasurement,
-                            ArmRightMeasurement = select.ArmRightMeasurement,
-                            ThighRightMeasurement = select.ThighRightMeasurement,
-                            Images = select.ProcessTrackingImages.Where(image => image.FilePersistence.State)
-                                .Select(image => new FileUrlResponse(image.FilePersistence.Guid, image.FilePersistence.FileBasePath.BaseUrl, image.FilePersistence.Path)).ToList()
+                            select.Id,
+                            Item = new ProcessTrackingItem
+                            {
+                                Guid = select.Guid,
+                                RegistrationDate = select.DateTimeRegister,
+                                Images = select.ProcessTrackingImages
+                                    .Where(image => image.FilePersistence.State)
+                                    .Select(image => new FileUrlResponse(
+                                        image.FilePersistence.Guid,
+                                        image.FilePersistence.FileBasePath.BaseUrl,
+                                        image.FilePersistence.Path))
+                                    .ToList()
+                            }
                         },
                         where: where => where.UserId == UserId,
                         orderBy: processTracking => processTracking.DateTimeRegister,
                         orderByType: OrderByType.Desc
                     ).ConfigureAwait(false);
 
+                var measurementsByProcessTrackingId = await GetMeasurementValuesByProcessTrackingIdsAsync(
+                    processTrackings.Items.Select(item => item.Id)).ConfigureAwait(false);
+
+                foreach (var processTracking in processTrackings.Items)
+                    ApplyMeasurementsToDetail(processTracking.Item, measurementsByProcessTrackingId[processTracking.Id]);
+
                 return new GetProcessTrackingsResponse
                 {
-                    Registers = processTrackings.Items,
+                    Registers = [.. processTrackings.Items.Select(item => item.Item)],
                     TotalRegister = processTrackings.TotalItems
                 };
             }).ConfigureAwait(false);
