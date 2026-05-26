@@ -8,12 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="9.1.0" />
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
-    <PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.43" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Core" Version="3.0.43" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.46" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Core" Version="3.0.46" />
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="5.2.1" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="5.3.7" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage.Queues" Version="5.3.7" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="5.3.8" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage.Queues" Version="5.3.8" />
     <PackageReference Include="Microsoft.Azure.WebJobs.Host.Storage" Version="5.0.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.8" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.8" />

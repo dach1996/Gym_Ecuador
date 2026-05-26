@@ -45,7 +45,6 @@ try
     builder.Services.AddApiVersioning();
     builder.Services.AddDocumentationServices();
     builder.Services.AddCustomAttributes();
-    builder.Services.AddApplicationInsightsTelemetry();
     builder.Services.ScanAutoMapperProfiles(builder.Configuration);
     builder.Services.AddClock();
     builder.Services.AddCustomDatabaseConfiguration(builder.Configuration);
