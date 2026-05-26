@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using PersistenceDb.Models.Enums;
 
 namespace PersistenceDb.Models.Core;
 
@@ -39,6 +40,20 @@ public class PhysicalParameter
     [Required]
     [Column("PAF_ESTADO")]
     public bool IsActive { get; set; }
+
+    /// <summary>
+    /// Tipo de diferencia de valor para estadísticas (TINYINT, ver PhysicalParameterDifferenceValueType)
+    /// </summary>
+    [Required]
+    [Column("PAF_TIPO_DIFERENCIA")]
+    public PhysicalParameterDifferenceValueType DifferenceValueType { get; set; }
+
+    /// <summary>
+    /// Unidad de medida del parámetro (TINYINT, ver PhysicalParameterUnit)
+    /// </summary>
+    [Required]
+    [Column("PAF_UNIDAD_MEDIDA")]
+    public PhysicalParameterUnit MeasurementUnit { get; set; }
 
     /// <summary>
     /// Valores registrados en seguimientos de proceso

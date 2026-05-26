@@ -28,6 +28,11 @@ public class StatisticComparisonModel
     public decimal? PreviousValue { get; set; }
 
     /// <summary>
+    /// Unit of the measurement
+    /// </summary>
+    public string Unit { get; set; }
+
+    /// <summary>
     /// Valor de comparación
     /// </summary>
     public decimal? ComparisonValue => Value.CalculatePercentageDifference(PreviousValue);

@@ -1,25 +1,7 @@
-using Common.WebCommon.Models;
 using LogicApi.Model.Response.Common.ProcessTracking;
 using LogicCommon.Model.Response.File;
 
 namespace LogicApi.Model.Response.ProcessTracking;
-
-/// <summary>
-/// Respuesta de obtener seguimientos de procesos
-/// </summary>
-public class GetProcessTrackingsResponse : IPaginatorResponse<ProcessTrackingItem>
-{
-    /// <summary>
-    /// Lista de seguimientos de procesos
-    /// </summary>
-    public IEnumerable<ProcessTrackingItem> Registers { get; set; }
-
-    /// <summary>
-    /// Total de registros
-    /// </summary>
-    public int TotalRegister { get; set; }
-
-}
 
 /// <summary>
 /// Item de seguimiento de proceso

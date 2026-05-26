@@ -14,7 +14,7 @@ public static class AbstractionsExtension
         builder.ScanAssembliesFor<IAssignPersonHandler>();
         builder.ScanAssembliesFor<IDocumentValidationHandler>();
         builder.ScanAssembliesFor<ICreateProcessTrackingHandler>();
-        builder.ScanAssembliesFor<IGetProcessTrackingsHandler>();
+        builder.ScanAssembliesFor<IGetProcessTrackingsPaginatedHandler>();
         builder.ScanAssembliesFor<IGetProcessTrackingByGuidHandler>();
         builder.ScanAssembliesFor<IUpdateProcessTrackingHandler>();
     }

@@ -1,4 +1,5 @@
 using LogicApi.Model.Request.ProcessTracking;
+using LogicApi.Model.Response.Common.ProcessTracking;
 using LogicApi.Model.Response.ProcessTracking;
 using LogicCommon.Model.Response.File;
 

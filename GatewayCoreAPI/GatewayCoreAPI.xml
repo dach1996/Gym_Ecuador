@@ -585,11 +585,11 @@
             <param name="logger"></param>
             <param name="mediator"></param>
         </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackings(LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest)">
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackingsPaginated(LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest)">
             <summary>
-            Obtiene la lista de seguimientos de procesos con paginación
+            Obtiene seguimientos de proceso paginados
             </summary>
-            <param name="request">Modelo para obtener seguimientos de procesos</param>
+            <param name="request">Modelo para obtener seguimientos de proceso paginados</param>
             <returns></returns>
         </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackingByGuid(LogicApi.Model.Request.ProcessTracking.GetProcessTrackingByGuidRequest)">
@@ -599,11 +599,11 @@
             <param name="request">Modelo para obtener seguimiento de proceso por GUID</param>
             <returns></returns>
         </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetCurrentProcessTracking(LogicApi.Model.Request.ProcessTracking.GetCurrentProcessTrackingRequest)">
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackingComparationByFunctionality(LogicApi.Model.Request.ProcessTracking.GetProcessTrackingComparationByFunctionalityRequest)">
             <summary>
-            Obtiene el seguimiento de proceso más reciente del usuario autenticado
+            Obtiene comparación de seguimiento de proceso por funcionalidad
             </summary>
-            <param name="request">Modelo para obtener el seguimiento de proceso actual</param>
+            <param name="request">Modelo para obtener comparación de seguimiento de proceso por funcionalidad</param>
             <returns></returns>
         </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackingStatistics(LogicApi.Model.Request.ProcessTracking.GetProcessTrackingStatisticsRequest)">

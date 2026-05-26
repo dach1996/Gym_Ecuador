@@ -28,14 +28,14 @@ public class ProcessTrackingController(
 {
 
     /// <summary>
-    /// Obtiene la lista de seguimientos de procesos con paginación
+    /// Obtiene seguimientos de proceso paginados
     /// </summary>
-    /// <param name="request">Modelo para obtener seguimientos de procesos</param>
+    /// <param name="request">Modelo para obtener seguimientos de proceso paginados</param>
     /// <returns></returns>
-    [HttpGet("GetProcessTrackings")]
-    [ProducesResponseType(200, Type = typeof(GenericResponse<GetProcessTrackingsResponse>))]
+    [HttpGet("GetProcessTrackingsPaginated")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GetProcessTrackingsPaginatedResponse>))]
     [ProducesResponseType(400, Type = typeof(GenericResponse))]
-    public async Task<IActionResult> GetProcessTrackings([FromQuery] GetProcessTrackingsRequest request)
+    public async Task<IActionResult> GetProcessTrackingsPaginated([FromQuery] GetProcessTrackingsPaginatedRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
     /// <summary>
@@ -50,14 +50,14 @@ public class ProcessTrackingController(
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
     /// <summary>
-    /// Obtiene el seguimiento de proceso más reciente del usuario autenticado
+    /// Obtiene comparación de seguimiento de proceso por funcionalidad
     /// </summary>
-    /// <param name="request">Modelo para obtener el seguimiento de proceso actual</param>
+    /// <param name="request">Modelo para obtener comparación de seguimiento de proceso por funcionalidad</param>
     /// <returns></returns>
-    [HttpGet("GetCurrentProcessTracking")]
-    [ProducesResponseType(200, Type = typeof(GenericResponse<GetCurrentProcessTrackingResponse>))]
+    [HttpGet("GetProcessTrackingComparationByFunctionality")]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GetProcessTrackingComparationByFunctionalityResponse>))]
     [ProducesResponseType(400, Type = typeof(GenericResponse))]
-    public async Task<IActionResult> GetCurrentProcessTracking([FromQuery] GetCurrentProcessTrackingRequest request)
+    public async Task<IActionResult> GetProcessTrackingComparationByFunctionality([FromQuery] GetProcessTrackingComparationByFunctionalityRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));
 
     /// <summary>

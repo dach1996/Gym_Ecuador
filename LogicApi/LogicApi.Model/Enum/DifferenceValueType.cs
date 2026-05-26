@@ -7,13 +7,13 @@ public enum DifferenceValueType
     /// <summary>
     /// Positive difference
     /// </summary>
-    Positive,
+    Positive = 0,
     /// <summary>
     /// Negative difference
     /// </summary>
-    Negative,
+    Negative = 1,
     /// <summary>
     /// Zero difference
     /// </summary>
-    Zero
+    Zero = 2
 }

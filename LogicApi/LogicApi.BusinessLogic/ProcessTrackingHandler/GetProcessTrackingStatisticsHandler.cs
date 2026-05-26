@@ -23,7 +23,6 @@ public class GetProcessTrackingStatisticsHandler(
     public override async Task<GetProcessTrackingStatisticsResponse> Handle(GetProcessTrackingStatisticsRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetProcessTrackingStatistics, request, async () =>
             {
-                // TODO: Reemplazar respuesta mock por agregación real agrupada por PAF_CODIGO desde SEGUIMIENTO_PROCESOS_MEDIDAS
                 _ = await UnitOfWork.ProcessTrackingRepository
                     .GetGenericAsync(
                         select => select.Id,

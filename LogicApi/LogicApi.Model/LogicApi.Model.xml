@@ -108,6 +108,11 @@
             Valor anterior 
             </summary>
         </member>
+        <member name="P:LogicApi.Model.Common.StatisticComparisonModel.Unit">
+            <summary>
+            Unit of the measurement
+            </summary>
+        </member>
         <member name="P:LogicApi.Model.Common.StatisticComparisonModel.ComparisonValue">
             <summary>
             Valor de comparación
@@ -2089,16 +2094,6 @@
             Context
             </summary>
         </member>
-        <member name="T:LogicApi.Model.Request.ProcessTracking.GetCurrentProcessTrackingRequest">
-            <summary>
-            Solicitud para obtener el seguimiento de proceso más reciente del usuario
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.GetCurrentProcessTrackingRequest.ContextRequest">
-            <summary>
-            Context
-            </summary>
-        </member>
         <member name="T:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingByGuidRequest">
             <summary>
             Solicitud para obtener un seguimiento de proceso por GUID
@@ -2114,57 +2109,46 @@
             Context
             </summary>
         </member>
-        <member name="T:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest">
+        <member name="T:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingComparationByFunctionalityRequest">
             <summary>
-            Solicitud para obtener seguimientos de procesos
+            Solicitud para obtener comparación de seguimiento de proceso por funcionalidad
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.GymGuid">
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingComparationByFunctionalityRequest.Type">
             <summary>
-            Guid del gimnasio (filtro opcional)
+            Tipo de comparación por funcionalidad
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.ProcessTypeFilter">
-            <summary>
-            Filtro por tipo de proceso
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.StatusFilter">
-            <summary>
-            Filtro por estado
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.IsActiveFilter">
-            <summary>
-            Filtro por estado activo
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.Page">
-            <summary>
-            Página
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.PageSize">
-            <summary>
-            Tamaño de página
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.ContextRequest">
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingComparationByFunctionalityRequest.ContextRequest">
             <summary>
             Context
             </summary>
         </member>
-        <member name="M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
+        <member name="T:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingComparationByFunctionalityRequest.GetProcessTrackingComparationFunctionalityType">
             <summary>
-            Constructor
-            </summary>
-            <param name="contextRequest"></param>
-        </member>
-        <member name="M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsRequest.#ctor">
-            <summary>
-            Default Constructor
+            Tipo de comparación por funcionalidad
             </summary>
         </member>
+        <member name="F:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingComparationByFunctionalityRequest.GetProcessTrackingComparationFunctionalityType.Weight">
+            <summary>
+            By functionality
+            </summary>
+        </member>
+        <member name="F:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingComparationByFunctionalityRequest.GetProcessTrackingComparationFunctionalityType.Measurements">
+            <summary>
+            By measurements
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest" -->
+        <!-- Badly formed XML comment ignored for member "P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.GymGuid" -->
+        <!-- Badly formed XML comment ignored for member "P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.ProcessTypeFilter" -->
+        <!-- Badly formed XML comment ignored for member "P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.StatusFilter" -->
+        <!-- Badly formed XML comment ignored for member "P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.IsActiveFilter" -->
+        <!-- Badly formed XML comment ignored for member "P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.Page" -->
+        <!-- Badly formed XML comment ignored for member "P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.PageSize" -->
+        <!-- Badly formed XML comment ignored for member "P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.ContextRequest" -->
+        <!-- Badly formed XML comment ignored for member "M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)" -->
+        <!-- Badly formed XML comment ignored for member "M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.#ctor" -->
         <member name="T:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingStatisticsRequest">
             <summary>
             Solicitud para obtener estadísticas de seguimientos de procesos
@@ -6058,50 +6042,6 @@
             Default Constructor
             </summary>
         </member>
-        <member name="T:LogicApi.Model.Response.ProcessTracking.GetCurrentProcessTrackingResponse">
-            <summary>
-            Respuesta de obtener el seguimiento de proceso más reciente del usuario
-            </summary>
-            <remarks>
-            Constructor
-            </remarks>
-            <param name="processTracking"></param>
-        </member>
-        <member name="M:LogicApi.Model.Response.ProcessTracking.GetCurrentProcessTrackingResponse.#ctor(LogicApi.Model.Response.ProcessTracking.CurrentProcessTrackingDetail)">
-            <summary>
-            Respuesta de obtener el seguimiento de proceso más reciente del usuario
-            </summary>
-            <remarks>
-            Constructor
-            </remarks>
-            <param name="processTracking"></param>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.GetCurrentProcessTrackingResponse.UserMessage">
-            <summary>
-            Mensaje al Usuario
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.GetCurrentProcessTrackingResponse.ShowMessage">
-            <summary>
-            Mostrar Mensaje?
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.GetCurrentProcessTrackingResponse.ProcessTracking">
-            <summary>
-            Detalle del seguimiento de proceso más reciente
-            </summary>
-        </member>
-        <member name="T:LogicApi.Model.Response.ProcessTracking.CurrentProcessTrackingDetail">
-            <summary>
-            Detalle del seguimiento de proceso más reciente
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.CurrentProcessTrackingDetail.Statistics">
-            <summary>
-            Estadísticas de comparación
-            </summary>
-            <value></value>
-        </member>
         <member name="T:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingByGuidResponse">
             <summary>
             Respuesta de obtener seguimiento de proceso por GUID
@@ -6230,84 +6170,53 @@
             Dirección del gimnasio
             </summary>
         </member>
-        <member name="T:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsResponse">
+        <member name="T:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingComparationByFunctionalityResponse">
             <summary>
-            Respuesta de obtener seguimientos de procesos
+            Respuesta de comparación de seguimiento de proceso por funcionalidad
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="statistics"></param>
+        </member>
+        <member name="M:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingComparationByFunctionalityResponse.#ctor(System.Collections.Generic.List{LogicApi.Model.Common.StatisticComparisonModel})">
+            <summary>
+            Respuesta de comparación de seguimiento de proceso por funcionalidad
+            </summary>
+            <remarks>
+            Constructor
+            </remarks>
+            <param name="statistics"></param>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingComparationByFunctionalityResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsResponse.Registers">
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingComparationByFunctionalityResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingComparationByFunctionalityResponse.Statistics">
+            <summary>
+            Estadísticas de comparación
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsPaginatedResponse">
+            <summary>
+            Respuesta de seguimientos de proceso paginados
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsPaginatedResponse.Registers">
             <summary>
             Lista de seguimientos de procesos
             </summary>
         </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsResponse.TotalRegister">
+        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingsPaginatedResponse.TotalRegister">
             <summary>
             Total de registros
-            </summary>
-        </member>
-        <member name="T:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem">
-            <summary>
-            Item de seguimiento de proceso
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Guid">
-            <summary>
-            Guid del seguimiento de proceso
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.RegistrationDate">
-            <summary>
-            Fecha de registro
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Weight">
-            <summary>
-            Peso corporal actual (en kg o la unidad estándar)
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Height">
-            <summary>
-            Altura de la persona (en cm) - No cambia con frecuencia, pero es clave para el IMC.
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.BodyFatPercentage">
-            <summary>
-            Porcentaje de grasa corporal estimado.
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.MuscleMassPercentage">
-            <summary>
-            Porcentaje de masa muscular.
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.ChestMeasurement">
-            <summary>
-            Circunferencia del pecho o tórax (cm).
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.WaistMeasurement">
-            <summary>
-            Circunferencia de la cintura (cm). Clave para salud cardiovascular.
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.HipMeasurement">
-            <summary>
-            Circunferencia de la cadera (cm).
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.ArmRightMeasurement">
-            <summary>
-            Circunferencia del brazo derecho (cm).
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.ThighRightMeasurement">
-            <summary>
-            Circunferencia del muslo derecho (cm).
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Images">
-            <summary>
-            Lista de imágenes asociadas al seguimiento de proceso.
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingStatisticsResponse">
@@ -6504,6 +6413,71 @@
         <member name="P:LogicApi.Model.Response.ProcessTracking.CartesianPoin.XValue">
             <summary>
             The value of the X coordinate
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem">
+            <summary>
+            Item de seguimiento de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Guid">
+            <summary>
+            Guid del seguimiento de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.RegistrationDate">
+            <summary>
+            Fecha de registro
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Weight">
+            <summary>
+            Peso corporal actual (en kg o la unidad estándar)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Height">
+            <summary>
+            Altura de la persona (en cm) - No cambia con frecuencia, pero es clave para el IMC.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.BodyFatPercentage">
+            <summary>
+            Porcentaje de grasa corporal estimado.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.MuscleMassPercentage">
+            <summary>
+            Porcentaje de masa muscular.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.ChestMeasurement">
+            <summary>
+            Circunferencia del pecho o tórax (cm).
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.WaistMeasurement">
+            <summary>
+            Circunferencia de la cintura (cm). Clave para salud cardiovascular.
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.HipMeasurement">
+            <summary>
+            Circunferencia de la cadera (cm).
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.ArmRightMeasurement">
+            <summary>
+            Circunferencia del brazo derecho (cm).
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.ThighRightMeasurement">
+            <summary>
+            Circunferencia del muslo derecho (cm).
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingItem.Images">
+            <summary>
+            Lista de imágenes asociadas al seguimiento de proceso.
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.ProcessTracking.UpdateProcessTrackingResponse">

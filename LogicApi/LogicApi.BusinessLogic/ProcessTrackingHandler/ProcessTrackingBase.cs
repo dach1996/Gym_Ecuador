@@ -7,6 +7,7 @@ using LogicApi.Model.Response.Common.ProcessTracking;
 using LogicApi.Model.Response.ProcessTracking;
 using LogicCommon.Model.Request.File;
 using PersistenceDb.Models.Core;
+using PersistenceDb.Models.Enums;
 
 namespace LogicApi.BusinessLogic.ProcessTrackingHandler;
 
@@ -113,27 +114,13 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
         return measurements;
     }
 
-    /// <summary>
-    /// Mapa de códigos de parámetros físicos a tipos de diferencia
-    /// </summary>
-    /// <returns></returns>
-    private static readonly Dictionary<PhysicalParameterCode, DifferenceValueType> PhysicalParameterCodeToDifferenceValueType = new()
-    {
-        { PhysicalParameterCode.Weight, DifferenceValueType.Positive },
-        { PhysicalParameterCode.Height, DifferenceValueType.Positive },
-        { PhysicalParameterCode.BodyFatPercentage, DifferenceValueType.Positive },
-        { PhysicalParameterCode.MuscleMassPercentage, DifferenceValueType.Positive },
-        { PhysicalParameterCode.ChestMeasurement, DifferenceValueType.Positive },
-        { PhysicalParameterCode.WaistMeasurement, DifferenceValueType.Positive },
-    };
-
-
     public record PartialMeasurement(
         int ProcessTrackingId,
         PhysicalParameterCode? Code,
         string Name,
         decimal Value,
-        DifferenceValueType DifferenceValueType);
+        DifferenceValueType DifferenceValueType,
+        PhysicalParameterUnit MeasurementUnit);
     /// <summary>
     /// Obtiene valores de medidas agrupados por identificador de seguimiento de proceso
     /// </summary>
@@ -146,7 +133,9 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
                 select.ProcessTrackingId,
                 select.PhysicalParameter.Code,
                 select.Value,
-                select.PhysicalParameter.Name
+                select.PhysicalParameter.Name,
+                select.PhysicalParameter.DifferenceValueType,
+                select.PhysicalParameter.MeasurementUnit,
             },
             where => processTrackingIds.Contains(where.ProcessTrackingId)).ConfigureAwait(false);
         var parameters = await GetPhysicalParametersAsync().ConfigureAwait(false);
@@ -161,21 +150,21 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
                         row.Code?.TryToEnumFromMember<PhysicalParameterCode>(),
                         row.Name,
                         row.Value,
-                        row.Code?.TryToEnumFromMember<PhysicalParameterCode>() != null ? PhysicalParameterCodeToDifferenceValueType.FirstValueOrDefault(row.Code.TryToEnumFromMember<PhysicalParameterCode>().Value, DifferenceValueType.Positive) : DifferenceValueType.Positive
-                        ))
+                        (DifferenceValueType)row.DifferenceValueType,
+                        row.MeasurementUnit))
                         .Where(select => select.Code.HasValue)
                         .ToList();
                     var height = partialMeasurements.FirstOrDefault(select => select.Code.Value == PhysicalParameterCode.Height);
                     var weight = partialMeasurements.FirstOrDefault(select => select.Code.Value == PhysicalParameterCode.Weight);
                     var bmi = weight.Value / (height.Value * height.Value);
-                    var bmiParameter = parameters.FirstOrDefault(select => select.Code == PhysicalParameterCode.Bmi.GetEnumMember());
+                    var bmiParameter = parameters.First(select => select.Code == PhysicalParameterCode.Bmi.GetEnumMember());
                     partialMeasurements.Add(new PartialMeasurement(
                         group.Key,
                         PhysicalParameterCode.Bmi,
                         bmiParameter.Name,
                         bmi,
-                        DifferenceValueType.Positive
-                    ));
+                        (DifferenceValueType)bmiParameter.DifferenceValueType,
+                        bmiParameter.MeasurementUnit));
                     return partialMeasurements.ToArray();
                 });
     }
@@ -191,13 +180,19 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
         IEnumerable<PartialMeasurement> partialMeasurementsToCompare)
     {
         var codes = partialMeasurements.Select(select => select.Code.Value).Union(partialMeasurementsToCompare.Select(select => select.Code.Value)).Distinct();
-        return [.. codes.Select(code => new StatisticComparisonModel
+        return [.. codes.Select(code =>
         {
-            Code = code.GetEnumMember(),
-            Label = code.GetEnumMember(),
-            Value = partialMeasurements.FirstOrDefault(select => select.Code.Value == code)?.Value,
-            PreviousValue = partialMeasurementsToCompare.FirstOrDefault(select => select.Code.Value == code)?.Value,
-            DifferenceValueType = PhysicalParameterCodeToDifferenceValueType.FirstValueOrDefault(code, DifferenceValueType.Positive)
+            var partialMeasurement = partialMeasurements.FirstOrDefault(select => select.Code.Value == code);
+            var partialMeasurementToCompare = partialMeasurementsToCompare.FirstOrDefault(select => select.Code.Value == code);
+            return new StatisticComparisonModel
+            {
+                Code = code.GetEnumMember(),
+                Label = partialMeasurement?.Name ?? partialMeasurementToCompare?.Name ?? "-",
+                Unit = partialMeasurement?.MeasurementUnit.GetEnumMember() ?? partialMeasurementToCompare?.MeasurementUnit.GetEnumMember() ?? "-",
+                Value = partialMeasurement?.Value.Round(2),
+                PreviousValue = partialMeasurementToCompare?.Value.Round(2),
+                DifferenceValueType = partialMeasurement?.DifferenceValueType ?? partialMeasurementToCompare?.DifferenceValueType ?? DifferenceValueType.Positive
+            };
         })];
     }
 

@@ -3,12 +3,12 @@ using LogicApi.Model.Response.ProcessTracking;
 
 namespace LogicApi.Abstractions.Interfaces.ProcessTracking;
 
-public interface IGetProcessTrackingsHandler
+public interface IGetProcessTrackingsPaginatedHandler
 {
     /// <summary>
-    /// Obtener seguimientos de procesos
+    /// Obtener seguimientos de proceso paginados
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    Task<GetProcessTrackingsResponse> Handle(GetProcessTrackingsRequest request);
+    Task<GetProcessTrackingsPaginatedResponse> Handle(GetProcessTrackingsPaginatedRequest request);
 }

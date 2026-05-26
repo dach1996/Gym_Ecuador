@@ -5,22 +5,22 @@ using LogicCommon.Model.Response.File;
 namespace LogicApi.BusinessLogic.ProcessTrackingHandler;
 
 /// <summary>
-/// Handler para obtener seguimientos de procesos
+/// Handler para obtener seguimientos de proceso paginados
 /// </summary>
 /// <param name="logger"></param>
 /// <param name="pluginFactory"></param>
-public class GetProcessTrackingsHandler(
-    ILogger<GetProcessTrackingsHandler> logger,
-    IPluginFactory pluginFactory) : ProcessTrackingBase<GetProcessTrackingsRequest, GetProcessTrackingsResponse>(logger, pluginFactory)
+public class GetProcessTrackingsPaginatedHandler(
+    ILogger<GetProcessTrackingsPaginatedHandler> logger,
+    IPluginFactory pluginFactory) : ProcessTrackingBase<GetProcessTrackingsPaginatedRequest, GetProcessTrackingsPaginatedResponse>(logger, pluginFactory)
 {
     /// <summary>
-    /// Maneja la obtención de seguimientos de procesos con paginación
+    /// Maneja la obtención de seguimientos de proceso con paginación
     /// </summary>
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public override async Task<GetProcessTrackingsResponse> Handle(GetProcessTrackingsRequest request, CancellationToken cancellationToken)
-        => await ExecuteHandlerAsync(OperationApiName.GetProcessTrackings, request, async () =>
+    public override async Task<GetProcessTrackingsPaginatedResponse> Handle(GetProcessTrackingsPaginatedRequest request, CancellationToken cancellationToken)
+        => await ExecuteHandlerAsync(OperationApiName.GetProcessTrackingsPaginated, request, async () =>
             {
                 var processTrackings = await UnitOfWork.ProcessTrackingRepository
                     .GetPaginatorGenericAsync(
@@ -51,9 +51,12 @@ public class GetProcessTrackingsHandler(
                     processTrackings.Items.Select(item => item.Id)).ConfigureAwait(false);
 
                 foreach (var processTracking in processTrackings.Items)
-                    ApplyMeasurementsToDetail(processTracking.Item, measurementsByProcessTrackingId[processTracking.Id]);
+                {
+                    if (measurementsByProcessTrackingId.TryGetValue(processTracking.Id, out var partialMeasurements))
+                        ApplyMeasurementsToDetail(processTracking.Item, partialMeasurements);
+                }
 
-                return new GetProcessTrackingsResponse
+                return new GetProcessTrackingsPaginatedResponse
                 {
                     Registers = [.. processTrackings.Items.Select(item => item.Item)],
                     TotalRegister = processTrackings.TotalItems

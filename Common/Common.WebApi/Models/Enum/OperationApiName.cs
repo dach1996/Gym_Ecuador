@@ -605,16 +605,16 @@ public enum OperationApiName
     GetProcessTrackingByGuid,
 
     /// <summary>
-    /// Obtener Seguimiento de Proceso Actual
+    /// Obtener comparación de seguimiento de proceso por funcionalidad
     /// </summary>
-    [EnumMember(Value = "Obtener Seguimiento de Proceso Actual")]
-    GetCurrentProcessTracking,
+    [EnumMember(Value = "Obtener comparación de seguimiento de proceso por funcionalidad")]
+    GetProcessTrackingComparationByFunctionality,
 
     /// <summary>
     /// Obtener Seguimientos de Procesos
     /// </summary>
-    [EnumMember(Value = "Obtener Seguimientos de Procesos")]
-    GetProcessTrackings,
+    [EnumMember(Value = "Obtener Seguimientos de Procesos Paginados")]
+    GetProcessTrackingsPaginated,
 
     /// <summary>
     /// Actualizar Seguimiento de Proceso
