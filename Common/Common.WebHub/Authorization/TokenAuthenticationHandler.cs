@@ -14,15 +14,13 @@ public class JwtAuthenticationHandler(
     IOptionsMonitor<AuthenticationSchemeOptions> options,
     ILoggerFactory logger,
     UrlEncoder encoder,
-    IPluginFactory pluginFactory,
-    AppSettingsWebSockets appSettingsWebSockets
+    IPluginFactory pluginFactory
         ) : AuthenticationHandler<AuthenticationSchemeOptions>(
         options,
         logger,
         encoder
             )
 {
-    private readonly string _aesSecret = appSettingsWebSockets.AesConfiguration.Keys.FirstValueOrDefault(Common.WebCommon.Models.AesConfiguration.AesImplementationName.ServerGeneral);
     private readonly IJwtManager _jwtManager = pluginFactory.GetPlugin<IJwtManager>(JwtIdentifier.Mobile.ToString());
     protected override Task<AuthenticateResult> HandleAuthenticateAsync()
     {
@@ -39,12 +37,10 @@ public class JwtAuthenticationHandler(
         }
         catch (SecurityTokenExpiredException ex)
         {
-            //  Logger.LogWarning("Petición al servicio: '{@ServiceName}' y Device: '{@Device}' con Token Expirado a las: '{@ExpiredDate}'", Context.Request.Path.Value, device.Value, ex.Expires);
             return Task.FromResult(AuthenticateResult.Fail(ex));
         }
         catch (ArgumentException ex)
         {
-            // Logger.LogWarning("Petición al servicio: '{@ServiceName}' y Device: '{@Device}' con Token no válido: {@Message}", Context.Request.Path.Value, device.Value, ex.Message);
             return Task.FromResult(AuthenticateResult.Fail(ex));
         }
         catch (Exception ex)

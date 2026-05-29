@@ -1,11 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.26.0.140279">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+</ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\LogicCommon.Abstraction\LogicCommon.Abstraction.csproj" />
@@ -22,7 +18,7 @@
     <ProjectReference Include="..\..\Common\Common.Templates\Common.Templates.csproj" />
     <ProjectReference Include="..\..\Common\Common.Cache\Common.Cache.csproj" />
     <ProjectReference Include="..\..\Common\Common.ArtificialIntelligence\Common.ArtificialIntelligence.csproj" />
-    <PackageReference Include="PasswordGenerator" Version="2.1.0" />
+    <PackageReference Include="PasswordGenerator" />
   </ItemGroup>
 
   <PropertyGroup>

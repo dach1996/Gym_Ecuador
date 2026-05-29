@@ -5,12 +5,6 @@ namespace Common.WebApi.Models.EncryptedClaims;
 
 public class EncryptedFieldsApi : EncryptedFieldClaimCommon
 {
-
-    /// <summary>
-    /// Id de usuario 
-    /// </summary>
-    public int UserId { get; set; }
-
     /// <summary>
     /// Id de persona
     /// </summary>

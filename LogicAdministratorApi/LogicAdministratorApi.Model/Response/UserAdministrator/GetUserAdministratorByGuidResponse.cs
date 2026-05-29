@@ -26,7 +26,9 @@ public class GetUserAdministratorByGuidResponse(AdministratorUserDetail user) : 
 /// </summary>
 public class AdministratorUserDetail : AdministratorUserItem
 {
-
-   
+    /// <summary>
+    /// Alcance del rol
+    /// </summary>
+    public byte Scope { get; set; }
 }
 

@@ -11,6 +11,24 @@
             "problemMatcher": "$msCompile"
         },
         {
+            "label": "clean bin and obj",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                "${workspaceFolder}/.vscode/scripts/clean-bin-obj.ps1"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            }
+        },
+        {
             "label": "build AdministratorApi",
             "command": "dotnet",
             "type": "process",

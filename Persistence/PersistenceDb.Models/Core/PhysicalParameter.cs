@@ -56,6 +56,14 @@ public class PhysicalParameter
     public PhysicalParameterUnit MeasurementUnit { get; set; }
 
     /// <summary>
+    /// Código del icono para UI
+    /// </summary>
+    [Required]
+    [StringLength(64)]
+    [Column("PAF_ICONO")]
+    public string IconCode { get; set; } = string.Empty;
+
+    /// <summary>
     /// Valores registrados en seguimientos de proceso
     /// </summary>
     public virtual ICollection<ProcessTrackingMeasurement> ProcessTrackingMeasurements { get; set; }

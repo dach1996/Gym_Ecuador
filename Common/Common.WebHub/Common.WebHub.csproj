@@ -1,34 +1,54 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <NoWarn>S3903;NU1701</NoWarn>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Autofac" Version="9.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="10.0.8" />
-    <PackageReference Include="Microsoft.Azure.SignalR" Version="1.33.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.8" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.8" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.8" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.26.0.140279">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Common.SignalR\Common.SignalR.csproj" />
-    <ProjectReference Include="..\Common.PluginFactory\Common.PluginFactory.csproj" />
-    <ProjectReference Include="..\Common.Security\Common.Security.csproj" />
-    <ProjectReference Include="..\Common.Utils\Common.Utils.csproj" />
-    <ProjectReference Include="..\Common.WebCommon\Common.WebCommon.csproj" />
-  </ItemGroup>
-
-</Project>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+
+    <TargetFramework>net10.0</TargetFramework>
+
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <NoWarn>S3903;NU1701</NoWarn>
+
+  </PropertyGroup>
+
+
+
+  <ItemGroup>
+
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+
+    <PackageReference Include="Autofac" />
+
+
+    <PackageReference Include="Microsoft.Azure.SignalR" />
+
+
+
+
+    <PackageReference Include="Newtonsoft.Json" />
+</ItemGroup>
+
+
+
+  <ItemGroup>
+
+    <ProjectReference Include="..\Common.SignalR\Common.SignalR.csproj" />
+
+    <ProjectReference Include="..\Common.PluginFactory\Common.PluginFactory.csproj" />
+
+    <ProjectReference Include="..\Common.Security\Common.Security.csproj" />
+
+    <ProjectReference Include="..\Common.Utils\Common.Utils.csproj" />
+
+    <ProjectReference Include="..\Common.WebCommon\Common.WebCommon.csproj" />
+
+  </ItemGroup>
+
+
+
+</Project>

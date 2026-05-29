@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -10,15 +10,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8" />
-		<PackageReference Include="NodaTime" Version="3.3.2" />
-		<PackageReference Include="Seq.Extensions.Logging" Version="9.0.0" />
-		<PackageReference Include="SonarAnalyzer.CSharp" Version="10.26.0.140279">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.7" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="10.1.7" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+		<PackageReference Include="NodaTime" />
+		<PackageReference Include="Seq.Extensions.Logging" />
+<PackageReference Include="Swashbuckle.AspNetCore" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
 	</ItemGroup>
 	<ItemGroup>
 		<ContentWithTargetPath Include="Pages\SwaggerNotAvailable.html">

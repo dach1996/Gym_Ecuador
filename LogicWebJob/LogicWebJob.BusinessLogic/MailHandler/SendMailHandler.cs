@@ -17,13 +17,6 @@ public class SendMailHandler(
 {
     public async override Task<Unit> Handle(SendMailRequest request, CancellationToken cancellationToken)
     {
-      /*   await MailNotification.SendMailAsync(
-        new Common.Mail.Model.MailTemplateRequest(
-            request.MailTemplateModel.Identifier.GetEnumMember(),
-            request.MailTemplateModel,
-            request.To
-        )
-       ).ConfigureAwait(false); */
-        return Unit.Value;
+        return await Task.FromResult(Unit.Value);
     }
 }

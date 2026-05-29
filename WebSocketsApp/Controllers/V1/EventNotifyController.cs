@@ -21,7 +21,7 @@ namespace WebSocketsApp.Controllers.V1;
 [ApiVersion("1.0")]
 public class EventNotifyController(
     IUserMessages userMessages,
-    ILogger<GenericControlerBase> logger,
+    ILogger<EventNotifyController> logger,
     IHubContext<HubManager> hubContext,
     IMediator mediator) : WebSocketControllerBase<HubManager>(userMessages, logger, hubContext, mediator)
 {

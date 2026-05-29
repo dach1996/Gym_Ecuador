@@ -47,24 +47,6 @@ public abstract class BusinessLogicAdministratorBase(
         return result;
     }
 
-    /* /// <summary>
-    /// Ejecuta asincronamente el almacenado de un log
-    /// </summary>
-    /// <param name="model"></param>
-    private async Task ExecuteTaskCreateAuditLogAsync(RegisterLogAuditExecutorModel model)
-    {
-        if (model.OperationName.GetRegisterAuditLog())
-        {
-            model.EstablishmentBranchName = await GetEstablishmentBranchNameByContextAsync().ConfigureAwait(false);
-            PluginFactory.GetType<TaskExecutorBuilder>()
-                    .AddConstructorParam(
-                        PluginFactory.GetType<ILoggerFactory>(),
-                        PluginFactory.GetType<IUnitOfWorkManager>().GetNewAdministratorUnitOfWork(),
-                        Clock)
-                    .Execute<RegisterLogAuditTaskExecutor>(model);
-        }
-    } */
-
     /// <summary>
     /// Ejecuta el proceso dentro de la configuración inicial con cache
     /// </summary>

@@ -28,7 +28,7 @@ public abstract class MailBase(
              var mailQueueTemplate = message.ToObject<TMailQueueTemplate>();
              var mailTemplateModel = message.ToObject<TMailTemplateModel>();
              if (AppSettingsWebJob.CustomLog?.QueueMessage ?? false)
-                 logger.LogInformation("Mensaje: {@Message}", message);
-            
+                 logger.LogInformation("Mensaje: {@Message} - {@MailQueueTemplate} - {@MailTemplateModel}", message, mailQueueTemplate, mailTemplateModel);
+             await Task.CompletedTask.ConfigureAwait(false);
          });
 }

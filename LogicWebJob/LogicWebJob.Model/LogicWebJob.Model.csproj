@@ -1,10 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.26.0.140279">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Mail\Common.Mail.csproj" />
     <ProjectReference Include="..\..\Common\Common.WebJob\Common.WebJob.csproj" />

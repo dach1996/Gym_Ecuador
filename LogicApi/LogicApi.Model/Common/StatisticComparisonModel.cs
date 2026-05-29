@@ -42,4 +42,9 @@ public class StatisticComparisonModel
     /// </summary>
     public DifferenceValueType DifferenceValueType { get; set; }
 
+    /// <summary>
+    /// Icon of the statistic
+    /// </summary>
+    public string Icon { get; set; }
+
 }

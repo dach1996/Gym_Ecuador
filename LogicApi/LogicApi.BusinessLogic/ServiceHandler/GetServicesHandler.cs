@@ -1,6 +1,5 @@
 using LogicApi.Model.Request.Service;
 using LogicApi.Model.Response.Service;
-using Microsoft.EntityFrameworkCore;
 
 namespace LogicApi.BusinessLogic.ServiceHandler;
 
@@ -22,25 +21,6 @@ public class GetServicesHandler(
     public override async Task<GetServicesResponse> Handle(GetServicesRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetServices, request, async () =>
             {
-                // Construir query con filtros
-                var query = await UnitOfWork.ServiceRepository.GetByAsync(where => where.Name.Contains(request.NameFilter))
-                    .ConfigureAwait(false);
-
-                // Filtrar por nombre si se proporciona
-                if (!string.IsNullOrWhiteSpace(request.NameFilter))
-                    query = await UnitOfWork.ServiceRepository.GetByAsync(where => where.Name.Contains(request.NameFilter))
-                        .ConfigureAwait(false);
-
-                // Filtrar por estado si se proporciona
-                if (request.IsActiveFilter.HasValue)
-                    query = await UnitOfWork.ServiceRepository.GetByAsync(where => where.IsActive == request.IsActiveFilter.Value)
-                        .ConfigureAwait(false);
-
-                // Filtrar por requiere reserva si se proporciona
-                if (request.RequiresReservationFilter.HasValue)
-                    query = await UnitOfWork.ServiceRepository.GetByAsync(where => where.RequiresReservation == request.RequiresReservationFilter.Value)
-                        .ConfigureAwait(false);
-
                 // Obtener el total de registros
                 var totalRecords = await UnitOfWork.ServiceRepository.CountAsync(where => true).ConfigureAwait(false);
 

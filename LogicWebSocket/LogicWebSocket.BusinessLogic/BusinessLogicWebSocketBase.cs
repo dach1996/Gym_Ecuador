@@ -1,6 +1,6 @@
 ﻿namespace LogicWebSocket.BusinessLogic;
 
-public class BusinessLogicWebSocketBase
+public abstract class BusinessLogicWebSocketBase 
 {
-
+    public static readonly string[] DaysOfWeek = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
 }

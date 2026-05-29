@@ -21,12 +21,11 @@ public class GetGymSubscriptionPlansHandler(
     public override async Task<GetGymSubscriptionPlansResponse> Handle(GetGymSubscriptionPlansRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetGymSubscriptionPlans, request, async () =>
             {
-                // TODO: Implementar con GetPaginatorGenericAsync y proyección (acceso a p.GymBranch.Gym.Name en el selector), sin usar .Include() (estándar agent-os: repository-pattern.md)
-                return new GetGymSubscriptionPlansResponse(new List<GymSubscriptionPlanItem>(), 0, request.Page, request.PageSize)
+                return await Task.FromResult(new GetGymSubscriptionPlansResponse(new List<GymSubscriptionPlanItem>(), 0, request.Page, request.PageSize)
                 {
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
                     ShowMessage = false
-                };
+                });
             },
             registerLogAudit: false
         ).ConfigureAwait(false);

@@ -209,21 +209,8 @@ public static class SwaggerExtension
     {
         public void Apply(IOpenApiSchema schema, SchemaFilterContext context)
         {
-            // El resto del código de búsqueda del atributo es correcto.
-            var attr = context.MemberInfo?.CustomAttributes.FirstOrDefault(x =>
-                x.AttributeType.Name == nameof(EncryptedFieldAttribute));
+   
 
-            if (attr is not null)
-            {
-                //// 2. Definir la nueva propiedad
-                //var nuevaPropiedad = new OpenApiDate
-                //{
-                //    Type = JsonSchemaType.Boolean, // O el tipo de  dato que se necesita (integer, boolean, array, etc.)
-                //    Description = "Verdadero si el campo está encriptado, falso si no está encriptado."
-                //};
-                //schema.Extensions.Add("x-encryptField", nuevaPropiedad);
-                //schema.Properties?.Add("Encrypt Field", nuevaPropiedad);
-            }
         }
     }
 }

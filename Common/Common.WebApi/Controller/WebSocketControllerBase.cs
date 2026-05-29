@@ -18,7 +18,7 @@ namespace Common.WebApi.Controller;
 [Authorize]
 public class WebSocketControllerBase<T>(
     IUserMessages userMessages,
-    ILogger<GenericControlerBase> logger,
+    ILogger<WebSocketControllerBase<T>> logger,
     IHubContext<T> hubContext,
     IMediator mediator) : WebSocketControllerBase(userMessages, logger, mediator) where T : Hub
 {
@@ -37,7 +37,7 @@ public class WebSocketControllerBase<T>(
 /// <returns></returns>
 public class WebSocketControllerBase(
     IUserMessages userMessages,
-    ILogger<GenericControlerBase> logger,
+    ILogger<WebSocketControllerBase> logger,
     IMediator mediator) : GenericControlerBase(userMessages, logger, mediator)
 {
 }

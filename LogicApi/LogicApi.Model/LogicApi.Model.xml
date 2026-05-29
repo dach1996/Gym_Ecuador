@@ -123,6 +123,11 @@
             Tipo de diferencia
             </summary>
         </member>
+        <member name="P:LogicApi.Model.Common.StatisticComparisonModel.Icon">
+            <summary>
+            Icon of the statistic
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Enum.DifferenceValueType">
             <summary>
             Tipos de diferencia de valores
@@ -2139,16 +2144,57 @@
             By measurements
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest" -->
-        <!-- Badly formed XML comment ignored for member "P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.GymGuid" -->
-        <!-- Badly formed XML comment ignored for member "P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.ProcessTypeFilter" -->
-        <!-- Badly formed XML comment ignored for member "P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.StatusFilter" -->
-        <!-- Badly formed XML comment ignored for member "P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.IsActiveFilter" -->
-        <!-- Badly formed XML comment ignored for member "P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.Page" -->
-        <!-- Badly formed XML comment ignored for member "P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.PageSize" -->
-        <!-- Badly formed XML comment ignored for member "P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.ContextRequest" -->
-        <!-- Badly formed XML comment ignored for member "M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)" -->
-        <!-- Badly formed XML comment ignored for member "M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.#ctor" -->
+        <member name="T:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest">
+            <summary>
+            Solicitud para obtener seguimientos de proceso paginados
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.GymGuid">
+            <summary>
+            Guid del gimnasio (filtro opcional)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.ProcessTypeFilter">
+            <summary>
+            Filtro por tipo de proceso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.StatusFilter">
+            <summary>
+            Filtro por estado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.IsActiveFilter">
+            <summary>
+            Filtro por estado activo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.Page">
+            <summary>
+            Página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.PageSize">
+            <summary>
+            Tamaño de página
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingsPaginatedRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Request.ProcessTracking.GetProcessTrackingStatisticsRequest">
             <summary>
             Solicitud para obtener estadísticas de seguimientos de procesos
@@ -6238,86 +6284,6 @@
             <summary>
             Estadísticas generales
             </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingStatisticsResponse.CartesianEstadistics">
-            <summary>
-            List of Cartesian points
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.GetProcessTrackingStatisticsResponse.WeightComparison">
-            <summary>
-            Weight comparison
-            </summary>
-            <value></value>
-        </member>
-        <member name="T:LogicApi.Model.Response.ProcessTracking.WeightComparison">
-            <summary>
-            Representa los datos de comparación de peso entre el primer y último registro
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightComparison.InitialDate">
-            <summary>
-            Peso inicial registrado
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightComparison.InitialWeight">
-            <summary>
-            Peso final registrado
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightComparison.CurrentDate">
-            <summary>
-            Fecha actual
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightComparison.CurrentWeight">
-            <summary>
-            Peso actual registrado
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.WeightComparison.Message">
-            <summary>
-            Message of the weight comparison
-            </summary>
-            <value></value>
-        </member>
-        <member name="T:LogicApi.Model.Response.ProcessTracking.MeasurementMetricItem">
-            <summary>
-            Represents a metric item
-            </summary>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.MeasurementMetricItem.Label">
-            <summary>
-            Label of the metric
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.MeasurementMetricItem.Value">
-            <summary>
-            Value of the metric
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.MeasurementMetricItem.ComparisonValue">
-            <summary>
-            Comparison value of the metric
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.MeasurementMetricItem.Unit">
-            <summary>
-            Unit of the metric
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:LogicApi.Model.Response.ProcessTracking.MeasurementMetricItem.Icon">
-            <summary>
-            Icon of the metric
-            </summary>
-            <value></value>
         </member>
         <member name="T:LogicApi.Model.Response.ProcessTracking.CartesianPoint">
             <summary>

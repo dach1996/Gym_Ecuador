@@ -18,7 +18,7 @@ namespace Common.WebApi.Middleware;
 /// <param name="pluginFactory"></param>
 public class ExceptionHandlingMiddleware(
     RequestDelegate next,
-    ILogger<MiddlewareBase> logger,
+    ILogger<ExceptionHandlingMiddleware> logger,
     IPluginFactory pluginFactory) : MiddlewareBase(
         next,
         logger,

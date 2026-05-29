@@ -19,14 +19,10 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Asp.Versioning.Mvc" Version="10.0.0" />
-    <PackageReference Include="Microsoft.ApplicationInsights" Version="3.1.1" />
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="3.1.1" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.26.0.140279">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+    <PackageReference Include="Asp.Versioning.Mvc" />
+    <PackageReference Include="Microsoft.ApplicationInsights" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" />
+</ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\LogicAdministratorApi\LogicAdministratorApi.BusinessLogic\LogicAdministratorApi.BusinessLogic.csproj" />

@@ -120,7 +120,9 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
         string Name,
         decimal Value,
         DifferenceValueType DifferenceValueType,
-        PhysicalParameterUnit MeasurementUnit);
+        PhysicalParameterUnit MeasurementUnit,
+        string IconCode);
+
     /// <summary>
     /// Obtiene valores de medidas agrupados por identificador de seguimiento de proceso
     /// </summary>
@@ -136,6 +138,7 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
                 select.PhysicalParameter.Name,
                 select.PhysicalParameter.DifferenceValueType,
                 select.PhysicalParameter.MeasurementUnit,
+                select.PhysicalParameter.IconCode,
             },
             where => processTrackingIds.Contains(where.ProcessTrackingId)).ConfigureAwait(false);
         var parameters = await GetPhysicalParametersAsync().ConfigureAwait(false);
@@ -151,7 +154,8 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
                         row.Name,
                         row.Value,
                         (DifferenceValueType)row.DifferenceValueType,
-                        row.MeasurementUnit))
+                        row.MeasurementUnit,
+                        row.IconCode))
                         .Where(select => select.Code.HasValue)
                         .ToList();
                     var height = partialMeasurements.FirstOrDefault(select => select.Code.Value == PhysicalParameterCode.Height);
@@ -164,7 +168,8 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
                         bmiParameter.Name,
                         bmi,
                         (DifferenceValueType)bmiParameter.DifferenceValueType,
-                        bmiParameter.MeasurementUnit));
+                        bmiParameter.MeasurementUnit,
+                        bmiParameter.IconCode));
                     return partialMeasurements.ToArray();
                 });
     }

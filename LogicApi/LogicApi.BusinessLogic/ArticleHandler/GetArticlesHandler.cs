@@ -21,11 +21,10 @@ public class GetArticlesHandler(
     public override async Task<GetArticlesResponse> Handle(GetArticlesRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetArticles, request, async () =>
             {
-                // TODO: Implementar cuando se agregue ArticleRepository al UnitOfWork
                 // Por ahora retornamos datos vacíos
                 var articles = new List<ArticleItem>();
 
-                return new GetArticlesResponse
+                return await Task.FromResult(new GetArticlesResponse
                 (
                     totalRegister: 0,
                     registers: articles
@@ -33,7 +32,7 @@ public class GetArticlesHandler(
                 {
                     UserMessage = GetSuccessMessage(MessagesCodesSucess.Ok),
                     ShowMessage = false
-                };
+                });
             }
         ).ConfigureAwait(false);
 }

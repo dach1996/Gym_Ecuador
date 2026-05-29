@@ -4462,6 +4462,11 @@
             Detalle completo de usuario administrador
             </summary>
         </member>
+        <member name="P:LogicAdministratorApi.Model.Response.UserAdministrator.AdministratorUserDetail.Scope">
+            <summary>
+            Alcance del rol
+            </summary>
+        </member>
         <member name="T:LogicAdministratorApi.Model.Response.UserAdministrator.GetUsersAdministratorResponse">
             <summary>
             Respuesta de obtener usuarios administradores paginados
