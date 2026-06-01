@@ -617,6 +617,12 @@ public enum OperationApiName
     GetProcessTrackingsPaginated,
 
     /// <summary>
+    /// Obtener items de medidas para renderizado del formulario de seguimiento
+    /// </summary>
+    [EnumMember(Value = "Obtener items de medidas para renderizado de seguimiento")]
+    GetProcessTrackingMeasurementRenderItems,
+
+    /// <summary>
     /// Actualizar Seguimiento de Proceso
     /// </summary>
     [EnumMember(Value = "Actualizar Seguimiento de Proceso")]

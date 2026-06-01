@@ -606,6 +606,12 @@
             <param name="request">Modelo para obtener comparación de seguimiento de proceso por funcionalidad</param>
             <returns></returns>
         </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackingMeasurementRenderItems">
+            <summary>
+            Obtiene items de medidas para renderizado del formulario de seguimiento
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackingStatistics(LogicApi.Model.Request.ProcessTracking.GetProcessTrackingStatisticsRequest)">
             <summary>
             Obtiene estadísticas de seguimientos de procesos

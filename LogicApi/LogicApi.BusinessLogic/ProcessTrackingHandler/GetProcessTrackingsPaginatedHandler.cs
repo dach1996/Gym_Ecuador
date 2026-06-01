@@ -1,5 +1,7 @@
 using LogicApi.Model.Request.ProcessTracking;
 using LogicApi.Model.Response.ProcessTracking;
+using LogicCommon.BusinessLogic;
+using LogicCommon.Model.Common.ProcessTracking;
 using LogicCommon.Model.Response.File;
 
 namespace LogicApi.BusinessLogic.ProcessTrackingHandler;
@@ -22,13 +24,13 @@ public class GetProcessTrackingsPaginatedHandler(
     public override async Task<GetProcessTrackingsPaginatedResponse> Handle(GetProcessTrackingsPaginatedRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetProcessTrackingsPaginated, request, async () =>
             {
+                var heightCode = PhysicalParameterCode.Height.GetEnumMember();
                 var processTrackings = await UnitOfWork.ProcessTrackingRepository
                     .GetPaginatorGenericAsync(
                         itemsByPage: request.PageSize,
                         page: request.Page,
                         select => new
                         {
-                            select.Id,
                             Item = new ProcessTrackingItem
                             {
                                 Guid = select.Guid,
@@ -39,21 +41,55 @@ public class GetProcessTrackingsPaginatedHandler(
                                         image.FilePersistence.Guid,
                                         image.FilePersistence.FileBasePath.BaseUrl,
                                         image.FilePersistence.Path))
-                                    .ToList()
-                            }
+                                    .ToList(),
+
+                            },
+                            Measurements = select.ProcessTrackingMeasurements
+                            .Select(measurement => new
+                            {
+                                PhysicalParameter = new ProcessTrackingMeasurementModel
+                                {
+                                    Code = measurement.PhysicalParameter.Code,
+                                    Label = measurement.PhysicalParameter.Name,
+                                    Value = measurement.Value,
+                                    Icon = measurement.PhysicalParameter.IconCode
+                                },
+                                measurement.PhysicalParameter.MeasurementUnit
+                            }).ToList()
                         },
                         where: where => where.UserId == UserId,
                         orderBy: processTracking => processTracking.DateTimeRegister,
                         orderByType: OrderByType.Desc
                     ).ConfigureAwait(false);
 
-                var measurementsByProcessTrackingId = await GetMeasurementValuesByProcessTrackingIdsAsync(
-                    processTrackings.Items.Select(item => item.Id)).ConfigureAwait(false);
 
+                var listWeightCodes = new List<string> { PhysicalParameterCode.Weight.GetEnumMember(), PhysicalParameterCode.Bmi.GetEnumMember(), PhysicalParameterCode.BodyFatPercentage.GetEnumMember() };
+
+                var parameters = await GetPhysicalParametersAsync().ConfigureAwait(false);
                 foreach (var processTracking in processTrackings.Items)
                 {
-                    if (measurementsByProcessTrackingId.TryGetValue(processTracking.Id, out var partialMeasurements))
-                        ApplyMeasurementsToDetail(processTracking.Item, partialMeasurements);
+                    var currentProcessTracking = processTracking.Item;
+                    var measurments = processTracking.Measurements.Select(measurement =>
+                    {
+                        var physicalParameter = measurement.PhysicalParameter;
+                        physicalParameter.Unit = measurement.MeasurementUnit.GetEnumMember();
+                        return physicalParameter;
+                    }).ToList();
+                    var bmiParameter = parameters.First(select => select.Code.Equals(PhysicalParameterCode.Bmi.GetEnumMember(), StringComparison.OrdinalIgnoreCase));
+                    var weightParameter = measurments.FirstOrDefault(select => select.Code.Equals(PhysicalParameterCode.Weight.GetEnumMember(), StringComparison.OrdinalIgnoreCase))?.Value;
+                    var heightParameter = measurments.FirstOrDefault(select => select.Code.Equals(PhysicalParameterCode.Height.GetEnumMember(), StringComparison.OrdinalIgnoreCase))?.Value;
+                    if (weightParameter.HasValue && heightParameter.HasValue)
+                        measurments.Add(new ProcessTrackingMeasurementModel
+                        {
+                            Code = bmiParameter.Code,
+                            Label = bmiParameter.Name,
+                            Value = BusinessLogicUtils.CalculateBmi(weightParameter.Value, heightParameter.Value),
+                            Icon = bmiParameter.IconCode
+                        });
+                    
+                    measurments = [.. measurments.Where(measurement => !measurement.Code.Equals(PhysicalParameterCode.Height.GetEnumMember(), StringComparison.OrdinalIgnoreCase))];
+                    currentProcessTracking.PrincipalMeasurements = [.. measurments.Where(measurement => listWeightCodes.Contains(measurement.Code))];
+                    currentProcessTracking.SecondaryMeasurements = [.. measurments.Except(currentProcessTracking.PrincipalMeasurements)];
                 }
 
                 return new GetProcessTrackingsPaginatedResponse

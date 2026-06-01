@@ -1,5 +1,4 @@
 using LogicApi.Model.Request.ProcessTracking;
-using LogicApi.Model.Response.Common.ProcessTracking;
 using LogicApi.Model.Response.ProcessTracking;
 using LogicCommon.Model.Response.File;
 
@@ -22,34 +21,50 @@ public class GetProcessTrackingByGuidHandler(
     /// <returns></returns>
     public override async Task<GetProcessTrackingByGuidResponse> Handle(GetProcessTrackingByGuidRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetProcessTrackingByGuid, request, async () =>
-            {
-                var processTracking = await UnitOfWork.ProcessTrackingRepository
-                    .GetFirstOrDefaultGenericAsync(
-                        select => new
+        {
+            var currentTracking = await UnitOfWork.ProcessTrackingRepository
+                .GetFirstOrDefaultGenericAsync(
+                    select => new
+                    {
+                        select.Id,
+                        select.DateTimeRegister,
+                        Detail = new ProcessTrackingDetail
                         {
-                            select.Id,
-                            Detail = new ProcessTrackingDetail
-                            {
-                                Guid = select.Guid,
-                                Observations = select.Observations,
-                                RegistrationDate = select.DateTimeRegister,
-                                Images = select.ProcessTrackingImages
-                                    .Where(image => image.FilePersistence.State)
-                                    .Select(image => new FileUrlResponse(
-                                        image.FilePersistence.Guid,
-                                        image.FilePersistence.FileBasePath.BaseUrl,
-                                        image.FilePersistence.Path))
-                                    .ToList()
-                            }
-                        },
-                        where => where.Guid == request.ProcessTrackingGuid && where.UserId == UserId
-                    ).ConfigureAwait(false) ?? throw new CustomException((int)MessagesCodesError.SystemError, "Seguimiento de proceso no encontrado");
+                            Guid = select.Guid,
+                            Observations = select.Observations,
+                            RegistrationDate = select.DateTimeRegister,
+                            Images = select.ProcessTrackingImages
+                                .Where(image => image.FilePersistence.State)
+                                .Select(image => new FileUrlResponse(
+                                    image.FilePersistence.Guid,
+                                    image.FilePersistence.FileBasePath.BaseUrl,
+                                    image.FilePersistence.Path))
+                                .ToList()
+                        }
+                    },
+                    where => where.Guid == request.ProcessTrackingGuid && where.UserId == UserId
+                ).ConfigureAwait(false) ?? throw new CustomException((int)MessagesCodesError.SystemError, "Seguimiento de proceso no encontrado");
+            // Obtener el seguimiento de proceso anterior
+            var previousTracking = await UnitOfWork.ProcessTrackingRepository
+                .GetGenericAsync(
+                    select => new { select.Id },
+                    where => where.UserId == UserId
+                     && where.Id < currentTracking.Id,
+                    orderBy => orderBy.DateTimeRegister,
+                        OrderByType.Desc,
+                        top: 1)
+                    .ConfigureAwait(false);
+            var listToSearch = new List<int> { currentTracking.Id };
+            if (previousTracking.Count > 0)
+                listToSearch.Add(previousTracking[0].Id);
 
-                var measurementsByProcessTrackingId = await GetMeasurementValuesByProcessTrackingIdsAsync([processTracking.Id]).ConfigureAwait(false);
-                ApplyMeasurementsToDetail(processTracking.Detail, measurementsByProcessTrackingId[processTracking.Id]);
-
-                return new GetProcessTrackingByGuidResponse(processTracking.Detail);
-            }).ConfigureAwait(false);
+            var measurementsDifference = (await GetMeasurementsDifferenceAsync(listToSearch).ConfigureAwait(false))
+                .Where(measurement => !measurement.Code.Equals(PhysicalParameterCode.Height.GetEnumMember(), StringComparison.OrdinalIgnoreCase));
+            var listWeightCodes = new List<string> { PhysicalParameterCode.Weight.GetEnumMember(), PhysicalParameterCode.Bmi.GetEnumMember(), PhysicalParameterCode.BodyFatPercentage.GetEnumMember() };
+            currentTracking.Detail.WeightMeasurements = [.. measurementsDifference.Where(measurement => listWeightCodes.Contains(measurement.Code))];
+            currentTracking.Detail.Measurements = [.. measurementsDifference.Except(currentTracking.Detail.WeightMeasurements)];
+            return new GetProcessTrackingByGuidResponse(currentTracking.Detail);
+        }).ConfigureAwait(false);
 
 
 }

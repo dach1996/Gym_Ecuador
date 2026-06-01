@@ -1,6 +1,4 @@
 using Common.WebCommon.Models;
-using LogicApi.Model.Response.Common.ProcessTracking;
-using LogicCommon.Model.Response.File;
 
 namespace LogicApi.Model.Response.ProcessTracking;
 

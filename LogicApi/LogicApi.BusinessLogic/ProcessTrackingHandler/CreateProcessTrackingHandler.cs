@@ -33,7 +33,7 @@ public class CreateProcessTrackingHandler(
             await UnitOfWork.BeginTransactionAsync().ConfigureAwait(false);
             await UnitOfWork.ProcessTrackingRepository.AddAsync(newProcessTracking).ConfigureAwait(false);
 
-            var measurements = await MapToMeasurementEntitiesAsync(request, newProcessTracking).ConfigureAwait(false);
+            var measurements = await MapToMeasurementEntitiesAsync(request, newProcessTracking, requireWeightAndHeight: true).ConfigureAwait(false);
 
             if (measurements.Count > 0)
                 await UnitOfWork.ProcessTrackingMeasurementRepository.AddRangeAsync(measurements).ConfigureAwait(false);

@@ -5,6 +5,7 @@ using LogicApi.Model.Enum;
 using LogicApi.Model.Request.ProcessTracking;
 using LogicApi.Model.Response.Common.ProcessTracking;
 using LogicApi.Model.Response.ProcessTracking;
+using LogicCommon.BusinessLogic;
 using LogicCommon.Model.Request.File;
 using PersistenceDb.Models.Core;
 using PersistenceDb.Models.Enums;
@@ -68,7 +69,9 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
     protected async Task<Dictionary<string, byte>> GetActivePhysicalParameterIdsByCodeAsync()
     {
         var parameters = await GetPhysicalParametersAsync().ConfigureAwait(false);
-        return parameters.ToDictionary(parameter => parameter.Code, parameter => parameter.Id);
+        return parameters
+            .Where(parameter => parameter.IsActive)
+            .ToDictionary(parameter => parameter.Code.ToUpperInvariant(), parameter => parameter.Id);
     }
 
     /// <summary>
@@ -88,35 +91,62 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
     /// Convierte la solicitud a entidades de medición
     /// </summary>
     /// <param name="request"></param>
-    /// <param name="newProcessTracking"></param>
+    /// <param name="processTracking"></param>
+    /// <param name="requireWeightAndHeight"></param>
     /// <returns></returns>
-    protected async Task<List<ProcessTrackingMeasurement>> MapToMeasurementEntitiesAsync(IProcessTrackingMeasurementsInput request, ProcessTracking newProcessTracking)
+    protected async Task<List<ProcessTrackingMeasurement>> MapToMeasurementEntitiesAsync(
+        IProcessTrackingMeasurementsInput request,
+        ProcessTracking processTracking,
+        bool requireWeightAndHeight = false)
     {
+        var inputs = request.Measurements ?? [];
+        if (inputs.Count == 0)
+            throw new CustomException((int)MessagesCodesError.SystemError, "Debe incluir al menos una medida");
+
         var parameterIdsByCode = await GetActivePhysicalParameterIdsByCodeAsync().ConfigureAwait(false);
-        var measurements = new (byte?, decimal?)[]
+        var imcCode = PhysicalParameterCode.Bmi.GetEnumMember();
+        var weightCode = PhysicalParameterCode.Weight.GetEnumMember();
+        var heightCode = PhysicalParameterCode.Height.GetEnumMember();
+        var seenCodes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var measurements = new List<ProcessTrackingMeasurement>();
+
+        foreach (var input in inputs)
         {
-                    (parameterIdsByCode.FirstValueOrDefault(PhysicalParameterCode.Weight.GetEnumMember()), request.Weight),
-                    (parameterIdsByCode.FirstValueOrDefault(PhysicalParameterCode.Height.GetEnumMember()), request.Height),
-                    (parameterIdsByCode.FirstValueOrDefault(PhysicalParameterCode.BodyFatPercentage.GetEnumMember()), request.BodyFatPercentage),
-                    (parameterIdsByCode.FirstValueOrDefault(PhysicalParameterCode.MuscleMassPercentage.GetEnumMember()), request.MuscleMassPercentage),
-                    (parameterIdsByCode.FirstValueOrDefault(PhysicalParameterCode.ChestMeasurement.GetEnumMember()), request.ChestMeasurement),
-                    (parameterIdsByCode.FirstValueOrDefault(PhysicalParameterCode.WaistMeasurement.GetEnumMember()), request.WaistMeasurement),
-                    (parameterIdsByCode.FirstValueOrDefault(PhysicalParameterCode.HipMeasurement.GetEnumMember()), request.HipMeasurement),
-                    (parameterIdsByCode.FirstValueOrDefault(PhysicalParameterCode.ArmRightMeasurement.GetEnumMember()), request.ArmRightMeasurement),
-                    (parameterIdsByCode.FirstValueOrDefault(PhysicalParameterCode.ThighRightMeasurement.GetEnumMember()), request.ThighRightMeasurement),
-        }.Where(select => select.Item1.HasValue && select.Item2.HasValue)
-        .Select(select => new ProcessTrackingMeasurement
+            var code = input.Code?.Trim().ToUpperInvariant();
+            if (string.IsNullOrEmpty(code))
+                throw new CustomException((int)MessagesCodesError.SystemError, "Código de medida inválido");
+
+            if (!seenCodes.Add(code))
+                throw new CustomException((int)MessagesCodesError.SystemError, $"Código de medida duplicado: {code}");
+
+            if (code.Equals(imcCode, StringComparison.OrdinalIgnoreCase))
+                throw new CustomException((int)MessagesCodesError.SystemError, "IMC es calculado y no puede enviarse");
+
+            if (!parameterIdsByCode.TryGetValue(code, out var parameterId))
+                throw new CustomException((int)MessagesCodesError.SystemError, $"Código de medida no válido: {code}");
+
+            measurements.Add(new ProcessTrackingMeasurement
+            {
+                ProcessTrackingId = processTracking.Id,
+                PhysicalParameterId = parameterId,
+                Value = input.Value
+            });
+        }
+
+        if (requireWeightAndHeight)
         {
-            ProcessTrackingId = newProcessTracking.Id,
-            PhysicalParameterId = select.Item1.Value,
-            Value = select.Item2.Value
-        }).ToList();
+            if (!seenCodes.Contains(weightCode))
+                throw new CustomException((int)MessagesCodesError.SystemError, "PESO es obligatorio");
+            if (!seenCodes.Contains(heightCode))
+                throw new CustomException((int)MessagesCodesError.SystemError, "ALTURA es obligatoria");
+        }
+
         return measurements;
     }
 
     public record PartialMeasurement(
         int ProcessTrackingId,
-        PhysicalParameterCode? Code,
+        string Code,
         string Name,
         decimal Value,
         DifferenceValueType DifferenceValueType,
@@ -150,26 +180,30 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
                 {
                     var partialMeasurements = group.Select(row => new PartialMeasurement(
                         row.ProcessTrackingId,
-                        row.Code?.TryToEnumFromMember<PhysicalParameterCode>(),
+                        row.Code,
                         row.Name,
                         row.Value,
                         (DifferenceValueType)row.DifferenceValueType,
                         row.MeasurementUnit,
-                        row.IconCode))
-                        .Where(select => select.Code.HasValue)
-                        .ToList();
-                    var height = partialMeasurements.FirstOrDefault(select => select.Code.Value == PhysicalParameterCode.Height);
-                    var weight = partialMeasurements.FirstOrDefault(select => select.Code.Value == PhysicalParameterCode.Weight);
-                    var bmi = weight.Value / (height.Value * height.Value);
-                    var bmiParameter = parameters.First(select => select.Code == PhysicalParameterCode.Bmi.GetEnumMember());
-                    partialMeasurements.Add(new PartialMeasurement(
-                        group.Key,
-                        PhysicalParameterCode.Bmi,
-                        bmiParameter.Name,
-                        bmi,
-                        (DifferenceValueType)bmiParameter.DifferenceValueType,
-                        bmiParameter.MeasurementUnit,
-                        bmiParameter.IconCode));
+                        row.IconCode)).ToList();
+
+                    var weightCode = PhysicalParameterCode.Weight.GetEnumMember();
+                    var heightCode = PhysicalParameterCode.Height.GetEnumMember();
+                    var height = partialMeasurements.FirstOrDefault(select => select.Code.Equals(heightCode, StringComparison.OrdinalIgnoreCase));
+                    var weight = partialMeasurements.FirstOrDefault(select => select.Code.Equals(weightCode, StringComparison.OrdinalIgnoreCase));
+                    if (height != null && weight != null)
+                    {
+                        var bmi = BusinessLogicUtils.CalculateBmi(weight.Value, height.Value);
+                        var bmiParameter = parameters.First(select => select.Code == PhysicalParameterCode.Bmi.GetEnumMember());
+                        partialMeasurements.Add(new PartialMeasurement(
+                            group.Key,
+                            bmiParameter.Code,
+                            bmiParameter.Name,
+                            bmi,
+                            (DifferenceValueType)bmiParameter.DifferenceValueType,
+                            bmiParameter.MeasurementUnit,
+                            bmiParameter.IconCode));
+                    }
                     return partialMeasurements.ToArray();
                 });
     }
@@ -184,39 +218,36 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
         IEnumerable<PartialMeasurement> partialMeasurements,
         IEnumerable<PartialMeasurement> partialMeasurementsToCompare)
     {
-        var codes = partialMeasurements.Select(select => select.Code.Value).Union(partialMeasurementsToCompare.Select(select => select.Code.Value)).Distinct();
+        var codes = partialMeasurements.Select(select => select.Code)
+            .Union(partialMeasurementsToCompare.Select(select => select.Code))
+            .Distinct(StringComparer.OrdinalIgnoreCase);
         return [.. codes.Select(code =>
         {
-            var partialMeasurement = partialMeasurements.FirstOrDefault(select => select.Code.Value == code);
-            var partialMeasurementToCompare = partialMeasurementsToCompare.FirstOrDefault(select => select.Code.Value == code);
+            var partialMeasurement = partialMeasurements.FirstOrDefault(select => select.Code.Equals(code, StringComparison.OrdinalIgnoreCase));
+            var partialMeasurementToCompare = partialMeasurementsToCompare.FirstOrDefault(select => select.Code.Equals(code, StringComparison.OrdinalIgnoreCase));
             return new StatisticComparisonModel
             {
-                Code = code.GetEnumMember(),
+                Code = code,
                 Label = partialMeasurement?.Name ?? partialMeasurementToCompare?.Name ?? "-",
                 Unit = partialMeasurement?.MeasurementUnit.GetEnumMember() ?? partialMeasurementToCompare?.MeasurementUnit.GetEnumMember() ?? "-",
                 Value = partialMeasurement?.Value.Round(2),
                 PreviousValue = partialMeasurementToCompare?.Value.Round(2),
-                DifferenceValueType = partialMeasurement?.DifferenceValueType ?? partialMeasurementToCompare?.DifferenceValueType ?? DifferenceValueType.Positive
+                DifferenceValueType = partialMeasurement?.DifferenceValueType ?? partialMeasurementToCompare?.DifferenceValueType ?? DifferenceValueType.Positive,
+                Icon = partialMeasurement?.IconCode ?? partialMeasurementToCompare?.IconCode
             };
         })];
     }
 
     /// <summary>
-    /// Aplica las medidas parciales al detalle del seguimiento de proceso
+    /// Obtiene la diferencia entre dos listas de medidas parciales
     /// </summary>
-    /// <param name="measurements"></param>
-    /// <param name="partialMeasurements"></param>
-    protected static void ApplyMeasurementsToDetail(IProcessTrackingMeasurement measurements, PartialMeasurement[] partialMeasurements)
+    /// <param name="processTrackingIds"></param>
+    /// <returns></returns>
+    protected async Task<List<StatisticComparisonModel>> GetMeasurementsDifferenceAsync(List<int> processTrackingIds)
     {
-        var groupedMeasurements = partialMeasurements.GroupBy(m => m.Code.Value).ToDictionary(g => g.Key, g => g.First().Value);
-        measurements.Weight = groupedMeasurements.FirstValueOrDefault(PhysicalParameterCode.Weight);
-        measurements.Height = groupedMeasurements.FirstValueOrDefault(PhysicalParameterCode.Height);
-        measurements.BodyFatPercentage = groupedMeasurements.FirstValueOrDefault(PhysicalParameterCode.BodyFatPercentage);
-        measurements.MuscleMassPercentage = groupedMeasurements.FirstValueOrDefault(PhysicalParameterCode.MuscleMassPercentage);
-        measurements.ChestMeasurement = groupedMeasurements.FirstValueOrDefault(PhysicalParameterCode.ChestMeasurement);
-        measurements.WaistMeasurement = groupedMeasurements.FirstValueOrDefault(PhysicalParameterCode.WaistMeasurement);
-        measurements.HipMeasurement = groupedMeasurements.FirstValueOrDefault(PhysicalParameterCode.HipMeasurement);
-        measurements.ArmRightMeasurement = groupedMeasurements.FirstValueOrDefault(PhysicalParameterCode.ArmRightMeasurement);
-        measurements.ThighRightMeasurement = groupedMeasurements.FirstValueOrDefault(PhysicalParameterCode.ThighRightMeasurement);
+        var measurements = await GetMeasurementValuesByProcessTrackingIdsAsync(processTrackingIds).ConfigureAwait(false);
+        var current = measurements[processTrackingIds[0]];
+        var previous = measurements.Count > 1 ? measurements[processTrackingIds[1]] : [];
+        return CalculatePartialMeasurementsDifference(current, previous);
     }
 }

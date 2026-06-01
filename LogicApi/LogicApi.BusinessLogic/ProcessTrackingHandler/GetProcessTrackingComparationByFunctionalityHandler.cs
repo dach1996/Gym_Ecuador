@@ -42,7 +42,7 @@ public class GetProcessTrackingComparationByFunctionalityHandler(
                     .GetGenericAsync(
                         select => new { select.Id },
                         tracking => tracking.UserId == UserId,
-                        orderBy => orderBy.Id,
+                        orderBy => orderBy.DateTimeRegister,
                         OrderByType.Desc,
                         top: 2
                     ).ConfigureAwait(false);
