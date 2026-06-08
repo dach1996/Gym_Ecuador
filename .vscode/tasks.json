@@ -53,7 +53,7 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "publish GatewayCoreAPI",
+            "label": "publish Mobile API",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -64,10 +64,15 @@
                 "--output",
                 "${config:publish_path}/${input:build_env}/GatewayCoreAPI"
             ],
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            }
         },
         {
-            "label": "publish AdministratorApi",
+            "label": "publish Administrator API",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -78,15 +83,20 @@
                 "--output",
                 "${config:publish_path}/${input:build_env}/AdministratorApi"
             ],
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "focus": true
+            }
         },
         {
             "label": "Publish All",
             "dependsOrder": "sequence",
             "dependsOn": [
                 "clean",
-                "publish AdministratorApi",
-                "publish GatewayCoreAPI",
+                "publish Administrator API",
+                "publish Mobile API"
             ],
             "group": {
                 "kind": "build",

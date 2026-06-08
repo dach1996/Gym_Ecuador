@@ -606,7 +606,7 @@
             <param name="request">Modelo para obtener comparación de seguimiento de proceso por funcionalidad</param>
             <returns></returns>
         </member>
-        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackingMeasurementRenderItems">
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProcessTrackingController.GetProcessTrackingMeasurementRenderItems(LogicApi.Model.Request.ProcessTracking.GetProcessTrackingMeasurementRenderItemsRequest)">
             <summary>
             Obtiene items de medidas para renderizado del formulario de seguimiento
             </summary>

@@ -67,8 +67,8 @@ public class ProcessTrackingController(
     [HttpGet("GetProcessTrackingMeasurementRenderItems")]
     [ProducesResponseType(200, Type = typeof(GenericResponse<GetProcessTrackingMeasurementRenderItemsResponse>))]
     [ProducesResponseType(400, Type = typeof(GenericResponse))]
-    public async Task<IActionResult> GetProcessTrackingMeasurementRenderItems()
-        => Success(await Mediator.Send(new GetProcessTrackingMeasurementRenderItemsRequest()).ConfigureAwait(false));
+    public async Task<IActionResult> GetProcessTrackingMeasurementRenderItems([FromQuery] GetProcessTrackingMeasurementRenderItemsRequest request)
+        => Success(await Mediator.Send(request).ConfigureAwait(false));
 
     /// <summary>
     /// Obtiene estadísticas de seguimientos de procesos
@@ -87,7 +87,7 @@ public class ProcessTrackingController(
     /// <param name="request">Modelo para crear seguimiento de proceso</param>
     /// <returns></returns>
     [HttpPost("CreateProcessTracking")]
-    [ProducesResponseType(200, Type = typeof(GenericResponse<CreateProcessTrackingResponse>))]
+    [ProducesResponseType(200, Type = typeof(GenericResponse<GenericCommonOperationResponse>))]
     [ProducesResponseType(400, Type = typeof(GenericResponse))]
     public async Task<IActionResult> CreateProcessTracking([FromBody] CreateProcessTrackingRequest request)
         => Success(await Mediator.Send(request).ConfigureAwait(false));

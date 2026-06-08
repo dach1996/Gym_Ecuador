@@ -24,7 +24,6 @@ public class GetProcessTrackingsPaginatedHandler(
     public override async Task<GetProcessTrackingsPaginatedResponse> Handle(GetProcessTrackingsPaginatedRequest request, CancellationToken cancellationToken)
         => await ExecuteHandlerAsync(OperationApiName.GetProcessTrackingsPaginated, request, async () =>
             {
-                var heightCode = PhysicalParameterCode.Height.GetEnumMember();
                 var processTrackings = await UnitOfWork.ProcessTrackingRepository
                     .GetPaginatorGenericAsync(
                         itemsByPage: request.PageSize,
