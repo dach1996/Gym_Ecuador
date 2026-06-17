@@ -50,6 +50,10 @@
   </ItemGroup>
 
   <Target Name="PostpublishScript" AfterTargets="Publish">
-    <Exec Command="dotnet publish ..\WebJobs\ -o $(PublishDir)App_Data\Jobs\continuous\WebJobs" />
+    <PropertyGroup>
+      <WebJobsProjectPath>$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', '..', 'WebJobs', 'WebJobs.csproj'))</WebJobsProjectPath>
+      <WebJobsPublishDir>$([System.IO.Path]::Combine('$(PublishDir)', 'App_Data', 'Jobs', 'continuous', 'WebJobs'))</WebJobsPublishDir>
+    </PropertyGroup>
+    <Exec Command="dotnet publish &quot;$(WebJobsProjectPath)&quot; -c $(Configuration) -o &quot;$(WebJobsPublishDir)&quot;" />
   </Target>
 </Project>
