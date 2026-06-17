@@ -9,7 +9,8 @@ env:
   DOTNET_VERSION: "10.0.x"
   PUBLISH_CONFIGURATION: Staging
   PUBLISH_PROJECT: GatewayCoreAPI/GatewayCoreAPI.csproj
-  REMOTE_SITE_PATH: "/c/inetpub/wwwroot/MobileApi/"
+  # CORRECCIÓN 1: Usar la sintaxis de ruta de Windows con barras normales
+  REMOTE_SITE_PATH: "C:/inetpub/wwwroot/MobileApi"
   IIS_APP_POOL_NAME: FitcenterMobileApi
 
 jobs:
@@ -39,7 +40,8 @@ jobs:
           username: ${{ secrets.VM_USER }}
           password: ${{ secrets.VM_PASSWORD }}
           port: 22
-          source: "publish/*"
+          # CORRECCIÓN 2: Es más seguro enviar la carpeta completa y usar strip_components
+          source: "publish"
           target: ${{ env.REMOTE_SITE_PATH }}
           strip_components: 1
           rm: false
