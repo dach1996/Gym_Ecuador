@@ -9,7 +9,7 @@ env:
   DOTNET_VERSION: "10.0.x"
   PUBLISH_CONFIGURATION: Staging
   PUBLISH_PROJECT: GatewayCoreAPI/GatewayCoreAPI.csproj
-  REMOTE_SITE_PATH: C:/inetpub/wwwroot/MobileApi
+  REMOTE_SITE_PATH: /c/inetpub/wwwroot/MobileApi
   IIS_APP_POOL_NAME: FitcenterMobileApi
 
 jobs:
@@ -43,7 +43,7 @@ jobs:
           target: ${{ env.REMOTE_SITE_PATH }}
           strip_components: 1
           rm: false
-          overwrite: true
+          tar_dereference: true
 
       - name: Reiniciar App Pool
         uses: appleboy/ssh-action@v1.2.0
