@@ -9,7 +9,7 @@ env:
   DOTNET_VERSION: "10.0.x"
   PUBLISH_CONFIGURATION: Staging
   PUBLISH_PROJECT: GatewayCoreAPI/GatewayCoreAPI.csproj
-  REMOTE_SITE_PATH: /c/inetpub/wwwroot/MobileApi
+  REMOTE_SITE_PATH: "/c/inetpub/wwwroot/MobileApi/"
   IIS_APP_POOL_NAME: FitcenterMobileApi
 
 jobs:
@@ -32,7 +32,7 @@ jobs:
       - name: Publish
         run: dotnet publish ${{ env.PUBLISH_PROJECT }} -c ${{ env.PUBLISH_CONFIGURATION }} -o ./publish
 
-      - name: Copiar archivos a la VM (solo sobrescribir, sin borrar carpeta)
+      - name: Copiar archivos a la VM
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VM_IP }}
@@ -53,13 +53,15 @@ jobs:
           password: ${{ secrets.VM_PASSWORD }}
           port: 22
           script_stop: true
+          request_pty: true
           script: |
-            Import-Module WebAdministration
-            $pool = "${{ env.IIS_APP_POOL_NAME }}"
-            if (Get-WebAppPoolState -Name $pool -ErrorAction SilentlyContinue) {
-              Restart-WebAppPool -Name $pool
-              Write-Host "App Pool '$pool' reiniciado."
-            } else {
-              Write-Host "App Pool '$pool' no encontrado; ejecutando iisreset."
-              iisreset /restart
-            }
+            powershell -Command "
+              Import-Module WebAdministration;
+              $pool = '${{ env.IIS_APP_POOL_NAME }}';
+              if (Get-WebAppPoolState -Name $pool -ErrorAction SilentlyContinue) {
+                Restart-WebAppPool -Name $pool;
+                Write-Host 'App Pool reiniciado.';
+              } else {
+                iisreset /restart;
+              }
+            "
