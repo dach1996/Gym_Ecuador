@@ -3,20 +3,15 @@ using Common.WebCommon.Models.Enum;
 using LogicApi.Model.Common;
 using LogicApi.Model.Enum;
 using LogicApi.Model.Request.ProcessTracking;
-using LogicApi.Model.Response.Common.ProcessTracking;
-using LogicApi.Model.Response.ProcessTracking;
 using LogicCommon.BusinessLogic;
 using LogicCommon.Model.Request.File;
 using PersistenceDb.Models.Core;
-using PersistenceDb.Models.Enums;
 
 namespace LogicApi.BusinessLogic.ProcessTrackingHandler;
 
 /// <summary>
 /// Clase base para handlers de seguimiento de procesos
 /// </summary>
-/// <param name="logger"></param>
-/// <param name="pluginFactory"></param>
 public abstract class ProcessTrackingBase<TRequest, TResponse>(
     ILogger<ProcessTrackingBase<TRequest, TResponse>> logger,
     IPluginFactory pluginFactory) : BusinessLogicBase(
@@ -36,7 +31,7 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
         await ProcessImagesAsync(
                 images,
                 PathCode.ProcessTrackingImage,
-                processCreateImagesAsync: async (images, response) =>
+                processCreateImagesAsync: async (_, response) =>
                     await UnitOfWork.ProcessTrackingImageRepository.AddRangeAsync([.. response.Items.Select(select => new ProcessTrackingImage
                 {
                     ProcessTrackingId = processTrackingId,
@@ -55,7 +50,7 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
                 },
                 processDeleteImagesAsync: async (_, response) =>
                 {
-                    var responseIds = response.Items.Select(select => select.Id).ToList();
+                    var responseIds = response.Items.ConvertAll(select => select.Id);
                     await UnitOfWork.ProcessTrackingImageRepository.DeleteAsync(where => responseIds.Contains(where.FilePersistenceId)).ConfigureAwait(false);
                 },
                 getFileExtension: (fileExtension) => HelperFileName.GetProcessTrackingImageName(fileExtension),
@@ -77,14 +72,11 @@ public abstract class ProcessTrackingBase<TRequest, TResponse>(
     /// <summary>
     /// Obtiene el identificador de un parámetro físico por su código
     /// </summary>
-    /// <param name="code"></param>
     /// <returns></returns>
     protected async Task<PhysicalParameter[]> GetPhysicalParametersAsync()
     {
-        return await AdministratorCache.TryGetOrSetAsync(CacheCodes.PHYSICAL_PARAMETERS, async () =>
-          {
-              return (await UnitOfWork.PhysicalParameterRepository.GetByAsync().ConfigureAwait(false)).ToArray();
-          }).ConfigureAwait(false);
+        return await AdministratorCache.TryGetOrSetAsync(CacheCodes.PHYSICAL_PARAMETERS, async ()
+        => (await UnitOfWork.PhysicalParameterRepository.GetByAsync().ConfigureAwait(false)).ToArray()).ConfigureAwait(false);
     }
 
     /// <summary>

@@ -23,4 +23,16 @@ public enum CatalogCodes
     /// </summary>
     [EnumMember(Value = "NOMBRES_MUSCULOS")]
     MuscleType = 3,
+
+    /// <summary>
+    /// Código de nivel de actividad física
+    /// </summary>
+    [EnumMember(Value = "NIVEL_ACTIVIDAD_FISICA")]
+    PhysicalActivityLevel = 4,
+
+    /// <summary>
+    /// Código de ritmo de progreso
+    /// </summary>
+    [EnumMember(Value = "RITMO_PROGRESO")]
+    ProgressRate = 5,
 }

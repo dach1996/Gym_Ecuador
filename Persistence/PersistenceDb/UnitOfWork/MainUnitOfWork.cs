@@ -77,6 +77,7 @@ public class MainUnitOfWork(
     private IGymReviewRepository _gymReviewRepository;
     private ITrainerRatingRepository _trainerRatingRepository;
     private IPersonalGoalRepository _personalGoalRepository;
+    private IProfileRepository _profileRepository;
     private IBranchPlanRepository _branchPlanRepository;
     private IClientGymBranchRepository _clientGymBranchRepository;
     private IClientMembershipRepository _clientMembershipRepository;
@@ -234,6 +235,9 @@ public class MainUnitOfWork(
 
     public IPersonalGoalRepository PersonalGoalRepository => _personalGoalRepository ??=
         new PersonalGoalRepository(Context, LoggerFactory.CreateLogger<PersonalGoalRepository>());
+
+    public IProfileRepository ProfileRepository => _profileRepository ??=
+        new ProfileRepository(Context, LoggerFactory.CreateLogger<ProfileRepository>());
 
     public IBranchPlanRepository BranchPlanRepository => _branchPlanRepository ??=
         new BranchPlanRepository(Context, LoggerFactory.CreateLogger<BranchPlanRepository>());

@@ -34,4 +34,9 @@ public class ProcessTrackingMeasurementRenderItem
     /// Valor de la última medición registrada, o null si no existe
     /// </summary>
     public decimal? CurrentValue { get; set; }
+
+    /// <summary>
+    /// Expresión regular para validar el valor ingresado (mayor a 0 y menor a 150 por defecto)
+    /// </summary>
+    public string ValidationRegex { get; set; } = string.Empty;
 }

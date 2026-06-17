@@ -96,6 +96,7 @@ public class PersistenceContext(
     public DbSet<GymReview> GymReviews { get; set; }
     public DbSet<TrainerRating> TrainerRatings { get; set; }
     public DbSet<PersonalGoal> PersonalGoals { get; set; }
+    public DbSet<Profile> Profiles { get; set; }
     public DbSet<Equipment> Equipments { get; set; }
     public DbSet<EquipmentImage> EquipmentImages { get; set; }
     public DbSet<BranchPlan> BranchPlans { get; set; }

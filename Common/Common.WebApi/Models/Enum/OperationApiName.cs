@@ -564,6 +564,20 @@ public enum OperationApiName
     [EnumMember(Value = "Obtener Meta Personal por GUID")]
     GetPersonalGoalByGuid,
 
+    // ========== OPERACIONES DE PERFIL ==========
+
+    /// <summary>
+    /// Calcular Perfil
+    /// </summary>
+    [EnumMember(Value = "Calcular Perfil")]
+    CalculateProfile,
+
+    /// <summary>
+    /// Crear Perfil
+    /// </summary>
+    [EnumMember(Value = "Crear Perfil")]
+    CreateProfile,
+
     // ========== OPERACIONES DE RESEÑA DE GIMNASIO ==========
 
     /// <summary>

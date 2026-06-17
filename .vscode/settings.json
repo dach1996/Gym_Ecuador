@@ -1,5 +1,10 @@
 {
     "publish_path": "C:/Users/wwwda/Desktop/Publicados/Gym/",
+    "dotnet.defaultSolution": "Gym_Ecuador.sln",
+    "dotnet.defaultLaunchProfile": "GatewayCoreAPI",
+    "csharp-dev-tools.debug.enableWatch": false,
+    "csharp-dev-tools.debugger.console": "externalTerminal",
+    "csharp-dev-tools.debugger.launchBrowser": true,
     "sonarlint.connectedMode.project": {
         "connectionId": "",
         "projectKey": ""

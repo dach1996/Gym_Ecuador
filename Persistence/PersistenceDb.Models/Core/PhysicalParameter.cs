@@ -64,6 +64,14 @@ public class PhysicalParameter
     public string IconCode { get; set; } = string.Empty;
 
     /// <summary>
+    /// Expresión regular para validar el valor ingresado
+    /// </summary>
+    [Required]
+    [StringLength(128)]
+    [Column("PAF_EXPRESION_VALIDACION")]
+    public string ValidationRegex { get; set; } = string.Empty;
+
+    /// <summary>
     /// Valores registrados en seguimientos de proceso
     /// </summary>
     public virtual ICollection<ProcessTrackingMeasurement> ProcessTrackingMeasurements { get; set; }

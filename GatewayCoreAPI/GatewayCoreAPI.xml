@@ -640,6 +640,28 @@
             <param name="request">Modelo para eliminar seguimiento de proceso</param>
             <returns></returns>
         </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProfileController.#ctor(Common.Messages.IUserMessages,Microsoft.Extensions.Logging.ILogger{GatewayCoreAPI.Controllers.V1.ProfileController},MediatR.IMediator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userMessages"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProfileController.CalculateProfile(LogicApi.Model.Request.Profile.CalculateProfileRequest)">
+            <summary>
+            Calcula proteína, carbohidratos y grasas según datos del perfil
+            </summary>
+            <param name="request">Modelo para calcular macros del perfil</param>
+            <returns></returns>
+        </member>
+        <member name="M:GatewayCoreAPI.Controllers.V1.ProfileController.CreateProfile(LogicApi.Model.Request.Profile.CreateProfileRequest)">
+            <summary>
+            Crea un perfil completo
+            </summary>
+            <param name="request">Modelo para crear perfil</param>
+            <returns></returns>
+        </member>
         <member name="T:GatewayCoreAPI.Controllers.V1.RoutineController">
             <summary>
             Controlador de Rutinas

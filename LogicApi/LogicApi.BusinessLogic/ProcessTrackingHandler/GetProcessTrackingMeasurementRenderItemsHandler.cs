@@ -6,8 +6,6 @@ namespace LogicApi.BusinessLogic.ProcessTrackingHandler;
 /// <summary>
 /// Handler para obtener items de medidas para renderizado del formulario
 /// </summary>
-/// <param name="logger"></param>
-/// <param name="pluginFactory"></param>
 public class GetProcessTrackingMeasurementRenderItemsHandler(
     ILogger<GetProcessTrackingMeasurementRenderItemsHandler> logger,
     IPluginFactory pluginFactory) : ProcessTrackingBase<GetProcessTrackingMeasurementRenderItemsRequest, GetProcessTrackingMeasurementRenderItemsResponse>(logger, pluginFactory)
@@ -18,12 +16,12 @@ public class GetProcessTrackingMeasurementRenderItemsHandler(
     /// <param name="request"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public override async Task<GetProcessTrackingMeasurementRenderItemsResponse> Handle(GetProcessTrackingMeasurementRenderItemsRequest request, CancellationToken cancellationToken)
-        => await ExecuteHandlerAsync(OperationApiName.GetProcessTrackingMeasurementRenderItems, request, async () =>
+    public override Task<GetProcessTrackingMeasurementRenderItemsResponse> Handle(GetProcessTrackingMeasurementRenderItemsRequest request, CancellationToken cancellationToken)
+        => ExecuteHandlerAsync(OperationApiName.GetProcessTrackingMeasurementRenderItems, request, async () =>
             new GetProcessTrackingMeasurementRenderItemsResponse
             {
                 Items = await BuildMeasurementRenderItemsAsync().ConfigureAwait(false)
-            }).ConfigureAwait(false);
+            });
 
     /// <summary>
     /// Construye items de medidas para renderizado del formulario con valores precargados del último seguimiento
@@ -69,7 +67,8 @@ public class GetProcessTrackingMeasurementRenderItemsHandler(
             Icon = parameter.IconCode,
             IsRequired = parameter.Code.Equals(weightCode, StringComparison.OrdinalIgnoreCase)
                 || parameter.Code.Equals(heightCode, StringComparison.OrdinalIgnoreCase),
-            CurrentValue = currentValuesByCode.TryGetValue(parameter.Code, out var value) ? value : null
+            CurrentValue = currentValuesByCode.TryGetValue(parameter.Code, out var value) ? value : null,
+            ValidationRegex = parameter.ValidationRegex
         })];
     }
 }

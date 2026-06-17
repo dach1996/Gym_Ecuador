@@ -7,6 +7,8 @@ api:
     description: Convenciones de rutas y naming de endpoints
 
 backend:
+  catalog-and-parameter-codes:
+    description: Centralización de códigos de catálogo padre, ítems y parámetros BD
   error-handling:
     description: Manejo de errores con CustomException
   handler-structure:

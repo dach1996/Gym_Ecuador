@@ -68,6 +68,7 @@ public interface IUnitOfWork : IUnitOfWorkBase
     IGymReviewRepository GymReviewRepository { get; }
     ITrainerRatingRepository TrainerRatingRepository { get; }
     IPersonalGoalRepository PersonalGoalRepository { get; }
+    IProfileRepository ProfileRepository { get; }
     IPlatformRepository PlatformRepository { get; }
     IBranchPlanRepository BranchPlanRepository { get; }
     IClientGymBranchRepository ClientGymBranchRepository { get; }

@@ -2240,6 +2240,128 @@
             Context
             </summary>
         </member>
+        <member name="T:LogicApi.Model.Request.Profile.CalculateProfileRequest">
+            <summary>
+            Solicitud para calcular macros de un perfil
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CalculateProfileRequest.Name">
+            <summary>
+            Nombre del perfil
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CalculateProfileRequest.Type">
+            <summary>
+            Tipo de perfil (perder/ganar peso)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CalculateProfileRequest.PhysicalActivityCatalogId">
+            <summary>
+            Id del catálogo de nivel de actividad física
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CalculateProfileRequest.Height">
+            <summary>
+            Altura en centímetros
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CalculateProfileRequest.ProgressRateCatalogId">
+            <summary>
+            Id del catálogo de ritmo de progreso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CalculateProfileRequest.EstimatedWeeks">
+            <summary>
+            Semanas estimadas del plan
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CalculateProfileRequest.Weight">
+            <summary>
+            Peso en kilogramos (solo para cálculo, no se persiste)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CalculateProfileRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Profile.CalculateProfileRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Profile.CalculateProfileRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Request.Profile.CreateProfileRequest">
+            <summary>
+            Solicitud para crear un perfil completo
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CreateProfileRequest.Name">
+            <summary>
+            Nombre del perfil
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CreateProfileRequest.Type">
+            <summary>
+            Tipo de perfil (perder/ganar peso)
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CreateProfileRequest.PhysicalActivityCatalogId">
+            <summary>
+            Id del catálogo de nivel de actividad física
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CreateProfileRequest.Height">
+            <summary>
+            Altura en centímetros
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CreateProfileRequest.ProgressRateCatalogId">
+            <summary>
+            Id del catálogo de ritmo de progreso
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CreateProfileRequest.EstimatedWeeks">
+            <summary>
+            Semanas estimadas del plan
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CreateProfileRequest.Protein">
+            <summary>
+            Proteína diaria en gramos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CreateProfileRequest.Carbohydrates">
+            <summary>
+            Carbohidratos diarios en gramos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CreateProfileRequest.Fats">
+            <summary>
+            Grasas diarias en gramos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Request.Profile.CreateProfileRequest.ContextRequest">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Request.Profile.CreateProfileRequest.#ctor(Common.WebApi.Models.ContextRequestModel.ContextRequest)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contextRequest"></param>
+        </member>
+        <member name="M:LogicApi.Model.Request.Profile.CreateProfileRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Request.Routine.CreateRoutineWithExercisesRequest">
             <summary>
             Solicitud para crear rutina con ejercicios
@@ -6286,6 +6408,11 @@
             Valor de la última medición registrada, o null si no existe
             </summary>
         </member>
+        <member name="P:LogicApi.Model.Response.ProcessTracking.ProcessTrackingMeasurementRenderItem.ValidationRegex">
+            <summary>
+            Expresión regular para validar el valor ingresado (mayor a 0 y menor a 150 por defecto)
+            </summary>
+        </member>
         <member name="T:LogicApi.Model.Response.ProcessTracking.UpdateProcessTrackingResponse">
             <summary>
             Respuesta de actualizar seguimiento de proceso
@@ -6299,6 +6426,91 @@
         <member name="P:LogicApi.Model.Response.ProcessTracking.UpdateProcessTrackingResponse.ShowMessage">
             <summary>
             Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Profile.CalculateProfileResponse">
+            <summary>
+            Respuesta del cálculo de macros de perfil
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Profile.CalculateProfileResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Profile.CalculateProfileResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Profile.CalculateProfileResponse.Protein">
+            <summary>
+            Proteína diaria en gramos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Profile.CalculateProfileResponse.Carbohydrates">
+            <summary>
+            Carbohidratos diarios en gramos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Profile.CalculateProfileResponse.Fats">
+            <summary>
+            Grasas diarias en gramos
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Profile.CalculateProfileResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:LogicApi.Model.Response.Profile.CreateProfileResponse">
+            <summary>
+            Respuesta de crear perfil
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Profile.CreateProfileResponse.UserMessage">
+            <summary>
+            Mensaje al Usuario
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Profile.CreateProfileResponse.ShowMessage">
+            <summary>
+            Mostrar Mensaje?
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Profile.CreateProfileResponse.ProfileGuid">
+            <summary>
+            Guid del perfil creado
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Profile.CreateProfileResponse.Name">
+            <summary>
+            Nombre del perfil
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Profile.CreateProfileResponse.Protein">
+            <summary>
+            Proteína diaria en gramos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Profile.CreateProfileResponse.Carbohydrates">
+            <summary>
+            Carbohidratos diarios en gramos
+            </summary>
+        </member>
+        <member name="P:LogicApi.Model.Response.Profile.CreateProfileResponse.Fats">
+            <summary>
+            Grasas diarias en gramos
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Profile.CreateProfileResponse.#ctor(System.Guid,System.String,System.Int16,System.Int16,System.Int16)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:LogicApi.Model.Response.Profile.CreateProfileResponse.#ctor">
+            <summary>
+            Default Constructor
             </summary>
         </member>
         <member name="T:LogicApi.Model.Response.Routine.CreateRoutineWithExercisesResponse">
